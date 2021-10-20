@@ -1,0 +1,73 @@
+name: Publish Documentation
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/gh-pages.yaml'
+      - '.github/linkchecker.json'
+      - 'doxygen/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/gh-pages.yaml'
+      - '.github/linkchecker.json'
+      - 'doxygen/**'
+jobs:
+  docs:
+    name: Build main documentation
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y graphviz plantuml libclang1-9 libclang-cpp1-9
+      - name: Install doxygen 1.9.2
+        run: |
+          wget https://doxygen.nl/files/doxygen-1.9.2.linux.bin.tar.gz
+          sudo tar -C /opt -xf doxygen-1.9.2.linux.bin.tar.gz
+          sudo ln -s /opt/doxygen-1.9.2/bin/doxygen /usr/local/bin/
+          which doxygen
+          doxygen --version
+      - name: Install linkchecker
+        run: |
+          sudo pip install LinkChecker
+      - name: Generate doxygen
+        run: DoxyGen/gen_doc.sh
+      - name: Run linkchecker
+        run: |
+          echo "::add-matcher::.github/linkchecker.json"
+          doxygen/check_links.sh doc/index.html
+      - name: Archive documentation
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: documentation
+          path: doc/
+          retention-days: 1
+          if-no-files-found: error
+      - name: Archive documentation
+        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+        run: |
+          cd doc
+          tar -cvjf /tmp/doc.tbz2 .
+      - uses: actions/checkout@v2
+        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+        with:
+          ref: gh-pages
+      - name: Publish documentation
+        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+        run: |
+          rm -r main
+          mkdir main
+          cd main
+          tar -xvjf /tmp/doc.tbz2
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update main documentation"
+          git push
