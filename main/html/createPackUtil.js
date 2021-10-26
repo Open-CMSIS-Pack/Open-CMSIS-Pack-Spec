@@ -2,11 +2,11 @@ var createPackUtil =
 [
     [ "PackChk", "packChk.html", [
       [ "Error and Warning Messages", "packChk.html#packChkMessages", [
-        [ "Operation", "packChk.html#autotoc_md3", null ],
-        [ "Internal Errors", "packChk.html#autotoc_md4", null ],
-        [ "Invocation Errors", "packChk.html#autotoc_md5", null ],
-        [ "Validation Messages", "packChk.html#autotoc_md6", null ],
-        [ "Model Errors", "packChk.html#autotoc_md7", null ]
+        [ "Operation", "packChk.html#autotoc_md5", null ],
+        [ "Internal Errors", "packChk.html#autotoc_md6", null ],
+        [ "Invocation Errors", "packChk.html#autotoc_md7", null ],
+        [ "Validation Messages", "packChk.html#autotoc_md8", null ],
+        [ "Model Errors", "packChk.html#autotoc_md9", null ]
       ] ]
     ] ],
     [ "XML Validation", "cp_Editors.html", [
