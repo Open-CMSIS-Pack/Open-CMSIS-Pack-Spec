@@ -11,7 +11,7 @@ for line in $(grep -E '^[^#]' linkchecker-out.csv | tail -n +2); do
   link=$(echo $line | cut -d';' -f 1)
   file=$(echo $line | cut -d';' -f 2)
   msg=$(echo $line | cut -d';' -f 4)
-  src=$(echo $file | sed -E 's/file:\/\/(.*)\/doc\/.*/\1\/doxygen/')
+  src=$(echo $file | sed -E 's/file:\/\/(.*)\/doc\/.*/\1\/doxygen\/src/')
   echo "${link};${file};${msg};${src}" >> linkchecker-in.csv
   if [ -d $src ]; then
     origin=$(grep -Ern "href=['\"]${link}['\"]" $src)

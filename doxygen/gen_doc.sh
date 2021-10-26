@@ -10,7 +10,9 @@
 set -o pipefail
 
 DIRNAME=$(dirname $(readlink -f $0))
-DOXYGEN=$(which doxygen)
+if [[ -z "${DOXYGEN}" ]]; then
+    DOXYGEN=$(which doxygen)
+fi
 
 if [[ ! -f "${DOXYGEN}" ]]; then
     echo "Doxygen not found!" >&2
