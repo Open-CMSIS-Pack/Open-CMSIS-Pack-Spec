@@ -675,8 +675,8 @@
     <xs:attribute name="Pname" type="RestrictedString" use="optional" />
     <!-- <xs:attribute name="type"  type="DeviceFeatureTypeEnum" use="required"/> -->
     <xs:attribute name="type" type="xs:string" use="required" />
-    <xs:attribute name="n" type="xs:decimal" use="optional" />
-    <xs:attribute name="m" type="xs:decimal" use="optional" />
+    <xs:attribute name="n" type="xs:string" use="optional" />
+    <xs:attribute name="m" type="xs:string" use="optional" />
     <xs:attribute name="name" type="xs:string" use="optional" />
     <!-- deprecated, only for backwards compatibility -->
     <xs:attribute name="count" type="xs:int" use="optional" />
@@ -686,8 +686,8 @@
   <xs:complexType name="BoardFeatureType">
     <!-- <xs:attribute name="type"  type="BoardFeatureTypeEnum" use="required"/> -->
     <xs:attribute name="type" type="xs:string" use="required" />
-    <xs:attribute name="n" type="xs:decimal" use="optional" />
-    <xs:attribute name="m" type="xs:decimal" use="optional" />
+    <xs:attribute name="n" type="xs:string" use="optional" />
+    <xs:attribute name="m" type="xs:string" use="optional" />
     <xs:attribute name="name" type="xs:string" use="optional" />
   </xs:complexType>
 
