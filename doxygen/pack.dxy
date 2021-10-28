@@ -873,7 +873,7 @@ INPUT           =   src/General.txt \
                     src/examples_schema.txt \
                     src/boards_schema.txt \
                     src/generators_schema.txt \
-                    src/xml_types.txt \
+                    src/debug_description.txt \
                     src/sdf_schema.txt \
                     src/pack_index.txt \
                     src/pack_dbg_setup_tutorial.txt
