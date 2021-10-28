@@ -1,6 +1,6 @@
 #!/bin/bash
-# Version: 1.0
-# Date: 2021-10-20
+# Version: 1.0.1
+# Date: 2021-10-27
 # This bash script generates Open-CMSIS-Pack Documentation:
 #
 # Pre-requisites:
@@ -9,7 +9,7 @@
 
 set -o pipefail
 
-DIRNAME=$(dirname $(readlink -f $0))
+DIRNAME=$(dirname $(realpath $0))
 if [[ -z "${DOXYGEN}" ]]; then
     DOXYGEN=$(which doxygen)
 fi
