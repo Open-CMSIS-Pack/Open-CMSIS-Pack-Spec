@@ -1,7 +1,7 @@
 # CMSIS-Pack
 Common Microcontroller Software Interface Standard - Pack(age) based distribution system
 
-Under construction:
+Linaro Project: [Open-CMSIS-Pack](https://linaro.atlassian.net/wiki/spaces/CMSIS/overview)
 
 ## License
 
