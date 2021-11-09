@@ -8,6 +8,7 @@ on:
       - '.github/workflows/gh-pages.yaml'
       - '.github/linkchecker.json'
       - 'doxygen/**'
+      - 'schema/**'
   pull_request:
     branches:
       - main

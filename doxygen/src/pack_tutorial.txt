@@ -56,7 +56,7 @@ software component. Then, it is extended to show the various features for descri
 Open the file <b>vendor.pack_name.pdsc</b> in an editor and change it like this:
 \code{.xml}
 <?xml version="1.0" encoding="UTF-8"?>
-<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="pack.xsd">
   <vendor>MyVendor</vendor>
   <name>MyPack</name>
   <description>Internal Software Pack</description>
@@ -707,7 +707,7 @@ Add a \ref element_device "<devices>" section in the PDSC file with the followin
 \endcode
 \note
 - \c Dvendor IDs are not freely selectable. The very latest set of IDs can be found in the
-  <a href="https://github.com/ARM-software/CMSIS_5/blob/develop/CMSIS/Utilities/PACK.xsd" target="_blank">PACK.xsd</a>
+  <a href="https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack/blob/main/schema/pack.xsd" target="_blank">pack.xsd</a>
   file on GitHub. If you are a new device vendor, please contact
   <a href="mailto:cmsis@arm.com?subject=Dvendor%20ID%20Assignment">cmsis@arm.com</a> to get a \c Dvendor ID assigned.
 - This section's code examples can be found in the \c snippets.xml file in the ZIP file's <b>01_Basic_Pack</b> directory.

@@ -1,5 +1,5 @@
 /**************************************************************************************************/
-/** 
+/**
 \page pdsc_generators_pg  /package/generators element
 
 The element \ref element_generator specifies a tool or utility that is used to generate and/or configure software (source
@@ -27,12 +27,12 @@ generated and included and maintained as part of the project.
         <argument host="linux" switch="--device=">$D</argument>
         <argument host="win"   switch="/device=">$D</argument>
       </exe>
-       
+
       <eclipse plugin="com.mygen.plugin" class="com.mygen.plugin.generator.launcher" method="launch" >
         <argument>$D</argument>
         <argument>$P/RTE/MyGen/myGen.gpdsc</argument>
       </eclipse>
-       
+
       <web url="http://mygen.com/mygen">
         <argument switch="device">$D</argument>
         <argument switch="gpdsc">$P/RTE/MyGen/myGen.gpdsc</argument>
@@ -46,7 +46,7 @@ generated and included and maintained as part of the project.
 \code{.xml}
 <?xml version="1.0" encoding="UTF-8"?>
 
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xs:noNamespaceSchemaLocation="pack.xsd">
   <vendor>Keil</vendor>
   <name>FrameworkCubeMX</name>
   <description>STM32CubeMX generated pack description</description>
@@ -102,7 +102,7 @@ generated and included and maintained as part of the project.
   </components>
 </package>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_generators /package/generators
@@ -117,7 +117,7 @@ Grouping element for \b generators. Only one such group can exist in a Pack.
   <tr>
     <td>\ref pdsc_package_pg "package"</td>
     <td colspan="3">\ref pdsc_package_pg "/package"</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Child Elements</th>
     <th>Description</th>
@@ -133,7 +133,7 @@ Grouping element for \b generators. Only one such group can exist in a Pack.
  </table>
 
  The following variables can be used in the elements \c \<command>, \c \<workingDir>, \c \<argument>, \c \<gpdsc>:
- 
+
 <table class="cmtable" summary="Supported Variables within Generator">
   <tr>
     <th>Variable</th>
@@ -156,7 +156,7 @@ Grouping element for \b generators. Only one such group can exist in a Pack.
     <td>Name of the device configured in the current project</th>
   </tr>
  </table>
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_generator /package/generators/generator
@@ -172,7 +172,7 @@ generator element must exist.
   <tr>
     <td>\ref element_generators "generators"</td>
     <td colspan="3">\ref element_generators</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -309,7 +309,7 @@ element can exist in \c \<generators>.
     </generator>
   </generators>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Generator Select">
   <tr>
@@ -319,7 +319,7 @@ element can exist in \c \<generators>.
   <tr>
     <td>\ref element_generator "generator"</td>
     <td colspan="3">\ref element_generator</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -341,7 +341,7 @@ element can exist in \c \<generators>.
   </tr>
   <tr>
     <td>Dvariant</td>
-	<td>Name of the targeted device variant. If a variant is specified, the device name will be ignored and the 
+	<td>Name of the targeted device variant. If a variant is specified, the device name will be ignored and the
 	    variant rules. If no Dname is specified, this tag is required.</td>
 	<td>xs:string</td>
 	<td>optional</td>
@@ -370,7 +370,7 @@ This element contains information about the generation binary/executable.
   <argument host="win"   switch="/device=">$D</argument>
 </exe>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Exe">
   <tr>
@@ -389,7 +389,7 @@ This element contains information about the generation binary/executable.
   </tr>
   <tr>
     <td>\ref element_gen_command "command"</td>
-    <td>Invocation command for the generator tool. Command line options should be passed via \c \<arguments>. 
+    <td>Invocation command for the generator tool. Command line options should be passed via \c \<arguments>.
     <td>\ref element_gen_command "GeneratorCommandType"</td>
     <td>1..4</td>
   </tr>
@@ -415,7 +415,7 @@ This element contains information about the Eclipse based generation tool.
   <argument>$P/RTE/MyGen/myGen.gpdsc</argument>
 </eclipse>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Eclipse">
   <tr>
@@ -477,7 +477,7 @@ This element contains information about the web generation application.
   <argument switch="gpdsc">$P/RTE/MyGen/myGen.gpdsc</argument>
 </web>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Web">
   <tr>
@@ -496,7 +496,7 @@ This element contains information about the web generation application.
   </tr>
   <tr>
     <td>url</td>
-    <td>Specifies the URL of the web service. 
+    <td>Specifies the URL of the web service.
     <td>URL</td>
     <td>required</td>
   </tr>
@@ -532,7 +532,7 @@ This element describes a single command line for launching the generator. Argume
 </exe>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Generator Command Argument">
   <tr>
@@ -586,12 +586,12 @@ This element describes one or multiple arguments passed along with the parent el
         <argument host="linux" switch="--device=">$D</argument>
         <argument host="win"   switch="/device=">$D</argument>
       </exe>
- 
+
       <eclipse plugin="com.mygen.plugin" class="com.mygen.plugin.generator.launcher" method="launch" >
         <argument>$D</argument>
         <argument>$P/RTE/MyGen/myGen.gpdsc</argument>
       </eclipse >
- 
+
       <web url="http://mygen.com/mygen">
         <argument switch="device">$D</argument>
         <argument switch="gpdsc">$P/RTE/MyGen/myGen.gpdsc</argument>
@@ -600,7 +600,7 @@ This element describes one or multiple arguments passed along with the parent el
 </generators>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Generator Command Argument">
   <tr>
@@ -660,7 +660,7 @@ The group <b>project_files</b> specifies all files that are required for the pro
         <command host = "linux">MDK/CubeMX/STM32CubeMXLauncher</command>
         <argument>$P/RTE/MyGen/myGen.gpdsc</argument>
         <argument>$D.ioc</argument>
-      </exe>      
+      </exe>
       <workingDir>$P/RTE/Device/STM32F746NGHx</workingDir>
       <project_files>
         <file category="source" name="STCubeGenerated/Src/main.c" />
@@ -695,7 +695,7 @@ The group <b>project_files</b> specifies all files that are required for the pro
     <td>0..1 </td>
   </tr>
 </table>
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_gen_files /package/generators/generator/files
@@ -737,7 +737,7 @@ The group <b>files</b> specifies files that are required by the generator tool. 
     <td>0..1 </td>
   </tr>
 </table>
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_gen_file /package/generators/generator/files/file
@@ -757,7 +757,7 @@ This element contains information about files used by a generator.
 </generators>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Generator File">
   <tr>
@@ -804,5 +804,5 @@ This element contains information about files used by a generator.
     <td>optional</td>
   </tr>
 </table>
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 */

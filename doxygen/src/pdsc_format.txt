@@ -4,7 +4,7 @@
 
 [TOC]
 
-The <b>Pack Description (*.pdsc) Format</b>  uses standard XML annotations and is defined in the schema file <b>PACK.xsd</b>.
+The <b>Pack Description (*.pdsc) Format</b>  uses standard XML annotations and is defined in the schema file <b>pack.xsd</b>.
 Software components are distributed through <b>Software Packs</b>.
 A \ref cp_SWComponents "Software Pack" is a zip file containing a single <b>Pack Description</b> file that describes
 dependencies to devices, processors, tool chains, or other software components.
@@ -55,7 +55,7 @@ file must match the filenames of the *.pdsc and *.pack files. The file extension
 
 \section PackSchema Pack Schema
 
-The XML schema file <b>PACK.xsd</b> defines the sections used in a <b>*.pdsc</b> file. The current <b>PACK.xsd</b> can be
+The XML schema file <b>pack.xsd</b> defines the sections used in a <b>*.pdsc</b> file. The current <b>pack.xsd</b> can be
 found in the ARM.CMSIS pack in the directory .\\CMSIS\\Utilities.
 
 The \ref packFormat is structured using grouping elements and contains the following top level elements:
@@ -96,7 +96,7 @@ assists searching for packages.
 
 \b Example:
 \code
-<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="pack.xsd">
   <vendor>ExampleVendor</vendor>
   <name>STM32F2xx_DFP</name>                                                       <!-- name of package -->
   <description>Device Family Package for STMicroelectronics STM32F2 Family of Arm Cortex-M3 based Microcontroller</description>
@@ -161,7 +161,7 @@ assists searching for packages.
   </tr>
   <tr>
     <td>xs:noNamespaceSchemaLocation</td>
-    <td>Path and file name of the PACK.xsd Schema. For example, \token{"PACK.xsd"}.</td>
+    <td>Path and file name of the pack.xsd Schema. For example, \token{"pack.xsd"}.</td>
     <td>xs:string</td>
     <td>required</td>
   </tr>
@@ -733,7 +733,7 @@ There are three different requirement types:
 
 \b Example requirements section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="pack.xsd"/>
   ...
   <requirements>
     <packages>
@@ -799,7 +799,7 @@ There are three different requirement types:
 
 \b Example packages section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="pack.xsd"/>
   ...
   <requirements>
     <packages>
@@ -858,7 +858,7 @@ There are three different requirement types:
 
 \b Example compilers section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="pack.xsd"/>
   ...
   <requirements>
     <compilers>
@@ -912,7 +912,7 @@ There are three different requirement types:
 
 \b Example languages section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="pack.xsd"/>
   ...
   <requirements>
     <languages>

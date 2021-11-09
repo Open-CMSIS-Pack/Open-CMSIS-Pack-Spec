@@ -1,0 +1,47 @@
+name: Validate schemata
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/schema.yaml'
+      - 'schema/**'
+jobs:
+  pack:
+    name: Validate pack schema
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libxml2-utils
+      - name: Run xmllint against XMLSchema.xsd
+        run: |
+          wget https://www.w3.org/2012/04/XMLSchema.xsd
+          xmllint --noout --schema XMLSchema.xsd schema/pack.xsd
+      - name: Run xmllint against ARM.CMSIS.pdsc
+        run: |
+          wget http://www.keil.com/pack/ARM.CMSIS.pdsc
+          xmllint --noout --schema schema/pack.xsd ARM.CMSIS.pdsc
+
+  index:
+    name: Validate index schema
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libxml2-utils
+      - name: Run xmllint against XMLSchema.xsd
+        run: |
+          wget https://www.w3.org/2012/04/XMLSchema.xsd
+          xmllint --noout --schema XMLSchema.xsd schema/index.xsd
+      - name: Run xmllint against keil.pidx
+        run: |
+          wget https://www.keil.com/pack/keil.pidx
+          xmllint --noout --schema schema/index.xsd keil.pidx
