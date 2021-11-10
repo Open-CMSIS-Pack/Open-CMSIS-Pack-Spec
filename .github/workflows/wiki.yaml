@@ -1,0 +1,33 @@
+name: Sync wiki content
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/wiki.yaml'
+      - 'doc/Glossary'
+      - 'doc/adr/*'
+jobs:
+  wiki:
+    name: Sync content to wiki
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+        path: origin
+      - uses: actions/checkout@v2
+        repository: https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack.wiki
+        path: wiki
+      - name: Copy Glossary
+        run: cp -f origin/doc/Glossary.md wiki/
+      - name: Update ADRs
+        run: cat origin/doc/adr/*.md > wiki/Architecture-Decision-Records.md
+      - name: Commit wiki update
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Sync wiki content from repository main branch"
+          git push
+        working-directory: wiki
