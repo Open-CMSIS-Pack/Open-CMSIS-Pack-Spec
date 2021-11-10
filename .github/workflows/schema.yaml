@@ -33,12 +33,12 @@ jobs:
       - name: Run xmllint against XMLSchema.xsd
         run: |
           wget https://www.w3.org/2012/04/XMLSchema.xsd
-          xmllint --noout --schema XMLSchema.xsd schema/pack.xsd
+          xmllint --noout --schema XMLSchema.xsd schema/PACK.xsd
       - name: Run xmllint against Keil index
         run: |
           for f in $(find .Web -name *.pdsc); do
-            if ! xmllint --noout --schema schema/pack.xsd $f; then
-              echo "::error file=schema/pack.xsd::Schema validation failed for $(basename $f)"
+            if ! xmllint --noout --schema schema/PACK.xsd $f; then
+              echo "::error file=schema/PACK.xsd::Schema validation failed for $(basename $f)"
             fi
           done
 
@@ -55,8 +55,8 @@ jobs:
       - name: Run xmllint against XMLSchema.xsd
         run: |
           wget https://www.w3.org/2012/04/XMLSchema.xsd
-          xmllint --noout --schema XMLSchema.xsd schema/index.xsd
+          xmllint --noout --schema XMLSchema.xsd schema/PackIndex.xsd
       - name: Run xmllint against keil.pidx
         run: |
           wget https://www.keil.com/pack/keil.pidx
-          xmllint --noout --schema schema/index.xsd keil.pidx
+          xmllint --noout --schema schema/PackIndex.xsd keil.pidx

@@ -46,7 +46,7 @@ generated and included and maintained as part of the project.
 \code{.xml}
 <?xml version="1.0" encoding="UTF-8"?>
 
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xs:noNamespaceSchemaLocation="pack.xsd">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>Keil</vendor>
   <name>FrameworkCubeMX</name>
   <description>STM32CubeMX generated pack description</description>

@@ -10,7 +10,7 @@ error and warning free run of \ref bash_script "gen_pack.sh" that does not show 
 \ref cp_Editors_xmllint "validates the XML" of the PDSC file.
 
 \note XML validation is important when the pack should published using a \ref cp_KeilComPack "pack index service". The pack
-  importer will ignore all \elem{vendor}.\elem{name}.pdsc files that do fail when checking against the current pack.xsd
+  importer will ignore all \elem{vendor}.\elem{name}.pdsc files that do fail when checking against the current PACK.xsd
   schema file and thus your pack will cannot be downloaded.
 
 

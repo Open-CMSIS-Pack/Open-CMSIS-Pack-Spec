@@ -297,10 +297,10 @@ popd > /dev/null
 
 if [ $(uname -s) = "Linux" ]; then
   echo "Running schema check for ${PACK_VENDOR}.${PACK_NAME}.pdsc"
-  xmllint --noout --schema "$(realpath -m ./CMSIS/Utilities/pack.xsd)" "${PACK_BUILD}/${PACK_VENDOR}.${PACK_NAME}.pdsc"
+  xmllint --noout --schema "$(realpath -m ./CMSIS/Utilities/PACK.xsd)" "${PACK_BUILD}/${PACK_VENDOR}.${PACK_NAME}.pdsc"
   errorlevel=$?
   if [ $errorlevel -ne 0 ]; then
-    echo "build aborted: Schema check of $PACK_VENDOR.$PACK_NAME.pdsc against pack.xsd failed"
+    echo "build aborted: Schema check of $PACK_VENDOR.$PACK_NAME.pdsc against PACK.xsd failed"
     echo " "
     if [[ $IGNORE_ERRORS == 0 ]]; then
         exit 1

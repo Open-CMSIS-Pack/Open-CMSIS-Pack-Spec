@@ -27,7 +27,7 @@ It is the vendor's obligation to update this file whenever:
 
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="index.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <vendor>MyVendor</vendor>
   <url>https://www.MyVendor.com/pack/</url>
   <timestamp>2017-01-25T15:00:10.7300074+00:00</timestamp>
@@ -60,7 +60,7 @@ packs.
 \code
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<index schemaVersion="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="index.xsd">
+<index schemaVersion="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PackIndex.xsd">
   <vendor>MyVendor</vendor>
   <url>www.MyVendor.com/pack</url>
   <timestamp>2017-01-08T10:30:00</timestamp>
@@ -90,5 +90,5 @@ Based on these publicly available index files, everyone is equally positioned to
 latest versions.
 
 \section packIndexSchema CMSIS-Pack Index Schema File
-\verbinclude "index.xsd"
+\verbinclude "PackIndex.xsd"
 */

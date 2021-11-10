@@ -19,7 +19,7 @@ overview over programs that are either part of the CMSIS Pack or are available f
 \page cp_Editors XML Validation
 
 XML validation is especially important when a pack should published using a \ref cp_KeilComPack "pack index service". The
-pack importer will ignore all \elem{vendor}.\elem{name}.pdsc files that do fail when checking against the current pack.xsd
+pack importer will ignore all \elem{vendor}.\elem{name}.pdsc files that do fail when checking against the current PACK.xsd
 schema file and thus your pack will not be available for download.
 
 
@@ -31,7 +31,7 @@ structural problems in a PDSC or SVD file early in the development process. Usef
 - <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>
 
 Usually, the XML file that is to be validated and its corresponding schema file need to reside in the same directory. The
-CMSIS-Pack schema file \b pack.xsd and the CMSIS-SVD schema file \b CMSIS-SVD.xsd are available in the directory
+CMSIS-Pack schema file \b PACK.xsd and the CMSIS-SVD schema file \b CMSIS-SVD.xsd are available in the directory
 <b>.\\CMSIS\\Utilities</b> of the <b>ARM::CMSIS</b> Pack.
 
 
