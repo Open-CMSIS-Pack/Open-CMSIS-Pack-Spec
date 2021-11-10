@@ -1,0 +1,66 @@
+name: Validate schemata
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/schema.yaml'
+      - '.github/download-pack-index.py'
+      - 'schema/**'
+jobs:
+  pack:
+    name: Validate pack schema
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libxml2-utils
+          sudo pip install progress
+      - name: Fetch Keil index
+        run: wget https://www.keil.com/pack/index.pidx
+      - name: Cache Keil index pdsc files
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: .Web
+          key: keilindex-${{ hashFiles('index.pidx') }}
+      - name: Fill cache
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        run: python3 .github/download-pack-index.py -f
+      - name: Run xmllint against XMLSchema.xsd
+        run: |
+          wget https://www.w3.org/2012/04/XMLSchema.xsd
+          xmllint --noout --schema XMLSchema.xsd schema/PACK.xsd
+      - name: Run xmllint against Keil index
+        run: |
+          rc=0
+          for f in $(find .Web -name *.pdsc); do
+            if ! xmllint --noout --schema schema/PACK.xsd $f; then
+              echo "::error file=schema/PACK.xsd::Schema validation failed for $(basename $f)"
+              rc=1
+            fi
+          done
+          exit $rc
+
+  index:
+    name: Validate index schema
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libxml2-utils
+      - name: Run xmllint against XMLSchema.xsd
+        run: |
+          wget https://www.w3.org/2012/04/XMLSchema.xsd
+          xmllint --noout --schema XMLSchema.xsd schema/PackIndex.xsd
+      - name: Run xmllint against keil.pidx
+        run: |
+          wget https://www.keil.com/pack/keil.pidx
+          xmllint --noout --schema schema/PackIndex.xsd keil.pidx

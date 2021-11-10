@@ -31,7 +31,7 @@ structural problems in a PDSC or SVD file early in the development process. Usef
 - <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>
 
 Usually, the XML file that is to be validated and its corresponding schema file need to reside in the same directory. The
-CMSIS-Pack schema file \b Pack.xsd and the CMSIS-SVD schema file \b CMSIS-SVD.xsd are available in the directory
+CMSIS-Pack schema file \b PACK.xsd and the CMSIS-SVD schema file \b CMSIS-SVD.xsd are available in the directory
 <b>.\\CMSIS\\Utilities</b> of the <b>ARM::CMSIS</b> Pack.
 
 

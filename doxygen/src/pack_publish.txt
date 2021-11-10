@@ -8,7 +8,7 @@ There are multiple ways to distribute a software pack:
 Before you start to distribute a software pack, you need to make sure that it does not contain errors. A good start is an
 error and warning free run of \ref bash_script "gen_pack.sh" that does not show any \ref packChk errors and
 \ref cp_Editors_xmllint "validates the XML" of the PDSC file.
-  
+
 \note XML validation is important when the pack should published using a \ref cp_KeilComPack "pack index service". The pack
   importer will ignore all \elem{vendor}.\elem{name}.pdsc files that do fail when checking against the current PACK.xsd
   schema file and thus your pack will cannot be downloaded.
@@ -44,15 +44,15 @@ The \elem{vendor}.pidx allows you to publish multiple packs to a \ref cp_KeilCom
 
 \section cp_KeilComPack Publish with Pack Index Service
 
-Several companies maintain a Pack Index Server to make packs available within tools or web pages. Once you are ready to deploy packs via such services, you 
+Several companies maintain a Pack Index Server to make packs available within tools or web pages. Once you are ready to deploy packs via such services, you
 may send the URL of the \elem{vendor}.\elem{name}.pdsc or \elem{vendor}.pidx file to the following email addresses:
 
 - for Arm and Keil tools and web pages email to <a href="mailto:CMSIS@arm.com">CMSIS@arm.com</a>
 - for IAR tools email to <a href="mailto:CMSIS@arm.com">CMSIS@iar.com</a>
 
-The *.pidx file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the 
-*.pidx file will be processed and validated. <b>Only packs that pass the \ref packChk and schema check</b> will become available via 
-web pages and development tools. 
+The *.pidx file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the
+*.pidx file will be processed and validated. <b>Only packs that pass the \ref packChk and schema check</b> will become available via
+web pages and development tools.
 
 For example, Arm uses the pack information to generate a list of available software packs. The following content will be processed in order to generate
 the web site
@@ -77,7 +77,7 @@ ensure that the pack is found by a \ref cp_KeilComPack "Pack Index Service", fol
 - Copy all packs from url_A to url_B.
 - Inform Arm about the new URL by either:
   - update the \elem{vendor}.pidx with url_B for this pack \em or
-  - email a link to the PDSC file if your company does not maintain a \elem{vendor}.pidx 
+  - email a link to the PDSC file if your company does not maintain a \elem{vendor}.pidx
 
 \note
 - PDSC and pack versions need to be accessible from the same new URL
@@ -90,7 +90,7 @@ Tool, software, or silicon vendors may provide a web infra-structure that lists 
 Companies like Arm or IAR provide a \ref cp_KeilComPack "Pack Index Service" that uses either a \elem{vendor}.\elem{name}.pdsc or a
 \elem{vendor}.pidx file to obtain the latest pack versions.  This information is used to make the packs available in the development tools (via a <b><a href="https://www.keil.com/mdk5/packinstaller/">Pack Installer</a></b>) and/or to publish information on certain web pages, for example a <b><a href="https://developer.arm.com/embedded/cmsis/cmsis-packs/devices" target="_blank">device list</a></b>.
 
-The following diagram explains how these services are working behind the scene. 
+The following diagram explains how these services are working behind the scene.
 
 \image html WebInstallation.png "Web infra-structure for pack hosting services"
 

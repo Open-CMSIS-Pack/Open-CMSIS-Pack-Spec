@@ -76,7 +76,7 @@ packs.
 </index>
 \endcode
 
-The latest index file of CMSIS-Packs belonging to vendor="ARM" and vendor="Keil" that are hosted on www.keil.com/pack 
+The latest index file of CMSIS-Packs belonging to vendor="ARM" and vendor="Keil" that are hosted on www.keil.com/pack
 is maintained here: <a href="https://www.keil.com/pack/Keil.pidx">https://www.keil.com/pack/Keil.pidx</a>
 
 ARM also maintains a flat list of all CMSIS-Pack compliant packs reported to ARM here:
