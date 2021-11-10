@@ -15,10 +15,12 @@ jobs:
     steps:
       - uses: actions/setup-node@v1
       - uses: actions/checkout@v2
-        path: origin
+        with:
+          path: origin
       - uses: actions/checkout@v2
-        repository: https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack.wiki
-        path: wiki
+        with:
+          repository: https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack.wiki
+          path: wiki
       - name: Copy Glossary
         run: cp -f origin/doc/Glossary.md wiki/
       - name: Update ADRs
