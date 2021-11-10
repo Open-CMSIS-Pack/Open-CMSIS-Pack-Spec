@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - '.github/workflows/schema.yaml'
+      - '.github/download-pack-index.py'
       - 'schema/**'
 jobs:
   pack:
