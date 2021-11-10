@@ -7,8 +7,6 @@ on:
     paths:
       - '.github/workflows/schema.yaml'
       - 'schema/**'
-  schedule:
-    - cron: '0 6 * * *'
 jobs:
   pack:
     name: Validate pack schema
@@ -21,14 +19,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y libxml2-utils
           sudo pip install progress
+      - name: Fetch Keil index
+        run: wget https://www.keil.com/pack/index.pidx
       - name: Cache Keil index pdsc files
         uses: actions/cache@v2
         id: cache
         with:
           path: .Web
-          key: keilindex
+          key: keilindex-${{ hashFiles('index.pidx') }}
       - name: Fill cache
-        if: ${{ steps.cache.outputs.cache-hit != 'true' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: python3 .github/download-pack-index.py -f
       - name: Run xmllint against XMLSchema.xsd
         run: |
