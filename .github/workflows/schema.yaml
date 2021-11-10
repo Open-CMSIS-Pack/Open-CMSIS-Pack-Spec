@@ -36,11 +36,14 @@ jobs:
           xmllint --noout --schema XMLSchema.xsd schema/PACK.xsd
       - name: Run xmllint against Keil index
         run: |
+          rc=0
           for f in $(find .Web -name *.pdsc); do
             if ! xmllint --noout --schema schema/PACK.xsd $f; then
               echo "::error file=schema/PACK.xsd::Schema validation failed for $(basename $f)"
+              rc=1
             fi
           done
+          exit $rc
 
   index:
     name: Validate index schema
