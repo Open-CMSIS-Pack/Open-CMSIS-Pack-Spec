@@ -446,20 +446,20 @@ A component describes a collection of files (source, header, configuration, libr
     <td>Defines the component class to which the component belongs. This is a mandatory part of the component ID.
 	Predefined values can be used as listed in the table \ref CclassType "Component Classes".
 	\n \token{Must not be specified for a component within a bundle.}</td>
-    <td>CclassType</td>
+    <td>\ref CclassType "CclassType"</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Cgroup</td>
     <td>Defines the component group to whoch the component belongs. Is a mandatory part of the component ID.
 	Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
-    <td>CgroupType</td>
+    <td>\ref CgroupType "CgroupType"</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Csub</td>
     <td>Defines the component subgroup. Is an optional part of the component ID. The type is described in \ref CsubType "Component Subgroups".</td>
-    <td>CsubType</td>
+    <td>\ref CsubType "CsubType"</td>
     <td>optional</td>
   </tr>
   <tr>
@@ -474,7 +474,7 @@ A component describes a collection of files (source, header, configuration, libr
     <td>Defines the version of this component. Is a mandatory part of the component ID.
 	 The version format is described in \ref VersionType "Version Type".
 	 \n \token{Must not be specified for a component within a bundle.}</td>
-    <td>VersionType</td>
+    <td>\ref VersionType "VersionType"</td>
     <td>required</td>
   </tr>
   <tr>
