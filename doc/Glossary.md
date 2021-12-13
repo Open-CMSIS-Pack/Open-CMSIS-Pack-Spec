@@ -145,14 +145,14 @@ A binary program can be:
   - A virtual machine or interpreter 
 - <a name="execution-context"></a>**Execution Context**
 An execution context identifies the “cradle” allowing to run a binary program on a given hardware platform.  
-  - A context of execution has a 1-to-1 association to an HW execution unit. 
-  - If we support virtual machines or interpreters then the virtual machine is associated to one execution context. The programs interpreted by the virtual machine (VM) are stored as data sections in memory, and considered as execution modules within the VM's execution context.
+  - A context of execution has a 1-to-1 association to a hardware execution unit. 
+  - If we support virtual machines or interpreters, then the virtual machine is associated with one execution context. The programs interpreted by the virtual machine (VM) are stored as data sections in memory, and considered as execution modules within the VM's execution context.
 - <a name="execution-domain"></a>**Execution Domain**
 An execution domain is a container aggregating all the platform resources (internal and external memories, peripherals) that an execution context can use “exclusively”. For shared resources (available for several execution contexts), we introduce the concept of shared execution domain.
 - <a name="execution-module"></a>**Execution Module**
-An execution module is an entity that has no standalone execution possibility. It relies on a “backbone" binary providing system services. So, an execution module is always associated to an execution context.
+An execution module is an entity that has no standalone execution possibility. It relies on a “backbone" binary providing system services. So, an execution module is always associated with an execution context.
 - <a name="HW-exec-unit"></a>**Hardware Execution Unit**
-An HW execution unit is either a cluster (i.e. group of cores), or a core, or a TrustZone world within a core (virtualization). This is the hardware entity (virtual or physical) running a binary program.  
+A hardware execution unit is either a cluster (i.e. group of cores), or a core, or a TrustZone world within a core (virtualization). This is the hardware entity (virtual or physical) running a binary program.  
 - <a name="SoC"></a>**System On Chip**
 A SoC (system on chip) can be a microcontroller (MCU) or a microprocessor (MP). 
   - A SoC can have one or several processors.  
