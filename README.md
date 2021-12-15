@@ -13,7 +13,7 @@ Linaro Project: [Open-CMSIS-Pack](https://linaro.atlassian.net/wiki/spaces/CMSIS
 
 ## License
 
-The Open-CMSIS-Pack project and it's sub-components are licensed under Apache 2.0.
+The Open-CMSIS-Pack project and its sub-components are licensed under Apache 2.0.
 
 ## Contributions and Pull Requests
 
