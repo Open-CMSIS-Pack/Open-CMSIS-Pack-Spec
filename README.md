@@ -1,11 +1,19 @@
-# CMSIS-Pack
-Common Microcontroller Software Interface Standard - Pack(age) based distribution system
+# Open-CMSIS-Pack Specification
+
+The Open-CMSIS-Pack project delivers the infrastructure to integrate and manage software components and improve code reuse across embedded and IoT projects. The project is currently hosted and managed as an incubation project by Linaro in partnership with Arm, NXP and ST.
+
+This Open-CMSIS-Pack specification is part of the Common Microcontroller Software Interface Standard and covers the following areas:
+
+- **Pack:** Describes a delivery mechanism for software components, device parameters, and evaluation board support. It simplifies software re-use and product life-cycle management (PLM).
+ 
+- **Build:** Defines the build tools for project based on software packs.
+
 
 Linaro Project: [Open-CMSIS-Pack](https://linaro.atlassian.net/wiki/spaces/CMSIS/overview)
 
 ## License
 
-CMSIS-Pack is licensed under Apache 2.0.
+The Open-CMSIS-Pack project and it's sub-components are licensed under Apache 2.0.
 
 ## Contributions and Pull Requests
 
