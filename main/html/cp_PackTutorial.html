@@ -122,7 +122,7 @@ Steps to Create a Pack</h1>
 <li><b>Produce input:</b> Create the files that will be delivered with the Pack (source code, header and library files, documentation).</li>
 <li><b>Organize files:</b> For better maintainability, use directories to separate the content of the Pack.</li>
 <li><b>Create PDSC file:</b> The XML based PDSC file can be created using any text editor. Editors that can <a class="el" href="cp_Editors.html">validate XML</a> code against a schema file help to find bugs early in the Pack development stage.</li>
-<li><b>Generate Pack:</b> Any compression tool supporting the ZIP format can be used to create a Pack file. <a class="el" href="packChk.html">PackChk</a> is helpful for the validation of the contents of a Pack.</li>
+<li><b>Generate Pack:</b> Any compression tool supporting the ZIP format can be used to create a Pack file. <a class="el" href="packChk.html">packchk</a> is helpful for the validation of the contents of a Pack.</li>
 </ol>
 <dl class="section note"><dt>Note</dt><dd>Steps 3 and 4 are covered automatically if you are using the <a class="el" href="bash_script.html">gen_pack.sh</a> script to generate the pack.</dd></dl>
 <p>The following sections show how to create a Software Pack from scratch:</p><ul>
@@ -187,7 +187,7 @@ Create PDSC File</h2>
 <li>Determining the Pack version (required for the file name of the Pack file)</li>
 <li>Display of release information</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>Usually, you need to add a <code>&lt;date&gt;</code> tag to a <code>&lt;release</code> <code>version&gt;</code>. If you omit this, <a class="el" href="packChk.html">PackChk</a> will issue a warning. To keep the tutorial simple, the <code>&lt;date&gt;</code> tag is not used here (as it requires consecutive dates for different versions).</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Usually, you need to add a <code>&lt;date&gt;</code> tag to a <code>&lt;release</code> <code>version&gt;</code>. If you omit this, <a class="el" href="packChk.html">packchk</a> will issue a warning. To keep the tutorial simple, the <code>&lt;date&gt;</code> tag is not used here (as it requires consecutive dates for different versions).</dd></dl>
 <p><a class="el" href="element_keywords.html">&lt;keywords&gt;</a> may be used for better visibility for search engines.  </p>
 </li>
 <li>
@@ -219,7 +219,7 @@ Open <a class="el" href="bash_script.html">gen_pack.sh</a> from your working dir
 <li>
 Having saved <b>gen_pack.sh</b>, open a Bash console in the current directory and run the script. The shell script will:<ul>
 <li>Run a schema check on the PDSC file using <a class="el" href="cp_Editors.html">xmllint</a>.</li>
-<li>Run <a class="el" href="packChk.html">PackChk</a></li>
+<li>Run <a class="el" href="packChk.html">packchk</a></li>
 <li>Create the <b>MyVendor.MyPack.1.0.0.pack</b> Pack file in the ./output sub-directory.  </li>
 </ul>
 </li>
@@ -511,7 +511,7 @@ Add a new version number: <div class="fragment"><div class="line">&lt;<span clas
 </div><!-- fragment -->  </li>
 <li>
 <p class="startli">Finally, save the PDSC file and regenerate the Pack file using the <b>gen_pack.sh</b> script. See <a class="el" href="cp_PackTutorial.html#cp_GeneratePack">Generate a Pack</a> for further details. Afterwards, install the Pack in your development tool and observe the differences to version 1.0.5.</p>
-<dl class="section note"><dt>Note</dt><dd><a class="el" href="packChk.html">PackChk</a> will issue a warning as the board described above is not known: <pre class="fragment">*** WARNING M324: C:\03_work\Packs\Arm\Tutorial\01_Create_PDSC\build\MyVendor.MyPack.pdsc (Line 116)
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="packChk.html">packchk</a> will issue a warning as the board described above is not known: <pre class="fragment">*** WARNING M324: C:\03_work\Packs\Arm\Tutorial\01_Create_PDSC\build\MyVendor.MyPack.pdsc (Line 116)
   Board referenced in Example 'MyDevBoard Example' not found: '[MyVendor] MyDevBoard'
 </pre></dd></dl>
 <div class="image">
@@ -607,7 +607,7 @@ Add a <a class="el" href="pdsc_family_pg.html#element_device">&lt;devices&gt;</a
 </div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd><ul>
 <li><code>Dvendor</code> IDs are not freely selectable. The very latest set of IDs can be found in the <a href="https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack/blob/main/schema/PACK.xsd" target="_blank">PACK.xsd</a> file on GitHub. If you are a new device vendor, please contact <a href="#" onclick="location.href='mai'+'lto:'+'cms'+'is'+'@ar'+'m.'+'com'+'?s'+'ubj'+'ec'+'t=D'+'ve'+'ndo'+'r%'+'20I'+'D%'+'20A'+'ss'+'ign'+'me'+'nt'; return false;">cmsis@arm.com</a> to get a <code>Dvendor</code> ID assigned.</li>
 <li>This section's code examples can be found in the <code>snippets.xml</code> file in the ZIP file's <b>01_Basic_Pack</b> directory.</li>
-<li>Usually, you need to add a <code>&lt;date&gt;</code> tag to a <code>&lt;release</code> <code>version&gt;</code>. If you omit this, <a class="el" href="packChk.html">PackChk</a> will issue a warning. To keep the tutorial simple, the <code>&lt;date&gt;</code> tag is not used here (as it requires consecutive dates for different versions).</li>
+<li>Usually, you need to add a <code>&lt;date&gt;</code> tag to a <code>&lt;release</code> <code>version&gt;</code>. If you omit this, <a class="el" href="packChk.html">packchk</a> will issue a warning. To keep the tutorial simple, the <code>&lt;date&gt;</code> tag is not used here (as it requires consecutive dates for different versions).</li>
 </ul>
 </dd></dl>
 </li>
@@ -621,12 +621,12 @@ From the <code>PACK_BASE_FILES</code> variable, delete <code>License.txt</code> 
 <li>
 Having saved <b>gen_pack.sh</b>, open a Bash console in the current directory and run the script. The shell script will:<ul>
 <li>Run a schema check on the PDSC file using <a class="el" href="cp_Editors.html">xmllint</a>.</li>
-<li>Run <a class="el" href="packChk.html">PackChk</a></li>
+<li>Run <a class="el" href="packChk.html">packchk</a></li>
 <li>Create the <b>MyVendor.MVCM3.1.0.0.pack</b> Pack file in the ./output sub-directory.  </li>
 </ul>
 </li>
 <li>
-<a class="el" href="packChk.html">PackChk</a> will issue a couple of warnings that we will take care of later: <pre class="fragment">*** WARNING M350: C:\03_work\Packs\Arm\Tutorial\DFP\working\build\MyVendor.MVCM3.pdsc (Line 35)
+<a class="el" href="packChk.html">packchk</a> will issue a couple of warnings that we will take care of later: <pre class="fragment">*** WARNING M350: C:\03_work\Packs\Arm\Tutorial\DFP\working\build\MyVendor.MVCM3.pdsc (Line 35)
   No 'Startup' component found for [Generic:5] 'MVCM3110' (Compiler:  [])
 
 *** WARNING M350: C:\03_work\Packs\Arm\Tutorial\DFP\working\build\MyVendor.MVCM3.pdsc (Line 35)
@@ -712,7 +712,7 @@ Add a new version number: <div class="fragment"><div class="line">&lt;<span clas
 Startup and system files added to a project</div></div>
   </li>
 </ol>
-<dl class="section note"><dt>Note</dt><dd><a class="el" href="packChk.html">PackChk</a> will show lots of <code>INFO</code> messages. This is expected at this point and we will address this problem in the next section.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="packChk.html">packchk</a> will show lots of <code>INFO</code> messages. This is expected at this point and we will address this problem in the next section.</dd></dl>
 <h2><a class="anchor" id="cp_SVD"></a>
 System View Description File</h2>
 <p ><a href="https://www.keil.com/cmsis/svd" class="el" target="_blank">CMSIS-SVD</a> formalizes the description of the programmer's view for the system contained in ARM Cortex-M processor-based microcontrollers, in particular the memory mapped registers of the peripherals. The level of detail contained in system view descriptions is comparable to what is found in device reference manuals published by silicon vendors. The information ranges from a high level functional description of a peripheral all the way down to the definition and purpose of an individual bit field in a memory mapped register. CMSIS-SVD files are developed and maintained by the silicon vendors. The XML based SVD file is the input for <a href="https://arm-software.github.io/CMSIS_5/develop/SVD/html/svd_SVDConv_pg.html"><b>SVDConv.exe</b></a> that generates the tool dependent debug view and the device header file.</p>

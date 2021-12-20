@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>PackChk</title>
-<title>Open-CMSIS-Pack: PackChk</title>
+<title>packchk</title>
+<title>Open-CMSIS-Pack: packchk</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -101,55 +101,64 @@ $(document).ready(function(){initNavTree('packChk.html',''); initResizable(); })
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">PackChk </div></div>
+  <div class="headertitle"><div class="title">packchk </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><b>PackChk</b> is a utility for validation of a Software Pack. It operates on the unzipped content of the Software Pack and is located in the directory <b>.\CMSIS\Utilities</b> of the <b>ARM::CMSIS</b> Pack. <b>PackChk</b> is available for Windows and Linux operating systems.</p>
-<p ><b>PackChk</b> performs the following operations:</p><ul>
-<li>Reads the content of the specified *.pdsc file. The path to this *.pdsc file is considered as root directory of the Software Pack.</li>
-<li>Verifies the existence of all files in the Software Pack that are referenced in the *.pdsc file.</li>
-<li>Checks for presence and correctness of mandatory elements such as &lt;vendor&gt;, &lt;version&gt;, etc.</li>
-<li>Optionally, reads other PDSC files to resolve dependencies on &lt;apis&gt;, &lt;boards&gt;, and &lt;conditions&gt;.</li>
-<li>Optionally, checks all System View Description files (*.SVD) referenced in the *.pdsc file using SVDConv.exe. Refer to <a href="https://arm-software.github.io/CMSIS_5/develop/SVD/html/svd_validate_file_pg.html">SVD File Validation</a> for details.</li>
-<li>Optionally, verifies the element &lt;url&gt;.</li>
-<li>Optionally, creates the standardized name of the Software Pack file for further processing in scripts.</li>
+<div class="textblock"><p ><b>packchk</b> is a utility for validation of a software pack. It operates on the unzipped content of the software pack and is located in the directory <b>.\CMSIS\Utilities</b> of the <b>ARM::CMSIS</b> Pack. <b>packchk</b> is available for Windows and Linux operating systems.</p>
+<p ><b>packchk</b> performs the following operations:</p><ul>
+<li>Reads the content of the specified *.pdsc file. The path to this *.pdsc file is considered as root directory of the software pack.</li>
+<li>Verifies the existence of all files in the software pack that are referenced in the *.pdsc file.</li>
+<li>Checks for presence and correctness of mandatory elements such as <code>&lt;vendor&gt;</code>, <code>&lt;version&gt;</code>, etc.</li>
+<li>Optionally, reads other PDSC files to resolve dependencies on <code>&lt;apis&gt;</code>, <code>&lt;boards&gt;</code>, and <code>&lt;conditions&gt;</code>.</li>
+<li>Optionally, verifies the element <code>&lt;url&gt;</code>.</li>
+<li>Optionally, creates the standardized name of the software pack file for further processing in scripts.</li>
 <li>Sets the exit status reflecting the validation result to: <br  />
  0 : no errors detected <br  />
  1 : errors during validation detected</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd><b>PackChk</b> does not validate the XML conformance of your PDSC file. You need to run an additional XML validation tool such as <a class="el" href="cp_Editors.html#cp_Editors_xmllint">xmllint</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><b>packchk</b> does not validate the XML conformance of your PDSC file. You need to run an additional XML validation tool such as <a class="el" href="cp_Editors.html#cp_Editors_xmllint">xmllint</a>.</dd></dl>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Operation</h2>
-<p ><b>PackChk</b> is invoked from the command line:<br  />
-</p><div class="fragment"><div class="line">PackChk &lt;pdsc_file&gt; &lt;options&gt;</div>
+<p ><b>packchk</b> is invoked from the command line:<br  />
+</p><div class="fragment"><div class="line">packchk &lt;pdsc_file&gt; &lt;options&gt;</div>
 </div><!-- fragment --><p ><br  />
-</p><table class="cmtable" summary="packChk Args">
+</p><table class="cmtable" summary="packchk Args">
 <tr>
 <th>&lt;options&gt; </th><th>Short Name </th><th>Description  </th></tr>
 <tr>
-<td>-i &lt;file&gt; </td><td nowrap="nowrap">Check component dependencies </td><td>Reference PDSC file(s) used to resolve component dependencies in conditions.  </td></tr>
+<td>-i, --include <em>arg</em> </td><td>Check component dependencies. </td><td>Reference PDSC file(s) used to resolve component dependencies in conditions.  </td></tr>
 <tr>
-<td>-n &lt;file&gt; </td><td>Write Pack file name </td><td>Write a standardized name for the Software Pack to the specified ASCII file.  </td></tr>
+<td>-b, --log <em>arg</em> </td><td>Log file. </td><td>Log file used same output (default: "").  </td></tr>
 <tr>
-<td>-s </td><td nowrap="nowrap">Verify SVD files </td><td>Each SVD file referenced in the *.pdsc file is <a href="https://arm-software.github.io/CMSIS_5/develop/SVD/html/svd_validate_file_pg.html"><b>validated</b></a> with <b>SVDConv</b>. With this option set, <b>SVDConv.exe</b> is invoked from the same directory as <b>PackChk</b>.   </td></tr>
+<td>-x, --diag-suppress <em>arg</em> </td><td>Suppress messages. </td><td>Suppress all listed validation messages. You must separate the values with commas to create a list or repeat the option. Ranges are not allowed. Suppressing validation messages does not affect error and warning counters. For a list of messages refer to <a href="#packchk_valid_msgs"><b>Validation Messages</b></a>.   </td></tr>
 <tr>
-<td>-u &lt;url&gt; </td><td>Pack Server URL </td><td>Verifies that the specified URL matches the &lt;url&gt; element in the *.pdsc file.  </td></tr>
+<td>-w <em>arg</em> </td><td>Warning level. </td><td>Specify warning level (default: all).  </td></tr>
 <tr>
-<td>-v </td><td nowrap="nowrap">Verbose </td><td>Prints extra process information.  </td></tr>
+<td>-v, --verbose </td><td>Verbose mode. </td><td>Prints extra process information.  </td></tr>
 <tr>
-<td>-x&#160;&lt;msg-list&gt; </td><td nowrap="nowrap">Suppress </td><td>Suppress all listed validation messages. You can separate the values with blanks to create a list or repeat the option. Ranges are not allowed. Suppressing validation messages does not affect error and warning counters. For a list of messages refer to <a href="#packchk_valid_msgs"><b>Validation Messages</b></a>.   </td></tr>
+<td>-u <em>arg</em> </td><td>Pack server URL. </td><td>Verifies that the specified URL matches the &lt;url&gt; element in the *.pdsc file (default: "").  </td></tr>
 <tr>
-<td>-h/-? </td><td>Help </td><td>Show help.  </td></tr>
+<td>-n <em>arg</em> </td><td>Write pack file name. </td><td>Write the pack name to the specified ASCII file.  </td></tr>
+<tr>
+<td>--allow-suppress-error </td><td>Allow to suppress error messages. </td><td>Allow to suppress error messages.  </td></tr>
+<tr>
+<td>--break </td><td>Debug halt after start. </td><td>Debug halt after start.  </td></tr>
+<tr>
+<td>--ignore-other-pdsc </td><td>Ignores other PDSC files in working folder. </td><td>Ignores other PDSC files in working folder.  </td></tr>
+<tr>
+<td>--version </td><td>Show program version. </td><td>Show program version.  </td></tr>
+<tr>
+<td>-h, --help </td><td>Help </td><td>Show help.  </td></tr>
 </table>
 <p ><b>Examples</b></p>
-<p >Run <b>PackChk</b> on the package description file called <b>MyVendor.MyPack.pdsc</b>. <b>PackChk</b> verifies the file against the Software Pack that is located in the same directory. </p><pre class="fragment">PackChk MyVendor.MyPack.pdsc
-</pre><p >Run <b>PackChk</b> on the package description file called <b>MyVendor.MyPack.pdsc</b> in the current directory and try to resolve conditions using the ARM.CMSIS.pdsc file based in another directory. </p><pre class="fragment">PackChk MyVendor.MyPack.pdsc -i ..\..\PACK\ARM\CMSIS\ARM.CMSIS.pdsc
-</pre><p >Run <b>PackChk</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>, verify SVD files, verify the URL to the Pack Server, and generate a ASCII text file with the standardized name of the Software Pack. </p><pre class="fragment">PackChk "MyVendor.MVCM3.pdsc" -s -u "http://www.myvendor.com/pack" -n packname.txt
-</pre><p >Run <b>PackChk</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>. Suppress validation messages M304 and M331. </p><pre class="fragment">PackChk MyVendor.MVCM3.pdsc -x M304 M331           // messages as a list
-PackChk MyVendor.MVCM3.pdsc -x M304 -x M331        // option repeated
+<p >Run <b>packchk</b> on the package description file called <b>MyVendor.MyPack.pdsc</b>. <b>packchk</b> verifies the file against the software pack that is located in the same directory. </p><pre class="fragment">packchk MyVendor.MyPack.pdsc
+</pre><p >Run <b>packchk</b> on the package description file called <b>MyVendor.MyPack.pdsc</b> in the current directory and try to resolve conditions using the ARM.CMSIS.pdsc file based in another directory. </p><pre class="fragment">packchk MyVendor.MyPack.pdsc -i ..\..\PACK\ARM\CMSIS\ARM.CMSIS.pdsc
+</pre><p >Run <b>packchk</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>, verify the URL to the Pack Server, and generate a ASCII text file with the standardized name of the software pack. </p><pre class="fragment">packchk "MyVendor.MVCM3.pdsc" -u "http://www.myvendor.com/pack" -n packname.txt
+</pre><p >Run <b>packchk</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>. Suppress validation messages M304 and M331. </p><pre class="fragment">packchk MyVendor.MVCM3.pdsc -x M304,M331           // messages as a list
+packchk MyVendor.MVCM3.pdsc -x M304 -x M331        // option repeated
 </pre><h1><a class="anchor" id="packChkMessages"></a>
 Error and Warning Messages</h1>
-<p >The following table explains the categories for the output messages issued by PackChk utility. Sections below list the errors and warnings and contain recommendations on how to resolve them.</p>
+<p >The following table explains the categories for the output messages issued by packchk utility. Sections below list the errors and warnings and contain recommendations on how to resolve them.</p>
 <p ><b>Categories</b> <br  />
 </p><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -162,15 +171,14 @@ Error and Warning Messages</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">M2xx   </td><td class="markdownTableBodyLeft"><a class="el" href="packChk.html#packchk_invoc_msgs">Invocation Errors</a>   </td><td class="markdownTableBodyLeft">Errors in the command line input.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">M3xx<br  />
- M4xx   </td><td class="markdownTableBodyLeft"><a class="el" href="packChk.html#packchk_valid_msgs">Validation Messages</a>   </td><td class="markdownTableBodyLeft">Errors and Warnings from the pack validation.    </td></tr>
+<td class="markdownTableBodyCenter">M3xx   </td><td class="markdownTableBodyLeft"><a class="el" href="packChk.html#packchk_valid_msgs">Validation Messages</a>   </td><td class="markdownTableBodyLeft">Errors and Warnings from the pack validation.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">M5xx   </td><td class="markdownTableBodyLeft"><a class="el" href="packChk.html#packchk_model_msgs">Model Errors</a>   </td><td class="markdownTableBodyLeft">Errors in RTE model creation   </td></tr>
 </table>
 <p ><a class="anchor" id="packchk_internal_msgs"></a></p>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Internal Errors</h2>
-<p >The errors in this category are issued because of an internal error in the PackChk utility.</p>
+<p >The errors in this category are issued because of an internal error in the packchk utility.</p>
 <table class="cmtable" summary="packChk Internal Msgs">
 <tr>
 <th>Message Number </th><th>Type </th><th>Description </th><th>Details and Actions  </th></tr>
@@ -185,7 +193,7 @@ Internal Errors</h2>
 <tr>
 <td>M104 </td><td>ERROR </td><td>Path empty when searching for other PDSC files </td><td>Execute the check in verbose mode and try to identify the PDSC file intended for use. Correct the PDSC.  </td></tr>
 <tr>
-<td>M107 </td><td>WARNING </td><td><em>'FEATURE'</em> is not supported by current version of <em>'OS'</em> PackChk. </td><td>Some PackChk functionalities are available only on certain OS platforms. For example SVD check is supported only on Windows. <br  />
+<td>M107 </td><td>WARNING </td><td><em>'FEATURE'</em> is not supported by current version of <em>'OS'</em> packchk. </td><td>Some packchk functionalities are available only on certain OS platforms. For example SVD check is supported only on Windows. <br  />
 Do not use listed <em>'FEATURE'</em> or change operating system.  </td></tr>
 <tr>
 <td>M108 </td><td>TEXT </td><td>Reading PDSC File failed! </td><td>XML parsing of the PDSC file failed. <br  />
@@ -198,7 +206,7 @@ Verify syntax of the PDSC file.  </td></tr>
 <p ><a class="anchor" id="packchk_invoc_msgs"></a></p>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Invocation Errors</h2>
-<p >The errors in this category are issued because of an incorrect command-line input that prevents the PackChk execution. </p><table class="cmtable" summary="packChk Invocation Msgs">
+<p >The errors in this category are issued because of an incorrect command-line input that prevents the packchk execution. </p><table class="cmtable" summary="packChk Invocation Msgs">
 <tr>
 <th>Message Number </th><th>Type </th><th>Message Text </th><th>Details and Actions  </th></tr>
 <tr>
@@ -206,7 +214,7 @@ Invocation Errors</h2>
 <tr>
 <td>M201 </td><td>ERROR </td><td>Too many arguments! </td><td>The list of arguments is too long. Verify if you have used one argument twice.  </td></tr>
 <tr>
-<td>M202 </td><td>ERROR </td><td>No PDSC input file specified </td><td>Correct the command line. <b>PackChk</b> expects a <a class="el" href="packFormat.html">*.pdsc</a> file name as input.  </td></tr>
+<td>M202 </td><td>ERROR </td><td>No PDSC input file specified </td><td>Correct the command line. <b>packchk</b> expects a <a class="el" href="packFormat.html">*.pdsc</a> file name as input.  </td></tr>
 <tr>
 <td>M203 </td><td>ERROR </td><td>Error reading PDSC file <em>'PATH/FILENAME'!</em>  </td><td>Verify the PDSC file for consistency.  </td></tr>
 <tr>
@@ -228,12 +236,12 @@ Verify the permissions. Correct the path name.  </td></tr>
 <td>M210 </td><td>ERROR </td><td>Only one input file to be checked is allowed. </td><td>You can only check one PDSC file at a time.  </td></tr>
 <tr>
 <td>M211 </td><td>ERROR </td><td>Cannot find SVDConv.exe: <em>'CMDLINE'</em>  </td><td><a href="https://arm-software.github.io/CMSIS_5/develop/SVD/html/svd_SVDConv_pg.html">SVDConv utility</a> was not found in specified <em>'CMDLINE'</em>. <br  />
-Copy the <b>SVDConv.exe</b> into the directory of <b>PackChk</b>. Default is <span class="XML-Token">CMSIS\Utilities</span>.  </td></tr>
+Copy the <b>SVDConv.exe</b> into the directory of <b>packchk</b>. Default is <span class="XML-Token">CMSIS\Utilities</span>.  </td></tr>
 </table>
 <p ><a class="anchor" id="packchk_valid_msgs"></a></p>
 <h2><a class="anchor" id="autotoc_md8"></a>
 Validation Messages</h2>
-<p >The messages in this category are issued by PackChk during package validation. This can be for example incorrect use of the pack schema in the PDSC file, missing files, broken dependancies and others. <em>ERROR</em> messages must be resolved to ensure that the package is compliant to the CMSIS-format. <em>WARNING</em> messages should be checked and are strongly recommended to be resolved.</p>
+<p >The messages in this category are issued by packchk during package validation. This can be for example incorrect use of the pack schema in the PDSC file, missing files, broken dependancies and others. <em>ERROR</em> messages must be resolved to ensure that the package is compliant to the CMSIS-format. <em>WARNING</em> messages should be checked and are strongly recommended to be resolved.</p>
 <table class="cmtable" summary="packChk Validation Msgs">
 <tr>
 <th>Message Number </th><th>Type </th><th>Message Text </th><th><p class="starttd">Details and Actions </p>
@@ -260,13 +268,18 @@ Use <span class="XML-Token">&lt;release&gt;</span> tag to specify release inform
 <td>M306 </td><td>ERROR</td><td>No package description found in the PDSC file. Add the &lt;description&gt;-tag and provide a descriptive text. </td><td>Package description is mandatory required in the package description but was not found in the <a class="el" href="pdsc_package_pg.html#element_package">/package</a> element in the PDSC file. <br  />
 Within the parent <span class="XML-Token">&lt;package&gt;</span> element add the tag <span class="XML-Token">&lt;description&gt;</span> and briefly describe the package content. Refer to <a class="el" href="pdsc_package_pg.html#package_description">/package/description</a>.  </td></tr>
 <tr>
-<td>M307 </td><td>ERROR </td><td>Checking SVD file <em>'PATH'</em> failed! </td><td><p class="starttd">Verify the consistency of the *.SVD file. Refer to <a href="https://arm-software.github.io/CMSIS_5/develop/SVD/html/svd_validate_file_pg.html">SVD File Validation</a>. </p>
-<p class="endtd"></p>
-</td></tr>
+<td>M307 </td><td>ERROR </td><td>Either attribute <em>'TAG'</em> or <em>'TAG2'</em> + <em>'TAG3'</em> must be specified for 'memory' </td><td><span class="XML-Token">&lt;memory&gt;</span> element requires that either attribute <span class="XML-Token">id</span> or attributes <span class="XML-Token">name</span> and <span class="XML-Token">access</span> are specified, but none of those were found. <br  />
+Specify the expected attributes. Refer to <a class="el" href="pdsc_family_pg.html#element_memory">/package/devices/family/.../memory</a>.  </td></tr>
 <tr>
-<td>M310 </td><td>ERROR </td><td>Filename mismatch (case sensitive):<br  />
- PDSC name : <em>'PDSC_FILENAME'</em> <br  />
- Filename : <em>'SYSTEM'</em>  </td><td>Filenames are case sensitive. Correct spelling.  </td></tr>
+<td>M308 </td><td>ERROR </td><td>Attribute <em>'TAG'</em> missing on <em>'TAG2'</em>  </td><td>Element <em>'TAG2'</em> requires attribute <em>'TAG'</em>, but it was not found. <br  />
+Add missing attribute.  </td></tr>
+<tr>
+<td>M309 </td><td>ERROR </td><td>Attribute <em>'TAG'</em> missing on <em>'TAG2'</em> (when <em>'TAG3'</em> is specified) </td><td>Add missing attribute <em>'TAG'</em> or remove the attribute <em>'TAG3'</em> in the element <em>'TAG2'</em>.  </td></tr>
+<tr>
+<td>M311 </td><td>ERROR </td><td>Redefinition of <em>'TAG'</em> : <em>'NAME'</em>, see Line <em>'LINE'</em>  </td><td>Remove the redefinition of element <em>'TAG'</em> with name <em>'NAME'</em>.  </td></tr>
+<tr>
+<td>M311 </td><td>WARNING </td><td>No <em>'TAG'</em> found for device <em>'NAME'</em>  </td><td>Element <em>'TAG'</em> is missing for device <em>'NAME'</em>. <br  />
+Add missing element.  </td></tr>
 <tr>
 <td>M315 </td><td>ERROR </td><td>Invalid URL / Paths to Drives are not allowed in Package URL: <em>'URL'</em>  </td><td>Correct package URL <em>'URL'</em>. Refer to <a class="el" href="pdsc_package_pg.html#package_url">/package/url</a>.  </td></tr>
 <tr>
@@ -450,19 +463,6 @@ Add attribute token{Dname} specifying the device name. Refer to <a class="el" hr
 <tr>
 <td>M399 </td><td>WARNING </td><td>Attribute <em>'TAG'</em> is ignored, because <em>'TAG2'</em> + <em>'TAG3'</em> is specified </td><td>Deprecated attribute <em>'TAG'</em> is ignored because newer attributes are found. Triggered for <span class="XML-Token">id</span> attribute in the <a class="el" href="pdsc_family_pg.html#element_memory">/package/devices/family/.../memory</a> element when <span class="XML-Token">name</span> or <span class="XML-Token">access</span> attributes are present as well. <br  />
 remove deprecated attribute <em>'TAG'</em>  </td></tr>
-<tr>
-<td>M400 </td><td>ERROR </td><td>Either attribute <em>'TAG'</em> or <em>'TAG2'</em> + <em>'TAG3'</em> must be specified for 'memory' </td><td><span class="XML-Token">&lt;memory&gt;</span> element requires that either attribute <span class="XML-Token">id</span> or attributes <span class="XML-Token">name</span> and <span class="XML-Token">access</span> are specified, but none of those were found. <br  />
-Specify the expected attributes. Refer to <a class="el" href="pdsc_family_pg.html#element_memory">/package/devices/family/.../memory</a>.  </td></tr>
-<tr>
-<td>M401 </td><td>ERROR </td><td>Attribute <em>'TAG'</em> missing on <em>'TAG2'</em>  </td><td>Element <em>'TAG2'</em> requires attribute <em>'TAG'</em>, but it was not found. <br  />
-Add missing attribute.  </td></tr>
-<tr>
-<td>M402 </td><td>ERROR </td><td>Attribute <em>'TAG'</em> missing on <em>'TAG2'</em> (when <em>'TAG3'</em> is specified) </td><td>Add missing attribute <em>'TAG'</em> or remove the attribute <em>'TAG3'</em> in the element <em>'TAG2'</em>.  </td></tr>
-<tr>
-<td>M403 </td><td>ERROR </td><td>Redefinition of <em>'TAG'</em> : <em>'NAME'</em>, see Line <em>'LINE'</em>  </td><td>Remove the redefinition of element <em>'TAG'</em> with name <em>'NAME'</em>.  </td></tr>
-<tr>
-<td>M404 </td><td>WARNING </td><td>No <em>'TAG'</em> found for device <em>'NAME'</em>  </td><td>Element <em>'TAG'</em> is missing for device <em>'NAME'</em>. <br  />
-Add missing element.  </td></tr>
 </table>
 <p ><a class="anchor" id="packchk_model_msgs"></a></p>
 <h2><a class="anchor" id="autotoc_md9"></a>

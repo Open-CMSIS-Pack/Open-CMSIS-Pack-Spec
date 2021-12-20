@@ -1,6 +1,6 @@
 var createPackUtil =
 [
-    [ "PackChk", "packChk.html", [
+    [ "packchk", "packChk.html", [
       [ "Error and Warning Messages", "packChk.html#packChkMessages", [
         [ "Operation", "packChk.html#autotoc_md5", null ],
         [ "Internal Errors", "packChk.html#autotoc_md6", null ],
