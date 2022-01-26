@@ -657,7 +657,7 @@
     <xs:attribute name="title" type="xs:string" use="required" />
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
     <!-- links to web pages are assumed public -->
-    <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
   </xs:complexType>
 
   <!-- Description Type-->
