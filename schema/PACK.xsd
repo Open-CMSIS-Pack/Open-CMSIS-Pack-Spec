@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-  Copyright (c) 2013-2020 ARM Limited. All rights reserved.
+  Copyright (c) 2013-2022 ARM Limited. All rights reserved.
 
   SPDX-License-Identifier: Apache-2.0
 
@@ -17,13 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        1. Dec 2020
-  $Revision:    1.7.2
+  $Date:        31. Jan 2022
+  $Revision:    1.7.3
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.2
+  SchemaVersion=1.7.3
+
+  31. January 2022
+   - added 'Star' to DcoreEnum
 
   1. December 2020: v1.7.2
    - added 'XC' to CompilerEnumType to enable use of Microchip XC32 compiler
@@ -135,7 +138,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.2">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.3">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -758,6 +761,7 @@
   <!-- Dcore enumeration type -->
   <xs:simpleType name="DcoreEnum">
     <xs:restriction base="xs:token">
+      <xs:enumeration value="Star" />
       <xs:enumeration value="SC000" />
       <xs:enumeration value="SC300" />
       <xs:enumeration value="Cortex-M0" />
