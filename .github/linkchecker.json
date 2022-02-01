@@ -1,7 +1,7 @@
 {
 	"problemMatcher": [
 		{
-			"owner": "fileheader",
+			"owner": "linkchecker",
 			"severity": "error",
 			"pattern": [
 				{
