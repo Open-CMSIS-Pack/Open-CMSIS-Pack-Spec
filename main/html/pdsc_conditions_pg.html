@@ -211,7 +211,7 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Dvendor </td><td>Specifies the silicon vendor of the device. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>. </td><td>DeviceVendorEnum </td><td>optional  </td></tr>
+<td>Dvendor </td><td>Specifies the silicon vendor of the device. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>. </td><td><a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">DeviceVendorEnum</a> </td><td>optional  </td></tr>
 <tr>
 <td>Dfamily<b>*</b> </td><td><b>DEPRECATED**</b> Specifies the device family name (for example: STM32F2 Series). </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
@@ -223,29 +223,33 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <tr>
 <td>Pname </td><td>Specifies the processor instance in case of multi processor devices. This allows to describe distinct conditions for a specific processor. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>Dcore </td><td>Specifies a processor core. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DcoreEnum">Device Cores</a>. </td><td>DcoreEnum </td><td>optional  </td></tr>
+<td>Dcore </td><td>Specifies a processor core. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DcoreEnum">Device Cores</a>. </td><td><a class="el" href="pdsc_family_pg.html#DcoreEnum">DcoreEnum</a> </td><td>optional  </td></tr>
 <tr>
-<td>Dfpu </td><td>Specifies whether a Floating Point Unit (FPU) must be present or not. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DfpuEnum">Device FPU</a>. </td><td>DfpuEnum </td><td>optional  </td></tr>
+<td>Dfpu </td><td>Specifies whether a Floating Point Unit (FPU) must be present or not. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DfpuEnum">Device FPU</a>. </td><td><a class="el" href="pdsc_family_pg.html#DfpuEnum">DfpuEnum</a> </td><td>optional  </td></tr>
 <tr>
-<td>Dmpu </td><td>Specifies whether a Memory Protection Unit (MPU) must be present or not. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DmpuEnum">Device MPU</a>. </td><td>DmpuEnum </td><td>optional  </td></tr>
+<td>Dmpu </td><td>Specifies whether a Memory Protection Unit (MPU) must be present or not. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DmpuEnum">Device MPU</a>. </td><td><a class="el" href="pdsc_family_pg.html#DmpuEnum">DmpuEnum</a> </td><td>optional  </td></tr>
 <tr>
-<td>Dtz </td><td>Specifies whether TrustZone (TZ) must be supported by the device or not. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DtzEnum">Device TrustZone</a>. </td><td>DtzEnum </td><td>optional  </td></tr>
+<td>Dtz </td><td>Specifies whether TrustZone (TZ) must be supported by the device or not. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DtzEnum">Device TrustZone</a>. </td><td><a class="el" href="pdsc_family_pg.html#DtzEnum">DtzEnum</a> </td><td>optional  </td></tr>
 <tr>
-<td>Dsecure </td><td>Specifies whether the application is configured to run in secure or non-secure mode. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DsecureEnum">Software Model Secure</a>. </td><td>DsecureEnum </td><td>optional  </td></tr>
+<td>Dsecure </td><td>Specifies whether the application is configured to run in secure or non-secure mode. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DsecureEnum">Software Model Secure</a>. </td><td><a class="el" href="pdsc_family_pg.html#DsecureEnum">DsecureEnum</a> </td><td>optional  </td></tr>
 <tr>
-<td>Ddsp </td><td>Specifies whether Digital Signal Processing (DSP) instruction set must be supported by the device or not. Predefined values can be uses as listed in the table <a class="el" href="pdsc_family_pg.html#DdspEnum">Device DSP</a>. </td><td>DdspEnum </td><td>optional  </td></tr>
+<td>Ddsp </td><td>Specifies whether Digital Signal Processing (DSP) instruction set must be supported by the device or not. Predefined values can be uses as listed in the table <a class="el" href="pdsc_family_pg.html#DdspEnum">Device DSP</a>. </td><td><a class="el" href="pdsc_family_pg.html#DdspEnum">DdspEnum</a> </td><td>optional  </td></tr>
 <tr>
-<td>Dendian </td><td>Specifies the endianess of a device. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DendianEnum">Endianess</a>. </td><td>DendianEnum </td><td>optional  </td></tr>
+<td>Dmve </td><td>Specifies whether the M-Profile Vector instruction set extension must be supported by the device or not. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DmveEnum">Device MVE</a>. </td><td><a class="el" href="pdsc_family_pg.html#DmveEnum">DmveEnum</a> </td><td>optional  </td></tr>
+<tr>
+<td>Dcdecp </td><td>Specifies whether <a href="https://developer.arm.com/documentation/ddi0607/ab/" target="_blank">Custom Datapath Extension</a> Coprocessors and which coprocessor interfaces must be supported by the device. Possible values are explained in <a class="el" href="pdsc_family_pg.html#DcdecpEnum">Custom Datapath Extensions</a>. </td><td><a class="el" href="pdsc_family_pg.html#DcdecpEnum">DcdecpEnum</a> </td><td>optional  </td></tr>
+<tr>
+<td>Dendian </td><td>Specifies the endianess of a device. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DendianEnum">Endianess</a>. </td><td><a class="el" href="pdsc_family_pg.html#DendianEnum">DendianEnum</a> </td><td>optional  </td></tr>
 <tr>
 <td>Cvendor<b>*</b> </td><td>Specifies a component vendor name. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>Cbundle<b>*</b> </td><td>Specifies a component class bundle name. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>Cclass<b>*</b> </td><td>Specifies a component class name. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CclassType">Component Classes</a>. </td><td>CclassType </td><td>optional  </td></tr>
+<td>Cclass<b>*</b> </td><td>Specifies a component class name. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CclassType">Component Classes</a>. </td><td><a class="el" href="element_taxonomy.html#CclassType">CclassType</a> </td><td>optional  </td></tr>
 <tr>
-<td>Cgroup<b>*</b> </td><td>Specifies a software Component Group. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CgroupType">Component Groups</a>. </td><td>CgroupType </td><td>optional  </td></tr>
+<td>Cgroup<b>*</b> </td><td>Specifies a software Component Group. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CgroupType">Component Groups</a>. </td><td><a class="el" href="element_taxonomy.html#CgroupType">CgroupType</a> </td><td>optional  </td></tr>
 <tr>
-<td>Csub<b>*</b> </td><td>Specifies a software component subgroup. The type is described in <a class="el" href="pdsc_components_pg.html#CsubType">Component Subgroups</a>. </td><td>CsubType </td><td>optional  </td></tr>
+<td>Csub<b>*</b> </td><td>Specifies a software component subgroup. The type is described in <a class="el" href="pdsc_components_pg.html#CsubType">Component Subgroups</a>. </td><td><a class="el" href="pdsc_components_pg.html#CsubType">CsubType</a> </td><td>optional  </td></tr>
 <tr>
 <td>Cvariant<b>*</b> </td><td>Specifies a software component variant. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
@@ -263,7 +267,7 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 </ul>
 </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>optional  </td></tr>
 <tr>
-<td>Tcompiler </td><td>Specifies a compiler toolchain (ARMCC, GCC, IAR, Tasking, ...). Use predefined values as listed in table <a class="el" href="pdsc_conditions_pg.html#CompilerEnumType">Compiler Types</a>. </td><td>CompilerEnumType </td><td>optional  </td></tr>
+<td>Tcompiler </td><td>Specifies a compiler toolchain (ARMCC, GCC, IAR, Tasking, ...). Use predefined values as listed in table <a class="el" href="pdsc_conditions_pg.html#CompilerEnumType">Compiler Types</a>. </td><td><a class="el" href="pdsc_conditions_pg.html#CompilerEnumType">CompilerEnumType</a> </td><td>optional  </td></tr>
 <tr>
 <td>Toptions </td><td><p class="starttd">Specifies compiler specific options being active. For <em>Tcompiler="ARMCC"</em> available Toptions are:</p><ul>
 <li><b>AC5</b>: Arm Compiler Version 5 is in used</li>
@@ -271,7 +275,7 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <li><b>AC6LTO</b>: Arm Compiler Version 6 with Link Time Optimization (LTO) is in use</li>
 </ul>
 <p class="endtd">This attribute can be used to select compatible libraries for the selected compiler version or optimization mode.  </p>
-</td><td>CompilerEnumType </td><td>optional  </td></tr>
+</td><td><a class="el" href="pdsc_conditions_pg.html#CompilerEnumType">CompilerEnumType</a> </td><td>optional  </td></tr>
 <tr>
 <td>condition </td><td>Refers to another condition identified through the attribute <em><b>id</b>.</em>  </td><td>xs:string </td><td>optional  </td></tr>
 </table>
