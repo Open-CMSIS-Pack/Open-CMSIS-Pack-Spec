@@ -1835,49 +1835,49 @@ the attribute \elem{Pname}. If the information is relevant to all processors, no
   <tr>
     <td>Dcore</td>
     <td>Specifies the processor core. Use predefined values as listed in the table \ref DcoreEnum "Device Cores".</td>
-    <td>DcoreEnum</td>
+    <td>\ref DcoreEnum</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Dfpu</td>
     <td>Specifies whether a hardware Floating Point Unit is present in the processor.  Use predefined values as listed in the table \ref DfpuEnum "Device FPU".</td>
-    <td>DfpuEnum</td>
+    <td>\ref DfpuEnum</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Dmpu</td>
     <td>Specifies whether a Memory Protection Unit is present in the processor. Use predefined values as listed in the table \ref DmpuEnum "Device MPU".</td>
-    <td>DmpuEnum</td>
+    <td>\ref DmpuEnum</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Dtz</td>
     <td>Specifies whether an Armv8-M based device implements TrustZone. Use predefined values as listed in the table \ref DtzEnum "Device TZ".</td>
-    <td>DtzEnum</td>
+    <td>\ref DtzEnum</td>
     <td>required for ARMv8-M based devices</td>
   </tr>
   <tr>
     <td>Ddsp</td>
     <td>Specifies whether a device supports the DSP instructions set. Use predefined values as listed in the table \ref DdspEnum "Device DSP".</td>
-    <td>\ref DdspEnum DdspEnum</td>
+    <td>\ref DdspEnum</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Dmve</td>
     <td>Specifies whether a device supports the M-Profile Vector instruction set extension. Use predefined values as listed in the table \ref DmveEnum "Device MVE".</td>
-    <td>\ref DmveEnum DmveEnum</td>
+    <td>\ref DmveEnum</td>
     <td>required for ARMv8.1-M based devices</td>
   </tr>
   <tr>
     <td>Dcdecp</td>
     <td>Specifies whether a device implements Custom Datapath Extension Coprocessors and which coprocessor interfaces can be used. See (<a href="https://developer.arm.com/documentation/ddi0607/ab/" target="_blank"><strong>CDE</strong></a>). Possible values are explained in \ref DcdecpEnum "Custom Datapath Extensions".</td>
-    <td>Hex8BitType</td>
+    <td>\ref DcdecpEnum</td>
     <td>required for ARMv8.1-M based devices with CDE support</td>
   </tr>
   <tr>
     <td>Dendian</td>
     <td>Specifies the endianess of the processor. Use predefined values as listed in the table \ref DendianEnum "Endinaness".</td>
-    <td>DendianEnum</td>
+    <td>\ref DendianEnum</td>
     <td>required</td>
   </tr>
   <tr>

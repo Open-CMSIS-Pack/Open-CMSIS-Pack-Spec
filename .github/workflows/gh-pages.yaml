@@ -38,11 +38,15 @@ jobs:
         run: |
           sudo pip install LinkChecker
       - name: Generate doxygen
-        run: doxygen/gen_doc.sh
+        run: |
+          echo "::add-matcher::.github/doxygen.json"
+          doxygen/gen_doc.sh
+          echo "::remove-matcher owner=doxygen::"
       - name: Run linkchecker
         run: |
           echo "::add-matcher::.github/linkchecker.json"
           doxygen/check_links.sh doc/index.html
+          echo "::remove-matcher owner=linkchecker::"
       - name: Archive documentation
         if: ${{ github.event_name == 'pull_request' }}
         uses: actions/upload-artifact@v2
