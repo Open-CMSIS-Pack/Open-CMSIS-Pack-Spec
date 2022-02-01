@@ -2,7 +2,7 @@
 	"problemMatcher": [
 		{
 			"owner": "linkchecker",
-			"severity": "error",
+			"severity": "warning",
 			"pattern": [
 				{
 					"regexp": "^(.*):(\\d+);(.*);(.*)$",

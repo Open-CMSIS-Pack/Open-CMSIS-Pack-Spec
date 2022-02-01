@@ -258,7 +258,7 @@ A \ref element_condition "condition" becomes \token{true} when:
   <tr>
     <td>Dmve</td>
     <td>Specifies whether the M-Profile Vector instruction set extension must be supported by the device or not. Predefined values can be used as listed in the table \ref DmveEnum "Device MVE".</td>
-    <td>\ref DdmveEnum</td>
+    <td>\ref DmveEnum</td>
     <td>optional</td>
   </tr>
   <tr>
