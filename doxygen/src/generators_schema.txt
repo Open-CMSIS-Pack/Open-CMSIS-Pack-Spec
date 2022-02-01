@@ -14,6 +14,10 @@ provided by the generator in the project. If the specified GPDSC file is not pre
 the environment to generate the files and GPDSC. In this way project specific configurations can be made, files being
 generated and included and maintained as part of the project.
 
+A generator can also have a list of client components. These components, when selected in the project, are passed as inputs
+to the generator so it can serve them. Still, there is only one component referencing the generator, and selecting this component
+triggers the generator which in turn uses the client components.
+
 \anchor pdsc_generators_gen_sec
 \b Example Generator Section
 \code
@@ -155,6 +159,14 @@ Grouping element for \b generators. Only one such group can exist in a Pack.
     <td>$D</th>
     <td>Name of the device configured in the current project</th>
   </tr>
+  <tr>
+    <td>$G</th>
+    <td>PATH to Pack folder containing this generator</th>
+  </tr>
+  <tr>
+    <td>$C</th>
+    <td>List of components (selected in the project) to be served by this generator. They are used as inputs for the generator but are not the component triggering the generator call.</th>
+  </tr>
  </table>
 <p>&nbsp;</p>
 <hr>
@@ -285,6 +297,15 @@ generator element must exist.
 	<td>Grouping element for generator tool files.</td>
 	<td>group</td>
 	<td>0..1</td>
+  </tr>
+  <tr>
+    <td>\ref element_gen_client_components "client_components"</td>
+    <td>Components managed by this generator to generate associated software.
+	    This is the list of components that this generator can deal with.
+      Only the components currently selected in the project must be considered when the generator is invoked.
+     </td>
+     <td>group</td>
+     <td>0..1</td>
   </tr>
   <tr>
     <td>extensions</td>
@@ -693,6 +714,63 @@ The group <b>project_files</b> specifies all files that are required for the pro
     <td>Frame for files created by the generator and used in a project.
     <td>group</td>
     <td>0..1 </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<hr>
+
+\section element_gen_client_components /package/generators/generator/client_components
+
+The group <b>client_components</b> specifies components that can be managed by the generator.
+Only the components of this list being part of the project must be considered when the generator is invoked.
+They are used as inputs for the generator but are not the component triggering the generator call.
+This component triggering the generator is unique (see generator in \ref element_component "component").
+Only one such group can exist.
+
+<b>Example</b>
+\code
+  <generators>
+    <generator id="STM32CubeMX" Gvendor="STMicroelectronics" Gtool="STM32CubeMX" Gversion="4.10.0">
+      <description>STM32CubeMX Environment</description>
+      <select Dname="STM32F746NGHx" Dvendor="STMicroelectronics:13"/>
+      <exe>
+        <command host = "win">MDK/CubeMX/STM32CubeMXLauncher.exe</command>
+        <command host = "linux">MDK/CubeMX/STM32CubeMXLauncher</command>
+        <argument>$P/RTE/MyGen/myGen.gpdsc</argument>
+        <argument>$D.ioc</argument>
+      </exe>
+      <workingDir>$P/RTE/Device/STM32F746NGHx</workingDir>
+      <client_components>
+        <component Cclass="Device" Cgroup="STM32 HAL" Csub="UART" Cversion="0.0.1" />
+        <component Cclass="Device" Cgroup="STM32 HAL" Csub="I2C" Cversion="0.0.1" />
+        <component Cclass="Device" Cgroup="STM32 HAL" Csub="SPI" Cversion="0.0.1" />
+      </client_components>
+    </generator>
+  </generators>
+\endcode
+
+<p>&nbsp;</p>
+
+<table class="cmtable" summary="Element: Project Files">
+  <tr>
+    <th>Parent</th>
+    <th colspan="3">Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_generator "generator"</td>
+    <td colspan="3">\ref element_generator</td>
+  </tr>
+  <tr>
+    <th>Child&nbsp;Elements</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Occurrence</th>
+  </tr>
+  <tr>
+    <td>\ref element_component "component"</td>
+    <td>Component served as a client by this generator (when selected in the project).
+    <td>ComponentType</td>
+    <td>1..* </td>
   </tr>
 </table>
 <p>&nbsp;</p>

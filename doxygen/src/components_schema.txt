@@ -899,6 +899,26 @@ The table lists the predefined values for a file category.
     <td>The specified file is added as a pre-include file to the compiler command line for all modules of the <b>component</b> (locally).</td>
   </tr>
   <tr>
+    <td class="XML-Token">GenerationTemplate</td>
+    <td>The specified file is a template file used by a templating engine to generate the actual artefacts of the <b>component</b>.
+        For instance, this file can be an input to the CMSIS-Zone tool.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">GenerationFacilities</td>
+    <td>The specified file contains facilities used by <b>GenerationTemplate</b> files.
+        For instance, this file can contain helper functions, typical patterns or pre-defined blocks.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">ComponentParameters</td>
+    <td>The specified file describes a set of parameters that can be used to configure the <b>component</b>.
+        The actual settings are stored in a <b>ComponentSettings</b> file.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">ComponentSettings</td>
+    <td>The specified file describes a set of parameters values that can be used to define one or several configurations of the <b>component</b>.
+        For instance, this file can be a default CMSIS-Zone fzone file provided as reference (in a layer).</td>
+  </tr>
+  <tr>
     <td class="XML-Token">other</td>
     <td>Other file types not covered in the list above</td>
   </tr>
