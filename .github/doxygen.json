@@ -1,16 +1,18 @@
 {
 	"problemMatcher": [
 		{
-			"owner": "linkchecker",
+			"owner": "doxygen",
 			"severity": "warning",
 			"pattern": [
 				{
-					"regexp": "^(.*):(\\d+);(.*);(.*)$",
+					"regexp": "^(.*):(\\d+): warning: (.*)$",
 					"file": 1,
 					"line": 2,
-					"message": 4
+					"message": 3
 				}
 			]
 		}
 	]
 }
+
+

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-  Copyright (c) 2013-2020 ARM Limited. All rights reserved.
+  Copyright (c) 2013-2022 ARM Limited. All rights reserved.
 
   SPDX-License-Identifier: Apache-2.0
 
@@ -18,16 +18,17 @@
   limitations under the License.
 
   $Date:        8. Feb 2022
-  $Revision:    1.7.3
+  $Revision:    1.7.4
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.3
+  SchemaVersion=1.7.4
 
-  8. February 2022: v1.7.3
+  8. February 2022: v1.7.4
    - clarified the usage of the "public" attribute and set public="true" as default.
-
+  31. January 2022: v1.7.3
+   - added 'Star' to DcoreEnum
   1. December 2020: v1.7.2
    - added 'XC' to CompilerEnumType to enable use of Microchip XC32 compiler
 
@@ -138,7 +139,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.2">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.4">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -761,6 +762,7 @@
   <!-- Dcore enumeration type -->
   <xs:simpleType name="DcoreEnum">
     <xs:restriction base="xs:token">
+      <xs:enumeration value="Star" />
       <xs:enumeration value="SC000" />
       <xs:enumeration value="SC300" />
       <xs:enumeration value="Cortex-M0" />
