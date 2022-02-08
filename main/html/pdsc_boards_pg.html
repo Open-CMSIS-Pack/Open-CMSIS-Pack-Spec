@@ -426,7 +426,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>large </td><td>Specifies the path to a large image. The path is relative to the pack base directory or a link to an image on an external web site. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>public </td><td>Set publishing permissions for the documentation. If <em>&lt;public&gt;</em> is <span class="XML-Token">true</span>, then the vendor gives permission to extract the documentation from the Pack and publish it on a web-page. Links to web pages are assumed to be public. The default value is <span class="XML-Token">false</span>. </td><td>xs:boolean </td><td>optional  </td></tr>
+<td>public </td><td>Set publishing permissions for the documentation. If <em>&lt;public&gt;</em> is <span class="XML-Token">true</span>, then the vendor gives permission to extract the documentation from the Pack and publish it on a web-page. Links to web pages are assumed to be public. If no <em>&lt;public&gt;</em> tag is available, it is assumed that publishing is allowed (default value is <span class="XML-Token">true</span>). </td><td>xs:boolean </td><td>optional  </td></tr>
 </table>
 <p >&#160;</p>
 <hr  />
