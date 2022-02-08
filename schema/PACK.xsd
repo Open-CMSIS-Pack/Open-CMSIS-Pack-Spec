@@ -17,17 +17,18 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        31. Jan 2022
-  $Revision:    1.7.3
+  $Date:        8. Feb 2022
+  $Revision:    1.7.4
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.3
+  SchemaVersion=1.7.4
 
-  31. January 2022
+  8. February 2022: v1.7.4
+   - clarified the usage of the "public" attribute and set public="true" as default.
+  31. January 2022: v1.7.3
    - added 'Star' to DcoreEnum
-
   1. December 2020: v1.7.2
    - added 'XC' to CompilerEnumType to enable use of Microchip XC32 compiler
 
@@ -138,7 +139,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.4">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -660,7 +661,7 @@
     <xs:attribute name="title" type="xs:string" use="required" />
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
     <!-- links to web pages are assumed public -->
-    <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
   </xs:complexType>
 
   <!-- Description Type-->

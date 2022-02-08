@@ -472,7 +472,7 @@ Two different picture types (\token{small} and \token{large}) can be specified f
     <td>public</td>
     <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission 
         to extract the documentation from the Pack and publish it on a web-page. Links to web pages are assumed to be public.
-        The default value is \token{false}.</td>
+        If no \tagem{public} tag is available, it is assumed that publishing is allowed (default value is \token{true}).</td>
     <td>xs:boolean</td>
     <td>optional</td>
   </tr>
