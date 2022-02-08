@@ -154,8 +154,8 @@ Operation</h2>
 <p >Run <b>packchk</b> on the package description file called <b>MyVendor.MyPack.pdsc</b>. <b>packchk</b> verifies the file against the software pack that is located in the same directory. </p><pre class="fragment">packchk MyVendor.MyPack.pdsc
 </pre><p >Run <b>packchk</b> on the package description file called <b>MyVendor.MyPack.pdsc</b> in the current directory and try to resolve conditions using the ARM.CMSIS.pdsc file based in another directory. </p><pre class="fragment">packchk MyVendor.MyPack.pdsc -i ..\..\PACK\ARM\CMSIS\ARM.CMSIS.pdsc
 </pre><p >Run <b>packchk</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>, verify the URL to the Pack Server, and generate a ASCII text file with the standardized name of the software pack. </p><pre class="fragment">packchk "MyVendor.MVCM3.pdsc" -u "http://www.myvendor.com/pack" -n packname.txt
-</pre><p >Run <b>packchk</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>. Suppress validation messages M304 and M331. </p><pre class="fragment">packchk MyVendor.MVCM3.pdsc -x M304,M331           // messages as a list
-packchk MyVendor.MVCM3.pdsc -x M304 -x M331        // option repeated
+</pre><p >Run <b>packchk</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>. Suppress validation messages M304 and M331. </p><pre class="fragment">packchk MyVendor.MVCM3.pdsc --diag-suppress=M304,M331 // messages as a list
+packchk MyVendor.MVCM3.pdsc -x M304 -x M331           // option repeated
 </pre><h1><a class="anchor" id="packChkMessages"></a>
 Error and Warning Messages</h1>
 <p >The following table explains the categories for the output messages issued by packchk utility. Sections below list the errors and warnings and contain recommendations on how to resolve them.</p>
