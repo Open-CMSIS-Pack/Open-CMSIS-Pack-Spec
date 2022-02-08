@@ -17,13 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        1. Dec 2020
-  $Revision:    1.7.2
+  $Date:        8. Feb 2022
+  $Revision:    1.7.3
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.2
+  SchemaVersion=1.7.3
+
+  8. February 2022: v1.7.3
+   - clarified the usage of the "public" attribute and set public="true" as default.
 
   1. December 2020: v1.7.2
    - added 'XC' to CompilerEnumType to enable use of Microchip XC32 compiler
