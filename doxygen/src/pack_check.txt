@@ -121,8 +121,8 @@ packchk "MyVendor.MVCM3.pdsc" -u "http://www.myvendor.com/pack" -n packname.txt
 
 Run \b packchk on the  package description file called <b>MyVendor.MVCM3.pdsc</b>. Suppress validation messages M304 and M331.
 \verbatim
-packchk MyVendor.MVCM3.pdsc -x M304,M331           // messages as a list
-packchk MyVendor.MVCM3.pdsc -x M304 -x M331        // option repeated
+packchk MyVendor.MVCM3.pdsc --diag-suppress=M304,M331 // messages as a list
+packchk MyVendor.MVCM3.pdsc -x M304 -x M331           // option repeated
 \endverbatim
 
 \section packChkMessages Error and Warning Messages
