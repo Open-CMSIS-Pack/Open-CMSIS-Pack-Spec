@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: ${{ github.event.pull_request.commits }}
+          fetch-depth: 0
       - id: files
         uses: jitterbit/get-changed-files@v1
       - uses: actions/setup-node@v1

@@ -16,7 +16,7 @@ rc = 0
 
 def log_error(file, line, message):
     global rc
-    print(PATTERN.format(file.relative_to(DIRNAME.joinpath("..")), line, message))
+    print(PATTERN.format(file.relative_to(DIRNAME.joinpath("..").resolve()), line, message))
     rc = 1
 
 
@@ -36,9 +36,9 @@ def get_from_cmd(cmd, cwd=Path.cwd()):
 def main():
     print("Checking PACK.xsd version information...\n")
 
-    schema_file = DIRNAME.joinpath('../schema/PACK.xsd')
-    dxy_file = DIRNAME.joinpath('../doxygen/pack.dxy')
-    doc_file = DIRNAME.joinpath('../doxygen/src/General.txt')
+    schema_file = DIRNAME.joinpath('../schema/PACK.xsd').resolve()
+    dxy_file = DIRNAME.joinpath('../doxygen/pack.dxy').resolve()
+    doc_file = DIRNAME.joinpath('../doxygen/src/General.txt').resolve()
 
     date_pattern = re.compile('\\$Date:\\s+(\\d+\\. \\w+ \\d{4})')
     rev_pattern = re.compile('\\$Revision:\\s+(\\d+\\.\\d+\\.\\d+)')
