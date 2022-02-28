@@ -8,7 +8,7 @@ from pathlib import Path
 
 from dateutil.parser import parse
 
-DIRNAME = Path(__file__).parent
+DIRNAME = Path(__file__).parent.absolute()
 PATTERN = "::error file={},line={}::{}"
 
 rc = 0

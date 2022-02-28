@@ -8,6 +8,7 @@ on:
       - '.github/workflows/schema.yaml'
       - '.github/download-pack-index.py'
       - 'schema/**'
+      - 'test/pack_schema_version_history.py'
 jobs:
   pack:
     name: Validate pack schema
