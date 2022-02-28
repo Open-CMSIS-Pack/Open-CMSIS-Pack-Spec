@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y libxml2-utils
-          sudo pip install progress
+          sudo pip install progress python-dateutil
       - name: Fetch Keil index
         run: wget https://www.keil.com/pack/index.pidx
       - name: Cache Keil index pdsc files
