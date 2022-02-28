@@ -20,7 +20,22 @@ def log_error(file, line, message):
     rc = 1
 
 
+def get_from_cmd(cmd, cwd=Path.cwd()):
+    print("./"+cwd.relative_to(Path.cwd()).as_posix(), "$", " ".join(cmd))
+    result = subprocess.run(cmd, capture_output=True, cwd=cwd)
+    stdout = result.stdout.decode("utf-8").strip()
+    stderr = result.stderr.decode("utf-8").strip()
+    if stdout:
+        print(">", stdout)
+    if stderr:
+        print(">", stderr)
+    print()
+    return stdout
+
+
 def main():
+    print("Checking PACK.xsd version information...\n")
+
     schema_file = DIRNAME.joinpath('../schema/PACK.xsd')
     dxy_file = DIRNAME.joinpath('../doxygen/pack.dxy')
     doc_file = DIRNAME.joinpath('../doxygen/src/General.txt')
@@ -51,18 +66,12 @@ def main():
     history = (parse(history[0][1]), history[0][2], history[1] + 1) if history[0] else None
     xsproperty = (xsproperty[0][1], xsproperty[1] + 1) if xsproperty[0] else None
 
-    author_date = parse(subprocess.run(['git', 'log', '-1', '--pretty=%ad', '--date=format:%d. %B %Y',
-                                        schema_file.name], capture_output=True, cwd=schema_file.parent)
-                        .stdout.decode("utf-8").strip())
-    base_rev = subprocess.run(['git', 'log', '-1', '--pretty=%P', schema_file.name],
-                              capture_output=True, cwd=schema_file.parent) \
-        .stdout.decode("utf-8").strip()
-    head_rev = subprocess.run(["git", "log", "-1", '--pretty=%H', schema_file.name],
-                              capture_output=True, cwd=schema_file.parent) \
-        .stdout.decode("utf-8").strip()
-    blame = subprocess.run(["git", "blame", f"{base_rev}..{head_rev}", "-l", "-L", f"{revision[1]},{revision[1]}",
-                            schema_file.name], capture_output=True, cwd=schema_file.parent) \
-        .stdout.decode("utf-8").strip()
+    author_date = parse(get_from_cmd(['git', 'log', '-1', '--pretty=%ad', '--date=format:%Y-%m-%d', schema_file.name],
+                                     cwd=schema_file.parent))
+    base_rev = get_from_cmd(['git', 'log', '-1', '--pretty=%P', schema_file.name], cwd=schema_file.parent)
+    head_rev = get_from_cmd(["git", "log", "-1", '--pretty=%H', schema_file.name], cwd=schema_file.parent)
+    blame = get_from_cmd(["git", "blame", f"{base_rev}..{head_rev}", "-l", "-L", f"{revision[1]},{revision[1]}",
+                          schema_file.name], cwd=schema_file.parent)
     blamed_rev = blame.split(' ')[0]
 
     dxy_version_pattern = re.compile('PROJECT_NUMBER\s*=\s*"Version (\\d+\\.\\d+\\.\\d+)"')
