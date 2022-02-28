@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - id: files
+        uses: jitterbit/get-changed-files@v1
       - uses: actions/setup-node@v1
       - name: Install packages
         run: |
@@ -45,6 +47,8 @@ jobs:
             fi
           done
           exit $rc
+      - name: Check schema version history
+        run: python test/pack_schema_version_history.py ${{ steps.files.outputs.added_modified }}
 
   index:
     name: Validate index schema
