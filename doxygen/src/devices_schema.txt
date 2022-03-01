@@ -2080,6 +2080,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.infineon.com</td>
   </tr>
   <tr>
+    <td class="XML-Token">Jonzic:174</td>
+    <td>Shanghai Jonzic Electronic Co., Ltd</td>
+    <td>http://www.jonzic.cn</td>
+  </tr>
+  <tr>
     <td class="XML-Token">LAPIS Technology:10</td>
     <td>LAPIS Technology</td>
     <td>http://www.lapis-tech.com</td>
@@ -2215,6 +2220,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td></td>
   </tr>
   <tr>
+    <td class="XML-Token">Socionext:171</td>
+    <td>Socionext</td>
+    <td>https://www.socionext.com</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Spansion:100</td>
     <td>Spansion (previously Fujitsu)</td>
     <td>http://www.spansion.com</td>
@@ -2233,6 +2243,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td class="XML-Token">Texas Instruments:16</td>
     <td>Texas Instruments</td>
     <td>http://www.ti.com</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">ThinkTech:172</td>
+    <td>ThinkTech</td>
+    <td>http://www.ThinkTech.net.cn</td>
   </tr>
   <tr>
     <td class="XML-Token">Toshiba:92</td>
