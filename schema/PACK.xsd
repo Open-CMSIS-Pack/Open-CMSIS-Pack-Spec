@@ -177,7 +177,7 @@
       <xs:enumeration value="Dolphin:57" />
       <xs:enumeration value="Domosys:26" />
       <xs:enumeration value="ELAN:162" />
-      <xs:enumeration value="Elmos Semiconductor AG:138" />
+      <xs:enumeration value="Elmos:138" />
       <xs:enumeration value="Ember:98" />
       <xs:enumeration value="Energy Micro:97" />
       <xs:enumeration value="EnOcean:91" />
