@@ -824,6 +824,7 @@
       <xs:enumeration value="PLCC" />
       <xs:enumeration value="QFN" />
       <xs:enumeration value="QFP" />
+      <xs:enumeration value="SON" />
       <xs:enumeration value="SOP" />
       <xs:enumeration value="DIP" />
       <xs:enumeration value="PackageOther" />
