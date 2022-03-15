@@ -17,17 +17,23 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        12. Jan 2022
-  $Revision:    1.7.2
+  $Date:        15. Mar 2022
+  $Revision:    1.7.6
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.3
 
-  12. January 2022: v1.7.3
+  SchemaVersion=1.7.6
+
+  15. March 2022: v1.7.6
    - type of n and m attributes of BoardFeatureType and Pname becomes xs:string
-
+  22. February 2022: v1.7.5
+    - rename DcoreEnum 'Star' to 'Star-MC1'
+  8. February 2022: v1.7.4
+   - clarified the usage of the "public" attribute and set public="true" as default.
+  31. January 2022: v1.7.3
+   - added 'Star' to DcoreEnum
   1. December 2020: v1.7.2
    - added 'XC' to CompilerEnumType to enable use of Microchip XC32 compiler
 
@@ -138,7 +144,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.6">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -174,7 +180,7 @@
       <xs:enumeration value="Dolphin:57" />
       <xs:enumeration value="Domosys:26" />
       <xs:enumeration value="ELAN:162" />
-      <xs:enumeration value="Elmos Semiconductor AG:138" />
+      <xs:enumeration value="Elmos:138" />
       <xs:enumeration value="Ember:98" />
       <xs:enumeration value="Energy Micro:97" />
       <xs:enumeration value="EnOcean:91" />
@@ -194,6 +200,7 @@
       <xs:enumeration value="Hynix Semiconductor:6" />
       <xs:enumeration value="Hyundai:35" />
       <xs:enumeration value="Infineon:7" />
+      <xs:enumeration value="Jonzic:174" />
       <xs:enumeration value="Kionix:127" />
       <xs:enumeration value="LAPIS Technology:10" />
       <xs:enumeration value="Lapis Semiconductor:10" />
@@ -660,7 +667,7 @@
     <xs:attribute name="title" type="xs:string" use="required" />
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
     <!-- links to web pages are assumed public -->
-    <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
   </xs:complexType>
 
   <!-- Description Type-->
@@ -761,6 +768,7 @@
   <!-- Dcore enumeration type -->
   <xs:simpleType name="DcoreEnum">
     <xs:restriction base="xs:token">
+      <xs:enumeration value="Star-MC1" />
       <xs:enumeration value="SC000" />
       <xs:enumeration value="SC300" />
       <xs:enumeration value="Cortex-M0" />
@@ -819,6 +827,7 @@
       <xs:enumeration value="PLCC" />
       <xs:enumeration value="QFN" />
       <xs:enumeration value="QFP" />
+      <xs:enumeration value="SON" />
       <xs:enumeration value="SOP" />
       <xs:enumeration value="DIP" />
       <xs:enumeration value="PackageOther" />

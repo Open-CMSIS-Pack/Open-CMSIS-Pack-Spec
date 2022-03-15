@@ -84,6 +84,24 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.5</td>
+    <td>
+     - Rename DcoreEnum 'Star' to 'Star-MC1'
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.4</td>
+    <td>
+     - clarified the usage of the "public" attribute and set public="true" as default.
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.3</td>
+    <td>
+     - added 'Star' to DcoreEnum
+    </td>
+  </tr>
+  <tr>
     <td>1.7.2</td>
     <td>
      - added 'XC' to CompilerEnumType to enable use of Microchip XC32 compiler
