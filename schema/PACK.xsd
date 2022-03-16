@@ -17,14 +17,17 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        24. Feb 2022
-  $Revision:    1.7.5
+  $Date:        15. Mar 2022
+  $Revision:    1.7.6
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.5
 
+  SchemaVersion=1.7.6
+
+  15. March 2022: v1.7.6
+   - type of n and m attributes of BoardFeatureType and Pname becomes xs:string
   22. February 2022: v1.7.5
     - rename DcoreEnum 'Star' to 'Star-MC1'
   8. February 2022: v1.7.4
@@ -141,7 +144,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.5">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.6">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -682,8 +685,8 @@
     <xs:attribute name="Pname" type="RestrictedString" use="optional" />
     <!-- <xs:attribute name="type"  type="DeviceFeatureTypeEnum" use="required"/> -->
     <xs:attribute name="type" type="xs:string" use="required" />
-    <xs:attribute name="n" type="xs:decimal" use="optional" />
-    <xs:attribute name="m" type="xs:decimal" use="optional" />
+    <xs:attribute name="n" type="xs:string" use="optional" />
+    <xs:attribute name="m" type="xs:string" use="optional" />
     <xs:attribute name="name" type="xs:string" use="optional" />
     <!-- deprecated, only for backwards compatibility -->
     <xs:attribute name="count" type="xs:int" use="optional" />
@@ -693,8 +696,8 @@
   <xs:complexType name="BoardFeatureType">
     <!-- <xs:attribute name="type"  type="BoardFeatureTypeEnum" use="required"/> -->
     <xs:attribute name="type" type="xs:string" use="required" />
-    <xs:attribute name="n" type="xs:decimal" use="optional" />
-    <xs:attribute name="m" type="xs:decimal" use="optional" />
+    <xs:attribute name="n" type="xs:string" use="optional" />
+    <xs:attribute name="m" type="xs:string" use="optional" />
     <xs:attribute name="name" type="xs:string" use="optional" />
   </xs:complexType>
 
