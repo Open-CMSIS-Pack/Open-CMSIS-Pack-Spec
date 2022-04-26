@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.6</span>
+   &#160;<span id="projectnumber">Version 1.7.7</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -238,6 +238,8 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <td>Dmve </td><td>Specifies whether the M-Profile Vector instruction set extension must be supported by the device or not. Predefined values can be used as listed in the table <a class="el" href="pdsc_family_pg.html#DmveEnum">Device MVE</a>. </td><td><a class="el" href="pdsc_family_pg.html#DmveEnum">DmveEnum</a> </td><td>optional  </td></tr>
 <tr>
 <td>Dcdecp </td><td>Specifies whether <a href="https://developer.arm.com/documentation/ddi0607/ab/" target="_blank">Custom Datapath Extension</a> Coprocessors and which coprocessor interfaces must be supported by the device. Possible values are explained in <a class="el" href="pdsc_family_pg.html#DcdecpEnum">Custom Datapath Extensions</a>. </td><td><a class="el" href="pdsc_family_pg.html#DcdecpEnum">DcdecpEnum</a> </td><td>optional  </td></tr>
+<tr>
+<td>Dpacbti </td><td>Specifies whether a device implements Pointer Authentication/Branch Target Identification (PAC/BTI) instructions. Possible values are explained in <a class="el" href="pdsc_family_pg.html#DpacbtiEnum">Device PAC/BTI</a>. </td><td>Dpacbti </td><td>required for ARMv8.1-M based devices with PAC/BTI support  </td></tr>
 <tr>
 <td>Dendian </td><td>Specifies the endianess of a device. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DendianEnum">Endianess</a>. </td><td><a class="el" href="pdsc_family_pg.html#DendianEnum">DendianEnum</a> </td><td>optional  </td></tr>
 <tr>
