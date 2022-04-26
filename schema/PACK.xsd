@@ -17,15 +17,20 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        15. Mar 2022
-  $Revision:    1.7.6
+  $Date:        21. Apr 2022
+  $Revision:    1.7.7
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
 
-  SchemaVersion=1.7.6
+  SchemaVersion=1.7.7
 
+  21. April 2022: v1.7.7
+   - added 'Cortex-M85' to DcoreEnum
+   - added 'Dpacbti' attribute to Processor
+   - added 'Dpacbti' attribute to Condition
+   - added 'DpacbtiEnum'
   15. March 2022: v1.7.6
    - type of n and m attributes of BoardFeatureType and Pname becomes xs:string
   22. February 2022: v1.7.5
@@ -144,7 +149,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.6">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.7">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -345,6 +350,8 @@
     <xs:attribute name="DcoreVersion" type="xs:string" />
     <!-- Dcdecp specifies the custom datapath extension coprocessors that are implemented by the device (8bit hex value bitmask) -->
     <xs:attribute name="Dcdecp" type="Hex8BitType" />
+    <!-- Dpacbti specifies the processor support for PAC/BTI instructions -->
+    <xs:attribute name="Dpacbti" type="DpacbtiEnum" />
   </xs:complexType>
 
   <!-- Compile Type: -->
@@ -779,6 +786,7 @@
       <xs:enumeration value="Cortex-M33" />
       <xs:enumeration value="Cortex-M35P"/>
       <xs:enumeration value="Cortex-M55"/>
+      <xs:enumeration value="Cortex-M85"/>
       <xs:enumeration value="Cortex-M4" />
       <xs:enumeration value="Cortex-M7" />
       <xs:enumeration value="ARMV8MBL" />
@@ -1062,6 +1070,15 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- Dpacbti extension enumeration type -->
+  <xs:simpleType name="DpacbtiEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="NO_PACBTI"/>
+      <xs:enumeration value="PACBTI"/>
+      <xs:enumeration value="*"/>
+    </xs:restriction>
+  </xs:simpleType>  
+  
   <!-- repository types -->
   <xs:simpleType name="RepositoryTypeEnum">
     <xs:restriction base="xs:string">
@@ -1148,6 +1165,7 @@
     <xs:attribute name="Dtz" type="DtzEnum" />
     <xs:attribute name="Ddsp" type="DdspEnum" />
     <xs:attribute name="Dmve" type="DmveEnum" />
+    <xs:attribute name="Dpacbti" type="DpacbtiEnum" />
     <xs:attribute name="Dsecure" type="DsecureEnum" />
     <xs:attribute name="Dendian" type="DendianEnum" />
     <xs:attribute name="Pname" type="RestrictedString" />

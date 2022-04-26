@@ -267,7 +267,13 @@ A \ref element_condition "condition" becomes \token{true} when:
     <td>\ref DcdecpEnum</td>
     <td>optional</td>
   </tr>
-    <tr>
+  <tr>
+    <td>Dpacbti</td>
+    <td>Specifies whether a device implements Pointer Authentication/Branch Target Identification (PAC/BTI) instructions. Possible values are explained in \ref DpacbtiEnum "Device PAC/BTI".</td>
+    <td>\ref Dpacbti</td>
+    <td>required for ARMv8.1-M based devices with PAC/BTI support</td>
+  </tr>
+  <tr>
     <td>Dendian</td>
     <td>Specifies the endianess of a device. Use predefined values as listed in the table \ref DendianEnum "Endianess".</td>
     <td>\ref DendianEnum</td>

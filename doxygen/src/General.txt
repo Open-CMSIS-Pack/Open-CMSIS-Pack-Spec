@@ -84,6 +84,15 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.7</td>
+    <td>
+     - added 'Cortex-M85' to DcoreEnum
+     - added 'Dpacbti' attribute to Processor
+     - added 'Dpacbti' attribute to Condition
+     - added 'DpacbtiEnum'
+    </td>
+  </tr>
+  <tr>
     <td>1.7.6</td>
     <td>
      - type of n and m attributes of BoardFeatureType and Pname becomes xs:string
