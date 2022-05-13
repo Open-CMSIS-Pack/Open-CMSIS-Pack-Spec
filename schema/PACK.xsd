@@ -17,15 +17,17 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        21. Apr 2022
-  $Revision:    1.7.7
+  $Date:        13. May 2022
+  $Revision:    1.7.8
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
 
-  SchemaVersion=1.7.7
+  SchemaVersion=1.7.8
 
+  13. May 2022: v1.7.8
+   - update pattern for PackVersionType regex to use one from semver.org
   21. April 2022: v1.7.7
    - added 'Cortex-M85' to DcoreEnum
    - added 'Dpacbti' attribute to Processor
@@ -1498,8 +1500,8 @@
   -->
   <xs:simpleType name="PackVersionType">
     <xs:restriction base="xs:string">
-      <!-- major . minor . patch [[-]quality] [+build] -->
-      <xs:pattern value="[0-9]+.[0-9]+.[0-9]+((\-[0-9A-Za-z_\-\.]+)|([_A-Za-z][0-9A-Za-z_\-\.]*)|())((\+[\-\._A-Za-z0-9]+)|())" />
+      <!--                major       . minor       . patch       [[-]quality]                                                                                     [+build]                                -->
+      <xs:pattern value="(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?" />
     </xs:restriction>
   </xs:simpleType>
 
