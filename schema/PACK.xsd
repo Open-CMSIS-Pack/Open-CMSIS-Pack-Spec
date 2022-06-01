@@ -17,14 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        21. Apr 2022
-  $Revision:    1.7.7
+  $Date:        01.06.2022
+  $Revision:    1.7.8
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
+  SchemaVersion=1.7.8
 
-  SchemaVersion=1.7.7
+  1. June 2022:
+   - added extension points description for components as suggested by STMicroelectronics
 
   21. April 2022: v1.7.7
    - added 'Cortex-M85' to DcoreEnum
@@ -1077,8 +1079,8 @@
       <xs:enumeration value="PACBTI"/>
       <xs:enumeration value="*"/>
     </xs:restriction>
-  </xs:simpleType>  
-  
+  </xs:simpleType>
+
   <!-- repository types -->
   <xs:simpleType name="RepositoryTypeEnum">
     <xs:restriction base="xs:string">
@@ -1768,6 +1770,13 @@
     <xs:attribute name="info" type="xs:string" use="required"/>
   </xs:complexType>
 
+  <!-- Extension point -->
+  <xs:complexType name="ExtensionType">
+    <!-- key/value pair attributes used in sequences -->
+    <xs:attribute name="key" type="xs:string" use="required" />
+    <xs:attribute name="value" type="xs:string" use="optional" />
+  </xs:complexType>
+
   <!-- package description root point -->
   <xs:element name="package" nillable="true">
     <xs:complexType>
@@ -1872,6 +1881,14 @@
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
+                          <!-- List of extension points -->
+                          <xs:element name="componentExts" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="extension" type="ExtensionType" minOccurs="1" maxOccurs="unbounded" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
                         </xs:all>
                         <!-- component identity attributes Cclass Cvendor and Cversion are specified by bundle -->
                         <xs:attribute name="Cgroup" type="CgroupType" use="required" />
@@ -1922,6 +1939,14 @@
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="file" type="FileType" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <!-- List of extension points -->
+                    <xs:element name="componentExts" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="extension" type="ExtensionType" minOccurs="1" maxOccurs="unbounded" />
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
