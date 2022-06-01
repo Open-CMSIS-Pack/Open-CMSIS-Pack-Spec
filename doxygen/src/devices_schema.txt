@@ -2291,11 +2291,6 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>https://www.pai-ic.com</td>
   </tr>
   <tr>
-    <td class="XML-Token">Xinnova:135</td>
-    <td>Xinnova Technology</td>
-    <td>(n/a)</td>
-  </tr>
-  <tr>
     <td class="XML-Token">XMC:158</td>
     <td>Wuhan Xinxin Semiconductor Manufacturing Co., Ltd.</td>
     <td>http://www.xmcwh.com/</td>
