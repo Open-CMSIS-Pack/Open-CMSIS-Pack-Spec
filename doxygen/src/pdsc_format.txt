@@ -627,7 +627,7 @@ The latest release version is always listed on top.
 \code
 <package>
   ...
-  <repository type="git">https://github.com/ARM-software/CMSIS-Driver.git</repository
+  <repository type="git">https://github.com/ARM-software/CMSIS-Driver.git</repository>
   <releases>
     <release version="2.1.0" tag="2.1.0" url="https://github.com/ARM-software/CMSIS-Driver/archive/2.1.0.zip">
       Added LAN9220 Ethernet MAC+PHY driver.
