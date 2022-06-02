@@ -84,6 +84,13 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.8</td>
+    <td>
+     - added 'includeAsm', 'includeC', 'includeCpp', 'includeLd' to FileCategoryType
+     - added 'headerAsm', 'includeC', 'headerCpp', 'headerLd' to FileCategoryType
+    </td>
+  </tr>
+  <tr>
     <td>1.7.7</td>
     <td>
      - added 'Cortex-M85' to DcoreEnum

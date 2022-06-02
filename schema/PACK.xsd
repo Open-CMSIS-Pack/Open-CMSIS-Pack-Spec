@@ -17,15 +17,18 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        21. Apr 2022
-  $Revision:    1.7.7
+  $Date:        02. Jun 2022
+  $Revision:    1.7.8
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
 
-  SchemaVersion=1.7.7
+  SchemaVersion=1.7.8
 
+  02. June 2022: v1.7.8
+   - added 'includeAsm', 'includeC', 'includeCpp', 'includeLd' to FileCategoryType
+   - added 'headerAsm', 'includeC', 'headerCpp', 'headerLd' to FileCategoryType
   21. April 2022: v1.7.7
    - added 'Cortex-M85' to DcoreEnum
    - added 'Dpacbti' attribute to Processor
@@ -1092,7 +1095,14 @@
     <xs:restriction base="xs:token">
       <xs:enumeration value="doc" />
       <xs:enumeration value="header" />
+      <xs:enumeration value="headerC" />
+      <xs:enumeration value="headerCpp" />
+      <xs:enumeration value="headerAsm" />
       <xs:enumeration value="include" />
+      <xs:enumeration value="includeC" />
+      <xs:enumeration value="includeCpp" />
+      <xs:enumeration value="includeAsm" />
+      <xs:enumeration value="includeLd" />
       <xs:enumeration value="library" />
       <xs:enumeration value="object" />
       <xs:enumeration value="source" />
