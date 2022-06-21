@@ -84,6 +84,12 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.8</td>
+    <td>
+     - added extension points description for components
+    </td>
+  </tr>
+  <tr>
     <td>1.7.7</td>
     <td>
      - added 'Cortex-M85' to DcoreEnum
