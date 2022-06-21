@@ -189,6 +189,8 @@ var NAVTREEINDEX0 =
 "pdsc_components_pg.html#element_bundle":[6,15,7],
 "pdsc_components_pg.html#element_component":[6,15,8],
 "pdsc_components_pg.html#element_components":[6,15,6],
+"pdsc_components_pg.html#element_extension":[6,15,12],
+"pdsc_components_pg.html#element_extensions":[6,15,11],
 "pdsc_components_pg.html#element_file":[6,15,10],
 "pdsc_components_pg.html#element_files":[6,15,9],
 "pdsc_conditions_pg.html":[6,14],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "pdsc_generators_pg.html#element_gen_eclipse":[6,11,4],
 "pdsc_generators_pg.html#element_gen_exe":[6,11,3],
 "pdsc_generators_pg.html#element_gen_file":[6,11,10],
-"pdsc_generators_pg.html#element_gen_files":[6,11,9],
-"pdsc_generators_pg.html#element_gen_project_files":[6,11,8],
-"pdsc_generators_pg.html#element_gen_select":[6,11,2]
+"pdsc_generators_pg.html#element_gen_files":[6,11,9]
 };

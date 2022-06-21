@@ -66,7 +66,9 @@ var packFormat =
       [ "/package/components/bundle", "pdsc_components_pg.html#element_bundle", null ],
       [ "/package/components/.../component", "pdsc_components_pg.html#element_component", null ],
       [ "/package/.../files", "pdsc_components_pg.html#element_files", null ],
-      [ "/package/.../files/file", "pdsc_components_pg.html#element_file", null ]
+      [ "/package/.../files/file", "pdsc_components_pg.html#element_file", null ],
+      [ "/package/.../extensions", "pdsc_components_pg.html#element_extensions", null ],
+      [ "/package/.../extensions/extension", "pdsc_components_pg.html#element_extension", null ]
     ] ],
     [ "/package/examples element", "pdsc_examples_pg.html", [
       [ "/package/examples", "pdsc_examples_pg.html#element_examples", null ],
