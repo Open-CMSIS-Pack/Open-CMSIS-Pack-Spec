@@ -17,14 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        01. Jun 2022
-  $Revision:    1.7.8
-
+  $Date:        28. Jun 2022
+  $Revision:    1.7.9
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.8
-
+  SchemaVersion=1.7.9
+  
+  28. June 2022: v1.7.9
+   - added new section <licenseSets> supporting association of multiple license
+     files with one or more components
   1. June 2022: v1.7.8
    - added extension points description for components as suggested by STMicroelectronics
 
@@ -151,7 +153,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.8">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.9">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1230,6 +1232,8 @@
     <xs:attribute name="exclusive"   type="xs:boolean" use="optional" default="1" />
     <xs:attribute name="Capiversion" type="ComponentVersionType" use="optional" />
     <xs:attribute name="condition"   type="xs:string" use="optional" />
+    <!-- associates an API with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9)-->
+    <xs:attribute name="licenseSet" type="xs:string"/>
   </xs:complexType>
 
   <xs:complexType name="ApisType">
@@ -1514,6 +1518,31 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- LicensefileType (added in 1.7.9) -->
+  <xs:complexType name="LicensefileType">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="title" type="xs:string" use="required"/>
+    <xs:attribute name="spdx" type="xs:string" use="optional"/>
+    <xs:attribute name="url"  type="xs:anyURI" use="optional"/>
+  </xs:complexType>
+  
+  <!-- LicenseSetType (added in 1.7.9) -->
+  <xs:complexType name="LicenseSetType">
+    <xs:sequence>
+      <xs:element name="license" type="LicensefileType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>  
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="default" type="xs:boolean" use="optional" default="false"/>
+    <xs:attribute name="gating" type="xs:boolean" use="optional" default="false"/>
+  </xs:complexType>
+  
+  <!-- LicenseSetsType (added in 1.7.9) -->
+  <xs:complexType name="LicenseSetsType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="licenseSet" type="LicenseSetType" /> 
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- PackageType creates a unique ID for a package (added in 1.4.4) -->
   <xs:complexType name="PackageType">
     <!-- vendor of the package -->
@@ -1796,6 +1825,8 @@
         <xs:element name="supportContact" type="xs:string" minOccurs="0" />
         <!-- optional: click through license file name and relative path -->
         <xs:element name="license" type="xs:string" minOccurs="0" />
+        <!-- optional: one or more sets of license files associated with one or more components -->
+        <xs:element name="licenseSets" type="LicenseSetsType" minOccurs="0" />
         <!-- optional: section listing requirements (1.4.2) -->
         <xs:element name="requirements" type="RequirementsType" minOccurs="0" />
         <!-- Version numbers and release history -->
@@ -1906,6 +1937,8 @@
                         <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional" />
                         <!-- identifies that this component requires custom implementation -->
                         <xs:attribute name="custom" type="xs:boolean" use="optional" />
+                        <!-- associates a component with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
+                        <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
@@ -1918,6 +1951,8 @@
                   <xs:attribute name="generator" type="xs:string" use="optional" />
                   <!-- identifies this bundle variant to be the preferred variant [Version 1.4.0] -->
                   <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional" />
+                  <!-- associates all components of the bundle with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
+                  <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
                 </xs:complexType>
               </xs:element>
               <xs:element name="component" minOccurs="0" maxOccurs="unbounded">
@@ -1969,6 +2004,8 @@
                   <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional" />
                   <!-- identifies that this component requires custom implementation -->
                   <xs:attribute name="custom" type="xs:boolean" use="optional" />
+                  <!-- associates a component with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
+                  <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
                 </xs:complexType>
               </xs:element>
             </xs:choice>
