@@ -1,6 +1,6 @@
 #!/bin/bash
 
-linkchecker -F csv --timeout 3 --check-extern $1
+linkchecker -F csv --timeout 10 --check-extern $1
 
 OFS=$IFS
 IFS=$'\n'
