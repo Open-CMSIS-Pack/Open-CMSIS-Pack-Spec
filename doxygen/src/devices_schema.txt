@@ -2400,7 +2400,7 @@ These values can be used in the elements:
   </tr>
   <tr>
     <td class="XML-Token">SC300</td>
-    <td>SecurCore <a href="https://developer.arm.com/processors/securcore%20sc300 target="_blank">SC300</a> based on technology of Cortex-M3.</td>
+    <td>SecurCore <a href="https://developer.arm.com/processors/securcore%20sc300" target="_blank">SC300</a> based on technology of Cortex-M3.</td>
   </tr>
   <tr>
     <td class="XML-Token">ARMV8MBL</td>
