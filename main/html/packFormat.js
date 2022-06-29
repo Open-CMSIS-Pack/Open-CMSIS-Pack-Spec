@@ -12,6 +12,11 @@ var packFormat =
     [ "/package/releases element", "element_releases.html", [
       [ "/package/releases/release", "element_releases.html#element_release", null ]
     ] ],
+    [ "/package/licenseSets element", "pdsc_licenseSets_pg.html", [
+      [ "/package/licenseSets/", "pdsc_licenseSets_pg.html#element_licenseSets", null ],
+      [ "/package/licenseSets/licenseSet", "pdsc_licenseSets_pg.html#element_licenseSet", null ],
+      [ "/package/licenseSets/licenseSet/license", "pdsc_licenseSets_pg.html#element_licensefile", null ]
+    ] ],
     [ "/package/requirements", "element_requirements_pg.html", [
       [ "/package/requirements/packages", "element_requirements_pg.html#element_packages", null ],
       [ "/package/requirements/compilers", "element_requirements_pg.html#element_compilers", null ],

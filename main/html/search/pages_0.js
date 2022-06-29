@@ -11,8 +11,9 @@ var searchData=
   ['_2fpackage_2fexamples_20element_8',['/package/examples element',['../pdsc_examples_pg.html',1,'packFormat']]],
   ['_2fpackage_2fgenerators_20element_9',['/package/generators element',['../pdsc_generators_pg.html',1,'packFormat']]],
   ['_2fpackage_2fkeywords_20element_10',['/package/keywords element',['../element_keywords.html',1,'packFormat']]],
-  ['_2fpackage_2freleases_20element_11',['/package/releases element',['../element_releases.html',1,'packFormat']]],
-  ['_2fpackage_2frepository_20element_12',['/package/repository element',['../element_repository.html',1,'packFormat']]],
-  ['_2fpackage_2frequirements_13',['/package/requirements',['../element_requirements_pg.html',1,'packFormat']]],
-  ['_2fpackage_2ftaxonomy_20element_14',['/package/taxonomy element',['../element_taxonomy.html',1,'packFormat']]]
+  ['_2fpackage_2flicensesets_20element_11',['/package/licenseSets element',['../pdsc_licenseSets_pg.html',1,'packFormat']]],
+  ['_2fpackage_2freleases_20element_12',['/package/releases element',['../element_releases.html',1,'packFormat']]],
+  ['_2fpackage_2frepository_20element_13',['/package/repository element',['../element_repository.html',1,'packFormat']]],
+  ['_2fpackage_2frequirements_14',['/package/requirements',['../element_requirements_pg.html',1,'packFormat']]],
+  ['_2fpackage_2ftaxonomy_20element_15',['/package/taxonomy element',['../element_taxonomy.html',1,'packFormat']]]
 ];
