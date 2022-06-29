@@ -315,15 +315,16 @@ Grouping element containing a choice of at least one bundle or component. No mor
   </tr>
   <tr>
     <td>\ref element_bundle "bundle"</td>
-    <td>Grouping element for a collection of inter-operable components belonging to the same Cclass</td>
+    <td>Grouping element for a collection of inter-operable components belonging to the same Cclass.
+	The components section must not be empty. At least one bundle or component is required.</td>
     <td>ComponentType</td>
-    <td>1..*</td>
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref element_component "component"</td>
-    <td>Grouping element for components</td>
+    <td>component description element. The components section must not be empty. At least one component or bundle is required.</td>
     <td>ComponentType</td>
-    <td>1..*</td>
+    <td>0..*</td>
   </tr>
  </table>
 
@@ -380,6 +381,14 @@ Components enclosed in a bundle must not specify any of the following attributes
     <td>required</td>
   </tr>
   <tr>
+    <td>licenseSet</td>
+	<td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
+	    A licenseSet describes one or more license files which in this case govern all components of this bundle. If the licenseSet is 
+        different for different components in the bundle, the licenseSet attribute is required to be assigned on a component level.</td>
+	<td>xs:string</td>
+	<td>optional</td>
+  </tr>
+  <tr>
     <th>Child&nbsp;Elements</th>
     <th>Description</th>
     <th>Type</th>
@@ -398,7 +407,6 @@ Components enclosed in a bundle must not specify any of the following attributes
 	<td>xs:string</td>
 	<td>1..1</td>
   </tr>
-
   <tr>
     <td>\ref element_component "component"</td>
     <td>Grouping element for components.</td>
@@ -519,6 +527,19 @@ A component describes a collection of files (source, header, configuration, libr
     <td>optional</td>
   </tr>
   <tr>
+    <td>licenseSet</td>
+	<td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
+	    A licenseSet describes one or more license files that govern the component.</td>
+	<td>xs:string</td>
+	<td>optional</td>
+  </tr>
+  <tr>
+    <th>Child Elements</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Occurrence</th>
+  </tr>
+  <tr>
     <td>deprecated</td>
     <td>When set to \token{true}, then the component is deprecated and no longer maintained. Default is \token{false} to indicate an actively maintained component.</td>
     <td>xs:boolean </td>
@@ -529,12 +550,6 @@ A component describes a collection of files (source, header, configuration, libr
     <td>Brief description of the component.</td>
     <td>xs:string </td>
     <td>1..1</td>
-  </tr>
-  <tr>
-    <th>Child Elements</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Occurrence</th>
   </tr>
   <tr>
     <td>RTE_Components_h</td>
