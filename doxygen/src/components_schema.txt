@@ -315,15 +315,16 @@ Grouping element containing a choice of at least one bundle or component. No mor
   </tr>
   <tr>
     <td>\ref element_bundle "bundle"</td>
-    <td>Grouping element for a collection of inter-operable components belonging to the same Cclass</td>
+    <td>Grouping element for a collection of inter-operable components belonging to the same Cclass.
+	The components section must not be empty. At least one bundle or component is required.</td>
     <td>ComponentType</td>
-    <td>1..*</td>
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref element_component "component"</td>
-    <td>Grouping element for components</td>
+    <td>component description element. The components section must not be empty. At least one component or bundle is required.</td>
     <td>ComponentType</td>
-    <td>1..*</td>
+    <td>0..*</td>
   </tr>
  </table>
 
@@ -380,6 +381,14 @@ Components enclosed in a bundle must not specify any of the following attributes
     <td>required</td>
   </tr>
   <tr>
+    <td>licenseSet</td>
+	<td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
+	    A licenseSet describes one or more license files which in this case govern all components of this bundle. If the licenseSet is 
+        different for different components in the bundle, the licenseSet attribute is required to be assigned on a component level.</td>
+	<td>xs:string</td>
+	<td>optional</td>
+  </tr>
+  <tr>
     <th>Child&nbsp;Elements</th>
     <th>Description</th>
     <th>Type</th>
@@ -398,7 +407,6 @@ Components enclosed in a bundle must not specify any of the following attributes
 	<td>xs:string</td>
 	<td>1..1</td>
   </tr>
-
   <tr>
     <td>\ref element_component "component"</td>
     <td>Grouping element for components.</td>
@@ -519,6 +527,19 @@ A component describes a collection of files (source, header, configuration, libr
     <td>optional</td>
   </tr>
   <tr>
+    <td>licenseSet</td>
+	<td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
+	    A licenseSet describes one or more license files that govern the component.</td>
+	<td>xs:string</td>
+	<td>optional</td>
+  </tr>
+  <tr>
+    <th>Child Elements</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Occurrence</th>
+  </tr>
+  <tr>
     <td>deprecated</td>
     <td>When set to \token{true}, then the component is deprecated and no longer maintained. Default is \token{false} to indicate an actively maintained component.</td>
     <td>xs:boolean </td>
@@ -529,12 +550,6 @@ A component describes a collection of files (source, header, configuration, libr
     <td>Brief description of the component.</td>
     <td>xs:string </td>
     <td>1..1</td>
-  </tr>
-  <tr>
-    <th>Child Elements</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Occurrence</th>
   </tr>
   <tr>
     <td>RTE_Components_h</td>
@@ -558,6 +573,13 @@ A component describes a collection of files (source, header, configuration, libr
   <tr>
     <td>\ref element_files "files"</td>
     <td>Grouping element for all files that are part of this component.</td>
+    <td>group</td>
+    <td>1</td>
+  </tr>
+
+  <tr>
+    <td>\ref element_extensions "extensions"</td>
+    <td>Grouping element for all extensions concerning this component.</td>
     <td>group</td>
     <td>1</td>
   </tr>
@@ -904,6 +926,117 @@ The table lists the predefined values for a file category.
   </tr>
 </table>
 
+
+<p>&nbsp;</p>
+<hr>
+
+\section element_extensions /package/.../extensions
+
+The group <b>extensions</b> can appear in various Pack elements. This group is the frame for defining individual extensions.
+
+\b Example:
+\code
+<package>
+  ...
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="3.1.1" >
+      <extensions>
+        ...
+      </extensions>
+    </component>
+  </components>
+  ...
+</package>
+\endcode
+
+<p>&nbsp;</p>
+
+<table class="cmtable" summary="Element: Extensions">
+  <tr>
+    <th>Parents</th>
+    <th colspan="3">Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_component "component"</td>
+    <td colspan="3">\ref element_component "/package/components/component"</td>
+  </tr>
+  <tr>
+    <td>\ref element_component "component"</td>
+    <td colspan="3">\ref element_component "/package/components/bundle/component"</td>
+  </tr>
+  <tr>
+    <th>Child&nbsp;Elements</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Occurrence</th>
+  </tr>
+  <tr>
+    <td>\ref element_extension "extension"</td>
+    <td>Frame for the individual \ref element_extension "extension" of a component.
+    <td>group</td>
+    <td>1..*</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<hr>
+
+\section element_extension /package/.../extensions/extension
+
+The element <b>extension</b> is the mechanism to attach additional attributes to the software.
+This attribute is a key/value pair that is fully defined by the component designer.
+The possible values are not imposed by this specification.
+
+
+\b Example:
+\code
+<package>
+  ...
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="3.1.1" >
+      <extensions>
+        <extension key="auxiliary" value="true"/>
+      </extensions>
+    </component>
+  </components>
+  ...
+</package>
+\endcode
+
+<p>&nbsp;</p>
+
+<table class="cmtable" summary="Element: Extension">
+  <tr>
+    <th>Parents</th>
+    <th colspan="3">Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_extensions "extensions"</td>
+    <td colspan="3">\ref element_extensions "/package/components/component/extensions"</td>
+  </tr>
+  <tr>
+    <td>\ref element_extensions "extensions"</td>
+    <td colspan="3">\ref element_extensions "/package/components/bundle/component/extensions"</td>
+  </tr>
+  <tr>
+    <th>Attributes</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>key</td>
+    <td>key identifying this extension. This must be unique per component.</td>
+    <td>xs:string</td>
+    <td>required</td>
+  </tr>
+  <tr>
+    <td>value</td>
+    <td>value associated to the key.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+</table>
 
 <p>&nbsp;</p>
 <hr>

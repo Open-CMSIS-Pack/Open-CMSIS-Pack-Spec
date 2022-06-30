@@ -25,7 +25,7 @@ The API typically defines one or more header files and optionally an include dir
 </api> 
 \endcode
 
-The API can be used either in the same software pack or other software packs.  Having the API definition in one central software pack provides the
+The API can be used either in the same software pack or other software packs. Having the API definition in one central software pack provides the
 benefit that implementations are consistent.
 
 The include file and directory are <b>included in the application project</b> when a \b component is selected that specifics the same \b Cclass and \b Cgroup.
@@ -157,7 +157,8 @@ by either implementing or using a set of functions, data types, and definitions.
   </tr>
   <tr>
     <td>exclusive</td>
-    <td>Makes the selection of a component implementing the API exclusive. If set to \token{0}, then multiple components implementing the API can be selected. Default is \token{1}.</td>
+    <td>Makes the selection of a component implementing the API exclusive. If set to \token{0}, then multiple components
+	implementing the API can be selected concurrrently. Default is \token{1}.</td>
     <td>xs:boolean</td>
     <td>optional</td>
   </tr>
@@ -171,11 +172,17 @@ by either implementing or using a set of functions, data types, and definitions.
   </tr>
   <tr>
     <td>Capiversion</td>
-    <td>Version of this component. Is a mandatory part of the component ID.  The version format is described in \ref VersionType "Version Type".
+    <td>Version of the api. Is a mandatory part of the api ID.  The version format is described in \ref VersionType "Version Type".
 	</td>
     <td>VersionType</td>
     <td>optional</td>
   </tr>
+  <tr>
+    <td>licenseSet</td>
+	<td>Reference to the licenseSet with the given identifier \token{ID} listed in the licenseSets section of the package description.
+	    A licenseSet describes one or more license files which in this case govern the api.</td>
+	<td>xs:string</td>
+	<td>optional</td>
   <tr>
     <th>Child&nbsp;Elements</th>
     <th>Description</th>
