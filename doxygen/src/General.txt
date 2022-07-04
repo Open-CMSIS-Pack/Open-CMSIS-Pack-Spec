@@ -84,10 +84,23 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
-    <td>1.7.8</td>
+    <td>1.7.10</td>
     <td>
      - added 'includeAsm', 'includeC', 'includeCpp', 'includeLd' to FileCategoryType
      - added 'headerAsm', 'includeC', 'headerCpp', 'headerLd' to FileCategoryType
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.9</td>
+    <td>
+     - added new section \<licenseSets> supporting association of multiple license
+       files with one or more component
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.8</td>
+    <td>
+     - added extension points description for components
     </td>
   </tr>
   <tr>
