@@ -17,19 +17,21 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        28. Jun 2022
-  $Revision:    1.7.9
+  $Date:        04. Jul 2022
+  $Revision:    1.7.10
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.9
-  
+  SchemaVersion=1.7.10
+
+  04. July 2022: v1.7.10
+   - added 'includeAsm', 'includeC', 'includeCpp', 'includeLd' to FileCategoryType
+   - added 'headerAsm', 'includeC', 'headerCpp', 'headerLd' to FileCategoryType 
   28. June 2022: v1.7.9
    - added new section <licenseSets> supporting association of multiple license
      files with one or more components
   1. June 2022: v1.7.8
    - added extension points description for components as suggested by STMicroelectronics
-
   21. April 2022: v1.7.7
    - added 'Cortex-M85' to DcoreEnum
    - added 'Dpacbti' attribute to Processor
@@ -153,7 +155,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.9">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.10">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1096,7 +1098,14 @@
     <xs:restriction base="xs:token">
       <xs:enumeration value="doc" />
       <xs:enumeration value="header" />
+      <xs:enumeration value="headerC" />
+      <xs:enumeration value="headerCpp" />
+      <xs:enumeration value="headerAsm" />
       <xs:enumeration value="include" />
+      <xs:enumeration value="includeC" />
+      <xs:enumeration value="includeCpp" />
+      <xs:enumeration value="includeAsm" />
+      <xs:enumeration value="includeLd" />
       <xs:enumeration value="library" />
       <xs:enumeration value="object" />
       <xs:enumeration value="source" />

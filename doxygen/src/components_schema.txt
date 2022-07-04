@@ -871,8 +871,44 @@ The table lists the predefined values for a file category.
     to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
   </tr>
   <tr>
+    <td class="XML-Token">headerAsm</td>
+    <td>Assembler header file used in the component. Sets an assembler include file path and adds the file name attribute to the list of files to be added
+    to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
+  </tr>
+    <tr>
+    <td class="XML-Token">headerC</td>
+    <td>C header file used in the component. Sets an C compiler include file path and adds the file name attribute to the list of files to be added
+    to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">headerCpp</td>
+    <td>C++ header file used in the component. Sets a C++ compiler include file path and adds the file name attribute to the list of files to be added
+    to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">headerLd</td>
+    <td>Linker script preprocessing header file used in the component. Sets a linker preprocessing include file path and adds the file name attribute to the list of files to be added
+    to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
+  </tr>
+  <tr>
     <td class="XML-Token">include</td>
     <td>Sets an include file path. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">includeAsm</td>
+    <td>Sets an include file path for assembler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">includeC</td>
+    <td>Sets an include file path for C compiler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">includeCpp</td>
+    <td>Sets an include file path for C++ compiler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">includeLd</td>
+    <td>Sets an include file path for linker script preprocessing command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
   </tr>
   <tr>
     <td class="XML-Token">library</td>
@@ -884,7 +920,7 @@ The table lists the predefined values for a file category.
   </tr>
   <tr>
     <td class="XML-Token">source</td>
-    <td>Startup-, system-, and other C/C++, assembler, etc. source files</td>
+    <td>Startup-, system-, and other C/C++, assembler, etc. source files. Relying on commonly used file extensions.</td>
   </tr>
   <tr>
     <td class="XML-Token">sourceC</td>
