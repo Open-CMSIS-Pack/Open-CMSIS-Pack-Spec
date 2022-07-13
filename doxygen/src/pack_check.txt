@@ -541,7 +541,7 @@ The messages in this category are issued by packchk during package validation. T
   <td>Multiple defitions of device or variant \em 'NAME' are found.
   <br>Use unique names for the devices listed in the message \em 'MSG'. Refer to \ref element_device and \ref element_variant</td>
 </tr>
-<tr><td>M393</td> <td>WARNING</td> <td>Package has development version \em 'RELEASEVER'</td>
+<tr><td>M393</td> <td>INFO</td> <td>Package has development version \em 'RELEASEVER'</td>
   <td>The package has development version specified in the \token{version} attribute.
   <br>For release use only MAJOR, MINOR and PATCH sections as described in the \ref VersionType "CMSIS-pack version semantics". Also refer to \ref element_release.</td>
 </tr>
