@@ -391,7 +391,7 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>maxInstances </td><td>Maximum allowed instances of a component in a project. Default is <span class="XML-Token">1</span> for one instance. The range is [<span class="XML-Token">1..10</span>]. </td><td>xs:integer </td><td>optional  </td></tr>
 <tr>
-<td>isDefaultVariant </td><td>Identifies this component variant to be the preferred variant for tool driven selection [Version 1.4.0] </td><td>xs:boolean </td><td>optional </td></tr>
+<td>isDefaultVariant </td><td>Identifies this component variant to be the preferred variant for tool driven selection through an automated dependency resolution algorithm [Version 1.4.0]. Note: It is the component vendor's responsibility to have only a single component variant having this attribute enabled. </td><td>xs:boolean </td><td>optional </td></tr>
 <tr>
 <td>generator </td><td>This links the component with a generator description located in the same file. If this component is selected by the run time configuration, the tool will test whether the configured <a class="el" href="pdsc_generators_pg.html">gpdsc file</a> does already exist or not. If the file is not present, then the command specified by the referenced generator section, will be invoked. If the gpdsc file already exists it will be included into the project </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
