@@ -515,7 +515,7 @@ A component describes a collection of files (source, header, configuration, libr
   </tr>
   <tr>
     <td>isDefaultVariant</td>
-    <td>Identifies this component variant to be the preferred variant for tool driven selection [Version 1.4.0]</td>
+    <td>Identifies this component variant to be the preferred variant for tool driven selection through an automated dependency resolution algorithm [Version 1.4.0]. Note: It is the component vendor's responsibility to have only a single component variant having this attribute enabled.</td>
     <td>xs:boolean</td>
     <td>optional</td>
   <tr>
