@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.9</span>
+   &#160;<span id="projectnumber">Version 1.7.11</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -113,6 +113,9 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <li><a class="el" href="pdsc_boards_pg.html#element_board_image">image</a>: pictures of the board to be displayed on web pages.</li>
 <li><a class="el" href="pdsc_boards_pg.html#element_board_feature">feature</a>: categorized list of the development board's features and peripherals.</li>
 <li><a class="el" href="pdsc_boards_pg.html#element_board_debugInterface">debugInterface</a>: describing the debug capabilities.</li>
+<li><a class="el" href="pdsc_boards_pg.html#element_board_debugProbe">debugProbe</a>: describing the on-board debug probe.</li>
+<li><a class="el" href="pdsc_boards_pg.html#element_board_memory">memory</a>: additional memory provided by the board</li>
+<li><a class="el" href="pdsc_boards_pg.html#element_board_algorithm">algorithm</a>: additional flash programming algorithms for the board-specific memory</li>
 </ul>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;boards&gt;</div>
 <div class="line">  &lt;board vendor=<span class="stringliteral">&quot;STMicroelectronics&quot;</span> name=<span class="stringliteral">&quot;32F429IDISCOVERY&quot;</span> revision=<span class="stringliteral">&quot;Rev.1&quot;</span> salesContact=<span class="stringliteral">&quot;http://www.st.com/stonline/contactus/contacts/index.php&quot;</span> orderForm=<span class="stringliteral">&quot;https://my.st.com/esample/app?page=basket&amp;amp;pn=STM32F429I-DISCO&quot;</span>&gt;</div>
@@ -184,6 +187,8 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>revision </td><td>Revision of the board that is suited to be used with the <a class="el" href="cp_PackTutorial.html#createPackBoard">BSP</a>. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
+<td>uuid </td><td>Specifies a <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">128-bit UUID</a> that is embedded it in the debugger firmware of the board tag. Format: 8-4-4-4-12 for a total of 36 characters. Example: 123e4567-e89b-12d3-a456-426614174000 </td><td><a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">128-bit UUID</a> </td><td>optional  </td></tr>
+<tr>
 <td>salesContact </td><td>Either an email address or web page to contact the sales department. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>orderForm </td><td>Link to a web page for ordering the development board. </td><td>xs:anyURI </td><td>optional  </td></tr>
@@ -203,6 +208,12 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <td><a class="el" href="pdsc_boards_pg.html#element_board_debugInterface">debugInterface</a> </td><td>Describes the debug interface of the development board. </td><td>DebugInterfaceType </td><td>1..*   </td></tr>
 <tr>
 <td><a class="el" href="pdsc_boards_pg.html#element_board_book">book</a> </td><td>Describes the documentation files (user manuals, schematics, etc.). Directory and file names are case-sensitive. </td><td>BoardsBookType </td><td>1..*   </td></tr>
+<tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board_debugProbe">debugProbe</a> </td><td>Specify on-board debug probe. </td><td>DebugProbeType </td><td>0..1  </td></tr>
+<tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board_memory">memory</a> </td><td>Specify memory areas that board specific. </td><td>MemoryType </td><td>0..*  </td></tr>
+<tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board_algorithm">algorithm</a> </td><td>Specify Flash programming algorithms for memory provided by the board. </td><td>AlgorithmType </td><td>0..*  </td></tr>
 </table>
 <p >&#160;</p>
 <hr  />
@@ -455,6 +466,32 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <p >&#160;</p>
 <p ><br  />
  </p><hr  />
+<h1><a class="anchor" id="element_board_debugProbe"></a>
+/package/boards/board/debugProbe</h1>
+<p >This element specifies an optional on-board debug probe.</p>
+<table class="cmtable" summary="Element: BoardDebugInterface">
+<tr>
+<th>Parent </th><th colspan="3">Chain  </th></tr>
+<tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board">board</a> </td><td colspan="3"><a class="el" href="pdsc_boards_pg.html#element_board">/package/boards/board</a>  </td></tr>
+<tr>
+<th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
+<tr>
+<td>deviceIndex </td><td></td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>name </td><td>Type of on-board debug probe. </td><td><span class="XML-Token">CMSIS-DAP</span>, <span class="XML-Token">DAP-Link</span>, or <span class="XML-Token">ST-Link</span> </td><td>required  </td></tr>
+<tr>
+<td>version </td><td>Debug probe version. </td><td>xs:string </td><td>required  </td></tr>
+<tr>
+<td>debugLink </td><td>Debug connection from probe to processor. </td><td><span class="XML-Token">jtag</span>, or <span class="XML-Token">swd</span> </td><td>required  </td></tr>
+<tr>
+<td>debugClock </td><td>Debug controller clock speed. </td><td>NonNegativeInteger </td><td>required  </td></tr>
+<tr>
+<td>connector </td><td>String describing the debug connector. Usually one of these: <span class="XML-Token">Mini-USB</span>, <span class="XML-Token">Micro-USB</span>, <span class="XML-Token">USB-C</span>. </td><td>xs:string </td><td>required  </td></tr>
+</table>
+<p >&#160;</p>
+<p ><br  />
+ </p><hr  />
 <h1><a class="anchor" id="element_board_book"></a>
 /package/boards/board/book</h1>
 <p >The element provides information about documentation parts related to a development board. At least one book must be defined.</p>
@@ -495,6 +532,95 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <td class="XML-Token">layout </td><td>PCB layout file of the board (e.g. in Gerber format)  </td></tr>
 <tr>
 <td class="XML-Token">other </td><td>All other documentation.  </td></tr>
+</table>
+<h1><a class="anchor" id="element_board_memory"></a>
+/package/boards/board/memory</h1>
+<p >This element specifies memory regions that boards may add. Memory types are predefined and can be selected.</p>
+<p ><b>Example</b> </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>example needs update </dd></dl>
+<div class="fragment"><div class="line">&lt;/package&gt;</div>
+<div class="line">  ...</div>
+<div class="line">  &lt;boards&gt;</div>
+<div class="line">    &lt;board vendor=<span class="stringliteral">&quot;MyVendor&quot;</span> name=<span class="stringliteral">&quot;Board-1&quot;</span>&gt;</div>
+<div class="line">      &lt;memory name=<span class="stringliteral">&quot;SRAM-EX&quot;</span> access=<span class="stringliteral">&quot;rwx&quot;</span> start=<span class="stringliteral">&quot;0x40000000&quot;</span> size=<span class="stringliteral">&quot;0x200000&quot;</span>/&gt;</div>
+<div class="line">      &lt;algorithm name=<span class="stringliteral">&quot;Flash/SARM-EX.flm&quot;</span> start=<span class="stringliteral">&quot;0x40000000&quot;</span> size=<span class="stringliteral">&quot;0x200000&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
+<div class="line">    &lt;/board&gt;</div>
+<div class="line">  &lt;/boards&gt;</div>
+<div class="line">  ...</div>
+<div class="line">&lt;/package&gt;</div>
+</div><!-- fragment --><p ><br  />
+ </p><table class="cmtable" summary="Element: memory">
+<tr>
+<th>Parents </th><th colspan="3">Element Chain  </th></tr>
+<tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board">board</a> </td><td colspan="3"><a class="el" href="pdsc_boards_pg.html#element_board">/package/boards/board</a>  </td></tr>
+<tr>
+<th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
+<tr>
+<td>Pname </td><td>Processor identifier. This attribute <b>is for boards that use devices with multiple processors</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
+<tr>
+<td>name </td><td><p class="starttd"></p>
+<p class="intertd">Unique name of the memory to be used in conjunction with <em>access</em>.</p>
+<p class="intertd"></p>
+<p class="intertd">If a memory with the same name is already defined in a parent scope, the parent one is extended/overwritten.</p>
+<p class="intertd"></p>
+<p class="intertd">Backward compatibility: If no 'name' attribute is given but 'id' attribute is still present, the given 'id' attribute is used as the 'name'.</p>
+<p class="endtd"></p>
+</td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>access </td><td>Access permission of the memory. See <a class="el" href="pdsc_family_pg.html#MemoryAccessTypeString">MemoryAccessTypeString</a> for details. </td><td><a class="el" href="pdsc_family_pg.html#MemoryAccessTypeString">MemoryAccessTypeString</a> </td><td>optional  </td></tr>
+<tr>
+<td>start </td><td>Base address of the memory using a hexadecimal value. </td><td>NonNegativeInteger </td><td>required  </td></tr>
+<tr>
+<td>size </td><td>Size of the memory in bytes using a hexadecimal value. </td><td>NonNegativeInteger </td><td>required  </td></tr>
+<tr>
+<td>default </td><td><p class="starttd"></p>
+<p class="intertd">Indicates a general purpose memory region, that does not require any special considerations (access speed, remapping, protection, etc.).</p>
+<p class="intertd"></p>
+<p class="intertd">If <span class="XML-Token">true</span>, then the memory region will be used by the linker.</p>
+<p class="intertd"></p>
+<p class="intertd">Default value is <span class="XML-Token">false</span>.</p>
+<p class="endtd"></p>
+</td><td>xs:boolean </td><td>optional  </td></tr>
+<tr>
+<td>startup </td><td>If <span class="XML-Token">true</span>, the startup code of the application will be placed into this memory region. Default value is <span class="XML-Token">false</span>. </td><td>xs:boolean </td><td>optional  </td></tr>
+<tr>
+<td>uninit </td><td><p class="starttd"></p>
+<p class="intertd">If <span class="XML-Token">true</span>, the memory region shall be kept uninitialized (i.e. keep the memory state as is).</p>
+<p class="intertd"></p>
+<p class="intertd">Default value is <span class="XML-Token">false</span>.</p>
+<p class="endtd"></p>
+</td><td>xs:boolean </td><td>optional  </td></tr>
+<tr>
+<td>alias </td><td>Reference to another memory (by it's 'name' attribute) which shares the same physical memory. Some physical memory is made accessible via different addresses, for example, cached vs. non-cached accesses. This avoids the impression that the device has twice as much memory available.  </td><td>xs:string </td><td>optional  </td></tr>
+</table>
+<h1><a class="anchor" id="element_board_algorithm"></a>
+/package/boards/board/algorithm</h1>
+<p >Specify Flash programming algorithms with the address range and its size for board-specific memory. An algorithm with &lt;default&gt; set to <span class="XML-Token">true</span> gets configured automatically to the download options of the project.</p>
+<table class="cmtable" summary="Type: AlgorithmType">
+<tr>
+<th>Parents </th><th colspan="3">Element Chain  </th></tr>
+<tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board">board</a> </td><td colspan="3"><a class="el" href="pdsc_boards_pg.html#element_board">/package/boards/board</a>  </td></tr>
+<tr>
+<th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
+<tr>
+<td>Pname </td><td>Processor identifier. This attribute <b>is for boards that use devices with multiple processors</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
+<tr>
+<td>name </td><td>Flash Programming Algorithm file including the path, which is relative to the root folder of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. </td><td>xs:string </td><td>required  </td></tr>
+<tr>
+<td>start </td><td>Base address for the Flash programming algorithm. </td><td>NonNegativeInteger </td><td>required  </td></tr>
+<tr>
+<td>size </td><td>Size covered by the Flash programming algorithm. End address = start + size - 1 </td><td>NonNegativeInteger </td><td>required  </td></tr>
+<tr>
+<td>RAMstart </td><td>Base address for the RAM where the Flash programming algorithm will be executed from. If specified, the <a class="el" href="pdsc_family_pg.html#element_memory">memory</a> element does not require a <code>default</code> attribute. </td><td>NonNegativeInteger </td><td>optional  </td></tr>
+<tr>
+<td>RAMsize </td><td>Maximum size of RAM available for the execution of the Flash programming algorithm. End address = start + size - 1 is used for the Stack. If specified, the <a class="el" href="pdsc_family_pg.html#element_memory">memory</a> element does not require a <code>default</code> attribute. </td><td>NonNegativeInteger </td><td>optional  </td></tr>
+<tr>
+<td>default </td><td>If <span class="XML-Token">true</span>, then this is the default Flash programming algorithm that gets configured in a project. If not specified or set to <span class="XML-Token">false</span>, then the Flash programming algorithm can be configured on a lower level. However, the Flash programming algorithm of a project can be changed manually at any time during development.  </td><td>xs:boolean </td><td>optional  </td></tr>
+<tr>
+<td>style </td><td>[Version 1.4.0] Today, different toolchains support different styles of incompatible flash programming algorithms. The attribute specifies the style of the specified flash programming algorithm. For backward compatibility the default value is <span class="XML-Token">Keil</span>. The aim is to converge to the <em>CMSIS</em> style.  </td><td><a class="el" href="pdsc_family_pg.html#AlgorithmStyleEnum">AlgorithmStyleEnum</a> </td><td><p class="starttd">optional </p>
+<p class="endtd"></p>
+</td></tr>
 </table>
 <p >&#160;</p>
 </div></div><!-- contents -->

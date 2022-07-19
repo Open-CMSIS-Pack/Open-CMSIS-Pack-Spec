@@ -128,14 +128,15 @@ var NAVTREE =
       [ "Package Index File (pidx)", "packIndexFile.html#pidxFile", null ],
       [ "Vendor Index File (vidx)", "packIndexFile.html#vidxFile", null ],
       [ "CMSIS-Pack Index Schema File", "packIndexFile.html#packIndexSchema", null ]
-    ] ]
+    ] ],
+    [ "Todo List", "todo.html", null ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
 "algorithmFunc.html",
-"pdsc_generators_pg.html#element_gen_project_files"
+"pdsc_generators_pg.html#element_gen_exe"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

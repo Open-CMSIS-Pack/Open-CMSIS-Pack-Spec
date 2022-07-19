@@ -172,11 +172,14 @@ var NAVTREEINDEX0 =
 "pdsc_apis_pg.html#element_apis":[6,11,0],
 "pdsc_boards_pg.html":[6,14],
 "pdsc_boards_pg.html#element_board":[6,14,1],
-"pdsc_boards_pg.html#element_board_book":[6,14,7],
+"pdsc_boards_pg.html#element_board_algorithm":[6,14,10],
+"pdsc_boards_pg.html#element_board_book":[6,14,8],
 "pdsc_boards_pg.html#element_board_compatibleDevice":[6,14,4],
 "pdsc_boards_pg.html#element_board_debugInterface":[6,14,6],
+"pdsc_boards_pg.html#element_board_debugProbe":[6,14,7],
 "pdsc_boards_pg.html#element_board_feature":[6,14,2],
 "pdsc_boards_pg.html#element_board_image":[6,14,5],
+"pdsc_boards_pg.html#element_board_memory":[6,14,9],
 "pdsc_boards_pg.html#element_board_mountedDevice":[6,14,3],
 "pdsc_boards_pg.html#element_boards":[6,14,0],
 "pdsc_components_pg.html":[6,16],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "pdsc_generators_pg.html":[6,12],
 "pdsc_generators_pg.html#element_gen_argument":[6,12,7],
 "pdsc_generators_pg.html#element_gen_command":[6,12,6],
-"pdsc_generators_pg.html#element_gen_eclipse":[6,12,4],
-"pdsc_generators_pg.html#element_gen_exe":[6,12,3],
-"pdsc_generators_pg.html#element_gen_file":[6,12,10],
-"pdsc_generators_pg.html#element_gen_files":[6,12,9]
+"pdsc_generators_pg.html#element_gen_eclipse":[6,12,4]
 };

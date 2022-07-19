@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.9</span>
+   &#160;<span id="projectnumber">Version 1.7.11</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -108,9 +108,16 @@ $(document).ready(function(){initNavTree('pack_revisionHistory.html',''); initRe
 <tr>
 <th>Version </th><th>Description  </th></tr>
 <tr>
+<td>1.7.11 </td><td><ul>
+<li>added 'uuid' to boards element to indicate a 128-bit universal ID in the debug firmware of the board</li>
+<li>added 'memory' and 'algorithm' child elements to the boards element to describe board-specific memory</li>
+<li>added 'Bvendor', 'Bname', 'Brevision' attribute to conditions element to allow board specific filtering.   </li>
+</ul>
+</td></tr>
+<tr>
 <td>1.7.10 </td><td><ul>
-<li>added 'includeAsm', 'includeC', 'includeCpp', 'includeLd' to FileCategoryType</li>
-<li>added 'headerAsm', 'includeC', 'headerCpp', 'headerLd' to FileCategoryType   </li>
+<li>added 'includeAsm', 'includeC', 'includeCpp', 'includeLd' to FileCategoryType of the components element</li>
+<li>added 'headerAsm', 'includeC', 'headerCpp', 'headerLd' to FileCategoryType of the components element   </li>
 </ul>
 </td></tr>
 <tr>

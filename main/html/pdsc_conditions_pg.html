@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.9</span>
+   &#160;<span id="projectnumber">Version 1.7.11</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -269,6 +269,12 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 </ul>
 </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>optional  </td></tr>
 <tr>
+<td>Bvendor<b>*</b> </td><td>Specifies a board vendor name that refers to a &lt;board&gt; element in a PDSC file. </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Bname<b>*</b> </td><td>Specifies a board name that refers to a &lt;board&gt; element in a PDSC file. </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Brevision<b>*</b> </td><td>Specifies a board revision that refers to a &lt;board&gt; element in a PDSC file. </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
 <td>Tcompiler </td><td>Specifies a compiler toolchain (ARMCC, GCC, IAR, Tasking, ...). Use predefined values as listed in table <a class="el" href="pdsc_conditions_pg.html#CompilerEnumType">Compiler Types</a>. </td><td><a class="el" href="pdsc_conditions_pg.html#CompilerEnumType">CompilerEnumType</a> </td><td>optional  </td></tr>
 <tr>
 <td>Toptions </td><td><p class="starttd">Specifies compiler specific options being active. For <em>Tcompiler="ARMCC"</em> available Toptions are:</p><ul>
@@ -287,7 +293,7 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <li>[abc] matches any character in the set (a,b,c)</li>
 </ul>
 <p ><b>**)</b> These attributes must not be used in conditions because</p><ul>
-<li>'Dfamily' and 'DsubFamily' turn out to be volatile.</li>
+<li>'Dfamily' and 'DsubFamily' turn out to be volatile, meaning that silicon vendors have a trend to change the grouping of devices.</li>
 <li>conditions shall only filter for selectable devices. 'Dvariant'effectively is just an alias for 'Dname'. Once a &lt;variant&gt; tag exists, the &lt;device&gt; tag no longer represents a selectable device.</li>
 </ul>
 <p >&#160;</p>
