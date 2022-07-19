@@ -11,6 +11,10 @@ This Open-CMSIS-Pack specification is part of the Common Microcontroller Softwar
 
 Linaro Project: [Open-CMSIS-Pack](https://linaro.atlassian.net/wiki/spaces/CMSIS/overview)
 
+## Access to Specification 
+
+The specification is pre-build and can be accessed here: [https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/index.html](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/index.html)
+
 ## License
 
 The Open-CMSIS-Pack project and its sub-components are licensed under Apache 2.0.

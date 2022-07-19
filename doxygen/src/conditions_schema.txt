@@ -338,6 +338,24 @@ A \ref element_condition "condition" becomes \token{true} when:
     <td>optional</td>
   </tr>
   <tr>
+    <td>Bvendor<b>*</b></td>
+    <td>Specifies a board vendor name that refers to a \<board\> element in a PDSC file.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Bname<b>*</b></td>
+    <td>Specifies a board name that refers to a \<board\> element in a PDSC file.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Brevision<b>*</b></td>
+    <td>Specifies a board revision that refers to a \<board\> element in a PDSC file.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
     <td>Tcompiler</td>
     <td>Specifies a compiler toolchain (ARMCC, GCC, IAR, Tasking, ...). Use predefined values as listed in table \ref CompilerEnumType "Compiler Types".</td>
     <td>\ref CompilerEnumType</td>
@@ -369,7 +387,7 @@ A \ref element_condition "condition" becomes \token{true} when:
        - [abc] matches any character in the set (a,b,c)
    
 <b>**)</b> These attributes must not be used in conditions because
-           - 'Dfamily' and 'DsubFamily' turn out to be volatile.
+           - 'Dfamily' and 'DsubFamily' turn out to be volatile, meaning that silicon vendors have a trend to change the grouping of devices.
            - conditions shall only filter for selectable devices. 'Dvariant'effectively is just an alias for 'Dname'. 
              Once a \<variant> tag exists, the \<device> tag no longer represents a selectable device.
    

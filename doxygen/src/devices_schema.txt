@@ -1716,7 +1716,7 @@ The table lists identifiers for memory types.
 \anchor MemoryAccessTypeString <b>Table: Memory Access Attribute String</b>
 
 The table lists the letters and their meaning for use in the access attribute string. The values can be used in:
- - \ref element_memory
+ - \ref element_memory, \ref element_board_memory
 
 <table class="cmtable" summary="Memory Access Permission Attributes">
   <tr>
@@ -2308,7 +2308,7 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
 \anchor AlgorithmStyleEnum <b>Table: Algorithm Styles</b>
 
 The table lists the predefined Flash algorithm style. These values can be used in:
- - \ref element_algorithm
+ - \ref element_algorithm, \ref element_board_algorithm
 
 <table class="cmtable" summary="Enumeration: AlgorithmStyleEnum">
   <tr>
