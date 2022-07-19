@@ -84,13 +84,18 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.11</td>
+    <td>
+     - added 'uuid' to boards element to indicate a 128-bit universal ID in the debug firmware of the board
+     - added 'memory' and 'algorithm' child elements to the boards element to describe board-specific memory
+     - added 'Bvendor', 'Bname', 'Brevision' attribute to conditions element to allow board specific filtering.
+    </td>
+  </tr>
+  <tr>
     <td>1.7.10</td>
     <td>
      - added 'includeAsm', 'includeC', 'includeCpp', 'includeLd' to FileCategoryType of the components element
      - added 'headerAsm', 'includeC', 'headerCpp', 'headerLd' to FileCategoryType of the components element
-     - added 'uuid' to boards element to indicate a 128-bit universal ID in the debug firmware of the board
-     - added 'memory' and 'algorithm' child elements to the boards element to describe board-specific memory
-     - added 'Bvendor', 'Bname', 'Brevision' attribute to conditions element to allow board specific filtering.
     </td>
   </tr>
   <tr>

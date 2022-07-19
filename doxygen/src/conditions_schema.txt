@@ -393,7 +393,6 @@ A \ref element_condition "condition" becomes \token{true} when:
    
 <p>&nbsp;</p>
 
-
 \anchor CompilerEnumType <b>Table: Compiler Types</b>
 
 The tale list values representing a C/C++ compiler toolchains from a specific tool vendor.
