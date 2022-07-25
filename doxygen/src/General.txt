@@ -84,6 +84,14 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.12</td>
+    <td>
+     - added \<parts> element and its child elements for describing and packaging the parts (devices other than the MCU).
+     - added \<mountedPart> element, as child element of the \<board> element, for describing the parts (devices other than the MCU) 
+       mounted on the development board.
+    </td>
+  </tr>
+  <tr>
     <td>1.7.11</td>
     <td>
      - added 'uuid' to boards element to indicate a 128-bit universal ID in the debug firmware of the board

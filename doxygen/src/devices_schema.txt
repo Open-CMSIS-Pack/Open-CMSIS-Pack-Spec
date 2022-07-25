@@ -331,7 +331,7 @@ Multiple \<family> groups can be defined.
   <tr>
     <td>\ref element_feature "feature"</td>
     <td>Specify features that are available in all members of the device family.</td>
-    <td>FeatureType</td>
+    <td>DeviceFeatureType</td>
     <td>0..*</td>
   </tr>
   <tr>
@@ -508,7 +508,7 @@ These properties are inherited by subgroups or elements. Multiple \<subFamily> g
   <tr>
     <td>\ref element_feature "feature"</td>
     <td>Specify features available in devices of the sub-family.</td>
-    <td>FeatureType</td>
+    <td>DeviceFeatureType</td>
     <td>0..*</td>
   </tr>
   <tr>
@@ -630,11 +630,11 @@ Multiple \<device> elements can be defined.
   <tr>
     <td>\ref element_feature "feature"</td>
     <td>Specify the features of this device.</td>
-    <td>FeatureType</td>
+    <td>DeviceFeatureType</td>
     <td>0..*</td>
   </tr>
   <tr>
-    <td>\ref element_feature "environment"</td>
+    <td>\ref element_environment "environment"</td>
     <td>Specify tool options.</td>
     <td>EnvironmentType</td>
     <td>0..*</td>
@@ -1021,7 +1021,7 @@ size of all previous \<block> and \<gap> elements of this flash device.
 
 \section element_book /package/devices/family/.../book
 
-Specifies documents related to a device. Books can be entered on various levels.
+Specifies documents related to a device or a part. Books can be entered on various levels.
 The book element contains the location, filename, and extension of the file. The title is used for display purposes.
 
 \b Example
@@ -1038,6 +1038,20 @@ The book element contains the location, filename, and extension of the file. The
     </device>
     ...
 </family>
+\endcode
+
+\code
+<package>
+  ...
+  <parts>
+    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
+      ...
+      <book name="Images/STSAFA110DFSPL02_image.jpg" title="image" public="true"/>
+    </part>
+    ...
+  <\parts>
+  ...
+<\package>
 \endcode
 
 <p>&nbsp;</p>
@@ -1060,6 +1074,10 @@ The book element contains the location, filename, and extension of the file. The
     <td colspan="3">\ref element_device</td>
   </tr>
   <tr>
+    <td>\ref element_part "part"</td>
+    <td colspan="3">\ref element_part</td>
+  </tr>
+  <tr>
     <th>Attributes</th>
     <th>Description</th>
     <th>Type</th>
@@ -1068,7 +1086,9 @@ The book element contains the location, filename, and extension of the file. The
   <tr>
     <td>Pname</td>
     <td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors and where the book refers to a single processor only</b>.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed. </td>
+        Only alphabetical characters, decimal digits, '-' and '_' are allowed.
+        <br><br>
+        Must not be used for \ref element_part "package/parts/part".</td>
     <td>RestrictedString</td>
     <td>optional</td>
   </tr>
@@ -1249,7 +1269,7 @@ of bullet points should not exceed ten. To create a detailed feature list use th
 
 \section element_environment /package/devices/family/.../environment
 
-Tool-specific elements for a device.
+Tool-specific elements for a device or a part.
 
 Can occur on various levels. 
 
@@ -1289,6 +1309,23 @@ full control of the \em element usage.
 </package>
 \endcode
 
+\code
+<package>
+  ...
+  <parts>
+    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
+      ...
+      <environment name="SomeConfigTool">
+        <file>STSAFA110DFSPL02_ConfigFile.cfg</file>
+      </environment>
+      ...
+    </part>
+    ...
+  <parts>
+  ...
+</package>
+\endcode
+
 \n
 
 <table class="cmtable" summary="Element: description">
@@ -1309,6 +1346,10 @@ full control of the \em element usage.
     <td colspan="3">\ref element_device</td>
   </tr>
   <tr>
+    <td>\ref element_part "part"</td>
+    <td colspan="3">\ref element_part</td>
+  </tr>
+  <tr>
     <th>Attributes</th>
     <th>Description</th>
     <th>Type</th>
@@ -1323,7 +1364,9 @@ full control of the \em element usage.
   <tr>
     <td>Pname</td>
     <td>Identifies the processor the setting belongs to.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed. </td>
+        Only alphabetical characters, decimal digits, '-' and '_' are allowed.
+        <br><br>
+        Must not be used for \ref element_part "package/parts/part".</td>
     <td>RestrictedString</td>
     <td>optional</td>
   </tr>
@@ -1351,7 +1394,11 @@ features.
 
 Many device feature types are already predefined, such as timers, converters, Ethernet, USB, etc (for a complete list refer
 to table \ref DeviceFeatureTypeEnum "Device Feature Types"). Features can be defined on various levels. Inner elements
-supersede outer elements. 
+supersede outer elements.
+
+This element can be used also to describe information about the features and capabilities of a \ref element_part "package/parts/part". 
+The list of the pre-defined features for Devices (\ref DeviceFeatureTypeEnum "Device Feature Types") can be used also for parts. 
+At least one feature must be defined for a part.
 
 \b Example
 \code
@@ -1392,6 +1439,20 @@ supersede outer elements.
 </package>
 \endcode
 
+\code
+<package>
+  ...
+  <parts>
+    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
+      <feature type="Crypto" n="128.256" name="Authentication and security for peripherals and IoT devices from STMicroelectronics"/>
+      ...
+    </part>
+    ...
+  <\parts>
+  ...
+<\package>
+\endcode
+
 \n
 
 <table class="cmtable" summary="Element: feature">
@@ -1412,6 +1473,10 @@ supersede outer elements.
     <td colspan="3">\ref element_device</td>
   </tr>
   <tr>
+    <td>\ref element_part "part"</td>
+    <td colspan="3">\ref element_part</td>
+  </tr>
+  <tr>
     <th>Attributes</th>
     <th>Description</th>
     <th>Type</th>
@@ -1420,14 +1485,18 @@ supersede outer elements.
   <tr>
     <td>Pname</td>
     <td>Processor Identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed. </td>
+        Only alphabetical characters, decimal digits, '-' and '_' are allowed.
+        <br><br>
+        Must not be used for \ref element_part "package/parts/part".</td>
     <td>RestrictedString</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>type</td>
     <td>A feature (peripheral), such as \token{CAN}, \token{DMA}, \token{I/O}, \token{LCD}, etc. Predefined values must be used
-    as listed in the table \ref DeviceFeatureTypeEnum "Device Feature Types".</td>
+        as listed in the table \ref DeviceFeatureTypeEnum "Device Feature Types".
+        <br><br>
+        Can be also used to describe the \ref element_part "package/parts/part" features. Predefined values must be used as listed in the table \ref DeviceFeatureTypeEnum "Device Feature Types".</td>
     <td>DeviceFeatureTypeEnum</td>
     <td>required</td>
   </tr>
@@ -4759,7 +4828,7 @@ Defines a device variant. The element is optional. Can exist multiple times.
   <tr>
     <td>\ref element_feature "feature"</td>
     <td>Specify the features of this device.</td>
-    <td>FeatureType</td>
+    <td>DeviceFeatureType</td>
     <td>0..*</td>
   </tr>
   <tr>

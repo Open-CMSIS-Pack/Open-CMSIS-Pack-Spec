@@ -72,6 +72,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage pdsc_devices_pg "<devices>": lists the devices supported by this \ref cp_SWComponents "Software Pack". It specifies the device attributes and
    files like flash programming algorithms, CMSIS device header files, CMSIS System View Descriptions, etc.
  - \subpage pdsc_boards_pg "<boards>": lists the development boards supported by the \ref cp_SWComponents "Software Pack".
+ - \subpage pdsc_parts_pg "<parts>": lists the parts (devices other than the MCUs) supported by the \ref cp_SWComponents "Software Pack".
  - \subpage pdsc_conditions_pg "<conditions>": defines dependencies to devices, processors, components, and tools that are used within the \ref cp_SWComponents "Software Pack".
    It allows making components and files conditional.
  - \subpage pdsc_components_pg "<components>": lists the software components contained in the \ref cp_SWComponents "Software Pack".
@@ -303,6 +304,12 @@ assists searching for packages.
     <td>\ref element_boards "boards"</td>
     <td>Defines the development board support package.</td>
     <td>BoardsType</td>
+    <td>0..1 </td>
+  </tr>
+  <tr>
+    <td>\ref element_parts "parts"</td>
+    <td>Defines the parts support package.</td>
+    <td>PartsType</td>
     <td>0..1 </td>
   </tr>
   <tr>
