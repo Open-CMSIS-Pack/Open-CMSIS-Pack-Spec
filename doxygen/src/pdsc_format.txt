@@ -64,6 +64,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage element_repository "<repository>": specifies the URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
  - \subpage element_releases "<releases>": lists release versions with descriptions.
+ - \subpage pdsc_licenseSets_pg "<licenseSets>": lists license files associated with the pack and contained components and apis.
  - \subpage element_requirements_pg "<requirements>": lists required packs, compiler, programming language standards and their version or version range.
  - \subpage element_taxonomy "<taxonomy>": lists description elements that define component classes and component group names.
  - \subpage pdsc_apis_pg "<apis>": describes Application Programming Interfaces (API) Specifications contained in the \ref cp_SWComponents "Software Pack".
@@ -238,6 +239,13 @@ assists searching for packages.
     <td>license</td>
     <td>Path to a license document.</td>
     <td>xs:string </td>
+    <td>0..1 </td>
+  </tr>
+  \anchor package_licenseSets
+  <tr>
+    <td>licenseSets</td>
+    <td>Section listing one or more collections of license files which can be associated with one, multiple or all components</td>
+    <td>\ref element_licenseSets "LicenseSetsType"</td>
     <td>0..1 </td>
   </tr>
   <tr>
@@ -627,7 +635,7 @@ The latest release version is always listed on top.
 \code
 <package>
   ...
-  <repository type="git">https://github.com/ARM-software/CMSIS-Driver.git</repository
+  <repository type="git">https://github.com/ARM-software/CMSIS-Driver.git</repository>
   <releases>
     <release version="2.1.0" tag="2.1.0" url="https://github.com/ARM-software/CMSIS-Driver/archive/2.1.0.zip">
       Added LAN9220 Ethernet MAC+PHY driver.

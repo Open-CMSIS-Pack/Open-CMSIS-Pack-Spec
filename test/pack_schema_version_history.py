@@ -97,35 +97,35 @@ def main():
                     history_version[i + 1] = v[1]
 
     if not date:
-        log_error(schema_file, 0, "Modification date tag '$Date:' missing!")
+        log_error(schema_file, 0, "Modification date tag '$Date:  <dd>. <month> <yyyy>' missing or wrong format!")
     elif date[0] != author_date:
         log_error(schema_file, date[1], "Modification date tag not updated, "
-                                        f"should be {author_date.strftime('%d. %b %Y')}")
+                                        f"should be '{author_date.strftime('%d. %b %Y')}'!")
 
     if not revision:
-        log_error(schema_file, 0, "Latest version tag '$Revision:' missing!")
+        log_error(schema_file, 0, "Latest version tag '$Revision:  <major>.<minor>.<patch>' missing or wrong format!")
     elif head_rev != blamed_rev:
         log_error(schema_file, revision[1], f"Revision tag not updated, should be incremented!")
     else:
         if not version:
-            log_error(schema_file, 0, "Schema version tag 'SchemaVersion' missing!")
+            log_error(schema_file, 0, "Schema version tag 'SchemaVersion='<major>.<minor>.<patch> missing or wrong format!")
         elif version[0] != revision[0]:
-            log_error(schema_file, version[1], f"Schema version tag not updated, should be {revision[0]}")
+            log_error(schema_file, version[1], f"Schema version tag not updated, should be '{revision[0]}' instead if '{version[0]}'!")
 
         if not history:
-            log_error(schema_file, 0, "Change history missing!")
+            log_error(schema_file, 0, "Change history '<dd>. <month> <yyyy>: <major>.<minor>.<patch>' missing or wrong format!")
         elif history[1] != revision[0] or history[0] != author_date:
             log_error(schema_file, history[2], "Change history not updated, should contain "
-                                               f"{author_date.strftime('%d. %B %Y')}: v{revision[0]}")
+                                               f"'{author_date.strftime('%d. %B %Y')}: v{revision[0]}'!")
         if not xsproperty:
             log_error(schema_file, 0, "xs:schema property 'version' missing!")
         elif xsproperty[0] != revision[0]:
-            log_error(schema_file, xsproperty[1], f"xs:schema property 'version' not updated, should be {revision[0]}")
+            log_error(schema_file, xsproperty[1], f"xs:schema property 'version' not updated, should be '{revision[0]}' instead of '{xsproperty[0]}'!")
 
         if not dxy_version:
-            log_error(dxy_version, 0, "PROJECT_VERSION missing!")
+            log_error(dxy_version, 0, "Doxygen setting 'PROJECT_VERSION = \"Version <major>.<minor>.<patch>\"' missing!")
         elif dxy_version[0] != revision[0]:
-            log_error(dxy_file, dxy_version[1], f"PROJECT_VERSION not updated, should be {revision[0]}")
+            log_error(dxy_file, dxy_version[1], f"Doxygen setting 'PROJECT_VERSION' not updated, should be 'Version {revision[0]}' instead of '{dxy_version[0]}'!")
 
         if revision[0] not in history_version.values():
             line = sorted(history_version.keys())[0]

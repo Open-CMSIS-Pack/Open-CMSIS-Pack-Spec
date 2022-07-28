@@ -17,15 +17,25 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        21. Apr 2022
-  $Revision:    1.7.7
-
+  $Date:        19. Jul 2022
+  $Revision:    1.7.11
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
+  SchemaVersion=1.7.11
 
-  SchemaVersion=1.7.7
-
+  19. July 2022: v1.7.11
+   - added 'uuid' to boards element to indicate a 128-bit universal ID in the debug firmware of the board
+   - added 'memory' and 'algorithm' child elements to the boards element to describe board-specific memory
+   - added 'Bvendor', 'Bname', 'Brevision' attribute to conditions element to allow board specific filtering.  
+  04. July 2022: v1.7.10
+   - added 'includeAsm', 'includeC', 'includeCpp', 'includeLd' to FileCategoryType of the components element
+   - added 'headerAsm', 'includeC', 'headerCpp', 'headerLd' to FileCategoryType of the components element
+  28. June 2022: v1.7.9
+   - added new section <licenseSets> supporting association of multiple license
+     files with one or more components
+  1. June 2022: v1.7.8
+   - added extension points description for components as suggested by STMicroelectronics
   21. April 2022: v1.7.7
    - added 'Cortex-M85' to DcoreEnum
    - added 'Dpacbti' attribute to Processor
@@ -149,7 +159,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.7">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.11">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -320,6 +330,12 @@
   <xs:simpleType name="Hex8BitType">
     <xs:restriction base="xs:string">
       <xs:pattern value="(0x|0X)[0-9a-fA-F]{2}" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="UUID">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})|(\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\})"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -567,7 +583,7 @@
   <!-- Memory Type-->
   <xs:complexType name="MemoryType">
     <!-- Pname identifies the processor this setting belongs to -->
-    <xs:attribute name="Pname" type="RestrictedString" />
+    <xs:attribute name="Pname" type="RestrictedString" use="optional" />
     <!-- id specifies the enumerated ID of memory (deprecated in 1.4.4) -->
     <xs:attribute name="id" type="MemoryIDTypeEnum" use="optional" />
     <!-- name specifies an identifier being use to refer to this memory range description (added in 1.4.4) -->
@@ -1076,8 +1092,8 @@
       <xs:enumeration value="PACBTI"/>
       <xs:enumeration value="*"/>
     </xs:restriction>
-  </xs:simpleType>  
-  
+  </xs:simpleType>
+
   <!-- repository types -->
   <xs:simpleType name="RepositoryTypeEnum">
     <xs:restriction base="xs:string">
@@ -1092,7 +1108,14 @@
     <xs:restriction base="xs:token">
       <xs:enumeration value="doc" />
       <xs:enumeration value="header" />
+      <xs:enumeration value="headerC" />
+      <xs:enumeration value="headerCpp" />
+      <xs:enumeration value="headerAsm" />
       <xs:enumeration value="include" />
+      <xs:enumeration value="includeC" />
+      <xs:enumeration value="includeCpp" />
+      <xs:enumeration value="includeAsm" />
+      <xs:enumeration value="includeLd" />
       <xs:enumeration value="library" />
       <xs:enumeration value="object" />
       <xs:enumeration value="source" />
@@ -1176,6 +1199,9 @@
     <xs:attribute name="Cvariant" type="CvariantType" />
     <xs:attribute name="Cversion" type="ConditionVersionType" />
     <xs:attribute name="Capiversion" type="ConditionVersionType" />
+    <xs:attribute name="Bvendor" type="xs:string" />
+    <xs:attribute name="Bname" type="xs:string" />
+    <xs:attribute name="Brevision" type="xs:string" />    
     <xs:attribute name="Tcompiler" type="CompilerEnumType" />
     <!-- Toptions can only be used in combination with Tcompiler and the strings are predefined by the specification -->
     <xs:attribute name="Toptions" type="CompilerOptionsEnumType" />
@@ -1228,6 +1254,8 @@
     <xs:attribute name="exclusive"   type="xs:boolean" use="optional" default="1" />
     <xs:attribute name="Capiversion" type="ComponentVersionType" use="optional" />
     <xs:attribute name="condition"   type="xs:string" use="optional" />
+    <!-- associates an API with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9)-->
+    <xs:attribute name="licenseSet" type="xs:string"/>
   </xs:complexType>
 
   <xs:complexType name="ApisType">
@@ -1364,7 +1392,8 @@
       <xs:element name="debugInterface"   type="DebugInterfaceType"    minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="book"             type="BoardsBookType"        minOccurs="0" maxOccurs="unbounded" />
       <!-- On-board debugger -->
-      <xs:element name="debugProbe"       type="DebugProbeType"      minOccurs="0" maxOccurs="1" />
+      <xs:element name="debugProbe"       type="DebugProbeType"        minOccurs="0" maxOccurs="1" />
+      <xs:element name="memory"           type="MemoryType"            minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="algorithm"        type="AlgorithmType"         minOccurs="0" maxOccurs="unbounded" />
     </xs:choice>
   </xs:group>
@@ -1376,6 +1405,7 @@
     <xs:attribute name="vendor" type="xs:string" use="required" />
     <xs:attribute name="name" type="xs:string" use="required" />
     <xs:attribute name="revision" type="xs:string" use="optional" />
+    <xs:attribute name="uuid" type="UUID" use="optional" />
     <xs:attribute name="salesContact" type="xs:string" use="optional" />
     <xs:attribute name="orderForm" type="xs:anyURI" use="optional" />
   </xs:complexType>
@@ -1511,6 +1541,31 @@
       <xs:pattern value="[0-9]+.[0-9]+((.[0-9]+)|())((\-[0-9A-Za-z_\-\.]+)|([_A-Za-z][0-9A-Za-z_\-\.]*)|())((\+[\-\._A-Za-z0-9]+)|())((:[0-9]+.[0-9]+((.[0-9]+)|()))|())((\-[0-9A-Za-z_\-\.]+)|([_A-Za-z][0-9A-Za-z_\-\.]*)|())((\+[\-\._A-Za-z0-9]+)|())" />
     </xs:restriction>
   </xs:simpleType>
+
+  <!-- LicensefileType (added in 1.7.9) -->
+  <xs:complexType name="LicensefileType">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="title" type="xs:string" use="required"/>
+    <xs:attribute name="spdx" type="xs:string" use="optional"/>
+    <xs:attribute name="url"  type="xs:anyURI" use="optional"/>
+  </xs:complexType>
+  
+  <!-- LicenseSetType (added in 1.7.9) -->
+  <xs:complexType name="LicenseSetType">
+    <xs:sequence>
+      <xs:element name="license" type="LicensefileType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>  
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="default" type="xs:boolean" use="optional" default="false"/>
+    <xs:attribute name="gating" type="xs:boolean" use="optional" default="false"/>
+  </xs:complexType>
+  
+  <!-- LicenseSetsType (added in 1.7.9) -->
+  <xs:complexType name="LicenseSetsType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="licenseSet" type="LicenseSetType" /> 
+    </xs:sequence>
+  </xs:complexType>
 
   <!-- PackageType creates a unique ID for a package (added in 1.4.4) -->
   <xs:complexType name="PackageType">
@@ -1767,6 +1822,13 @@
     <xs:attribute name="info" type="xs:string" use="required"/>
   </xs:complexType>
 
+  <!-- Extension point -->
+  <xs:complexType name="ExtensionType">
+    <!-- key/value pair attributes used in sequences -->
+    <xs:attribute name="key" type="xs:string" use="required" />
+    <xs:attribute name="value" type="xs:string" use="optional" />
+  </xs:complexType>
+
   <!-- package description root point -->
   <xs:element name="package" nillable="true">
     <xs:complexType>
@@ -1787,6 +1849,8 @@
         <xs:element name="supportContact" type="xs:string" minOccurs="0" />
         <!-- optional: click through license file name and relative path -->
         <xs:element name="license" type="xs:string" minOccurs="0" />
+        <!-- optional: one or more sets of license files associated with one or more components -->
+        <xs:element name="licenseSets" type="LicenseSetsType" minOccurs="0" />
         <!-- optional: section listing requirements (1.4.2) -->
         <xs:element name="requirements" type="RequirementsType" minOccurs="0" />
         <!-- Version numbers and release history -->
@@ -1871,6 +1935,14 @@
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
+                          <!-- List of extension points -->
+                          <xs:element name="componentExts" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="extension" type="ExtensionType" minOccurs="1" maxOccurs="unbounded" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
                         </xs:all>
                         <!-- component identity attributes Cclass Cvendor and Cversion are specified by bundle -->
                         <xs:attribute name="Cgroup" type="CgroupType" use="required" />
@@ -1889,6 +1961,8 @@
                         <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional" />
                         <!-- identifies that this component requires custom implementation -->
                         <xs:attribute name="custom" type="xs:boolean" use="optional" />
+                        <!-- associates a component with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
+                        <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
@@ -1901,6 +1975,8 @@
                   <xs:attribute name="generator" type="xs:string" use="optional" />
                   <!-- identifies this bundle variant to be the preferred variant [Version 1.4.0] -->
                   <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional" />
+                  <!-- associates all components of the bundle with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
+                  <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
                 </xs:complexType>
               </xs:element>
               <xs:element name="component" minOccurs="0" maxOccurs="unbounded">
@@ -1924,6 +2000,14 @@
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
+                    <!-- List of extension points -->
+                    <xs:element name="componentExts" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="extension" type="ExtensionType" minOccurs="1" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
                   </xs:all>
                   <!-- component identity attributes -->
                   <xs:attribute name="Cvendor" type="xs:string" use="optional" />
@@ -1944,6 +2028,8 @@
                   <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional" />
                   <!-- identifies that this component requires custom implementation -->
                   <xs:attribute name="custom" type="xs:boolean" use="optional" />
+                  <!-- associates a component with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
+                  <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
                 </xs:complexType>
               </xs:element>
             </xs:choice>
