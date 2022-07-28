@@ -129,8 +129,8 @@ The following <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" target="
 For using \ref gen_pack_sh "gen_pack.sh"
  - Install \ref cp_ZIPTool "7-Zip".
  - Install \ref cp_Editors_xmllint "xmllint".
- - Adapt the file \ref gen_pack_sh "gen_pack.sh" that is available in the directory <b>/CMSIS/Pack/Bash</b> to the
-   requirements of your software pack and .
+ - Adapt the file \ref gen_pack_sh "gen_pack.sh" that is available in the directory <b>/doxygen/examples</b> to the
+   requirements of your software pack.
 
 The script is generic enough to cope with a wide range of requirements. It uses the information from the
 \ref packFormat "*.PDSC file" to generate the output filename according the CMSIS-Pack conventions and validates the pack

@@ -42,10 +42,8 @@ software component. Then, it is extended to show the various features for descri
 
 <b>Preparations</b>
 -# Create a working directory on you PC, for example <b>C:\\temp\\working</b>.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Tutorials/Pack_with_Software_Components.zip" download>Pack_with_Software_Components.zip</a>.
+-# Download the file <a class=el href="https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/raw/main/doxygen/examples/Pack_with_Software_Components.zip">Pack_with_Software_Components.zip</a>.
 -# Copy the <i>content</i> of the ZIP file's \b 01_Create_PDSC directory into your working directory.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Bash/gen_pack.sh">gen_pack.sh</a>
-   (right-click and select "Save (page) as..."). Copy the shell script to your working directory.
 -# Make sure that files/directories are not write protected (remove read-only flag).
 
 
@@ -161,7 +159,7 @@ elements in the PDSC file).
 Open \ref bash_script "gen_pack.sh" from your working directory in an editor. Modify the variables \c CMSIS_PACK_PATH and
 \c PATH_TO_ADD reflect your setup. The following is an example for a Git Bash on Windows:
 \code
-  CMSIS_PACK_PATH="$LOCALAPPDATA/Arm/Packs/ARM/CMSIS/5.7.0"
+  CMSIS_PACK_PATH="$LOCALAPPDATA/Arm/Packs/ARM/CMSIS/5.9.0"
   PATH_TO_ADD="/C/Program Files/7-Zip/:$CMSIS_PACK_PATH/CMSIS/Utilities/Win32/:/C/xmllint/"
 \endcode
 \note Refer to section  \ref createPackUtil for hints on how to install the required tools.
@@ -656,11 +654,9 @@ the MVCM3 family is as follows:
 
 <b>Preparations</b>
 -# Create a working directory on you PC, for example <b>C:\\temp\\working_dfp</b>.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Tutorials/Pack_with_Device_Support.zip" download>Pack_with_Device_Support.zip</a>.
--# Copy the file \b MyVendor.MVCM3.pdsc of the ZIP file's \b 01_Basic_Pack directory into your working directory.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Bash/gen_pack.sh">gen_pack.sh</a>
-   (right-click and select "Save (page) as..."). Copy the shell script to your working directory.
--# Make sure that file are not write protected (remove read-only flag).
+-# Download the file <a class=el href="https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/raw/main/doxygen/examples/Pack_with_Device_Support.zip">Pack_with_Device_Support.zip</a>.
+-# Copy the files \b MyVendor.MVCM3.pdsc and \b gen_pack.sh of the ZIP file's \b 01_Basic_Pack directory into your working directory.
+-# Make sure that the files are not write protected (remove read-only flag).
 -# Open the \b MyVendor.MVCM3.pdsc file in an editor.
 
 <b>Code Example</b>
@@ -1165,10 +1161,8 @@ BSPs can also be used to provide information for the display on <b>web sites</b>
    <a class=el href="https://www.keil.com/dd2/arm/armcm3/" target="_blank">Keil::ARMCortex_DFP</a> as this
    will be required for the BSP to function properly.
 -# Create a working directory on your PC, for example <b>C:\\temp\\working_bsp</b>.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Tutorials/Pack_with_Board_Support.zip" download>Pack_with_Board_Support.zip</a>.
+-# Download the file <a class=el href="https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/raw/main/doxygen/examples/Pack_with_Board_Support.zip">Pack_with_Board_Support.zip</a>.
 -# Copy the \e content of the ZIP file's \b 01_Specify_Dev_Board directory into your working directory.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Bash/gen_pack.sh">gen_pack.sh</a>
-   (right-click and select "Save (page) as..."). Copy the shell script to your working directory.
 -# From the working directory, open the \b MyVendor.MyBSP.pdsc file in an editor.
 
 <b>Code Example</b>
@@ -1183,6 +1177,7 @@ Add a \ref element_boards "<boards>" section in the PDSC file with the following
     <book category="setup"     name="Docs/MyDevBoard/MyDevBoard_setup.pdf"      title="Getting Started"/>
     <book category="schematic" name="Docs/MyDevBoard/MyDevBoard_schematics.pdf" title="Schematics"/>
     <book category="manual"    name="Docs/MyDevBoard/MyDevBoard_um.pdf"         title="User Manual"/>
+    <book category="other"     name="Docs/MyDevBoard/README.md"                 title="Guide"/>
     <mountedDevice             deviceIndex="0" Dvendor="ARM:82" Dname="ARMCM3"/>
     <compatibleDevice          deviceIndex="0" Dvendor="ARM:82" Dfamily="ARM Cortex M3"/>
     <feature type="ODbg"       n="1"           name="On-board J-LINK Lite"/>
