@@ -134,7 +134,7 @@ This element specifies a part. At least one part element must be specified per p
   </tr>
   <tr>
     <td>Hvariant</td>
-    <td>Specifies the exact part name (e.g. the commercial/selling name) in case the one indicated in the Hname is not enough to uniquely identify the part.</td>
+    <td>Specifies the exact part name (e.g. the commercial/selling name) in case the one indicated in the \b Hname is not enough to uniquely identify the part.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>

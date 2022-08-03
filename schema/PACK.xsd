@@ -1330,6 +1330,7 @@
     <xs:attribute name="n"           type="xs:decimal"       use="required" />
     <xs:attribute name="Hvendor"     type="DeviceVendorEnum" use="required" />
     <xs:attribute name="Hname"       type="xs:string"        use="required" />
+    <xs:attribute name="Hvariant"    type="xs:string"        use="optional" />
   </xs:complexType>
 
   <xs:complexType name="BoardsDeviceType">

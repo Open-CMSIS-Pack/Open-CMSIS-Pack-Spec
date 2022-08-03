@@ -39,7 +39,7 @@ A development board is described by the following properties:
 	   
       <compatibleDevice Dvendor="STMicroelectronics:13" Dfamily="STM32F4 Series" DsubFamily="STM32F429"/>
 
-      <mountedPart n="1" Hvendor="STMicroelectronics:13" Hname="I3G4250D"/>
+      <mountedPart n="1" Hvendor="STMicroelectronics:13" Hname="I3G4250D" Hvariant="I3G4250D"/>
 	   
       <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2 with selection mode switch to use the kit as a standalone"/>
       <feature type="XTAL"      n="80000000"/>
@@ -468,11 +468,11 @@ Since Dfamily and DsubFamily are volatile, it is recommended to use Dname attrib
 <hr>
 
 \section element_board_mountedPart /package/boards/board/mountedPart
-The element specifies the parts (any device other than the MCU) mounted on the board.
+The element specifies the parts (any device other than the MCU) mounted on the board. The Hname attribute, togheter with the Hvendor and (eventually) the Hvariant, must uniquely specify the part.
 
 \b Example
 \code
-<mountedPart n="1" Hvendor="STMicroelectronics:13" Hname="I3G4250D"/>
+<mountedPart n="1" Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02"/>
 \endcode
 <p>&nbsp;</p>		
 
@@ -505,9 +505,15 @@ The element specifies the parts (any device other than the MCU) mounted on the b
   </tr>
   <tr>
     <td>Hname</td>
-    <td>Name of the part mounted on the board. The Hname, togheter with the \b Hvendor, must uniquely specify the part.</td>
+    <td>The part name used by the part vendor to identify and group a specific set of parts.</td>
     <td>xs:string</td>
     <td>required</td>
+  </tr>
+  <tr>
+    <td>Hvariant</td>
+    <td>Specifies the exact part name (e.g. the commercial/selling name) in case the one indicated in the \b Hname is not enough to uniquely identify the part.</td>
+    <td>xs:string</td>
+    <td>optional</td>
   </tr>
 </table>
 
