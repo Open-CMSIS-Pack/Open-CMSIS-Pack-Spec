@@ -35,6 +35,5 @@ var NAVTREEINDEX1 =
 "sdf_pg.html#sdf_element_topology_link":[10,15],
 "sdf_pg.html#sdf_element_trace":[10,5],
 "sdf_pg.html#sdf_element_trace_capture":[10,6],
-"sdf_pg.html#sdf_structure":[10,0],
-"todo.html":[12]
+"sdf_pg.html#sdf_structure":[10,0]
 };

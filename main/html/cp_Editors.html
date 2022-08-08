@@ -111,7 +111,7 @@ Using an editor</h1>
 <li><a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a></li>
 <li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
 </ul>
-<p >Usually, the XML file that is to be validated and its corresponding schema file need to reside in the same directory. The CMSIS-Pack schema file <b>PACK.xsd</b> and the CMSIS-SVD schema file <b>CMSIS-SVD.xsd</b> are available in the directory <b>.\CMSIS\Utilities</b> of the <b>ARM::CMSIS</b> Pack.</p>
+<p >If you specify the exact location of the schema file in the PDSC (refer to <a class="el" href="cp_PackTutorial.html#cp_CreatePDSC">Create PDSC File</a>), both tools should automatically pick it up for PDSC validation.</p>
 <h1><a class="anchor" id="cp_Editors_xmllint"></a>
 Using xmllint</h1>
 <p >The utility <a href="http://xmlsoft.org/xmllint.html" target="_blank">xmllint</a> is a command line tool for XML validation against a schema file. It may be part of the <a class="el" href="bash_script.html">Bash Script gen_pack.sh</a> to verify the PDSC file during pack generation.</p>

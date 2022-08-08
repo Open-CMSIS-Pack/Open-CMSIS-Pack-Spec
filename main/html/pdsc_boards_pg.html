@@ -513,7 +513,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>title </td><td>Is the title of the document to be displayed in the <b>Books</b> window of uVision. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>public </td><td>Set publishing permissions for the documentation. If <em>&lt;public&gt;</em> is <span class="XML-Token">true</span>, then the vendor gives permission to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public. The default value is <span class="XML-Token">false</span>. </td><td>xs:boolean </td><td>optional  </td></tr>
+<td>public </td><td>Set publishing permissions for the documentation. If <em>&lt;public&gt;</em> is <span class="XML-Token">true</span>, then the vendor gives permission to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public. The default value is <span class="XML-Token">true</span>. </td><td>xs:boolean </td><td>optional  </td></tr>
 </table>
 <p >&#160;</p>
 <p ><a class="anchor" id="BoardBookCategoryEnum"></a><b>Table: Board Book Categories</b></p>
@@ -533,16 +533,17 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td class="XML-Token">other </td><td>All other documentation.  </td></tr>
 </table>
+<dl class="section note"><dt>Note</dt><dd>By convention, the following &lt;book&gt; entry: <div class="fragment"><div class="line">&lt;book category=<span class="stringliteral">&quot;other&quot;</span> name=<span class="stringliteral">&quot;README.md&quot;</span> title=<span class="stringliteral">&quot;Guide&quot;</span>/&gt;</div>
+</div><!-- fragment --> specifies a Markdown based documentation page for the board that can be displayed on web sites.</dd></dl>
 <h1><a class="anchor" id="element_board_memory"></a>
 /package/boards/board/memory</h1>
 <p >This element specifies memory regions that boards may add. Memory types are predefined and can be selected.</p>
-<p ><b>Example</b> </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>example needs update </dd></dl>
-<div class="fragment"><div class="line">&lt;/package&gt;</div>
+<p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;/package&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;boards&gt;</div>
 <div class="line">    &lt;board vendor=<span class="stringliteral">&quot;MyVendor&quot;</span> name=<span class="stringliteral">&quot;Board-1&quot;</span>&gt;</div>
 <div class="line">      &lt;memory name=<span class="stringliteral">&quot;SRAM-EX&quot;</span> access=<span class="stringliteral">&quot;rwx&quot;</span> start=<span class="stringliteral">&quot;0x40000000&quot;</span> size=<span class="stringliteral">&quot;0x200000&quot;</span>/&gt;</div>
-<div class="line">      &lt;algorithm name=<span class="stringliteral">&quot;Flash/SARM-EX.flm&quot;</span> start=<span class="stringliteral">&quot;0x40000000&quot;</span> size=<span class="stringliteral">&quot;0x200000&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
+<div class="line">      &lt;algorithm name=<span class="stringliteral">&quot;Flash/SRAM-EX.flm&quot;</span> start=<span class="stringliteral">&quot;0x40000000&quot;</span> size=<span class="stringliteral">&quot;0x200000&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
 <div class="line">    &lt;/board&gt;</div>
 <div class="line">  &lt;/boards&gt;</div>
 <div class="line">  ...</div>
