@@ -220,6 +220,7 @@
       <xs:enumeration value="LAPIS Technology:10" />
       <xs:enumeration value="Lapis Semiconductor:10" />
       <xs:enumeration value="Linear Technology:136" />
+      <xs:enumeration value="Linkedsemi:175" />
       <xs:enumeration value="Luminary Micro:76" />
       <xs:enumeration value="Maxim:23" />
       <xs:enumeration value="MediaTek:129" />
