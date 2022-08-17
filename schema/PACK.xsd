@@ -17,15 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        27. Jul 2022
+  $Date:        09. Aug 2022
   $Revision:    1.7.12
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.12
 
-  27. July 2022: v1.7.12
+  09. Aug 2022: v1.7.12
    - added VirtualHW as a new board type in support of the Arm Virtual Hardware initiative
+   - added 'Linkedsemi' Dvendor entry
   19. July 2022: v1.7.11
    - added 'uuid' to boards element to indicate a 128-bit universal ID in the debug firmware of the board
    - added 'memory' and 'algorithm' child elements to the boards element to describe board-specific memory
@@ -222,6 +223,7 @@
       <xs:enumeration value="LAPIS Technology:10" />
       <xs:enumeration value="Lapis Semiconductor:10" />
       <xs:enumeration value="Linear Technology:136" />
+      <xs:enumeration value="Linkedsemi:175" />
       <xs:enumeration value="Luminary Micro:76" />
       <xs:enumeration value="Maxim:23" />
       <xs:enumeration value="MediaTek:129" />

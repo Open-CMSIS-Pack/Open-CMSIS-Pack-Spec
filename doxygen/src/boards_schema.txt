@@ -662,7 +662,7 @@ The element provides information about documentation parts related to a developm
     <td>public</td>
     <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission 
         to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
-        The default value is \token{false}.</td>
+        The default value is \token{true}.</td>
     <td>xs:boolean</td>
     <td>optional</td>
   </tr>
@@ -704,19 +704,26 @@ The table lists values to identify a specific type of documentation for developm
   </tr>
 </table>
 
+\note
+By convention, the following \<book\> entry:
+\code
+<book category="other" name="README.md" title="Guide"/>
+\endcode
+specifies a Markdown based documentation page for the board that can be displayed on web sites.
+
+
 \section element_board_memory /package/boards/board/memory
 
 This element specifies memory regions that boards may add. Memory types are predefined and can be selected.
 
 \b Example
-\todo example needs update
 \code
 </package>
   ...
   <boards>
     <board vendor="MyVendor" name="Board-1">
       <memory name="SRAM-EX" access="rwx" start="0x40000000" size="0x200000"/>
-      <algorithm name="Flash/SARM-EX.flm" start="0x40000000" size="0x200000" style="Keil"/>
+      <algorithm name="Flash/SRAM-EX.flm" start="0x40000000" size="0x200000" style="Keil"/>
     </board>
   </boards>
   ...

@@ -7,7 +7,8 @@ file in XML. While the PDSC file can be created with any text editor, some of th
 additional programs. Also, verification of a PDSC file requires the help of additional tools. This section gives and
 overview over programs that are either part of the CMSIS Pack or are available for download on the Internet.
 	- \subpage packChk is part of the CMSIS Pack and is used to check the validity of a PDSC file.
-	- Validation of SVD files with <a href="https://arm-software.github.io/CMSIS_5/develop/SVD/html/svd_validate_file_pg.html"><b>SVDConv.exe</b></a> is required for SVD files that are part of \ref SWPackVariants "Device Family Packs".
+	- Validation of SVD files with <a href="https://arm-software.github.io/CMSIS_5/develop/SVD/html/svd_validate_file_pg.html"><b>SVDConv.exe</b></a>
+    is required for SVD files that are part of \ref SWPackVariants "Device Family Packs".
 	- Several \subpage cp_Editors can verify XML files using the XML schema files that are part of the CMSIS Pack.
 	- \subpage cp_ZIPTool create the actual ZIP archive of a Software Pack.
 	- \subpage bash_script that generates a CMSIS Software Pack on Linux or Windows operating systems.
@@ -30,9 +31,8 @@ structural problems in a PDSC or SVD file early in the development process. Usef
 - <a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a>
 - <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>
 
-Usually, the XML file that is to be validated and its corresponding schema file need to reside in the same directory. The
-CMSIS-Pack schema file \b PACK.xsd and the CMSIS-SVD schema file \b CMSIS-SVD.xsd are available in the directory
-<b>.\\CMSIS\\Utilities</b> of the <b>ARM::CMSIS</b> Pack.
+If you specify the exact location of the schema file in the PDSC (refer to \ref cp_CreatePDSC), both tools should
+automatically pick it up for PDSC validation.
 
 
 \section cp_Editors_xmllint Using xmllint
@@ -121,70 +121,83 @@ another location, please adapt the path in the Bash script.
 /**
 \page bash_script Bash Script gen_pack.sh
 
-The following <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" target="_blank">Bash</a> shell script template
-\ref gen_pack_sh "gen_pack.sh" allows you to generate a pack file under Linux or Windows. On Windows, Bash is available via
-<a href="https://gitforwindows.org/" target="_blank">git for Windows</a> for example.
+A <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" target="_blank">Bash</a> shell script template and library are
+available that allow you to generate a pack file. The library and template are released via
+<a href="https://github.com/Open-CMSIS-Pack/gen-pack" target="_blank">Open-CMSIS-Pack</a>. Check the prerequisites to
+successfully use this under Linux, Mac OS, or Windows.
 
-
-For using \ref gen_pack_sh "gen_pack.sh"
- - Install \ref cp_ZIPTool "7-Zip".
- - Install \ref cp_Editors_xmllint "xmllint".
- - Adapt the file \ref gen_pack_sh "gen_pack.sh" that is available in the directory <b>/CMSIS/Pack/Bash</b> to the
-   requirements of your software pack and .
-
-The script is generic enough to cope with a wide range of requirements. It uses the information from the
+A template
+<a href="https://raw.githubusercontent.com/Open-CMSIS-Pack/gen-pack/main/template/gen_pack.sh" target="_blank">"gen_pack.sh"</a>
+file is available that is generic enough to cope with a wide range of requirements. It uses the information from the
 \ref packFormat "*.PDSC file" to generate the output filename according the CMSIS-Pack conventions and validates the pack
-consistency with \ref packChk.
-
-Below is a sample output (reduced).
+consistency with \ref packChk. The only change you need to make is entering the library version you are using in this line:
 \code
-$ ./gen_pack.sh
-
-Starting CMSIS-Pack Generation: 19 Aug 2019 15:34:02
-7z is /C/Program Files/7-Zip/7z
-PackChk is /C/Keil_v5/ARM/PACK/ARM/CMSIS/5.6.0/CMSIS/Utilities/Win32/PackChk
-
-Generating Pack Version: for MyVendor.MyPack
-
-Adding directories to pack:
-Include/ Source/
-
-Adding files to pack:
-License.txt ReadMe.txt
-
-PackChk.exe 1.3.87
-Copyright (C) 2012-2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
-
-M362: Also suppressing Messages M502 and M504
-
-Phase1: Read PDSC files
-Phase2: Static Data & Dependencies check
-*** WARNING M304: C:\W\CMSIS_5\CMSIS\Pack\Bash\build\MyVendor.MyPack.pdsc
-  No package URL (<url>-tag and/or value) found in PDSC file!
-
-Phase3: RTE Model based Data & Dependencies check
-Found 0 Error(s) and 1 Warning(s).
-
-creating pack file MyVendor.MyPack.1.0.0.pack
-
-Creating archive: C:/W/CMSIS_5/CMSIS/Pack/Bash/output/MyVendor.MyPack.1.0.0.pack
-Add new data to archive: 2 folders, 5 files, 1165 bytes (2 KiB)
-
-Everything is Ok
-Completed CMSIS-Pack Generation ...
+REQUIRED_GEN_PACK_LIB="<pin lib version here>"
 \endcode
 
+\note
+Refer to the <a href="https://github.com/Open-CMSIS-Pack/gen-pack/" target="_blank">documentation</a> on how to install and
+determine the library version.
 
+<b>Sample output</b>
+\code
+$ ./gen_pack.sh
+Starting CMSIS-Pack Generation: 04 Aug 2022 09:45:41
+CMSIS-Pack root is C:/Users/username/AppData/Local/Arm/Packs
+Zip is /c/Program Files/7-Zip/7z
+PackChk is C:/Users/username/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Utilities/Win32/packchk
+XML-Lint is /mingw64/bin/xmllint
+Curl is /mingw64/bin/curl
 
-\anchor gen_pack_sh
-<b>gen_pack.sh Bash script template file</b>
+PDSC is /c/work/Packs/MyVendor/MyVendor.MyPack.pdsc
 
-The <b>gen_pack.sh</b> script template allows you to configure:
- - Path environment variables for related utilities (\c CMSIS_PACK_PATH, \c PATH_TO_ADD)
- - Directory names for temporary build and output files (\c PACK_WAREHOUSE, \c PACK_BUILD)
- - Directory names and files in the root directory that should be included in the pack (\c PACK_DIRS, \c PACK_BASE_FILES)
+Generating Pack for MyVendor.MyPack
+ via /c/work/Packs/MyVendor/build
+ to /c/work/Packs/MyVendor/output
 
+Adding directories to pack:
 
-\verbinclude gen_pack.sh
+    Boards
+    CMSIS
+    Device
+    Examples
+    Flash
 
+Adding files to pack:
+
+Deleting files from pack:
+
+Applying patches to pack:
+
+Running schema check for /c/work/Packs/MyVendor/build/MyVendor.MyPack.pdsc
+Fetching schema file...
+"/mingw64/bin/curl" -sL PACK.xsd --output "/tmp/PACK.xsd"
+Failed downloading schema from 'PACK.xsd'. Skipping schema check.
+"C:/Users/username/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Utilities/Win32/packchk" "/c/work/Packs/MyVendor/build/MyVendor.MyPack.pdsc" -i "C:/Users/username/AppData/Local/Arm/Packs/.Web/ARM.CMSIS.pdsc" -n PackName.txt
+
+CMSIS Pack Checker 1.3.95 (Apr  6 2022 14:04:41)
+Copyright (C) 2012-2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+
+Phase1: Read PDSC files
+
+Phase2: Static Data & Dependencies check
+
+Phase3: RTE Model based Data & Dependencies check
+
+Found 0 Error(s) and 0 Warning(s).
+pushd "/c/work/Packs/MyVendor/build"; "/c/Program Files/7-Zip/7z" a -tzip "/c/work/Packs/MyVendor/output/MyVendor.MyPack.0.3.1.pack" .
+
+7-Zip 19.00 (x64) : Copyright (c) 1999-2018 Igor Pavlov : 2019-02-21
+
+Scanning the drive:
+50 folders, 202 files, 3118115 bytes (3046 KiB)
+
+Creating archive: C:/work/Packs/MyVendor/output/MyVendor.MyPack.0.3.1.pack
+
+Add new data to archive: 50 folders, 202 files, 3118115 bytes (3046 KiB)
+
+Files read from disk: 202
+Archive size: 624803 bytes (611 KiB)
+Everything is Ok
+\endcode
 */
