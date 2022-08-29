@@ -1398,7 +1398,6 @@ supersede outer elements.
 
 This element can be used also to describe information about the features and capabilities of a \ref element_part "package/parts/part". 
 The list of the pre-defined features for Devices (\ref DeviceFeatureTypeEnum "Device Feature Types") can be used also for parts. 
-At least one feature must be defined for a part.
 
 \b Example
 \code

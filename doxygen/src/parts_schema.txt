@@ -148,7 +148,7 @@ This element specifies a part. At least one part element must be specified per p
     <td>\ref element_part_feature "feature"</td>
 	<td>Describes the features of the part.</td>
 	<td>DeviceFeatureType</td>
-	<td>1..* </td>
+	<td>0..* </td>
   </tr>
   <tr>
     <td>\ref element_part_book "book"</td>
