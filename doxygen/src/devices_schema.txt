@@ -2170,6 +2170,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.linear.com/</td>
   </tr>
   <tr>
+    <td class="XML-Token">Linkedsemi:175</td>
+    <td>LinkedSemi Microelectronics (Xiamen) Co., Ltd</td>
+    <td>https://www.linkedsemi.com/</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Maxim:23</td>
     <td>Maxim Integrated</td>
     <td>http://www.maximintegrated.com</td>

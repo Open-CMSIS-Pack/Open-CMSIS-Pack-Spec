@@ -42,10 +42,8 @@ software component. Then, it is extended to show the various features for descri
 
 <b>Preparations</b>
 -# Create a working directory on you PC, for example <b>C:\\temp\\working</b>.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Tutorials/Pack_with_Software_Components.zip" download>Pack_with_Software_Components.zip</a>.
+-# Download the file <a class=el href="https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/raw/main/doxygen/examples/Pack_with_Software_Components.zip">Pack_with_Software_Components.zip</a>.
 -# Copy the <i>content</i> of the ZIP file's \b 01_Create_PDSC directory into your working directory.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Bash/gen_pack.sh">gen_pack.sh</a>
-   (right-click and select "Save (page) as..."). Copy the shell script to your working directory.
 -# Make sure that files/directories are not write protected (remove read-only flag).
 
 
@@ -56,7 +54,7 @@ software component. Then, it is extended to show the various features for descri
 Open the file <b>vendor.pack_name.pdsc</b> in an editor and change it like this:
 \code{.xml}
 <?xml version="1.0" encoding="UTF-8"?>
-<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.7.7" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.7/schema/PACK.xsd">
   <vendor>MyVendor</vendor>
   <name>MyPack</name>
   <description>Internal Software Pack</description>
@@ -68,9 +66,10 @@ Open the file <b>vendor.pack_name.pdsc</b> in an editor and change it like this:
 \note All code examples in this and the following sections can be found in the \c snippets.xml file in the <b>01_Create_PDSC</b>
       directory.
 
-A PDSC file starts with information on the XML version and the encoding. The \ref pdsc_package_pg "<package>" element
-declares the version of the schema file and the XSD file that is used to validate the PDSC file:
-
+An XML file always starts with information on the XML version and the encoding. The PDSC file then continues with:
+- The \ref pdsc_package_pg "<package>" element declares the version of the schema file and the XSD file that is used to
+  validate the PDSC file. Specify the full path to the PACK.xsd file so that the \ref bash_script "generation script" can
+  download the schema file to validate your PDSC file.
 - \ref element_package "<name>" specifies the name of the Pack and \em must \em not contain spaces. \b Example: \c MyPack and
   \c My_Pack are ok, \c My \c Pack is not ok.
 - \ref element_package "<description>" describes the Pack in a few words.
@@ -91,8 +90,8 @@ declares the version of the schema file and the XSD file that is used to validat
       The naming of the files follow the standard naming rules. For example, the ARM::CMSIS PDSC and Pack files are available
       here:\n
       <a href="https://www.keil.com/pack/ARM.CMSIS.pdsc" target="_blank">https://www.keil.com/pack/ARM.CMSIS.pdsc</a> and \n
-      <a href="https://www.keil.com/pack/ARM.CMSIS.5.7.0.pack" target="_blank">https://www.keil.com/pack/ARM.CMSIS.5.7.0.pack</a> and \n
-      <a href="https://www.keil.com/pack/ARM.CMSIS.5.6.0.pack" target="_blank">https://www.keil.com/pack/ARM.CMSIS.5.6.0.pack</a> and ... \n
+      <a href="https://www.keil.com/pack/ARM.CMSIS.5.9.0.pack" target="_blank">https://www.keil.com/pack/ARM.CMSIS.5.9.0.pack</a> and \n
+      <a href="https://www.keil.com/pack/ARM.CMSIS.5.8.0.pack" target="_blank">https://www.keil.com/pack/ARM.CMSIS.5.8.0.pack</a> and ... \n
       At the specified location, you need to have one (unversioned) PDSC file and can have multiple versioned Pack files,
       but at least the latest one.
 - \ref element_package "<supportContact>" may provide an email address or web page URL for Pack specific questions/problems.
@@ -158,13 +157,11 @@ Rename the file <b>vendor.pack_name.pdsc</b> to <b>MyVendor.MyPack.pdsc</b> (acc
 elements in the PDSC file).
 </li>
 <li>
-Open \ref bash_script "gen_pack.sh" from your working directory in an editor. Modify the variables \c CMSIS_PACK_PATH and
-\c PATH_TO_ADD reflect your setup. The following is an example for a Git Bash on Windows:
-\code
-  CMSIS_PACK_PATH="$LOCALAPPDATA/Arm/Packs/ARM/CMSIS/5.7.0"
-  PATH_TO_ADD="/C/Program Files/7-Zip/:$CMSIS_PACK_PATH/CMSIS/Utilities/Win32/:/C/xmllint/"
-\endcode
-\note Refer to section  \ref createPackUtil for hints on how to install the required tools.
+Copy the file
+<a href="https://raw.githubusercontent.com/Open-CMSIS-Pack/gen-pack/main/template/gen_pack.sh" target="_blank">"gen_pack.sh"</a>
+to your local working directory. You only need to enter the version number of the used library (refer to the
+<a href="https://github.com/Open-CMSIS-Pack/gen-pack/" target="_blank">documentation</a>).
+\note Refer to section \ref createPackUtil for hints on how to install the required tools.
 </li>
 <li>
 Having saved <b>gen_pack.sh</b>, open a Bash console in the current directory and run the script.
@@ -656,11 +653,11 @@ the MVCM3 family is as follows:
 
 <b>Preparations</b>
 -# Create a working directory on you PC, for example <b>C:\\temp\\working_dfp</b>.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Tutorials/Pack_with_Device_Support.zip" download>Pack_with_Device_Support.zip</a>.
--# Copy the file \b MyVendor.MVCM3.pdsc of the ZIP file's \b 01_Basic_Pack directory into your working directory.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Bash/gen_pack.sh">gen_pack.sh</a>
-   (right-click and select "Save (page) as..."). Copy the shell script to your working directory.
--# Make sure that file are not write protected (remove read-only flag).
+-# Download the file <a class=el href="https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/raw/main/doxygen/examples/Pack_with_Device_Support.zip">Pack_with_Device_Support.zip</a>.
+-# Copy the \b MyVendor.MVCM3.pdsc file of the ZIP file's \b 01_Basic_Pack directory into your working directory.
+-# Copy the <a href="https://raw.githubusercontent.com/Open-CMSIS-Pack/gen-pack/main/template/gen_pack.sh" target="_blank">gen_pack.sh</a>
+   template to the working directory. Refer to \ref bash_script for required modifications.
+-# Make sure that the files are not write protected (remove read-only flag).
 -# Open the \b MyVendor.MVCM3.pdsc file in an editor.
 
 <b>Code Example</b>
@@ -717,19 +714,7 @@ Add a \ref element_device "<devices>" section in the PDSC file with the followin
 
 </li>
 <li>
-Open \ref bash_script "gen_pack.sh" from your working directory in an editor. Modify the variables \c CMSIS_PACK_PATH and
-\c PATH_TO_ADD reflect your setup. The following is an example for a Git Bash on Windows:
-\code
-  CMSIS_PACK_PATH="$LOCALAPPDATA/Arm/Packs/ARM/CMSIS/5.7.0"
-  PATH_TO_ADD="/C/Program Files/7-Zip/:$CMSIS_PACK_PATH/CMSIS/Utilities/Win32/:/C/xmllint/"
-\endcode
-\note Refer to section  \ref createPackUtil for hints on how to install the required tools.
-</li>
-<li>
-From the \c PACK_BASE_FILES variable, delete \c License.txt and \c README.md. We don't use them in this tutorial.
-</li>
-<li>
-Having saved <b>gen_pack.sh</b>, open a Bash console in the current directory and run the script.
+Open a Bash console in the current directory and run the \c gen_pack.sh script.
 The shell script will:
 - Run a schema check on the PDSC file using \ref cp_Editors "xmllint".
 - Run \ref packChk
@@ -1165,10 +1150,10 @@ BSPs can also be used to provide information for the display on <b>web sites</b>
    <a class=el href="https://www.keil.com/dd2/arm/armcm3/" target="_blank">Keil::ARMCortex_DFP</a> as this
    will be required for the BSP to function properly.
 -# Create a working directory on your PC, for example <b>C:\\temp\\working_bsp</b>.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Tutorials/Pack_with_Board_Support.zip" download>Pack_with_Board_Support.zip</a>.
+-# Download the file <a class=el href="https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/raw/main/doxygen/examples/Pack_with_Board_Support.zip">Pack_with_Board_Support.zip</a>.
 -# Copy the \e content of the ZIP file's \b 01_Specify_Dev_Board directory into your working directory.
--# Download the file <a class=el href="https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Pack/Bash/gen_pack.sh">gen_pack.sh</a>
-   (right-click and select "Save (page) as..."). Copy the shell script to your working directory.
+-# Copy the <a href="https://raw.githubusercontent.com/Open-CMSIS-Pack/gen-pack/main/template/gen_pack.sh" target="_blank">gen_pack.sh</a>
+   template to the working directory. Refer to \ref bash_script for required modifications.
 -# From the working directory, open the \b MyVendor.MyBSP.pdsc file in an editor.
 
 <b>Code Example</b>
@@ -1183,6 +1168,7 @@ Add a \ref element_boards "<boards>" section in the PDSC file with the following
     <book category="setup"     name="Docs/MyDevBoard/MyDevBoard_setup.pdf"      title="Getting Started"/>
     <book category="schematic" name="Docs/MyDevBoard/MyDevBoard_schematics.pdf" title="Schematics"/>
     <book category="manual"    name="Docs/MyDevBoard/MyDevBoard_um.pdf"         title="User Manual"/>
+    <book category="other"     name="Docs/MyDevBoard/README.md"                 title="Guide"/>
     <mountedDevice             deviceIndex="0" Dvendor="ARM:82" Dname="ARMCM3"/>
     <compatibleDevice          deviceIndex="0" Dvendor="ARM:82" Dfamily="ARM Cortex M3"/>
     <feature type="ODbg"       n="1"           name="On-board J-LINK Lite"/>
