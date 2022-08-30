@@ -116,9 +116,9 @@ This element specifies a part. At least one part element must be specified per p
   </tr>
   <tr>
     <td>Hclass</td>
-    <td>Defines the part class to which the part belongs. This is a mandatory attribute.</td>
+    <td>Defines the part class to which the part belongs.</td>
     <td>xs:string</td>
-    <td>required</td>
+    <td>optional</td>
   </tr>
   <tr>
     <td>Hgroup</td>

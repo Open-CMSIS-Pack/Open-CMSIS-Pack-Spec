@@ -1436,7 +1436,7 @@
     </xs:all>
     <xs:attribute name="Hvendor"   type="DeviceVendorEnum" use="optional"/>
     <xs:attribute name="Hname"     type="xs:string"        use="required"/>
-    <xs:attribute name="Hclass"    type="xs:string"        use="required"/>
+    <xs:attribute name="Hclass"    type="xs:string"        use="optional"/>
     <xs:attribute name="Hgroup"    type="xs:string"        use="optional"/>
     <xs:attribute name="Hsub"      type="xs:string"        use="optional"/>
     <xs:attribute name="Hvariant"  type="xs:string"        use="optional"/>
