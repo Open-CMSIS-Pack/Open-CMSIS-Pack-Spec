@@ -17,14 +17,14 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        30. Aug 2022
+  $Date:        06. Sep 2022
   $Revision:    1.7.13
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.13
 
-  30. Aug 2022: v1.7.13
+  06. Sep 2022: v1.7.13
    - added \<parts> element and its child elements for describing and packaging the parts (devices other than the MCU).
    - added \<mountedPart> element, as child element of the \<board> element, for describing the parts (devices other than the MCU) mounted on the development board.
   09. Aug 2022: v1.7.12
