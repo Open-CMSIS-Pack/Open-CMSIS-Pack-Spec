@@ -14,7 +14,7 @@ jobs:
     name: Validate pack schema
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
@@ -29,7 +29,7 @@ jobs:
       - name: Fetch Keil index
         run: wget https://www.keil.com/pack/index.pidx
       - name: Cache Keil index pdsc files
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache
         with:
           path: .Web
@@ -52,14 +52,16 @@ jobs:
           done
           exit $rc
       - name: Check schema version history
-        run: python test/pack_schema_version_history.py ${{ steps.files.outputs.added_modified }}
+        run: |
+          echo "${{ github.event.pull_request.base.sha }}" > .git/ORIG_HEAD
+          python test/pack_schema_version_history.py ${{ steps.files.outputs.added_modified }}
 
   index:
     name: Validate index schema
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - name: Install packages
         run: |
           sudo apt-get update
