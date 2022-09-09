@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        09. Aug 2022
-  $Revision:    1.7.12
+  $Date:        09. Sep 2022
+  $Revision:    1.7.13
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.12
+  SchemaVersion=1.7.13
 
+  09. Sep 2022: v1.7.13
+   - added visibility description for components as suggested by NXP and STMicroelectronics
   09. Aug 2022: v1.7.12
    - added 'Linkedsemi' Dvendor entry
   19. July 2022: v1.7.11
@@ -161,7 +163,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.12">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.13">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1832,6 +1834,15 @@
     <xs:attribute name="value" type="xs:string" use="optional" />
   </xs:complexType>
 
+  <!-- visibility Type -->
+  <xs:simpleType name="CvisibilityType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="32" />
+      <xs:pattern value="([a-zA-Z0-9\S]*)?"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- package description root point -->
   <xs:element name="package" nillable="true">
     <xs:complexType>
@@ -1980,6 +1991,8 @@
                   <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional" />
                   <!-- associates all components of the bundle with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
                   <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
+                  <!-- visibility attribute : recommendation for whowing/hiding this component when displaying the project composition-->
+                  <xs:attribute name="visibility" type="CvisibilityType" use="optional"/>
                 </xs:complexType>
               </xs:element>
               <xs:element name="component" minOccurs="0" maxOccurs="unbounded">

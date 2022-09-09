@@ -84,6 +84,12 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.13</td>
+    <td>
+     - added visibility atrribute for components as suggested by NXP and STMicroelectronics.
+    </td>
+  </tr>
+  <tr>
     <td>1.7.12</td>
     <td>
      - added 'Linkedsemi' Dvendor ID.

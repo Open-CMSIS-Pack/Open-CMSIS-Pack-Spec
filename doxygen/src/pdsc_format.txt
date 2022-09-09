@@ -1278,4 +1278,56 @@ The following table lists predefined values for the Component Class <b>Cclass="D
 
 <p>&nbsp;</p>
 
+\anchor CvisibilityType <b>Table: Component visibility</b>
+
+Component visibility values are recommendations from the pack designer that the Project Manager tool can use to make display choices (ex: when it is required to optimize the display of the project composition).
+Typically, it can be used by tools to remove some components from the screen, so that it is easier to get the global project picture.
+The attribute is indicative.
+These recommendations are applicable, but with a lower priority than the end-user's choices and the tools' needs.
+For instance:
+- If the end-user defines a display criterion (like filtering all Board Support components), then the end-user criterion takes precedence over this visibility attribute.
+- If the tool needs a user input to resolve a condition related to a component, the visibility recommendation can be bypassed.
+
+\b Example:
+\code
+  <... visibility="Maskable" ...>
+\endcode
+
+Component A, a Device component, has visibility set to "Maskable".
+1. This Component A is shown in the list of available components.
+2. The end-user adds component A to his project.
+3. The end-user enters a “simplified UI” view of the tool: component A becomes hidden.
+4. The end-user applies a display filter of his choice : “show all Device class components”.
+5. Component A becomes visible, even in the simplified UI view.
+
+<p>&nbsp;</p>
+
+The table lists predefined visibility values.
+<table class="cmtable" summary="Predefined visibility names">
+  <tr>
+    <th>Cclass=</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td class="XML-Token">Always (default)</td>
+	<td>This component must always be presented to the end-user.
+      Overriden by end-user settings if any.
+  </td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Undesirable</td>
+	<td>Presenting this component to the end-user should be avoided, even when it is added to the project by dependency resolution.
+      Overriden by end-user settings if any, or by tool's needs (ex: asking user decision about this component).
+  </td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Maskable</td>
+    <td>Showing or hiding the component is the tool’s choice based on its current context.
+        This recommendation is overriden by end-user settings if any.
+    </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
 */

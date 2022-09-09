@@ -383,7 +383,7 @@ Components enclosed in a bundle must not specify any of the following attributes
   <tr>
     <td>licenseSet</td>
 	<td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
-	    A licenseSet describes one or more license files which in this case govern all components of this bundle. If the licenseSet is 
+	    A licenseSet describes one or more license files which in this case govern all components of this bundle. If the licenseSet is
         different for different components in the bundle, the licenseSet attribute is required to be assigned on a component level.</td>
 	<td>xs:string</td>
 	<td>optional</td>
@@ -531,6 +531,16 @@ A component describes a collection of files (source, header, configuration, libr
 	<td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
 	    A licenseSet describes one or more license files that govern the component.</td>
 	<td>xs:string</td>
+	<td>optional</td>
+  </tr>
+  <tr>
+  <td>visibility</td>
+	<td>This attribute defines a recommendation concerning the behavior the Project Manager tool should apply to decide if a component is shown or hidden at composition stage.
+      The indication can be applied or ignored depending on the current procedure (ex: applied only once conditions resolution has been completed).
+      Predefined values can be used as listed in the table \ref CvisibilityType "Component visibility".
+      This does not change the way the component can be used, it deals only with some rendering recommendations.
+  </td>
+	<td>\ref CvisibilityType</td>
 	<td>optional</td>
   </tr>
   <tr>
