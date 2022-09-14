@@ -440,7 +440,7 @@ The messages in this category are issued by packchk during package validation. T
   <td>The generator ID used in the taxonomy is not defined. Define or correct the generator ID (\ref element_taxonomy).</td>
 </tr>
 <tr><td>M362</td> <td>WARNING</td> <td>Not all Component Dependencies for Cclass= \em 'CCLASS', Cgroup= \em 'CGROUP', Csub= \em 'CSUB', Cversion= \em 'CVER', Capiversion= \em 'APIVER' can be resolved. \n RTE Model reports: \em 'MSG'</td>
-  <td>Some of the component dependencies could not be resolved. The message might contain additional information. Verify and correct component definition and dependency information. Refer to \ref element_component attribute \em condition.</td>
+  <td>Some of the component dependencies could not be resolved. The message might contain additional information. Verify and correct component definition and dependency information, for example by referencing all dependent PDSC files in the command line. Refer to \ref element_component attribute \em condition.</td>
 </tr>
 <tr><td>M363</td> <td>WARNING</td> <td>No API defined for Component Cclass= \em 'CCLASS', Cgroup= \em 'CGROUP', Csub= \em 'CSUB', Cversion= \em 'CVER', Capiversion= \em 'APIVER'</td>
   <td>The package is missing the API information for the specified component. Refer to \ref element_apis. </td>
