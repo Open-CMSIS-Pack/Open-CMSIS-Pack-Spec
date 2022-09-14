@@ -379,7 +379,7 @@ Define a component (<a class="el" href="pdsc_components_pg.html#element_componen
 <td>M361 </td><td>WARNING </td><td>Generator ID in Taxonomy Cclass= <em>'CCLASS'</em>, Cgroup= <em>'CGROUP'</em> is undefined: <em>'GENID'</em>  </td><td>The generator ID used in the taxonomy is not defined. Define or correct the generator ID (<a class="el" href="element_taxonomy.html">/package/taxonomy element</a>).  </td></tr>
 <tr>
 <td>M362 </td><td>WARNING </td><td>Not all Component Dependencies for Cclass= <em>'CCLASS'</em>, Cgroup= <em>'CGROUP'</em>, Csub= <em>'CSUB'</em>, Cversion= <em>'CVER'</em>, Capiversion= <em>'APIVER'</em> can be resolved. <br  />
- RTE Model reports: <em>'MSG'</em>  </td><td>Some of the component dependencies could not be resolved. The message might contain additional information. Verify and correct component definition and dependency information. Refer to <a class="el" href="pdsc_components_pg.html#element_component">/package/components/.../component</a> attribute <em>condition</em>.  </td></tr>
+ RTE Model reports: <em>'MSG'</em>  </td><td>Some of the component dependencies could not be resolved. The message might contain additional information. Verify and correct component definition and dependency information, for example by referencing all dependent PDSC files in the command line. Refer to <a class="el" href="pdsc_components_pg.html#element_component">/package/components/.../component</a> attribute <em>condition</em>.  </td></tr>
 <tr>
 <td>M363 </td><td>WARNING </td><td>No API defined for Component Cclass= <em>'CCLASS'</em>, Cgroup= <em>'CGROUP'</em>, Csub= <em>'CSUB'</em>, Cversion= <em>'CVER'</em>, Capiversion= <em>'APIVER'</em>  </td><td>The package is missing the API information for the specified component. Refer to <a class="el" href="pdsc_apis_pg.html#element_apis">/package/apis</a>.   </td></tr>
 <tr>
@@ -411,7 +411,7 @@ Remove duplicate device/variant entries. Refer to <a class="el" href="pdsc_famil
 <tr>
 <td>M376 </td><td>ERROR </td><td>Schema Version not set! </td><td>Set a valid schema version in the PDSC file. Refer to <span class="XML-Token">schemaVersion</span> attribute in the <a class="el" href="pdsc_package_pg.html#element_package">/package</a>.  </td></tr>
 <tr>
-<td>M377 </td><td>WARNING </td><td>File <em>'NAME'</em> <em>'TYPE'</em> must have <em>'attr="config"'</em>  </td><td>The category <em>'TYPE'</em> of the file <em>'NAME'</em> requires it to be defined as a configuration file. <br  />
+<td>M377 </td><td>INFO </td><td>File <em>'NAME'</em> <em>'TYPE'</em> must have <em>'attr="config"'</em>  </td><td>The category <em>'TYPE'</em> of the file <em>'NAME'</em> requires it to be defined as a configuration file. <br  />
 Add the attribute <span class="XML-Token">attr="config"</span> to the <span class="XML-Token">&lt;file&gt;</span> element that defines the file. Refer to <a class="el" href="pdsc_components_pg.html#element_file">/package/.../files/file</a>. </td></tr>
 <tr>
 <td>M378 </td><td>WARNING </td><td>Component Cclass=<em>'CCLASS</em>, Cgroup=<em>'CGROUP</em>, Csub=<em>'CSUB'</em>, Cversion=<em>'CVER'</em>, implements the API defined in <em>'NAME'</em> but does not attribute 'Capiversion' specifying the version it implements. </td><td>Add attribute <span class="XML-Token">Capiversion</span> specifying the API version that is implemented in the component described in the message. Refer to <a class="el" href="pdsc_components_pg.html#element_component">/package/components/.../component</a>.  </td></tr>
