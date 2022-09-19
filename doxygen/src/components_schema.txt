@@ -535,7 +535,7 @@ A component describes a collection of files (source, header, configuration, libr
   </tr>
   <tr>
     <td>view</td>
-    <td>Defines the user view of this component.  A components may be hidden, for example when it is managed by a generator.
+    <td>Defines the user view of this component.  A component may be hidden, for example when it is managed by a generator.
     <td>\ref ViewType "ViewType"</td>
     <td>optional</td>
   </tr>
