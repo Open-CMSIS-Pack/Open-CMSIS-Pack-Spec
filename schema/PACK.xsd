@@ -17,13 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        09. Aug 2022
-  $Revision:    1.7.12
+  $Date:        06. Sep 2022
+  $Revision:    1.7.13
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.12
+  SchemaVersion=1.7.13
 
+  06. Sep 2022: v1.7.13
+   - added \<parts> element and its child elements for describing and packaging the parts (devices other than the MCU).
+   - added \<mountedPart> element, as child element of the \<board> element, for describing the parts (devices other than the MCU) mounted on the development board.
   09. Aug 2022: v1.7.12
    - added 'Linkedsemi' Dvendor entry
   19. July 2022: v1.7.11
@@ -161,7 +164,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.12">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.13">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -694,7 +697,7 @@
     <!-- links to web pages are assumed public -->
     <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
   </xs:complexType>
-
+  
   <!-- Description Type-->
   <xs:complexType name="DescriptionType">
     <xs:simpleContent>
@@ -716,7 +719,7 @@
     <!-- deprecated, only for backwards compatibility -->
     <xs:attribute name="count" type="xs:int" use="optional" />
   </xs:complexType>
-
+  
   <!-- Board Feature Type -->
   <xs:complexType name="BoardFeatureType">
     <!-- <xs:attribute name="type"  type="BoardFeatureTypeEnum" use="required"/> -->
@@ -725,7 +728,7 @@
     <xs:attribute name="m" type="xs:string" use="optional" />
     <xs:attribute name="name" type="xs:string" use="optional" />
   </xs:complexType>
-
+  
   <!-- Environment Type -->
   <xs:complexType name="EnvironmentType">
     <xs:sequence>
@@ -1325,6 +1328,13 @@
     <xs:attribute name="Dname"       type="xs:string"        use="optional" /> <!-- use wild card -->
   </xs:complexType>
 
+  <xs:complexType name="MountedPartType">
+    <xs:attribute name="n"           type="xs:decimal"       use="required" />
+    <xs:attribute name="Hvendor"     type="DeviceVendorEnum" use="required" />
+    <xs:attribute name="Hname"       type="xs:string"        use="required" />
+    <xs:attribute name="Hvariant"    type="xs:string"        use="optional" />
+  </xs:complexType>
+
   <xs:complexType name="BoardsDeviceType">
     <xs:attribute name="deviceIndex" type="xs:string"        use="optional" />
     <xs:attribute name="Dvendor"     type="DeviceVendorEnum" use="required" />
@@ -1383,6 +1393,7 @@
       <xs:element name="feature"          type="BoardFeatureType"     maxOccurs="unbounded" />
       <xs:element name="mountedDevice"    type="BoardsDeviceType"     maxOccurs="unbounded" />
       <xs:element name="compatibleDevice" type="CompatibleDeviceType" maxOccurs="unbounded" />
+      <xs:element name="mountedPart"      type="MountedPartType"      minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="image" minOccurs="0">
         <xs:complexType>
           <xs:attribute name="small" type="xs:string" use="optional" />
@@ -1416,6 +1427,27 @@
   <xs:complexType name="BoardsType">
     <xs:sequence>
       <xs:element name="board" type="BoardType" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PartType">
+    <xs:all>
+      <xs:element name="feature"     type="DeviceFeatureType" minOccurs="0" />
+      <xs:element name="book"        type="BookType"          minOccurs="0" />
+      <xs:element name="environment" type="EnvironmentType"   minOccurs="0" />
+    </xs:all>
+    <xs:attribute name="Hvendor"   type="DeviceVendorEnum" use="optional"/>
+    <xs:attribute name="Hname"     type="xs:string"        use="required"/>
+    <xs:attribute name="Hclass"    type="xs:string"        use="optional"/>
+    <xs:attribute name="Hgroup"    type="xs:string"        use="optional"/>
+    <xs:attribute name="Hsub"      type="xs:string"        use="optional"/>
+    <xs:attribute name="Hvariant"  type="xs:string"        use="optional"/>
+    <xs:attribute name="Hrevision" type="xs:string"        use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="PartsType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="part" type="PartType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
@@ -1899,6 +1931,9 @@
         <!-- definition of boards. Can be referenced by examples -->
         <xs:element name="boards" type="BoardsType" minOccurs="0" />
         <!-- boards end -->
+        <!-- definition of parts -->
+        <xs:element name="parts" type="PartsType" minOccurs="0" maxOccurs="1" />
+        <!-- parts end -->
         <!-- taxonomy section contains default descriptions used in the entire model -->
         <xs:element name="taxonomy" type="TaxonomyType" minOccurs="0" />
         <!-- apis section contains api descriptions used in the entire model -->
