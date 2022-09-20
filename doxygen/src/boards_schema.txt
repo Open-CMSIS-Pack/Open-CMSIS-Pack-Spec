@@ -341,6 +341,7 @@ The table below lists predefined board features.
 |LCD|Number of Segment LCD Controller|Com.Seg as a decimal number (see example)|LCD|\<feature type="LCD"  n="1" m="16.40" name="Segment LCD Controller"/\>|1 x 16 x 40  Segment LCD Controller|
 |GLCD|Number of Graphic LCD Controller|Maximum Resolution as a decimal number (see example)|GLCD|\<feature type="GLCD"  n="1" m="320.240" name="2.4 inch Color TFT LCD with resistive touchscreen"/\>|320 x 240 Pixel 2.4 inch Color TFT LCD with resistive touchscreen|
 |Speaker|Number of Speakers|N/A|Speaker|\<feature type="Speaker"  n="1"/\>|1 x Speaker|
+|VirtualHW|1|N/A|Arm Virtual Hardware|\<feature type="VirtualHW"  n="1"/\>|Arm Virtual Hardware|
 |Other|Number of Other Features|N/A|Other Feature|\<feature type="Other" n=1 name="My Other Feature"/\>|1 x My Other Feature|
 
 <p>&nbsp;</p>		
