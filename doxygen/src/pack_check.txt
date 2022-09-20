@@ -440,7 +440,7 @@ The messages in this category are issued by packchk during package validation. T
   <td>The generator ID used in the taxonomy is not defined. Define or correct the generator ID (\ref element_taxonomy).</td>
 </tr>
 <tr><td>M362</td> <td>WARNING</td> <td>Not all Component Dependencies for Cclass= \em 'CCLASS', Cgroup= \em 'CGROUP', Csub= \em 'CSUB', Cversion= \em 'CVER', Capiversion= \em 'APIVER' can be resolved. \n RTE Model reports: \em 'MSG'</td>
-  <td>Some of the component dependencies could not be resolved. The message might contain additional information. Verify and correct component definition and dependency information. Refer to \ref element_component attribute \em condition.</td>
+  <td>Some of the component dependencies could not be resolved. The message might contain additional information. Verify and correct component definition and dependency information, for example by referencing all dependent PDSC files in the command line. Refer to \ref element_component attribute \em condition.</td>
 </tr>
 <tr><td>M363</td> <td>WARNING</td> <td>No API defined for Component Cclass= \em 'CCLASS', Cgroup= \em 'CGROUP', Csub= \em 'CSUB', Cversion= \em 'CVER', Capiversion= \em 'APIVER'</td>
   <td>The package is missing the API information for the specified component. Refer to \ref element_apis. </td>
@@ -487,7 +487,7 @@ The messages in this category are issued by packchk during package validation. T
 <tr><td>M376</td> <td>ERROR</td> <td>Schema Version not set!</td>
   <td>Set a valid schema version in the PDSC file. Refer to \token{schemaVersion} attribute in the \ref element_package.</td>
 </tr>
-<tr><td>M377</td> <td>WARNING</td> <td>File \em 'NAME' \em 'TYPE' must have \em 'attr="config"'</td>
+<tr><td>M377</td> <td>INFO</td> <td>File \em 'NAME' \em 'TYPE' must have \em 'attr="config"'</td>
   <td>The category \em 'TYPE' of the file \em 'NAME' requires it to be defined as a configuration file.
   <br>Add the attribute \token{attr="config"} to the \token{\<file>} element that defines the file. Refer to \ref element_file.</td>
 <tr><td>M378</td> <td>WARNING</td> <td>Component Cclass=\em 'CCLASS, Cgroup=\em 'CGROUP, Csub=\em 'CSUB', Cversion=\em 'CVER', implements the API defined in \em 'NAME' but does not attribute 'Capiversion' specifying the version it implements.</td>

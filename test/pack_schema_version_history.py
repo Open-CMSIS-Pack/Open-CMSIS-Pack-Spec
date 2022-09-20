@@ -68,9 +68,9 @@ def main():
 
     author_date = parse(get_from_cmd(['git', 'log', '-1', '--pretty=%ad', '--date=format:%Y-%m-%d', schema_file.name],
                                      cwd=schema_file.parent))
-    base_rev = get_from_cmd(['git', 'log', '-1', '--pretty=%P', schema_file.name], cwd=schema_file.parent)
-    head_rev = get_from_cmd(["git", "log", "-1", '--pretty=%H', schema_file.name], cwd=schema_file.parent)
-    blame = get_from_cmd(["git", "blame", f"{base_rev}..{head_rev}", "-l", "-L", f"{revision[1]},{revision[1]}",
+    base_rev = get_from_cmd(['git', 'merge-base', 'ORIG_HEAD', 'HEAD'], cwd=schema_file.parent)
+    head_rev = get_from_cmd(['git', 'log', '-1', '--pretty=%H', schema_file.name], cwd=schema_file.parent)
+    blame = get_from_cmd(['git', 'blame', f"{base_rev}..{head_rev}", '-l', '-L', f"{revision[1]},{revision[1]}",
                           schema_file.name], cwd=schema_file.parent)
     blamed_rev = blame.split(' ')[0]
 
@@ -104,7 +104,7 @@ def main():
 
     if not revision:
         log_error(schema_file, 0, "Latest version tag '$Revision:  <major>.<minor>.<patch>' missing or wrong format!")
-    elif head_rev != blamed_rev:
+    elif blamed_rev.startswith('^') and blamed_rev[1:] != head_rev[:-1]:
         log_error(schema_file, revision[1], f"Revision tag not updated, should be incremented!")
     else:
         if not version:
