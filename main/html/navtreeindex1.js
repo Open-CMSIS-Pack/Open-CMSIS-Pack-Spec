@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"pdsc_generators_pg.html#element_gen_eclipse":[6,12,4],
 "pdsc_generators_pg.html#element_gen_exe":[6,12,3],
 "pdsc_generators_pg.html#element_gen_file":[6,12,10],
 "pdsc_generators_pg.html#element_gen_files":[6,12,9],
@@ -14,6 +15,12 @@ var NAVTREEINDEX1 =
 "pdsc_licenseSets_pg.html#element_licensefile":[6,8,2],
 "pdsc_package_pg.html":[6,3],
 "pdsc_package_pg.html#element_package":[6,3,0],
+"pdsc_parts_pg.html":[6,15],
+"pdsc_parts_pg.html#element_part":[6,15,1],
+"pdsc_parts_pg.html#element_part_book":[6,15,3],
+"pdsc_parts_pg.html#element_part_environment":[6,15,4],
+"pdsc_parts_pg.html#element_part_feature":[6,15,2],
+"pdsc_parts_pg.html#element_parts":[6,15,0],
 "sdf_pg.html":[10],
 "sdf_pg.html#autotoc_md13":[10,4,0],
 "sdf_pg.html#autotoc_md14":[10,4,1],

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.12</span>
+   &#160;<span id="projectnumber">Version 1.7.13</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -107,6 +107,12 @@ $(document).ready(function(){initNavTree('pack_revisionHistory.html',''); initRe
 <div class="textblock"><table class="cmtable" summary="Revision History">
 <tr>
 <th>Version </th><th>Description  </th></tr>
+<tr>
+<td>1.7.13 </td><td><ul>
+<li>added &lt;parts&gt; element and its child elements for describing and packaging the parts (devices other than the MCU).</li>
+<li>added &lt;mountedPart&gt; element, as child element of the &lt;board&gt; element, for describing the parts (devices other than the MCU) mounted on the development board.   </li>
+</ul>
+</td></tr>
 <tr>
 <td>1.7.12 </td><td><ul>
 <li>added 'Linkedsemi' Dvendor ID.   </li>

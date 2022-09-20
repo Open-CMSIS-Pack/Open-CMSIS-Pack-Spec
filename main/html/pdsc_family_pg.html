@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.12</span>
+   &#160;<span id="projectnumber">Version 1.7.13</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -184,7 +184,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_environment">environment</a> </td><td>Specify tool specific settings. </td><td>EnvironmentType </td><td>0..*  </td></tr>
 <tr>
-<td><a class="el" href="pdsc_family_pg.html#element_feature">feature</a> </td><td>Specify features that are available in all members of the device family. </td><td>FeatureType </td><td>0..*  </td></tr>
+<td><a class="el" href="pdsc_family_pg.html#element_feature">feature</a> </td><td>Specify features that are available in all members of the device family. </td><td>DeviceFeatureType </td><td>0..*  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_subFamily">subFamily</a> </td><td>A optional sub-family that is used to group devices. </td><td>group </td><td>0..*  </td></tr>
 <tr>
@@ -264,7 +264,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_description">description</a> </td><td>Description of the device family. </td><td>DescriptionType </td><td>0..*  </td></tr>
 <tr>
-<td><a class="el" href="pdsc_family_pg.html#element_feature">feature</a> </td><td>Specify features available in devices of the sub-family. </td><td>FeatureType </td><td>0..*  </td></tr>
+<td><a class="el" href="pdsc_family_pg.html#element_feature">feature</a> </td><td>Specify features available in devices of the sub-family. </td><td>DeviceFeatureType </td><td>0..*  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_device">device</a> </td><td>List individual devices that belong to the device sub-family. </td><td>DeviceType </td><td>0..*  </td></tr>
 </table>
@@ -319,9 +319,9 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_description">description</a> </td><td>Description specific to this device. </td><td>DescriptionType </td><td>0..*  </td></tr>
 <tr>
-<td><a class="el" href="pdsc_family_pg.html#element_feature">feature</a> </td><td>Specify the features of this device. </td><td>FeatureType </td><td>0..*  </td></tr>
+<td><a class="el" href="pdsc_family_pg.html#element_feature">feature</a> </td><td>Specify the features of this device. </td><td>DeviceFeatureType </td><td>0..*  </td></tr>
 <tr>
-<td><a class="el" href="pdsc_family_pg.html#element_feature">environment</a> </td><td>Specify tool options. </td><td>EnvironmentType </td><td>0..*  </td></tr>
+<td><a class="el" href="pdsc_family_pg.html#element_environment">environment</a> </td><td>Specify tool options. </td><td>EnvironmentType </td><td>0..*  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_debugport">debugport</a> </td><td>Describe a debug port specific to this device. </td><td>DebugPortType </td><td>0..*  </td></tr>
 <tr>
@@ -494,7 +494,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <hr  />
 <h1><a class="anchor" id="element_book"></a>
 /package/devices/family/.../book</h1>
-<p >Specifies documents related to a device. Books can be entered on various levels. The book element contains the location, filename, and extension of the file. The title is used for display purposes.</p>
+<p >Specifies documents related to a device or a part. Books can be entered on various levels. The book element contains the location, filename, and extension of the file. The title is used for display purposes.</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;STM32F4&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;book name=<span class="stringliteral">&quot;Documents/STM32F40x_DS.PDF&quot;</span> title=<span class="stringliteral">&quot;STM32F40x Data Sheet&quot;</span>/&gt;                 &lt;!-- valid <span class="keywordflow">for</span> all devices of the family  --&gt;</div>
@@ -507,6 +507,17 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <div class="line">    &lt;/device&gt;</div>
 <div class="line">    ...</div>
 <div class="line">&lt;/family&gt;</div>
+</div><!-- fragment --><div class="fragment"><div class="line">&lt;package&gt;</div>
+<div class="line">  ...</div>
+<div class="line">  &lt;parts&gt;</div>
+<div class="line">    &lt;part Hvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Hname=<span class="stringliteral">&quot;STSAFE-A110&quot;</span> Hvariant=<span class="stringliteral">&quot;STSAFA110DFSPL02&quot;</span> Hclass=<span class="stringliteral">&quot;Secure&quot;</span> Hgroup=<span class="stringliteral">&quot;Authentication&quot;</span>&gt;</div>
+<div class="line">      ...</div>
+<div class="line">      &lt;book name=<span class="stringliteral">&quot;Images/STSAFA110DFSPL02_image.jpg&quot;</span> title=<span class="stringliteral">&quot;image&quot;</span> <span class="keyword">public</span>=<span class="stringliteral">&quot;true&quot;</span>/&gt;</div>
+<div class="line">    &lt;/part&gt;</div>
+<div class="line">    ...</div>
+<div class="line">  &lt;\parts&gt;</div>
+<div class="line">  ...</div>
+<div class="line">&lt;\package&gt;</div>
 </div><!-- fragment --><p >&#160;</p>
 <table class="cmtable" summary="Type: BookType">
 <tr>
@@ -518,9 +529,13 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_device">device</a> </td><td colspan="3"><a class="el" href="pdsc_family_pg.html#element_device">/package/devices/family/../device</a>  </td></tr>
 <tr>
+<td><a class="el" href="pdsc_parts_pg.html#element_part">part</a> </td><td colspan="3"><a class="el" href="pdsc_parts_pg.html#element_part">/package/parts/part</a>  </td></tr>
+<tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors and where the book refers to a single processor only</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors and where the book refers to a single processor only</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed. <br  />
+<br  />
+ Must not be used for <a class="el" href="pdsc_parts_pg.html#element_part">package/parts/part</a>. </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>name </td><td>File name of the document including the extension. The document path is relative to the package base folder. Directory/file names are case-sensitive. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
@@ -611,7 +626,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <hr  />
 <h1><a class="anchor" id="element_environment"></a>
 /package/devices/family/.../environment</h1>
-<p >Tool-specific elements for a device.</p>
+<p >Tool-specific elements for a device or a part.</p>
 <p >Can occur on various levels.</p>
 <p >Contains information that is specific for a <b>development tool</b> identified by the <em>name</em> attribute. The structure of the <em>element</em> is not specified in the schema file which gives the <b>development tool</b> full control of the <em>element</em> usage.</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
@@ -639,6 +654,20 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <div class="line">    &lt;/family&gt;</div>
 <div class="line">  &lt;/devices&gt;</div>
 <div class="line">&lt;/package&gt;</div>
+</div><!-- fragment --><div class="fragment"><div class="line">&lt;package&gt;</div>
+<div class="line">  ...</div>
+<div class="line">  &lt;parts&gt;</div>
+<div class="line">    &lt;part Hvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Hname=<span class="stringliteral">&quot;STSAFE-A110&quot;</span> Hvariant=<span class="stringliteral">&quot;STSAFA110DFSPL02&quot;</span> Hclass=<span class="stringliteral">&quot;Secure&quot;</span> Hgroup=<span class="stringliteral">&quot;Authentication&quot;</span>&gt;</div>
+<div class="line">      ...</div>
+<div class="line">      &lt;environment name=<span class="stringliteral">&quot;SomeConfigTool&quot;</span>&gt;</div>
+<div class="line">        &lt;file&gt;STSAFA110DFSPL02_ConfigFile.cfg&lt;/file&gt;</div>
+<div class="line">      &lt;/environment&gt;</div>
+<div class="line">      ...</div>
+<div class="line">    &lt;/part&gt;</div>
+<div class="line">    ...</div>
+<div class="line">  &lt;parts&gt;</div>
+<div class="line">  ...</div>
+<div class="line">&lt;/package&gt;</div>
 </div><!-- fragment --><p ><br  />
  </p><table class="cmtable" summary="Element: description">
 <tr>
@@ -650,11 +679,15 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_device">device</a> </td><td colspan="3"><a class="el" href="pdsc_family_pg.html#element_device">/package/devices/family/../device</a>  </td></tr>
 <tr>
+<td><a class="el" href="pdsc_parts_pg.html#element_part">part</a> </td><td colspan="3"><a class="el" href="pdsc_parts_pg.html#element_part">/package/parts/part</a>  </td></tr>
+<tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
 <td>name </td><td>Name of the development tool (for example, "uv" for uVision) </td><td>xs:string </td><td>required  </td></tr>
 <tr>
-<td>Pname </td><td>Identifies the processor the setting belongs to. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
+<td>Pname </td><td>Identifies the processor the setting belongs to. Only alphabetical characters, decimal digits, '-' and '_' are allowed. <br  />
+<br  />
+ Must not be used for <a class="el" href="pdsc_parts_pg.html#element_part">package/parts/part</a>. </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
@@ -667,6 +700,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 /package/devices/family/.../feature</h1>
 <p >This element specifies peripherals that devices can have. This can be used on <b>web</b> <b>sites</b> for the display of device features.</p>
 <p >Many device feature types are already predefined, such as timers, converters, Ethernet, USB, etc (for a complete list refer to table <a class="el" href="pdsc_family_pg.html#DeviceFeatureTypeEnum">Device Feature Types</a>). Features can be defined on various levels. Inner elements supersede outer elements.</p>
+<p >This element can be used also to describe information about the features and capabilities of a <a class="el" href="pdsc_parts_pg.html#element_part">package/parts/part</a>. The list of the pre-defined features for Devices (<a class="el" href="pdsc_family_pg.html#DeviceFeatureTypeEnum">Device Feature Types</a>) can be used also for parts.</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  &lt;devices&gt;</div>
 <div class="line">    &lt;family Dfamily=<span class="stringliteral">&quot;STM32F4&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>&gt;</div>
@@ -702,6 +736,17 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <div class="line">    &lt;/family&gt;</div>
 <div class="line">  &lt;/devices&gt;</div>
 <div class="line">&lt;/package&gt;</div>
+</div><!-- fragment --><div class="fragment"><div class="line">&lt;package&gt;</div>
+<div class="line">  ...</div>
+<div class="line">  &lt;parts&gt;</div>
+<div class="line">    &lt;part Hvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Hname=<span class="stringliteral">&quot;STSAFE-A110&quot;</span> Hvariant=<span class="stringliteral">&quot;STSAFA110DFSPL02&quot;</span> Hclass=<span class="stringliteral">&quot;Secure&quot;</span> Hgroup=<span class="stringliteral">&quot;Authentication&quot;</span>&gt;</div>
+<div class="line">      &lt;feature type=<span class="stringliteral">&quot;Crypto&quot;</span> n=<span class="stringliteral">&quot;128.256&quot;</span> name=<span class="stringliteral">&quot;Authentication and security for peripherals and IoT devices from STMicroelectronics&quot;</span>/&gt;</div>
+<div class="line">      ...</div>
+<div class="line">    &lt;/part&gt;</div>
+<div class="line">    ...</div>
+<div class="line">  &lt;\parts&gt;</div>
+<div class="line">  ...</div>
+<div class="line">&lt;\package&gt;</div>
 </div><!-- fragment --><p ><br  />
  </p><table class="cmtable" summary="Element: feature">
 <tr>
@@ -713,11 +758,17 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_device">device</a> </td><td colspan="3"><a class="el" href="pdsc_family_pg.html#element_device">/package/devices/family/../device</a>  </td></tr>
 <tr>
+<td><a class="el" href="pdsc_parts_pg.html#element_part">part</a> </td><td colspan="3"><a class="el" href="pdsc_parts_pg.html#element_part">/package/parts/part</a>  </td></tr>
+<tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor Identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor Identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed. <br  />
+<br  />
+ Must not be used for <a class="el" href="pdsc_parts_pg.html#element_part">package/parts/part</a>. </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
-<td>type </td><td>A feature (peripheral), such as <span class="XML-Token">CAN</span>, <span class="XML-Token">DMA</span>, <span class="XML-Token">I/O</span>, <span class="XML-Token">LCD</span>, etc. Predefined values must be used as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceFeatureTypeEnum">Device Feature Types</a>. </td><td>DeviceFeatureTypeEnum </td><td>required  </td></tr>
+<td>type </td><td>A feature (peripheral), such as <span class="XML-Token">CAN</span>, <span class="XML-Token">DMA</span>, <span class="XML-Token">I/O</span>, <span class="XML-Token">LCD</span>, etc. Predefined values must be used as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceFeatureTypeEnum">Device Feature Types</a>. <br  />
+<br  />
+ Can be also used to describe the <a class="el" href="pdsc_parts_pg.html#element_part">package/parts/part</a> features. Predefined values must be used as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceFeatureTypeEnum">Device Feature Types</a>. </td><td>DeviceFeatureTypeEnum </td><td>required  </td></tr>
 <tr>
 <td>n </td><td>Depends on the element <em><b>type</b>.</em> Check table <a class="el" href="pdsc_family_pg.html#DeviceFeatureTypeEnum">Device Feature Types</a>. </td><td>xs:decimal </td><td>optional  </td></tr>
 <tr>
@@ -2543,7 +2594,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_description">description</a> </td><td>Description specific to this device. </td><td>DescriptionType </td><td>0..*  </td></tr>
 <tr>
-<td><a class="el" href="pdsc_family_pg.html#element_feature">feature</a> </td><td>Specify the features of this device. </td><td>FeatureType </td><td>0..*  </td></tr>
+<td><a class="el" href="pdsc_family_pg.html#element_feature">feature</a> </td><td>Specify the features of this device. </td><td>DeviceFeatureType </td><td>0..*  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_feature">environment</a> </td><td>Specify tool options. </td><td>EnvironmentType </td><td>0..*  </td></tr>
 <tr>

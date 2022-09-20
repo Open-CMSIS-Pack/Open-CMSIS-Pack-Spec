@@ -49,12 +49,20 @@ var packFormat =
       [ "/package/boards/board/feature", "pdsc_boards_pg.html#element_board_feature", null ],
       [ "/package/boards/board/mountedDevice", "pdsc_boards_pg.html#element_board_mountedDevice", null ],
       [ "/package/boards/board/compatibleDevice", "pdsc_boards_pg.html#element_board_compatibleDevice", null ],
+      [ "/package/boards/board/mountedPart", "pdsc_boards_pg.html#element_board_mountedPart", null ],
       [ "/package/boards/board/image", "pdsc_boards_pg.html#element_board_image", null ],
       [ "/package/boards/board/debugInterface", "pdsc_boards_pg.html#element_board_debugInterface", null ],
       [ "/package/boards/board/debugProbe", "pdsc_boards_pg.html#element_board_debugProbe", null ],
       [ "/package/boards/board/book", "pdsc_boards_pg.html#element_board_book", null ],
       [ "/package/boards/board/memory", "pdsc_boards_pg.html#element_board_memory", null ],
       [ "/package/boards/board/algorithm", "pdsc_boards_pg.html#element_board_algorithm", null ]
+    ] ],
+    [ "/package/parts element", "pdsc_parts_pg.html", [
+      [ "/package/parts", "pdsc_parts_pg.html#element_parts", null ],
+      [ "/package/parts/part", "pdsc_parts_pg.html#element_part", null ],
+      [ "/package/parts/part/feature", "pdsc_parts_pg.html#element_part_feature", null ],
+      [ "/package/parts/part/book", "pdsc_parts_pg.html#element_part_book", null ],
+      [ "/package/parts/part/environment", "pdsc_parts_pg.html#element_part_environment", null ]
     ] ],
     [ "/package/conditions element", "pdsc_conditions_pg.html", [
       [ "/package/conditions", "pdsc_conditions_pg.html#element_conditions", null ],
