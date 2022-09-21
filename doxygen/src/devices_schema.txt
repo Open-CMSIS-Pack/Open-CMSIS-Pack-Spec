@@ -2240,6 +2240,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.panasonic.com/industrial</td>
   </tr>
   <tr>
+    <td class="XML-Token">Puya:176</td>
+    <td>Puya</td>
+    <td>https://www.puyasemi.com/</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Realtek Semiconductor:124</td>
     <td>Realtek Semiconductor</td>
     <td>http://www.realtek.com</td>
