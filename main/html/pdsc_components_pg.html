@@ -397,6 +397,8 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>licenseSet </td><td>Reference to the <span class="XML-Token">licenseSet</span> with the given identifier <span class="XML-Token">ID</span> specified in the licenseSets section of the package description. A licenseSet describes one or more license files that govern the component. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
+<td>view </td><td>Defines the user view of this component. A component may be hidden, for example when it is managed by a generator. </td><td><a class="el" href="pdsc_components_pg.html#ViewType">ViewType</a> </td><td>optional  </td></tr>
+<tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
 <td>deprecated </td><td>When set to <span class="XML-Token">true</span>, then the component is deprecated and no longer maintained. Default is <span class="XML-Token">false</span> to indicate an actively maintained component. </td><td>xs:boolean  </td><td>0..1   </td></tr>
@@ -418,22 +420,49 @@ Pre_Include_Local_Component_h</h1>
 <td><a class="el" href="pdsc_components_pg.html#element_extensions">extensions</a> </td><td>Grouping element for all extensions concerning this component. </td><td>group </td><td>1  </td></tr>
 </table>
 <p >&#160;</p>
-<p ><a class="anchor" id="CsubType"></a><b>Component Subgroups</b></p>
-<p >Component Subgroups are specified by the element <em><b>Csub</b>,</em> and create subcategories within Component Classes (<em><b>Cclass</b>)</em> and Component Groups (<em><b>Cgroup</b>)</em>. A <em><b>Csub</b> name</em> is of type <em>xs:string</em> with a length between 3 and 32 characters. No <b><em>Csub</em> names</b> have been predefined.</p>
-<p >Subgroups exists in the elements:</p><ul>
+<p ><a class="anchor" id="ViewType"></a><b>View Type</b></p>
+<p >The ViewType defines the user view of a component in component selection windows (i.e. Manage Run-Time Environment or Manage Software Components) and command line tools for the component list command.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">ViewType   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><b>always</b> (default)   </td><td class="markdownTableBodyNone">Component is always presented to the user. It appears in component selection windows and is listed as available component.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><b>never</b>   </td><td class="markdownTableBodyNone">Component is never presented to the user as it contains supportive files, i.e. for a generator. However it can be explicitly requested by an user, i.e. with the <code>component:</code> node.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><b>maskable</b>   </td><td class="markdownTableBodyNone">It is the choice of the tool to hide this component. A tool may offer an option to show such components.   </td></tr>
+</table>
+<p ><b>Examples:<b></b></b></p>
+<p ><b><b></p><ol type="1">
+<li>Component <b>A</b> that requires sub-components <b>A1</b> and <b>A2</b>. These components may have the attribute view="maskable" as it makes no sense to select just <b>A1</b> or <b>A2</b>.</li>
+<li>Component <b>B1</b>, <b>B2</b>, and <b>B3</b> all require component <b>B-core</b>, but <b>B-core</b> on it's own makes no sense. The component <b>B-core</b> may have the attribute view="maskable" as it makes no sense to select just it.</li>
+<li>Component <b>G</b> contains files that are required by a generator, but does not contain any direct usable source files. The component <b>G</b> may have the attribute view="never" as it should be not user selectable.</li>
+</ol>
+<p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b><a class="anchor" id="CsubType"></a><b>Component Subgroups</b></b></b></p>
+<p ><b><b>Component Subgroups are specified by the element <em><b>Csub</b>,</em> and create subcategories within Component Classes (<em><b>Cclass</b>)</em> and Component Groups (<em><b>Cgroup</b>)</em>. A <em><b>Csub</b> name</em> is of type <em>xs:string</em> with a length between 3 and 32 characters. No <b><em>Csub</em> names</b> have been predefined.</b></b></p>
+<p ><b><b>Subgroups exists in the elements:</p><ul>
 <li><a class="el" href="pdsc_conditions_pg.html#element_accept">/package/conditions/condition/accept</a></li>
 <li><a class="el" href="pdsc_conditions_pg.html#element_require">/package/conditions/condition/require</a></li>
 <li><a class="el" href="pdsc_conditions_pg.html#element_deny">/package/conditions/condition/deny</a></li>
 <li><a class="el" href="pdsc_components_pg.html#element_component">/package/components/.../component</a></li>
 <li><a class="el" href="pdsc_examples_pg.html#element_example_attribute_component">/package/examples/example/attributes/component</a></li>
 </ul>
-<p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;... Csub=<span class="stringliteral">&quot;MyRTOS&quot;</span> Cgroup=<span class="stringliteral">&quot;RTOS&quot;</span> Cclass=<span class="stringliteral">&quot;CMSIS&quot;</span>...&gt;</div>
-</div><!-- fragment --><p >&#160;</p>
-<hr  />
+<p></b></b></p>
+<p ><b><b><b>Example:</b> </p><div class="fragment"><div class="line">&lt;... Csub=<span class="stringliteral">&quot;MyRTOS&quot;</span> Cgroup=<span class="stringliteral">&quot;RTOS&quot;</span> Cclass=<span class="stringliteral">&quot;CMSIS&quot;</span>...&gt;</div>
+</div><!-- fragment --><p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b> </p><hr  />
+<p></b></b></p>
+<p ><b><b></b></b></p>
 <h1><a class="anchor" id="element_files"></a>
 /package/.../files</h1>
-<p >The group <b>files</b> can appear in various Pack elements. This group is the frame for defining individual file properties.</p>
-<p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
+<p ><b><b> The group <b>files</b> can appear in various Pack elements. This group is the frame for defining individual file properties.</b></b></p>
+<p ><b><b><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;apis&gt;</div>
 <div class="line">    &lt;api Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;Driver UART&quot;</span> exclusive=<span class="stringliteral">&quot;0&quot;</span>&gt;</div>
@@ -452,8 +481,11 @@ Pre_Include_Local_Component_h</h1>
 <div class="line">  &lt;/components&gt;</div>
 <div class="line">  ...</div>
 <div class="line">&lt;/package&gt;</div>
-</div><!-- fragment --><p >&#160;</p>
-<table class="cmtable" summary="Element: Files">
+</div><!-- fragment --><p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b></p><table class="cmtable" summary="Element: Files">
 <tr>
 <th>Parents </th><th colspan="3">Element Chain  </th></tr>
 <tr>
@@ -467,12 +499,16 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td><a class="el" href="pdsc_components_pg.html#element_file">file</a> </td><td>Frame for the individual <a class="el" href="pdsc_components_pg.html#element_file">file</a> of a component. </td><td>group </td><td>1..*  </td></tr>
 </table>
-<p >&#160;</p>
-<hr  />
+<p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b> </p><hr  />
+<p></b></b></p>
+<p ><b><b></b></b></p>
 <h1><a class="anchor" id="element_file"></a>
 /package/.../files/file</h1>
-<p >The element <b>file</b> is the mechanism to attach files to the software. The file purpose is defined through the <b>category</b> attribute. The <b>name</b> attribute identifies the file.</p>
-<p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
+<p ><b><b> The element <b>file</b> is the mechanism to attach files to the software. The file purpose is defined through the <b>category</b> attribute. The <b>name</b> attribute identifies the file.</b></b></p>
+<p ><b><b><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;apis&gt;</div>
 <div class="line">    &lt;api Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;Driver UART&quot;</span> exclusive=<span class="stringliteral">&quot;0&quot;</span>&gt;</div>
@@ -494,8 +530,11 @@ Pre_Include_Local_Component_h</h1>
 <div class="line">  &lt;/components&gt;</div>
 <div class="line">  ...</div>
 <div class="line">&lt;/package&gt;</div>
-</div><!-- fragment --><p >&#160;</p>
-<table class="cmtable" summary="Element: File">
+</div><!-- fragment --><p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b></p><table class="cmtable" summary="Element: File">
 <tr>
 <th>Parents </th><th colspan="3">Element Chain  </th></tr>
 <tr>
@@ -527,9 +566,12 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>public </td><td>Set publishing permissions for the documentation. If <em>&lt;public&gt;</em> is <span class="XML-Token">true</span>, then the vendor gives permission to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public. The default value is <span class="XML-Token">false</span>. </td><td>xs:boolean </td><td>optional  </td></tr>
 </table>
-<p >&#160;</p>
-<p ><a class="anchor" id="FileAttributeEnum"></a><b>Table: File Attributes</b></p>
-<p >The file attribute defines the special handling in the project when being used as configuration, template, or interface file. The table lists the values available as a file attribute. </p><table class="cmtable" summary="Type: FileAttributeEnum">
+<p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b><a class="anchor" id="FileAttributeEnum"></a><b>Table: File Attributes</b></b></b></p>
+<p ><b><b>The file attribute defines the special handling in the project when being used as configuration, template, or interface file. The table lists the values available as a file attribute. </p><table class="cmtable" summary="Type: FileAttributeEnum">
 <tr>
 <th>attr= </th><th>Description  </th></tr>
 <tr>
@@ -539,16 +581,20 @@ Pre_Include_Local_Component_h</h1>
 <p class="endtd"></p>
 </td></tr>
 </table>
-<dl class="section note"><dt>Note</dt><dd>Header files with the attribute <span class="XML-Token">config</span> must be located in a directory within the pack that is not otherwise specified as an "include folder" of this or any other component's files of the category "header" or "include". For example: <pre class="fragment">&lt;file category="header"  name="src/config/user_config.h" attr="config" version="1.0.0" /&gt;
+<p></b></b></p>
+<p ><b><b></p><dl class="section note"><dt>Note</dt><dd>Header files with the attribute <span class="XML-Token">config</span> must be located in a directory within the pack that is not otherwise specified as an "include folder" of this or any other component's files of the category "header" or "include". For example: <pre class="fragment">&lt;file category="header"  name="src/config/user_config.h" attr="config" version="1.0.0" /&gt;
 </pre> Config files are copied into the project folder and are adopted specifically for that project. Due to the include path search order of the compiler, chances exist that the unmodified header file in the pack repository is found first and used by the compiler (creating unexpected results).</dd></dl>
-<p >&#160;</p>
-<p ><a class="anchor" id="FileCategoryEnum"></a><b>Table: File Categories</b></p>
-<p >File category types define the use of component files within the application. Typically, these files are added to the project and processed by the build tools.</p>
-<p >File categories are used in the following elements:</p><ul>
+<p></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b><a class="anchor" id="FileCategoryEnum"></a><b>Table: File Categories</b></b></b></p>
+<p ><b><b>File category types define the use of component files within the application. Typically, these files are added to the project and processed by the build tools.</b></b></p>
+<p ><b><b>File categories are used in the following elements:</p><ul>
 <li><a class="el" href="pdsc_components_pg.html#element_file">/package/.../files/file</a></li>
 <li><a class="el" href="pdsc_generators_pg.html#element_gen_file">/package/generators/generator/files/file</a></li>
 </ul>
-<p >The table lists the predefined values for a file category. </p><table class="cmtable" summary="Type: FileCategoryEnum">
+<p></b></b></p>
+<p ><b><b>The table lists the predefined values for a file category. </p><table class="cmtable" summary="Type: FileCategoryEnum">
 <tr>
 <th>category= </th><th>Description  </th></tr>
 <tr>
@@ -598,12 +644,16 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td class="XML-Token">other </td><td>Other file types not covered in the list above  </td></tr>
 </table>
-<p >&#160;</p>
-<hr  />
+<p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b> </p><hr  />
+<p></b></b></p>
+<p ><b><b></b></b></p>
 <h1><a class="anchor" id="element_extensions"></a>
 /package/.../extensions</h1>
-<p >The group <b>extensions</b> can appear in various Pack elements. This group is the frame for defining individual extensions.</p>
-<p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
+<p ><b><b> The group <b>extensions</b> can appear in various Pack elements. This group is the frame for defining individual extensions.</b></b></p>
+<p ><b><b><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;components&gt;</div>
 <div class="line">    &lt;component Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;Startup&quot;</span> Cversion=<span class="stringliteral">&quot;3.1.1&quot;</span> &gt;</div>
@@ -614,8 +664,11 @@ Pre_Include_Local_Component_h</h1>
 <div class="line">  &lt;/components&gt;</div>
 <div class="line">  ...</div>
 <div class="line">&lt;/package&gt;</div>
-</div><!-- fragment --><p >&#160;</p>
-<table class="cmtable" summary="Element: Extensions">
+</div><!-- fragment --><p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b></p><table class="cmtable" summary="Element: Extensions">
 <tr>
 <th>Parents </th><th colspan="3">Element Chain  </th></tr>
 <tr>
@@ -627,12 +680,16 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td><a class="el" href="pdsc_components_pg.html#element_extension">extension</a> </td><td>Frame for the individual <a class="el" href="pdsc_components_pg.html#element_extension">extension</a> of a component. </td><td>group </td><td>1..*  </td></tr>
 </table>
-<p >&#160;</p>
-<hr  />
+<p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b> </p><hr  />
+<p></b></b></p>
+<p ><b><b></b></b></p>
 <h1><a class="anchor" id="element_extension"></a>
 /package/.../extensions/extension</h1>
-<p >The element <b>extension</b> is the mechanism to attach additional attributes to the software. This attribute is a key/value pair that is fully defined by the component designer. The possible values are not imposed by this specification.</p>
-<p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
+<p ><b><b> The element <b>extension</b> is the mechanism to attach additional attributes to the software. This attribute is a key/value pair that is fully defined by the component designer. The possible values are not imposed by this specification.</b></b></p>
+<p ><b><b><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;components&gt;</div>
 <div class="line">    &lt;component Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;Startup&quot;</span> Cversion=<span class="stringliteral">&quot;3.1.1&quot;</span> &gt;</div>
@@ -643,8 +700,11 @@ Pre_Include_Local_Component_h</h1>
 <div class="line">  &lt;/components&gt;</div>
 <div class="line">  ...</div>
 <div class="line">&lt;/package&gt;</div>
-</div><!-- fragment --><p >&#160;</p>
-<table class="cmtable" summary="Element: Extension">
+</div><!-- fragment --><p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b></p><table class="cmtable" summary="Element: Extension">
 <tr>
 <th>Parents </th><th colspan="3">Element Chain  </th></tr>
 <tr>
@@ -658,9 +718,12 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>value </td><td>value associated to the key. </td><td>xs:string </td><td>optional  </td></tr>
 </table>
-<p >&#160;</p>
-<hr  />
- </div></div><!-- contents -->
+<p></b></b></p>
+<p ><b><b></b></b></p>
+<p ><b><b>&#160;</b></b></p>
+<p ><b><b> </p><hr  />
+<p> </b></b></p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
