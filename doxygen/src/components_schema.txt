@@ -534,6 +534,12 @@ A component describes a collection of files (source, header, configuration, libr
 	<td>optional</td>
   </tr>
   <tr>
+    <td>view</td>
+    <td>Defines the user view of this component.  A component may be hidden, for example when it is managed by a generator.
+    <td>\ref ViewType "ViewType"</td>
+    <td>optional</td>
+  </tr>
+  <tr>
     <th>Child Elements</th>
     <th>Description</th>
     <th>Type</th>
@@ -584,6 +590,28 @@ A component describes a collection of files (source, header, configuration, libr
     <td>1</td>
   </tr>
 </table>
+
+<p>&nbsp;</p>
+
+
+\anchor ViewType <b>View Type</b>
+
+The ViewType defines the user view of a component in component selection windows (i.e. Manage Run-Time Environment or Manage Software Components) and command line tools for the component list command.
+
+ViewType                | Description
+:-----------------------|-----------------------------------
+<b>always</b> (default) | Component is always presented to the user. It appears in component selection windows and is listed as available component.
+<b>never</b>            | Component is never presented to the user as it contains supportive files, i.e. for a generator. However it can be explicitly requested by an user, i.e. with the `component:` node.
+<b>maskable</b>         | It is the choice of the tool to hide this component. A tool may offer an option to show such components.
+
+<b>Examples:<b>
+
+1. Component <b>A</b> that requires sub-components <b>A1</b> and <b>A2</b>. These components may have the attribute view="maskable" as it makes no sense to select just <b>A1</b> or <b>A2</b>.
+
+2. Component <b>B1</b>, <b>B2</b>, and <b>B3</b> all require component <b>B-core</b>, but <b>B-core</b> on it's own makes no sense. The component <b>B-core</b> may have the attribute view="maskable" as it makes no sense to select just it.
+
+3. Component <b>G</b> contains files that are required by a generator, but does not contain any direct usable source files. The component <b>G</b> may have the attribute view="never" as it should be not user selectable.
+
 
 <p>&nbsp;</p>
 
