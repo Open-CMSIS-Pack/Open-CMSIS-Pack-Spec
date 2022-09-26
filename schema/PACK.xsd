@@ -399,6 +399,15 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- DefineType -->
+  <xs:simpleType name="DefineType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="128" />
+      <xs:pattern value="\S[a-zA-Z_]{1}[a-zA-Z0-9_\S]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- AccessType (added in 1.4.4) -->
   <xs:simpleType name="AccessType">
     <xs:restriction base="xs:string">
@@ -455,7 +464,7 @@
     <!-- CMSIS-CORE device header file (sets compiler include path) -->
     <xs:attribute name="header" type="xs:string" />
     <!-- Device specific preprocessor define (sets preprocessor define  -->
-    <xs:attribute name="define" type="xs:string" />
+    <xs:attribute name="define" type="defineType" />
     <!-- Processor instance specific preprocessor define (sets preprocessor define on the commandline)  -->
     <xs:attribute name="Pdefine" type="xs:string" />
   </xs:complexType>
