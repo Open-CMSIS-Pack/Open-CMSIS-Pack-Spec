@@ -464,9 +464,9 @@
     <!-- CMSIS-CORE device header file (sets compiler include path) -->
     <xs:attribute name="header" type="xs:string" />
     <!-- Device specific preprocessor define (sets preprocessor define  -->
-    <xs:attribute name="define" type="defineType" />
+    <xs:attribute name="define" type="DefineType" />
     <!-- Processor instance specific preprocessor define (sets preprocessor define on the commandline)  -->
-    <xs:attribute name="Pdefine" type="xs:string" />
+    <xs:attribute name="Pdefine" type="DefineType" />
   </xs:complexType>
 
   <!-- DebugVarsType -->
