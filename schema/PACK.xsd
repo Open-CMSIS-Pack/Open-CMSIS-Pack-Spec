@@ -404,7 +404,7 @@
     <xs:restriction base="xs:string">
       <xs:minLength value="1" />
       <xs:maxLength value="128" />
-      <xs:pattern value="\S[a-zA-Z_]{1}[a-zA-Z0-9_\S]*"/>
+      <xs:pattern value="\S(.[a-zA-Z_]{1}[a-zA-Z0-9_]*)"/>
     </xs:restriction>
   </xs:simpleType>
 
