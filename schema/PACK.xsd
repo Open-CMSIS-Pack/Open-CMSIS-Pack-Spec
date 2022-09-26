@@ -1190,8 +1190,8 @@
   <!-- predefined values for 'view' attribute (default: always) -->
   <xs:simpleType name="ViewType">
     <xs:restriction base="xs:token">
-      <xs:enumeration value="always">
-      <xs:enumeration value="never">
+      <xs:enumeration value="always" />
+      <xs:enumeration value="never" />
       <xs:enumeration value="maskable">
     </xs:restriction>
   </xs:simpleType>
