@@ -17,15 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        21. Sep 2022
+  $Date:        26. Sep 2022
   $Revision:    1.7.14
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.14
 
-  21. Sep 2022: v1.7.14
+  26. Sep 2022: v1.7.14
    - added 'Puya' Dvendor entry
+   - added 'view' attribute to component element with predefined values define by 'ViewType'
   06. Sep 2022: v1.7.13
    - added VirtualHW as a new board type in support of the Arm Virtual Hardware initiative
    - added \<parts> element and its child elements for describing and packaging the parts (devices other than the MCU).
@@ -1185,6 +1186,15 @@
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
+  
+  <!-- predefined values for 'view' attribute (default: always) -->
+  <xs:simpleType name="ViewType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="always">
+      <xs:enumeration value="never">
+      <xs:enumeration value="maskable">
+    </xs:restriction>
+  </xs:simpleType>
 
   <xs:complexType name="FilterType">
     <xs:attribute name="Dfamily" type="xs:string" /> <!-- deprecated as they are too weak for filtering -->
@@ -1606,7 +1616,7 @@
       <xs:element name="licenseSet" type="LicenseSetType" /> 
     </xs:sequence>
   </xs:complexType>
-
+  
   <!-- PackageType creates a unique ID for a package (added in 1.4.4) -->
   <xs:complexType name="PackageType">
     <!-- vendor of the package -->
@@ -2006,6 +2016,8 @@
                         <xs:attribute name="custom" type="xs:boolean" use="optional" />
                         <!-- associates a component with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
                         <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
+                        <!-- the attribute controls the circumstances under which a component is displayed to the user by tools. -->
+                        <xs:attribute name="view" type="ViewType" use="optional"/>
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
@@ -2073,6 +2085,8 @@
                   <xs:attribute name="custom" type="xs:boolean" use="optional" />
                   <!-- associates a component with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
                   <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
+                  <!-- the attribute controls the circumstances under which a component is displayed to the user by tools. -->
+                  <xs:attribute name="view" type="ViewType" use="optional"/>
                 </xs:complexType>
               </xs:element>
             </xs:choice>
