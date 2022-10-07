@@ -1446,11 +1446,11 @@
   </xs:complexType>
 
   <xs:complexType name="PartType">
-    <xs:all>
+    <xs:sequence>
       <xs:element name="feature"     type="DeviceFeatureType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="book"        type="BookType"          minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="environment" type="EnvironmentType"   minOccurs="0" maxOccurs="unbounded" />
-    </xs:all>
+    </xs:sequence>
     <xs:attribute name="Hvendor"   type="DeviceVendorEnum" use="optional"/>
     <xs:attribute name="Hname"     type="xs:string"        use="required"/>
     <xs:attribute name="Hclass"    type="xs:string"        use="optional"/>
