@@ -86,7 +86,9 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   <tr>
     <td>1.7.14</td>
     <td>
+     - added 'changelog' element providing references to change log files by component, api and bundle elements
      - added 'Puya' Dvendor ID.
+	 - added 'view' attribute to component element with predefined values define by 'ViewType'
     </td>
   </tr>
   <tr>

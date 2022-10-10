@@ -17,14 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        26. Sep 2022
+  $Date:        10. Oct 2022
   $Revision:    1.7.14
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.14
 
-  26. Sep 2022: v1.7.14
+  10. Oct 2022: v1.7.14
+   - added 'changelog' element providing references to change log files by component, api and bundle elements
    - added 'Puya' Dvendor entry
    - added 'view' attribute to component element with predefined values define by 'ViewType'
   06. Sep 2022: v1.7.13
@@ -1277,6 +1278,8 @@
     <xs:attribute name="condition"   type="xs:string" use="optional" />
     <!-- associates an API with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9)-->
     <xs:attribute name="licenseSet" type="xs:string"/>
+    <!-- associates an API with a changelog -->
+    <xs:attribute name="changelog" type="xs:string" use="optional"/>
   </xs:complexType>
 
   <xs:complexType name="ApisType">
@@ -1691,6 +1694,24 @@
     </xs:sequence>
   </xs:complexType>
 
+  <!-- changelogs contains references to changelog files contained in the pack with an ID -->
+  <xs:complexType name="ChangelogsType">
+    <xs:sequence>
+      <xs:element name="changelog" type="ChangelogType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ChangelogType">
+    <!-- identifier to be used by component, api or bundle to reference a changelog file -->
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <!-- path + name of changelog file relative to package description -->
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <!-- file type: text/plain;charset=UTF-8 is assumed if not specified -->
+    <xs:attribute name="type" type="xs:string" use="optional" />
+    <!-- if true the changelog is associated with all apis and components not specifying a changelog -->
+    <xs:attribute name="default" type="xs:boolean" use="optional" />
+  </xs:complexType>
+
   <!-- Generator file type definition -->
   <xs:complexType name="GeneratorFileType">
     <!-- conditions can be used to filter relevant files depending on e.g. device name
@@ -1905,6 +1926,8 @@
         <xs:element name="requirements" type="RequirementsType" minOccurs="0" />
         <!-- Version numbers and release history -->
         <xs:element name="releases" type="ReleasesType" minOccurs="1" />
+        <!-- ID based references to changelog information stored in text files, associated with components -->
+        <xs:element name="changeLogs" type="ChangelogsType" minOccurs="0" />
         <!-- keyword for Search Engine Indexing (e.g. Google) -->
         <xs:element name="keywords" type="KeywordsType" minOccurs="0" />
         <!-- generators are tools and utilities that are used to generate software components -->
@@ -2018,6 +2041,8 @@
                         <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
                         <!-- the attribute controls the circumstances under which a component is displayed to the user by tools. -->
                         <xs:attribute name="view" type="ViewType" use="optional"/>
+                        <!-- associates a component with a changelog -->
+                        <xs:attribute name="changelog" type="xs:string" use="optional"/>
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
@@ -2026,12 +2051,14 @@
                   <xs:attribute name="Cvendor" type="xs:string" use="optional" />
                   <xs:attribute name="Cclass" type="CclassType" use="required" />
                   <xs:attribute name="Cversion" type="ComponentVersionType" use="required" />
-                  <!-- association of component with a generator. If the component is selected the generator information becomes active -->
+                  <!-- association of bundle with a generator. If the component is selected the generator information becomes active -->
                   <xs:attribute name="generator" type="xs:string" use="optional" />
                   <!-- identifies this bundle variant to be the preferred variant [Version 1.4.0] -->
                   <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional" />
                   <!-- associates all components of the bundle with a licenseSet using a licenseSet ID which is unique within the pack scope (added in 1.7.9) -->
                   <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
+                  <!-- associates a component with a changelog -->
+                  <xs:attribute name="changelog" type="xs:string" use="optional"/>
                 </xs:complexType>
               </xs:element>
               <xs:element name="component" minOccurs="0" maxOccurs="unbounded">
@@ -2087,6 +2114,8 @@
                   <xs:attribute name="licenseSet" type="xs:string" use="optional"/>
                   <!-- the attribute controls the circumstances under which a component is displayed to the user by tools. -->
                   <xs:attribute name="view" type="ViewType" use="optional"/>
+                  <!-- associates a component with a changelog -->
+                  <xs:attribute name="changelog" type="xs:string" use="optional"/>
                 </xs:complexType>
               </xs:element>
             </xs:choice>

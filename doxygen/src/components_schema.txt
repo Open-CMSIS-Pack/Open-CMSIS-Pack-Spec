@@ -389,6 +389,14 @@ Components enclosed in a bundle must not specify any of the following attributes
 	<td>optional</td>
   </tr>
   <tr>
+    <td>changelog</td>
+	<td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
+	    A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for all components of this bundle. 
+		If the changelog files differ for the components in the bundle, the changelog attribute is required to be set on a component level.</td>
+	<td>xs:string</td>
+	<td>optional</td>
+  </tr>
+  <tr>
     <th>Child&nbsp;Elements</th>
     <th>Description</th>
     <th>Type</th>
@@ -539,6 +547,13 @@ A component describes a collection of files (source, header, configuration, libr
     <td>\ref ViewType "ViewType"</td>
     <td>optional</td>
   </tr>
+    <td>changelog</td>
+	<td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
+	    A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the component. 
+		The content of the referenced changelog file is not required to be exclusively used for a single component.</td>
+	<td>xs:string</td>
+	<td>optional</td>
+  </tr>
   <tr>
     <th>Child Elements</th>
     <th>Description</th>
@@ -604,7 +619,7 @@ ViewType                | Description
 <b>never</b>            | Component is never presented to the user as it contains supportive files, i.e. for a generator. However it can be explicitly requested by an user, i.e. with the `component:` node.
 <b>maskable</b>         | It is the choice of the tool to hide this component. A tool may offer an option to show such components.
 
-<b>Examples:<b>
+<b>Examples:</b>
 
 1. Component <b>A</b> that requires sub-components <b>A1</b> and <b>A2</b>. These components may have the attribute view="maskable" as it makes no sense to select just <b>A1</b> or <b>A2</b>.
 
