@@ -12,6 +12,10 @@ var packFormat =
     [ "/package/releases element", "element_releases.html", [
       [ "/package/releases/release", "element_releases.html#element_release", null ]
     ] ],
+    [ "/package/changelogs element", "pdsc_changelogs_pg.html", [
+      [ "/package/changelogs/", "pdsc_changelogs_pg.html#element_changelogs", null ],
+      [ "/package/changelogs/changelog", "pdsc_changelogs_pg.html#element_changelog", null ]
+    ] ],
     [ "/package/licenseSets element", "pdsc_licenseSets_pg.html", [
       [ "/package/licenseSets/", "pdsc_licenseSets_pg.html#element_licenseSets", null ],
       [ "/package/licenseSets/licenseSet", "pdsc_licenseSets_pg.html#element_licenseSet", null ],

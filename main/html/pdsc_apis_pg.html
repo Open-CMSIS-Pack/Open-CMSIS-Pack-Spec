@@ -153,8 +153,7 @@ $(document).ready(function(){initNavTree('pdsc_apis_pg.html',''); initResizable(
 <td><a class="el" href="pdsc_apis_pg.html#element_api">api</a> </td><td>Named specification of an API containing a brief description, C/C++ header files and documentation </td><td>ApiType </td><td>1..*  </td></tr>
 </table>
 <p >&#160;</p>
-<p ><br  />
- </p><hr  />
+<hr  />
 <h1><a class="anchor" id="element_api"></a>
 /package/apis/api</h1>
 <p >Application Programming Interfaces (apis) are C/C++ interface specifications that allow components to inter-work by either implementing or using a set of functions, data types, and definitions. This element is mandatory and can exist multiple times.</p>
@@ -176,8 +175,6 @@ $(document).ready(function(){initNavTree('pdsc_apis_pg.html',''); initResizable(
 <div class="line">  ...</div>
 <div class="line">&lt;/apis&gt;</div>
 </div><!-- fragment --><p >&#160;</p>
-<p ><br  />
-</p>
 <table class="cmtable" summary="Element: api">
 <tr>
 <th>Parent&#160;Element </th><th colspan="3">Element Chain  </th></tr>
@@ -197,7 +194,11 @@ $(document).ready(function(){initNavTree('pdsc_apis_pg.html',''); initResizable(
 <tr>
 <td>Capiversion </td><td>Version of the api. Is a mandatory part of the api ID. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>.  </td><td>VersionType </td><td>optional  </td></tr>
 <tr>
-<td>licenseSet </td><td>Reference to the licenseSet with the given identifier <span class="XML-Token">ID</span> listed in the licenseSets section of the package description. A licenseSet describes one or more license files which in this case govern the api. </td><td>xs:string </td><td>optional </td></tr>
+<td>licenseSet </td><td>Reference to the licenseSet with the given identifier <span class="XML-Token">ID</span> listed in the licenseSets section of the package description. A licenseSet describes one or more license files which in this case govern the api. </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>changelog </td><td>Reference to the <span class="XML-Token">changelog</span> with the given identifier <span class="XML-Token">ID</span> specified in the changelogs section of the package description. A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the api. The content of the referenced changelog file is not required to be exclusively used for a single api. </td><td>xs:string </td><td><p class="starttd">optional </p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
@@ -206,8 +207,6 @@ $(document).ready(function(){initNavTree('pdsc_apis_pg.html',''); initResizable(
 <td><a class="el" href="pdsc_components_pg.html#element_files">files</a> </td><td>Grouping element for all file descriptions that are part of this component.. </td><td>group </td><td>0..1  </td></tr>
 </table>
 <p >&#160;</p>
-<p ><br  />
- </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
