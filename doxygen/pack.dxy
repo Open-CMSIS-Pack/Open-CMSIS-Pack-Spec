@@ -868,7 +868,7 @@ INPUT           =   src/General.txt \
                     src/flash_algorithms.txt \
                     src/conditions_schema.txt \
                     src/licenses_schema.txt \
-					src/changelogs_schema.txt \
+                    src/changelogs_schema.txt \
                     src/apis_schema.txt \
                     src/devices_schema.txt \
                     src/components_schema.txt \
