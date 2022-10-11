@@ -86,7 +86,9 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   <tr>
     <td>1.7.14</td>
     <td>
+     - added 'changelog' element providing references to change log files by component, api and bundle elements
      - added 'Puya' Dvendor ID.
+     - added 'view' attribute to component element with predefined values define by 'ViewType'
     </td>
   </tr>
   <tr>
@@ -189,7 +191,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   </tr>
   <tr>
     <td>1.6.3</td>
-	<td>
+    <td>
 - removed CMSIS Project Description format (cpdsc) from CMSIS-Pack. Format has been superseeded by new format specification located in the CMSIS
   <a href="https://arm-software.github.io/CMSIS_5/develop/Build/html/cprjFormat_pg.html"><b>Build</b></a> tab.
 - added \ref dbg_setup_tutorial "debug setup tutorial" to the documentation.
@@ -202,15 +204,15 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
 - updated \ref DmveEnum 'DmveEnum' specification.
 - updated minimum length of \<Cclass>, \<Cgroup> and \<Cvariant> attributes in \ref element_component "\<component>" from 3 to 2.
 - removed all types specific to cpdsc format. Cpdsc is replaced by Cprj with dedicated schema.
-	</td>
+    </td>
   </tr>
   <tr>
     <td>1.6.2</td>
-	<td>Modifications compared to Version 1.6.1
+    <td>Modifications compared to Version 1.6.1
   - added \ref element_accessportV1 "\<accessportV1>" and \ref element_accessportV2 "\<accessportV2>" to describe CoreSight access port parameters.
   - added attribute '__apid' to \ref element_debug "\<debug>" and \ref element_dbg_datapatch "\<datapatch>" to reference \<accessportV1> and \<accessportV2> elements.
   - added attribute 'dormant' to \ref element_debugconfig "\<debugconfig>" element.
-	</td>
+    </td>
   </tr>
   <tr>
     <td>1.6.1</td>

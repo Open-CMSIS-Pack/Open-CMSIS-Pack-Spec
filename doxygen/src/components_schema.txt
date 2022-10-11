@@ -122,7 +122,7 @@ attributes, the files are handled differently:
     the Software Component and get directly included  from this location into the project.
   - Source and header files that have the attribute \c "config" are copied to the project so that they can be edited by the
     user and tailored to the needs of the application. If a Software Component allows multiple instances of files, they
-	can be copied multiple times to a project and will get a suffix \e _\%Instance% (see \ref Component_Instances). Please
+    can be copied multiple times to a project and will get a suffix \e _\%Instance% (see \ref Component_Instances). Please
     note that header files that are used with the attribute \c "config" need to be stored separately from other header files
     (for example in an extra directory) to avoid that due to the include path search order of the compiler, the unmodified
     header file in the pack repository is found first and used by the compiler (creating unexpected results).
@@ -316,7 +316,7 @@ Grouping element containing a choice of at least one bundle or component. No mor
   <tr>
     <td>\ref element_bundle "bundle"</td>
     <td>Grouping element for a collection of inter-operable components belonging to the same Cclass.
-	The components section must not be empty. At least one bundle or component is required.</td>
+      The components section must not be empty. At least one bundle or component is required.</td>
     <td>ComponentType</td>
     <td>0..*</td>
   </tr>
@@ -360,33 +360,41 @@ Components enclosed in a bundle must not specify any of the following attributes
   <tr>
     <td>Cvendor</td>
     <td>Defines the component vendor all components of this bundle belong to. If not explicitly set the component vendor is
-	derived from the package vendor. The component vendor is a mandatory part of the component ID.</td>
+      derived from the package vendor. The component vendor is a mandatory part of the component ID.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Cclass</td>
     <td>Defines the component class to which all components in the bundle belong. Is a mandatory part of the component ID.
-	Predefined values can be used as listed in the table \ref CclassType "Component Classes".
-	</td>
+      Predefined values can be used as listed in the table \ref CclassType "Component Classes".
+    </td>
     <td>CclassType</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Cversion</td>
     <td>Defines the version of all components contained in the bundle. The component version is a mandatory part of the component ID.
-	The version format is described in \ref VersionType "Version Type".
-	</td>
+      The version format is described in \ref VersionType "Version Type".
+    </td>
     <td>VersionType</td>
     <td>required</td>
   </tr>
   <tr>
     <td>licenseSet</td>
-	<td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
-	    A licenseSet describes one or more license files which in this case govern all components of this bundle. If the licenseSet is 
-        different for different components in the bundle, the licenseSet attribute is required to be assigned on a component level.</td>
-	<td>xs:string</td>
-	<td>optional</td>
+    <td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
+      A licenseSet describes one or more license files which in this case govern all components of this bundle. If the licenseSet is 
+      different for different components in the bundle, the licenseSet attribute is required to be assigned on a component level.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>changelog</td>
+    <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
+      A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for all components of this bundle.
+      If the changelog files differ for the components in the bundle, the changelog attribute is required to be set on a component level.</td>
+    <td>xs:string</td>
+    <td>optional</td>
   </tr>
   <tr>
     <th>Child&nbsp;Elements</th>
@@ -396,16 +404,16 @@ Components enclosed in a bundle must not specify any of the following attributes
   </tr>
   <tr>
     <td>description</td>
-	<td>Brief description of the bundle</td>
-	<td>xs:string</td>
-	<td>1..1</td>
+    <td>Brief description of the bundle</td>
+    <td>xs:string</td>
+    <td>1..1</td>
   </tr>
   <tr>
     <td>doc</td>
-	<td>Documentation for the bundle: File path, file name, and file extension in the format \b path/name.extension.
-	    The file path is relative to the root directory of the Pack.
-	<td>xs:string</td>
-	<td>1..1</td>
+    <td>Documentation for the bundle: File path, file name, and file extension in the format \b path/name.extension.
+      The file path is relative to the root directory of the Pack.
+    <td>xs:string</td>
+    <td>1..1</td>
   </tr>
   <tr>
     <td>\ref element_component "component"</td>
@@ -444,23 +452,23 @@ A component describes a collection of files (source, header, configuration, libr
   <tr>
     <td>Cvendor</td>
     <td>Defines the component vendor this component is shipped by. It is a mandatory part of the component ID and will be inherited from
-	    the package vendor if not specified.
-		\n \token{Must not be specified for a component within a bundle.}</td>
+      the package vendor if not specified.
+      \n \token{Must not be specified for a component within a bundle.}</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Cclass</td>
     <td>Defines the component class to which the component belongs. This is a mandatory part of the component ID.
-	Predefined values can be used as listed in the table \ref CclassType "Component Classes".
-	\n \token{Must not be specified for a component within a bundle.}</td>
+      Predefined values can be used as listed in the table \ref CclassType "Component Classes".
+      \n \token{Must not be specified for a component within a bundle.}</td>
     <td>\ref CclassType "CclassType"</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Cgroup</td>
     <td>Defines the component group to whoch the component belongs. Is a mandatory part of the component ID.
-	Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
+      Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
     <td>\ref CgroupType "CgroupType"</td>
     <td>required</td>
   </tr>
@@ -473,15 +481,15 @@ A component describes a collection of files (source, header, configuration, libr
   <tr>
     <td>Cvariant</td>
     <td>Defines a variant of a component. Is an optional part of the component ID. The variant specifier is a brief string (for example: \token{release}, \token{debug}).
-	</td>
+    </td>
     <td>xs:string [3..32]</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Cversion</td>
     <td>Defines the version of this component. Is a mandatory part of the component ID.
-	 The version format is described in \ref VersionType "Version Type".
-	 \n \token{Must not be specified for a component within a bundle.}</td>
+      The version format is described in \ref VersionType "Version Type".
+      \n \token{Must not be specified for a component within a bundle.}</td>
     <td>\ref VersionType "VersionType"</td>
     <td>required</td>
   </tr>
@@ -490,7 +498,7 @@ A component describes a collection of files (source, header, configuration, libr
     <td>For components that are based on an \ref pdsc_apis_pg "API header files", it defines the version of the API used by this component.
         It ensures that the API header file with the same or higher version is acceptable for using that component.
         The version format is described in \ref VersionType "Version Type".
-	</td>
+    </td>
     <td>VersionType</td>
     <td>optional</td>
   </tr>
@@ -503,7 +511,7 @@ A component describes a collection of files (source, header, configuration, libr
   <tr>
     <td>custom</td>
     <td>When set to \token{true}, the component requires a custom implementation. This attribute should suppress the automatic component resolver, so it
-	requires always manual selection.</td>
+      requires always manual selection.</td>
     <td>xs:boolean </td>
     <td>0..1 </td>
   </tr>
@@ -528,15 +536,22 @@ A component describes a collection of files (source, header, configuration, libr
   </tr>
   <tr>
     <td>licenseSet</td>
-	<td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
-	    A licenseSet describes one or more license files that govern the component.</td>
-	<td>xs:string</td>
-	<td>optional</td>
+    <td>Reference to the \token{licenseSet} with the given identifier \token{ID} specified in the licenseSets section of the package description.
+      A licenseSet describes one or more license files that govern the component.</td>
+    <td>xs:string</td>
+    <td>optional</td>
   </tr>
   <tr>
     <td>view</td>
     <td>Defines the user view of this component.  A component may be hidden, for example when it is managed by a generator.
     <td>\ref ViewType "ViewType"</td>
+    <td>optional</td>
+  </tr>
+    <td>changelog</td>
+    <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
+      A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the component. 
+      The content of the referenced changelog file is not required to be exclusively used for a single component.</td>
+    <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
@@ -604,7 +619,7 @@ ViewType                | Description
 <b>never</b>            | Component is never presented to the user as it contains supportive files, i.e. for a generator. However it can be explicitly requested by an user, i.e. with the `component:` node.
 <b>maskable</b>         | It is the choice of the tool to hide this component. A tool may offer an option to show such components.
 
-<b>Examples:<b>
+<b>Examples:</b>
 
 1. Component <b>A</b> that requires sub-components <b>A1</b> and <b>A2</b>. These components may have the attribute view="maskable" as it makes no sense to select just <b>A1</b> or <b>A2</b>.
 
@@ -784,39 +799,39 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
   <tr>
     <td>attr</td>
     <td>Defines the special use and handling of a file. Select a predefined value as defined in the table \ref FileAttributeEnum "File Attributes".
-	</td>
+    </td>
     <td>\ref FileAttributeEnum</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>condition</td>
     <td>Enter the identifier (attribute \em <b>id</b>) of a \ref element_condition "condition". The element is used if the condition resolves to \token{true}.
-	If the condition resolves to \token{false}, then the element will be ignored.
-	For example, a library might be specific for a certain toolchain or processor instruction set.</td>
+    If the condition resolves to \token{false}, then the element will be ignored.
+    For example, a library might be specific for a certain toolchain or processor instruction set.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>select</td>
-	<td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template} or \token{interface}.
-	When multiple template files of a component have the same \b <em>select</em> string, they are treated as a single selectable template. This way, multiple template
-	or interface files can be bundled.</td>
-	<td>xs:string</td>
-	<td>optional</td>
+    <td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template} or \token{interface}.
+    When multiple template files of a component have the same \b <em>select</em> string, they are treated as a single selectable template. This way, multiple template
+    or interface files can be bundled.</td>
+    <td>xs:string</td>
+    <td>optional</td>
   </tr>
   <tr>
     <td>src</td>
     <td>Path information. The path is specified relative to the Pack Description File. If \em \b category is set to \token{library},
-	then the \em \b src string can contain a list of directory paths separated by semicolons. A debugger will search those paths
-	for locating the source files of the modules archived in the library supporting the debugging of library code.</td>
+    then the \em \b src string can contain a list of directory paths separated by semicolons. A debugger will search those paths
+    for locating the source files of the modules archived in the library supporting the debugging of library code.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>version</td>
     <td>File-specific version information. This is used particularly for files copied into the project workspace.
-	Before a file gets copied, a version check avoids unnecessary copy actions. If a file does not have a version, then the component version is used.
-	 The version format is described in \ref VersionType "Version Type".</td>
+    Before a file gets copied, a version check avoids unnecessary copy actions. If a file does not have a version, then the component version is used.
+    The version format is described in \ref VersionType "Version Type".</td>
     <td>VersionType</td>
     <td>optional</td>
   </tr>
@@ -845,18 +860,18 @@ The table lists the values available as a file attribute.
   <tr>
     <td class="XML-Token">config</td>
     <td>The file is a configuration file of the component. It is expected that only configuration options are modified.
-	The file is managed as part of the component, as a project-specific file typically copied into the component section of the project.s</td>
+    The file is managed as part of the component, as a project-specific file typically copied into the component section of the project.s</td>
   </tr>
   <tr>
     <td class="XML-Token">template</td>
     <td>The file is used as a source code template file. It is expected to be edited and extended by the software developer.
-	The file can be copied into a user section of the project.</td>
+    The file can be copied into a user section of the project.</td>
   </tr>
 <!--
   <tr>
     <td class="XML-Token">interface</td>
     <td>The file contains the source code of an interface that connects two software components. It is a working reference implementation that may need customization.
-	The file can be copied to a user section of the project.</td>
+    The file can be copied to a user section of the project.</td>
   </tr>
 -->
 </table>
@@ -974,7 +989,7 @@ The table lists the predefined values for a file category.
     <td class="XML-Token">image</td>
     <td>Files of image type are marked for special processing into a File System Image embedded into the application.
         This category requires the <em>attr</em> being set to <em>template</em><!-- or <em>interface</em> -->.
-	</td>
+    </td>
   </tr>
   <tr>
     <td class="XML-Token">preIncludeGlobal</td>

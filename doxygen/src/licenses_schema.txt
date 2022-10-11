@@ -99,7 +99,7 @@ An element containing a list of one or more license files.
   </tr>
   <tr>
     <td>\ref element_licenseSets "licenseSets"</td>
-    <td colspan="3">\ref pdsc_package_pg "/package"</td>
+    <td colspan="3">\ref pdsc_package_pg "/package/licenseSets"</td>
   </tr>
   <tr>
     <th>Attributes</th>
@@ -149,7 +149,7 @@ An element describing an individual license file.
   </tr>
   <tr>
     <td>\ref element_licenseSets "licenseSet"</td>
-    <td colspan="3">\ref element_licenseSet "/licenseSet"</td>
+    <td colspan="3">\ref element_licenseSet "/package/licenseSets/licenseSet"</td>
   </tr>	
   <tr>
     <th>Attributes</th>

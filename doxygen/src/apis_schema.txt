@@ -95,7 +95,7 @@ The element itself is optional. Only one such section can exist in a package.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_api /package/apis/api
@@ -124,7 +124,7 @@ by either implementing or using a set of functions, data types, and definitions.
 </apis>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: api">
   <tr>
@@ -144,45 +144,56 @@ by either implementing or using a set of functions, data types, and definitions.
   <tr>
     <td>Cclass</td>
     <td>Defines the component class to which this component belongs. This is a mandatory part of the component ID.  
-	Predefined values can be used as listed in the table \ref CclassType "Component Classes".</td>
+      Predefined values can be used as listed in the table \ref CclassType "Component Classes".</td>
     <td>CclassType</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Cgroup</td>
     <td>Defines the component group to which this component belongs. This is a mandatory part of the component ID. 
-	Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
+      Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
     <td>CgroupType</td>
     <td>required</td>
   </tr>
   <tr>
     <td>exclusive</td>
     <td>Makes the selection of a component implementing the API exclusive. If set to \token{0}, then multiple components
-	implementing the API can be selected concurrrently. Default is \token{1}.</td>
+      implementing the API can be selected concurrrently. Default is \token{1}.</td>
     <td>xs:boolean</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>condition</td>
     <td>Enter the identifier (attribute \em <b>id</b>) of a \ref element_condition "condition". The element is used if the condition resolves to \token{true}. 
-	If the condition resolves to \token{false}, then the element will be ignored. 
-	For example, an API might be specific for a certain toolchain or processor instruction set.</td>
+      If the condition resolves to \token{false}, then the element will be ignored. 
+      For example, an API might be specific for a certain toolchain or processor instruction set.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Capiversion</td>
     <td>Version of the api. Is a mandatory part of the api ID.  The version format is described in \ref VersionType "Version Type".
-	</td>
+    </td>
     <td>VersionType</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>licenseSet</td>
-	<td>Reference to the licenseSet with the given identifier \token{ID} listed in the licenseSets section of the package description.
-	    A licenseSet describes one or more license files which in this case govern the api.</td>
-	<td>xs:string</td>
-	<td>optional</td>
+    <td>Reference to the licenseSet with the given identifier \token{ID} listed in the licenseSets section of the package description.
+      A licenseSet describes one or more license files which in this case govern the api.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>changelog</td>
+    <td>
+      Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
+      A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the api. 
+      The content of the referenced changelog file is not required to be exclusively used for a single api.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+
   <tr>
     <th>Child&nbsp;Elements</th>
     <th>Description</th>
@@ -203,5 +214,5 @@ by either implementing or using a set of functions, data types, and definitions.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 */
