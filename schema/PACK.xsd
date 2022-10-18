@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        10. Oct 2022
-  $Revision:    1.7.14
+  $Date:        18. Oct 2022
+  $Revision:    1.7.15
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.14
+  SchemaVersion=1.7.15
 
+  18. Oct 2022: v1.7.15
+   - added '3PEAK' Dvendor entry
   10. Oct 2022: v1.7.14
    - added 'changelog' element providing references to change log files by component, api and bundle elements
    - added 'Puya' Dvendor entry
@@ -181,6 +183,7 @@
   <!-- Registered Device Vendors -->
   <xs:simpleType name="DeviceVendorEnum">
     <xs:restriction base="xs:token">
+      <xs:enumeration value="3PEAK:177" />
       <xs:enumeration value="ABOV Semiconductor:126" />
       <xs:enumeration value="Actel:56" />
       <xs:enumeration value="Active-Semi:140" />

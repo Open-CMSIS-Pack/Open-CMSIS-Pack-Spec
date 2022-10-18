@@ -1995,6 +1995,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <th>Web Link</th>
   </tr>
   <tr>
+    <td class="XML-Token">3PEAK:177</td>
+    <td>3PEAK</td>
+    <td>https://www.3peakic.com.cn/</td>
+  </tr>
+  <tr>
     <td class="XML-Token">ABOV Semiconductor:126</td>
     <td>ABOV Semiconductor</td>
     <td>http://www.abov.co.kr/en/</td>
