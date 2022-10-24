@@ -843,6 +843,15 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
     <td>xs:boolean</td>
     <td>optional</td>
   </tr>
+    <tr>
+    <td>projectpath</td>
+    <td>View location path for a file of component inside IDE project explorer view. When a component is selected into a project, IDE
+        can use it to construct component file view location path inside the IDE project explorer view. It gives component files a better
+        organization view instead of just flat placing them in the project explorer. IDE can also directly ignore this attribute,
+        then all files of the component will be flat placed inside the project explorer view under Cclass.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
 </table>
 
 <p>&nbsp;</p>

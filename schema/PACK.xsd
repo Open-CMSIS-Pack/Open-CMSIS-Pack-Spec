@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        10. Oct 2022
-  $Revision:    1.7.14
+  $Date:        24. Oct 2022
+  $Revision:    1.7.15
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.14
+  SchemaVersion=1.7.15
 
+  24. Oct 2022: v1.7.15
+   - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
   10. Oct 2022: v1.7.14
    - added 'changelog' element providing references to change log files by component, api and bundle elements
    - added 'Puya' Dvendor entry
@@ -169,7 +171,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.14">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.15">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1545,6 +1547,9 @@
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
     <!-- links to web pages are assumed public -->
     <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+    <!-- project path:  View location path for a file of component inside IDE project explorer view. -->
+    <!-- if not provided, all files of the component will be flat placed inside the IDE project explorer view under Cclass of component-->
+    <xs:attribute name="projectpath" type="xs:string" use="optional" />
   </xs:complexType>
 
   <!-- some strings are used to construct filenames (e.g. package name). Such names can contain only subset of characters
