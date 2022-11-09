@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.14</span>
+   &#160;<span id="projectnumber">Version 1.7.15</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -549,6 +549,8 @@ Pre_Include_Local_Component_h</h1>
 <td>version </td><td>File-specific version information. This is used particularly for files copied into the project workspace. Before a file gets copied, a version check avoids unnecessary copy actions. If a file does not have a version, then the component version is used. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. </td><td>VersionType </td><td>optional  </td></tr>
 <tr>
 <td>public </td><td>Set publishing permissions for the documentation. If <em>&lt;public&gt;</em> is <span class="XML-Token">true</span>, then the vendor gives permission to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public. The default value is <span class="XML-Token">false</span>. </td><td>xs:boolean </td><td>optional  </td></tr>
+<tr>
+<td>projectpath </td><td>View location path for a file of component inside IDE project explorer view. When a component is selected into a project, IDE can use it to construct component file view location path inside the IDE project explorer view. It gives component files a better organization view instead of just flat placing them in the project explorer. IDE can also directly ignore this attribute, then all files of the component will be flat placed inside the project explorer view under Cclass. </td><td>xs:string </td><td>optional  </td></tr>
 </table>
 <p >&#160;</p>
 <p ><a class="anchor" id="FileAttributeEnum"></a><b>Table: File Attributes</b></p>
