@@ -84,6 +84,12 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.15</td>
+    <td>
+     - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
+    </td>
+  </tr>
+  <tr>
     <td>1.7.14</td>
     <td>
      - added 'changelog' element providing references to change log files by component, api and bundle elements
@@ -96,7 +102,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <td>
      - added VirtualHW as a new board type in support of the Arm Virtual Hardware initiative
      - added \<parts> element and its child elements for describing and packaging the parts (devices other than the MCU).
-     - added \<mountedPart> element, as child element of the \<board> element, for describing the parts (devices other than the MCU) 
+     - added \<mountedPart> element, as child element of the \<board> element, for describing the parts (devices other than the MCU)
        mounted on the development board.
     </td>
   </tr>

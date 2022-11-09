@@ -241,6 +241,10 @@ Optionally, every file may have the following attributes:
   component version is used.
 - \c public: Set publishing permissions for the documentation. If \em <b>true</b>, the documentation can be extracted and
   published on a web page.
+- \c projectpath: View location path for a file of component inside IDE project explorer view. When a component is selected into
+  a project, IDE can use it to construct component file view location path inside the IDE project explorer view. It gives component
+  files a better organization view instead of just flat placing them in the project explorer. IDE can also directly ignore this
+  attribute, then all files of the component will be flat placed inside the project explorer view under Cclass.
 
 
 \subsection cp_Conditions Conditions
