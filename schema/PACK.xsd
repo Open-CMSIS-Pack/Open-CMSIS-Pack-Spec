@@ -1029,12 +1029,12 @@
   <!-- Dfpu enumeration type -->
   <xs:simpleType name="DfpuEnum">
     <xs:restriction base="xs:token">
-      <!-- core has FPU (type of FPU depends on Dcore) -->
-      <xs:enumeration value="FPU" />
-      <xs:enumeration value="1" />
       <!-- core has no FPU -->
       <xs:enumeration value="NO_FPU" />
       <xs:enumeration value="0" />
+      <!-- core has FPU (type of FPU depends on Dcore) -->
+      <xs:enumeration value="FPU" />
+      <xs:enumeration value="1" />
       <!-- single precision FPU -->
       <xs:enumeration value="SP_FPU" />
       <!-- double precision FPU -->
@@ -1047,12 +1047,12 @@
   <!-- Dmpu enumeration type -->
   <xs:simpleType name="DmpuEnum">
     <xs:restriction base="xs:token">
-      <!-- MPU -->
-      <xs:enumeration value="MPU" />
-      <xs:enumeration value="1" />
       <!-- no MPU -->
       <xs:enumeration value="NO_MPU" />
       <xs:enumeration value="0" />
+      <!-- MPU -->
+      <xs:enumeration value="MPU" />
+      <xs:enumeration value="1" />
       <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
@@ -1061,12 +1061,12 @@
   <!-- Dtz TrustZone enumeration type -->
   <xs:simpleType name="DtzEnum">
     <xs:restriction base="xs:token">
-      <!-- TZ -->
-      <xs:enumeration value="TZ" />
-      <xs:enumeration value="1" />
       <!-- no TZ -->
       <xs:enumeration value="NO_TZ" />
       <xs:enumeration value="0" />
+      <!-- TZ -->
+      <xs:enumeration value="TZ" />
+      <xs:enumeration value="1" />
       <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
@@ -1092,12 +1092,12 @@
   <!-- Ddsp DSP extensions enumeration type -->
   <xs:simpleType name="DdspEnum">
     <xs:restriction base="xs:token">
-      <!-- DSP -->
-      <xs:enumeration value="DSP" />
-      <xs:enumeration value="1" />
       <!-- no DSP -->
       <xs:enumeration value="NO_DSP" />
       <xs:enumeration value="0" />
+      <!-- DSP -->
+      <xs:enumeration value="DSP" />
+      <xs:enumeration value="1" />
       <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
