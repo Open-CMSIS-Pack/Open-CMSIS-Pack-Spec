@@ -2615,12 +2615,12 @@ The values can be used in the elements:
     <th>Description</th>
   </tr>
   <tr>
-    <td class="XML-Token">MPU</td>
-    <td>Memory Protection Unit is present</td>
-  </tr>
-  <tr>
     <td class="XML-Token">NO_MPU</td>
     <td>No Memory Protection Unit is present</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">MPU</td>
+    <td>Memory Protection Unit is present</td>
   </tr>
 </table>
 
@@ -2641,12 +2641,12 @@ The values can be used in the elements:
     <th>Description</th>
   </tr>
   <tr>
-    <td class="XML-Token">TZ</td>
-    <td>TrustZone is present</td>
-  </tr>
-  <tr>
     <td class="XML-Token">NO_TZ</td>
     <td>No TrustZone is present</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">TZ</td>
+    <td>TrustZone is present</td>
   </tr>
 </table>
 
@@ -2666,12 +2666,12 @@ The values can be used in the elements:
     <th>Description</th>
   </tr>
   <tr>
-    <td class="XML-Token">Secure</td>
-    <td>Application is built to run in secure mode.</td>
-  </tr>
-  <tr>
     <td class="XML-Token">Non-secure</td>
     <td>Application is built to run in non-secure mode.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Secure</td>
+    <td>Application is built to run in secure mode.</td>
   </tr>
   <tr>
     <td class="XML-Token">TZ-disabled</td>
@@ -2697,12 +2697,12 @@ The values can be used in the elements:
     <th>Description</th>
   </tr>
   <tr>
-    <td class="XML-Token">DSP</td>
-    <td>DSP instructions supported</td>
-  </tr>
-  <tr>
     <td class="XML-Token">NO_DSP</td>
     <td>No DSP instructions supported</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">DSP</td>
+    <td>DSP instructions supported</td>
   </tr>
 </table>
 
