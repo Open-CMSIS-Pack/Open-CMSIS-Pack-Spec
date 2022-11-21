@@ -1029,12 +1029,12 @@
   <!-- Dfpu enumeration type -->
   <xs:simpleType name="DfpuEnum">
     <xs:restriction base="xs:token">
-      <!-- core has FPU (type of FPU depends on Dcore) -->
-      <xs:enumeration value="FPU" />
-      <xs:enumeration value="1" />
       <!-- core has no FPU -->
       <xs:enumeration value="NO_FPU" />
       <xs:enumeration value="0" />
+      <!-- core has FPU (type of FPU depends on Dcore) -->
+      <xs:enumeration value="FPU" />
+      <xs:enumeration value="1" />
       <!-- single precision FPU -->
       <xs:enumeration value="SP_FPU" />
       <!-- double precision FPU -->
@@ -1047,10 +1047,13 @@
   <!-- Dmpu enumeration type -->
   <xs:simpleType name="DmpuEnum">
     <xs:restriction base="xs:token">
-      <xs:enumeration value="MPU" />
+      <!-- no MPU -->
       <xs:enumeration value="NO_MPU" />
       <xs:enumeration value="0" />
+      <!-- MPU -->
+      <xs:enumeration value="MPU" />
       <xs:enumeration value="1" />
+      <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1058,10 +1061,13 @@
   <!-- Dtz TrustZone enumeration type -->
   <xs:simpleType name="DtzEnum">
     <xs:restriction base="xs:token">
-      <xs:enumeration value="TZ" />
+      <!-- no TZ -->
       <xs:enumeration value="NO_TZ" />
-      <xs:enumeration value="1" />
       <xs:enumeration value="0" />
+      <!-- TZ -->
+      <xs:enumeration value="TZ" />
+      <xs:enumeration value="1" />
+      <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1069,12 +1075,16 @@
   <!-- Dsecure enumeration type -->
   <xs:simpleType name="DsecureEnum">
     <xs:restriction base="xs:token">
+      <!-- Non Secure -->
       <xs:enumeration value="Non-secure" />
-      <xs:enumeration value="Secure" />
-      <xs:enumeration value="TZ-disabled" />
       <xs:enumeration value="0" />
+      <!-- Secure -->
+      <xs:enumeration value="Secure" />
       <xs:enumeration value="1" />
+      <!-- TZ disabled -->
+      <xs:enumeration value="TZ-disabled" />
       <xs:enumeration value="2" />
+      <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1082,10 +1092,13 @@
   <!-- Ddsp DSP extensions enumeration type -->
   <xs:simpleType name="DdspEnum">
     <xs:restriction base="xs:token">
-      <xs:enumeration value="DSP" />
+      <!-- no DSP -->
       <xs:enumeration value="NO_DSP" />
-      <xs:enumeration value="1" />
       <xs:enumeration value="0" />
+      <!-- DSP -->
+      <xs:enumeration value="DSP" />
+      <xs:enumeration value="1" />
+      <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
