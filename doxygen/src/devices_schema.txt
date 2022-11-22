@@ -1987,6 +1987,7 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
 - \ref element_example_board
 - \ref element_board_compatibleDevice
 - \ref element_gen_select
+- \ref element_part 
 
 <table class="cmtable" summary="Enumeration: DeviceVendorEnum">
   <tr>

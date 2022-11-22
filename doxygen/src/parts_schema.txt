@@ -20,7 +20,7 @@ A part vendor must ensure that the combination of name, revision, class, variant
   
   <parts>
 
-    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
+    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure MCUs" Hgroup="Authentication">
       <feature type="Crypto" n="128.256" name="Authentication and security for peripherals and IoT devices from STMicroelectronics"/>
       <environment name="SomeConfigTool">
         <file>STSAFA110DFSPL02_ConfigFile.cfg</file>
@@ -28,7 +28,7 @@ A part vendor must ensure that the combination of name, revision, class, variant
       <book name="Images/STSAFA110DFSPL02_image.jpg" title="image" public="true"/>
     </part>
 
-    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110S8SPL02" Hclass="Secure" Hgroup="Authentication">
+    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110S8SPL02" Hclass="Secure MCUs" Hgroup="Authentication">
       <feature type="Crypto" n="128.256" name="Authentication and security for peripherals and IoT devices from STMicroelectronics"/>
       <environment name="SomeConfigTool">
         <file>Descriptors/pinout/STSAFA110S8SPL02_ConfigFile.cfg</file>
@@ -36,7 +36,7 @@ A part vendor must ensure that the combination of name, revision, class, variant
       <book name="Images/STSAFA110S8SPL02_image.jpg" title="image" public="true"/>
     </part>
 
-    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL03" Hclass="Secure" Hgroup="Authentication">
+    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL03" Hclass="Secure MCUs" Hgroup="Authentication">
       <feature type="Crypto" n="128.256" name="Authentication and security for peripherals and IoT devices from STMicroelectronics"/>
       <environment name="SomeConfigTool">
         <file>Descriptors/pinout/STSAFA110DFSPL03_ConfigFile.cfg</file>
@@ -105,7 +105,7 @@ This element specifies a part. At least one part element must be specified per p
   <tr>
     <td>Hvendor</td>
     <td>Defines the vendor this part is shipped by. It is a mandatory part of the part ID and will be inherited from the package vendor if not specified.</td>
-    <td>DeviceVendorEnum</td>
+    <td>\ref DeviceVendorEnum "DeviceVendorEnum"</td>
     <td>optional</td>
   </tr>
   <tr>
@@ -117,13 +117,13 @@ This element specifies a part. At least one part element must be specified per p
   <tr>
     <td>Hclass</td>
     <td>Defines the part class to which the part belongs.</td>
-    <td>xs:string</td>
+    <td>\ref HclassType "HclassType"</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Hgroup</td>
     <td>Defines the part group to which the part belongs.</td>
-    <td>xs:string</td>
+    <td>\ref HclassType "HgroupType"</td>
     <td>optional</td>
   </tr>
   <tr>

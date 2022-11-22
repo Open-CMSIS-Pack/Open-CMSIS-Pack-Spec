@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        24. Oct 2022
-  $Revision:    1.7.15
+  $Date:        22. Nov 2022
+  $Revision:    1.7.16
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.15
+  SchemaVersion=1.7.16
 
+  22. Nov 2022: v1.7.16
+   - added Hclass and Hgroup predefined values for \<part> elements classification.
   24. Oct 2022: v1.7.15
    - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
   10. Oct 2022: v1.7.14
@@ -171,7 +173,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.15">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.16">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1250,10 +1252,14 @@
   <xs:complexType name="TaxonomyDescriptionType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <!-- Class the description is associated with -->
-        <xs:attribute name="Cclass"    type="CclassType" use="required" />
-         <!-- Group the description is associated with -->
+        <!-- Component Class the description is associated with -->
+        <xs:attribute name="Cclass"    type="CclassType" use="optional" />
+         <!-- Component Group the description is associated with -->
         <xs:attribute name="Cgroup"    type="CgroupType" use="optional" />
+        <!-- Part Class the description is associated with -->
+        <xs:attribute name="Hclass"    type="HclassType" use="optional" />
+         <!-- Part Group the description is associated with -->
+        <xs:attribute name="Hgroup"    type="HgroupType" use="optional" />
         <!-- link to documentation for the :Class:[Group] -->
         <xs:attribute name="doc"       type="xs:string"  use="optional" />
         <!-- link a generator to a taxonomy -->
@@ -1463,6 +1469,24 @@
     </xs:sequence>
   </xs:complexType>
 
+  <!-- Part Class Name Type: specify your own Hclass in taxonomy -->
+  <xs:simpleType name="HclassType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3" />
+      <xs:maxLength value="32" />
+      <xs:pattern value="\S(.*\S)?"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Part Group Name Type -->
+  <xs:simpleType name="HgroupType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3" />
+      <xs:maxLength value="32" />
+      <xs:pattern value="\S(.*\S)?"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+  
   <xs:complexType name="PartType">
     <xs:sequence>
       <xs:element name="feature"     type="DeviceFeatureType" minOccurs="0" maxOccurs="unbounded" />
@@ -1471,8 +1495,8 @@
     </xs:sequence>
     <xs:attribute name="Hvendor"   type="DeviceVendorEnum" use="optional"/>
     <xs:attribute name="Hname"     type="xs:string"        use="required"/>
-    <xs:attribute name="Hclass"    type="xs:string"        use="optional"/>
-    <xs:attribute name="Hgroup"    type="xs:string"        use="optional"/>
+    <xs:attribute name="Hclass"    type="HclassType"       use="optional"/>
+    <xs:attribute name="Hgroup"    type="HgroupType"       use="optional"/>
     <xs:attribute name="Hsub"      type="xs:string"        use="optional"/>
     <xs:attribute name="Hvariant"  type="xs:string"        use="optional"/>
     <xs:attribute name="Hrevision" type="xs:string"        use="optional"/>
