@@ -129,7 +129,7 @@ This element specifies a part. At least one part element must be specified per p
   <tr>
     <td>Hsub</td>
     <td>Defines the part subgroup.</td>
-    <td>xs:string</td>
+    <td>\ref HsubType "HsubType"</td>
     <td>optional</td>
   </tr>
   <tr>
@@ -163,6 +163,21 @@ This element specifies a part. At least one part element must be specified per p
     <td>0..*</td>
   </tr>
 </table>
+
+<p>&nbsp;</p>
+
+\anchor HsubType <b>Part Subgroups</b>
+
+Part Subgroups are specified by the element \b Hsub and create subcategories within Part Classes (\b Hclass) and Part Groups (\b Hgroup).
+A \b Hsub name is of type \em HsubType, that is a \em xs:string with a length between 3 and 32 characters.
+No \em Hsub names have been predefined.
+
+Part Subgroups can be used in element \ref element_part
+
+\b Example:
+\code
+  <... Hclass="MEMS and Sensors" Hgroup="Environmental" Hsub="Temperature" ...>
+\endcode
 
 <p>&nbsp;</p>
 <hr>

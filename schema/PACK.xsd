@@ -1487,6 +1487,14 @@
     </xs:restriction>
   </xs:simpleType>
   
+  <!-- Part Sub Name Type -->
+  <xs:simpleType name="HsubType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3" />
+      <xs:maxLength value="32" />
+    </xs:restriction>
+  </xs:simpleType>
+  
   <xs:complexType name="PartType">
     <xs:sequence>
       <xs:element name="feature"     type="DeviceFeatureType" minOccurs="0" maxOccurs="unbounded" />
@@ -1497,7 +1505,7 @@
     <xs:attribute name="Hname"     type="xs:string"        use="required"/>
     <xs:attribute name="Hclass"    type="HclassType"       use="optional"/>
     <xs:attribute name="Hgroup"    type="HgroupType"       use="optional"/>
-    <xs:attribute name="Hsub"      type="xs:string"        use="optional"/>
+    <xs:attribute name="Hsub"      type="HsubType"         use="optional"/>
     <xs:attribute name="Hvariant"  type="xs:string"        use="optional"/>
     <xs:attribute name="Hrevision" type="xs:string"        use="optional"/>
   </xs:complexType>

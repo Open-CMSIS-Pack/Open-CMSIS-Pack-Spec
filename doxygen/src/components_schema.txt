@@ -526,6 +526,7 @@ A component describes a collection of files (source, header, configuration, libr
     <td>Identifies this component variant to be the preferred variant for tool driven selection through an automated dependency resolution algorithm [Version 1.4.0]. Note: It is the component vendor's responsibility to have only a single component variant having this attribute enabled.</td>
     <td>xs:boolean</td>
     <td>optional</td>
+  </tr>
   <tr>
     <td>generator</td>
     <td>This links the component with a generator description located in the same file. If this component is selected by the run time configuration,
@@ -543,10 +544,11 @@ A component describes a collection of files (source, header, configuration, libr
   </tr>
   <tr>
     <td>view</td>
-    <td>Defines the user view of this component.  A component may be hidden, for example when it is managed by a generator.
+    <td>Defines the user view of this component. A component may be hidden, for example when it is managed by a generator.</td>
     <td>\ref ViewType "ViewType"</td>
     <td>optional</td>
   </tr>
+  <tr>
     <td>changelog</td>
     <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
       A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the component. 
