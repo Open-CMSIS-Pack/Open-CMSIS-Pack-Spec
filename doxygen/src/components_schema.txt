@@ -547,6 +547,7 @@ A component describes a collection of files (source, header, configuration, libr
     <td>\ref ViewType "ViewType"</td>
     <td>optional</td>
   </tr>
+  <tr>
     <td>changelog</td>
     <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
       A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the component. 
