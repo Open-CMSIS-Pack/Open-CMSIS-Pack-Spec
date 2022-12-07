@@ -813,7 +813,7 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
   </tr>
   <tr>
     <td>select</td>
-    <td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template} or \token{interface}.
+    <td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template}.
     When multiple template files of a component have the same \b <em>select</em> string, they are treated as a single selectable template. This way, multiple template
     or interface files can be bundled.</td>
     <td>xs:string</td>
