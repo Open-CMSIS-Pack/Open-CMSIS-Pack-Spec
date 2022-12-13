@@ -787,7 +787,7 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
   <tr>
     <td>path</td>
     <td>for <b>category="header"</b> the path attribute explicitly can be used to specify the include path to be added to the commandline of the build tools,
-        specifying an imcomplete path. This way the include file requires the specification of the subdirectory (e.g. \#include "sub_dir/includeFile.h") which can act as
+        specifying an incomplete path. This way the include file requires the specification of the subdirectory (e.g. \#include "sub_dir/includeFile.h") which can act as
         acting as namespace for header files which otherwise have the same name.</td>
     <td>xs:string</td>
     <td>optional</td>
@@ -815,7 +815,7 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
   </tr>
   <tr>
     <td>select</td>
-    <td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template} or \token{interface}.
+    <td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template}.
     When multiple template files of a component have the same \b <em>select</em> string, they are treated as a single selectable template. This way, multiple template
     or interface files can be bundled.</td>
     <td>xs:string</td>
