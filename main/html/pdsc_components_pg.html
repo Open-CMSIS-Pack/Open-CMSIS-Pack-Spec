@@ -341,7 +341,7 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>Cclass </td><td>Defines the component class to which all components in the bundle belong. Is a mandatory part of the component ID. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CclassType">Component Classes</a>.  </td><td>CclassType </td><td>required  </td></tr>
 <tr>
-<td>Cversion </td><td>Defines the version of all components contained in the bundle. The component version is a mandatory part of the component ID. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>.  </td><td>VersionType </td><td>required  </td></tr>
+<td>Cversion </td><td>Defines the component version inherited by all components contained in the bundle. The component version is a mandatory part of the component ID. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. Note: components can redefine their version using the Cversion attribute of the component element.  </td><td>VersionType </td><td>required  </td></tr>
 <tr>
 <td>licenseSet </td><td>Reference to the <span class="XML-Token">licenseSet</span> with the given identifier <span class="XML-Token">ID</span> specified in the licenseSets section of the package description. A licenseSet describes one or more license files which in this case govern all components of this bundle. If the licenseSet is different for different components in the bundle, the licenseSet attribute is required to be assigned on a component level. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
