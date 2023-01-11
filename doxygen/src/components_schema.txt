@@ -374,8 +374,9 @@ Components enclosed in a bundle must not specify any of the following attributes
   </tr>
   <tr>
     <td>Cversion</td>
-    <td>Defines the version of all components contained in the bundle. The component version is a mandatory part of the component ID.
-      The version format is described in \ref VersionType "Version Type".
+    <td>Defines the component version inherited by all components contained in the bundle. The component version is a mandatory part of the component ID.
+      The version format is described in \ref VersionType "Version Type". Note: components can redefine their version using the Cversion attribute
+      of the component element.
     </td>
     <td>VersionType</td>
     <td>required</td>
