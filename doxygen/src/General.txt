@@ -86,7 +86,8 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   <tr>
     <td>1.7.16</td>
     <td>
-     - added Hclass and Hgroup predefined values for \<part> elements classification.
+     - introduced \ref element_taxonomyDescriptionC and \ref element_taxonomyDescriptionH elements and set deprecated the use of \ref element_taxonomyDescription
+     - added Hclass and Hgroup \ref HclassType "predefined values" for /package/parts/part element classification
     </td>
   </tr>
   <tr>

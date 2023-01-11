@@ -17,15 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        22. Nov 2022
+  $Date:        11. Jan 2023
   $Revision:    1.7.16
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.16
 
-  22. Nov 2022: v1.7.16
-   - added Hclass and Hgroup predefined values for \<part> elements classification.
+  11. Jan 2023: v1.7.16
+   - introduced /package/taxonomy/descriptionC and /package/taxonomy/descriptionH elements and set deprecated the use of /package/taxonomy/description
+   - added Hclass and Hgroup predefined values for /package/parts/part element classification
   24. Oct 2022: v1.7.15
    - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
   10. Oct 2022: v1.7.14
@@ -1248,7 +1249,7 @@
     <xs:attribute name="condition" type="xs:string" />
   </xs:complexType>
 
-  <!-- taxonomy description type definition -->
+  <!-- taxonomy description type definition (here for backward compatibility --deprecated--) -->
   <xs:complexType name="TaxonomyDescriptionType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -1256,6 +1257,44 @@
         <xs:attribute name="Cclass"    type="CclassType" use="optional" />
          <!-- Component Group the description is associated with -->
         <xs:attribute name="Cgroup"    type="CgroupType" use="optional" />
+        <!-- link to documentation for the :Class:[Group] -->
+        <xs:attribute name="doc"       type="xs:string"  use="optional" />
+        <!-- link a generator to a taxonomy -->
+        <xs:attribute name="generator" type="xs:string"  use="optional" />
+        <!-- allow to filter the taxonomy e.g. for a device vendor -->
+        <xs:attribute name="condition" type="xs:string"  use="optional" />
+        <!-- if true, the vendor gives permission for the doc file above being extracted from the pack and displayed on a web-page -->
+        <!-- links to web pages are assumed public -->
+        <xs:attribute name="public" type="xs:boolean"    use="optional" default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <!-- taxonomy descriptionC type definition (to be used for components) -->
+  <xs:complexType name="TaxonomyDescriptionCType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <!-- Component Class the description is associated with -->
+        <xs:attribute name="Cclass"    type="CclassType" use="optional" />
+         <!-- Component Group the description is associated with -->
+        <xs:attribute name="Cgroup"    type="CgroupType" use="optional" />
+        <!-- link to documentation for the :Class:[Group] -->
+        <xs:attribute name="doc"       type="xs:string"  use="optional" />
+        <!-- link a generator to a taxonomy -->
+        <xs:attribute name="generator" type="xs:string"  use="optional" />
+        <!-- allow to filter the taxonomy e.g. for a device vendor -->
+        <xs:attribute name="condition" type="xs:string"  use="optional" />
+        <!-- if true, the vendor gives permission for the doc file above being extracted from the pack and displayed on a web-page -->
+        <!-- links to web pages are assumed public -->
+        <xs:attribute name="public" type="xs:boolean"    use="optional" default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <!-- taxonomy descriptionH type definition (to be used for parts) -->
+  <xs:complexType name="TaxonomyDescriptionHType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
         <!-- Part Class the description is associated with -->
         <xs:attribute name="Hclass"    type="HclassType" use="optional" />
          <!-- Part Group the description is associated with -->
@@ -1274,9 +1313,12 @@
   </xs:complexType>
 
   <xs:complexType name="TaxonomyType">
-    <xs:sequence>
-      <xs:element name="description" type="TaxonomyDescriptionType" minOccurs="1" maxOccurs="unbounded" />
-    </xs:sequence>
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+	  <!-- here for backward compatibility -->
+      <xs:element name="description" type="TaxonomyDescriptionType" minOccurs="1" maxOccurs="unbounded" /> 
+	  <xs:element name="descriptionC" type="TaxonomyDescriptionCType" minOccurs="1" maxOccurs="unbounded" />
+	  <xs:element name="descriptionH" type="TaxonomyDescriptionHType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:choice>
   </xs:complexType>
 
   <!-- API type definition -->

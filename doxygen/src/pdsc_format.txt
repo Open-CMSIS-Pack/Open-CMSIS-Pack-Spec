@@ -1016,63 +1016,43 @@ This element is optional.
     <th>Type</th>
     <th>Occurrence</th>
   </tr>
-  <tr>
-    <td>\ref element_taxonomyDescription "description"</td>
-    <td>Describes or defines a component (or part) class or class-group combination.</td>
+  <tr class="choice">
+    <td>\ref element_taxonomyDescription "description"<sup>1</sup></td>
+    <td><b>DEPRECATED**</b> Describes or defines a component class or class-group combination. Use of element <b>descriptionC</b> is recommended.</td>
     <td>TaxonomyDescriptionType</td>
     <td>1..* </td>
   </tr>
+  <tr class="choice">
+    <td>\ref element_taxonomyDescriptionC "descriptionC"<sup>1</sup></td>
+    <td>Describes or defines a component class or class-group combination. Replaces deprecated element <b>description</b>.</td>
+    <td>TaxonomyDescriptionCType</td>
+    <td>1..* </td>
+  </tr>
+  <tr class="choice">
+    <td>\ref element_taxonomyDescriptionH "descriptionH"<sup>1</sup></td>
+    <td>Describes or defines a part class or class-group combination.</td>
+    <td>TaxonomyDescriptionHType</td>
+    <td>1..* </td>
+  </tr>
 </table>
+\note
+\b 1: At least one of these child elements must be present in the taxonomy element.
 
 <p>&nbsp;</p>
 <hr>
 
 \section element_taxonomyDescription /package/taxonomy/description
+\section element_taxonomyDescriptionC /package/taxonomy/descriptionC
 
-This element describes a component (or a part) class or the combination between a component (or a part) class and a component (or a part) group.
-Components are categorized by \em Cclass and \em Cgroup, while Parts are categorized by \em Hclass and \em Hgroup. The creator of a package can define the names for \em Cclass (or \em Hclass) and
-\em Cgroup (or \em Hgroup). Thus, configuration tools can display the set of available components and parts. A document can be referenced using the
+This element describes a component class or the combination between a component class and a component group.
+Components are categorized by \em Cclass and \em Cgroup. The creator of a package can define the names for \em Cclass and
+\em Cgroup. Thus, configuration tools can display the set of available components. A document can be referenced using the
 attribute \em doc. The attribute \em generator can be used to reference to a generator tool. The \em id of the generator
 needs to be the same as specified in the element \ref element_generator. The description itself is a string entered between
-the opening and closing tags of the element \b description.
+the opening and closing tags of the element \b descriptionC.
 
-It is recommended to use an already agreed taxonomy for interchangeable components (or parts). For example, in the case of the components, the combination of class \token{CMSIS}
+It is recommended to use an already agreed taxonomy for interchangeable components. For example, the combination of class \token{CMSIS}
 and group \token{Startup} is defined for the device-specific CMSIS-Core (Cortex-M) files.
-
-<p>&nbsp;</p>
-
-\b Example:
-\code
-  <taxonomy>
-    <description Cclass="Board Support">Generic Interfaces for Evaluation and Development Boards</description>
-    <description Cclass="CMSIS" doc="CMSIS/Documentation/General/html/index.html">Cortex Microcontroller Software Interface Components</description>
-    <description Cclass="Device" doc="CMSIS/Documentation/Core/html/index.html">Startup, System Setup</description>
-    <description Cclass="CMSIS Driver" doc="CMSIS/Documentation/Driver/html/index.html">Unified Device Drivers compliant to CMSIS-Driver Specifications</description>
-    <description Cclass="File System">File Drive Support and File System</description>
-    <description Cclass="Graphics">Graphical User Interface</description>
-    <description Cclass="Network">Network Stack using Internet Protocols</description>
-    <description Cclass="USB">Universal Serial Bus Stack</description>
-    <description Cclass="RTOS">Realtime Operating System</description>
-    <description Hclass="Audio ICs">Audio Amplifiers, Audio Processors, MEMS Microphones, Sound Terminal Digital Audio Subsystem</description>
-    <description Hclass="Automotive" Hgroup="Logic ICs">Buffers/Drivers, Counters/Encoders/Decoders, FlipFlop/registers, Gates, ...</description>
-  </taxonomy>
-\endcode
-
-\note You \b must \b not use Windows or Linux
-<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
-\em Cclass, \em Cgroup and \em Csub (or \em Hclass, \em Hgroup and \em Hsub) names! Some development tools use these names to create a directory structure for the
-software components in projects. Reserved characters are:
-\verbatim
-< (less than)
-> (greater than)
-: (colon)
-" (double quote)
-/ (forward slash)
-\ (backslash)
-| (vertical bar or pipe)
-? (question mark)
-* (asterisk)
-\endverbatim
 
 <p>&nbsp;</p>
 
@@ -1102,6 +1082,55 @@ software components in projects. Reserved characters are:
     <td>Component Group Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
     <td>\ref CgroupType "CgroupType"</td>
     <td>optional</td>
+  </tr>
+  <tr>
+    <td>doc</td>
+    <td>Reference to documentation.</td>
+    <td>xs:string </td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>generator</td>
+    <td>Reference to a generator. Enter the \b id value of the element \ref element_generator.</td>
+    <td>xs:string </td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>public</td>
+    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission
+        to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
+        The default value is \token{false}.</td>
+    <td>xs:boolean</td>
+    <td>optional</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+\section element_taxonomyDescriptionH /package/taxonomy/descriptionH
+
+This element describes a part class or the combination between a part class and a part group.
+Parts are categorized by \em Hclass and \em Hgroup. The creator of a package can define the names for \em Hclass and
+\em Hgroup. Thus, configuration tools can display the set of available parts. Other attributes \em doc, \em generator and \em public are defined as in \ref element_taxonomyDescriptionC. 
+The description itself is a string entered between the opening and closing tags of the element \b descriptionH.
+
+It is recommended to use an already agreed taxonomy for interchangeable parts.
+
+<p>&nbsp;</p>
+
+<table class="cmtable" summary="Element: Taxonomy">
+  <tr>
+    <th>Parent Element</th>
+    <th colspan=3>Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_taxonomy "taxonomy"</td>
+    <td colspan=3>\ref element_taxonomy</td>
+  </tr>
+  <tr>
+    <th>Attributes</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Use</th>
   </tr>
   <tr>
     <td>Hclass</td>
@@ -1139,10 +1168,45 @@ software components in projects. Reserved characters are:
 
 <p>&nbsp;</p>
 
+\b Example:
+\code
+  <taxonomy>
+    <description Cclass="Board Support">Generic Interfaces for Evaluation and Development Boards</description> <!-- deprecated -->
+    <description Cclass="CMSIS" doc="CMSIS/Documentation/General/html/index.html">Cortex Microcontroller Software Interface Components</description> <!-- deprecated -->
+    <description Cclass="Device" doc="CMSIS/Documentation/Core/html/index.html">Startup, System Setup</description> <!-- deprecated -->
+    <descriptionC Cclass="CMSIS Driver" doc="CMSIS/Documentation/Driver/html/index.html">Unified Device Drivers compliant to CMSIS-Driver Specifications</descriptionC>
+    <descriptionC Cclass="File System">File Drive Support and File System</descriptionC>
+    <descriptionC Cclass="Graphics">Graphical User Interface</descriptionC>
+    <descriptionC Cclass="Network">Network Stack using Internet Protocols</descriptionC>
+    <descriptionC Cclass="USB">Universal Serial Bus Stack</descriptionC>
+    <descriptionC Cclass="RTOS">Realtime Operating System</descriptionC>
+    <descriptionH Hclass="Audio ICs">Audio Amplifiers, Audio Processors, MEMS Microphones, Sound Terminal Digital Audio Subsystem</descriptionH>
+    <descriptionH Hclass="Automotive" Hgroup="Logic ICs">Buffers/Drivers, Counters/Encoders/Decoders, FlipFlop/registers, Gates, ...</descriptionH>
+  </taxonomy>
+\endcode
+
+\note You \b must \b not use Windows or Linux
+<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
+\em Cclass, \em Cgroup and \em Csub (or \em Hclass, \em Hgroup and \em Hsub) names! Some development tools use these names to create a directory structure for the
+software components in projects. Reserved characters are:
+\verbatim
+< (less than)
+> (greater than)
+: (colon)
+" (double quote)
+/ (forward slash)
+\ (backslash)
+| (vertical bar or pipe)
+? (question mark)
+* (asterisk)
+\endverbatim
+
+<p>&nbsp;</p>
+
 \anchor CclassType <b>Table: Component Classes</b>
 
 Component Class names are strings with a minimum length of 3 characters and a maximum length of 32 characters.
-Component class names are specified in the section \ref element_taxonomyDescription.
+Component class names are specified in the section \ref element_taxonomyDescriptionC.
 
 These values can be used in the elements:
 - \ref element_accept
@@ -1152,7 +1216,7 @@ These values can be used in the elements:
 - \ref element_component
 - \ref element_bundle
 - \ref element_api
-- \ref element_taxonomyDescription
+- \ref element_taxonomyDescriptionC
 
 \b Example:
 \code
@@ -1245,7 +1309,7 @@ The table lists predefined Component Classes.
 \anchor CgroupType <b>Table: Component Groups</b>
 
 Component Group names are specified by the element <b>Cgroup</b> and create categories within a Component Class specified by the element <b>Cclass</b>.
-The creator of the Pack can define the names in the element \ref element_taxonomyDescription.
+The creator of the Pack can define the names in the element \ref element_taxonomyDescriptionC.
 A Component Group name is string with a length between 3 and 32 characters.
 
 \b Example:
@@ -1261,7 +1325,7 @@ Component Groups can be used in the elements:
 - \ref element_example_attribute_component
 - \ref element_component
 - \ref element_api
-- \ref element_taxonomyDescription
+- \ref element_taxonomyDescriptionC
 
 The following table lists predefined values for the Component Class <b>Cclass="CMSIS"</b>.
 <table class="cmtable" summary="Predefined Cgroup names for Component Class CMSIS">
@@ -1309,12 +1373,12 @@ The following table lists predefined values for the Component Class <b>Cclass="D
 \anchor HclassType <b>Table: Part Classes and Groups</b>
 
 Part Class and Part Group names are strings with a minimum length of 3 characters and a maximum length of 32 characters.
-Part Class and Part Group names are specified in the section \ref element_taxonomyDescription.
+Part Class and Part Group names are specified in the section \ref element_taxonomyDescriptionH.
 Part Group names are specified by the element <b>Hgroup</b> and create categories within a Part Class specified by the element <b>Hclass</b>.
 
 Part Classes and Part Groups can be used in the elements:
 - \ref element_part
-- \ref element_taxonomyDescription
+- \ref element_taxonomyDescriptionH
 
 \b Example:
 \code
