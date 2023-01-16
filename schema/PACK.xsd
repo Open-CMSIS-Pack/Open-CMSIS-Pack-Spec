@@ -17,14 +17,14 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        11. Jan 2023
+  $Date:        16. Jan 2023
   $Revision:    1.7.16
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.16
 
-  11. Jan 2023: v1.7.16
+  16. Jan 2023: v1.7.16
    - introduced /package/taxonomy/descriptionC and /package/taxonomy/descriptionH elements and set deprecated the use of /package/taxonomy/description
    - added Hclass and Hgroup predefined values for /package/parts/part element classification
   24. Oct 2022: v1.7.15
