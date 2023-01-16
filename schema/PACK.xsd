@@ -1249,7 +1249,7 @@
     <xs:attribute name="condition" type="xs:string" />
   </xs:complexType>
 
-  <!-- taxonomy description type definition (here for backward compatibility --deprecated--) -->
+  <!-- taxonomy description type definition (here for backward compatibility -deprecated-) -->
   <xs:complexType name="TaxonomyDescriptionType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
