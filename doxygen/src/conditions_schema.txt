@@ -165,17 +165,9 @@ A \ref element_condition "condition" becomes \token{true} when:
     <th colspan="3">Chain</th>
   </tr>
   <tr>
-    <td>\ref element_condition "accept" 
-    <td colspan="3">\ref element_condition "/package/conditions/condition/accept"</td>
-  </tr>
-  <tr>
-    <td>\ref element_condition "require" 
-    <td colspan="3">\ref element_condition "/package/conditions/condition/require"</td>
-  </tr>
-  <tr>
-    <td>\ref element_condition "deny" 
-    <td colspan="3">\ref element_condition "/package/conditions/condition/deny"</td>
-  </tr>
+    <td>\ref element_condition "condition" 
+    <td colspan="3">\ref element_condition "/package/conditions/condition"</td>
+  </tr>  
   <tr>
     <th>Attributes</th>
     <th>Description</th>
