@@ -24,6 +24,8 @@
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.15
 
+  18. Jan 2023:
+   - added 'Clang' to 'CompilerEnumType'.
   24. Oct 2022: v1.7.15
    - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
   10. Oct 2022: v1.7.14
@@ -1181,6 +1183,7 @@
       <xs:enumeration value="Cosmic" />
       <xs:enumeration value="G++"/> <!-- Code Sourcery -->
       <xs:enumeration value="XC"/> <!-- Microchip MPLAB XC32 -->
+      <xs:enumeration value="Clang"/>
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
