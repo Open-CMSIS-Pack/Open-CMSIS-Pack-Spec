@@ -374,8 +374,9 @@ Components enclosed in a bundle must not specify any of the following attributes
   </tr>
   <tr>
     <td>Cversion</td>
-    <td>Defines the version of all components contained in the bundle. The component version is a mandatory part of the component ID.
-      The version format is described in \ref VersionType "Version Type".
+    <td>Defines the component version inherited by all components contained in the bundle. The component version is a mandatory part of the component ID.
+      The version format is described in \ref VersionType "Version Type". Note: components can redefine their version using the Cversion attribute
+      of the component element.
     </td>
     <td>VersionType</td>
     <td>required</td>
@@ -547,6 +548,7 @@ A component describes a collection of files (source, header, configuration, libr
     <td>\ref ViewType "ViewType"</td>
     <td>optional</td>
   </tr>
+  <tr>
     <td>changelog</td>
     <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
       A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the component. 
@@ -785,7 +787,7 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
   <tr>
     <td>path</td>
     <td>for <b>category="header"</b> the path attribute explicitly can be used to specify the include path to be added to the commandline of the build tools,
-        specifying an imcomplete path. This way the include file requires the specification of the subdirectory (e.g. \#include "sub_dir/includeFile.h") which can act as
+        specifying an incomplete path. This way the include file requires the specification of the subdirectory (e.g. \#include "sub_dir/includeFile.h") which can act as
         acting as namespace for header files which otherwise have the same name.</td>
     <td>xs:string</td>
     <td>optional</td>
@@ -813,7 +815,7 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
   </tr>
   <tr>
     <td>select</td>
-    <td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template} or \token{interface}.
+    <td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template}.
     When multiple template files of a component have the same \b <em>select</em> string, they are treated as a single selectable template. This way, multiple template
     or interface files can be bundled.</td>
     <td>xs:string</td>
@@ -841,6 +843,15 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
         to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
         The default value is \token{false}.</td>
     <td>xs:boolean</td>
+    <td>optional</td>
+  </tr>
+    <tr>
+    <td>projectpath</td>
+    <td>View location path for a file of component inside IDE project explorer view. When a component is selected into a project, IDE
+        can use it to construct component file view location path inside the IDE project explorer view. It gives component files a better
+        organization view instead of just flat placing them in the project explorer. IDE can also directly ignore this attribute,
+        then all files of the component will be flat placed inside the project explorer view under Cclass.</td>
+    <td>xs:string</td>
     <td>optional</td>
   </tr>
 </table>

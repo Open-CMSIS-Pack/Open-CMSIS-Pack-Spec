@@ -17,15 +17,17 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        18. Oct 2022
+  $Date:        24. Oct 2022
   $Revision:    1.7.15
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.15
 
-  18. Oct 2022: v1.7.15
-   - added '3PEAK' Dvendor entry
+  18. Jan 2023:
+   - added 'Clang' to 'CompilerEnumType'.
+  24. Oct 2022: v1.7.15
+   - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
   10. Oct 2022: v1.7.14
    - added 'changelog' element providing references to change log files by component, api and bundle elements
    - added 'Puya' Dvendor entry
@@ -1030,12 +1032,12 @@
   <!-- Dfpu enumeration type -->
   <xs:simpleType name="DfpuEnum">
     <xs:restriction base="xs:token">
-      <!-- core has FPU (type of FPU depends on Dcore) -->
-      <xs:enumeration value="FPU" />
-      <xs:enumeration value="1" />
       <!-- core has no FPU -->
       <xs:enumeration value="NO_FPU" />
       <xs:enumeration value="0" />
+      <!-- core has FPU (type of FPU depends on Dcore) -->
+      <xs:enumeration value="FPU" />
+      <xs:enumeration value="1" />
       <!-- single precision FPU -->
       <xs:enumeration value="SP_FPU" />
       <!-- double precision FPU -->
@@ -1048,10 +1050,13 @@
   <!-- Dmpu enumeration type -->
   <xs:simpleType name="DmpuEnum">
     <xs:restriction base="xs:token">
-      <xs:enumeration value="MPU" />
+      <!-- no MPU -->
       <xs:enumeration value="NO_MPU" />
       <xs:enumeration value="0" />
+      <!-- MPU -->
+      <xs:enumeration value="MPU" />
       <xs:enumeration value="1" />
+      <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1059,10 +1064,13 @@
   <!-- Dtz TrustZone enumeration type -->
   <xs:simpleType name="DtzEnum">
     <xs:restriction base="xs:token">
-      <xs:enumeration value="TZ" />
+      <!-- no TZ -->
       <xs:enumeration value="NO_TZ" />
-      <xs:enumeration value="1" />
       <xs:enumeration value="0" />
+      <!-- TZ -->
+      <xs:enumeration value="TZ" />
+      <xs:enumeration value="1" />
+      <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1070,12 +1078,16 @@
   <!-- Dsecure enumeration type -->
   <xs:simpleType name="DsecureEnum">
     <xs:restriction base="xs:token">
+      <!-- Non Secure -->
       <xs:enumeration value="Non-secure" />
-      <xs:enumeration value="Secure" />
-      <xs:enumeration value="TZ-disabled" />
       <xs:enumeration value="0" />
+      <!-- Secure -->
+      <xs:enumeration value="Secure" />
       <xs:enumeration value="1" />
+      <!-- TZ disabled -->
+      <xs:enumeration value="TZ-disabled" />
       <xs:enumeration value="2" />
+      <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1083,10 +1095,13 @@
   <!-- Ddsp DSP extensions enumeration type -->
   <xs:simpleType name="DdspEnum">
     <xs:restriction base="xs:token">
-      <xs:enumeration value="DSP" />
+      <!-- no DSP -->
       <xs:enumeration value="NO_DSP" />
-      <xs:enumeration value="1" />
       <xs:enumeration value="0" />
+      <!-- DSP -->
+      <xs:enumeration value="DSP" />
+      <xs:enumeration value="1" />
+      <!-- any -->
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1169,6 +1184,7 @@
       <xs:enumeration value="Cosmic" />
       <xs:enumeration value="G++"/> <!-- Code Sourcery -->
       <xs:enumeration value="XC"/> <!-- Microchip MPLAB XC32 -->
+      <xs:enumeration value="Clang"/>
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1548,6 +1564,9 @@
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
     <!-- links to web pages are assumed public -->
     <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+    <!-- project path:  View location path for a file of component inside IDE project explorer view. -->
+    <!-- if not provided, all files of the component will be flat placed inside the IDE project explorer view under Cclass of component-->
+    <xs:attribute name="projectpath" type="xs:string" use="optional" />
   </xs:complexType>
 
   <!-- some strings are used to construct filenames (e.g. package name). Such names can contain only subset of characters
