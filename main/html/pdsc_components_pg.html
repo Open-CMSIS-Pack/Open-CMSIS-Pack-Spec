@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.15</span>
+   &#160;<span id="projectnumber">Version 1.7.16</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -540,6 +540,10 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>category </td><td>Defines the purpose of the file. Select the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileCategoryEnum">File Categories</a>. </td><td><a class="el" href="pdsc_components_pg.html#FileCategoryEnum">FileCategoryEnum</a> </td><td>required  </td></tr>
 <tr>
+<td>language </td><td>Defines the language of the file category <span class="XML-Token">source</span>, <span class="XML-Token">header</span>, <span class="XML-Token">include</span>. Select one of the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileLanguageAttributeType">File Language Attribute</a>. If not specified, a source file is identified based on known file extensions, header files and include paths will be applied for all tools. </td><td><a class="el" href="pdsc_components_pg.html#FileLanguageAttributeType">FileLanguageAttributeType</a> </td><td>optional  </td></tr>
+<tr>
+<td>scope </td><td>Defines the visibility of <span class="XML-Token">header</span> and <span class="XML-Token">include</span>. Select one of the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileScopeAttributeType">File Scope Attribute</a>. If not specified, a header file is considered <span class="XML-Token">visible</span> and an include path is considered <span class="XML-Token">public</span>. </td><td><a class="el" href="pdsc_components_pg.html#FileScopeAttributeType">FileScopeAttributeType</a> </td><td>optional </td></tr>
+<tr>
 <td>attr </td><td>Defines the special use and handling of a file. Select a predefined value as defined in the table <a class="el" href="pdsc_components_pg.html#FileAttributeEnum">File Attributes</a>.  </td><td><a class="el" href="pdsc_components_pg.html#FileAttributeEnum">FileAttributeEnum</a> </td><td>optional  </td></tr>
 <tr>
 <td>condition </td><td>Enter the identifier (attribute <em><b>id</b></em>) of a <a class="el" href="pdsc_conditions_pg.html#element_condition">condition</a>. The element is used if the condition resolves to <span class="XML-Token">true</span>. If the condition resolves to <span class="XML-Token">false</span>, then the element will be ignored. For example, a library might be specific for a certain toolchain or processor instruction set. </td><td>xs:string </td><td>optional  </td></tr>
@@ -583,23 +587,7 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td class="XML-Token">header </td><td>Header file used in the component. Sets an include file path and adds the file name attribute to the list of files to be added to a module using the <b>#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component  </td></tr>
 <tr>
-<td class="XML-Token">headerAsm </td><td>Assembler header file used in the component. Sets an assembler include file path and adds the file name attribute to the list of files to be added to a module using the <b>#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component  </td></tr>
-<tr>
-<td class="XML-Token">headerC </td><td>C header file used in the component. Sets an C compiler include file path and adds the file name attribute to the list of files to be added to a module using the <b>#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component  </td></tr>
-<tr>
-<td class="XML-Token">headerCpp </td><td>C++ header file used in the component. Sets a C++ compiler include file path and adds the file name attribute to the list of files to be added to a module using the <b>#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component  </td></tr>
-<tr>
-<td class="XML-Token">headerLd </td><td>Linker script preprocessing header file used in the component. Sets a linker preprocessing include file path and adds the file name attribute to the list of files to be added to a module using the <b>#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component  </td></tr>
-<tr>
 <td class="XML-Token">include </td><td>Sets an include file path. Note: ensure that the name attribute specifies a directory and ends with a '/'.  </td></tr>
-<tr>
-<td class="XML-Token">includeAsm </td><td>Sets an include file path for assembler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.  </td></tr>
-<tr>
-<td class="XML-Token">includeC </td><td>Sets an include file path for C compiler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.  </td></tr>
-<tr>
-<td class="XML-Token">includeCpp </td><td>Sets an include file path for C++ compiler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.  </td></tr>
-<tr>
-<td class="XML-Token">includeLd </td><td>Sets an include file path for linker script preprocessing command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.  </td></tr>
 <tr>
 <td class="XML-Token">library </td><td>Library file  </td></tr>
 <tr>
@@ -627,7 +615,53 @@ Pre_Include_Local_Component_h</h1>
 </table>
 <p >&#160;</p>
 <hr  />
-<h1><a class="anchor" id="element_extensions"></a>
+<p ><a class="anchor" id="FileLanguageAttributeType"></a><b>Table: File Language Attribute</b></p>
+<p >File language attribute type defines the language for <span class="XML-Token">source</span>, <span class="XML-Token">header</span> and <span class="XML-Token">include</span> file categories. Based on the language the information is used by language specific build tools.</p>
+<p >File language attribute is used in the following elements:</p><ul>
+<li><a class="el" href="pdsc_components_pg.html#element_file">/package/.../files/file</a></li>
+<li><a class="el" href="pdsc_generators_pg.html#element_gen_file">/package/generators/generator/files/file</a></li>
+</ul>
+<p >The table lists the predefined values for a file language. </p><table class="cmtable" summary="Type: FileLanguageAttributeType">
+<tr>
+<th>category= </th><th>Description  </th></tr>
+<tr>
+<td class="XML-Token">doc </td><td>Documentation  </td></tr>
+<tr>
+<td class="XML-Token">asm </td><td>The file information is passed to an assembler.  </td></tr>
+<tr>
+<td class="XML-Token">c </td><td>The file information is passed to a C compiler.  </td></tr>
+<tr>
+<td class="XML-Token">cpp </td><td>The file information is passed to a C++ compiler.  </td></tr>
+<tr>
+<td class="XML-Token">c-cpp </td><td>The file information is passed to both C- as well as C++ compiler.  </td></tr>
+<tr>
+<td class="XML-Token">link </td><td>The file information is passed to a linker.  </td></tr>
+</table>
+<p >&#160;</p>
+<hr  />
+<p ><a class="anchor" id="FileScopeAttributeType"></a><b>Table: File Scope Attribute</b></p>
+<p >File scope attribute type defines the visibility of <span class="XML-Token">header</span> file and <span class="XML-Token">include</span> path file categories. Based on the specified scope header files are <span class="XML-Token">visible</span> or <span class="XML-Token">hidden</span> and include paths are <span class="XML-Token">public</span> or <span class="XML-Token">private</span>.</p>
+<p >File language attribute is used in the following elements:</p><ul>
+<li><a class="el" href="pdsc_components_pg.html#element_file">/package/.../files/file</a></li>
+<li><a class="el" href="pdsc_generators_pg.html#element_gen_file">/package/generators/generator/files/file</a></li>
+</ul>
+<p >The table lists the predefined values for the scope attribute. </p><table class="cmtable" summary="Type: FileScopeAttributeType">
+<tr>
+<th>category= </th><th>Description  </th></tr>
+<tr>
+<td class="XML-Token">doc </td><td>Documentation  </td></tr>
+<tr>
+<td class="XML-Token">visible </td><td>Applies to file elements of category <span class="XML-Token">header</span> only and is ignored otherwise. A token{visible} header file is suggested for inclusion by other modules and is considered the contract of the component.  </td></tr>
+<tr>
+<td class="XML-Token">hidden </td><td>Applies to file elements of category <span class="XML-Token">header</span> only and is ignored otherwise. A token{hidden} header file is indicating an internal header file which must not be explicitly included by modules outside of the scope of the component. The information contained in here may change in between component versions but does not affect the compatibility of the visible header files.  </td></tr>
+<tr>
+<td class="XML-Token">public </td><td>Applies to file elements of category <span class="XML-Token">include</span> only and is ignored otherwise. A token{public} include path is added to the command line for building any modules of the specified language.  </td></tr>
+<tr>
+<td class="XML-Token">private </td><td>Applies to file elements of category <span class="XML-Token">include</span> only and is ignored otherwise. A token{private} include path is added to the command line for building any module of the component for the specified language.  </td></tr>
+</table>
+<p >&#160;</p>
+<hr  />
+ <h1><a class="anchor" id="element_extensions"></a>
 /package/.../extensions</h1>
 <p >The group <b>extensions</b> can appear in various Pack elements. This group is the frame for defining individual extensions.</p>
 <p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
