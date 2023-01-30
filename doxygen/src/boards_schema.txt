@@ -526,7 +526,7 @@ The element specifies the parts (any device other than the MCU) mounted on the b
 
 This element specifies the picture of a development board. Maximum one image element can be specified. None must be specified.
 Four different picture types (\token{large}, \token{small}, \token{bottom} and \token{perspective}) can be specified for the same \tagem{image} element at the same time.
-Attribute \token{large} displays the 'top' side of the board and is required.
+Attribute \token{large} displays the 'top' side of the board.
 
 \b Example:
 \code
@@ -555,9 +555,9 @@ Attribute \token{large} displays the 'top' side of the board and is required.
   </tr>
   <tr>
     <td>large</td>
-    <td>Specifies the path to a large image. The path is relative to the pack base directory or a link to an image on an external web site. Attribute 'large' displays the 'top' side of the board and is required.</td>
+    <td>Specifies the path to a large image. The path is relative to the pack base directory or a link to an image on an external web site. Attribute 'large' displays the 'top' side of the board.</td>
     <td>xs:string</td>
-    <td>required</td>
+    <td>optional</td>
   </tr>
   <tr>
     <td>small</td>

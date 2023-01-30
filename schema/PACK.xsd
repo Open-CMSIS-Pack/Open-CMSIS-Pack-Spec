@@ -1434,8 +1434,8 @@
       <xs:element name="mountedPart"      type="MountedPartType"      minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="image" minOccurs="0">
         <xs:complexType>
-          <!-- attribute 'large' displays the 'top' side of the board and is required -->
-          <xs:attribute name="large" type="xs:string" use="required" />
+          <!-- attribute 'large' displays the 'top' side of the board -->
+          <xs:attribute name="large" type="xs:string" use="optional" />
           <xs:attribute name="small" type="xs:string" use="optional" />
           <xs:attribute name="bottom" type="xs:string" use="optional" />
           <xs:attribute name="perspective" type="xs:string" use="optional" />
