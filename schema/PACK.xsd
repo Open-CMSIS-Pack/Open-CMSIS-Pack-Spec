@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-  Copyright (c) 2013-2022 ARM Limited. All rights reserved.
+  Copyright (c) 2013-2023 ARM Limited. All rights reserved.
 
   SPDX-License-Identifier: Apache-2.0
 
@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        24. Oct 2022
-  $Revision:    1.7.15
+  $Date:        30. Jan 2023
+  $Revision:    1.7.16
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.15
+  SchemaVersion=1.7.16
 
+  30. Jan 2023: v1.7.16
+   - revert extension from v1.7.10 and replace using attributes for 'language' and 'scope' in 'FileType'
   18. Jan 2023:
    - added 'Clang' to 'CompilerEnumType'.
   24. Oct 2022: v1.7.15
@@ -1138,20 +1140,13 @@
     <xs:restriction base="xs:token">
       <xs:enumeration value="doc" />
       <xs:enumeration value="header" />
-      <xs:enumeration value="headerC" />
-      <xs:enumeration value="headerCpp" />
-      <xs:enumeration value="headerAsm" />
       <xs:enumeration value="include" />
-      <xs:enumeration value="includeC" />
-      <xs:enumeration value="includeCpp" />
-      <xs:enumeration value="includeAsm" />
-      <xs:enumeration value="includeLd" />
       <xs:enumeration value="library" />
       <xs:enumeration value="object" />
       <xs:enumeration value="source" />
-      <xs:enumeration value="sourceC" />
-      <xs:enumeration value="sourceCpp" />
-      <xs:enumeration value="sourceAsm" />
+      <xs:enumeration value="sourceC" /> <!-- deprecated 1.7.15: use language attribute instead -->
+      <xs:enumeration value="sourceCpp" /> <!-- deprecated 1.7.15: use language attribute instead -->
+      <xs:enumeration value="sourceAsm" /> <!-- deprecated 1.7.15: use language attribute instead -->
       <xs:enumeration value="linkerScript" />
       <xs:enumeration value="utility" />
       <xs:enumeration value="image" />
@@ -1171,6 +1166,26 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- file language attribute type -->
+  <xs:simpleType name="FileLanguageAttributeType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="asm" />
+      <xs:enumeration value="c" />
+      <xs:enumeration value="cpp" />
+      <xs:enumeration value="c-cpp" />
+      <xs:enumeration value="link" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- file scope attribute type (header and include only) -->
+  <xs:simpleType name="FileScopeAttributeType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="visible" /> <!-- header is displayed -->
+      <xs:enumeration value="hidden" /> <!-- header is not displayed -->
+      <xs:enumeration value="public" /> <!-- include path is added globablly -->
+      <xs:enumeration value="private" /> <!-- include path is added locally -->
+    </xs:restriction>
+  </xs:simpleType>
 
   <!-- compiler toolchain enumeration -->
   <xs:simpleType name="CompilerEnumType">
@@ -1545,6 +1560,10 @@
     <xs:attribute name="condition" type="xs:string" use="optional" />
     <!-- file item category: source, header, include path, etc.  -->
     <xs:attribute name="category" type="FileCategoryType" use="required" />
+    <!-- file item language: asm, c, cpp, c-cpp, link -->
+    <xs:attribute name="language" type="FileLanguageAttributeType" use="optional" />
+    <!-- file item scope: header: visible (default) vs. hidden; include: public (default) vs. private -->
+    <xs:attribute name="scope" type="FileScopeAttributeType" use="optional" />
     <!-- file item action attribute : config (copy to project, template, interface)  -->
     <xs:attribute name="attr" type="FileAttributeType" use="optional" />
     <!-- description for "template" or "interface" files. Multiple items are combined when they have the same select attribute  -->
