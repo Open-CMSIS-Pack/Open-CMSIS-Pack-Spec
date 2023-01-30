@@ -87,6 +87,8 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <td>1.7.16</td>
     <td>
      - added 'bottom' and 'perspective' attributes to \ref element_board_image "\<image>" element
+     - revert extension from v1.7.10 and replace using attributes for 'language' and 'scope' in 'FileType'
+     - added 'Clang' to 'CompilerEnumType'.
     </td>
   </tr>
   <tr>
