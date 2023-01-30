@@ -525,11 +525,16 @@ The element specifies the parts (any device other than the MCU) mounted on the b
 \section element_board_image /package/boards/board/image
 
 This element specifies the picture of a development board. Maximum one image element can be specified. None must be specified.
-Two different picture types (\token{small} and \token{large}) can be specified for the same image element at the same time.
+Four different picture types (\token{large}, \token{small}, \token{bottom} and \token{perspective}) can be specified for the same \tagem{image} element at the same time.
+Attribute \token{large} displays the 'top' side of the board.
 
 \b Example:
 \code
-<image small="Images/board_image_small.png" large="Images/board_image.png"/>
+<image large="Images/board_image_1.png"
+       bottom="https://images.vendor.com/Images/board_image_2.png"
+       perspective="https://images.vendor.com/Images/board_image_3.png"
+       small="Images/board_image_1_small.png"
+/>
 \endcode
 <p>&nbsp;</p>		
 
@@ -549,14 +554,26 @@ Two different picture types (\token{small} and \token{large}) can be specified f
     <th>Use</th>
   </tr>
   <tr>
-    <td>small</td>
-    <td>Specifies the path to a small image. The path is relative to the pack base directory or a link to an image on an external web site.</td>
+    <td>large</td>
+    <td>Specifies the path to a large image. The path is relative to the pack base directory or a link to an image on an external web site. Attribute 'large' displays the 'top' side of the board.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
-    <td>large</td>
-    <td>Specifies the path to a large image. The path is relative to the pack base directory or a link to an image on an external web site.</td>
+    <td>small</td>
+    <td>Specifies the path to a small image. The path is relative to the pack base directory or a link to an image on an external web site. Attribute 'small' displays the 'top' side of the board at a lower resolution than in 'large' attribute.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>bottom</td>
+    <td>Specifies the path to a bottom image. The path is relative to the pack base directory or a link to an image on an external web site.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>perspective</td>
+    <td>Specifies the path to a perspective image. The path is relative to the pack base directory or a link to an image on an external web site.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>

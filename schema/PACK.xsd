@@ -25,8 +25,8 @@
   SchemaVersion=1.7.16
 
   30. Jan 2023: v1.7.16
+   - added 'bottom' and 'perspective' attributes to /package/boards/board/image element
    - revert extension from v1.7.10 and replace using attributes for 'language' and 'scope' in 'FileType'
-  18. Jan 2023:
    - added 'Clang' to 'CompilerEnumType'.
   24. Oct 2022: v1.7.15
    - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
@@ -1447,8 +1447,11 @@
       <xs:element name="mountedPart"      type="MountedPartType"      minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="image" minOccurs="0">
         <xs:complexType>
-          <xs:attribute name="small" type="xs:string" use="optional" />
+          <!-- attribute 'large' displays the 'top' side of the board -->
           <xs:attribute name="large" type="xs:string" use="optional" />
+          <xs:attribute name="small" type="xs:string" use="optional" />
+          <xs:attribute name="bottom" type="xs:string" use="optional" />
+          <xs:attribute name="perspective" type="xs:string" use="optional" />
           <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
           <!-- links to web pages are assumed public -->
           <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
