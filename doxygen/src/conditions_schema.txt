@@ -165,17 +165,9 @@ A \ref element_condition "condition" becomes \token{true} when:
     <th colspan="3">Chain</th>
   </tr>
   <tr>
-    <td>\ref element_condition "accept" 
-    <td colspan="3">\ref element_condition "/package/conditions/condition/accept"</td>
-  </tr>
-  <tr>
-    <td>\ref element_condition "require" 
-    <td colspan="3">\ref element_condition "/package/conditions/condition/require"</td>
-  </tr>
-  <tr>
-    <td>\ref element_condition "deny" 
-    <td colspan="3">\ref element_condition "/package/conditions/condition/deny"</td>
-  </tr>
+    <td>\ref element_condition "condition" 
+    <td colspan="3">\ref element_condition "/package/conditions/condition"</td>
+  </tr>  
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -418,8 +410,8 @@ The tokens can be used in the elements:
   <tr>
     <td class="XML-Token">ARMCC</td>
     <td>Arm Compiler for C and C++. 
-    Refer to <a href="http://infocenter.arm.com/help/topic/com.arm.doc.subset.swdev.coretools/index.html" target="_blank">
-    Arm Compiler</a>.</td>
+    Refer to <a href="https://developer.arm.com/Tools%20and%20Software/Arm%20Compiler%20for%20Embedded" target="_blank">
+    Arm Compiler for Embedded</a>.</td>
   </tr>
   <tr>
     <td class="XML-Token">IAR</td>
@@ -436,6 +428,12 @@ The tokens can be used in the elements:
   <tr>
     <td class="XML-Token">XC</td>
     <td>Microchip MPLAB XC32 Compiler.</td>
+  </tr>
+  <tr>
+     <td class="XML-Toke">Clang</td>
+     <td>Clang: a C language family frontend for LLVM. Refer to <a href="https://clang.llvm.org" target="_blank">
+         Clang</a>
+     </td>
   </tr>
 </table>
 

@@ -86,6 +86,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   <tr>
     <td>1.7.16</td>
     <td>
+     - revert extension from v1.7.10 and replace using attributes for 'language' and 'scope' in 'FileType'
      - introduced \ref element_taxonomyDescriptionC and \ref element_taxonomyDescriptionH elements and set deprecated the use of \ref element_taxonomyDescription
      - added Hclass and Hgroup \ref HclassType "predefined values" for /package/parts/part element classification
     </td>

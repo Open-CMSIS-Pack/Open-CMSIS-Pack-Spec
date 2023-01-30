@@ -800,6 +800,21 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
     <td>required</td>
   </tr>
   <tr>
+    <td>language</td>
+    <td>Defines the language of the file category \token{source}, \token{header}, \token{include}. Select one of the predefined value as listed
+        in the table \ref FileLanguageAttributeType "File Language Attribute". If not specified, a source file is identified based
+        on known file extensions, header files and include paths will be applied for all tools.</td>
+    <td>\ref FileLanguageAttributeType</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>scope</td>
+    <td>Defines the visibility of \token{header} and \token{include}. Select one of the predefined value as listed in the table
+        \ref FileScopeAttributeType "File Scope Attribute". If not specified, a header file is considered \token{visible} and an
+        include path is considered \token{public}.</td>
+    <td>\ref FileScopeAttributeType</td>
+    <td>optional</td>
+  <tr>
     <td>attr</td>
     <td>Defines the special use and handling of a file. Select a predefined value as defined in the table \ref FileAttributeEnum "File Attributes".
     </td>
@@ -926,44 +941,8 @@ The table lists the predefined values for a file category.
     to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
   </tr>
   <tr>
-    <td class="XML-Token">headerAsm</td>
-    <td>Assembler header file used in the component. Sets an assembler include file path and adds the file name attribute to the list of files to be added
-    to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
-  </tr>
-    <tr>
-    <td class="XML-Token">headerC</td>
-    <td>C header file used in the component. Sets an C compiler include file path and adds the file name attribute to the list of files to be added
-    to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
-  </tr>
-  <tr>
-    <td class="XML-Token">headerCpp</td>
-    <td>C++ header file used in the component. Sets a C++ compiler include file path and adds the file name attribute to the list of files to be added
-    to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
-  </tr>
-  <tr>
-    <td class="XML-Token">headerLd</td>
-    <td>Linker script preprocessing header file used in the component. Sets a linker preprocessing include file path and adds the file name attribute to the list of files to be added
-    to a module using the <b>\#include</b> statement. Note: specify only those files as header files that form part of the API of the component, required to use the component</td>
-  </tr>
-  <tr>
     <td class="XML-Token">include</td>
     <td>Sets an include file path. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
-  </tr>
-  <tr>
-    <td class="XML-Token">includeAsm</td>
-    <td>Sets an include file path for assembler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
-  </tr>
-  <tr>
-    <td class="XML-Token">includeC</td>
-    <td>Sets an include file path for C compiler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
-  </tr>
-  <tr>
-    <td class="XML-Token">includeCpp</td>
-    <td>Sets an include file path for C++ compiler command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
-  </tr>
-  <tr>
-    <td class="XML-Token">includeLd</td>
-    <td>Sets an include file path for linker script preprocessing command line. Note: ensure that the name attribute specifies a directory and ends with a '/'.</td>
   </tr>
   <tr>
     <td class="XML-Token">library</td>
@@ -1017,10 +996,100 @@ The table lists the predefined values for a file category.
   </tr>
 </table>
 
+<p>&nbsp;</p>
+<hr>
+
+\anchor FileLanguageAttributeType <b>Table: File Language Attribute</b>
+
+File language attribute type defines the language for \token{source}, \token{header} and \token{include} file categories. Based on the language 
+the information is used by language specific build tools.
+
+File language attribute is used in the following elements:
+- \ref element_file
+- \ref element_gen_file
+
+The table lists the predefined values for a file language.
+<table class="cmtable" summary="Type: FileLanguageAttributeType">
+  <tr>
+    <th>category=</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td class="XML-Token">doc</td>
+    <td>Documentation</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">asm</td>
+    <td>The file information is passed to an assembler.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">c</td>
+    <td>The file information is passed to a C compiler.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">cpp</td>
+    <td>The file information is passed to a C++ compiler.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">c-cpp</td>
+    <td>The file information is passed to both C- as well as C++ compiler.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">link</td>
+    <td>The file information is passed to a linker.</td>
+  </tr>
+</table>
 
 <p>&nbsp;</p>
 <hr>
 
+
+\anchor FileScopeAttributeType <b>Table: File Scope Attribute</b>
+
+File scope attribute type defines the visibility of \token{header} file and \token{include} path file categories.
+Based on the specified scope header files are \token{visible} or \token{hidden} and include paths are \token{public} 
+or \token{private}.
+
+File language attribute is used in the following elements:
+- \ref element_file
+- \ref element_gen_file
+
+The table lists the predefined values for the scope attribute.
+<table class="cmtable" summary="Type: FileScopeAttributeType">
+  <tr>
+    <th>category=</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td class="XML-Token">doc</td>
+    <td>Documentation</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">visible</td>
+    <td>Applies to file elements of category \token{header} only and is ignored otherwise. A token{visible} header file
+    is suggested for inclusion by other modules and is considered the contract of the component.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">hidden</td>
+    <td>Applies to file elements of category \token{header} only and is ignored otherwise. A token{hidden} header file
+    is indicating an internal header file which must not be explicitly included by modules outside of the scope of the component.
+    The information contained in here may change in between component versions but does not affect the compatibility of the
+    visible header files.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">public</td>
+    <td>Applies to file elements of category \token{include} only and is ignored otherwise. A token{public} include path
+        is added to the command line for building any modules of the specified language.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">private</td>
+    <td>Applies to file elements of category \token{include} only and is ignored otherwise. A token{private} include path
+        is added to the command line for building any module of the component for the specified language.</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<hr>
 \section element_extensions /package/.../extensions
 
 The group <b>extensions</b> can appear in various Pack elements. This group is the frame for defining individual extensions.
