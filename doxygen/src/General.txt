@@ -84,6 +84,12 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.16</td>
+    <td>
+     - added 'bottom' and 'perspective' attributes to \ref element_board_image "\<image>" element
+    </td>
+  </tr>
+  <tr>
     <td>1.7.15</td>
     <td>
      - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
