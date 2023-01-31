@@ -84,6 +84,12 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.18</td>
+    <td>
+     - added 'NO_VENDOR:0' to \ref DeviceVendorEnum "DeviceVendorEnum"
+    </td>
+  </tr>
+  <tr>
     <td>1.7.17</td>
     <td>
      - added Hclass and Hgroup predefined values for \ref element_part "\<part>" element classification

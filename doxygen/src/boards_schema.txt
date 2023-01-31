@@ -348,7 +348,7 @@ The table below lists predefined board features.
 <hr>
 
 \section element_board_mountedDevice /package/boards/board/mountedDevice
-The element specifies the devices mounted on the board. Exactly one device must be specified per deviceIndex.
+The element specifies the devices mounted on the board. Exactly one device must be specified per deviceIndex. In case no device is mounted on the board, like in the case of the daughter boards (called also expansion or extension boards), the \token{Dvendor} and \token{Dname} attributes shall be set respectively to "NO_VENDOR:0" and "NO_MCU".
 
 \b Example
 \code
@@ -379,13 +379,13 @@ The element specifies the devices mounted on the board. Exactly one device must 
   </tr>
   <tr>
     <td>Dvendor</td>
-    <td>Is the name of vendor of the device specified by \token{Dname}. Use predefined values as listed in the table \ref DeviceVendorEnum "Device Vendor".</td>
+    <td>Is the name of vendor of the device specified by \token{Dname}. Use predefined values as listed in the table \ref DeviceVendorEnum "Device Vendor". If no device is mounted on the board, use predefined value "NO_VENDOR:0".</td>
     <td>DeviceVendorEnum</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Dname</td>
-	<td>Is the name of the target device used on the board. If the device is specified Dvariant this string needs to be assigned to the Dname attribute.</td>
+	<td>Is the name of the target device used on the board. If the device is specified by a variant this string needs to be assigned to the Dname attribute. If no device is mounted on the board, use value "NO_MCU".</td>
 	<td>xs:string</td>
 	<td>required</td>
   </tr>
@@ -397,7 +397,7 @@ The element specifies the devices mounted on the board. Exactly one device must 
 \section element_board_compatibleDevice /package/boards/board/compatibleDevice
 
 This element contains information about devices that are compatible to the device used on the board. Compatible
-means that the user is able to generate code for compatible devices and test it on the development board. At least one compatible device must be specified.
+means that the user is able to generate code for compatible devices and test it on the development board. At least one compatible device must be specified. In case no compatible device exists for the device mounted on the board or if no device is mounted on the board, like in the case of the daughter boards (called also expansion or extension boards), the \token{Dvendor} and \token{Dname} attributes shall be set respectively to "NO_VENDOR:0" and "NO_MCU".
 
 \b Example
 \code
@@ -435,7 +435,7 @@ Since Dfamily and DsubFamily are volatile, it is recommended to use Dname attrib
   </tr>
   <tr>
     <td>Dvendor</td>
-    <td>Vendor name of the target device specified by \b Dname. Use predefined values as listed in the table \ref DeviceVendorEnum "Device Vendor".
+    <td>Vendor name of the target device specified by \b Dname. Use predefined values as listed in the table \ref DeviceVendorEnum "Device Vendor". If no compatible device exists for the device mounted on the board or if no device is mounted on the board, use predefined value "NO_VENDOR:0".
 	This element is required if at least one of the following attributs is defined: \b Dname, \b DsubFamily, \b Dfamily.</td>
     <td>DeviceVendorEnum</td>
     <td>required</td>

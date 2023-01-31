@@ -18,12 +18,14 @@
   limitations under the License.
 
   $Date:        31. Jan 2023
-  $Revision:    1.7.17
+  $Revision:    1.7.18
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.17
+  SchemaVersion=1.7.18
 
+  31. Jan 2023: v1.7.18
+   - added 'NO_VENDOR:0' to DeviceVendorEnum
   31. Jan 2023: v1.7.17
    - added Hclass and Hgroup predefined values for \<part> element classification
    - added \<part-taxonomy> element to list description elements defining part classes and part group names
@@ -179,7 +181,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.17">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.18">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -191,6 +193,7 @@
   <!-- Registered Device Vendors -->
   <xs:simpleType name="DeviceVendorEnum">
     <xs:restriction base="xs:token">
+      <xs:enumeration value="NO_VENDOR:0" />
       <xs:enumeration value="3PEAK:177" />
       <xs:enumeration value="ABOV Semiconductor:126" />
       <xs:enumeration value="Actel:56" />
