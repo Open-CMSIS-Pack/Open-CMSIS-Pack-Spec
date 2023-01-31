@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.17</span>
+   &#160;<span id="projectnumber">Version 1.7.18</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -368,7 +368,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
  </p><hr  />
 <h1><a class="anchor" id="element_board_mountedDevice"></a>
 /package/boards/board/mountedDevice</h1>
-<p >The element specifies the devices mounted on the board. Exactly one device must be specified per deviceIndex.</p>
+<p >The element specifies the devices mounted on the board. Exactly one device must be specified per deviceIndex. In case no device is mounted on the board, like in the case of the daughter boards (called also expansion or extension boards), the <span class="XML-Token">Dvendor</span> and <span class="XML-Token">Dname</span> attributes shall be set respectively to "NO_VENDOR:0" and "NO_MCU".</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;mountedDevice deviceIndex=<span class="stringliteral">&quot;0&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Dname=<span class="stringliteral">&quot;STM32F429ZITx&quot;</span>/&gt;</div>
 </div><!-- fragment --> <p >&#160;</p>
 <p ><br  />
@@ -383,15 +383,15 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>deviceIndex </td><td>Index number of the device (in case more than one device is present on the board). </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>Dvendor </td><td>Is the name of vendor of the device specified by <span class="XML-Token">Dname</span>. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>. </td><td>DeviceVendorEnum </td><td>required  </td></tr>
+<td>Dvendor </td><td>Is the name of vendor of the device specified by <span class="XML-Token">Dname</span>. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>. If no device is mounted on the board, use predefined value "NO_VENDOR:0". </td><td>DeviceVendorEnum </td><td>required  </td></tr>
 <tr>
-<td>Dname </td><td>Is the name of the target device used on the board. If the device is specified Dvariant this string needs to be assigned to the Dname attribute. </td><td>xs:string </td><td>required  </td></tr>
+<td>Dname </td><td>Is the name of the target device used on the board. If the device is specified by a variant this string needs to be assigned to the Dname attribute. If no device is mounted on the board, use value "NO_MCU". </td><td>xs:string </td><td>required  </td></tr>
 </table>
 <p >&#160;</p>
 <hr  />
 <h1><a class="anchor" id="element_board_compatibleDevice"></a>
 /package/boards/board/compatibleDevice</h1>
-<p >This element contains information about devices that are compatible to the device used on the board. Compatible means that the user is able to generate code for compatible devices and test it on the development board. At least one compatible device must be specified.</p>
+<p >This element contains information about devices that are compatible to the device used on the board. Compatible means that the user is able to generate code for compatible devices and test it on the development board. At least one compatible device must be specified. In case no compatible device exists for the device mounted on the board or if no device is mounted on the board, like in the case of the daughter boards (called also expansion or extension boards), the <span class="XML-Token">Dvendor</span> and <span class="XML-Token">Dname</span> attributes shall be set respectively to "NO_VENDOR:0" and "NO_MCU".</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;compatibleDevice Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Dfamily=<span class="stringliteral">&quot;STM32F4 Series&quot;</span> DsubFamily=<span class="stringliteral">&quot;STM32F429&quot;</span>/&gt;</div>
 </div><!-- fragment --><p >Since Dfamily and DsubFamily are volatile, it is recommended to use Dname attribute with wild-cards.</p>
 <div class="fragment"><div class="line">&lt;compatibleDevice Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Dname=<span class="stringliteral">&quot;STM32F429*&quot;</span>/&gt;</div>
@@ -408,7 +408,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>deviceIndex </td><td>Index number of the device (in case more than one device is present on the board). </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>Dvendor </td><td>Vendor name of the target device specified by <b>Dname</b>. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>. This element is required if at least one of the following attributs is defined: <b>Dname</b>, <b>DsubFamily</b>, <b>Dfamily</b>. </td><td>DeviceVendorEnum </td><td>required  </td></tr>
+<td>Dvendor </td><td>Vendor name of the target device specified by <b>Dname</b>. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>. If no compatible device exists for the device mounted on the board or if no device is mounted on the board, use predefined value "NO_VENDOR:0". This element is required if at least one of the following attributs is defined: <b>Dname</b>, <b>DsubFamily</b>, <b>Dfamily</b>. </td><td>DeviceVendorEnum </td><td>required  </td></tr>
 <tr>
 <td>Dname<b>*</b> </td><td>Name of the target device used on the board. Requires <b>Dvendor</b> to be specified. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
