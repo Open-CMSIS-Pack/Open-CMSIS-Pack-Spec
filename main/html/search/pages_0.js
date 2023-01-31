@@ -13,9 +13,10 @@ var searchData=
   ['_2fpackage_2fgenerators_20element_10',['/package/generators element',['../pdsc_generators_pg.html',1,'packFormat']]],
   ['_2fpackage_2fkeywords_20element_11',['/package/keywords element',['../element_keywords.html',1,'packFormat']]],
   ['_2fpackage_2flicensesets_20element_12',['/package/licenseSets element',['../pdsc_licenseSets_pg.html',1,'packFormat']]],
-  ['_2fpackage_2fparts_20element_13',['/package/parts element',['../pdsc_parts_pg.html',1,'packFormat']]],
-  ['_2fpackage_2freleases_20element_14',['/package/releases element',['../element_releases.html',1,'packFormat']]],
-  ['_2fpackage_2frepository_20element_15',['/package/repository element',['../element_repository.html',1,'packFormat']]],
-  ['_2fpackage_2frequirements_16',['/package/requirements',['../element_requirements_pg.html',1,'packFormat']]],
-  ['_2fpackage_2ftaxonomy_20element_17',['/package/taxonomy element',['../element_taxonomy.html',1,'packFormat']]]
+  ['_2fpackage_2fpart_2dtaxonomy_20element_13',['/package/part-taxonomy element',['../element_part-taxonomy.html',1,'packFormat']]],
+  ['_2fpackage_2fparts_20element_14',['/package/parts element',['../pdsc_parts_pg.html',1,'packFormat']]],
+  ['_2fpackage_2freleases_20element_15',['/package/releases element',['../element_releases.html',1,'packFormat']]],
+  ['_2fpackage_2frepository_20element_16',['/package/repository element',['../element_repository.html',1,'packFormat']]],
+  ['_2fpackage_2frequirements_17',['/package/requirements',['../element_requirements_pg.html',1,'packFormat']]],
+  ['_2fpackage_2ftaxonomy_20element_18',['/package/taxonomy element',['../element_taxonomy.html',1,'packFormat']]]
 ];

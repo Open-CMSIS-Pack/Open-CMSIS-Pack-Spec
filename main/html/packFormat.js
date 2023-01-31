@@ -29,6 +29,9 @@ var packFormat =
     [ "/package/taxonomy element", "element_taxonomy.html", [
       [ "/package/taxonomy/description", "element_taxonomy.html#element_taxonomyDescription", null ]
     ] ],
+    [ "/package/part-taxonomy element", "element_part-taxonomy.html", [
+      [ "/package/part-taxonomy/description", "element_part-taxonomy.html#element_part-taxonomyDescription", null ]
+    ] ],
     [ "/package/apis element", "pdsc_apis_pg.html", [
       [ "/package/apis", "pdsc_apis_pg.html#element_apis", null ],
       [ "/package/apis/api", "pdsc_apis_pg.html#element_api", null ]
