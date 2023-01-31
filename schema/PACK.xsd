@@ -28,6 +28,7 @@
    - added 'bottom' and 'perspective' attributes to /package/boards/board/image element
    - revert extension from v1.7.10 and replace using attributes for 'language' and 'scope' in 'FileType'
    - added 'Clang' to 'CompilerEnumType'.
+   - added '3PEAK' Dvendor entry
   24. Oct 2022: v1.7.15
    - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
   10. Oct 2022: v1.7.14
@@ -187,6 +188,7 @@
   <!-- Registered Device Vendors -->
   <xs:simpleType name="DeviceVendorEnum">
     <xs:restriction base="xs:token">
+      <xs:enumeration value="3PEAK:177" />
       <xs:enumeration value="ABOV Semiconductor:126" />
       <xs:enumeration value="Actel:56" />
       <xs:enumeration value="Active-Semi:140" />
