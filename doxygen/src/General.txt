@@ -84,6 +84,13 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.17</td>
+    <td>
+     - added Hclass and Hgroup predefined values for \ref element_part "\<part>" element classification
+     - added \ref element_part-taxonomy "\<part-taxonomy>" element to list description elements defining part classes and part group names
+    </td>
+  </tr>
+  <tr>
     <td>1.7.16</td>
     <td>
      - added 'bottom' and 'perspective' attributes to \ref element_board_image "\<image>" element

@@ -68,6 +68,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage pdsc_licenseSets_pg "<licenseSets>": lists license files associated with the pack and contained components and apis.
  - \subpage element_requirements_pg "<requirements>": lists required packs, compiler, programming language standards and their version or version range.
  - \subpage element_taxonomy "<taxonomy>": lists description elements that define component classes and component group names.
+ - \subpage element_part-taxonomy "<part-taxonomy>": lists description elements that define part classes and part group names.
  - \subpage pdsc_apis_pg "<apis>": describes Application Programming Interfaces (API) Specifications contained in the \ref cp_SWComponents "Software Pack".
  - \subpage pdsc_generators_pg "<generators>": specifies the tools that have been used to generate the PDSC file.
  - \subpage pdsc_devices_pg "<devices>": lists the devices supported by this \ref cp_SWComponents "Software Pack". It specifies the device attributes and
@@ -325,6 +326,13 @@ assists searching for packages.
     <td>Contains the description for a component class or for the combination between a component class and component group.
     </td>
     <td>TaxonomyType</td>
+    <td>0..1 </td>
+  </tr>
+  <tr>
+    <td>\ref element_part-taxonomy "part-taxonomy" </td>
+    <td>Contains the description for a part class or for the combination between a part class and part group.
+    </td>
+    <td>PartTaxonomyType</td>
     <td>0..1 </td>
   </tr>
   <tr>
@@ -1058,7 +1066,7 @@ and group \token{Startup} is defined for the device-specific CMSIS-Core (Cortex-
 
 \note You \b must \b not use Windows or Linux
 <a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
-\em Cclass, \em Cgrouop, and \em Csub names! Some development tools use these names to create a directory structure for the
+\em Cclass, \em Cgroup, and \em Csub names! Some development tools use these names to create a directory structure for the
 software components in projects. Reserved characters are:
 \verbatim
 < (less than)
@@ -1092,13 +1100,13 @@ software components in projects. Reserved characters are:
   <tr>
     <td>Cclass</td>
     <td>Component Class Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table \ref CclassType "Component Classes".</td>
-    <td>Cclass</td>
+    <td>\ref CclassType "CclassType"</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Cgroup</td>
-    <td>Component Group Name.  Can be defined by the creator of the package.  Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
-    <td>CgroupType</td>
+    <td>Component Group Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
+    <td>\ref CgroupType "CgroupType"</td>
     <td>optional</td>
   </tr>
   <tr>
@@ -1288,6 +1296,479 @@ The following table lists predefined values for the Component Class <b>Cclass="D
     <td class="XML-Token">Startup</td>
     <td>A component containing the device support files system_device.c and startup_device.s/c in accordance to the <a class=el href="https://arm-software.github.io/CMSIS_5/develop/Core/html/index.html">CMSIS-Core(M)</a>
   or <a class=el href="https://arm-software.github.io/CMSIS_5/develop/Core_A/html/index.html">CMSIS-Core(A)</a> specifications (startup, system and device files).</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<hr>
+
+*/
+
+/**************************************************************************************************/
+/**
+\page element_part-taxonomy /package/part-taxonomy element
+
+Group to list description elements that define part classes and part group names used within a package description.
+This element is optional.
+
+\b Example:
+\code
+<package>
+  ...
+  <part-taxonomy>
+    ...
+  </part-taxonomy>
+  ...
+</package>
+\endcode
+
+<p>&nbsp;</p>
+
+<table class="cmtable" summary="Element: Taxonomy">
+  <tr>
+    <th>Parent Element</th>
+    <th colspan="3">Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_package "package"</td>
+    <td colspan=3>\ref element_package</td>
+  </tr>
+  <tr>
+    <th>Child Elements</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Occurrence</th>
+  </tr>
+  <tr>
+    <td>\ref element_part-taxonomyDescription "description"</td>
+    <td>Describes or defines a part class or class-group combination.</td>
+    <td>PartTaxonomyDescriptionType</td>
+    <td>1..* </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<hr>
+
+\section element_part-taxonomyDescription /package/part-taxonomy/description
+
+This element describes a part class or the combination between a part class and a part group.
+Parts are categorized by \em Hclass and \em Hgroup. The creator of a package can define names for \em Hclass and
+\em Hgroup. Thus, configuration tools can display the set of available parts. A document can be referenced using the
+attribute \em doc. The attribute \em generator can be used to reference to a generator tool. The \em id of the generator
+needs to be the same as specified in the element \ref element_generator. The description itself is a string entered between
+the opening and closing tags of the element \b description.
+
+It is recommended to use an already agreed part-taxonomy for interchangeable parts.
+
+<p>&nbsp;</p>
+
+\b Example:
+\code
+  <part-taxonomy>
+    <description Hclass="Audio ICs">Audio Amplifiers, Audio Processors, MEMS Microphones, Sound Terminal Digital Audio Subsystem</description>
+    <description Hclass="Automotive" Hgroup="Logic ICs">Buffers/Drivers, Counters/Encoders/Decoders, FlipFlop/registers, Gates, ...</description>
+  </part-taxonomy>
+\endcode
+
+\note You \b must \b not use Windows or Linux
+<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
+\em Hclass, \em Hgroup, and \em Hsub names! Reserved characters are:
+\verbatim
+< (less than)
+> (greater than)
+: (colon)
+" (double quote)
+/ (forward slash)
+\ (backslash)
+| (vertical bar or pipe)
+? (question mark)
+* (asterisk)
+\endverbatim
+
+<p>&nbsp;</p>
+
+<table class="cmtable" summary="Element: Part-Taxonomy">
+  <tr>
+    <th>Parent Element</th>
+    <th colspan=3>Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_part-taxonomy "part-taxonomy"</td>
+    <td colspan=3>\ref element_part-taxonomy</td>
+  </tr>
+  <tr>
+    <th>Attributes</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>Hclass</td>
+    <td>Part Class Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table \ref HclassType "Part Classes".</td>
+    <td>\ref HclassType "HclassType"</td>
+    <td>required</td>
+  </tr>
+  <tr>
+    <td>Hgroup</td>
+    <td>Part Group Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table \ref HclassType "Part Groups".</td>
+    <td>\ref HclassType "HgroupType"</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>doc</td>
+    <td>Reference to documentation.</td>
+    <td>xs:string </td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>generator</td>
+    <td>Reference to a generator. Enter the \b id value of the element \ref element_generator.</td>
+    <td>xs:string </td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>public</td>
+    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission
+        to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
+        The default value is \token{false}.</td>
+    <td>xs:boolean</td>
+    <td>optional</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+\anchor HclassType <b>Table: Part Classes and Groups</b>
+
+Part Class and Part Group names are strings with a minimum length of 3 characters and a maximum length of 32 characters.
+Part Class and Part Group names are specified in the section \ref element_part-taxonomyDescription.
+Part Group names are specified by the element <b>Hgroup</b> and create categories within a Part Class specified by the element <b>Hclass</b>.
+
+Part Classes and Part Groups can be used in the elements:
+- \ref element_part
+- \ref element_part-taxonomyDescription
+
+\b Example:
+\code
+  <... Hclass="MEMS and Sensors" Hgroup="MEMS Microphone" ...>
+\endcode
+<p>&nbsp;</p>
+
+The following table lists predefined Part Classes. Within each Part Class, some Part Groups have been also defined.
+<table class="cmtable" summary="Predefined Hclass names">
+  <tr>
+    <th>Hclass=</th>
+    <th>Description</th>
+	<th>Hgroup=<br><span style="font-weight:normal">(Description)</span></th>
+	<th>Hgroup=<br><span style="font-weight:normal">(Description)</span></th>
+	<th>Hgroup=<br><span style="font-weight:normal">(Description)</span></th>
+	<th>Hgroup=<br><span style="font-weight:normal">(Description)</span></th>
+	<th>Hgroup=<br><span style="font-weight:normal">(Description)</span></th>
+	<th>Hgroup=<br><span style="font-weight:normal">(Description)</span></th>
+  </tr>
+  <tr>
+    <td class="XML-Token">Amplifiers and Comparators</td>
+	<td>Operational amplifiers, Power Operational Amplifiers, Video Amplifiers and Current Sense Amplifiers, Comparators</td>
+	<td><span class="XML-Token">Comparators</span></td>
+	<td><span class="XML-Token">Current Sensing</span></td>
+	<td><span class="XML-Token">Op Amp</span></td>
+	<td><span class="XML-Token">Power Op Amp</span></td>
+	<td><span class="XML-Token">Video Amplifiers</span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Audio ICs</td>
+	<td>Audio Amplifiers, Audio Processors, MEMS Microphones, Sound Terminal Digital Audio Subsystem</td>
+	<td><span class="XML-Token">Amplifiers</span></td>
+	<td><span class="XML-Token">MEMS Sensor</span></td>
+	<td><span class="XML-Token">Processors</span></td>
+	<td><span class="XML-Token">Sound Terminal ICs</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Automotive</td>
+    <td>Automotive Devices (for Advanced Driver Assistance Systems (ADAS), Analog and Power, Infotainment and Telematics, Logic ICs, Microcontrollers)</td>
+	<td><span class="XML-Token">ADAS</span> (Advanced Driver Assistance Systems)</td>
+	<td><span class="XML-Token">Analog and Power</span></td>
+	<td><span class="XML-Token">Infotainment and Telematics</span></td>
+	<td><span class="XML-Token">Logic ICs</span><br>(Buffers/Drivers, Counters/Encoders/Decoders, FlipFlop/registers, Gates, ...)</td>
+	<td><span class="XML-Token">Microcontrollers</span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Clocks and Timers</td>
+    <td>Real-Time Clock (RTC) ICs</td>
+	<td><span class="XML-Token">RTC</span></td>
+	<td><span class="XML-Token">Timers</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Data Converters</td>
+    <td>A/D - D/A Converters, Isolated ADCs, Metering ICs</td>
+	<td><span class="XML-Token">A2D - D2A</span></td>
+	<td><span class="XML-Token">Isolated ADCs</span></td>
+	<td><span class="XML-Token">Metering ICs</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Digital Set-Top Box ICs</td>
+    <td>Demodulators and Tuners, Set-Top-Box Processors</td>
+	<td><span class="XML-Token">Demodulators and Tuners</span></td>
+	<td><span class="XML-Token">Set-Top-Box Processors</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Diodes and Rectifiers</td>
+    <td>Automotive-grade qualified diodes and rectifiers, bridge rectifier diodes, field effect rectifiers, Schottky barrier diodes, Silicon Carbide diodes, ultrafast rectifiers, …</td>
+	<td><span class="XML-Token">Diodes</span></td>
+	<td><span class="XML-Token">Rectifiers</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Imaging and Photonics Devices</td>
+    <td>Ambient Light sensors, Image sensors, Imaging processors, Time-of-Flight sensors</td>
+	<td><span class="XML-Token">Ambient Light Sensors</span></td>
+	<td><span class="XML-Token">Image Sensors</span></td>
+	<td><span class="XML-Token">Imaging Processors</span></td>
+	<td><span class="XML-Token">Time-of-Flight Sensors</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Interfaces and Transceivers</td>
+    <td>Standard interfaces (such as RS-232, RS-422, RS-423, RS-485, LVDS, and USB), I/O expanders, level translators, application-specific interfaces for smart cards and Ethernet, and IO-Link Transceivers</td>
+	<td><span class="XML-Token">Interfaces</span></td>
+	<td><span class="XML-Token">I/O Expanders</span></td>
+	<td><span class="XML-Token">Level Translators</span></td>
+	<td><span class="XML-Token">Transceivers</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Memories</td>
+    <td>EEPROM, FLASH, RAM, …</td>
+	<td><span class="XML-Token">EEPROM</span></td>
+	<td><span class="XML-Token">Flash</span></td>
+	<td><span class="XML-Token">RAM</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">MEMS and Sensors</td>
+    <td>Accelerometers, magnetometers, gyroscopes, environmental sensors, inertial modules, infrared sensors, MEMS microphones</td>
+	<td><span class="XML-Token">Environmental</span><br>(Temperature, Humidity, Pressure, …)</td>
+	<td><span class="XML-Token">Infrared</span><br>(Sensors for object movement detection and human presence sensing)</td>
+	<td><span class="XML-Token">MEMS Hybrid</span><br>(Sensors with both environmental and motion features)</td>
+	<td><span class="XML-Token">MEMS Microphone</span></td>
+	<td><span class="XML-Token">MEMS Motion</span><br>(Accelerometers, magnetometers, gyroscopes)</td>
+	<td><span class="XML-Token">Proximity</span><br>(Time-of-Flight, ...)</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Motor Drivers</td>
+    <td>Brushed and brushless motor drivers, stepper motor drivers</td>
+	<td><span class="XML-Token">Brushed</span></td>
+	<td><span class="XML-Token">Brushless</span></td>
+	<td><span class="XML-Token">Gate Drivers</span></td>
+	<td><span class="XML-Token">Stepper</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">NFC</td>
+    <td>NFC / RFID tags and readers, NFC controllers</td>
+	<td><span class="XML-Token">Secure</span></td>
+	<td><span class="XML-Token">Reader</span></td>
+	<td><span class="XML-Token">Tag</span></td>
+	<td><span class="XML-Token">Tag and Reader</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Other</td>
+    <td>To be used for devices not listed here</td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Positioning</td>
+    <td>Global Navigation Satellite System (GNSS) modules</td>
+	<td><span class="XML-Token">GNSS ICs</span></td>
+	<td><span class="XML-Token">GNSS Modules</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token" rowspan="3">Power Management</td>
+    <td rowspan="3">ST's Power Management ICs  enable energy-saving, high-power-density and lower-standby-power design solutions (Power ICs, AC-DC converters, switching DC-DC converters, linear voltage regulators, battery management ICs, LED drivers, photovoltaic ICs, MOSFET and IGBT drivers, motor drivers, ...)</td>
+	<td><span class="XML-Token">AC-DC Converters</span></td>
+	<td><span class="XML-Token">Battery Management ICs</span></td>
+	<td><span class="XML-Token">DC-DC Switching Converters</span></td>
+	<td><span class="XML-Token">Display Supplies and Controllers</span></td>
+	<td><span class="XML-Token">eFuses and hot-swap ICs</span></td>
+	<td><span class="XML-Token">Energy Harvesting</span></td>
+  </tr>
+  <tr>
+    <td><span class="XML-Token">GaN Power ICs</span></td>
+	<td><span class="XML-Token">Gate Drivers</span></td>
+	<td><span class="XML-Token">High-Density Power Drivers</span></td>
+	<td><span class="XML-Token">Intelligent Power Switches</span></td>
+	<td><span class="XML-Token">LED Drivers</span></td>
+	<td><span class="XML-Token">Lighting ICs</span></td>
+  </tr>
+  <tr>
+	<td><span class="XML-Token">Linear Voltage Regulators</span></td>
+	<td><span class="XML-Token">LNB Supplies</span></td>
+	<td><span class="XML-Token">Photovoltaic ICs</span></td>
+	<td><span class="XML-Token">Power Over Ethernet ICs</span></td>
+	<td><span class="XML-Token">Voltage References</span></td>
+	<td><span class="XML-Token">Wireless Charger ICs</span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Power Modules</td>
+    <td>Power modules for solutions ranging from tens of watts to several kilowatts</td>
+	<td><span class="XML-Token">ACEPACK</span></td>
+	<td><span class="XML-Token">SLLIMM</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Power Transistors</td>
+    <td>Transistors for high- and low-voltage applications (power MOSFETs , power IGBTs , power bipolar transistors, …)</td>
+	<td><span class="XML-Token">IGBTs</span></td>
+	<td><span class="XML-Token">Bipolar</span></td>
+	<td><span class="XML-Token">MOSFETs</span></td>
+	<td><span class="XML-Token">Wide Bandgap</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Protections</td>
+    <td>Devices for safe electronic systems and immunity from electromagnetic interference (EMI)</td>
+	<td><span class="XML-Token">ASIP</span><br>(Application-Specific Integrated Products)</td>
+	<td><span class="XML-Token">EMI Filters</span><br>(Electromagnetic interference filters)</td>
+	<td><span class="XML-Token">TSS</span><br>(Thyristor surge suppressor)</td>
+	<td><span class="XML-Token">TVS</span><br>(Transient Voltage Suppressors)</td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Radio Frequency</td>
+    <td>Radio Frequency power devices (e.g. transistors for Industrial, Scientific and Medical (ISM), for FM and TV Broadcast, for Mobile and wideband communications, for Avionics and Radar, for Telecom and Satellite Communications, …)</td>
+	<td><span class="XML-Token">RF DMOS</span></td>
+	<td><span class="XML-Token">RF LDMOS</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Reset and Supervisor ICs</td>
+    <td>Microprocessor supervisors and reset ICs for keeping application processor under control (e.g. microprocessor supervisors, resets, voltage detectors, voltage protection ICs, ...)</td>
+	<td><span class="XML-Token">Microprocessor Supervisors</span></td>
+	<td><span class="XML-Token">On-Off Controllers</span></td>
+	<td><span class="XML-Token">Reset and Voltage Detectors</span></td>
+	<td><span class="XML-Token">Smart Reset ICs</span></td>
+	<td><span class="XML-Token">Voltage Protection ICs</span></td>
+	<td><span class="XML-Token">Watchdog Timers</span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Secure MCUs</td>
+    <td>Secure devices for privacy and data confidentiality and integrity protection (secure NFC, SIM, eSIM, …)</td>
+	<td><span class="XML-Token">Authentication</span></td>
+	<td><span class="XML-Token">Secure</span></td>
+	<td><span class="XML-Token">SIM</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">SiC Devices</td>
+    <td>Silicon Carbide (SiC) devices (e.g. diodes, MOSFET, …) for efficient energy handling</td>
+	<td><span class="XML-Token">SiC Diodes</span></td>
+	<td><span class="XML-Token">SiC MOSFETs</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token" rowspan="2">Space Devices</td>
+    <td rowspan="2">Devices for aerospace applications designed to be compliant with the standards for aerospace (e.g. the American QML-V standard of the US DLA - Defense Logistics Agency, the RHA - Radiation Hardness Assurance certification)</td>
+	<td><span class="XML-Token">LEO Rad-Hard ICs</span><br>(Low Earth Orbit Radiation Hardness ICs)</td>
+	<td><span class="XML-Token">Rad-Hard Analog ICs</span></td>
+	<td><span class="XML-Token">Rad-Hard ASIC Platforms</span></td>
+	<td><span class="XML-Token">Rad-Hard Discretes</span></td>
+	<td><span class="XML-Token">Rad-Hard Interfaces</span></td>
+	<td><span class="XML-Token">Rad-Hard Logic ICs</span></td>
+  </tr>
+  <tr>
+    <td><span class="XML-Token">Rad-Hard Power Management</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Switches and Multiplexers</td>
+    <td>Switches (analog, data signal, power/load switches) and multiplexers for audio/video applications and ultrasound imaging</td>
+	<td><span class="XML-Token">Switches</span></td>
+	<td><span class="XML-Token">Multiplexers</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Thyristors and AC Switches</td>
+    <td>Thyristors (aka Silicon-Controlled Rectifiers), Triacs and AC Switches (they are power devices)</td>
+	<td><span class="XML-Token">Switches</span></td>
+	<td><span class="XML-Token">Thyristors</span></td>
+	<td><span class="XML-Token">Triacs</span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Touch and Display Controllers</td>
+    <td>Touch-screen controllers for multi-touch user interfaces (UIs)</td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Wireless</td>
+    <td>Wireless connectivity devices for IoT, to remotely monitor, configure and control appliances and evices, to replace cable and connectors with wireless communications (e.g. 6LoWPAN devices, LoRaWAN devices, Bluetooth Low Energy devices, Ultra-wideband devices, ...)</td>
+	<td><span class="XML-Token">Long Range</span><br>(6LoWPAN, KNX-RF, LoRaWAN, Sub-1 GHz, Sigfox, Wi-Sun, Wireless M-BUS, …)</td>
+	<td><span class="XML-Token">RF Front-end</span><br>(Baluns, Filters, ...)</td>
+	<td><span class="XML-Token">RF Solutions</span><br>(RF PLL Synthesizers, ...)</td>
+	<td><span class="XML-Token">Short Range</span><br>(60 GHz Contactless, Bluetooth Low Energy, Thread, Ultra Wideband, ZigBee, Wi-Fi, ...)</td>
+	<td><span class="XML-Token"></span></td>
+	<td><span class="XML-Token"></span></td>
   </tr>
 </table>
 

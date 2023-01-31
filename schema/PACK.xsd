@@ -17,13 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        30. Jan 2023
-  $Revision:    1.7.16
+  $Date:        31. Jan 2023
+  $Revision:    1.7.17
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.16
+  SchemaVersion=1.7.17
 
+  31. Jan 2023: v1.7.17
+   - added Hclass and Hgroup predefined values for \<part> element classification
+   - added \<part-taxonomy> element to list description elements defining part classes and part group names
   30. Jan 2023: v1.7.16
    - added 'bottom' and 'perspective' attributes to /package/boards/board/image element
    - revert extension from v1.7.10 and replace using attributes for 'language' and 'scope' in 'FileType'
@@ -176,7 +179,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.16">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.17">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1270,9 +1273,9 @@
   <xs:complexType name="TaxonomyDescriptionType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <!-- Class the description is associated with -->
+        <!-- Component Class the description is associated with -->
         <xs:attribute name="Cclass"    type="CclassType" use="required" />
-         <!-- Group the description is associated with -->
+         <!-- Component Group the description is associated with -->
         <xs:attribute name="Cgroup"    type="CgroupType" use="optional" />
         <!-- link to documentation for the :Class:[Group] -->
         <xs:attribute name="doc"       type="xs:string"  use="optional" />
@@ -1290,6 +1293,33 @@
   <xs:complexType name="TaxonomyType">
     <xs:sequence>
       <xs:element name="description" type="TaxonomyDescriptionType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- part-taxonomy description type definition -->
+  <xs:complexType name="PartTaxonomyDescriptionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <!-- Part Class the description is associated with -->
+        <xs:attribute name="Hclass"    type="HclassType" use="required" />
+         <!-- Part Group the description is associated with -->
+        <xs:attribute name="Hgroup"    type="HgroupType" use="optional" />
+        <!-- link to documentation for the :Class:[Group] -->
+        <xs:attribute name="doc"       type="xs:string"  use="optional" />
+        <!-- link a generator to a taxonomy -->
+        <xs:attribute name="generator" type="xs:string"  use="optional" />
+        <!-- allow to filter the taxonomy e.g. for a device vendor -->
+        <xs:attribute name="condition" type="xs:string"  use="optional" />
+        <!-- if true, the vendor gives permission for the doc file above being extracted from the pack and displayed on a web-page -->
+        <!-- links to web pages are assumed public -->
+        <xs:attribute name="public" type="xs:boolean"    use="optional" default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="PartTaxonomyType">
+    <xs:sequence>
+      <xs:element name="description" type="PartTaxonomyDescriptionType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
@@ -1486,6 +1516,32 @@
     </xs:sequence>
   </xs:complexType>
 
+  <!-- Part Class Name Type: specify your own Hclass in taxonomy -->
+  <xs:simpleType name="HclassType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3" />
+      <xs:maxLength value="32" />
+      <xs:pattern value="\S(.*\S)?"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Part Group Name Type -->
+  <xs:simpleType name="HgroupType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3" />
+      <xs:maxLength value="32" />
+      <xs:pattern value="\S(.*\S)?"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- Part Sub Name Type -->
+  <xs:simpleType name="HsubType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3" />
+      <xs:maxLength value="32" />
+    </xs:restriction>
+  </xs:simpleType>
+  
   <xs:complexType name="PartType">
     <xs:sequence>
       <xs:element name="feature"     type="DeviceFeatureType" minOccurs="0" maxOccurs="unbounded" />
@@ -1494,9 +1550,9 @@
     </xs:sequence>
     <xs:attribute name="Hvendor"   type="DeviceVendorEnum" use="optional"/>
     <xs:attribute name="Hname"     type="xs:string"        use="required"/>
-    <xs:attribute name="Hclass"    type="xs:string"        use="optional"/>
-    <xs:attribute name="Hgroup"    type="xs:string"        use="optional"/>
-    <xs:attribute name="Hsub"      type="xs:string"        use="optional"/>
+    <xs:attribute name="Hclass"    type="HclassType"       use="optional"/>
+    <xs:attribute name="Hgroup"    type="HgroupType"       use="optional"/>
+    <xs:attribute name="Hsub"      type="HsubType"         use="optional"/>
     <xs:attribute name="Hvariant"  type="xs:string"        use="optional"/>
     <xs:attribute name="Hrevision" type="xs:string"        use="optional"/>
   </xs:complexType>
@@ -2017,8 +2073,10 @@
         <!-- definition of parts -->
         <xs:element name="parts" type="PartsType" minOccurs="0" maxOccurs="1" />
         <!-- parts end -->
-        <!-- taxonomy section contains default descriptions used in the entire model -->
+        <!-- taxonomy section contains default component descriptions used in the entire model -->
         <xs:element name="taxonomy" type="TaxonomyType" minOccurs="0" />
+        <!-- part-taxonomy section contains default part descriptions used in the entire model -->
+        <xs:element name="part-taxonomy" type="PartTaxonomyType" minOccurs="0" />
         <!-- apis section contains api descriptions used in the entire model -->
         <xs:element name="apis" type="ApisType" minOccurs="0" />
         <!-- conditions section contains all condition entries used by any component of the package -->
