@@ -410,8 +410,8 @@ The tokens can be used in the elements:
   <tr>
     <td class="XML-Token">ARMCC</td>
     <td>Arm Compiler for C and C++. 
-    Refer to <a href="http://infocenter.arm.com/help/topic/com.arm.doc.subset.swdev.coretools/index.html" target="_blank">
-    Arm Compiler</a>.</td>
+    Refer to <a href="https://developer.arm.com/Tools%20and%20Software/Arm%20Compiler%20for%20Embedded" target="_blank">
+    Arm Compiler for Embedded</a>.</td>
   </tr>
   <tr>
     <td class="XML-Token">IAR</td>
@@ -428,6 +428,12 @@ The tokens can be used in the elements:
   <tr>
     <td class="XML-Token">XC</td>
     <td>Microchip MPLAB XC32 Compiler.</td>
+  </tr>
+  <tr>
+     <td class="XML-Toke">Clang</td>
+     <td>Clang: a C language family frontend for LLVM. Refer to <a href="https://clang.llvm.org" target="_blank">
+         Clang</a>
+     </td>
   </tr>
 </table>
 
