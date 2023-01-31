@@ -23,7 +23,7 @@ The following image shows the basic steps that are required to create a Software
 -# <b>Organize files:</b> For better maintainability, use directories to separate the content of the Pack.
 -# <b>Create PDSC file:</b> The XML based PDSC file can be created using any text editor. Editors that can
    \ref cp_Editors "validate XML" code against a schema file help to find bugs early in the Pack development stage.
--# <b>Generate Pack:</b> Any compression tool supporting the ZIP format can be used to create a Pack file. \ref packChk is
+-# <b>Generate Pack:</b> Any compression tool supporting the ZIP format can be used to create a Pack file. <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> is
    helpful for the validation of the contents of a Pack.
 
 \note Steps 3 and 4 are covered automatically if you are using the \ref bash_script "gen_pack.sh" script to generate the pack.
@@ -116,7 +116,7 @@ The information from the \ref element_releases "<releases>" section will be used
 - Determining the Pack version (required for the file name of the Pack file)
 - Display of release information
 
-\note Usually, you need to add a \c \<date\> tag to a \c \<release \c version\>. If you omit this, \ref packChk will issue a
+\note Usually, you need to add a \c \<date\> tag to a \c \<release \c version\>. If you omit this, <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> will issue a
 warning. To keep the tutorial simple, the \c \<date\> tag is not used here (as it requires consecutive dates for different
 versions).
 
@@ -167,7 +167,7 @@ to your local working directory. You only need to enter the version number of th
 Having saved <b>gen_pack.sh</b>, open a Bash console in the current directory and run the script.
 The shell script will:
 - Run a schema check on the PDSC file using \ref cp_Editors "xmllint".
-- Run \ref packChk
+- Run <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a>
 - Create the <b>MyVendor.MyPack.1.0.0.pack</b> Pack file in the ./output sub-directory.
 </li>
 <li>
@@ -595,7 +595,7 @@ Add a new version number:
 Finally, save the PDSC file and regenerate the Pack file using the <b>gen_pack.sh</b> script. See \ref cp_GeneratePack for
 further details. Afterwards, install the Pack in your development tool and observe the differences to version 1.0.5.
 
-\note \ref packChk will issue a warning as the board described above is not known:
+\note <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> will issue a warning as the board described above is not known:
 \verbatim
 *** WARNING M324: C:\03_work\Packs\Arm\Tutorial\01_Create_PDSC\build\MyVendor.MyPack.pdsc (Line 116)
   Board referenced in Example 'MyDevBoard Example' not found: '[MyVendor] MyDevBoard'
@@ -712,7 +712,7 @@ Add a \ref element_device "<devices>" section in the PDSC file with the followin
   file on GitHub. If you are a new device vendor, please contact
   <a href="mailto:cmsis@arm.com?subject=Dvendor%20ID%20Assignment">cmsis@arm.com</a> to get a \c Dvendor ID assigned.
 - This section's code examples can be found in the \c snippets.xml file in the ZIP file's <b>01_Basic_Pack</b> directory.
-- Usually, you need to add a \c \<date\> tag to a \c \<release \c version\>. If you omit this, \ref packChk will issue a
+- Usually, you need to add a \c \<date\> tag to a \c \<release \c version\>. If you omit this, <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> will issue a
   warning. To keep the tutorial simple, the \c \<date\> tag is not used here (as it requires consecutive dates for different
   versions).
 
@@ -721,10 +721,10 @@ Add a \ref element_device "<devices>" section in the PDSC file with the followin
 Open a Bash console in the current directory and run the \c gen_pack.sh script.
 The shell script will:
 - Run a schema check on the PDSC file using \ref cp_Editors "xmllint".
-- Run \ref packChk
+- Run <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a>
 - Create the <b>MyVendor.MVCM3.1.0.0.pack</b> Pack file in the ./output sub-directory.
 </li>
-<li>\ref packChk will issue a couple of warnings that we will take care of later:
+<li><a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> will issue a couple of warnings that we will take care of later:
 \verbatim
 *** WARNING M350: C:\03_work\Packs\Arm\Tutorial\DFP\working\build\MyVendor.MVCM3.pdsc (Line 35)
   No 'Startup' component found for [Generic:5] 'MVCM3110' (Compiler:  [])
@@ -830,7 +830,7 @@ and <b>\::Device:Startup</b> for the project:
 </li>
 </ol>
 
-\note \ref packChk will show lots of \c INFO messages. This is expected at this point and we will address this problem in
+\note <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> will show lots of \c INFO messages. This is expected at this point and we will address this problem in
 the next section.
 
 

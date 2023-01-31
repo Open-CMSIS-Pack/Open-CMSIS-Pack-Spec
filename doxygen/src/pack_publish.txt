@@ -6,7 +6,8 @@ There are multiple ways to distribute a software pack:
 \section cp_prerequisites Prerequisites
 
 Before you start to distribute a software pack, you need to make sure that it does not contain errors. A good start is an
-error and warning free run of \ref bash_script "gen_pack.sh" that does not show any \ref packChk errors and
+error and warning free run of \ref bash_script "gen_pack.sh" that does not show any
+<a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> errors and
 \ref cp_Editors_xmllint "validates the XML" of the PDSC file.
 
 \note XML validation is important when the pack should published using a \ref cp_KeilComPack "pack index service". The pack
@@ -51,8 +52,9 @@ may send the URL of the \elem{vendor}.\elem{name}.pdsc or \elem{vendor}.pidx fil
 - for IAR tools email to <a href="mailto:CMSIS@arm.com">CMSIS@iar.com</a>
 
 The *.pidx file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the
-*.pidx file will be processed and validated. <b>Only packs that pass the \ref packChk and schema check</b> will become available via
-web pages and development tools.
+*.pidx file will be processed and validated. <b>Only packs that pass the
+<a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk">packchk</a> and schema check</b> will become
+available via web pages and development tools.
 
 For example, Arm uses the pack information to generate a list of available software packs. The following content will be processed in order to generate
 the web site

@@ -96,6 +96,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
      - added 'bottom' and 'perspective' attributes to \ref element_board_image "\<image>" element
      - revert extension from v1.7.10 and replace using attributes for 'language' and 'scope' in 'FileType'
      - added 'Clang' to 'CompilerEnumType'.
+     - added '3PEAK' Dvendor ID.
     </td>
   </tr>
   <tr>
@@ -216,7 +217,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
 - removed CMSIS Project Description format (cpdsc) from CMSIS-Pack. Format has been superseeded by new format specification located in the CMSIS
   <a href="https://arm-software.github.io/CMSIS_5/develop/Build/html/cprjFormat_pg.html"><b>Build</b></a> tab.
 - added \ref dbg_setup_tutorial "debug setup tutorial" to the documentation.
-- updated documentation of PackChk \ref packChkMessages "errors and warnings".
+- updated documentation of PackChk "errors and warnings".
 - updated documentation to reflect switch from 'http' to 'https'.
 - added 'folder' attribute to example's \ref element_example_project_env "\<environment>" element.
 - added 'ACCESS_AP' to \ref DataPatchAccessTypeEnum "DataPatchAccessTypeEnum".
@@ -385,7 +386,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
  - <em>Removed</em> external RAMn and ROMn memory IDs in memory tag
  - <em>Added</em> FileCategoryTypes in &lt;file&gt; element for C, C++, Assembler, Linker
  - <em>Extended</em> specification of &lt;require&gt;, &lt;accept&gt; and &lt;deny&gt; with Cversion and Capiversion ranges
- - <em>Added</em> \ref createPackUtil and \ref packChk for Pack validation
+ - <em>Added</em> \ref createPackUtil and packchk for Pack validation
  - <em>Added</em> documentation for the Example Pack based on LPC1800 Device Family
  - <em>Refined</em> &lt;debug&gt; element description
  - Many clarifications in the documentation along with examples
