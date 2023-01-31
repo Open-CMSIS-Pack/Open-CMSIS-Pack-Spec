@@ -17,18 +17,19 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        30. Jan 2023
-  $Revision:    1.7.16
+  $Date:        31. Jan 2023
+  $Revision:    1.7.17
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.16
+  SchemaVersion=1.7.17
 
+  31. Jan 2023: v1.7.17
+   - added Hclass and Hgroup predefined values for \<part> element classification
+   - added \<part-taxonomy> element to list description elements defining part classes and part group names
   30. Jan 2023: v1.7.16
+   - added 'bottom' and 'perspective' attributes to /package/boards/board/image element
    - revert extension from v1.7.10 and replace using attributes for 'language' and 'scope' in 'FileType'
-   - introduced /package/taxonomy/descriptionC and /package/taxonomy/descriptionH elements and set deprecated the use of /package/taxonomy/description
-   - added Hclass and Hgroup predefined values for /package/parts/part element classification
-  18. Jan 2023:
    - added 'Clang' to 'CompilerEnumType'.
   24. Oct 2022: v1.7.15
    - added 'projectpath' attribute which can be used by IDE to construct file location folder in IDE project explorer view of workspace.
@@ -1266,12 +1267,12 @@
     <xs:attribute name="condition" type="xs:string" />
   </xs:complexType>
 
-  <!-- taxonomy description type definition (here for backward compatibility -deprecated-) -->
+  <!-- taxonomy description type definition -->
   <xs:complexType name="TaxonomyDescriptionType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
         <!-- Component Class the description is associated with -->
-        <xs:attribute name="Cclass"    type="CclassType" use="optional" />
+        <xs:attribute name="Cclass"    type="CclassType" use="required" />
          <!-- Component Group the description is associated with -->
         <xs:attribute name="Cgroup"    type="CgroupType" use="optional" />
         <!-- link to documentation for the :Class:[Group] -->
@@ -1286,34 +1287,19 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  
-  <!-- taxonomy descriptionC type definition (to be used for components) -->
-  <xs:complexType name="TaxonomyDescriptionCType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <!-- Component Class the description is associated with -->
-        <xs:attribute name="Cclass"    type="CclassType" use="optional" />
-         <!-- Component Group the description is associated with -->
-        <xs:attribute name="Cgroup"    type="CgroupType" use="optional" />
-        <!-- link to documentation for the :Class:[Group] -->
-        <xs:attribute name="doc"       type="xs:string"  use="optional" />
-        <!-- link a generator to a taxonomy -->
-        <xs:attribute name="generator" type="xs:string"  use="optional" />
-        <!-- allow to filter the taxonomy e.g. for a device vendor -->
-        <xs:attribute name="condition" type="xs:string"  use="optional" />
-        <!-- if true, the vendor gives permission for the doc file above being extracted from the pack and displayed on a web-page -->
-        <!-- links to web pages are assumed public -->
-        <xs:attribute name="public" type="xs:boolean"    use="optional" default="false" />
-      </xs:extension>
-    </xs:simpleContent>
+
+  <xs:complexType name="TaxonomyType">
+    <xs:sequence>
+      <xs:element name="description" type="TaxonomyDescriptionType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
   </xs:complexType>
   
-  <!-- taxonomy descriptionH type definition (to be used for parts) -->
-  <xs:complexType name="TaxonomyDescriptionHType">
+  <!-- part-taxonomy description type definition -->
+  <xs:complexType name="PartTaxonomyDescriptionType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
         <!-- Part Class the description is associated with -->
-        <xs:attribute name="Hclass"    type="HclassType" use="optional" />
+        <xs:attribute name="Hclass"    type="HclassType" use="required" />
          <!-- Part Group the description is associated with -->
         <xs:attribute name="Hgroup"    type="HgroupType" use="optional" />
         <!-- link to documentation for the :Class:[Group] -->
@@ -1329,13 +1315,10 @@
     </xs:simpleContent>
   </xs:complexType>
 
-  <xs:complexType name="TaxonomyType">
-    <xs:choice minOccurs="1" maxOccurs="unbounded">
-	  <!-- here for backward compatibility -->
-      <xs:element name="description" type="TaxonomyDescriptionType" minOccurs="1" maxOccurs="unbounded" /> 
-	  <xs:element name="descriptionC" type="TaxonomyDescriptionCType" minOccurs="1" maxOccurs="unbounded" />
-	  <xs:element name="descriptionH" type="TaxonomyDescriptionHType" minOccurs="1" maxOccurs="unbounded" />
-    </xs:choice>
+  <xs:complexType name="PartTaxonomyType">
+    <xs:sequence>
+      <xs:element name="description" type="PartTaxonomyDescriptionType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
   </xs:complexType>
 
   <!-- API type definition -->
@@ -1494,8 +1477,11 @@
       <xs:element name="mountedPart"      type="MountedPartType"      minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="image" minOccurs="0">
         <xs:complexType>
-          <xs:attribute name="small" type="xs:string" use="optional" />
+          <!-- attribute 'large' displays the 'top' side of the board -->
           <xs:attribute name="large" type="xs:string" use="optional" />
+          <xs:attribute name="small" type="xs:string" use="optional" />
+          <xs:attribute name="bottom" type="xs:string" use="optional" />
+          <xs:attribute name="perspective" type="xs:string" use="optional" />
           <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
           <!-- links to web pages are assumed public -->
           <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
@@ -2085,8 +2071,10 @@
         <!-- definition of parts -->
         <xs:element name="parts" type="PartsType" minOccurs="0" maxOccurs="1" />
         <!-- parts end -->
-        <!-- taxonomy section contains default descriptions used in the entire model -->
+        <!-- taxonomy section contains default component descriptions used in the entire model -->
         <xs:element name="taxonomy" type="TaxonomyType" minOccurs="0" />
+        <!-- part-taxonomy section contains default part descriptions used in the entire model -->
+        <xs:element name="part-taxonomy" type="PartTaxonomyType" minOccurs="0" />
         <!-- apis section contains api descriptions used in the entire model -->
         <xs:element name="apis" type="ApisType" minOccurs="0" />
         <!-- conditions section contains all condition entries used by any component of the package -->
