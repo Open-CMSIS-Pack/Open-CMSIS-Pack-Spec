@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Bash Script gen_pack.sh</title>
-<title>Open-CMSIS-Pack: Bash Script gen_pack.sh</title>
+<title>gen_pack.sh</title>
+<title>Open-CMSIS-Pack: gen_pack.sh</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -101,11 +101,11 @@ $(document).ready(function(){initNavTree('bash_script.html',''); initResizable()
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Bash Script gen_pack.sh </div></div>
+  <div class="headertitle"><div class="title">gen_pack.sh </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >A <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" target="_blank">Bash</a> shell script template and library are available that allow you to generate a pack file. The library and template are released via <a href="https://github.com/Open-CMSIS-Pack/gen-pack" target="_blank">Open-CMSIS-Pack</a>. Check the prerequisites to successfully use this under Linux, Mac OS, or Windows.</p>
-<p >A template <a href="https://raw.githubusercontent.com/Open-CMSIS-Pack/gen-pack/main/template/gen_pack.sh" target="_blank">"gen_pack.sh"</a> file is available that is generic enough to cope with a wide range of requirements. It uses the information from the <a class="el" href="packFormat.html">*.PDSC file</a> to generate the output filename according the CMSIS-Pack conventions and validates the pack consistency with <a class="el" href="packChk.html">packchk</a>. The only change you need to make is entering the library version you are using in this line: </p><div class="fragment"><div class="line">REQUIRED_GEN_PACK_LIB=<span class="stringliteral">&quot;&lt;pin lib version here&gt;&quot;</span></div>
+<p >A template <a href="https://raw.githubusercontent.com/Open-CMSIS-Pack/gen-pack/main/template/gen_pack.sh" target="_blank">"gen_pack.sh"</a> file is available that is generic enough to cope with a wide range of requirements. It uses the information from the <a class="el" href="packFormat.html">*.PDSC file</a> to generate the output filename according the CMSIS-Pack conventions and validates the pack consistency with <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a>. The only change you need to make is entering the library version you are using in this line: </p><div class="fragment"><div class="line">REQUIRED_GEN_PACK_LIB=<span class="stringliteral">&quot;&lt;pin lib version here&gt;&quot;</span></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Refer to the <a href="https://github.com/Open-CMSIS-Pack/gen-pack/" target="_blank">documentation</a> on how to install and determine the library version.</dd></dl>
 <p><b>Sample output</b> </p><div class="fragment"><div class="line">$ ./gen_pack.sh</div>
 <div class="line">Starting CMSIS-Pack Generation: 04 Aug 2022 09:45:41</div>

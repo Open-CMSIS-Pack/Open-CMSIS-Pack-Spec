@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('createPackPublish.html',''); initResiz
 <div class="textblock"><p >There are multiple ways to distribute a software pack:</p>
 <h1><a class="anchor" id="cp_prerequisites"></a>
 Prerequisites</h1>
-<p >Before you start to distribute a software pack, you need to make sure that it does not contain errors. A good start is an error and warning free run of <a class="el" href="bash_script.html">gen_pack.sh</a> that does not show any <a class="el" href="packChk.html">packchk</a> errors and <a class="el" href="cp_Editors.html#cp_Editors_xmllint">validates the XML</a> of the PDSC file.</p>
+<p >Before you start to distribute a software pack, you need to make sure that it does not contain errors. A good start is an error and warning free run of <a class="el" href="bash_script.html">gen_pack.sh</a> that does not show any <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> errors and <a class="el" href="cp_Editors.html#cp_Editors_xmllint">validates the XML</a> of the PDSC file.</p>
 <dl class="section note"><dt>Note</dt><dd>XML validation is important when the pack should published using a <a class="el" href="createPackPublish.html#cp_KeilComPack">pack index service</a>. The pack importer will ignore all <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc files that do fail when checking against the current PACK.xsd schema file and thus your pack will cannot be downloaded.</dd></dl>
 <h1><a class="anchor" id="cp_LocalInstallation"></a>
 Local Installation</h1>
@@ -133,7 +133,7 @@ Publish with Pack Index Service</h1>
 <li>for Arm and Keil tools and web pages email to <a href="#" onclick="location.href='mai'+'lto:'+'CMS'+'IS'+'@ar'+'m.'+'com'; return false;">CMSIS@arm.com</a></li>
 <li>for IAR tools email to <a href="#" onclick="location.href='mai'+'lto:'+'CMS'+'IS'+'@ar'+'m.'+'com'; return false;">CMSIS@iar.com</a></li>
 </ul>
-<p >The *.pidx file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the .pidx file will be processed and validated. <b>Only packs that pass the <a class="el" href="packChk.html">packchk</a> and schema check</b> will become available via web pages and development tools.</p>
+<p >The *.pidx file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the .pidx file will be processed and validated. <b>Only packs that pass the <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk">packchk</a> and schema check</b> will become available via web pages and development tools.</p>
 <p >For example, Arm uses the pack information to generate a list of available software packs. The following content will be processed in order to generate the web site (<a href="https://developer.arm.com/embedded/cmsis/cmsis-packs" target="_blank">https://developer.arm.com/embedded/cmsis/cmsis-packs</a>):</p><ul>
 <li>Version</li>
 <li>Release Notes</li>

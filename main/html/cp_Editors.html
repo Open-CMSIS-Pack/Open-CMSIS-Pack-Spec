@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>XML Validation</title>
-<title>Open-CMSIS-Pack: XML Validation</title>
+<title>Schema Validation</title>
+<title>Open-CMSIS-Pack: Schema Validation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -101,22 +101,21 @@ $(document).ready(function(){initNavTree('cp_Editors.html',''); initResizable();
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">XML Validation </div></div>
+  <div class="headertitle"><div class="title">Schema Validation </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >XML validation is especially important when a pack should published using a <a class="el" href="createPackPublish.html#cp_KeilComPack">pack index service</a>. The pack importer will ignore all <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc files that do fail when checking against the current PACK.xsd schema file and thus your pack will not be available for download.</p>
+<div class="textblock"><p >Schema validation is required when a pack is published using a <a class="el" href="createPackPublish.html#cp_KeilComPack">pack index service</a>. The pack importer will ignore all PDSC files that do fail the schema check. Thus, your pack will not be available for download.</p>
 <h1><a class="anchor" id="cp_valEditor"></a>
 Using an editor</h1>
-<p >Some text editors are capable of verifying XML code against a schema file. This is helpful to identify syntactical or structural problems in a PDSC or SVD file early in the development process. Useful editors are:</p><ul>
-<li><a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a></li>
-<li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
-</ul>
-<p >If you specify the exact location of the schema file in the PDSC (refer to <a class="el" href="cp_PackTutorial.html#cp_CreatePDSC">Create PDSC File</a>), both tools should automatically pick it up for PDSC validation.</p>
+<p >Many text editors are capable of verifying XML code against a schema file. This is helpful to identify syntactical or structural problems in a PDSC or SVD file early in the development process. If you specify the exact location of the schema file in the PDSC (refer to <a class="el" href="cp_PackTutorial.html#cp_CreatePDSC">Create PDSC File</a>), editors should automatically pick it up for PDSC validation.</p>
+<p >For more information on schema validation, consult the help of your editor of choice.</p>
 <h1><a class="anchor" id="cp_Editors_xmllint"></a>
 Using xmllint</h1>
-<p >The utility <a href="http://xmlsoft.org/xmllint.html" target="_blank">xmllint</a> is a command line tool for XML validation against a schema file. It may be part of the <a class="el" href="bash_script.html">Bash Script gen_pack.sh</a> to verify the PDSC file during pack generation.</p>
+<p >The utility <a href="https://xmlsoft.org/xmllint.html" target="_blank">xmllint</a> is a command line tool for XML validation against a schema file. It may be part of the <a class="el" href="bash_script.html">gen_pack.sh</a> to verify the PDSC file during pack generation.</p>
 <p ><b>Installing on Linux</b></p>
 <p >Use your package manager to install the <code>libxml2-utils</code> (which contain xmllint). On a Ubuntu machine, use: </p><div class="fragment"><div class="line">$ sudo apt-get install libxml2-utils</div>
+</div><!-- fragment --><p ><b>Installing on macOS</b></p>
+<p >Use for example the package manager <a href="https://brew.sh/" target="_blank">Homebrew</a> to install <code>libxml2</code>. Enter: </p><div class="fragment"><div class="line">$ brew install libxml2</div>
 </div><!-- fragment --><p ><b>Installing on Windows</b></p>
 <p >For Windows <a href="https://www.zlatkovic.com/pub/libxml/" target="_blank"><b>libxml</b></a> provides an XML processor that provides the functionality of <b>xmllint</b>.</p>
 <dl class="section note"><dt>Note</dt><dd>The installation is optional but strongly recommended to be able to validate the XML file using <code>gen_pack.sh</code>.</dd></dl>

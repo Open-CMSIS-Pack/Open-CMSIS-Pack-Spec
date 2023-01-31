@@ -1,8 +1,8 @@
 var flashAlgorithm =
 [
     [ "Creating a new Algorithm", "flashAlgorithm.html#CreateFPA", [
-      [ "FlashPrg.c", "flashAlgorithm.html#autotoc_md10", null ],
-      [ "FlashDev.c", "flashAlgorithm.html#autotoc_md11", null ]
+      [ "FlashPrg.c", "flashAlgorithm.html#autotoc_md5", null ],
+      [ "FlashDev.c", "flashAlgorithm.html#autotoc_md6", null ]
     ] ],
     [ "Adding an Algorithm to a Pack", "flashAlgorithm.html#AddFPA", null ],
     [ "Algorithm Functions", "algorithmFunc.html", [

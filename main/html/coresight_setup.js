@@ -6,7 +6,7 @@ var coresight_setup =
       [ "Debug access sequences", "debug_description.html#pdsc_SequenceNameEnum_pg", null ],
       [ "Usage of debug access sequences", "debug_description.html#usage_of_sequences", null ],
       [ "Predefined debug access sequences", "debug_description.html#default_sequences", [
-        [ "Predefined default debug access sequences", "debug_description.html#autotoc_md12", null ],
+        [ "Predefined default debug access sequences", "debug_description.html#autotoc_md7", null ],
         [ "DebugPortSetup", "debug_description.html#debugPortSetup", null ],
         [ "DebugPortStart", "debug_description.html#debugPortStart", null ],
         [ "DebugPortStop", "debug_description.html#debugPortStop", null ],
