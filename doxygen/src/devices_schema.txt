@@ -1996,6 +1996,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <th>Web Link</th>
   </tr>
   <tr>
+    <td class="XML-Token">NO_VENDOR:0</td>
+    <td>No Vendor</td>
+    <td></td>
+  </tr>
+  <tr>
     <td class="XML-Token">3PEAK:177</td>
     <td>3PEAK</td>
     <td>https://www.3peakic.com.cn/</td>
