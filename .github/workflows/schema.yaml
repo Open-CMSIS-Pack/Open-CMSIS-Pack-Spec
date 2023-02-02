@@ -19,8 +19,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - id: files
-        uses: jitterbit/get-changed-files@v1
-      - uses: actions/setup-node@v3
+        uses: tj-actions/changed-files@v35
       - name: Install packages
         run: |
           sudo apt-get update
@@ -54,14 +53,13 @@ jobs:
       - name: Check schema version history
         run: |
           echo "${{ github.event.pull_request.base.sha }}" > .git/ORIG_HEAD
-          python test/pack_schema_version_history.py ${{ steps.files.outputs.added_modified }}
+          python test/pack_schema_version_history.py ${{ steps.files.outputs.all_changed_files }}
 
   index:
     name: Validate index schema
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
       - name: Install packages
         run: |
           sudo apt-get update
