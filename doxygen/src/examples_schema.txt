@@ -229,7 +229,7 @@ Values for <b>\token{deprecated attributes}</b> are read from the board descript
 <p>&nbsp;</p>
 <hr>
 
-\section element_example_project /package/examples/project
+\section element_example_project /package/examples/example/project
 A project element is a sequence of \em environment elements that describe the name of the environment and the project file to be loaded.
 
 <b>Example:</b>
@@ -252,7 +252,7 @@ A project element is a sequence of \em environment elements that describe the na
 	<td colspan=3>\ref element_example</td>
   </tr>
   <tr>
-    <th>Element</th>
+    <th>Child Elements</th>
     <th>Description</th>
     <th>Type</th>
     <th>Occurrence</th>
@@ -268,7 +268,7 @@ A project element is a sequence of \em environment elements that describe the na
 <p>&nbsp;</p>
 <hr>
 
-\section  element_example_project_env /package/examples/project/environment
+\section  element_example_project_env /package/examples/example/project/environment
 The environment element describes the name of the environment and the project file to be loaded.
 
 <b>Example:</b>
@@ -288,7 +288,7 @@ The environment element describes the name of the environment and the project fi
   </tr>
   <tr>
     <td>\ref element_example_project "project"</td>
-	<td colspan=3>\ref element_example_project</td>
+    <td colspan=3>\ref element_example_project</td>
   </tr>
   <tr>
     <th>Attributes</th>
