@@ -13,11 +13,11 @@ jobs:
     name: Sync content to wiki
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/setup-node@v1
-      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
         with:
           path: origin
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: Open-CMSIS-Pack/Open-CMSIS-Pack.wiki
           path: wiki
