@@ -97,8 +97,8 @@ var packFormat =
       [ "/package/examples", "pdsc_examples_pg.html#element_examples", null ],
       [ "/package/examples/example", "pdsc_examples_pg.html#element_example", null ],
       [ "/package/examples/example/board", "pdsc_examples_pg.html#element_example_board", null ],
-      [ "/package/examples/project", "pdsc_examples_pg.html#element_example_project", null ],
-      [ "/package/examples/project/environment", "pdsc_examples_pg.html#element_example_project_env", null ],
+      [ "/package/examples/example/project", "pdsc_examples_pg.html#element_example_project", null ],
+      [ "/package/examples/example/project/environment", "pdsc_examples_pg.html#element_example_project_env", null ],
       [ "/package/examples/example/attributes", "pdsc_examples_pg.html#element_example_attributes", null ],
       [ "/package/examples/example/attributes/component", "pdsc_examples_pg.html#element_example_attribute_component", null ]
     ] ]
