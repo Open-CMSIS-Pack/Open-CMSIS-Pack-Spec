@@ -30,7 +30,7 @@ For more information on schema validation, consult the help of your editor of ch
 
 \section cp_Editors_xmllint Using xmllint
 
-The utility <a href="https://xmlsoft.org/xmllint.html" target="_blank">xmllint</a> is a command line tool for XML validation
+The utility <a href="https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html" target="_blank">xmllint</a> is a command line tool for XML validation
 against a schema file. It may be part of the \ref bash_script to verify the PDSC file during pack generation.
 
 <b>Installing on Linux</b>
