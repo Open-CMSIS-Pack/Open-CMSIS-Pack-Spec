@@ -1695,7 +1695,7 @@
   </xs:simpleType>
 
   <!-- Specifing a version range: minVersion [: maxVersion] -->
-  <!-- major.minor.patch[-quality][:major.minor.patch[-quality]
+  <!-- major.minor.patch[-quality][:major.minor.patch[-quality] -->
   <xs:simpleType name="ConditionVersionType">
     <xs:restriction base="xs:string">
       <xs:pattern value="([0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?)(:[0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?)?" />
