@@ -312,21 +312,39 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Component Class Name Type: specify your own Class in taxonomy -->
-  <xs:simpleType name="CclassType">
+  <!-- Component Vendor -->
+  <xs:simpleType name="CvendorType">
     <xs:restriction base="xs:string">
       <xs:minLength value="2" />
       <xs:maxLength value="32" />
-      <xs:pattern value="\S(.*\S)?"></xs:pattern>
+      <xs:pattern value="[A-Za-z0-9][A-Za-z0-9\s]+" />
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Component Group Name Type (no leading or trailing spaces allowed) -->
-  <xs:simpleType name="CgroupType">
+  <!-- Component Vendor filter -->
+  <xs:simpleType name="CvendorFilterType">
     <xs:restriction base="xs:string">
       <xs:minLength value="2" />
       <xs:maxLength value="32" />
-      <xs:pattern value="\S(.*\S)?"></xs:pattern>
+      <xs:pattern value="[A-Za-z0-9\s\?\*]+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Component Identifier Part Type -->
+  <xs:simpleType name="CidPartType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="2" />
+      <xs:maxLength value="32" />
+      <xs:pattern value="[A-Za-z0-9][A-Za-z0-9_+()'/\-\s\.]+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Component Identifier Part Filter Type -->
+  <xs:simpleType name="CidPartFilterType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="2" />
+      <xs:maxLength value="32" />
+      <xs:pattern value="[A-Za-z0-9\?\*][A-Za-z0-9_+()'/\-\s\?\*]+" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -335,16 +353,16 @@
     <xs:restriction base="xs:string">
       <xs:minLength value="0" />
       <xs:maxLength value="32" />
-      <!-- <xs:pattern value="\S(.*\S)?"></xs:pattern> not backward compatible -->
+      <xs:pattern value="[A-Za-z0-9]?[A-Za-z0-9_+():/\-\s\.]*"></xs:pattern>
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Component Variant Name Type -->
-  <xs:simpleType name="CvariantType">
+  <!-- Component Sub Name Filter Type -->
+  <xs:simpleType name="CsubFilterType">
     <xs:restriction base="xs:string">
-      <xs:minLength value="2" />
+      <xs:minLength value="0" />
       <xs:maxLength value="32" />
-      <xs:pattern value="\S(.*\S)?"></xs:pattern>
+      <xs:pattern value="[A-Za-z0-9]?[A-Za-z0-9_+():/\-\s\.\?\*]*"></xs:pattern>
     </xs:restriction>
   </xs:simpleType>
 
@@ -1036,7 +1054,6 @@
       <xs:enumeration value="Little-endian" />
       <xs:enumeration value="Big-endian" />
       <xs:enumeration value="Configurable" />
-      <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -1045,16 +1062,15 @@
     <xs:restriction base="xs:token">
       <!-- core has no FPU -->
       <xs:enumeration value="NO_FPU" />
-      <xs:enumeration value="0" />
       <!-- core has FPU (type of FPU depends on Dcore) -->
       <xs:enumeration value="FPU" />
-      <xs:enumeration value="1" />
       <!-- single precision FPU -->
       <xs:enumeration value="SP_FPU" />
       <!-- double precision FPU -->
       <xs:enumeration value="DP_FPU" />
-      <!-- any -->
-      <xs:enumeration value="*" />
+      <!-- deprecated -->
+      <xs:enumeration value="0" /> <!-- no FPU implemented -->
+      <xs:enumeration value="1" /> <!-- FPU implemented -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -1063,12 +1079,11 @@
     <xs:restriction base="xs:token">
       <!-- no MPU -->
       <xs:enumeration value="NO_MPU" />
-      <xs:enumeration value="0" />
       <!-- MPU -->
       <xs:enumeration value="MPU" />
-      <xs:enumeration value="1" />
-      <!-- any -->
-      <xs:enumeration value="*" />
+      <!-- deprecated -->
+      <xs:enumeration value="0" /> <!-- no MPU implemented -->
+      <xs:enumeration value="1" /> <!-- MPU implemented -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -1077,12 +1092,10 @@
     <xs:restriction base="xs:token">
       <!-- no TZ -->
       <xs:enumeration value="NO_TZ" />
-      <xs:enumeration value="0" />
       <!-- TZ -->
       <xs:enumeration value="TZ" />
-      <xs:enumeration value="1" />
-      <!-- any -->
-      <xs:enumeration value="*" />
+      <!-- deprecated -->
+      <xs:enumeration value="1" /> <!-- TZ implemented -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -1091,15 +1104,14 @@
     <xs:restriction base="xs:token">
       <!-- Non Secure -->
       <xs:enumeration value="Non-secure" />
-      <xs:enumeration value="0" />
       <!-- Secure -->
       <xs:enumeration value="Secure" />
-      <xs:enumeration value="1" />
       <!-- TZ disabled -->
       <xs:enumeration value="TZ-disabled" />
-      <xs:enumeration value="2" />
-      <!-- any -->
-      <xs:enumeration value="*" />
+      <!-- deprecated -->
+      <xs:enumeration value="0" /> <!-- Non-secure -->
+      <xs:enumeration value="1" /> <!-- Secure -->
+      <xs:enumeration value="2" /> <!-- TZ-disabled -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -1108,12 +1120,10 @@
     <xs:restriction base="xs:token">
       <!-- no DSP -->
       <xs:enumeration value="NO_DSP" />
-      <xs:enumeration value="0" />
       <!-- DSP -->
       <xs:enumeration value="DSP" />
-      <xs:enumeration value="1" />
-      <!-- any -->
-      <xs:enumeration value="*" />
+      <!-- deprecated: -->
+      <xs:enumeration value="1" /> <!-- DSP instructions implemented -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -1123,7 +1133,6 @@
       <xs:enumeration value="NO_MVE"/>
       <xs:enumeration value="MVE"/>
       <xs:enumeration value="FP_MVE"/>
-      <xs:enumeration value="*"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -1132,7 +1141,6 @@
     <xs:restriction base="xs:token">
       <xs:enumeration value="NO_PACBTI"/>
       <xs:enumeration value="PACBTI"/>
-      <xs:enumeration value="*"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -1260,17 +1268,17 @@
     <xs:attribute name="Dsecure" type="DsecureEnum" />
     <xs:attribute name="Dendian" type="DendianEnum" />
     <xs:attribute name="Pname" type="RestrictedString" />
-    <xs:attribute name="Cvendor" type="xs:string" />
-    <xs:attribute name="Cbundle" type="xs:string" />
-    <xs:attribute name="Cclass" type="CclassType" />
-    <xs:attribute name="Cgroup" type="CgroupType" />
-    <xs:attribute name="Csub" type="CsubType" />
-    <xs:attribute name="Cvariant" type="CvariantType" />
+    <xs:attribute name="Cvendor" type="CvendorFilterType" />
+    <xs:attribute name="Cbundle" type="CidPartFilterType" />
+    <xs:attribute name="Cclass" type="CidPartFilterType" />
+    <xs:attribute name="Cgroup" type="CidPartFilterType" />
+    <xs:attribute name="Csub" type="CsubFilterType" />
+    <xs:attribute name="Cvariant" type="CidPartFilterType" />
     <xs:attribute name="Cversion" type="ConditionVersionType" />
     <xs:attribute name="Capiversion" type="ConditionVersionType" />
     <xs:attribute name="Bvendor" type="xs:string" />
     <xs:attribute name="Bname" type="xs:string" />
-    <xs:attribute name="Brevision" type="xs:string" />    
+    <xs:attribute name="Brevision" type="xs:string" />
     <xs:attribute name="Tcompiler" type="CompilerEnumType" />
     <!-- Toptions can only be used in combination with Tcompiler and the strings are predefined by the specification -->
     <xs:attribute name="Toptions" type="CompilerOptionsEnumType" />
@@ -1283,9 +1291,9 @@
     <xs:simpleContent>
       <xs:extension base="xs:string">
         <!-- Component Class the description is associated with -->
-        <xs:attribute name="Cclass"    type="CclassType" use="required" />
-         <!-- Component Group the description is associated with -->
-        <xs:attribute name="Cgroup"    type="CgroupType" use="optional" />
+        <xs:attribute name="Cclass"    type="CidPartType" use="required" />
+        <!-- Component Group the description is associated with -->
+        <xs:attribute name="Cgroup"    type="CidPartType" use="optional" />
         <!-- link to documentation for the :Class:[Group] -->
         <xs:attribute name="doc"       type="xs:string"  use="optional" />
         <!-- link a generator to a taxonomy -->
@@ -1345,8 +1353,8 @@
         </xs:complexType>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="Cclass"      type="CclassType" use="required" />
-    <xs:attribute name="Cgroup"      type="CgroupType" use="required" />
+    <xs:attribute name="Cclass"      type="CidPartType" use="required" />
+    <xs:attribute name="Cgroup"      type="CidPartType" use="required" />
     <xs:attribute name="exclusive"   type="xs:boolean" use="optional" default="1" />
     <xs:attribute name="Capiversion" type="ComponentVersionType" use="optional" />
     <xs:attribute name="condition"   type="xs:string" use="optional" />
@@ -1381,12 +1389,12 @@
   </xs:complexType>
 
   <xs:complexType name="ComponentCategoryType">
-    <xs:attribute name="Cvendor"     type="xs:string"            use="optional" />
-    <xs:attribute name="Cbundle"     type="xs:string"            use="optional" />
-    <xs:attribute name="Cclass"      type="CclassType"           use="required" />
-    <xs:attribute name="Cgroup"      type="CgroupType"           use="optional" />
+    <xs:attribute name="Cvendor"     type="CvendorType"          use="optional" />
+    <xs:attribute name="Cbundle"     type="CidPartType"          use="optional" />
+    <xs:attribute name="Cclass"      type="CidPartType"          use="required" />
+    <xs:attribute name="Cgroup"      type="CidPartType"          use="optional" />
     <xs:attribute name="Csub"        type="CsubType"             use="optional" />
-    <xs:attribute name="Cvariant"    type="CvariantType"         use="optional" />
+    <xs:attribute name="Cvariant"    type="CidPartType"          use="optional" />
     <xs:attribute name="Cversion"    type="ComponentVersionType" use="optional" />
     <xs:attribute name="Capiversion" type="ComponentVersionType" use="optional" />
     <xs:attribute name="instances"   type="InstancesType"        use="optional" default="1" />
@@ -2130,9 +2138,9 @@
                           </xs:element>
                         </xs:all>
                         <!-- component identity attributes Cclass Cvendor and Cversion are specified by bundle -->
-                        <xs:attribute name="Cgroup" type="CgroupType" use="required" />
+                        <xs:attribute name="Cgroup" type="CidPartType" use="required" />
                         <xs:attribute name="Csub" type="CsubType" use="optional" />
-                        <xs:attribute name="Cvariant" type="CvariantType" use="optional" />
+                        <xs:attribute name="Cvariant" type="CidPartType" use="optional" />
                         <xs:attribute name="Cversion" type="ComponentVersionType" use="optional" />
                         <!-- api version for this component -->
                         <xs:attribute name="Capiversion" type="ComponentVersionType" use="optional" />
@@ -2156,9 +2164,9 @@
                     </xs:element>
                   </xs:sequence>
                   <!-- bundle attributes -->
-                  <xs:attribute name="Cbundle" type="xs:string" use="required" />
-                  <xs:attribute name="Cvendor" type="xs:string" use="optional" />
-                  <xs:attribute name="Cclass" type="CclassType" use="required" />
+                  <xs:attribute name="Cbundle" type="CidPartType" use="required" />
+                  <xs:attribute name="Cvendor" type="CvendorType" use="optional" />
+                  <xs:attribute name="Cclass" type="CidPartType" use="required" />
                   <xs:attribute name="Cversion" type="ComponentVersionType" use="required" />
                   <!-- association of bundle with a generator. If the component is selected the generator information becomes active -->
                   <xs:attribute name="generator" type="xs:string" use="optional" />
@@ -2201,11 +2209,11 @@
                     </xs:element>
                   </xs:all>
                   <!-- component identity attributes -->
-                  <xs:attribute name="Cvendor" type="xs:string" use="optional" />
-                  <xs:attribute name="Cclass" type="CclassType" use="required" />
-                  <xs:attribute name="Cgroup" type="CgroupType" use="required" />
+                  <xs:attribute name="Cvendor" type="CvendorType" use="optional" />
+                  <xs:attribute name="Cclass" type="CidPartType" use="required" />
+                  <xs:attribute name="Cgroup" type="CidPartType" use="required" />
                   <xs:attribute name="Csub" type="CsubType" use="optional" />
-                  <xs:attribute name="Cvariant" type="CvariantType" use="optional" />
+                  <xs:attribute name="Cvariant" type="CidPartType" use="optional" />
                   <xs:attribute name="Cversion" type="ComponentVersionType" use="required" />
                   <!-- api version for this component -->
                   <xs:attribute name="Capiversion" type="ComponentVersionType" use="optional" />
