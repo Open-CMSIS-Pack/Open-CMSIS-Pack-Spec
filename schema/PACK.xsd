@@ -2139,8 +2139,8 @@
                         </xs:all>
                         <!-- component identity attributes Cclass Cvendor and Cversion are specified by bundle -->
                         <xs:attribute name="Cgroup" type="CidPartType" use="required" />
-                        <xs:attribute name="Csub" type="CidPartType" use="optional" />
-                        <xs:attribute name="Cvariant" type="CvariantType" use="optional" />
+                        <xs:attribute name="Csub" type="CsubType" use="optional" />
+                        <xs:attribute name="Cvariant" type="CidPartType" use="optional" />
                         <xs:attribute name="Cversion" type="ComponentVersionType" use="optional" />
                         <!-- api version for this component -->
                         <xs:attribute name="Capiversion" type="ComponentVersionType" use="optional" />
