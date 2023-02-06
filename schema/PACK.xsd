@@ -1672,36 +1672,33 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- major.minor.patch -->
+  <!-- major.minor.patch - allowing leading 0 -->
   <xs:simpleType name="SimpleVersionType">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9]+\.[0-9]+((\.[0-9]+)|())" />
+      <xs:pattern value="[0-9]+\.[0-9]+(\.[0-9]+)?" />
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- major.minor.patch[-quality] -->
   <xs:simpleType name="ComponentVersionType">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9]+\.[0-9]+((\.[0-9]+)|())((\-[0-9A-Za-z_\-\.]+)|([_A-Za-z][0-9A-Za-z_\-\.]*)|())((\+[\-\._A-Za-z0-9]+)|())" />
+      <xs:pattern value="(0|[1-9]\d*)\.([0-9]+)(\.([0-9]+))?(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?" />
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- version can contain one or more of alphanumeric characters and symbols '_' '-' '.'
-       Important: version pattern shall remain the same while versions change
-  -->
+  <!-- major.minor.patch [[-]quality] [+build] -->
   <xs:simpleType name="PackVersionType">
     <xs:restriction base="xs:string">
       <!-- major . minor . patch [[-]quality] [+build] -->
-      <xs:pattern value="[0-9]+.[0-9]+.[0-9]+((\-[0-9A-Za-z_\-\.]+)|([_A-Za-z][0-9A-Za-z_\-\.]*)|())((\+[\-\._A-Za-z0-9]+)|())" />
+      <xs:pattern value="[0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?" />
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- version can contain one or more of alphanumeric characters and symbols '_' '-' '.'
-       Allows specifing a version range: minVersion : maxVersion
-  -->
+  <!-- Specifing a version range: minVersion [: maxVersion] -->
+  <!-- major.minor.patch[-quality][:major.minor.patch[-quality]
   <xs:simpleType name="ConditionVersionType">
     <xs:restriction base="xs:string">
-      <!-- <xs:pattern value="[\.:\-_A-Za-z0-9]+"/> -->
-      <xs:pattern value="[0-9]+.[0-9]+((.[0-9]+)|())((\-[0-9A-Za-z_\-\.]+)|([_A-Za-z][0-9A-Za-z_\-\.]*)|())((\+[\-\._A-Za-z0-9]+)|())((:[0-9]+.[0-9]+((.[0-9]+)|()))|())((\-[0-9A-Za-z_\-\.]+)|([_A-Za-z][0-9A-Za-z_\-\.]*)|())((\+[\-\._A-Za-z0-9]+)|())" />
+      <xs:pattern value="([0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?)(:[0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?)?" />
     </xs:restriction>
   </xs:simpleType>
 
