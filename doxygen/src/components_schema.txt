@@ -991,6 +991,24 @@ The table lists the predefined values for a file category.
     <td>The specified file is added as a pre-include file to the compiler command line for all modules of the <b>component</b> (locally).</td>
   </tr>
   <tr>
+    <td class="XML-Token">genSource</td>
+    <td>The specified file is a source file which is exclusively used by the generator associated with this component specified by attribute <em>generator</em>.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">genHeader</td>
+    <td>The specified file is a header file which is exclusively used by the generator associated with this component specified by attribute <em>generator</em>.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">genParams</td>
+    <td>The specified file is a parameter file which is exclusively used by the generator associated with this component specified by attribute
+        <em>generator</em>.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">genAsset</td>
+    <td>The specified file is an asset file which is exclusively used by the generator associated with this component specified by attribute <em>generator</em>.
+        it is up to the generator to identify purpose and format of the file by name or file type.</td>
+  </tr>
+  <tr>
     <td class="XML-Token">other</td>
     <td>Other file types not covered in the list above</td>
   </tr>
@@ -1011,12 +1029,8 @@ File language attribute is used in the following elements:
 The table lists the predefined values for a file language.
 <table class="cmtable" summary="Type: FileLanguageAttributeType">
   <tr>
-    <th>category=</th>
+    <th>language=</th>
     <th>Description</th>
-  </tr>
-  <tr>
-    <td class="XML-Token">doc</td>
-    <td>Documentation</td>
   </tr>
   <tr>
     <td class="XML-Token">asm</td>
@@ -1057,12 +1071,8 @@ File language attribute is used in the following elements:
 The table lists the predefined values for the scope attribute.
 <table class="cmtable" summary="Type: FileScopeAttributeType">
   <tr>
-    <th>category=</th>
+    <th>scope=</th>
     <th>Description</th>
-  </tr>
-  <tr>
-    <td class="XML-Token">doc</td>
-    <td>Documentation</td>
   </tr>
   <tr>
     <td class="XML-Token">visible</td>
