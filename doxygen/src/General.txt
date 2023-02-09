@@ -84,12 +84,6 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
-    <td>1.7.20</td>
-    <td>
-     - corrected regex for CsubType
-    </td>
-  </tr>
-  <tr>
     <td>1.7.19</td>
     <td>
      - added generator specific component file types: 'genSource', 'genHeader', 'genParams', 'genAsset' to 'FileCategoryType' of the files element
