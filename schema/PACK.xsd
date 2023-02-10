@@ -353,7 +353,7 @@
     <xs:restriction base="xs:string">
       <xs:minLength value="0" />
       <xs:maxLength value="32" />
-      <xs:pattern value="[A-Za-z0-9]?[A-Za-z0-9_+():/\-\s\.]*"></xs:pattern>
+      <xs:pattern value="([A-Za-z0-9]{1}[A-Za-z0-9_+():/\- \.]*)?"></xs:pattern>
     </xs:restriction>
   </xs:simpleType>
 
