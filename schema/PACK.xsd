@@ -317,7 +317,7 @@
     <xs:restriction base="xs:string">
       <xs:minLength value="2" />
       <xs:maxLength value="32" />
-      <xs:pattern value="[A-Za-z0-9][A-Za-z0-9\s]+" />
+      <xs:pattern value="[A-Za-z0-9][A-Za-z0-9\-\s]+" />
     </xs:restriction>
   </xs:simpleType>
 
