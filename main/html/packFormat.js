@@ -93,6 +93,10 @@ var packFormat =
       [ "/package/.../extensions", "pdsc_components_pg.html#element_extensions", null ],
       [ "/package/.../extensions/extension", "pdsc_components_pg.html#element_extension", null ]
     ] ],
+    [ "/package/clayers element", "pdsc_clayers_pg.html", [
+      [ "/package/clayers", "pdsc_clayers_pg.html#element_clayers", null ],
+      [ "/package/clayers/clayer", "pdsc_clayers_pg.html#element_clayer", null ]
+    ] ],
     [ "/package/examples element", "pdsc_examples_pg.html", [
       [ "/package/examples", "pdsc_examples_pg.html#element_examples", null ],
       [ "/package/examples/example", "pdsc_examples_pg.html#element_example", null ],

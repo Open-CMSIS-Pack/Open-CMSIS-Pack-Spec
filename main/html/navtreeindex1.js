@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"pdsc_generators_pg.html#element_gen_command":[6,14,6],
+"pdsc_generators_pg.html#element_gen_eclipse":[6,14,4],
+"pdsc_generators_pg.html#element_gen_exe":[6,14,3],
 "pdsc_generators_pg.html#element_gen_file":[6,14,10],
 "pdsc_generators_pg.html#element_gen_files":[6,14,9],
 "pdsc_generators_pg.html#element_gen_project_files":[6,14,8],

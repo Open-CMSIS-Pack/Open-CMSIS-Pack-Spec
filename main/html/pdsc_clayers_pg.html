@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Schema Validation</title>
-<title>Open-CMSIS-Pack: Schema Validation</title>
+<title>/package/clayers element</title>
+<title>Open-CMSIS-Pack: /package/clayers element</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('cp_Editors.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('pdsc_clayers_pg.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -101,59 +101,63 @@ $(document).ready(function(){initNavTree('cp_Editors.html',''); initResizable();
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Schema Validation </div></div>
+  <div class="headertitle"><div class="title">/package/clayers element </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >Schema validation is required when a pack is published using a <a class="el" href="createPackPublish.html#cp_KeilComPack">pack index service</a>. The pack importer will ignore all PDSC files that do fail the schema check. Thus, your pack will not be available for download.</p>
-<h1><a class="anchor" id="cp_valEditor"></a>
-Using an editor</h1>
-<p >Many text editors are capable of verifying XML code against a schema file. This is helpful to identify syntactical or structural problems in a PDSC or SVD file early in the development process. If you specify the exact location of the schema file in the PDSC (refer to <a class="el" href="cp_PackTutorial.html#cp_CreatePDSC">Create PDSC File</a>), editors should automatically pick it up for PDSC validation.</p>
-<p >For more information on schema validation, consult the help of your editor of choice.</p>
-<h1><a class="anchor" id="cp_Editors_xmllint"></a>
-Using xmllint</h1>
-<p >The utility <a href="https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html" target="_blank">xmllint</a> is a command line tool for XML validation against a schema file. It may be part of the <a class="el" href="bash_script.html">gen_pack.sh</a> to verify the PDSC file during pack generation.</p>
-<p ><b>Installing on Linux</b></p>
-<p >Use your package manager to install the <code>libxml2-utils</code> (which contain xmllint). On a Ubuntu machine, use: </p><div class="fragment"><div class="line">$ sudo apt-get install libxml2-utils</div>
-</div><!-- fragment --><p ><b>Installing on macOS</b></p>
-<p >Use for example the package manager <a href="https://brew.sh/" target="_blank">Homebrew</a> to install <code>libxml2</code>. Enter: </p><div class="fragment"><div class="line">$ brew install libxml2</div>
-</div><!-- fragment --><p ><b>Installing on Windows</b></p>
-<p >For Windows <a href="https://www.zlatkovic.com/pub/libxml/" target="_blank"><b>libxml</b></a> provides an XML processor that provides the functionality of <b>xmllint</b>.</p>
-<dl class="section note"><dt>Note</dt><dd>The installation is optional but strongly recommended to be able to validate the XML file using <code>gen_pack.sh</code>.</dd></dl>
-<p>Download the following ZIP files:</p><ul>
-<li><b>iconv-1.9.2.win32.zip</b></li>
-<li><b>libxml2-2.7.8.win32.zip</b></li>
-<li><b>libxmlsec-1.2.18.win32.zip</b></li>
-<li><b>zlib-1.2.5.win32.zip</b></li>
-</ul>
-<p >Extract the <b>/bin</b> directory of each ZIP file to a directory, for example <b>C:\xmllint</b> and add this directory to the Windows <a href="https://answers.microsoft.com/en-us/windows/forum/windows_10-other_settings/adding-path-variable/97300613-20cb-4d85-8d0e-cc9d3549ba23" target="_blank"><b>PATH</b></a> environment variable.</p>
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>Restart the <b>Git Bash</b> after changing the <b>PATH</b> environment variable.</li>
-<li>When <b>xmllint</b> is not installed, the XML schema verification is skipped by the <a class="el" href="bash_script.html">gen_pack.sh</a> script.</li>
-</ul>
-</dd></dl>
-<p>xmllint is also provided by the xsltproc package that can be installed via <a href="https://chocolatey.org/packages/xsltproc" target="_blank"><b>Chocolatey</b></a>: </p><div class="fragment"><div class="line">&gt; choco install xsltproc</div>
-</div><!-- fragment --><h1><a class="anchor" id="cp_validationPI"></a>
-Using Pack Installer</h1>
-<p >Arm Keil MDK includes <b>Pack</b> <b>Installer</b> which tou can use to validate the schema of your PDSC file.</p>
-<ul>
-<li>Right-click on the pack version number and select <b>Schema Check</b>: <br  />
-<div class="image">
-<img src="schema_check.png" alt=""/>
-</div>
-</li>
-<li>The <b>Output</b> window shows the result. If errors are reported, please make sure to fix them before continuing.<br  />
-<div class="image">
-<img src="schema_check_output.png" alt=""/>
-</div>
- </li>
-</ul>
+<div class="textblock"><p >The element <a class="el" href="pdsc_clayers_pg.html#element_clayer">/package/clayers/clayer</a> describes a reference to a partially specified project named clayer contained in the Pack. The clayer itself may refer to a <a class="el" href="pdsc_conditions_pg.html#element_condition">condition</a> that must resolve to true; if it is false the clayer will be ignored.</p>
+<p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;clayers&gt;</div>
+<div class="line">  &lt;clayer name=<span class="stringliteral">&quot;32F429IDISCOVERY&quot;</span> type=<span class="stringliteral">&quot;Board&quot;</span> file=<span class="stringliteral">&quot;Layers/board_32F429IDISCOVERY.clayer.yml&quot;</span> condition=<span class="stringliteral">&quot;Board_32F429IDISCOVERY&quot;</span>&gt;</div>
+<div class="line">    &lt;description&gt;<span class="stringliteral">&quot;Board layer for 32F429IDISCOVERY&quot;</span>&lt;/description&gt;</div>
+<div class="line">  &lt;/clayer&gt;</div>
+<div class="line">&lt;/clayers&gt;</div>
+</div><!-- fragment --><p >&#160;</p>
+<p ><br  />
+ </p><hr  />
+<h1><a class="anchor" id="element_clayers"></a>
+/package/clayers</h1>
+<p >Grouping element for clayers. No more than one such group can exist in a package description.</p>
+<table class="cmtable" summary="Element: Example">
+<tr>
+<th>Parent </th><th colspan="3">Chain  </th></tr>
+<tr>
+<td><a class="el" href="pdsc_package_pg.html">package</a> </td><td colspan="3"><a class="el" href="pdsc_package_pg.html">/package</a>  </td></tr>
+<tr>
+<th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
+<tr>
+<td><a class="el" href="pdsc_clayers_pg.html#element_clayer">clayer</a> </td><td>Description of a clayer, which represents a partially specified project. </td><td>ClayerType </td><td>1..*   </td></tr>
+</table>
+<p >&#160;</p>
+<p ><br  />
+ </p><hr  />
+<h1><a class="anchor" id="element_clayer"></a>
+/package/clayers/clayer</h1>
+<p >A clayer section is used to provide the required information for accessing a clayer YAML file contained in a Pack. All clayers contained in the installed packs can be listed including a name, type and a brief description. A clayer can be referenced by a project. If a condition is specified, the clayer is only listed in case the filter part of the condition resolves to true.</p>
+<table class="cmtable" summary="Element: Clayer">
+<tr>
+<th>Parent </th><th colspan="3">Chain  </th></tr>
+<tr>
+<td><a class="el" href="pdsc_examples_pg.html#element_examples">examples</a> </td><td colspan="3"><a class="el" href="pdsc_examples_pg.html#element_examples">/package/examples</a>  </td></tr>
+<tr>
+<th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
+<tr>
+<td>name </td><td>Name of the clayer </td><td>xs:string </td><td>required  </td></tr>
+<tr>
+<td>type </td><td>Type of the clayer </td><td>xs:string </td><td>required  </td></tr>
+<tr>
+<td>file </td><td>Relative path and name of the clayer YAML file. </td><td>xs:string </td><td>required  </td></tr>
+<tr>
+<th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
+<tr>
+<td>description </td><td>Briefly documents the purpose and scope of the clayer. </td><td>xs:string </td><td>1  </td></tr>
+</table>
+<p >&#160;</p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="createPackUtil.html">Utilities for Creating Packs</a></li>
+    <li class="navelem"><a class="el" href="packFormat.html">Pack Description (*.pdsc) Format</a></li>
     <li class="footer">
       <script type="text/javascript">
         <!--
