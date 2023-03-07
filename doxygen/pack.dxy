@@ -872,6 +872,7 @@ INPUT           =   src/General.txt \
                     src/devices_schema.txt \
                     src/components_schema.txt \
                     src/examples_schema.txt \
+                    src/clayers_schema.txt \
                     src/boards_schema.txt \
                     src/parts_schema.txt \
                     src/generators_schema.txt \
