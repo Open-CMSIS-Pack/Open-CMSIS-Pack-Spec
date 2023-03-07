@@ -38,7 +38,7 @@ PROJECT_NAME           = "Open-CMSIS-Pack"
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = "Version 1.7.19"
+PROJECT_NUMBER         = "Version 1.7.20"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -872,6 +872,7 @@ INPUT           =   src/General.txt \
                     src/devices_schema.txt \
                     src/components_schema.txt \
                     src/examples_schema.txt \
+                    src/clayers_schema.txt \
                     src/boards_schema.txt \
                     src/parts_schema.txt \
                     src/generators_schema.txt \

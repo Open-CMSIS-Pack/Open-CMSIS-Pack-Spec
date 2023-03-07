@@ -78,7 +78,8 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage pdsc_conditions_pg "<conditions>": defines dependencies to devices, processors, components, and tools that are used within the \ref cp_SWComponents "Software Pack".
    It allows making components and files conditional.
  - \subpage pdsc_components_pg "<components>": lists the software components contained in the \ref cp_SWComponents "Software Pack".
- - \subpage pdsc_examples_pg "<examples>": specifies example projects contained in the PACK.
+ - \subpage pdsc_clayers_pg "<clayers>": lists partially specified project named layers described in the clayer YAML format contained in the pack.
+ - \subpage pdsc_examples_pg "<examples>": specifies example projects contained in the pack.
 
 \section PDSC_Example Example of a *.pdsc File
 
