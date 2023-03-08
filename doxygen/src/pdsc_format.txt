@@ -357,6 +357,12 @@ assists searching for packages.
     <td>0..1 </td>
   </tr>
   <tr>
+    <td>\ref element_clayers "clayers"</td>
+    <td>Lists the clayer description files that are included in the Pack.</td>
+    <td>group</td>
+    <td>0..1 </td>
+  </tr>
+  <tr>
     <td>\ref element_components "components"</td>
     <td>Lists the software components that are included in the Pack.</td>
     <td>group</td>
