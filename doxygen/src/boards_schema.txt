@@ -193,9 +193,10 @@ This element provides information to specify the \ref createPackBoard "Board Sup
   </tr>
   <tr>
     <td>\ref element_board_debugInterface "debugInterface"</td>
-	<td>Describes the debug interface of the development board.</td>
+	<td>Describes the debug interface of the development board. The expectation is that boards provides a hardware connector to attach external
+	    debug adapters and/or on-board debug adapters, unless the board has device = "NO_MCU" or represents virtual hardware.</td>
 	<td>DebugInterfaceType</td>
-	<td>1..* </td>
+	<td>0..* </td>
   </tr>
   <tr>
     <td>\ref element_board_book "book"</td>
@@ -591,7 +592,9 @@ Attribute \token{large} displays the 'top' side of the board.
 <hr>
 
 \section element_board_debugInterface /package/boards/board/debugInterface
-This element describes the debug interface of a board. At least debug interface must be specified.
+This element describes the debug interface of a board. All available debug interfaces specifying on-board adapters as well
+as hardware connectors for external debug adapter should be listed here. If a board has no device mounted or if the board
+describes virtual hardware there maybe no debug entries listed.
 
 \b Example
 \code
