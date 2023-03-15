@@ -261,13 +261,13 @@ A list of pre-defined features exists.
   <tr>
     <td>n</td>
     <td>Depends on attribute \em \b type. Check table \ref BoardFeatureTypeEnum "Board Features" for details.</td>
-    <td>xs:decimal</td>
+    <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>m</td>
 	<td>Depends on attribute \em \b type. Check table \ref BoardFeatureTypeEnum "Board Features" for details.</td>
-	<td>xs:decimal</td>
+	<td>xs:string</td>
 	<td>optional</td>
   </tr>
   <tr>
