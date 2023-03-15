@@ -239,9 +239,9 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>type </td><td>Defines board features. Select predefined values from the table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a>. </td><td>BoardFeatureTypeEnum </td><td>required  </td></tr>
 <tr>
-<td>n </td><td>Depends on attribute <em><b>type</b>.</em> Check table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a> for details. </td><td>xs:decimal </td><td>optional  </td></tr>
+<td>n </td><td>Depends on attribute <em><b>type</b>.</em> Check table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a> for details. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>m </td><td>Depends on attribute <em><b>type</b>.</em> Check table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a> for details. </td><td>xs:decimal </td><td>optional  </td></tr>
+<td>m </td><td>Depends on attribute <em><b>type</b>.</em> Check table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a> for details. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>name </td><td>Descriptive name of the feature. If omitted, a <b>Default Name</b> is used (refer to table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Feature Types</a>). <b>Do not repeat</b> the <span class="XML-Token">n</span> or <span class="XML-Token">m</span> values in the name. This will lead to duplicate entries on web sites (they show <span class="XML-Token">n</span> x <span class="XML-Token">name</span>). </td><td>xs:string </td><td>optional  </td></tr>
 </table>
