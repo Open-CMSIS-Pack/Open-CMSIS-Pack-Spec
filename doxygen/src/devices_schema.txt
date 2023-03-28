@@ -370,6 +370,7 @@ These properties are inherited by subgroups or elements. Multiple \<subFamily> g
     <algorithm   .../>
     <book        .../>
     <description> Write texte here </description>
+    <environment> ... </environment>
     <feature     .../>
     <debugport   .../>
     <debug       .../>
@@ -503,6 +504,12 @@ These properties are inherited by subgroups or elements. Multiple \<subFamily> g
     <td>\ref element_description "description"</td>
     <td>Description of the device family.</td>
     <td>DescriptionType</td>
+    <td>0..*</td>
+  </tr>
+  <tr>
+    <td>\ref element_environment "environment"</td>
+    <td>Specify tool specific settings.</td>
+    <td>EnvironmentType</td>
     <td>0..*</td>
   </tr>
   <tr>
