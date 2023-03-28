@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-  Copyright (c) 2013-2017 ARM Limited. All rights reserved.
+  Copyright (c) 2013-2023 ARM Limited. All rights reserved.
 
   SPDX-License-Identifier: Apache-2.0
 
@@ -17,23 +17,23 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        23. Januar 2017
-  $Revision:    1.1.0
+  $Date:        28. March 2023
+  $Revision:    1.1.1
 
   $Project: Schema File for Package Index File Format Specification
 
   Package Index file naming convention <vendor>.pidx
   Vendor  Index file naming convention <vendor>.vidx
-  SchemaVersion=1.1.0
+  SchemaVersion=1.1.1
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.1.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.1.1">
 
   <!-- semantic versioning (semver.org) <major>.<minor>.<patch>-<quality> -->
   <xs:simpleType name="SemanticVersionType">
     <xs:restriction  base="xs:string">
-      <!--               <major>         . <minor>        . <patch>        - <quality>                                                                                       + <build meta info>               -->
-      <xs:pattern value="(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?"/>
+      <!--                major . minor . patch [[-]quality] [+build] -->
+      <xs:pattern value="[0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?" />
     </xs:restriction>
   </xs:simpleType>
 
