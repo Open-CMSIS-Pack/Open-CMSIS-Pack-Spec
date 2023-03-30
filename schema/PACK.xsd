@@ -344,9 +344,9 @@
   <!-- Component Identifier Part Filter Type -->
   <xs:simpleType name="CidPartFilterType">
     <xs:restriction base="xs:string">
-      <xs:minLength value="2" />
+      <xs:minLength value="1" />
       <xs:maxLength value="32" />
-      <xs:pattern value="[A-Za-z0-9\?\*][A-Za-z0-9_+()'/\-\s\?\*]+" />
+      <xs:pattern value="[A-Za-z0-9\?\*][A-Za-z0-9_+()'/\-\s\?\*]*" />
     </xs:restriction>
   </xs:simpleType>
 
