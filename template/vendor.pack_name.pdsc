@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.7.20" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.20/schema/PACK.xsd">
+  <vendor>insert_vendor_name</vendor>
+  <name>insert_pack_name</name>
+  <description>insert_pack_description</description>
+  <url>insert_download_url_or_leave_blank</url>
+  <supportContact>insert_support_contact</supportContact>
+  <!-- license element (optional) -->
+  <license>LICENSE</license>
+
+  <!-- keywords element for indexing
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_keywords.html
+  -->
+  <!--
+    <keywords>
+      <keyword>insert_keyword_for_search_engines</keyword>
+    </keywords>
+  -->
+
+  <!-- repository element (optional, only required when pack is available in a source controlled repository)
+      refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_repository.html -->
+  <!--
+    <repository type="git">https://url_of_the_repo.com</repository>
+  -->
+
+  <!-- releases element (make sure to "stack" release versions - latest on top)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_releases.html -->
+  <releases>
+    <release version="1.0.0" date="2023-04-04">
+      insert_release_notes
+    </release>
+  </releases>
+
+  <!-- changelogs element (optional, associates components and apis with changelog files)
+      refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_changelogs_pg.html -->
+  <!--
+    <changelogs>
+    </changelogs>
+  -->
+  
+  <!-- requirements element (optional, pack-level dependencies on other packs, compilers, and/or languages)
+      refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_requirements_pg.html#element_requirements -->
+  <!--
+    <requirements>
+      <packages>
+        <package></package>
+      </packages>
+    </requirements>
+  -->
+  
+  <!-- taxonomy element (optional, for defining new component Class and Group names)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_taxonomy.html
+  -->
+  <!--
+    <taxonomy>
+    </taxonomy>
+  -->
+  
+  <!-- part-taxonomy element (optional, for defining part classes and part group names)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_part-taxonomy.html
+  -->
+  <!--
+    <part-taxonomy>
+    </part-taxonomy>
+  -->
+  
+  <!-- apis element (optional - for Application Programming Interface descriptions)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_apis_pg.html
+  -->
+  <!-- 
+    <apis>
+    </apis>
+  -->
+
+  <!-- devices element (optional, contains the devices specified in a device fFamily pack)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_devices_pg.html
+  -->
+  <!--
+    <devices>
+    </devices>
+  -->
+
+  <!-- boards element (optional, describes development boards [usually part of a board support pack])
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html
+  -->
+  <!-- 
+    <boards>
+    </boards>
+  -->
+
+  <!-- parts element (optional, describes hardware parts [devices other than MCUs])
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_parts_pg.html
+  -->
+  <!-- 
+    <parts>
+    </parts>
+  -->
+
+  <!-- conditions element (optional, describes dependencies on device, processor, and tool attributes as well as the presence of other components)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_conditions_pg.html
+  -->
+  <!--
+    <conditions>
+    </conditions>
+  -->
+  
+  <!-- components element (optional, defines software components of the pack)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_components_pg.html
+  -->
+  <!--
+    <components>
+    </components>
+  -->
+  
+  <!-- clayers element (optional, describes a reference to a partially specified project named clayer)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_clayers_pg.html
+  -->
+  <!--
+    <clayers>
+    </clayers>
+  -->
+  
+  <!-- examples element (optional, describes fully defined examples)
+       refer to https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_examples_pg.html
+  -->
+  <!--
+    <examples>
+    </examples>
+  -->
+  
+</package>
