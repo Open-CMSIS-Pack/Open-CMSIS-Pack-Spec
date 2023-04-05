@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        07. Mar 2023
-  $Revision:    1.7.20
+  $Date:        05. Apr 2023
+  $Revision:    1.7.21
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.20
+  SchemaVersion=1.7.21
 
+  05. Apr 2023: v1.7.21
+   - added 'Renesas' to CompilerEnumType
   07. Mar 2023: v1.7.20
    - added \<clayers> section for distributing layers in software packs
   06. Feb 2023: v1.7.19
@@ -1223,6 +1225,7 @@
       <xs:enumeration value="G++"/> <!-- Code Sourcery -->
       <xs:enumeration value="XC"/> <!-- Microchip MPLAB XC32 -->
       <xs:enumeration value="Clang"/>
+      <xs:enumeration value="Renesas"/>
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
