@@ -1599,7 +1599,7 @@
       <!-- lists environments with their load files -->
       <xs:element name="project" type="ExampleProjectType" />
       <!-- categories, keywords and used components -->
-      <xs:element name="attributes" type="ExampleAttributesType" />
+      <xs:element name="attributes" type="ExampleAttributesType" minOccurs="0" />
     </xs:sequence>
     <!-- display name of the example -->
     <xs:attribute name="name" type="xs:string" use="required" />
