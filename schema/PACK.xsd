@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        07. Mar 2023
-  $Revision:    1.7.20
+  $Date:        06. Apr 2023
+  $Revision:    1.7.21
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.20
+  SchemaVersion=1.7.21
 
+  06. Apr 2023: v1.7.21
+   - added 'Himax:178' to DeviceVendorEnum
   07. Mar 2023: v1.7.20
    - added \<clayers> section for distributing layers in software packs
   06. Feb 2023: v1.7.19
@@ -185,7 +187,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.20">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.21">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -239,6 +241,7 @@
       <xs:enumeration value="Goodix:155" />
       <xs:enumeration value="HDSC:145" />
       <xs:enumeration value="Hilscher:88" />
+      <xs:enumeration value="Himax:178" />
       <xs:enumeration value="Holtek:106" />
       <xs:enumeration value="Hynix Semiconductor:6" />
       <xs:enumeration value="Hyundai:35" />
