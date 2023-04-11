@@ -86,6 +86,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   <tr>
     <td>1.7.21</td>
     <td>
+     - added 'Himax:178' to \ref DeviceVendorEnum "DeviceVendorEnum"
      - added 'Renesas' to CompilerEnumType
     </td>
   </tr>

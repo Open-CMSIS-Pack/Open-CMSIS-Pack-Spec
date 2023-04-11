@@ -2163,6 +2163,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.hilscher.com</td>
   </tr>
   <tr>
+    <td class="XML-Token">Himax:178</td>
+    <td>Himax Technologies, Inc.</td>
+    <td>https://www.himax.com.tw/</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Holtek:106</td>
     <td>Holtek Microelectronics</td>
     <td>http://www.holtek.com.tw</td>

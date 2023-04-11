@@ -25,6 +25,7 @@
   SchemaVersion=1.7.21
 
   05. Apr 2023: v1.7.21
+   - added 'Himax:178' to DeviceVendorEnum
    - added 'Renesas' to CompilerEnumType
   07. Mar 2023: v1.7.20
    - added \<clayers> section for distributing layers in software packs
@@ -241,6 +242,7 @@
       <xs:enumeration value="Goodix:155" />
       <xs:enumeration value="HDSC:145" />
       <xs:enumeration value="Hilscher:88" />
+      <xs:enumeration value="Himax:178" />
       <xs:enumeration value="Holtek:106" />
       <xs:enumeration value="Hynix Semiconductor:6" />
       <xs:enumeration value="Hyundai:35" />
