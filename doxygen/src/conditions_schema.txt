@@ -49,6 +49,11 @@ be ignored.
       <description>False if the device is from ST and the device name starts with "STM32"</description>
       <deny Dvendor="STMicroelectronics:13" Dname="STM32*"/>  <!-- device name must not start with STM32 and be from vendor ST-->
     </condition>
+
+    <condition id="HTS221 Part">                    <!-- defines the condition with ID "HTS221 Part" -->
+      <description>True if the target part is the HTS221TR</description>
+      <require Hvendor="STMicroelectronics:13" Hname="HTS221TR"/>  <!-- part name must be HTS221TR and be from vendor ST-->
+    </condition>
   </conditions>
 \endcode
 
@@ -344,6 +349,19 @@ A \ref element_condition "condition" becomes \token{true} when:
   <tr>
     <td>Brevision<b>*</b></td>
     <td>Specifies a board revision that refers to a \<board\> element in a PDSC file.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Hvendor</td>
+    <td>Specifies the vendor of the part. Use predefined values as listed in the table \ref DeviceVendorEnum "Device Vendor".</td>
+    <td>\ref DeviceVendorEnum</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Hname<b>*</b></td>
+    <td>Specifies the name of the part.
+   </td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
