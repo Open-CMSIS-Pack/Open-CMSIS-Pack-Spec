@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.21</span>
+   &#160;<span id="projectnumber">Version 1.7.22</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -142,6 +142,11 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <div class="line">  &lt;condition <span class="keywordtype">id</span>=<span class="stringliteral">&quot;No STM32&quot;</span>&gt;                       &lt;!-- defines the condition with ID <span class="stringliteral">&quot;No STM32&quot;</span> --&gt;</div>
 <div class="line">    &lt;description&gt;False <span class="keywordflow">if</span> the device is from ST and the device name starts with <span class="stringliteral">&quot;STM32&quot;</span>&lt;/description&gt;</div>
 <div class="line">    &lt;deny Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Dname=<span class="stringliteral">&quot;STM32*&quot;</span>/&gt;  &lt;!-- device name must not start with STM32 and be from vendor ST--&gt;</div>
+<div class="line">  &lt;/condition&gt;</div>
+<div class="line"> </div>
+<div class="line">  &lt;condition <span class="keywordtype">id</span>=<span class="stringliteral">&quot;HTS221 Part&quot;</span>&gt;                    &lt;!-- defines the condition with ID <span class="stringliteral">&quot;HTS221 Part&quot;</span> --&gt;</div>
+<div class="line">    &lt;description&gt;True <span class="keywordflow">if</span> the target part is the HTS221TR&lt;/description&gt;</div>
+<div class="line">    &lt;require Hvendor=<span class="stringliteral">&quot;STMicroelectronics&quot;</span> Hname=<span class="stringliteral">&quot;HTS221TR&quot;</span>/&gt;  &lt;!-- part name must be HTS221TR and be from vendor ST--&gt;</div>
 <div class="line">  &lt;/condition&gt;</div>
 <div class="line">&lt;/conditions&gt;</div>
 </div><!-- fragment --><p >&#160;</p>
@@ -271,6 +276,10 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <td>Bname<b>*</b> </td><td>Specifies a board name that refers to a &lt;board&gt; element in a PDSC file. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>Brevision<b>*</b> </td><td>Specifies a board revision that refers to a &lt;board&gt; element in a PDSC file. </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Hvendor </td><td>Specifies a part vendor name that refers to a &lt;part&gt; element in a PDSC file. </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Hname<b>*</b> </td><td>Specifies a part name that refers to a &lt;part&gt; element in a PDSC file. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>Tcompiler </td><td>Specifies a compiler toolchain (ARMCC, GCC, IAR, Tasking, ...). Use predefined values as listed in table <a class="el" href="pdsc_conditions_pg.html#CompilerEnumType">Compiler Types</a>. </td><td><a class="el" href="pdsc_conditions_pg.html#CompilerEnumType">CompilerEnumType</a> </td><td>optional  </td></tr>
 <tr>

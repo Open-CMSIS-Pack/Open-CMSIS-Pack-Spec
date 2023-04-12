@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.21</span>
+   &#160;<span id="projectnumber">Version 1.7.22</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <div class="line">         </div>
 <div class="line">    &lt;compatibleDevice Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Dfamily=<span class="stringliteral">&quot;STM32F4 Series&quot;</span> DsubFamily=<span class="stringliteral">&quot;STM32F429&quot;</span>/&gt;</div>
 <div class="line"> </div>
-<div class="line">    &lt;mountedPart n=<span class="stringliteral">&quot;1&quot;</span> Hvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Hname=<span class="stringliteral">&quot;I3G4250D&quot;</span> Hvariant=<span class="stringliteral">&quot;I3G4250D&quot;</span>/&gt;</div>
+<div class="line">    &lt;mountedPart n=<span class="stringliteral">&quot;1&quot;</span> Hvendor=<span class="stringliteral">&quot;STMicroelectronics&quot;</span> Hname=<span class="stringliteral">&quot;I3G4250D&quot;</span> Hvariant=<span class="stringliteral">&quot;I3G4250D&quot;</span>/&gt;</div>
 <div class="line">         </div>
 <div class="line">    &lt;feature type=<span class="stringliteral">&quot;ODbg&quot;</span>      n=<span class="stringliteral">&quot;1&quot;</span>              name=<span class="stringliteral">&quot;On-board ST-LINK/V2 with selection mode switch to use the kit as a standalone&quot;</span>/&gt;</div>
 <div class="line">    &lt;feature type=<span class="stringliteral">&quot;XTAL&quot;</span>      n=<span class="stringliteral">&quot;80000000&quot;</span>/&gt;</div>
@@ -428,7 +428,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <h1><a class="anchor" id="element_board_mountedPart"></a>
 /package/boards/board/mountedPart</h1>
 <p >The element specifies the parts (any device other than the MCU) mounted on the board. The Hname attribute, togheter with the Hvendor and (eventually) the Hvariant, must uniquely specify the part.</p>
-<p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;mountedPart n=<span class="stringliteral">&quot;1&quot;</span> Hvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span> Hname=<span class="stringliteral">&quot;STSAFE-A110&quot;</span> Hvariant=<span class="stringliteral">&quot;STSAFA110DFSPL02&quot;</span>/&gt;</div>
+<p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;mountedPart n=<span class="stringliteral">&quot;1&quot;</span> Hvendor=<span class="stringliteral">&quot;STMicroelectronics&quot;</span> Hname=<span class="stringliteral">&quot;STSAFE-A110&quot;</span> Hvariant=<span class="stringliteral">&quot;STSAFA110DFSPL02&quot;</span>/&gt;</div>
 </div><!-- fragment --> <p >&#160;</p>
 <p ><br  />
 </p>
@@ -442,7 +442,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>n </td><td>Number of the parts with the same name and vendor mounted on the board. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
-<td>Hvendor </td><td>Vendor name of the part specified by <b>Hname</b>. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>. </td><td>DeviceVendorEnum </td><td>required  </td></tr>
+<td>Hvendor </td><td>Vendor name of the part specified by <b>Hname</b>. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
 <td>Hname </td><td>The part name used by the part vendor to identify and group a specific set of parts. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
