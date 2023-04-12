@@ -87,6 +87,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <td>1.7.22</td>
     <td>
      - added 'Hvendor' and 'Hname' as attributes of the \ref element_accept "accept", \ref element_require "require" and \ref element_deny "deny" elements
+     - redefined 'Hvendor' as xs:string
     </td>
   </tr>
   <tr>

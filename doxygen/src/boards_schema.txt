@@ -39,7 +39,7 @@ A development board is described by the following properties:
 	   
       <compatibleDevice Dvendor="STMicroelectronics:13" Dfamily="STM32F4 Series" DsubFamily="STM32F429"/>
 
-      <mountedPart n="1" Hvendor="STMicroelectronics:13" Hname="I3G4250D" Hvariant="I3G4250D"/>
+      <mountedPart n="1" Hvendor="STMicroelectronics" Hname="I3G4250D" Hvariant="I3G4250D"/>
 	   
       <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2 with selection mode switch to use the kit as a standalone"/>
       <feature type="XTAL"      n="80000000"/>
@@ -474,7 +474,7 @@ The element specifies the parts (any device other than the MCU) mounted on the b
 
 \b Example
 \code
-<mountedPart n="1" Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02"/>
+<mountedPart n="1" Hvendor="STMicroelectronics" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02"/>
 \endcode
 <p>&nbsp;</p>		
 
@@ -501,8 +501,8 @@ The element specifies the parts (any device other than the MCU) mounted on the b
   </tr>
   <tr>
     <td>Hvendor</td>
-    <td>Vendor name of the part specified by \b Hname. Use predefined values as listed in the table \ref DeviceVendorEnum "Device Vendor".</td>
-    <td>DeviceVendorEnum</td>
+    <td>Vendor name of the part specified by \b Hname.</td>
+    <td>xs:string</td>
     <td>required</td>
   </tr>
   <tr>

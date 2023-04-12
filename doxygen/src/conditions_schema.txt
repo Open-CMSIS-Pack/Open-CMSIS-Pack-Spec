@@ -52,7 +52,7 @@ be ignored.
 
     <condition id="HTS221 Part">                    <!-- defines the condition with ID "HTS221 Part" -->
       <description>True if the target part is the HTS221TR</description>
-      <require Hvendor="STMicroelectronics:13" Hname="HTS221TR"/>  <!-- part name must be HTS221TR and be from vendor ST-->
+      <require Hvendor="STMicroelectronics" Hname="HTS221TR"/>  <!-- part name must be HTS221TR and be from vendor ST-->
     </condition>
   </conditions>
 \endcode
@@ -354,14 +354,13 @@ A \ref element_condition "condition" becomes \token{true} when:
   </tr>
   <tr>
     <td>Hvendor</td>
-    <td>Specifies the vendor of the part. Use predefined values as listed in the table \ref DeviceVendorEnum "Device Vendor".</td>
-    <td>\ref DeviceVendorEnum</td>
+    <td>Specifies a part vendor name that refers to a \<part\> element in a PDSC file.</td>
+    <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Hname<b>*</b></td>
-    <td>Specifies the name of the part.
-   </td>
+    <td>Specifies a part name that refers to a \<part\> element in a PDSC file.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
