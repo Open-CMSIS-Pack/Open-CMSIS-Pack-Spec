@@ -17,13 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        05. Apr 2023
-  $Revision:    1.7.21
+  $Date:        12. Apr 2023
+  $Revision:    1.7.22
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.21
+  SchemaVersion=1.7.22
 
+  12. Apr 2023: v1.7.22
+   - added Hvendor and Hname as attributes of the accept, require and deny elements
+   - redefined Hvendor as xs:string
   05. Apr 2023: v1.7.21
    - added 'Himax:178' to DeviceVendorEnum
    - added 'Renesas' to CompilerEnumType
@@ -188,7 +191,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.21">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.22">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1286,6 +1289,8 @@
     <xs:attribute name="Bvendor" type="xs:string" />
     <xs:attribute name="Bname" type="xs:string" />
     <xs:attribute name="Brevision" type="xs:string" />
+    <xs:attribute name="Hvendor" type="xs:string" />
+    <xs:attribute name="Hname" type="xs:string" /> <!-- can contain wildcards ?* in condition -->
     <xs:attribute name="Tcompiler" type="CompilerEnumType" />
     <!-- Toptions can only be used in combination with Tcompiler and the strings are predefined by the specification -->
     <xs:attribute name="Toptions" type="CompilerOptionsEnumType" />
@@ -1437,7 +1442,7 @@
 
   <xs:complexType name="MountedPartType">
     <xs:attribute name="n"           type="xs:decimal"       use="required" />
-    <xs:attribute name="Hvendor"     type="DeviceVendorEnum" use="required" />
+    <xs:attribute name="Hvendor"     type="xs:string"        use="required" />
     <xs:attribute name="Hname"       type="xs:string"        use="required" />
     <xs:attribute name="Hvariant"    type="xs:string"        use="optional" />
   </xs:complexType>
@@ -1572,7 +1577,7 @@
       <xs:element name="book"        type="BookType"          minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="environment" type="EnvironmentType"   minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
-    <xs:attribute name="Hvendor"   type="DeviceVendorEnum" use="optional"/>
+    <xs:attribute name="Hvendor"   type="xs:string"        use="optional"/>
     <xs:attribute name="Hname"     type="xs:string"        use="required"/>
     <xs:attribute name="Hclass"    type="HclassType"       use="optional"/>
     <xs:attribute name="Hgroup"    type="HgroupType"       use="optional"/>

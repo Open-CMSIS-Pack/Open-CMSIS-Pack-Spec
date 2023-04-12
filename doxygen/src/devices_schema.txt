@@ -1051,7 +1051,7 @@ The book element contains the location, filename, and extension of the file. The
 <package>
   ...
   <parts>
-    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
+    <part Hvendor="STMicroelectronics" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
       ...
       <book name="Images/STSAFA110DFSPL02_image.jpg" title="image" public="true"/>
     </part>
@@ -1320,7 +1320,7 @@ full control of the \em element usage.
 <package>
   ...
   <parts>
-    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
+    <part Hvendor="STMicroelectronics" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
       ...
       <environment name="SomeConfigTool">
         <file>STSAFA110DFSPL02_ConfigFile.cfg</file>
@@ -1449,7 +1449,7 @@ The list of the pre-defined features for Devices (\ref DeviceFeatureTypeEnum "De
 <package>
   ...
   <parts>
-    <part Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
+    <part Hvendor="STMicroelectronics" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure" Hgroup="Authentication">
       <feature type="Crypto" n="128.256" name="Authentication and security for peripherals and IoT devices from STMicroelectronics"/>
       ...
     </part>
