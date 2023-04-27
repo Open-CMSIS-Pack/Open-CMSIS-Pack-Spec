@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.22</span>
+   &#160;<span id="projectnumber">Version 1.7.23</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -212,7 +212,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_boards_pg.html#element_board_debugInterface">debugInterface</a> </td><td>Describes the debug interface of the development board. The expectation is that boards provides a hardware connector to attach external debug adapters and/or on-board debug adapters, unless the board has device = "NO_MCU" or represents virtual hardware. </td><td>DebugInterfaceType </td><td>0..*   </td></tr>
 <tr>
-<td><a class="el" href="pdsc_boards_pg.html#element_board_book">book</a> </td><td>Describes the documentation files (user manuals, schematics, etc.). Directory and file names are case-sensitive. </td><td>BoardsBookType </td><td>1..*   </td></tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board_book">book</a> </td><td>Describes the documentation files (user manuals, schematics, etc.). Directory and file names are case-sensitive. </td><td>BoardsBookType </td><td>0..*   </td></tr>
 <tr>
 <td><a class="el" href="pdsc_boards_pg.html#element_board_debugProbe">debugProbe</a> </td><td>Specify on-board debug probe. </td><td>DebugProbeType </td><td>0..1  </td></tr>
 <tr>
@@ -534,8 +534,9 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
  </p><hr  />
 <h1><a class="anchor" id="element_board_book"></a>
 /package/boards/board/book</h1>
-<p >The element provides information about documentation parts related to a development board. At least one book must be defined.</p>
-<p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;book category=<span class="stringliteral">&quot;setup&quot;</span> name=<span class="stringliteral">&quot;Documents/UM1662.pdf&quot;</span> title=<span class="stringliteral">&quot;Getting Started&quot;</span>/&gt;</div>
+<p >The element provides information about documentation parts related to a development board.</p>
+<p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;book category=<span class="stringliteral">&quot;overview&quot;</span> name=<span class="stringliteral">&quot;http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF259090&quot;</span> title=<span class="stringliteral">&quot;32F429IDISCOVERY Web Page&quot;</span>/&gt;</div>
+<div class="line">&lt;book category=<span class="stringliteral">&quot;setup&quot;</span> name=<span class="stringliteral">&quot;Documents/UM1662.pdf&quot;</span> title=<span class="stringliteral">&quot;Getting Started&quot;</span>/&gt;</div>
 </div><!-- fragment --> <p >&#160;</p>
 <p ><br  />
 </p>
@@ -549,7 +550,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>category </td><td>Describes the type of documentation. Use predefined values as defined in the table <a class="el" href="pdsc_boards_pg.html#BoardBookCategoryEnum">Board Book Categories</a>. </td><td>BoardBookCategoryEnum </td><td>optional  </td></tr>
 <tr>
-<td>name </td><td>Is the name of the document (including the path within the Pack). </td><td>xs:string </td><td>optional  </td></tr>
+<td>name </td><td>Is the name of the document (including the path within the Pack). The link to a document on an external web site is also allowed. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>title </td><td>Is the title of the document to be displayed in the <b>Books</b> window of uVision. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
