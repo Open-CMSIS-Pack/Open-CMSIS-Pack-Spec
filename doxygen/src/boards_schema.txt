@@ -202,7 +202,7 @@ This element provides information to specify the \ref createPackBoard "Board Sup
     <td>\ref element_board_book "book"</td>
 	<td>Describes the documentation files (user manuals, schematics, etc.). Directory and file names are case-sensitive.</td>
 	<td>BoardsBookType</td>
-	<td>1..* </td>
+	<td>0..* </td>
   </tr>
   <tr>
     <td>\ref element_board_debugProbe "debugProbe"</td>
@@ -700,10 +700,11 @@ This element specifies an optional on-board debug probe.
 
 \section element_board_book /package/boards/board/book
 
-The element provides information about documentation parts related to a development board. At least one book must be defined.
+The element provides information about documentation parts related to a development board.
 
 \b Example
 \code
+<book category="overview" name="http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF259090" title="32F429IDISCOVERY Web Page"/>
 <book category="setup" name="Documents/UM1662.pdf" title="Getting Started"/>
 \endcode
 <p>&nbsp;</p>		
@@ -731,7 +732,7 @@ The element provides information about documentation parts related to a developm
   </tr>
   <tr>
     <td>name</td>
-	<td>Is the name of the document (including the path within the Pack).</td>
+	<td>Is the name of the document (including the path within the Pack). The link to a document on an external web site is also allowed.</td>
 	<td>xs:string</td>
 	<td>optional</td>
   </tr>

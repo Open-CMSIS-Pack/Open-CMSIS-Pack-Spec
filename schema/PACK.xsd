@@ -17,13 +17,16 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        12. Apr 2023
-  $Revision:    1.7.22
+  $Date:        27. Apr 2023
+  $Revision:    1.7.23
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.22
+  SchemaVersion=1.7.23
 
+  27. Apr 2023: v1.7.23
+   - specified that url to a website in book element is allowed
+   - aligned /package/boards/board/book element occurrence in documentation to XSD schema
   12. Apr 2023: v1.7.22
    - added Hvendor and Hname as attributes of the accept, require and deny elements
    - redefined Hvendor as xs:string
@@ -191,7 +194,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.22">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.23">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -738,7 +741,7 @@
   <xs:complexType name="BookType">
     <!-- Pname identifies the processor this setting belongs to -->
     <xs:attribute name="Pname" type="RestrictedString" />
-    <!-- name specifies the path and filename of the document -->
+    <!-- name specifies either the path in the package and the filename of the document or the link to an external web site -->
     <xs:attribute name="name" type="xs:string" use="required" />
     <!-- title specifies the string displayed for this document -->
     <xs:attribute name="title" type="xs:string" use="required" />
@@ -1468,6 +1471,7 @@
 
   <xs:complexType name="BoardsBookType">
     <xs:attribute name="category" type="BoardBookCategoryEnum" />
+    <!-- name specifies either the path in the package and the filename of the document or the link to an external web site -->
     <xs:attribute name="name" type="xs:string" />
     <xs:attribute name="title" type="xs:string" />
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
