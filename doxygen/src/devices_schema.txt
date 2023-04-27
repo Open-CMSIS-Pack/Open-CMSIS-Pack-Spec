@@ -1029,7 +1029,7 @@ size of all previous \<block> and \<gap> elements of this flash device.
 \section element_book /package/devices/family/.../book
 
 Specifies documents related to a device or a part. Books can be entered on various levels.
-The book element contains the location, filename, and extension of the file. The title is used for display purposes.
+The book element contains the location, the name and the extension of the file. The link to a document on an external web site is also allowed. The title is used for display purposes.
 
 \b Example
 \code
@@ -1102,7 +1102,7 @@ The book element contains the location, filename, and extension of the file. The
   <tr>
     <td>name</td>
     <td>File name of the document including the extension. The document path is relative to the package base folder. 
-        Directory/file names are case-sensitive.</td>
+        Directory/file names are case-sensitive. The link to a document on an external web site is also allowed.</td>
     <td>xs:string</td>
     <td>required</td>
   </tr>
