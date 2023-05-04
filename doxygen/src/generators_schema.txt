@@ -234,7 +234,7 @@ generator element must exist.
   </tr>
   <tr>
     <td>workingDir</td>
-    <td>Optional directory that is used to store the generator output. When ommitted, the `csolution` project manager users \c ./generated/\<id\> which is the recommended default for other implementations.
+    <td>Optional directory that is used to store the generator output. When ommitted, the `csolution` project manager uses \c ./generated/\<id\> which is the recommended default for other implementations.
     </td>
      <td>xs:string</td>
      <td>0..1</td>
