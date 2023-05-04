@@ -234,10 +234,8 @@ generator element must exist.
   </tr>
   <tr>
     <td>workingDir</td>
-    <td>Directory to be set as current directory before launching the \c \<command>. This is either an absolute or relative
-	    path to PDSC or GPDSC file. If not specified, the current directory is the directory of the project configured by the
-		environment.
-     </td>
+    <td>Optional directory that is used to store the generator output. When ommitted, the `csolution` project manager uses \c ./generated/\<id\> which is the recommended default for other implementations.
+    </td>
      <td>xs:string</td>
      <td>0..1</td>
   </tr>
