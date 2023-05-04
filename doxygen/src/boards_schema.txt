@@ -19,6 +19,8 @@ A development board is described by the following properties:
 - \ref element_board_debugProbe "debugProbe": describing the on-board debug probe.
 - \ref element_board_memory "memory": additional memory provided by the board
 - \ref element_board_algorithm "algorithm": additional flash programming algorithms for the board-specific memory
+- \ref element_board_environment "environment":  tool specific settings
+
 
 
 \b Example
@@ -220,6 +222,12 @@ This element provides information to specify the \ref createPackBoard "Board Sup
     <td>\ref element_board_algorithm "algorithm"</td>
     <td>Specify Flash programming algorithms for memory provided by the board.</td>
     <td>AlgorithmType</td>
+    <td>0..*</td>
+  </tr>
+  <tr>
+    <td>\ref element_board_environment "environment"</td>
+    <td>Specify tool specif settings.</td>
+    <td>EnvironmentType</td>
     <td>0..*</td>
   </tr>
 </table>
@@ -795,6 +803,8 @@ By convention, the following \<book\> entry:
 \endcode
 specifies a Markdown based documentation page for the board that can be displayed on web sites.
 
+<p>&nbsp;</p>		
+<hr>
 
 \section element_board_memory /package/boards/board/memory
 
@@ -904,6 +914,9 @@ This element specifies memory regions that boards may add. Memory types are pred
   </tr>
 </table>
 
+<p>&nbsp;</p>		
+<hr>
+
 \section element_board_algorithm /package/boards/board/algorithm
 
 Specify Flash programming algorithms with the address range and its size for board-specific memory.  An algorithm with 
@@ -986,6 +999,13 @@ Specify Flash programming algorithms with the address range and its size for boa
   </tr>
 
 </table>
+
+<p>&nbsp;</p>
+<hr>
+
+\section element_board_environment /package/boards/board/environment
+
+See description at \ref element_environment "/package/devices/family/.../environment".
 
 <p>&nbsp;</p>
 */

@@ -1357,6 +1357,14 @@ full control of the \em element usage.
     <td colspan="3">\ref element_part</td>
   </tr>
   <tr>
+    <td>\ref element_board "board"</td>
+    <td colspan="3">\ref element_board</td>
+  </tr>
+  <tr>
+    <td>\ref element_component_environments "environments"</td>
+    <td colspan="3">\ref element_component_environments</td>
+  </tr>
+  <tr>
     <th>Attributes</th>
     <th>Description</th>
     <th>Type</th>
@@ -1373,7 +1381,13 @@ full control of the \em element usage.
     <td>Identifies the processor the setting belongs to.
         Only alphabetical characters, decimal digits, '-' and '_' are allowed.
         <br><br>
-        Must not be used for \ref element_part "package/parts/part".</td>
+        Must not be used for:
+        <ul>
+          <li>\ref element_part "/package/parts/part"</li>
+          <li>\ref element_board "/package/boards/board"</li>
+          <li>\ref element_component_environments "/package/components/.../component/environments"</li>
+        </ul>
+    </td>
     <td>RestrictedString</td>
     <td>optional</td>
   </tr>

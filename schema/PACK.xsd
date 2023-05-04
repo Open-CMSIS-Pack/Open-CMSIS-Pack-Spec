@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        27. Apr 2023
-  $Revision:    1.7.23
+  $Date:        04. May 2023
+  $Revision:    1.7.24
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.23
+  SchemaVersion=1.7.24
 
+  04. May 2023: v1.7.24
+   - added environment element as child element of /package/boards/board and /package/components/.../component/environments
   27. Apr 2023: v1.7.23
    - specified that url to a website in book element is allowed
    - aligned /package/boards/board/book element occurrence in documentation to XSD schema
@@ -1510,6 +1512,7 @@
       <xs:element name="mountedDevice"    type="BoardsDeviceType"     maxOccurs="unbounded" />
       <xs:element name="compatibleDevice" type="CompatibleDeviceType" maxOccurs="unbounded" />
       <xs:element name="mountedPart"      type="MountedPartType"      minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="environment"      type="EnvironmentType"      minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="image" minOccurs="0">
         <xs:complexType>
           <!-- attribute 'large' displays the 'top' side of the board -->
@@ -2161,6 +2164,14 @@
                           <xs:element name="Pre_Include_Global_h" type="xs:string" minOccurs="0" />
                           <!-- content to be added to generated Pre_Include_Local_<ComponentID>.h file -->
                           <xs:element name="Pre_Include_Local_Component_h" type="xs:string" minOccurs="0" />
+                          <!-- list of environments (elements containing information that is specific for a development tool) -->
+                          <xs:element name="environments" minOccurs="0" >
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="environment" type="EnvironmentType" minOccurs="1" maxOccurs="unbounded" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
                           <!-- list of files / content -->
                           <xs:element name="files">
                             <xs:complexType>
@@ -2232,6 +2243,14 @@
                     <xs:element name="Pre_Include_Global_h" type="xs:string" minOccurs="0" />
                     <!-- content to be added to generated Pre_Include_Local_<ComponentID>.h file -->
                     <xs:element name="Pre_Include_Local_Component_h" type="xs:string" minOccurs="0" />
+                    <!-- list of environments (elements containing information that is specific for a development tool) -->
+                    <xs:element name="environments" minOccurs="0" >
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="environment" type="EnvironmentType" minOccurs="1" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
                     <!-- list of files / content -->
                     <xs:element name="files">
                       <xs:complexType>
