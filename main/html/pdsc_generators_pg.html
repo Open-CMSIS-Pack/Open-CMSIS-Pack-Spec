@@ -244,7 +244,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html',''); initResi
 <tr>
 <td><a class="el" href="pdsc_generators_pg.html#element_gen_select">select</a> </td><td>Complex type specifying the configured device. A device is uniquely identified by vendor, name or variant and processor name in case of devices with multiple processors. </td><td>GeneratorSelectType </td><td>0..1  </td></tr>
 <tr>
-<td>workingDir </td><td>Directory to be set as current directory before launching the <code>&lt;command&gt;</code>. This is either an absolute or relative path to PDSC or GPDSC file. If not specified, the current directory is the directory of the project configured by the environment.  </td><td>xs:string </td><td>0..1  </td></tr>
+<td>workingDir </td><td>Optional directory that is used to store the generator output. When ommitted, the <code>csolution</code> project manager uses <code></code>./generated/&lt;id&gt; which is the recommended default for other implementations.  </td><td>xs:string </td><td>0..1  </td></tr>
 <tr>
 <td>command </td><td><span class="XML-Token">Deprecated; use exe, web and/or eclipse</span>. Invocation command for the generator tool.  </td><td>xs:string </td><td>0..1  </td></tr>
 <tr>
