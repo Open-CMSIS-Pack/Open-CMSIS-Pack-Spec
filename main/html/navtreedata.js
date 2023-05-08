@@ -135,7 +135,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithmFunc.html",
-"pdsc_generators_pg.html#element_gen_command"
+"pdsc_family_pg.html#element_variant"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

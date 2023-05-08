@@ -62,7 +62,8 @@ var packFormat =
       [ "/package/boards/board/debugProbe", "pdsc_boards_pg.html#element_board_debugProbe", null ],
       [ "/package/boards/board/book", "pdsc_boards_pg.html#element_board_book", null ],
       [ "/package/boards/board/memory", "pdsc_boards_pg.html#element_board_memory", null ],
-      [ "/package/boards/board/algorithm", "pdsc_boards_pg.html#element_board_algorithm", null ]
+      [ "/package/boards/board/algorithm", "pdsc_boards_pg.html#element_board_algorithm", null ],
+      [ "/package/boards/board/environment", "pdsc_boards_pg.html#element_board_environment", null ]
     ] ],
     [ "/package/parts element", "pdsc_parts_pg.html", [
       [ "/package/parts", "pdsc_parts_pg.html#element_parts", null ],
@@ -91,7 +92,9 @@ var packFormat =
       [ "/package/.../files", "pdsc_components_pg.html#element_files", null ],
       [ "/package/.../files/file", "pdsc_components_pg.html#element_file", null ],
       [ "/package/.../extensions", "pdsc_components_pg.html#element_extensions", null ],
-      [ "/package/.../extensions/extension", "pdsc_components_pg.html#element_extension", null ]
+      [ "/package/.../extensions/extension", "pdsc_components_pg.html#element_extension", null ],
+      [ "/package/.../environments", "pdsc_components_pg.html#element_component_environments", null ],
+      [ "/package/.../environments/environment", "pdsc_components_pg.html#element_component_environment", null ]
     ] ],
     [ "/package/clayers element", "pdsc_clayers_pg.html", [
       [ "/package/clayers", "pdsc_clayers_pg.html#element_clayers", null ],

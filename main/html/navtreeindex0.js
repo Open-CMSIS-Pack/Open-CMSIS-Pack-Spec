@@ -172,6 +172,7 @@ var NAVTREEINDEX0 =
 "pdsc_boards_pg.html#element_board_compatibleDevice":[6,16,4],
 "pdsc_boards_pg.html#element_board_debugInterface":[6,16,7],
 "pdsc_boards_pg.html#element_board_debugProbe":[6,16,8],
+"pdsc_boards_pg.html#element_board_environment":[6,16,12],
 "pdsc_boards_pg.html#element_board_feature":[6,16,2],
 "pdsc_boards_pg.html#element_board_image":[6,16,6],
 "pdsc_boards_pg.html#element_board_memory":[6,16,10],
@@ -193,6 +194,8 @@ var NAVTREEINDEX0 =
 "pdsc_components_pg.html#RTE_Components_h":[6,19,3],
 "pdsc_components_pg.html#element_bundle":[6,19,7],
 "pdsc_components_pg.html#element_component":[6,19,8],
+"pdsc_components_pg.html#element_component_environment":[6,19,14],
+"pdsc_components_pg.html#element_component_environments":[6,19,13],
 "pdsc_components_pg.html#element_components":[6,19,6],
 "pdsc_components_pg.html#element_extension":[6,19,12],
 "pdsc_components_pg.html#element_extensions":[6,19,11],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "pdsc_family_pg.html#element_trace":[6,15,1,28],
 "pdsc_family_pg.html#element_trace_serialwire":[6,15,1,29],
 "pdsc_family_pg.html#element_trace_tracebuffer":[6,15,1,31],
-"pdsc_family_pg.html#element_trace_traceport":[6,15,1,30],
-"pdsc_family_pg.html#element_variant":[6,15,1,32],
-"pdsc_generators_pg.html":[6,14],
-"pdsc_generators_pg.html#element_gen_argument":[6,14,7]
+"pdsc_family_pg.html#element_trace_traceport":[6,15,1,30]
 };

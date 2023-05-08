@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.23</span>
+   &#160;<span id="projectnumber">Version 1.7.24</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -684,13 +684,25 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_parts_pg.html#element_part">part</a> </td><td colspan="3"><a class="el" href="pdsc_parts_pg.html#element_part">/package/parts/part</a>  </td></tr>
 <tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board">board</a> </td><td colspan="3"><a class="el" href="pdsc_boards_pg.html#element_board">/package/boards/board</a>  </td></tr>
+<tr>
+<td><a class="el" href="pdsc_components_pg.html#element_component_environments">environments</a> </td><td colspan="3"><a class="el" href="pdsc_components_pg.html#element_component_environments">/package/.../environments</a>  </td></tr>
+<tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
 <td>name </td><td>Name of the development tool (for example, "uv" for uVision) </td><td>xs:string </td><td>required  </td></tr>
 <tr>
 <td>Pname </td><td>Identifies the processor the setting belongs to. Only alphabetical characters, decimal digits, '-' and '_' are allowed. <br  />
 <br  />
- Must not be used for <a class="el" href="pdsc_parts_pg.html#element_part">package/parts/part</a>. </td><td>RestrictedString </td><td>optional  </td></tr>
+ Must not be used for: <ul>
+<li>
+<a class="el" href="pdsc_parts_pg.html#element_part">/package/parts/part</a> </li>
+<li>
+<a class="el" href="pdsc_boards_pg.html#element_board">/package/boards/board</a> </li>
+<li>
+<a class="el" href="pdsc_components_pg.html#element_component_environments">/package/components/.../component/environments</a> </li>
+</ul>
+</td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
