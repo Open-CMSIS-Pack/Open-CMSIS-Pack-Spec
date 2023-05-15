@@ -2332,6 +2332,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.silabs.com</td>
   </tr>
   <tr>
+    <td class="XML-Token">Sinemicro:179</td>
+    <td>Anhui Sine Microelectronics Co., Ltd</td>
+    <td>https://www.sinemicro.com</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Sinowealth:149</td>
     <td>Sino Wealth Electronic Ltd.</td>
     <td>http://www.sinowealth.com</td>
