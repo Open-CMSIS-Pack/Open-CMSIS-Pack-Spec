@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        04. May 2023
-  $Revision:    1.7.24
+  $Date:        15. May 2023
+  $Revision:    1.7.25
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.24
+  SchemaVersion=1.7.25
 
+  15. May 2023: v1.7.25
+   - added 'Sinemicro:179' to DeviceVendorEnum
   04. May 2023: v1.7.24
    - added environment element as child element of /package/boards/board and /package/components/.../component/environments
   27. Apr 2023: v1.7.23
@@ -196,7 +198,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.24">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.25">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -290,6 +292,7 @@
       <xs:enumeration value="SILAN:164" />
       <xs:enumeration value="Silergy Corp:139" />
       <xs:enumeration value="Silicon Labs:21" />
+      <xs:enumeration value="Sinemicro:179" />
       <xs:enumeration value="Sinowealth:149" />
       <xs:enumeration value="SmartChip:156" />
       <xs:enumeration value="SONiX:110" />
