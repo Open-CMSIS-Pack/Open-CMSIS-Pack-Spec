@@ -483,7 +483,7 @@ A component describes a collection of files (source, header, configuration, libr
     <td>Cvariant</td>
     <td>Defines a variant of a component. Is an optional part of the component ID. The variant specifier is a brief string (for example: \token{release}, \token{debug}).
     </td>
-    <td>xs:string [3..32]</td>
+    <td>xs:string [1..32]</td>
     <td>optional</td>
   </tr>
   <tr>
