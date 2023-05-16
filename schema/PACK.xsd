@@ -17,13 +17,26 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        07. Mar 2023
-  $Revision:    1.7.20
+  $Date:        15. May 2023
+  $Revision:    1.7.25
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.20
+  SchemaVersion=1.7.25
 
+  15. May 2023: v1.7.25
+   - added 'Sinemicro:179' to DeviceVendorEnum
+  04. May 2023: v1.7.24
+   - added environment element as child element of /package/boards/board and /package/components/.../component/environments
+  27. Apr 2023: v1.7.23
+   - specified that url to a website in book element is allowed
+   - aligned /package/boards/board/book element occurrence in documentation to XSD schema
+  12. Apr 2023: v1.7.22
+   - added Hvendor and Hname as attributes of the accept, require and deny elements
+   - redefined Hvendor as xs:string
+  05. Apr 2023: v1.7.21
+   - added 'Himax:178' to DeviceVendorEnum
+   - added 'Renesas' to CompilerEnumType
   07. Mar 2023: v1.7.20
    - added \<clayers> section for distributing layers in software packs
   06. Feb 2023: v1.7.19
@@ -185,7 +198,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.20">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.25">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -239,6 +252,7 @@
       <xs:enumeration value="Goodix:155" />
       <xs:enumeration value="HDSC:145" />
       <xs:enumeration value="Hilscher:88" />
+      <xs:enumeration value="Himax:178" />
       <xs:enumeration value="Holtek:106" />
       <xs:enumeration value="Hynix Semiconductor:6" />
       <xs:enumeration value="Hyundai:35" />
@@ -278,6 +292,7 @@
       <xs:enumeration value="SILAN:164" />
       <xs:enumeration value="Silergy Corp:139" />
       <xs:enumeration value="Silicon Labs:21" />
+      <xs:enumeration value="Sinemicro:179" />
       <xs:enumeration value="Sinowealth:149" />
       <xs:enumeration value="SmartChip:156" />
       <xs:enumeration value="SONiX:110" />
@@ -731,7 +746,7 @@
   <xs:complexType name="BookType">
     <!-- Pname identifies the processor this setting belongs to -->
     <xs:attribute name="Pname" type="RestrictedString" />
-    <!-- name specifies the path and filename of the document -->
+    <!-- name specifies either the path in the package and the filename of the document or the link to an external web site -->
     <xs:attribute name="name" type="xs:string" use="required" />
     <!-- title specifies the string displayed for this document -->
     <xs:attribute name="title" type="xs:string" use="required" />
@@ -1223,6 +1238,7 @@
       <xs:enumeration value="G++"/> <!-- Code Sourcery -->
       <xs:enumeration value="XC"/> <!-- Microchip MPLAB XC32 -->
       <xs:enumeration value="Clang"/>
+      <xs:enumeration value="Renesas"/>
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
@@ -1281,6 +1297,8 @@
     <xs:attribute name="Bvendor" type="xs:string" />
     <xs:attribute name="Bname" type="xs:string" />
     <xs:attribute name="Brevision" type="xs:string" />
+    <xs:attribute name="Hvendor" type="xs:string" />
+    <xs:attribute name="Hname" type="xs:string" /> <!-- can contain wildcards ?* in condition -->
     <xs:attribute name="Tcompiler" type="CompilerEnumType" />
     <!-- Toptions can only be used in combination with Tcompiler and the strings are predefined by the specification -->
     <xs:attribute name="Toptions" type="CompilerOptionsEnumType" />
@@ -1432,7 +1450,7 @@
 
   <xs:complexType name="MountedPartType">
     <xs:attribute name="n"           type="xs:decimal"       use="required" />
-    <xs:attribute name="Hvendor"     type="DeviceVendorEnum" use="required" />
+    <xs:attribute name="Hvendor"     type="xs:string"        use="required" />
     <xs:attribute name="Hname"       type="xs:string"        use="required" />
     <xs:attribute name="Hvariant"    type="xs:string"        use="optional" />
   </xs:complexType>
@@ -1458,6 +1476,7 @@
 
   <xs:complexType name="BoardsBookType">
     <xs:attribute name="category" type="BoardBookCategoryEnum" />
+    <!-- name specifies either the path in the package and the filename of the document or the link to an external web site -->
     <xs:attribute name="name" type="xs:string" />
     <xs:attribute name="title" type="xs:string" />
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
@@ -1496,6 +1515,7 @@
       <xs:element name="mountedDevice"    type="BoardsDeviceType"     maxOccurs="unbounded" />
       <xs:element name="compatibleDevice" type="CompatibleDeviceType" maxOccurs="unbounded" />
       <xs:element name="mountedPart"      type="MountedPartType"      minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="environment"      type="EnvironmentType"      minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="image" minOccurs="0">
         <xs:complexType>
           <!-- attribute 'large' displays the 'top' side of the board -->
@@ -1567,7 +1587,7 @@
       <xs:element name="book"        type="BookType"          minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="environment" type="EnvironmentType"   minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
-    <xs:attribute name="Hvendor"   type="DeviceVendorEnum" use="optional"/>
+    <xs:attribute name="Hvendor"   type="xs:string"        use="optional"/>
     <xs:attribute name="Hname"     type="xs:string"        use="required"/>
     <xs:attribute name="Hclass"    type="HclassType"       use="optional"/>
     <xs:attribute name="Hgroup"    type="HgroupType"       use="optional"/>
@@ -1599,7 +1619,7 @@
       <!-- lists environments with their load files -->
       <xs:element name="project" type="ExampleProjectType" />
       <!-- categories, keywords and used components -->
-      <xs:element name="attributes" type="ExampleAttributesType" />
+      <xs:element name="attributes" type="ExampleAttributesType" minOccurs="0" />
     </xs:sequence>
     <!-- display name of the example -->
     <xs:attribute name="name" type="xs:string" use="required" />
@@ -2147,6 +2167,14 @@
                           <xs:element name="Pre_Include_Global_h" type="xs:string" minOccurs="0" />
                           <!-- content to be added to generated Pre_Include_Local_<ComponentID>.h file -->
                           <xs:element name="Pre_Include_Local_Component_h" type="xs:string" minOccurs="0" />
+                          <!-- list of environments (elements containing information that is specific for a development tool) -->
+                          <xs:element name="environments" minOccurs="0" >
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="environment" type="EnvironmentType" minOccurs="1" maxOccurs="unbounded" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
                           <!-- list of files / content -->
                           <xs:element name="files">
                             <xs:complexType>
@@ -2218,6 +2246,14 @@
                     <xs:element name="Pre_Include_Global_h" type="xs:string" minOccurs="0" />
                     <!-- content to be added to generated Pre_Include_Local_<ComponentID>.h file -->
                     <xs:element name="Pre_Include_Local_Component_h" type="xs:string" minOccurs="0" />
+                    <!-- list of environments (elements containing information that is specific for a development tool) -->
+                    <xs:element name="environments" minOccurs="0" >
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="environment" type="EnvironmentType" minOccurs="1" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
                     <!-- list of files / content -->
                     <xs:element name="files">
                       <xs:complexType>

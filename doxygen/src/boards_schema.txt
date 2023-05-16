@@ -19,6 +19,8 @@ A development board is described by the following properties:
 - \ref element_board_debugProbe "debugProbe": describing the on-board debug probe.
 - \ref element_board_memory "memory": additional memory provided by the board
 - \ref element_board_algorithm "algorithm": additional flash programming algorithms for the board-specific memory
+- \ref element_board_environment "environment":  tool specific settings
+
 
 
 \b Example
@@ -39,7 +41,7 @@ A development board is described by the following properties:
 	   
       <compatibleDevice Dvendor="STMicroelectronics:13" Dfamily="STM32F4 Series" DsubFamily="STM32F429"/>
 
-      <mountedPart n="1" Hvendor="STMicroelectronics:13" Hname="I3G4250D" Hvariant="I3G4250D"/>
+      <mountedPart n="1" Hvendor="STMicroelectronics" Hname="I3G4250D" Hvariant="I3G4250D"/>
 	   
       <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2 with selection mode switch to use the kit as a standalone"/>
       <feature type="XTAL"      n="80000000"/>
@@ -202,7 +204,7 @@ This element provides information to specify the \ref createPackBoard "Board Sup
     <td>\ref element_board_book "book"</td>
 	<td>Describes the documentation files (user manuals, schematics, etc.). Directory and file names are case-sensitive.</td>
 	<td>BoardsBookType</td>
-	<td>1..* </td>
+	<td>0..* </td>
   </tr>
   <tr>
     <td>\ref element_board_debugProbe "debugProbe"</td>
@@ -220,6 +222,12 @@ This element provides information to specify the \ref createPackBoard "Board Sup
     <td>\ref element_board_algorithm "algorithm"</td>
     <td>Specify Flash programming algorithms for memory provided by the board.</td>
     <td>AlgorithmType</td>
+    <td>0..*</td>
+  </tr>
+  <tr>
+    <td>\ref element_board_environment "environment"</td>
+    <td>Specify tool specif settings.</td>
+    <td>EnvironmentType</td>
     <td>0..*</td>
   </tr>
 </table>
@@ -474,7 +482,7 @@ The element specifies the parts (any device other than the MCU) mounted on the b
 
 \b Example
 \code
-<mountedPart n="1" Hvendor="STMicroelectronics:13" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02"/>
+<mountedPart n="1" Hvendor="STMicroelectronics" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02"/>
 \endcode
 <p>&nbsp;</p>		
 
@@ -501,8 +509,8 @@ The element specifies the parts (any device other than the MCU) mounted on the b
   </tr>
   <tr>
     <td>Hvendor</td>
-    <td>Vendor name of the part specified by \b Hname. Use predefined values as listed in the table \ref DeviceVendorEnum "Device Vendor".</td>
-    <td>DeviceVendorEnum</td>
+    <td>Vendor name of the part specified by \b Hname.</td>
+    <td>xs:string</td>
     <td>required</td>
   </tr>
   <tr>
@@ -700,10 +708,11 @@ This element specifies an optional on-board debug probe.
 
 \section element_board_book /package/boards/board/book
 
-The element provides information about documentation parts related to a development board. At least one book must be defined.
+The element provides information about documentation parts related to a development board.
 
 \b Example
 \code
+<book category="overview" name="http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF259090" title="32F429IDISCOVERY Web Page"/>
 <book category="setup" name="Documents/UM1662.pdf" title="Getting Started"/>
 \endcode
 <p>&nbsp;</p>		
@@ -731,7 +740,7 @@ The element provides information about documentation parts related to a developm
   </tr>
   <tr>
     <td>name</td>
-	<td>Is the name of the document (including the path within the Pack).</td>
+	<td>Is the name of the document (including the path within the Pack). The link to a document on an external web site is also allowed.</td>
 	<td>xs:string</td>
 	<td>optional</td>
   </tr>
@@ -794,6 +803,8 @@ By convention, the following \<book\> entry:
 \endcode
 specifies a Markdown based documentation page for the board that can be displayed on web sites.
 
+<p>&nbsp;</p>		
+<hr>
 
 \section element_board_memory /package/boards/board/memory
 
@@ -903,6 +914,9 @@ This element specifies memory regions that boards may add. Memory types are pred
   </tr>
 </table>
 
+<p>&nbsp;</p>		
+<hr>
+
 \section element_board_algorithm /package/boards/board/algorithm
 
 Specify Flash programming algorithms with the address range and its size for board-specific memory.  An algorithm with 
@@ -985,6 +999,13 @@ Specify Flash programming algorithms with the address range and its size for boa
   </tr>
 
 </table>
+
+<p>&nbsp;</p>
+<hr>
+
+\section element_board_environment /package/boards/board/environment
+
+See description at \ref element_environment "/package/devices/family/.../environment".
 
 <p>&nbsp;</p>
 */

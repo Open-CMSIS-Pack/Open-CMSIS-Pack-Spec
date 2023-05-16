@@ -593,19 +593,23 @@ A component describes a collection of files (source, header, configuration, libr
     <td>xs:string </td>
     <td>0..1 </td>
   </tr>
-
   <tr>
     <td>\ref element_files "files"</td>
     <td>Grouping element for all files that are part of this component.</td>
     <td>group</td>
     <td>1</td>
   </tr>
-
   <tr>
     <td>\ref element_extensions "extensions"</td>
     <td>Grouping element for all extensions concerning this component.</td>
     <td>group</td>
     <td>1</td>
+  </tr>
+  <tr>
+    <td>\ref element_component_environments "environments"</td>
+    <td>Grouping element for all environments concerning this component.</td>
+    <td>group</td>
+    <td>0..1</td>
   </tr>
 </table>
 
@@ -1100,6 +1104,7 @@ The table lists the predefined values for the scope attribute.
 
 <p>&nbsp;</p>
 <hr>
+
 \section element_extensions /package/.../extensions
 
 The group <b>extensions</b> can appear in various Pack elements. This group is the frame for defining individual extensions.
@@ -1210,4 +1215,61 @@ The possible values are not imposed by this specification.
 
 <p>&nbsp;</p>
 <hr>
+
+\section element_component_environments /package/.../environments
+
+The group <b>environments</b> can appear in \ref element_component "component" element. This group is the frame for defining individual \ref element_component_environment "environment".
+
+\b Example:
+\code
+<package>
+  ...
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="3.1.1" >
+      <environments>
+        ...
+      </environments>
+    </component>
+  </components>
+  ...
+</package>
+\endcode
+
+<p>&nbsp;</p>
+
+<table class="cmtable" summary="Element: Environments">
+  <tr>
+    <th>Parents</th>
+    <th colspan="3">Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_component "component"</td>
+    <td colspan="3">\ref element_component "/package/components/component"</td>
+  </tr>
+  <tr>
+    <td>\ref element_component "component"</td>
+    <td colspan="3">\ref element_component "/package/components/bundle/component"</td>
+  </tr>
+  <tr>
+    <th>Child&nbsp;Elements</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Occurrence</th>
+  </tr>
+  <tr>
+    <td>\ref element_component_environment "environment"</td>
+    <td>Specify tool options.
+    <td>EnvironmentType</td>
+    <td>1..*</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<hr>
+
+\section element_component_environment /package/.../environments/environment
+
+See description at \ref element_environment "/package/devices/family/.../environment".
+
+<p>&nbsp;</p>
 */

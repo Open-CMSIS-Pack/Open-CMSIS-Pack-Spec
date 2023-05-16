@@ -6,7 +6,7 @@ The element \ref element_example describes fully defined examples contained in t
 An example lists the files that belong to an example. The example itself and each individual file may
 refer to a \ref element_condition "condition" that must resolve to true; if it is false the example or file will be ignored.
 The board element is used to reference to one or more board descriptions using the board vendor and name an example is targeted for.
-Each example can specify attributes listing related components using Class (Cclass=), Group (Cgroup=), Subgroup (Csub) and a Version (Cversion=)
+Each example may optionally specify attributes e.g. providing a short list of the most significant components using Class (Cclass=), Group (Cgroup=), Subgroup (Csub) and a Version (Cversion=).
 
 \b Example
 \code
@@ -153,7 +153,7 @@ treated as a single example.
     <td>\ref element_example_attributes "attributes"</td>
 	<td>Group element for project attributes, which list required components, define example categories, and set keywords to filter and search for examples.</td>
 	<td>ExampleAttributesType</td>
-	<td>1</td>
+	<td>0..1</td>
   </tr>
 </table>
 
@@ -276,6 +276,7 @@ The environment element describes the name of the environment and the project fi
 <project>
   <environment name="uv" folder="./ARM" load="ARM/Blinky.uvproj"/>
   <environment name="iar" folder="./IAR" load="IAR/Blinky.ewarm" />
+  <environment name="cmsis" folder="./CMSIS/ load="CMSIS/Blinky.csolution.yml" />
 </project>
 \endcode
 
@@ -446,5 +447,3 @@ This can be used to list all related components within an example.
 <p>&nbsp;</p>
 
 */
-
-
