@@ -141,29 +141,29 @@ Grouping element for \b generators. Only one such group can exist in a Pack.
     <th>Description</th>
   </tr>
   <tr>
-    <td>$P</th>
-    <td>PATH to current project</th>
+    <td>$P</td>
+    <td>PATH to current project</td>
   </tr>
   <tr>
-    <td>\#P</th>
-    <td>PATH and name of the current project</th>
+    <td>\#P</td>
+    <td>PATH and name of the current project</td>
   </tr>
   <tr>
-    <td>$S</th>
-    <td>PATH to Pack folder containing the Device description used by the current project</th>
+    <td>$S</td>
+    <td>PATH to Pack folder containing the Device description used by the current project</td>
   </tr>
   <tr>
-    <td>$D</th>
-    <td>Name of the device configured in the current project</th>
+    <td>$D</td>
+    <td>Name of the device configured in the current project</td>
   </tr>
   <tr>
-    <td>$B</th>
-    <td>Name of the board configured in the current project</th>
+    <td>$B</td>
+    <td>Name of the board configured in the current project</td>
   </tr>
   <tr>
-    <td>$G</th>
+    <td>$G</td>
     <td>Absolute PATH to the generator input file describing the project and component context. 
-        Note $G is only available in the \c \<command> and \c \<argument> elements</th>
+        Note $G is only available in the \c \<command> and \c \<argument> elements</td>
   </tr>
  </table>
 <p>&nbsp;</p>
