@@ -165,6 +165,16 @@ Grouping element for \b generators. Only one such group can exist in a Pack.
     <td>Absolute PATH to the generator input file describing the project and component context. 
         Note $G is only available in the \c \<command> and \c \<argument> elements</td>
   </tr>
+  <tr>
+    <td>$pack_id</td>
+    <td>Provide an easy way for the generator to know its' pack. Typically useful if you launch
+        the same generator program from multiple generator definitions. YAML format.</td>
+  </tr>
+  <tr>
+    <td>$generator_id</td>
+    <td>Provide an easy way for the generator to know its' name. Typically useful if you launch
+        the same generator program from multiple generator definitions.</td>
+  </tr>
  </table>
 <p>&nbsp;</p>
 <hr>
