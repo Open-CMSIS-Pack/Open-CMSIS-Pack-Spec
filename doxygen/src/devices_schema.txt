@@ -2417,6 +2417,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.xmcwh.com/</td>
   </tr>
   <tr>
+    <td class="XML-Token">YTMicro:180</td>
+    <td>YTMicro</td>
+    <td>http://www.ytmicro.com/</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Zilog:89</td>
     <td>Zilog</td>
     <td>http://zilog.com/</td>

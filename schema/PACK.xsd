@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        15. May 2023
-  $Revision:    1.7.25
+  $Date:        23. June 2023
+  $Revision:    1.7.26
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.25
+  SchemaVersion=1.7.26
 
+  23. June 2023: v1.7.26
+   - added 'YTMicro:180' to DeviceVendorEnum
   15. May 2023: v1.7.25
    - added 'Sinemicro:179' to DeviceVendorEnum
   04. May 2023: v1.7.24
@@ -198,7 +200,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.25">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.26">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -312,6 +314,7 @@
       <xs:enumeration value="WIZnet:122" />
       <xs:enumeration value="Xiamen PengPai Microelectronics Co. Ltd:166" />
       <xs:enumeration value="XMC:158" />
+      <xs:enumeration value="YTMicro:180" />
       <xs:enumeration value="Zilog:89" />
       <!-- deprecated: do not use -->
       <xs:enumeration value="Freescale:78" />
