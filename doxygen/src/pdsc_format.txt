@@ -681,7 +681,7 @@ The latest release version is always listed on top.
 \b Example for a deprecated pack with a replacement:
 \code
 <releases>
-  <release version="1.0.1" date="2020-04-18" deprecated="2020-04-18" replacement="Vendor.pack_name">Deprecated: use Vendor.pack_name instead.
+  <release version="1.0.1" date="2020-04-18" deprecated="2020-04-18" replacement="Vendor.pack_name">
   </release>
   <release version="1.0.0" date="2020-03-24">Initial version.
   </release>
