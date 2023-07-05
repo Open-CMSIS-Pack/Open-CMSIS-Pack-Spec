@@ -67,10 +67,11 @@ var NAVTREEINDEX0 =
 "cp_ZIPTool.html":[4,1],
 "cp_ZIPTool.html#cp_ZIPTool_7z":[4,1,0],
 "createPackPublish.html":[5],
-"createPackPublish.html#cp_HowWebDownloadWorks":[5,5],
+"createPackPublish.html#cp_HowWebDownloadWorks":[5,6],
 "createPackPublish.html#cp_KeilComPack":[5,3],
 "createPackPublish.html#cp_LocalInstallation":[5,1],
 "createPackPublish.html#cp_PackRehosting":[5,4],
+"createPackPublish.html#cp_PackRenaming":[5,5],
 "createPackPublish.html#cp_WebDownload":[5,2],
 "createPackPublish.html#cp_prerequisites":[5,0],
 "createPackUtil.html":[4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "pdsc_family_pg.html#element_subFamily":[6,15,1,1],
 "pdsc_family_pg.html#element_trace":[6,15,1,28],
 "pdsc_family_pg.html#element_trace_serialwire":[6,15,1,29],
-"pdsc_family_pg.html#element_trace_tracebuffer":[6,15,1,31],
-"pdsc_family_pg.html#element_trace_traceport":[6,15,1,30]
+"pdsc_family_pg.html#element_trace_tracebuffer":[6,15,1,31]
 };

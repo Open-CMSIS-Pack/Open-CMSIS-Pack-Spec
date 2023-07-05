@@ -145,20 +145,44 @@ Publish with Pack Index Service</h1>
 <p >Please allow up to seven working days for the process. If the files contain any errors, you will be notified. Otherwise, the information is added to the index server.</p>
 <h1><a class="anchor" id="cp_PackRehosting"></a>
 Rehost pack to different URL</h1>
-<p >Sometimes, it is necessary to rehost a pack (moving a pack from one URL to another). This implies that you need to change the &lt;url&gt; element in the PDSC file. To ensure that the pack is found by a <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a>, follow this procedure:</p><ul>
-<li>Create a new version of the pack: update the <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc file with the new URL ("url_B") and make sure to increment the version.</li>
-<li>Place a copy of this latest <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc at url_B and url_A (the original URL) and add the "deprecated" and "replacement" tag to the last <a class="el" href="element_releases.html#element_release">release</a> entry.</li>
-<li>Place a copy of the new <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack in url_B (only).</li>
-<li>Copy all packs from url_A to url_B.</li>
+<p >Sometimes, it is necessary to rehost a pack (moving a pack from one URL to another). Rehosting implies changing the <b>&lt;url&gt;</b> element in the PDSC file. To ensure that the pack is found by a <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a>, follow this procedure:</p><ul>
+<li>Create a new version of the pack: update the <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc file with the new <b>&lt;url&gt;</b> ("url_B") and a new <a class="el" href="element_releases.html#element_release">&lt;release&gt;</a> tag with an incremented version.</li>
+<li>Place a copy of this latest <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc file at url_B and url_A (the original URL).</li>
+<li>Add this new PDSC file to an updated <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack (needs to match the version number in the PDSC file).</li>
+<li>Copy the new <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack <b>only</b> to url_B.</li>
+<li>Copy all previous packs from url_A to url_B (so that they are available at the new location).</li>
 <li>Inform Arm about the new URL by either:<ul>
-<li>update the <b>&lt;vendor&gt;</b>.pidx with url_B for this pack <em>or</em> </li>
-<li>email a link to the PDSC file if your company does not maintain a <b>&lt;vendor&gt;</b>.pidx</li>
+<li>updating the <b>&lt;vendor&gt;</b>.pidx with url_B for this pack <em>or</em> </li>
+<li>emailing a link to the new PDSC file if your company does not maintain a <b>&lt;vendor&gt;</b>.pidx</li>
 </ul>
 </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>PDSC and pack versions need to be accessible from the same new URL</li>
-<li>You must keep url_A alive as is. But there is no need to maintain/update url_A going forward otherwise users with an old PDSC file will no longer find the pack versions.</li>
+<li>The PDSC file and all pack versions need to be accessible from the same new URL ("url_B").</li>
+<li>Arm recommends to keep the url_A alive for at least six months so that users have time to pick up the change. Be aware that users who have not noticed the change might be unable to find pack updates once url_A have become unavailable.</li>
+</ul>
+</dd></dl>
+<h1><a class="anchor" id="cp_PackRenaming"></a>
+Rename a pack</h1>
+<p >Sometimes, it is necessary to rename a pack (because the pack vendor and/or its name have changed for example). To ensure that the pack is found by a <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a> and the tools, follow this procedure:</p><ul>
+<li>Create:<ul>
+<li>a new PDSC file with the updated <b>&lt;name&gt;</b> and/or <b>&lt;vendor&gt;</b>, for example NewVendor.NewName.pdsc. The <b>&lt;version&gt;</b> should start at 1.0.0.</li>
+<li>a new pack containing the new PDSC file with the corresponding <b>&lt;name&gt;</b> and/or <b>&lt;vendor&gt;</b>, for example NewVendor.NewName.1.0.0.pack.</li>
+</ul>
+</li>
+<li>Create:<ul>
+<li>a new version of the old PDSC file (Vendor.Name.pdsc) with a new <b>&lt;release&gt;</b> tag (with an updated version), containing the <b>&lt;deprecated&gt;</b> and <b>&lt;replacement&gt;</b> element. The latter pointing to the "NewVendor.NewName".</li>
+<li>a new version of the old <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack file with the PDSC you have created above.</li>
+</ul>
+</li>
+<li>Copy:<ul>
+<li>All four files (new PDSC and pack, updated old PDSC and pack) to the URL location.</li>
+</ul>
+</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>Using this approach, you can only do a one-to-one pack replacement.</li>
+<li>If you want to create more than one replacement pack for a given source pack, you need to work with <a class="el" href="element_requirements_pg.html">requirements</a>.</li>
 </ul>
 </dd></dl>
 <h1><a class="anchor" id="cp_HowWebDownloadWorks"></a>

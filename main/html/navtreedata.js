@@ -90,6 +90,7 @@ var NAVTREE =
       [ "Web Download", "createPackPublish.html#cp_WebDownload", null ],
       [ "Publish with Pack Index Service", "createPackPublish.html#cp_KeilComPack", null ],
       [ "Rehost pack to different URL", "createPackPublish.html#cp_PackRehosting", null ],
+      [ "Rename a pack", "createPackPublish.html#cp_PackRenaming", null ],
       [ "Web Infra-structure", "createPackPublish.html#cp_HowWebDownloadWorks", null ]
     ] ],
     [ "Pack Description (*.pdsc) Format", "packFormat.html", "packFormat" ],
@@ -135,7 +136,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithmFunc.html",
-"pdsc_family_pg.html#element_variant"
+"pdsc_family_pg.html#element_trace_traceport"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
