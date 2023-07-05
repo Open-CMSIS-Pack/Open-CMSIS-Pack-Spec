@@ -71,20 +71,46 @@ information is added to the index server.
 
 \section cp_PackRehosting Rehost pack to different URL
 
-Sometimes, it is necessary to rehost a pack (moving a pack from one URL to another). This implies that you need to change the \<url\> element in the PDSC file. To
-ensure that the pack is found by a \ref cp_KeilComPack "Pack Index Service", follow this procedure:
-- Create a new version of the pack: update the \elem{vendor}.\elem{name}.pdsc file with the new URL ("url_B") and make sure to increment the version.
-- Place a copy of this latest \elem{vendor}.\elem{name}.pdsc at url_B and url_A (the original URL) and add the "deprecated" and "replacement" tag to the last \ref element_release "release" entry.
-- Place a copy of the new \elem{vendor}.\elem{name}.\elem{version}.pack in url_B (only).
-- Copy all packs from url_A to url_B.
+Sometimes, it is necessary to rehost a pack (moving a pack from one URL to another). Rehosting implies changing the \elem{url}
+element in the PDSC file. To ensure that the pack is found by a \ref cp_KeilComPack "Pack Index Service", follow this procedure:
+- Create a new version of the pack: update the \elem{vendor}.\elem{name}.pdsc file with the new \elem{url} ("url_B") and a new
+  \ref element_release "\<release\>" tag with an incremented version.
+- Place a copy of this latest \elem{vendor}.\elem{name}.pdsc file at url_B and url_A (the original URL).
+- Add this new PDSC file to an updated \elem{vendor}.\elem{name}.\elem{version}.pack (needs to match the version number in
+  the PDSC file).
+- Copy the new \elem{vendor}.\elem{name}.\elem{version}.pack \b only to url_B.
+- Copy all previous packs from url_A to url_B (so that they are available at the new location).
 - Inform Arm about the new URL by either:
-  - update the \elem{vendor}.pidx with url_B for this pack \em or
-  - email a link to the PDSC file if your company does not maintain a \elem{vendor}.pidx
+  - updating the \elem{vendor}.pidx with url_B for this pack \em or
+  - emailing a link to the new PDSC file if your company does not maintain a \elem{vendor}.pidx
 
 \note
-- PDSC and pack versions need to be accessible from the same new URL
-- You must keep url_A alive as is. But there is no need to maintain/update url_A going forward otherwise users with an old
-  PDSC file will no longer find the pack versions.
+- The PDSC file and all pack versions need to be accessible from the same new URL ("url_B").
+- Arm recommends to keep the url_A alive for at least six months so that users have time to pick up the change. Be aware
+  that users who have not noticed the change might be unable to find pack updates once url_A have become unavailable.
+
+
+\section cp_PackRenaming Rename a pack
+
+Sometimes, it is necessary to rename a pack (because the pack vendor and/or its name have changed for example). To ensure
+that the pack is found by a \ref cp_KeilComPack "Pack Index Service" and the tools, follow this procedure:
+- Create:
+  - a new PDSC file with the updated \elem{name} and/or \elem{vendor}, for example NewVendor.NewName.pdsc. The
+    \elem{version} should start at 1.0.0.
+  - a new pack containing the new PDSC file with the corresponding \elem{name} and/or \elem{vendor}, for example
+    NewVendor.NewName.1.0.0.pack.
+- Create:
+  - a new version of the old PDSC file (Vendor.Name.pdsc) with a new \elem{release} tag (with an updated version),
+    containing the \elem{deprecated} and \elem{replacement} element. The latter pointing to the "NewVendor.NewName".
+  - a new version of the old \elem{vendor}.\elem{name}.\elem{version}.pack file with the PDSC you have created above.
+- Copy:
+  - All four files (new PDSC and pack, updated old PDSC and pack) to the URL location.
+
+\note
+- Using this approach, you can only do a one-to-one pack replacement.
+- If you want to create more than one replacement pack for a given source pack, you need to work with
+  \ref element_requirements_pg "requirements".
+
 
 \section cp_HowWebDownloadWorks Web Infra-structure
 
