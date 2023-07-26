@@ -17,13 +17,15 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        23. June 2023
-  $Revision:    1.7.26
+  $Date:        26. July 2023
+  $Revision:    1.7.27
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.26
+  SchemaVersion=1.7.27
 
+  26. July 2023: v1.7.27
+   - added 'MinebeaMitsumi:181' to DeviceVendorEnum
   23. June 2023: v1.7.26
    - added 'YTMicro:180' to DeviceVendorEnum
   15. May 2023: v1.7.25
@@ -200,7 +202,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.26">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.27">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -276,6 +278,7 @@
       <xs:enumeration value="Microsemi:112" />
       <xs:enumeration value="Milandr:99" />
       <xs:enumeration value="MindMotion:132" />
+      <xs:enumeration value="MinebeaMitsumi:181" />
       <xs:enumeration value="NetSilicon:67" />
       <xs:enumeration value="Nordic Semiconductor:54" />
       <xs:enumeration value="Nuvoton:18" />
