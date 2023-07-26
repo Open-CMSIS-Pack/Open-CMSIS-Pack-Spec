@@ -450,7 +450,7 @@ The tokens can be used in the elements:
      <td class="XML-Token">CLANG</td>
      <td>CLANG: a C language family frontend for LLVM for 32-bit Arm embedded targets. Refer to <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm" target="_blank">
          CLANG</a>
-     </td>     <td class="XML-Toke">Clang</td>
+     </td>
   </tr>
 </table>
 
