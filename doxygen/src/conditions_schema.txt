@@ -447,10 +447,10 @@ The tokens can be used in the elements:
     <td>Microchip MPLAB XC32 Compiler.</td>
   </tr>
   <tr>
-     <td class="XML-Toke">Clang</td>
-     <td>Clang: a C language family frontend for LLVM. Refer to <a href="https://clang.llvm.org" target="_blank">
-         Clang</a>
-     </td>
+     <td class="XML-Token">CLANG</td>
+     <td>CLANG: a C language family frontend for LLVM for 32-bit Arm embedded targets. Refer to <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm" target="_blank">
+         CLANG</a>
+     </td>     <td class="XML-Toke">Clang</td>
   </tr>
 </table>
 
