@@ -18,12 +18,14 @@
   limitations under the License.
 
   $Date:        23. June 2023
-  $Revision:    1.7.26
+  $Revision:    1.7.27
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.26
+  SchemaVersion=1.7.27
 
+  26. July 2023: v1.7.27
+   - changed capitalization from 'Clang' to 'CLANG' in 'CompilerEnumType' to align with CMSIS-Toolbox
   23. June 2023: v1.7.26
    - added 'YTMicro:180' to DeviceVendorEnum
   15. May 2023: v1.7.25
@@ -1240,7 +1242,7 @@
       <xs:enumeration value="Cosmic" />
       <xs:enumeration value="G++"/> <!-- Code Sourcery -->
       <xs:enumeration value="XC"/> <!-- Microchip MPLAB XC32 -->
-      <xs:enumeration value="Clang"/>
+      <xs:enumeration value="CLANG"/>
       <xs:enumeration value="Renesas"/>
       <xs:enumeration value="*" />
     </xs:restriction>
