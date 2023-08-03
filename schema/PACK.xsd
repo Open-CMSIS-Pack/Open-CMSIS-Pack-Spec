@@ -26,7 +26,7 @@
   SchemaVersion=1.7.27
 
   03. Aug 2023: 1.7.28
-   - fix "changeLogs" casing in documentation
+   - changed capitalization from 'changeLogs' to 'changelogs' to align with documentation
   26. July 2023: v1.7.27
    - changed capitalization from 'Clang' to 'CLANG' in 'CompilerEnumType' to align with CMSIS-Toolbox
    - added 'MinebeaMitsumi:181' to 'DeviceVendorEnum'
@@ -1864,8 +1864,8 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- changeLogs contains references to changelog files contained in the pack with an ID -->
-  <xs:complexType name="ChangeLogsType">
+  <!-- changelogs contains references to changelog files contained in the pack with an ID -->
+  <xs:complexType name="ChangelogsType">
     <xs:sequence>
       <xs:element name="changelog" type="ChangelogType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
@@ -2097,7 +2097,7 @@
         <!-- Version numbers and release history -->
         <xs:element name="releases" type="ReleasesType" minOccurs="1" />
         <!-- ID based references to changelog information stored in text files, associated with components -->
-        <xs:element name="changeLogs" type="ChangeLogsType" minOccurs="0" />
+        <xs:element name="changelogs" type="ChangelogsType" minOccurs="0" />
         <!-- keyword for Search Engine Indexing (e.g. Google) -->
         <xs:element name="keywords" type="KeywordsType" minOccurs="0" />
         <!-- generators are tools and utilities that are used to generate software components -->

@@ -64,7 +64,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage element_repository "<repository>": specifies the URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
  - \subpage element_releases "<releases>": lists release versions with descriptions.
- - \subpage pdsc_changeLogs_pg "<changeLogs>": lists changelog files associated with components and apis within the pack.
+ - \subpage pdsc_changelogs_pg "<changeLogs>": lists changelog files associated with components and apis within the pack.
  - \subpage pdsc_licenseSets_pg "<licenseSets>": lists license files associated with the pack and contained components and apis.
  - \subpage element_requirements_pg "<requirements>": lists required packs, compiler, programming language standards and their version or version range.
  - \subpage element_taxonomy "<taxonomy>": lists description elements that define component classes and component group names.
@@ -285,11 +285,11 @@ assists searching for packages.
     <td>ReleasesGroup</td>
     <td>1..1 </td>
   </tr>
-  \anchor package_changeLogs
+  \anchor package_changelogs
   <tr>
-    <td>changeLogs</td>
+    <td>changelogs</td>
     <td>Section describing one or more changelog files which can be associated with one, multiple or all components and apis in the pack (default="true")</td>
-    <td>\ref element_changeLogs "ChangeLogsType"</td>
+    <td>\ref element_changelogs "ChangelogsType"</td>
     <td>0..1 </td>
   </tr>
   <tr>

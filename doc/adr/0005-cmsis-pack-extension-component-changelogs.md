@@ -1,4 +1,4 @@
-# 5. Extend Open-CMSIS-Pack for per component changeLogs
+# 5. Extend Open-CMSIS-Pack for per component changelogs
 
 Date: 2021-05-11
 
@@ -8,15 +8,15 @@ Accepted
 
 ## Context
 
-Open-CMSIS-Pack specification supports recording changeLogs as part of the releases section. Hence one cannot easily
+Open-CMSIS-Pack specification supports recording changelogs as part of the releases section. Hence one cannot easily
 deduce which changes apply to which component(s).
 
 ## Decision
 
 Follow the approach already used for `<conditions>` in the current [Pack Description](../Glossary.md#pack-desc)
 using references:
-* add optional section `<changeLogs>` on the top level of the format
-* add one or more child elements `<changelog>` to `<changeLogs>` with attributes:
+* add optional section `<changelogs>` on the top level of the format
+* add one or more child elements `<changelog>` to `<changelogs>` with attributes:
     * `id` (required) - a unique name which is used by components to associate itself with a `changelog`
     * `name` (required) - the relative path to the changelog file
     * `type` (optional) - mime-type of the changelog file, defaults to `text/plain;charset=UTF-8`

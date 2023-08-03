@@ -187,7 +187,7 @@ by either implementing or using a set of functions, data types, and definitions.
   <tr>
     <td>changelog</td>
     <td>
-      Reference to the \token{changelog} with the given identifier \token{ID} specified in the changeLogs section of the package description.
+      Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
       A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the api. 
       The content of the referenced changelog file is not required to be exclusively used for a single api.</td>
     <td>xs:string</td>
