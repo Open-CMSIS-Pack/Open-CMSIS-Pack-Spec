@@ -391,7 +391,7 @@ Components enclosed in a bundle must not specify any of the following attributes
   </tr>
   <tr>
     <td>changelog</td>
-    <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
+    <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changeLogs section of the package description.
       A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for all components of this bundle.
       If the changelog files differ for the components in the bundle, the changelog attribute is required to be set on a component level.</td>
     <td>xs:string</td>
@@ -551,7 +551,7 @@ A component describes a collection of files (source, header, configuration, libr
   </tr>
   <tr>
     <td>changelog</td>
-    <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
+    <td>Reference to the \token{changelog} with the given identifier \token{ID} specified in the changeLogs section of the package description.
       A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the component. 
       The content of the referenced changelog file is not required to be exclusively used for a single component.</td>
     <td>xs:string</td>

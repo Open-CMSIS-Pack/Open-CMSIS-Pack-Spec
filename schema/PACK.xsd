@@ -1862,8 +1862,8 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- changelogs contains references to changelog files contained in the pack with an ID -->
-  <xs:complexType name="ChangelogsType">
+  <!-- changeLogs contains references to changelog files contained in the pack with an ID -->
+  <xs:complexType name="ChangeLogsType">
     <xs:sequence>
       <xs:element name="changelog" type="ChangelogType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
@@ -2095,7 +2095,7 @@
         <!-- Version numbers and release history -->
         <xs:element name="releases" type="ReleasesType" minOccurs="1" />
         <!-- ID based references to changelog information stored in text files, associated with components -->
-        <xs:element name="changeLogs" type="ChangelogsType" minOccurs="0" />
+        <xs:element name="changeLogs" type="ChangeLogsType" minOccurs="0" />
         <!-- keyword for Search Engine Indexing (e.g. Google) -->
         <xs:element name="keywords" type="KeywordsType" minOccurs="0" />
         <!-- generators are tools and utilities that are used to generate software components -->

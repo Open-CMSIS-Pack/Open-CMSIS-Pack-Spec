@@ -1,7 +1,7 @@
 /**************************************************************************************************/
 /** 
-\page pdsc_changelogs_pg  /package/changelogs element
-The concept of changelogs gets introduced to support the association of components and apis with changelog files shipped as part of the pack.
+\page pdsc_changeLogs_pg  /package/changeLogs element
+The concept of changeLogs gets introduced to support the association of components and apis with changelog files shipped as part of the pack.
 This provides space for more detailed listing of changes between revisions of components and apis. Changelog files may contain the change history for one or more components/apis.
 A \token{changelog} describes the path and filename of a text file and specifies an "id" that is used by components and apis to link to this changelog file.
 
@@ -9,19 +9,19 @@ Supported use cases:
 - the content of the whole pack can be associated with a single changelog. In this case the attribute default can be set to "true" and not explicit references need to be added
 to each and every api and component. Any api or component with explicit changelog reference will not be associated with the "default" changelog.
 \code
-  <changelogs>
+  <changeLogs>
     <changelog id="all" default="true" name="doc/mypack_changelog.txt>
-  </changelogs>
+  </changeLogs>
 \endcode
 - individual components and apis can be associated with a specific \token{changelog}
 \b Example - an api and a component associated with different specific \token{changelog}.
 \code
   ...
-  <changelogs>
+  <changeLogs>
     ...
     <changelog id="myapi" name="./apis/myapi/myapi_changelog.txt"/>
     <changelog id="mycomponent" name="./components/mycomponent/mycomponent_changelog.txt">
-  </changelogs>
+  </changeLogs>
 
   <apis>
     <api Cclass="Driver" Cgroup="myapi" Capiversion="1.0.0" exclusive="true" changelog="myapi">
@@ -50,10 +50,10 @@ The id attribute of a changelog is used to associate individual components and a
 <p>&nbsp;</p>		
 <hr>
 
-\section element_changelogs /package/changelogs/
-Grouping element for changelog file descriptions. No more than one such group may exist in a Pack. The use of changelogs is optional.
+\section element_changeLogs /package/changeLogs/
+Grouping element for changelog file descriptions. No more than one such group may exist in a Pack. The use of changeLogs is optional.
 
-<table class="cmtable" summary="Element: changelogs">
+<table class="cmtable" summary="Element: changeLogs">
   <tr>
     <th>Parent</th>
     <th colspan="3">Chain</th>
@@ -79,7 +79,7 @@ Grouping element for changelog file descriptions. No more than one such group ma
 <p>&nbsp;</p>		
 <hr>
 
-\section element_changelog /package/changelogs/changelog
+\section element_changelog /package/changeLogs/changelog
 An element containing a reference to a changelog files included in the pack.
 
 <table class="cmtable" summary="Element: Changelog">
@@ -88,8 +88,8 @@ An element containing a reference to a changelog files included in the pack.
     <th colspan="3">Chain</th>
   </tr>
   <tr>
-    <td>\ref element_changelogs "changelogs"</td>
-    <td colspan="3">\ref pdsc_package_pg "/package/changelogs"</td>
+    <td>\ref element_changeLogs "changeLogs"</td>
+    <td colspan="3">\ref pdsc_package_pg "/package/changeLogs"</td>
   </tr>
   <tr>
     <th>Attributes</th>
