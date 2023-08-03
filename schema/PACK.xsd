@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        26. July 2023
-  $Revision:    1.7.27
+  $Date:        03. Aug 2023
+  $Revision:    1.7.28
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.27
 
+  03. Aug 2023: 1.7.28
+   - fix "changeLogs" casing in documentation
   26. July 2023: v1.7.27
    - changed capitalization from 'Clang' to 'CLANG' in 'CompilerEnumType' to align with CMSIS-Toolbox
    - added 'MinebeaMitsumi:181' to 'DeviceVendorEnum'
