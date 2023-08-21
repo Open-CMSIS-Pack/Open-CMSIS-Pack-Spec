@@ -593,6 +593,7 @@ This element describes one or multiple arguments passed along with the parent el
         <argument>$P/RTE/MyGen/myGen.gpdsc</argument>
         <argument host="linux" switch="--device=">$D</argument>
         <argument host="win"   switch="/device=">$D</argument>
+        <argument mode="dry-run">--dry-run</argument>
       </exe>
 
       <eclipse plugin="com.mygen.plugin" class="com.mygen.plugin.generator.launcher" method="launch" >
@@ -636,9 +637,21 @@ This element describes one or multiple arguments passed along with the parent el
     <th>Use</th>
   </tr>
   <tr>
+    <td>mode</td>
+    <td>Specifies the execution mode. Possible values are \c normal and \c dry-run. If set, the argument is only passed
+        to the generator if the value matches the mode the generator is started in. For example, an argument with mode
+        set to \c dry-run is only passed to the generator if it is started in dry-run mode. Arguments not specifying
+        mode are always passed to the generator. In \c dry-run mode, the generator must not generate any files. Instead
+        of writing the GPDSC file to disk, its contents is written to standard output (stdout), enclosed within the
+        marks <tt>\---\--BEGIN GPDSC\---\--</tt> and <tt>\---\--END GPDSC\---\--</tt>. Only available with element \ref
+        element_gen_exe "exe".</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
     <td>host</td>
     <td>Specifies the host operating system. Possible values are \c all, \c win, \c linux, \c mac, \c other. Only available
-        with element \ref element_gen_command "command".</td>
+        with element \ref element_gen_exe "exe".</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
