@@ -17,15 +17,23 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-  $Date:        15. May 2023
-  $Revision:    1.7.25
+
+  $Date:        03. Aug 2023
+  $Revision:    1.7.28
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.25
+  SchemaVersion=1.7.27
 
+  03. Aug 2023: 1.7.28
+   - changed capitalization from 'changeLogs' to 'changelogs' to align with documentation
+  26. July 2023: v1.7.27
+   - changed capitalization from 'Clang' to 'CLANG' in 'CompilerEnumType' to align with CMSIS-Toolbox
+   - added 'MinebeaMitsumi:181' to 'DeviceVendorEnum'
+  23. June 2023: v1.7.26
+   - added 'YTMicro:180' to 'DeviceVendorEnum'
   15. May 2023: v1.7.25
-   - added 'Sinemicro:179' to DeviceVendorEnum
+   - added 'Sinemicro:179' to 'DeviceVendorEnum'
   04. May 2023: v1.7.24
    - added environment element as child element of /package/boards/board and /package/components/.../component/environments
   27. Apr 2023: v1.7.23
@@ -198,7 +206,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.25">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.27">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -274,6 +282,7 @@
       <xs:enumeration value="Microsemi:112" />
       <xs:enumeration value="Milandr:99" />
       <xs:enumeration value="MindMotion:132" />
+      <xs:enumeration value="MinebeaMitsumi:181" />
       <xs:enumeration value="NetSilicon:67" />
       <xs:enumeration value="Nordic Semiconductor:54" />
       <xs:enumeration value="Nuvoton:18" />
@@ -312,6 +321,7 @@
       <xs:enumeration value="WIZnet:122" />
       <xs:enumeration value="Xiamen PengPai Microelectronics Co. Ltd:166" />
       <xs:enumeration value="XMC:158" />
+      <xs:enumeration value="YTMicro:180" />
       <xs:enumeration value="Zilog:89" />
       <!-- deprecated: do not use -->
       <xs:enumeration value="Freescale:78" />
@@ -1237,7 +1247,7 @@
       <xs:enumeration value="Cosmic" />
       <xs:enumeration value="G++"/> <!-- Code Sourcery -->
       <xs:enumeration value="XC"/> <!-- Microchip MPLAB XC32 -->
-      <xs:enumeration value="Clang"/>
+      <xs:enumeration value="CLANG"/>
       <xs:enumeration value="Renesas"/>
       <xs:enumeration value="*" />
     </xs:restriction>
@@ -2087,7 +2097,7 @@
         <!-- Version numbers and release history -->
         <xs:element name="releases" type="ReleasesType" minOccurs="1" />
         <!-- ID based references to changelog information stored in text files, associated with components -->
-        <xs:element name="changeLogs" type="ChangelogsType" minOccurs="0" />
+        <xs:element name="changelogs" type="ChangelogsType" minOccurs="0" />
         <!-- keyword for Search Engine Indexing (e.g. Google) -->
         <xs:element name="keywords" type="KeywordsType" minOccurs="0" />
         <!-- generators are tools and utilities that are used to generate software components -->

@@ -2252,6 +2252,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.mindmotion.com.cn</td>
   </tr>
   <tr>
+    <td class="XML-Token">MinebeaMitsumi:181</td>
+    <td>MinebeaMitsumi</td>
+    <td>http://www.minebeamitsumi.com</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Nordic Semiconductor:54</td>
     <td>Nordic Semiconductor</td>
     <td>http://www.nordicsemi.com</td>
@@ -2415,6 +2420,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td class="XML-Token">XMC:158</td>
     <td>Wuhan Xinxin Semiconductor Manufacturing Co., Ltd.</td>
     <td>http://www.xmcwh.com/</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">YTMicro:180</td>
+    <td>YTMicro</td>
+    <td>http://www.ytmicro.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">Zilog:89</td>

@@ -84,6 +84,18 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.27</td>
+    <td>
+     - added 'MinebeaMitsumi:181' to \ref DeviceVendorEnum "DeviceVendorEnum"
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.26</td>
+    <td>
+     - added 'YTMicro:180' to \ref DeviceVendorEnum "DeviceVendorEnum"
+    </td>
+  </tr>
+  <tr>
     <td>1.7.25</td>
     <td>
      - added 'Sinemicro:179' to \ref DeviceVendorEnum "DeviceVendorEnum"

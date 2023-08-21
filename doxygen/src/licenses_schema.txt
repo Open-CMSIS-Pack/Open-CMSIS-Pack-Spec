@@ -119,7 +119,16 @@ An element containing a list of one or more license files.
     <td>If set to 'true' this licenseSet is associated with the pack's content and for all
         apis and components, which are not explicitly referencing another licenseSet.
 		There can only be a single default licenseSet. This optional attribute is treated as 'false' if not specified.</td>
-    <td>xs:string</td>
+    <td>xs:boolean</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>gating</td>
+    <td>If set to 'true' this licenseSet is required to be accepted/acknowledged by the user before the installation
+        process starts extracting any other files than license files from the pack. If declined the pack installation
+        process will terminate. This optional attribute is treated as 'false' if not specified. 
+    </td>
+    <td>xs:boolean</td>
     <td>optional</td>
   </tr>
   <tr>
