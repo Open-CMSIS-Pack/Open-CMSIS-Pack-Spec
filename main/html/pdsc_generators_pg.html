@@ -409,6 +409,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html',''); initResi
 <div class="line">        &lt;argument&gt;$P/RTE/MyGen/myGen.gpdsc&lt;/argument&gt;</div>
 <div class="line">        &lt;argument host=<span class="stringliteral">&quot;linux&quot;</span> <span class="keywordflow">switch</span>=<span class="stringliteral">&quot;--device=&quot;</span>&gt;$D&lt;/argument&gt;</div>
 <div class="line">        &lt;argument host=<span class="stringliteral">&quot;win&quot;</span>   <span class="keywordflow">switch</span>=<span class="stringliteral">&quot;/device=&quot;</span>&gt;$D&lt;/argument&gt;</div>
+<div class="line">        &lt;argument mode=<span class="stringliteral">&quot;dry-run&quot;</span>&gt;--dry-run&lt;/argument&gt;</div>
 <div class="line">      &lt;/exe&gt;</div>
 <div class="line"> </div>
 <div class="line">      &lt;eclipse plugin=<span class="stringliteral">&quot;com.mygen.plugin&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;com.mygen.plugin.generator.launcher&quot;</span> method=<span class="stringliteral">&quot;launch&quot;</span> &gt;</div>
@@ -435,7 +436,9 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html',''); initResi
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>host </td><td>Specifies the host operating system. Possible values are <code>all</code>, <code>win</code>, <code>linux</code>, <code>mac</code>, <code>other</code>. Only available with element <a class="el" href="pdsc_generators_pg.html#element_gen_command">command</a>. </td><td>xs:string </td><td>optional  </td></tr>
+<td>mode </td><td>Specifies the execution mode. Possible values are <code>normal</code> and <code>dry-run</code>. If set, the argument is only passed to the generator if the value matches the mode the generator is started in. For example, an argument with mode set to <code>dry-run</code> is only passed to the generator if it is started in dry-run mode. Arguments not specifying mode are always passed to the generator. In <code>dry-run</code> mode, the generator must not generate any files. Instead of writing the GPDSC file to disk, its contents is written to standard output (stdout), enclosed within the marks <code>-----BEGIN GPDSC-----</code> and <code>-----END GPDSC-----</code>. Only available with element <a class="el" href="pdsc_generators_pg.html#element_gen_exe">exe</a>. </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>host </td><td>Specifies the host operating system. Possible values are <code>all</code>, <code>win</code>, <code>linux</code>, <code>mac</code>, <code>other</code>. Only available with element <a class="el" href="pdsc_generators_pg.html#element_gen_exe">exe</a>. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>switch </td><td>Specifies the command line switch separated from the argument value. Not available with element <a class="el" href="pdsc_generators_pg.html#element_gen_eclipse">eclipse</a>. </td><td>xs:string </td><td>optional  </td></tr>
 </table>
