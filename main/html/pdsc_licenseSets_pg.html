@@ -180,7 +180,9 @@ $(document).ready(function(){initNavTree('pdsc_licenseSets_pg.html',''); initRes
 <tr>
 <td>id </td><td>license set identifier string which must be unique within the scope of the pdsc file. The id is used in components and apis to associate it with the licenseSet. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
-<td>default </td><td>If set to 'true' this licenseSet is associated with the pack's content and for all apis and components, which are not explicitly referencing another licenseSet. There can only be a single default licenseSet. This optional attribute is treated as 'false' if not specified. </td><td>xs:string </td><td>optional  </td></tr>
+<td>default </td><td>If set to 'true' this licenseSet is associated with the pack's content and for all apis and components, which are not explicitly referencing another licenseSet. There can only be a single default licenseSet. This optional attribute is treated as 'false' if not specified. </td><td>xs:boolean </td><td>optional  </td></tr>
+<tr>
+<td>gating </td><td>If set to 'true' this licenseSet is required to be accepted/acknowledged by the user before the installation process starts extracting any other files than license files from the pack. If declined the pack installation process will terminate. This optional attribute is treated as 'false' if not specified.  </td><td>xs:boolean </td><td>optional  </td></tr>
 <tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
