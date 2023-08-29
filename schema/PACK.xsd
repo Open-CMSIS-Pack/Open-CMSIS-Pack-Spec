@@ -25,9 +25,9 @@
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.29
 
-  29. Aug 2023: 1.7.29
+  29. Aug 2023: v1.7.29
    - added \<image> child element to \<part> element
-  03. Aug 2023: 1.7.28
+  03. Aug 2023: v1.7.28
    - changed capitalization from 'changeLogs' to 'changelogs' to align with documentation
   26. July 2023: v1.7.27
    - changed capitalization from 'Clang' to 'CLANG' in 'CompilerEnumType' to align with CMSIS-Toolbox
