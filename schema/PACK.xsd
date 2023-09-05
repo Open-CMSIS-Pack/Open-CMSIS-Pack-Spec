@@ -18,14 +18,16 @@
   limitations under the License.
 
 
-  $Date:        03. Aug 2023
-  $Revision:    1.7.28
+  $Date:        29. Aug 2023
+  $Revision:    1.7.29
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.27
+  SchemaVersion=1.7.29
 
-  03. Aug 2023: 1.7.28
+  29. Aug 2023: v1.7.29
+   - added \<image> child element to \<part> element
+  03. Aug 2023: v1.7.28
    - changed capitalization from 'changeLogs' to 'changelogs' to align with documentation
   26. July 2023: v1.7.27
    - changed capitalization from 'Clang' to 'CLANG' in 'CompilerEnumType' to align with CMSIS-Toolbox
@@ -206,7 +208,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.27">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.29">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1535,7 +1537,7 @@
           <xs:attribute name="perspective" type="xs:string" use="optional" />
           <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
           <!-- links to web pages are assumed public -->
-          <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+          <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
         </xs:complexType>
       </xs:element>
       <xs:element name="debugInterface"   type="DebugInterfaceType"    minOccurs="0" maxOccurs="unbounded" />
@@ -1593,9 +1595,20 @@
   
   <xs:complexType name="PartType">
     <xs:sequence>
-      <xs:element name="feature"     type="DeviceFeatureType" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="book"        type="BookType"          minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="environment" type="EnvironmentType"   minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="feature" type="DeviceFeatureType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="book" type="BookType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="image" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="top"         type="xs:string" use="required" />
+          <xs:attribute name="bottom"      type="xs:string" use="optional" />
+          <xs:attribute name="perspective" type="xs:string" use="optional" />
+          <!-- if true, the vendor gives permission for this file being extracted from the pack and
+        displayed on a web-page -->
+          <!-- links to web pages are assumed public -->
+          <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="environment" type="EnvironmentType" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
     <xs:attribute name="Hvendor"   type="xs:string"        use="optional"/>
     <xs:attribute name="Hname"     type="xs:string"        use="required"/>

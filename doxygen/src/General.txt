@@ -84,8 +84,21 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.29</td>
+    <td>
+     - added \ref element_part_image "image" child element to \ref element_part element
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.28</td>
+    <td>
+     - changed capitalization from 'changeLogs' to 'changelogs' to align with documentation
+    </td>
+  </tr>
+  <tr>
     <td>1.7.27</td>
     <td>
+     - changed capitalization from 'Clang' to 'CLANG' in 'CompilerEnumType' to align with CMSIS-Toolbox
      - added 'MinebeaMitsumi:181' to \ref DeviceVendorEnum "DeviceVendorEnum"
     </td>
   </tr>
