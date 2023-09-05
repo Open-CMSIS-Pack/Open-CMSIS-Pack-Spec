@@ -70,6 +70,7 @@ var packFormat =
       [ "/package/parts/part", "pdsc_parts_pg.html#element_part", null ],
       [ "/package/parts/part/feature", "pdsc_parts_pg.html#element_part_feature", null ],
       [ "/package/parts/part/book", "pdsc_parts_pg.html#element_part_book", null ],
+      [ "/package/parts/part/image", "pdsc_parts_pg.html#element_part_image", null ],
       [ "/package/parts/part/environment", "pdsc_parts_pg.html#element_part_environment", null ]
     ] ],
     [ "/package/conditions element", "pdsc_conditions_pg.html", [
