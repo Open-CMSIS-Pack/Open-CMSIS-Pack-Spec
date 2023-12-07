@@ -818,6 +818,7 @@
   <xs:group name="DefaultDevicePropertiesGroup">
     <!-- multi-core devices have unique Pname attribute. One entry per processor and level -->
     <xs:choice>
+      <xs:element name="processor" type="ProcessorType" />
       <xs:element name="compile" type="CompileType" />
       <xs:element name="memory" type="MemoryType" />
       <xs:element name="algorithm" type="AlgorithmType" />
@@ -839,13 +840,18 @@
   <!-- Device Properties Group -->
   <xs:group name="DevicePropertiesGroup">
     <!-- multi-core devices have unique Pname attribute. One entry per processor and level -->
-    <xs:sequence>
+    <xs:all>
       <!-- date of deprecation of family, subFamily, device and variant depending on position in the hierachy -->
-      <xs:element name="deprecated"  type="xs:date"         minOccurs="0"/>
-      <xs:element name="processor" type="ProcessorType" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="debugconfig" type="DebugConfigType" minOccurs="0" maxOccurs="1" />
-      <xs:group ref="DefaultDevicePropertiesGroup" minOccurs="0" maxOccurs="unbounded" />
-    </xs:sequence>
+      <xs:element name="deprecated"  type="xs:date" maxOccurs="1" />
+      <xs:element name="debugconfig" type="DebugConfigType" maxOccurs="1" />
+      <xs:element name="DefaultDevicePropertiesGroup_s" minOccurs="0">
+	<xs:complexType>
+	  <xs:sequence>
+            <xs:group ref="DefaultDevicePropertiesGroup" minOccurs="0" maxOccurs="unbounded" />
+	  </xs:sequence>
+	</xs:complexType>
+      </xs:element>
+    </xs:all>
   </xs:group>
 
   <xs:complexType name="DeviceType">
