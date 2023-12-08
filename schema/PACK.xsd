@@ -842,8 +842,8 @@
     <!-- multi-core devices have unique Pname attribute. One entry per processor and level -->
     <xs:all>
       <!-- date of deprecation of family, subFamily, device and variant depending on position in the hierachy -->
-      <xs:element name="deprecated"  type="xs:date" maxOccurs="1" />
-      <xs:element name="debugconfig" type="DebugConfigType" maxOccurs="1" />
+      <xs:element name="deprecated"  type="xs:date" minOccurs="0" />
+      <xs:element name="debugconfig" type="DebugConfigType" minOccurs="0" />
       <xs:element name="DefaultDevicePropertiesGroup_s" minOccurs="0">
 	<xs:complexType>
 	  <xs:sequence>
