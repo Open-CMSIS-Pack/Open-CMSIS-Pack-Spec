@@ -814,44 +814,32 @@
     <xs:anyAttribute></xs:anyAttribute>
   </xs:complexType>
 
-  <!-- Default Device Properties Group -->
-  <xs:group name="DefaultDevicePropertiesGroup">
-    <!-- multi-core devices have unique Pname attribute. One entry per processor and level -->
-    <xs:choice>
-      <xs:element name="processor" type="ProcessorType" />
-      <xs:element name="compile" type="CompileType" />
-      <xs:element name="memory" type="MemoryType" />
-      <xs:element name="algorithm" type="AlgorithmType" />
-      <xs:element name="book" type="BookType" />
-      <xs:element name="description" type="DescriptionType" />
-      <xs:element name="feature" type="DeviceFeatureType" />
-      <xs:element name="environment" type="EnvironmentType" />
-      <xs:element name="debugport" type="DebugPortType" />
-      <xs:element name="accessportV1" type="AccessPortV1Type" />
-      <xs:element name="accessportV2" type="AccessPortV2Type" />
-      <xs:element name="debug" type="DebugType" />
-      <xs:element name="trace" type="TraceType" />
-      <xs:element name="debugvars" type="DebugVarsType" />
-      <xs:element name="sequences" type="SequencesType" />
-      <xs:element name="flashinfo"   type="FlashInfoType"   />
-    </xs:choice>
-  </xs:group>
-
   <!-- Device Properties Group -->
   <xs:group name="DevicePropertiesGroup">
-    <!-- multi-core devices have unique Pname attribute. One entry per processor and level -->
-    <xs:all>
-      <!-- date of deprecation of family, subFamily, device and variant depending on position in the hierachy -->
-      <xs:element name="deprecated"  type="xs:date" minOccurs="0" />
-      <xs:element name="debugconfig" type="DebugConfigType" minOccurs="0" />
-      <xs:element name="DefaultDevicePropertiesGroup_s" minOccurs="0">
-	<xs:complexType>
-	  <xs:sequence>
-            <xs:group ref="DefaultDevicePropertiesGroup" minOccurs="0" maxOccurs="unbounded" />
-	  </xs:sequence>
-	</xs:complexType>
-      </xs:element>
-    </xs:all>
+  	<!-- multi-core devices have unique Pname attribute. One entry per processor and level -->
+  	<xs:sequence>
+  		<!-- date of deprecation of family, subFamily, device and variant depending on position in the hierachy -->
+  		<xs:choice maxOccurs="unbounded">
+  			<xs:element name="deprecated"  type="xs:date" minOccurs="0" />
+  			<xs:element name="debugconfig" type="DebugConfigType" minOccurs="0" />
+  			<xs:element name="processor" type="ProcessorType" />
+  			<xs:element name="compile" type="CompileType" />
+  			<xs:element name="memory" type="MemoryType" />
+  			<xs:element name="algorithm" type="AlgorithmType" />
+  			<xs:element name="book" type="BookType" />
+  			<xs:element name="description" type="DescriptionType" />
+  			<xs:element name="feature" type="DeviceFeatureType" />
+  			<xs:element name="environment" type="EnvironmentType" />
+  			<xs:element name="debugport" type="DebugPortType" />
+  			<xs:element name="accessportV1" type="AccessPortV1Type" />
+  			<xs:element name="accessportV2" type="AccessPortV2Type" />
+  			<xs:element name="debug" type="DebugType" />
+  			<xs:element name="trace" type="TraceType" />
+  			<xs:element name="debugvars" type="DebugVarsType" />
+  			<xs:element name="sequences" type="SequencesType" />
+  			<xs:element name="flashinfo"   type="FlashInfoType"   />
+      </xs:choice>
+    </xs:sequence>
   </xs:group>
 
   <xs:complexType name="DeviceType">
@@ -861,7 +849,7 @@
       <xs:element name="variant" minOccurs="0" maxOccurs="unbounded">
         <xs:complexType>
           <xs:sequence>
-            <xs:group ref="DevicePropertiesGroup" />
+            <xs:group ref="DevicePropertiesGroup"/>
           </xs:sequence>
           <xs:attribute name="Dvariant" type="RestrictedStringDname" use="required" />
         </xs:complexType>
@@ -2135,13 +2123,13 @@
               <xs:element name="family" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:group ref="DevicePropertiesGroup" />
+                    <xs:group ref="DevicePropertiesGroup"/>
                     <xs:element name="device" type="DeviceType" minOccurs="0" maxOccurs="unbounded" />
                     <!-- Sub Family Level begin-->
                     <xs:element name="subFamily" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:group ref="DevicePropertiesGroup" />
+                          <xs:group ref="DevicePropertiesGroup"/>
                           <!-- Device Level begin-->
                           <xs:element name="device" type="DeviceType" maxOccurs="unbounded" />
                           <!-- Device Level end -->
