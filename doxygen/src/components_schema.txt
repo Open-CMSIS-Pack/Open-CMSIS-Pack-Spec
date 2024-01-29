@@ -110,7 +110,7 @@ into a <em>bundle</em>. A component bundle is a named set of components that mus
 \b Cclass by introducing the attribute \b Cbundle, which becomes a mandatory part of the component ID. If the attribute \b Cvendor
 is not specified in the \b bundle element, the value is inherited from the pack level \b vendor element.
 
-The attributes \b Cvendor, \b Cclass, \b Cbundle as well as \Cversion are inherited by all \component elements within a \bundle section.
+The attributes \b Cvendor, \b Cclass, \b Cbundle as well as \b Cversion are inherited by all \b component elements within a \b bundle section.
 Only the \b Cversion attribute can be redefined in the \b component elements.
 
 Components of the same \b Cclass belonging to a different \b Cbundle shall not be selected concurrently. In this way bundles ensure
