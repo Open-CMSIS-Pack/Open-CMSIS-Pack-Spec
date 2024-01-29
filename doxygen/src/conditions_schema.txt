@@ -314,23 +314,25 @@ A \ref element_condition "condition" becomes \token{true} when:
   </tr>
   <tr>
     <td>Cversion</td>
-    <td>Specifies a software component version.
-       - <b>require Cversion:</b>condition is true if version of component is equal or higher than requested.
+    <td>Specifies a software component's version.
+       - <b>require Cversion:</b>condition is true if version of component is equal or higher than requested and compatible.
+         According to <a href="https://semver.org/#spec-item-8"><b>SemanticVersioning</b></a> compatibility requires the <b>major version</b> to remain unchanged.
        - <b>deny Cversion:</b> condition is true if version of component is lower than requested.
        - Version ranges are specified with <em>min_version</em><b>:</b><em>max_version</em>. The condition is true if the version of the component is equal or higher than
-         <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match.
-         For more information refer to \ref VersionType "Version Type".</td>
+         <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match exactly.
+       Note: Specifying the <em>min_version</em> e.g <em>Cversion="4.1.0"</em> is identical to the version range <em>Cversion="4.1.0:5.0.0-0"</em>.       
     <td>\ref VersionType</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Capiversion</td>
     <td>Specifies an API version.
-       - <b>require Capiversion:</b>condition is true if version of API is equal or higher than requested.
+       - <b>require Capiversion:</b>condition is true if version of API is equal or higher than requested and compatible.
+         According to <a href="https://semver.org/#spec-item-8"><b>SemanticVersioning</b></a> compatibility requires the <b>major version</b> to remain unchanged.
        - <b>deny Capiversion:</b> condition is true if version of API is lower than requested.
        - Version ranges are specified with <em>min_version</em><b>:</b><em>max_version</em>. The condition is true if the version of the API is equal or higher than
-         <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match.
-         For more information refer to \ref VersionType "Version Type".</td>
+         <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match exactly.
+       Note: Specifying the <em>min_version</em> e.g <em>Capiversion="4.1.0"</em> is identical to the version range <em>Capiversion="4.1.0:5.0.0-0"</em>.       
     <td>\ref VersionType</td>
     <td>optional</td>
   </tr>
