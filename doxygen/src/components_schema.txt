@@ -7,8 +7,8 @@ A component lists the files that belong to a component and that are relevant for
 individual file may refer to a \ref element_condition "condition" that must resolve to true; if it is false the component
 or file is not applicable in the given context.
 
-Each component must have a class (Cclass=) and/or bundle (Cbundle), a group (Cgroup=), and a version (Cversion=) which is
-used to identify the component. Optionally, a component may have a sub-group (Csub=) and variant (Cvariant=) to add further
+Each component must have a class (Cclass=), a group (Cgroup=), and a version (Cversion=) which is
+used to identify the component. Optionally, a component may have a bundle (Cbundle=), sub-group (Csub=) and variant (Cvariant=) to add further
 categories. A component is identified by the class/bundle, group, sub-group, variant and version information together with
 the vendor specified by the pack. A component vendor must ensure that the combination of class/bundle, group, sub-group,
 version, and variant is unique and not used by multiple components (after evaluating filter
@@ -106,10 +106,15 @@ version, and variant is unique and not used by multiple components (after evalua
 \section Component_Bundle Component Bundle
 
 In case multiple inter-dependent components that belong to the same \b Cclass form part of a solution, these can be grouped
-into a <em>bundle</em>. A <em>bundle</em> specifies identical attributes \b Cclass, \b Cversion and optionally \b Cgroup and
-\b Cvendor for several components. Components within a bundle inherit these attributes set by the bundle and cannot alter
-these attributes. Bundles ensure consistency of attributes across multiple interworking components and restrict the mix and
-match of components within a Cclass from different Software Packs.
+into a <em>bundle</em>. A component bundle is a named set of components that must share identical attributes for \b Cvendor and 
+\b Cclass by introducing the attribute \b Cbundle, which becomes a mandatory part of the component ID. If the attribute \b Cvendor
+is not specified in the \b bundle element, the value is inherited from the pack level \b vendor element.
+
+The attributes \b Cvendor, \b Cclass, \b Cbundle as well as \Cversion are inherited by all \component elements within a \bundle section.
+Only the \b Cversion attribute can be redefined in the \b component elements.
+
+Components of the same \b Cclass belonging to a different \b Cbundle shall not be selected concurrently. In this way bundles ensure
+interoperability across multiple ocmponents and restrict the max and match of components within a \b Cclass.
 
 An example of a <b>bundle</b> is shown in the \ref cp_BundleExample section where the bundle is used to deliver board
 support files for a certain development platform.
@@ -490,7 +495,6 @@ A component describes a collection of files (source, header, configuration, libr
     <td>Cversion</td>
     <td>Defines the version of this component. Is a mandatory part of the component ID.
       The version format is described in \ref VersionType "Version Type".
-      \n \token{Must not be specified for a component within a bundle.}</td>
     <td>\ref VersionType "VersionType"</td>
     <td>required</td>
   </tr>
