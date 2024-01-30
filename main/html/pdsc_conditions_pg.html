@@ -257,17 +257,19 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <tr>
 <td>Cvariant<b>*</b> </td><td>Specifies a software component variant. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>Cversion </td><td>Specifies a software component version.<ul>
-<li><b>require Cversion:</b>condition is true if version of component is equal or higher than requested.</li>
+<td>Cversion </td><td>Specifies a software component's version.<ul>
+<li><b>require Cversion:</b>condition is true if version of component is equal or higher than requested and compatible. According to <a href="https://semver.org/#spec-item-8"><b>SemanticVersioning</b></a> compatibility requires the <b>major version</b> to remain unchanged.</li>
 <li><b>deny Cversion:</b> condition is true if version of component is lower than requested.</li>
-<li>Version ranges are specified with <em>min_version</em><b>:</b><em>max_version</em>. The condition is true if the version of the component is equal or higher than <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match. For more information refer to <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. </li>
+<li>Version ranges are specified with <em>min_version</em><b>:</b><em>max_version</em>. The condition is true if the version of the component is equal or higher than <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match exactly. Note: Specifying the <em>min_version</em> e.g <em>Cversion="4.1.0"</em> is identical to the version range <em>Cversion="4.1.0:5.0.0-0"</em>. <br  />
+ </li>
 </ul>
 </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>optional  </td></tr>
 <tr>
 <td>Capiversion </td><td>Specifies an API version.<ul>
-<li><b>require Capiversion:</b>condition is true if version of API is equal or higher than requested.</li>
+<li><b>require Capiversion:</b>condition is true if version of API is equal or higher than requested and compatible. According to <a href="https://semver.org/#spec-item-8"><b>SemanticVersioning</b></a> compatibility requires the <b>major version</b> to remain unchanged.</li>
 <li><b>deny Capiversion:</b> condition is true if version of API is lower than requested.</li>
-<li>Version ranges are specified with <em>min_version</em><b>:</b><em>max_version</em>. The condition is true if the version of the API is equal or higher than <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match. For more information refer to <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. </li>
+<li>Version ranges are specified with <em>min_version</em><b>:</b><em>max_version</em>. The condition is true if the version of the API is equal or higher than <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match exactly. Note: Specifying the <em>min_version</em> e.g <em>Capiversion="4.1.0"</em> is identical to the version range <em>Capiversion="4.1.0:5.0.0-0"</em>. <br  />
+ </li>
 </ul>
 </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>optional  </td></tr>
 <tr>

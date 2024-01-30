@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('pdsc_components_pg.html',''); initResi
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >The element <a class="el" href="pdsc_components_pg.html#element_components">/package/components</a> describes software components contained in the Pack. A component lists the files that belong to a component and that are relevant for a project. The component itself or each individual file may refer to a <a class="el" href="pdsc_conditions_pg.html#element_condition">condition</a> that must resolve to true; if it is false the component or file is not applicable in the given context.</p>
-<p >Each component must have a class (Cclass=) and/or bundle (Cbundle), a group (Cgroup=), and a version (Cversion=) which is used to identify the component. Optionally, a component may have a sub-group (Csub=) and variant (Cvariant=) to add further categories. A component is identified by the class/bundle, group, sub-group, variant and version information together with the vendor specified by the pack. A component vendor must ensure that the combination of class/bundle, group, sub-group, version, and variant is unique and not used by multiple components (after evaluating filter <a class="el" href="pdsc_conditions_pg.html">conditions</a>).</p>
+<p >Each component must have a class (Cclass=), a group (Cgroup=), and a version (Cversion=) which is used to identify the component. Optionally, a component may have a bundle (Cbundle=), sub-group (Csub=) and variant (Cvariant=) to add further categories. A component is identified by the class/bundle, group, sub-group, variant and version information together with the vendor specified by the pack. A component vendor must ensure that the combination of class/bundle, group, sub-group, version, and variant is unique and not used by multiple components (after evaluating filter <a class="el" href="pdsc_conditions_pg.html">conditions</a>).</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;components&gt;</div>
@@ -192,7 +192,9 @@ $(document).ready(function(){initNavTree('pdsc_components_pg.html',''); initResi
 </div><!-- fragment --><p >&#160;</p>
 <h1><a class="anchor" id="Component_Bundle"></a>
 Component Bundle</h1>
-<p >In case multiple inter-dependent components that belong to the same <b>Cclass</b> form part of a solution, these can be grouped into a <em>bundle</em>. A <em>bundle</em> specifies identical attributes <b>Cclass</b>, <b>Cversion</b> and optionally <b>Cgroup</b> and <b>Cvendor</b> for several components. Components within a bundle inherit these attributes set by the bundle and cannot alter these attributes. Bundles ensure consistency of attributes across multiple interworking components and restrict the mix and match of components within a Cclass from different Software Packs.</p>
+<p >In case multiple inter-dependent components that belong to the same <b>Cclass</b> form part of a solution, these can be grouped into a <em>bundle</em>. A component bundle is a named set of components that must share identical attributes for <b>Cvendor</b> and <b>Cclass</b> by introducing the attribute <b>Cbundle</b>, which becomes a mandatory part of the component ID. If the attribute <b>Cvendor</b> is not specified in the <b>bundle</b> element, the value is inherited from the pack level <b>vendor</b> element.</p>
+<p >The attributes <b>Cvendor</b>, <b>Cclass</b>, <b>Cbundle</b> as well as <b>Cversion</b> are inherited by all <b>component</b> elements within a <b>bundle</b> section. Only the <b>Cversion</b> attribute can be redefined in the <b>component</b> elements.</p>
+<p >Components of the same <b>Cclass</b> belonging to a different <b>Cbundle</b> shall not be selected concurrently. In this way bundles ensure interoperability across multiple components and restrict the mix and match of components within a <b>Cclass</b>.</p>
 <p >An example of a <b>bundle</b> is shown in the <a class="el" href="cp_PackTutorial.html#cp_BundleExample">Create a BSP Bundle</a> section where the bundle is used to deliver board support files for a certain development platform.</p>
 <h1><a class="anchor" id="Component_Files"></a>
 Component Files</h1>
@@ -382,8 +384,7 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>Cvariant </td><td>Defines a variant of a component. Is an optional part of the component ID. The variant specifier is a brief string (for example: <span class="XML-Token">release</span>, <span class="XML-Token">debug</span>).  </td><td>xs:string [1..32] </td><td>optional  </td></tr>
 <tr>
-<td>Cversion </td><td>Defines the version of this component. Is a mandatory part of the component ID. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. <br  />
- <span class="XML-Token">Must not be specified for a component within a bundle.</span> </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>required  </td></tr>
+<td>Cversion </td><td>Defines the version of this component. Is a mandatory part of the component ID. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>required  </td></tr>
 <tr>
 <td>Capiversion </td><td>For components that are based on an <a class="el" href="pdsc_apis_pg.html">API header files</a>, it defines the version of the API used by this component. It ensures that the API header file with the same or higher version is acceptable for using that component. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>.  </td><td>VersionType </td><td>optional  </td></tr>
 <tr>
