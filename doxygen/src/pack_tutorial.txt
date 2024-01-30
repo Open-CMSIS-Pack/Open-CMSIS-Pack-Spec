@@ -435,9 +435,8 @@ more information.
 
 
 \subsection cp_Bundles Bundles
-A bundle is basically a variant on the \c Cclass level. It specifies the attributes \c Cclass, \c Cversion and optionally
-\c Cgroup and \c Cvendor for a collection of interdependent components. Components within a bundle inherit the attributes
-set by the bundle and must not set these attributes again. Bundles ensure consistency of attributes across multiple
+A bundle is a named set of components, introducing a kind of variant on the \c Cclass level. It specifies the attributes \c Cvendor, \c Cclass and \c Cversion for a collection of interdependent components. Components within a bundle inherit the attributes
+set by the bundle and except for \c Cversion, must not redefine these attributes. Bundles ensure consistency of attributes across multiple
 interworking components and restrict the mix and match of components within a \c Cclass from different solutions.
 In addition to components, a bundle has the mandatory elements \c description and \c doc (for documentation).
 
