@@ -114,7 +114,7 @@ The attributes \b Cvendor, \b Cclass, \b Cbundle as well as \b Cversion are inhe
 Only the \b Cversion attribute can be redefined in the \b component elements.
 
 Components of the same \b Cclass belonging to a different \b Cbundle shall not be selected concurrently. In this way bundles ensure
-interoperability across multiple ocmponents and restrict the max and match of components within a \b Cclass.
+interoperability across multiple components and restrict the mix and match of components within a \b Cclass.
 
 An example of a <b>bundle</b> is shown in the \ref cp_BundleExample section where the bundle is used to deliver board
 support files for a certain development platform.
