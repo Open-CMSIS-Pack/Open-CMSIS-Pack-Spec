@@ -3,16 +3,20 @@
 \page pdsc_components_pg  /package/components element
 
 The element \ref element_components describes software components contained in the Pack.
-A component lists the files that belong to a component and that are relevant for a project. The component itself or each
-individual file may refer to a \ref element_condition "condition" that must resolve to true; if it is false the component
-or file is not applicable in the given context.
+A component lists the files that belong to a component and that are relevant for a project. 
+The component itself or each individual file may refer to a \ref element_condition "condition" that
+must resolve to true; if it is false the component or file is not applicable in the given context.
 
 Each component must have a class (Cclass=), a group (Cgroup=), and a version (Cversion=) which is
-used to identify the component. Optionally, a component may have a bundle (Cbundle=), sub-group (Csub=) and variant (Cvariant=) to add further
-categories. A component is identified by the class/bundle, group, sub-group, variant and version information together with
-the vendor specified by the pack. A component vendor must ensure that the combination of class/bundle, group, sub-group,
-version, and variant is unique and not used by multiple components (after evaluating filter
-\ref pdsc_conditions_pg "conditions").
+used to identify the component. Optionally, a component may have a bundle (Cbundle=), sub-group (Csub=)
+and variant (Cvariant=) to add further categories. A component is identified by the class/bundle,
+group, sub-group, variant and version information together with the vendor specified by the pack or
+explicitly specifying the (Cvendor=) for a component. The component vendor must ensure that the
+combination of class/bundle, group, sub-group, version, and variant is unique and not used by multiple
+components (after evaluating filter \ref pdsc_conditions_pg "conditions").
+
+Note: The selection of multiple variants of the same component is mutually exclusive and must not be
+supported by tools. Graphical user interfaces may use drop down boxes for selecting a component variant.
 
 \b Example
 \code
@@ -486,7 +490,7 @@ A component describes a collection of files (source, header, configuration, libr
   </tr>
   <tr>
     <td>Cvariant</td>
-    <td>Defines a variant of a component. Is an optional part of the component ID. The variant specifier is a brief string (for example: \token{release}, \token{debug}).
+    <td>Defines a variant of a component. Is an optional part of the component ID. The variant specifier is a brief string (for example: \token{release}, \token{debug}). Note: The selection of component variants is mutually exclusive.
     </td>
     <td>xs:string [1..32]</td>
     <td>optional</td>
@@ -528,7 +532,10 @@ A component describes a collection of files (source, header, configuration, libr
   </tr>
   <tr>
     <td>isDefaultVariant</td>
-    <td>Identifies this component variant to be the preferred variant for tool driven selection through an automated dependency resolution algorithm [Version 1.4.0]. Note: It is the component vendor's responsibility to have only a single component variant having this attribute enabled.</td>
+    <td>Identifies this component variant to be the preferred variant for tool driven selection through an automated update algorithm [Version 1.4.0].
+        If in a new version of a component variants are introduced, the default variant is automatically selected if only the component without variant
+        is specified. This variant is supposed to be the most compatible continuation of the previous component version.
+        Note: It is the component vendor's responsibility to have only a single component variant having this attribute enabled.</td>
     <td>xs:boolean</td>
     <td>optional</td>
   </tr>
