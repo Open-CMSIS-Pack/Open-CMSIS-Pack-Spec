@@ -2238,7 +2238,7 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   </tr>
   <tr>
     <td class="XML-Token">Micronas:30</td>
-    <td>TDK-Micronas</td>
+    <td>TDK-Micronas GmbH</td>
     <td>https://www.micronas.tdk.com</td>
   </tr>
   <tr>
