@@ -105,7 +105,8 @@ $(document).ready(function(){initNavTree('pdsc_components_pg.html',''); initResi
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >The element <a class="el" href="pdsc_components_pg.html#element_components">/package/components</a> describes software components contained in the Pack. A component lists the files that belong to a component and that are relevant for a project. The component itself or each individual file may refer to a <a class="el" href="pdsc_conditions_pg.html#element_condition">condition</a> that must resolve to true; if it is false the component or file is not applicable in the given context.</p>
-<p >Each component must have a class (Cclass=), a group (Cgroup=), and a version (Cversion=) which is used to identify the component. Optionally, a component may have a bundle (Cbundle=), sub-group (Csub=) and variant (Cvariant=) to add further categories. A component is identified by the class/bundle, group, sub-group, variant and version information together with the vendor specified by the pack. A component vendor must ensure that the combination of class/bundle, group, sub-group, version, and variant is unique and not used by multiple components (after evaluating filter <a class="el" href="pdsc_conditions_pg.html">conditions</a>).</p>
+<p >Each component must have a class (Cclass=), a group (Cgroup=), and a version (Cversion=) which is used to identify the component. Optionally, a component may have a bundle (Cbundle=), sub-group (Csub=) and variant (Cvariant=) to add further categories. A component is identified by the class/bundle, group, sub-group, variant and version information together with the vendor specified by the pack or explicitly specifying the (Cvendor=) for a component. The component vendor must ensure that the combination of class/bundle, group, sub-group, version, and variant is unique and not used by multiple components (after evaluating filter <a class="el" href="pdsc_conditions_pg.html">conditions</a>).</p>
+<p >Note: The selection of multiple variants of the same component is mutually exclusive and must not be supported by tools. Graphical user interfaces may use drop down boxes for selecting a component variant.</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;components&gt;</div>
@@ -382,7 +383,7 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>Csub </td><td>Defines the component subgroup. Is an optional part of the component ID. The type is described in <a class="el" href="pdsc_components_pg.html#CsubType">Component Subgroups</a>. </td><td><a class="el" href="pdsc_components_pg.html#CsubType">CsubType</a> </td><td>optional  </td></tr>
 <tr>
-<td>Cvariant </td><td>Defines a variant of a component. Is an optional part of the component ID. The variant specifier is a brief string (for example: <span class="XML-Token">release</span>, <span class="XML-Token">debug</span>).  </td><td>xs:string [1..32] </td><td>optional  </td></tr>
+<td>Cvariant </td><td>Defines a variant of a component. Is an optional part of the component ID. The variant specifier is a brief string (for example: <span class="XML-Token">release</span>, <span class="XML-Token">debug</span>). Note: The selection of component variants is mutually exclusive.  </td><td>xs:string [1..32] </td><td>optional  </td></tr>
 <tr>
 <td>Cversion </td><td>Defines the version of this component. Is a mandatory part of the component ID. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>required  </td></tr>
 <tr>
@@ -394,7 +395,7 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>maxInstances </td><td>Maximum allowed instances of a component in a project. Default is <span class="XML-Token">1</span> for one instance. The range is [<span class="XML-Token">1..10</span>]. </td><td>xs:integer </td><td>optional  </td></tr>
 <tr>
-<td>isDefaultVariant </td><td>Identifies this component variant to be the preferred variant for tool driven selection through an automated dependency resolution algorithm [Version 1.4.0]. Note: It is the component vendor's responsibility to have only a single component variant having this attribute enabled. </td><td>xs:boolean </td><td>optional  </td></tr>
+<td>isDefaultVariant </td><td>Identifies this component variant to be the preferred variant for tool driven selection through an automated update algorithm [Version 1.4.0]. If in a new version of a component variants are introduced, the default variant is automatically selected if only the component without variant is specified. This variant is supposed to be the most compatible continuation of the previous component version. Note: It is the component vendor's responsibility to have only a single component variant having this attribute enabled. </td><td>xs:boolean </td><td>optional  </td></tr>
 <tr>
 <td>generator </td><td>This links the component with a generator description located in the same file. If this component is selected by the run time configuration, the tool will test whether the configured <a class="el" href="pdsc_generators_pg.html">gpdsc file</a> does already exist or not. If the file is not present, then the command specified by the referenced generator section, will be invoked. If the gpdsc file already exists it will be included into the project </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
