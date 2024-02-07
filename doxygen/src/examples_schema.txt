@@ -230,7 +230,9 @@ Values for <b>\token{deprecated attributes}</b> are read from the board descript
 <hr>
 
 \section element_example_project /package/examples/example/project
-A project element is a sequence of \em environment elements that describe the name of the environment and the project file to be loaded.
+Different development tools store project information in tool specific file formats. A single example
+may include project files for multiple tools or environments.
+Therefore the project element is a sequence of one or more \em environment elements that describe the name of the environment and the project file to be loaded by the respective development tool.
 
 <b>Example:</b>
 \code
@@ -276,7 +278,7 @@ The environment element describes the name of the environment and the project fi
 <project>
   <environment name="uv" folder="./ARM" load="ARM/Blinky.uvproj"/>
   <environment name="iar" folder="./IAR" load="IAR/Blinky.ewarm" />
-  <environment name="cmsis" folder="./CMSIS/ load="CMSIS/Blinky.csolution.yml" />
+  <environment name="csolution" folder="./CMSIS/ load="CMSIS/Blinky.csolution.yml" />
 </project>
 \endcode
 
@@ -299,13 +301,15 @@ The environment element describes the name of the environment and the project fi
   </tr>
   <tr>
     <td>name</td>
-    <td>Name of the required tool-chain (for example: \token{uv}, \token{iar}, etc.)</td>
+    <td>Identifier of the development tool (for example: \token{uv}, \token{iar}, \token{csolution}, etc.)
+        targeted by the project file specified by the load attribute.</td>
     <td>xs:string</td>
     <td>required</td>
   </tr>
   <tr>
     <td>load</td>
-    <td>Specifies the project file with extension. A path relative to \em folder attribute of the element \ref element_example can be appended.</td>
+    <td>Specifies the project file with extension. A path relative to \em folder attribute of the element
+        \ref element_example can be appended.</td>
     <td>xs:string</td>
     <td>required</td>
   </tr>
