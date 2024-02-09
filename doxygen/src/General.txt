@@ -84,6 +84,12 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.31</td>
+    <td>
+     - added new processor Cortex-M52
+    </td>
+  </tr>  
+  <tr>
     <td>1.7.30</td>
     <td>
      - renamed componentExts as extensions in the schema.
