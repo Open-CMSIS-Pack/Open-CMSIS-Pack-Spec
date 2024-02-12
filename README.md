@@ -27,7 +27,7 @@ Contributions are accepted under Apache 2.0. Only submit contributions where you
 Please feel free to raise an [issue on GitHub](https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack/issues)
 to start the discussion about your proposal.
 
-We are in the early days and discuss proposals which we are dividing into 5 work streams with a dedicated label:
+We discuss proposals which we are dividing into 5 work streams with a dedicated label:
 
 - **Core Library Components** - common libraries that are re-used across a range of tools. The PoC Tools are the first consumers, but the library components can also be used to create commercial derivatives or inhouse tooling.
 - **Overall Project Concept** - procedures to generate packs and application software. We will consider complex applications such as multi-core processor systems or secure/non-secure partitions.
@@ -62,3 +62,28 @@ In the spirit of openness we will be tagging issues with the following:
 - **DONE** - We consider this issue as resolved - please review and close it. In case of no further activity this issues will be closed after a week.
 
 - **duplicate** - This issue is already addressed elsewhere, see comment with provided references.
+
+### Pull Requests
+When raising a Pull Request (PR) changing the PACK.xsd schema file, please ensure that the version, date of change, release-notes and 
+documentation get updated consistently throughout your PR. 
+
+Rules: 
+- Breaking/incompatible changes are not accepted and require further discussion
+
+Exceptions: 
+- Extending the `DeviceVendorEnum` does not require a version increment of the schema version.
+
+Step 1:
+Edit the PACK.xsd file updating `<date>=dd. mmm yyyy` and `<version>=major.minor.patch` (Semantic Version) in:
+- `$Date: <date>`
+- `$Revision: <version>`
+- `SchemaVersion=<version>`
+- Release Notes: `<date>: v<version>` and add itemized changes
+- `<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" ... version="<version>">`
+
+Step 2:
+Edit the doxygen documentation located in "doxygen/src/*.txt"
+- add/update the documentation to reflect the proposed change following the existing document structure.
+- update the Release Notes section in "doxygen/src/General.txt" matching the itemized list in PACK.xsd.
+- update the version of the documentation `PROJECT_NUMBER= "Version <version>"` in "doxygen/pack.dxy" to match the schema version.
+
