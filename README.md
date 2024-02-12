@@ -70,9 +70,6 @@ documentation get updated consistently throughout your PR.
 Rules: 
 - Breaking/incompatible changes are not accepted and require further discussion
 
-Exceptions: 
-- Extending the `DeviceVendorEnum` does not require a version increment of the schema version.
-
 Step 1:
 Edit the PACK.xsd file updating `<date>=dd. mmm yyyy` and `<version>=major.minor.patch` (Semantic Version) in:
 - `$Date: <date>`
