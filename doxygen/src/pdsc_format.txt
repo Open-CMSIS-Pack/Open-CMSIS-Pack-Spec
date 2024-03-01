@@ -60,6 +60,7 @@ found in the ARM.CMSIS pack in the directory .\\CMSIS\\Utilities.
 
 The \ref packFormat is structured using grouping elements and contains the following top level elements:
  - \subpage pdsc_package_pg "<package>": describes package related information like vendor, package name, description, version. Is the root element.
+ - \subpage element_description "<description>": brief description of the software pack with optional link to Markdown overview documentation.
  - \subpage element_keywords "<keywords>": lists keywords to search for packages. Can be used for search engines.
  - \subpage element_repository "<repository>": specifies the URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
@@ -216,9 +217,9 @@ assists searching for packages.
   </tr>
   \anchor package_description
   <tr>
-    <td>description</td>
-    <td>Brief description of the \ref cp_SWComponents "Software Pack".</td>
-    <td>xs:string </td>
+    <td>\ref element_description "description"</td>
+    <td>Brief description of the \ref cp_SWComponents "Software Pack" (maximum 256 characters, recommended 128 characters).</td>
+    <td>BriefDescType</td>
     <td>1..1 </td>
   </tr>
   \anchor package_url
@@ -444,6 +445,51 @@ this example applies to \ref element_release.
 
 /**************************************************************************************************/
 /**
+\page element_description /package/description element
+
+Contains a brief description of the \ref cp_SWComponents "Software Pack". Optionally with link to an file with overview documentation in Markdown format.
+This Markdown file is indented for web pages that offer software packs in form of a marketplace.
+
+\b Example:
+\code
+<package>
+  ...
+  <description overview=".\Documentation\README.md>Keil MDK Middleware: File System, Network IPv4/IPv6, USB Device/Host</description>
+  ...
+</package>
+\endcode
+
+<p>&nbsp;</p>
+
+<table class="cmtable" summary="Element: description">
+  <tr>
+    <th>Parent Element</th>
+    <th colspan="3">Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_package "package"</td>
+    <td colspan=3>\ref element_package</td>
+  </tr>
+  <tr>
+    <th>Attributes</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>overview</td>
+    <td>File path, file name, and file extension in the format path/name.extension. The file path is relative to the root directory of the Pack and contains an overview documentation in Markdown format (file extension *.md).</td>
+    <td>xs:string</td>
+    <td>required</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<hr>
+*/
+
+/**************************************************************************************************/
+/**
 \page element_keywords /package/keywords element
 
 Is the group element for wrapping keywords, which can be used to find a Pack.
@@ -464,7 +510,7 @@ Keywords can be exported to web pages to provide information for search engines,
 
 <p>&nbsp;</p>
 
-<table class="cmtable" summary="Root Element: Package">
+<table class="cmtable" summary="Element: dominate">
   <tr>
     <th>Parent Element</th>
     <th colspan="3">Element Chain</th>

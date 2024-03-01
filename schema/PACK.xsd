@@ -23,8 +23,12 @@
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.31
+  SchemaVersion=1.7.32
 
+  29. Feb 2024: v1.7.32
+   - FileScopeAttributeType 'privat' and 'public' also used for header files.
+   - attribute select also permitted for component files type header.
+   - description text size limited with BriefDescType.
   08. Feb 2024: v1.7.31
    - added new processor Cortex-M52
   15. Nov 2023: v1.7.30
@@ -212,7 +216,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.31">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.32">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -771,6 +775,13 @@
     <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
   </xs:complexType>
   
+  <!-- Brief Description Type-->
+  <xs:complexType name="BriefDescType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="256" />
+    </xs:restriction>
+  </xs:complexType>
+
   <!-- Description Type-->
   <xs:complexType name="DescriptionType">
     <xs:simpleContent>
@@ -1216,9 +1227,9 @@
   <xs:simpleType name="FileAttributeType">
     <xs:restriction base="xs:token">
       <xs:enumeration value="config" />
-      <xs:enumeration value="copy" />
+      <xs:enumeration value="copy" />        <!-- deprecated 1.7.32: should be not used -->
       <xs:enumeration value="template" />
-      <xs:enumeration value="interface" />
+      <xs:enumeration value="interface" />   <!-- deprecated 1.7.32: should be not used -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -1236,10 +1247,8 @@
   <!-- file scope attribute type (header and include only) -->
   <xs:simpleType name="FileScopeAttributeType">
     <xs:restriction base="xs:token">
-      <xs:enumeration value="visible" /> <!-- header is displayed -->
-      <xs:enumeration value="hidden" /> <!-- header is not displayed -->
-      <xs:enumeration value="public" /> <!-- include path is added globablly -->
-      <xs:enumeration value="private" /> <!-- include path is added locally -->
+      <xs:enumeration value="public" />  <!-- include path/header access at project level globablly -->
+      <xs:enumeration value="private" /> <!-- include path/header access only within component -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -1380,7 +1389,7 @@
   <!-- API type definition -->
   <xs:complexType name="ApiType">
     <xs:sequence>
-      <xs:element name="description" type="xs:string" minOccurs="0" />
+      <xs:element name="description" type="BriefDescType" minOccurs="0" />
       <!-- list of files / content -->
       <xs:element name="files">
         <xs:complexType>
@@ -1409,7 +1418,7 @@
 
   <xs:complexType name="ConditionType">
     <xs:sequence>
-      <xs:element name="description" type="xs:string" minOccurs="0" />
+      <xs:element name="description" type="BriefDescType" minOccurs="0" />
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="accept"  type="FilterType" />
         <xs:element name="require" type="FilterType" />
@@ -1527,7 +1536,7 @@
 
   <xs:group name="BoardElementsGroup">
     <xs:choice>
-      <xs:element name="description"      type="xs:string"            minOccurs="0" />
+      <xs:element name="description"      type="BriefDescType"        minOccurs="0" />
       <xs:element name="feature"          type="BoardFeatureType"     maxOccurs="unbounded" />
       <xs:element name="mountedDevice"    type="BoardsDeviceType"     maxOccurs="unbounded" />
       <xs:element name="compatibleDevice" type="CompatibleDeviceType" maxOccurs="unbounded" />
@@ -1641,7 +1650,7 @@
   <xs:complexType name="ExampleType">
     <xs:sequence>
       <!-- brief example description -->
-      <xs:element name="description" type="xs:string" />
+      <xs:element name="description" type="BriefDescType" />
       <!-- references the board -->
       <xs:element name="board" type="BoardReferenceType" maxOccurs="unbounded" />
       <!-- lists environments with their load files -->
@@ -1675,7 +1684,7 @@
   <xs:complexType name="ClayerType">
     <xs:sequence>
       <!-- brief clayer description -->
-      <xs:element name="description" type="xs:string" />
+      <xs:element name="description" type="BriefDescType" />
     </xs:sequence>
     <!-- display name of the clayer -->
     <xs:attribute name="name" type="xs:string" use="required" />
@@ -1717,7 +1726,7 @@
     <xs:attribute name="scope" type="FileScopeAttributeType" use="optional" />
     <!-- file item action attribute : config (copy to project, template, interface)  -->
     <xs:attribute name="attr" type="FileAttributeType" use="optional" />
-    <!-- description for "template" or "interface" files. Multiple items are combined when they have the same select attribute  -->
+    <!-- description for "template", "interface", or "header" files. Multiple items are combined when they have the same select attribute  -->
     <xs:attribute name="select" type="xs:string" use="optional" />
     <!-- path + filename + extension -->
     <xs:attribute name="name" type="xs:string" use="required" />
@@ -2022,7 +2031,7 @@
       <xs:element name="command" type="xs:string" minOccurs="0" />
       <!-- deprecated - use argument tags under exe, web and or eclipse-->
       <xs:element name="arguments" type="GeneratorCommandArgumentsType" minOccurs="0" />
-      <xs:element name="description" type="xs:string" />
+      <xs:element name="description" type="BriefDescType" />
       <xs:element name="select" type="GeneratorDeviceSelectType" minOccurs="0" />
       <xs:element name="workingDir" type="xs:string" minOccurs="0" />
       <xs:element name="exe" type="ExeGeneratorType" minOccurs="0" maxOccurs="5" />
@@ -2097,7 +2106,7 @@
         <!-- company name of the developer/maintainer of this package -->
         <xs:element name="vendor" type="RestrictedString" minOccurs="1" />
         <!-- brief description of the content and purpose of the package -->
-        <xs:element name="description" type="xs:string" minOccurs="1" />
+        <xs:element name="description" type="BriefDescType" minOccurs="1" />
         <!-- download location of this PDSC and corresponding package file -->
         <xs:element name="url" type="xs:anyURI" minOccurs="1" />
         <!-- optional tag to override component versions from other packs -->
@@ -2180,7 +2189,7 @@
               <xs:element name="bundle" minOccurs="1" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="description" type="xs:string" />
+                    <xs:element name="description" type="BriefDescType" />
                     <xs:element name="doc" type="xs:string" />
                     <xs:element name="component" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
@@ -2188,7 +2197,7 @@
                           <!-- a component can be deprecated if it is no longer maintained-->
                           <xs:element name="deprecated" type="xs:boolean" minOccurs="0" default="false" />
                           <!-- short component description displayed -->
-                          <xs:element name="description" type="xs:string" />
+                          <xs:element name="description" type="BriefDescType" />
                           <!-- content to be added to generated RTE_Component.h file -->
                           <xs:element name="RTE_Components_h" type="xs:string" minOccurs="0" />
                           <!-- content to be added to generated Pre_Include_Global.h file -->
@@ -2267,7 +2276,7 @@
                     <!-- a component can be deprecated if it is no longer maintained-->
                     <xs:element name="deprecated" type="xs:boolean" minOccurs="0" default="false" />
                     <!-- short component description displayed -->
-                    <xs:element name="description" type="xs:string" />
+                    <xs:element name="description" type="BriefDescType" />
                     <!-- content to be added to generated RTE_Component.h file -->
                     <xs:element name="RTE_Components_h" type="xs:string" minOccurs="0" />
                     <!-- content to be added to generated Pre_Include_Global.h file -->

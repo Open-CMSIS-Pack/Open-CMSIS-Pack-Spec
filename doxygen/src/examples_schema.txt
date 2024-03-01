@@ -133,8 +133,8 @@ treated as a single example.
   </tr>
   <tr>
     <td>description</td>
-    <td>Briefly documents the purpose and scope of the example. The test can be displayed in an example selector.</td>
-    <td>xs:string</td>
+    <td>Briefly documents the purpose and scope of the example (maximum 256 characters, recommended 128 characters). The test can be displayed in an example selector.</td>
+    <td>BriefDescType</td>
     <td>1</td>
   </tr>
   <tr>

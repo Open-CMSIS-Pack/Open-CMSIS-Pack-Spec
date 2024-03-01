@@ -101,8 +101,8 @@ filter part of the condition resolves to true.
   </tr>
   <tr>
     <td>description</td>
-    <td>Briefly documents the purpose and scope of the clayer.</td>
-    <td>xs:string</td>
+    <td>Briefly documents the purpose and scope of the clayer (maximum 256 characters, recommended 128 characters).</td>
+    <td>BriefDescType</td>
     <td>1</td>
   </tr>
 </table>
