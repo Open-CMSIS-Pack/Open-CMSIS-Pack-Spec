@@ -60,7 +60,7 @@ found in the ARM.CMSIS pack in the directory .\\CMSIS\\Utilities.
 
 The \ref packFormat is structured using grouping elements and contains the following top level elements:
  - \subpage pdsc_package_pg "<package>": describes package related information like vendor, package name, description, version. Is the root element.
- - \subpage element_description "<description>": brief description of the software pack with optional link to Markdown overview documentation.
+ - \subpage element_package_description "<description>": brief description of the software pack with optional link to Markdown overview documentation.
  - \subpage element_keywords "<keywords>": lists keywords to search for packages. Can be used for search engines.
  - \subpage element_repository "<repository>": specifies the URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
@@ -217,7 +217,7 @@ assists searching for packages.
   </tr>
   \anchor package_description
   <tr>
-    <td>\ref element_description "description"</td>
+    <td>\ref element_package_description "description"</td>
     <td>Brief description of the \ref cp_SWComponents "Software Pack" (maximum 256 characters, recommended 128 characters).</td>
     <td>BriefDescType</td>
     <td>1..1 </td>
@@ -445,7 +445,7 @@ this example applies to \ref element_release.
 
 /**************************************************************************************************/
 /**
-\page element_description /package/description element
+\page element_package_description /package/description element
 
 Contains a brief description of the \ref cp_SWComponents "Software Pack". Optionally with link to an file with overview documentation in Markdown format.
 This Markdown file is indented for web pages that offer software packs in form of a marketplace.
