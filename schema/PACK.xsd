@@ -26,7 +26,7 @@
   SchemaVersion=1.7.32
 
   29. Feb 2024: v1.7.32
-   - FileScopeAttributeType 'privat' and 'public' also used for header files.
+   - FileScopeAttributeType 'private' and 'public' also used for header files.
    - attribute select also permitted for component files type header.
    - description text size limited with BriefDescType.
   08. Feb 2024: v1.7.31
@@ -776,11 +776,11 @@
   </xs:complexType>
   
   <!-- Brief Description Type-->
-  <xs:complexType name="BriefDescType">
+  <xs:simpleType name="BriefDescType">
     <xs:restriction base="xs:string">
       <xs:maxLength value="256" />
     </xs:restriction>
-  </xs:complexType>
+  </xs:simpleType>
 
   <!-- Description Type-->
   <xs:complexType name="DescriptionType">
