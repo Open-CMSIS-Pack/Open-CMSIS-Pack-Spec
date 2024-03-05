@@ -84,6 +84,14 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.32</td>
+    <td>
+     - FileScopeAttributeType 'private' and 'public' also used for header files.
+     - attribute select also permitted for component files type header.
+     - description text size limit documented with BriefDescType.
+    </td>
+  </tr>
+  <tr>
     <td>1.7.31</td>
     <td>
      - added new processor Cortex-M52
