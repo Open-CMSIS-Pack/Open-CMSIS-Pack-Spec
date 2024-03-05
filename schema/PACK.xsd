@@ -18,14 +18,14 @@
   limitations under the License.
 
 
-  $Date:        05. May 2024
+  $Date:        05. Mar 2024
   $Revision:    1.7.32
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.32
 
-  29. Feb 2024: v1.7.32
+  05. Mar 2024: v1.7.32
    - FileScopeAttributeType 'private' and 'public' also used for header files.
    - attribute select also permitted for component files type header.
    - description text size limit documented with BriefDescType.
