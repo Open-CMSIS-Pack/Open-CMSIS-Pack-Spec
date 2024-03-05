@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.31</span>
+   &#160;<span id="projectnumber">Version 1.7.32</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -247,17 +247,17 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <tr>
 <td>Cvendor<b>*</b> </td><td>Specifies a component vendor name. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>Cbundle<b>*</b> </td><td>Specifies a component class bundle name. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Cbundle<b>*</b> </td><td>Specifies a component class bundle name. Requires that Cclass is also specified. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>Cclass<b>*</b> </td><td>Specifies a component class name. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CclassType">Component Classes</a>. </td><td><a class="el" href="element_taxonomy.html#CclassType">CclassType</a> </td><td>optional  </td></tr>
 <tr>
-<td>Cgroup<b>*</b> </td><td>Specifies a software Component Group. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CgroupType">Component Groups</a>. </td><td><a class="el" href="element_taxonomy.html#CgroupType">CgroupType</a> </td><td>optional  </td></tr>
+<td>Cgroup<b>*</b> </td><td>Specifies a software Component Group. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CgroupType">Component Groups</a>. Requires that Cclass is also specified. </td><td><a class="el" href="element_taxonomy.html#CgroupType">CgroupType</a> </td><td>optional  </td></tr>
 <tr>
-<td>Csub<b>*</b> </td><td>Specifies a software component subgroup. The type is described in <a class="el" href="pdsc_components_pg.html#CsubType">Component Subgroups</a>. </td><td><a class="el" href="pdsc_components_pg.html#CsubType">CsubType</a> </td><td>optional  </td></tr>
+<td>Csub<b>*</b> </td><td>Specifies a software component subgroup. The type is described in <a class="el" href="pdsc_components_pg.html#CsubType">Component Subgroups</a>. Requires that Cclass and Cgroup is also specified. </td><td><a class="el" href="pdsc_components_pg.html#CsubType">CsubType</a> </td><td>optional  </td></tr>
 <tr>
-<td>Cvariant<b>*</b> </td><td>Specifies a software component variant. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Cvariant<b>*</b> </td><td>Specifies a software component variant. Requires that Cclass, Cgroup, and Csub (if part of the component definition) is also specified. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>Cversion </td><td>Specifies a software component's version.<ul>
+<td>Cversion </td><td>Specifies a software component's version. Requires that Cclass, Cgroup, and Csub (if part of the component definition) is also specified.<ul>
 <li><b>require Cversion:</b>condition is true if version of component is equal or higher than requested and compatible. According to <a href="https://semver.org/#spec-item-8"><b>SemanticVersioning</b></a> compatibility requires the <b>major version</b> to remain unchanged.</li>
 <li><b>deny Cversion:</b> condition is true if version of component is lower than requested.</li>
 <li>Version ranges are specified with <em>min_version</em><b>:</b><em>max_version</em>. The condition is true if the version of the component is equal or higher than <em>min_version</em> and lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal the version must match exactly. Note: Specifying the <em>min_version</em> e.g <em>Cversion="4.1.0"</em> is identical to the version range <em>Cversion="4.1.0:5.0.0-0"</em>. <br  />

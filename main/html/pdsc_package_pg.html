@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.31</span>
+   &#160;<span id="projectnumber">Version 1.7.32</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -167,7 +167,7 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 <tr>
 <td>vendor </td><td>Name of the supplier or vendor of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. </td><td>xs:string  </td><td>1..1   <a class="anchor" id="package_description"></a> </td></tr>
 <tr>
-<td>description </td><td>Brief description of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. </td><td>xs:string  </td><td>1..1   <a class="anchor" id="package_url"></a> </td></tr>
+<td><a class="el" href="element_package_description.html">description</a> </td><td>Brief description of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a> (maximum 256 characters, recommended 128 characters). </td><td>BriefDescType </td><td>1..1   <a class="anchor" id="package_url"></a> </td></tr>
 <tr>
 <td>url </td><td><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator" target="_blank">HTTP URL</a> or <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI</a> location of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. The URL can be used by installers for downloading, updating, or checking versions. If left empty, the Pack cannot be updated automatically from a server location. </td><td>xs:anyURI  </td><td>1..1   <a class="anchor" id="package_supportContact"></a> </td></tr>
 <tr>

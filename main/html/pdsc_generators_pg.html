@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.31</span>
+   &#160;<span id="projectnumber">Version 1.7.32</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -240,7 +240,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html',''); initResi
 <tr>
 <th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
-<td>description </td><td>Briefly describes the generator tool. </td><td>xs:string </td><td>0..1  </td></tr>
+<td>description </td><td>Briefly describes the generator tool (maximum 256 characters, recommended 128 characters). </td><td>BriefDescType </td><td>0..1  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_generators_pg.html#element_gen_select">select</a> </td><td>Complex type specifying the configured device. A device is uniquely identified by vendor, name or variant and processor name in case of devices with multiple processors. </td><td>GeneratorSelectType </td><td>0..1  </td></tr>
 <tr>

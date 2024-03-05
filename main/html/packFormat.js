@@ -6,6 +6,7 @@ var packFormat =
     [ "/package element", "pdsc_package_pg.html", [
       [ "/package", "pdsc_package_pg.html#element_package", null ]
     ] ],
+    [ "/package/description element", "element_package_description.html", null ],
     [ "/package/keywords element", "element_keywords.html", null ],
     [ "/package/repository element", "element_repository.html", null ],
     [ "/package/dominate element", "element_dominate.html", null ],

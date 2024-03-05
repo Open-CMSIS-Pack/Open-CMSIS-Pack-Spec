@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.31</span>
+   &#160;<span id="projectnumber">Version 1.7.32</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -352,7 +352,7 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
-<td>description </td><td>Brief description of the bundle </td><td>xs:string </td><td>1..1  </td></tr>
+<td>description </td><td>Brief description of the bundle (maximum 256 characters, recommended 128 characters). </td><td>BriefDescType </td><td>1..1  </td></tr>
 <tr>
 <td>doc </td><td>Documentation for the bundle: File path, file name, and file extension in the format <b>path/name.extension</b>. The file path is relative to the root directory of the Pack. </td><td>xs:string </td><td>1..1  </td></tr>
 <tr>
@@ -409,7 +409,7 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>deprecated </td><td>When set to <span class="XML-Token">true</span>, then the component is deprecated and no longer maintained. Default is <span class="XML-Token">false</span> to indicate an actively maintained component. </td><td>xs:boolean  </td><td>0..1   </td></tr>
 <tr>
-<td>description </td><td>Brief description of the component. </td><td>xs:string  </td><td>1..1  </td></tr>
+<td>description </td><td>Brief description of the component (maximum 256 characters, recommended 128 characters). </td><td>BriefDescType </td><td>1..1  </td></tr>
 <tr>
 <td>RTE_Components_h </td><td>Source code that is copied into the file <a class="el" href="pdsc_components_pg.html#RTE_Components_h">RTE_Components.h</a> when the component is selected by the run time environment configuration. </td><td>xs:string  </td><td>0..1   </td></tr>
 <tr>
@@ -542,13 +542,13 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <td>language </td><td>Defines the language of the file category <span class="XML-Token">source</span>, <span class="XML-Token">header</span>, <span class="XML-Token">include</span>. Select one of the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileLanguageAttributeType">File Language Attribute</a>. If not specified, a source file is identified based on known file extensions, header files and include paths will be applied for all tools. </td><td><a class="el" href="pdsc_components_pg.html#FileLanguageAttributeType">FileLanguageAttributeType</a> </td><td>optional  </td></tr>
 <tr>
-<td>scope </td><td>Defines the visibility of <span class="XML-Token">header</span> and <span class="XML-Token">include</span>. Select one of the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileScopeAttributeType">File Scope Attribute</a>. If not specified, a header file is considered <span class="XML-Token">visible</span> and an include path is considered <span class="XML-Token">public</span>. </td><td><a class="el" href="pdsc_components_pg.html#FileScopeAttributeType">FileScopeAttributeType</a> </td><td>optional </td></tr>
+<td>scope </td><td>Defines the visibility of <span class="XML-Token">header</span> and <span class="XML-Token">include</span>. Select one of the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileScopeAttributeType">File Scope Attribute</a>. If not specified, a header file or an include path is considered <span class="XML-Token">public</span>. </td><td><a class="el" href="pdsc_components_pg.html#FileScopeAttributeType">FileScopeAttributeType</a> </td><td>optional </td></tr>
 <tr>
 <td>attr </td><td>Defines the special use and handling of a file. Select a predefined value as defined in the table <a class="el" href="pdsc_components_pg.html#FileAttributeEnum">File Attributes</a>.  </td><td><a class="el" href="pdsc_components_pg.html#FileAttributeEnum">FileAttributeEnum</a> </td><td>optional  </td></tr>
 <tr>
 <td>condition </td><td>Enter the identifier (attribute <em><b>id</b></em>) of a <a class="el" href="pdsc_conditions_pg.html#element_condition">condition</a>. The element is used if the condition resolves to <span class="XML-Token">true</span>. If the condition resolves to <span class="XML-Token">false</span>, then the element will be ignored. For example, a library might be specific for a certain toolchain or processor instruction set. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>select </td><td>Brief description and purpose of the file. The <b><em>select</em></b> attribute is <b>required</b> when <b><em>attr</em></b> is set to <span class="XML-Token">template</span>. When multiple template files of a component have the same <b><em>select</em></b> string, they are treated as a single selectable template. This way, multiple template or interface files can be bundled. </td><td>xs:string </td><td>optional  </td></tr>
+<td>select </td><td>Brief description and purpose of the file. The <b><em>select</em></b> attribute is <b>required</b> when <b><em>attr</em></b> is set to <span class="XML-Token">template</span>. When multiple template files of a component have the same <b><em>select</em></b> string, they are treated as a single selectable template. This way, multiple template or interface files can be bundled. The <b><em>select</em></b> attribute is <b>optional</b> for files with <b><em>category</em></b> <span class="XML-Token">header</span> to indicate the usage of a header file.  </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>src </td><td>Path information. The path is specified relative to the Pack Description File. If <em><b>category</b> is</em> set to <span class="XML-Token">library</span>, then the <em><b>src</b> string</em> can contain a list of directory paths separated by semicolons. A debugger will search those paths for locating the source files of the modules archived in the library supporting the debugging of library code. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
@@ -571,7 +571,9 @@ Pre_Include_Local_Component_h</h1>
 </td></tr>
 </table>
 <dl class="section note"><dt>Note</dt><dd>Header files with the attribute <span class="XML-Token">config</span> must be located in a directory within the pack that is not otherwise specified as an "include folder" of this or any other component's files of the category "header" or "include". For example: <pre class="fragment">&lt;file category="header"  name="src/config/user_config.h" attr="config" version="1.0.0" /&gt;
-</pre> Config files are copied into the project folder and are adopted specifically for that project. Due to the include path search order of the compiler, chances exist that the unmodified header file in the pack repository is found first and used by the compiler (creating unexpected results).</dd></dl>
+</pre> Config files are copied into the project folder and are adopted specifically for that project. Due to the include path search order of the compiler, chances exist that the unmodified header file in the pack repository is found first and used by the compiler (creating unexpected results).</dd>
+<dd>
+The attribute <span class="XML-Token">copy</span> is deprecated and should no longer be used.</dd></dl>
 <p >&#160;</p>
 <p ><a class="anchor" id="FileCategoryEnum"></a><b>Table: File Categories</b></p>
 <p >File category types define the use of component files within the application. Typically, these files are added to the project and processed by the build tools.</p>
@@ -646,7 +648,7 @@ Pre_Include_Local_Component_h</h1>
 <p >&#160;</p>
 <hr  />
 <p ><a class="anchor" id="FileScopeAttributeType"></a><b>Table: File Scope Attribute</b></p>
-<p >File scope attribute type defines the visibility of <span class="XML-Token">header</span> file and <span class="XML-Token">include</span> path file categories. Based on the specified scope header files are <span class="XML-Token">visible</span> or <span class="XML-Token">hidden</span> and include paths are <span class="XML-Token">public</span> or <span class="XML-Token">private</span>.</p>
+<p >File scope attribute type defines the visibility of <span class="XML-Token">header</span> file and <span class="XML-Token">include</span> path file categories. Based on the specified scope header files or include paths are <span class="XML-Token">public</span> or <span class="XML-Token">private</span>.</p>
 <p >File language attribute is used in the following elements:</p><ul>
 <li><a class="el" href="pdsc_components_pg.html#element_file">/package/.../files/file</a></li>
 <li><a class="el" href="pdsc_generators_pg.html#element_gen_file">/package/generators/generator/files/file</a></li>
@@ -655,13 +657,9 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <th>scope= </th><th>Description  </th></tr>
 <tr>
-<td class="XML-Token">visible </td><td>Applies to file elements of category <span class="XML-Token">header</span> only and is ignored otherwise. A token{visible} header file is suggested for inclusion by other modules and is considered the contract of the component.  </td></tr>
+<td class="XML-Token">public </td><td>Applies only to file elements of category <span class="XML-Token">include</span> and category <span class="XML-Token">header</span>; ignored otherwise. A <span class="XML-Token">public</span> include path is added to the command line for building any modules of the specified language. A <span class="XML-Token">public</span> header file is suggested for inclusion by other modules and is considered the contract of the component.  </td></tr>
 <tr>
-<td class="XML-Token">hidden </td><td>Applies to file elements of category <span class="XML-Token">header</span> only and is ignored otherwise. A token{hidden} header file is indicating an internal header file which must not be explicitly included by modules outside of the scope of the component. The information contained in here may change in between component versions but does not affect the compatibility of the visible header files.  </td></tr>
-<tr>
-<td class="XML-Token">public </td><td>Applies to file elements of category <span class="XML-Token">include</span> only and is ignored otherwise. A token{public} include path is added to the command line for building any modules of the specified language.  </td></tr>
-<tr>
-<td class="XML-Token">private </td><td>Applies to file elements of category <span class="XML-Token">include</span> only and is ignored otherwise. A token{private} include path is added to the command line for building any module of the component for the specified language.  </td></tr>
+<td class="XML-Token">private </td><td>Applies only to file elements of category <span class="XML-Token">include</span> and category <span class="XML-Token">header</span>; ignored otherwise. A <span class="XML-Token">private</span> include path is added to the command line for building any module of the component for the specified language. A <span class="XML-Token">hidden</span> header file is indicating an internal header file which must not be explicitly included by modules outside of the scope of the component.  </td></tr>
 </table>
 <p >&#160;</p>
 <hr  />
