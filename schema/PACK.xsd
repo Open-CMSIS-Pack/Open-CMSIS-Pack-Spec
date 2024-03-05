@@ -18,8 +18,8 @@
   limitations under the License.
 
 
-  $Date:        08. Feb 2024
-  $Revision:    1.7.31
+  $Date:        05. May 2024
+  $Revision:    1.7.32
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
