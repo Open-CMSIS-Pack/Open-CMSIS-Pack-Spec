@@ -28,7 +28,7 @@
   29. Feb 2024: v1.7.32
    - FileScopeAttributeType 'private' and 'public' also used for header files.
    - attribute select also permitted for component files type header.
-   - description text size limited with BriefDescType.
+   - description text size limit documented with BriefDescType.
   08. Feb 2024: v1.7.31
    - added new processor Cortex-M52
   15. Nov 2023: v1.7.30
@@ -778,7 +778,8 @@
   <!-- Brief Description Type-->
   <xs:simpleType name="BriefDescType">
     <xs:restriction base="xs:string">
-      <xs:maxLength value="256" />
+      <xs:minLength value="1" /> <!-- must not be empty -->
+      <!-- <xs:maxLength value="256" /> not enforced by schema -->
     </xs:restriction>
   </xs:simpleType>
 
