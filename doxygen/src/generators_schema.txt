@@ -221,8 +221,8 @@ generator element must exist.
   </tr>
   <tr>
     <td>description</td>
-    <td>Briefly describes the generator tool.</td>
-    <td>xs:string</td>
+    <td>Briefly describes the generator tool (maximum 256 characters, recommended 128 characters).</td>
+    <td>BriefDescType</td>
     <td>0..1</td>
   </tr>
   <tr>

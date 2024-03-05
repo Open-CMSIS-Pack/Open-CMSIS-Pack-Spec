@@ -414,8 +414,8 @@ Components enclosed in a bundle must not specify any of the following attributes
   </tr>
   <tr>
     <td>description</td>
-    <td>Brief description of the bundle</td>
-    <td>xs:string</td>
+    <td>Brief description of the bundle (maximum 256 characters, recommended 128 characters).</td>
+    <td>BriefDescType</td>
     <td>1..1</td>
   </tr>
   <tr>
@@ -582,8 +582,8 @@ A component describes a collection of files (source, header, configuration, libr
   </tr>
   <tr>
     <td>description</td>
-    <td>Brief description of the component.</td>
-    <td>xs:string </td>
+    <td>Brief description of the component (maximum 256 characters, recommended 128 characters).</td>
+    <td>BriefDescType</td>
     <td>1..1</td>
   </tr>
   <tr>
@@ -825,7 +825,7 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
   <tr>
     <td>scope</td>
     <td>Defines the visibility of \token{header} and \token{include}. Select one of the predefined value as listed in the table
-        \ref FileScopeAttributeType "File Scope Attribute". If not specified, a header file is considered \token{visible} and an
+        \ref FileScopeAttributeType "File Scope Attribute". If not specified, a header file or an
         include path is considered \token{public}.</td>
     <td>\ref FileScopeAttributeType</td>
     <td>optional</td>
@@ -848,7 +848,8 @@ The file purpose is defined through the <b>category</b> attribute. The <b>name</
     <td>select</td>
     <td>Brief description and purpose of the file. The \b <em>select</em> attribute is \b required when \b <em>attr</em> is set to \token{template}.
     When multiple template files of a component have the same \b <em>select</em> string, they are treated as a single selectable template. This way, multiple template
-    or interface files can be bundled.</td>
+    or interface files can be bundled. The \b <em>select</em> attribute is \b optional for files with \b <em>category</em> \token{header} to indicate the usage of a header file.
+    </td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
@@ -928,6 +929,9 @@ For example:
 Config files are copied into the project folder and are adopted specifically for that project. Due to the include path search order of the compiler,
 chances exist that the unmodified header file in the pack repository is found first and used by the
 compiler (creating unexpected results).
+
+\note
+The attribute \token{copy} is deprecated and should no longer be used.
 
 <p>&nbsp;</p>
 
@@ -1076,8 +1080,7 @@ The table lists the predefined values for a file language.
 \anchor FileScopeAttributeType <b>Table: File Scope Attribute</b>
 
 File scope attribute type defines the visibility of \token{header} file and \token{include} path file categories.
-Based on the specified scope header files are \token{visible} or \token{hidden} and include paths are \token{public} 
-or \token{private}.
+Based on the specified scope header files or include paths are \token{public} or \token{private}.
 
 File language attribute is used in the following elements:
 - \ref element_file
@@ -1090,26 +1093,16 @@ The table lists the predefined values for the scope attribute.
     <th>Description</th>
   </tr>
   <tr>
-    <td class="XML-Token">visible</td>
-    <td>Applies to file elements of category \token{header} only and is ignored otherwise. A token{visible} header file
+    <td class="XML-Token">public</td>
+    <td>Applies only to file elements of category \token{include} and category \token{header}; ignored otherwise. A \token{public} include path
+        is added to the command line for building any modules of the specified language. A \token{public} header file
     is suggested for inclusion by other modules and is considered the contract of the component.</td>
   </tr>
   <tr>
-    <td class="XML-Token">hidden</td>
-    <td>Applies to file elements of category \token{header} only and is ignored otherwise. A token{hidden} header file
-    is indicating an internal header file which must not be explicitly included by modules outside of the scope of the component.
-    The information contained in here may change in between component versions but does not affect the compatibility of the
-    visible header files.</td>
-  </tr>
-  <tr>
-    <td class="XML-Token">public</td>
-    <td>Applies to file elements of category \token{include} only and is ignored otherwise. A token{public} include path
-        is added to the command line for building any modules of the specified language.</td>
-  </tr>
-  <tr>
     <td class="XML-Token">private</td>
-    <td>Applies to file elements of category \token{include} only and is ignored otherwise. A token{private} include path
-        is added to the command line for building any module of the component for the specified language.</td>
+    <td>Applies only to file elements of category \token{include} and category \token{header}; ignored otherwise. A \token{private} include path
+        is added to the command line for building any module of the component for the specified language.  A \token{hidden} header file
+    is indicating an internal header file which must not be explicitly included by modules outside of the scope of the component.</td>
   </tr>
 </table>
 

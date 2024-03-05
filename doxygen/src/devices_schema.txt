@@ -74,6 +74,7 @@ and finalizing with the information on the device level.
       <feature type="CAN" n="2"  name="CAN Interface (2.0b Active)"/>
       <feature type="SDIO" n="1" m="8" name="Supporting SD/MicroSD/MMC"/>
       <feature type="VCC" n="1.8" m="3.6"/>
+      <feature type="NPU" n="Ethos-U55"/>
 
       <!-- sub family level -->
       <subFamily DsubFamily="128 Flash">
@@ -1622,6 +1623,7 @@ LoRa|Standard Version|Maximum Data Rate in Bit/s|LoRa|\<feature type="LoRa"/\>|L
 LTE Cat-M|Standard Version|Maximum Data Rate in Bit/s|LTE Cat-M|\<feature type="LTE-M" n="M1" m="1000000"/\>|LTE-M M1 1 Mbit/s|
 NB-IoT|Standard Version|Maximum Data Rate in Bit/s|NB IoT|\<feature type="NB-IoT" n="NB1" m="250000"/\>|NB-IoT NB1 250 kbit/s|
 NFC|Standard Version|Maximum Data Rate in Bit/s|NFC|\<feature type="NFC" n="ISO 18092"/\>|NFC ISO 18092|
+NPU|Accelerator Type|Optional Value|Neural Processing Unit|\<feature type="NPU" n="Ethos-U55" m="128MACs"/\>|Ethos-U55 128MACs|
 WirelessOther|Standard Version|Maximum Data Rate in Bit/s|Other Wireless Connectivity|\<feature type="WirelessOther" n="MyStandard" m="1000000"/\>|MyStandard 1 Mbit/s Wireless Connectivity|
 	
 \delim

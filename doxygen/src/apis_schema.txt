@@ -202,8 +202,8 @@ by either implementing or using a set of functions, data types, and definitions.
   </tr>
   <tr>
     <td>description</td>
-    <td>Brief summary about the purpose and scope of an API.</td>
-    <td>xs:string</td>
+    <td>Brief summary about the purpose and scope of an API (maximum 256 characters, recommended 128 characters).</td>
+    <td>BriefDescType</td>
     <td>0..1</td>
   </tr>
   <tr>

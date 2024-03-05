@@ -159,8 +159,8 @@ This element provides information to specify the \ref createPackBoard "Board Sup
   </tr>
   <tr>
     <td>description</td>
-    <td>Brief summary of the board</td>
-    <td>xs:string</td>
+    <td>Brief summary of the board (maximum 256 characters, recommended 128 characters).</td>
+    <td>BriefDescType</td>
     <td>1</td>
   </tr>
   <tr>

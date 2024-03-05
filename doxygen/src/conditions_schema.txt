@@ -284,7 +284,7 @@ A \ref element_condition "condition" becomes \token{true} when:
   </tr>
   <tr>
     <td>Cbundle<b>*</b></td>
-    <td>Specifies a component class bundle name.</td>
+    <td>Specifies a component class bundle name. Requires that Cclass is also specified.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
@@ -296,25 +296,25 @@ A \ref element_condition "condition" becomes \token{true} when:
   </tr>
   <tr>
     <td>Cgroup<b>*</b></td>
-    <td>Specifies a software Component Group. Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
+    <td>Specifies a software Component Group. Predefined values can be used as listed in the table \ref CgroupType "Component Groups". Requires that Cclass is also specified.</td>
     <td>\ref CgroupType</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Csub<b>*</b></td>
-    <td>Specifies a software component subgroup. The type is described in \ref CsubType "Component Subgroups".</td>
+    <td>Specifies a software component subgroup. The type is described in \ref CsubType "Component Subgroups". Requires that Cclass and Cgroup is also specified.</td>
     <td>\ref CsubType</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Cvariant<b>*</b></td>
-    <td>Specifies a software component variant.</td>
+    <td>Specifies a software component variant. Requires that Cclass, Cgroup, and Csub (if part of the component definition) is also specified.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Cversion</td>
-    <td>Specifies a software component's version.
+    <td>Specifies a software component's version. Requires that Cclass, Cgroup, and Csub (if part of the component definition) is also specified.
        - <b>require Cversion:</b>condition is true if version of component is equal or higher than requested and compatible.
          According to <a href="https://semver.org/#spec-item-8"><b>SemanticVersioning</b></a> compatibility requires the <b>major version</b> to remain unchanged.
        - <b>deny Cversion:</b> condition is true if version of component is lower than requested.
