@@ -778,7 +778,7 @@
   <!-- Brief Description Type-->
   <xs:simpleType name="BriefDescType">
     <xs:restriction base="xs:string">
-      <xs:minLength value="1" /> <!-- must not be empty -->
+      <!-- <xs:minLength value="1" /> must not be empty -->
       <!-- <xs:maxLength value="256" /> not enforced by schema -->
     </xs:restriction>
   </xs:simpleType>
