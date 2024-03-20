@@ -701,10 +701,12 @@ Multiple \<device> elements can be defined.
 
 \section element_algorithm /package/devices/family/.../algorithm
 
-Specify Flash programming algorithms with the address range and its size.  An algorithm with 
+Specify Flash programming algorithms with the address range and its size.  An algorithm with
 \<default> set to \token{true} gets configured automatically to the download options of the project.
-Algorithms can be defined on various levels. Multiple \<algorithm> elements are possible. If the
-memory range and style are identical, the one on the lower level takes precedence.
+Algorithms can be defined on various levels. If the memory range and style are identical, the one
+on the lower level takes precedence.<br>
+Multiple \<algorithm> elements are possible. But as they are uniquely identified by their names, all
+algorithms must have a different name.
 
 \b Example
 \code
