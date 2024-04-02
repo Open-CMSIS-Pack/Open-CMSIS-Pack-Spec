@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        05. Mar 2024
-  $Revision:    1.7.32
+  $Date:        26. Mar 2024
+  $Revision:    1.7.33
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.32
+  SchemaVersion=1.7.33
 
+  26. Mar 2024: v1.7.33
+   - added 'BOYAMICRO:182' to 'DeviceVendorEnum'
   05. Mar 2024: v1.7.32
    - FileScopeAttributeType 'private' and 'public' also used for header files.
    - attribute select also permitted for component files type header.
@@ -216,7 +218,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.32">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.33">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -246,6 +248,7 @@
       <xs:enumeration value="ArteryTek:143" />
       <xs:enumeration value="Atmel:3" />
       <xs:enumeration value="AutoChips:150" />
+      <xs:enumeration value="BOYAMICRO:168" />
       <xs:enumeration value="BrainChip:168" />
       <xs:enumeration value="Cmsemicon:161" />
       <xs:enumeration value="CSR:118" />
