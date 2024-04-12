@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        26. Mar 2024
-  $Revision:    1.7.33
+  $Date:        12. Apr 2024
+  $Revision:    1.7.34
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.33
+  SchemaVersion=1.7.34
 
+  12. Apr 2024: v1.7.34
+   - added 'Watech:183' to 'DeviceVendorEnum'
   26. Mar 2024: v1.7.33
    - added 'BOYAMICRO:182' to 'DeviceVendorEnum'
   05. Mar 2024: v1.7.32
@@ -218,7 +220,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.33">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.34">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -330,6 +332,7 @@
       <xs:enumeration value="Triad Semiconductor:104" />
       <xs:enumeration value="Unisoc:152" />
       <xs:enumeration value="Vorago:137" />
+      <xs:enumeration value="Watech:183" />
       <xs:enumeration value="Weltrend:148" />
       <xs:enumeration value="WIZnet:122" />
       <xs:enumeration value="Xiamen PengPai Microelectronics Co. Ltd:166" />
