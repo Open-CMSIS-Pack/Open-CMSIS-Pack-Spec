@@ -2414,6 +2414,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.voragotech.com</td>
   </tr>
   <tr>
+    <td class="XML-Token">Watech:183</td>
+    <td>Suzhou Watech Electronics Co., Ltd.</td>
+    <td>https://www.watechelectronics.com/</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Weltrend:148</td>
     <td>Weltrend</td>
     <td>http://www.weltrend.com.tw</td>
