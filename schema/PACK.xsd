@@ -18,15 +18,18 @@
   limitations under the License.
 
 
-  $Date:        12. Apr 2024
-  $Revision:    1.7.34
+  $Date:        18. April 2024
+  $Revision:    1.7.35
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.34
+  SchemaVersion=1.7.35
 
+  18. Apr 2024: v1.7.35
+   - made board element optional in example element
+   - add attribute overview to package description element
   12. Apr 2024: v1.7.34
-   - added 'Watech:183' to 'DeviceVendorEnum'
+-  - added 'Watech:183' to 'DeviceVendorEnum'
   26. Mar 2024: v1.7.33
    - added 'BOYAMICRO:182' to 'DeviceVendorEnum'
   05. Mar 2024: v1.7.32
@@ -788,6 +791,16 @@
       <!-- <xs:maxLength value="256" /> not enforced by schema -->
     </xs:restriction>
   </xs:simpleType>
+
+  <!-- Package Description Type-->
+  <xs:complexType name="PackBriefDescType">
+    <xs:simpleContent>
+      <xs:extension base="BriefDescType">
+        <!-- file reference to overview documentation in Markdown format in pack -->
+        <xs:attribute name="overview" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
 
   <!-- Description Type-->
   <xs:complexType name="DescriptionType">
@@ -1659,7 +1672,7 @@
       <!-- brief example description -->
       <xs:element name="description" type="BriefDescType" />
       <!-- references the board -->
-      <xs:element name="board" type="BoardReferenceType" maxOccurs="unbounded" />
+      <xs:element name="board" type="BoardReferenceType" minOccurs="0" maxOccurs="unbounded" />
       <!-- lists environments with their load files -->
       <xs:element name="project" type="ExampleProjectType" />
       <!-- categories, keywords and used components -->
@@ -2113,7 +2126,7 @@
         <!-- company name of the developer/maintainer of this package -->
         <xs:element name="vendor" type="RestrictedString" minOccurs="1" />
         <!-- brief description of the content and purpose of the package -->
-        <xs:element name="description" type="BriefDescType" minOccurs="1" />
+        <xs:element name="description" type="PackBriefDescType" minOccurs="1" />
         <!-- download location of this PDSC and corresponding package file -->
         <xs:element name="url" type="xs:anyURI" minOccurs="1" />
         <!-- optional tag to override component versions from other packs -->
