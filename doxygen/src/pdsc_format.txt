@@ -480,7 +480,7 @@ This Markdown file is indented for web pages that offer software packs in form o
     <td>overview</td>
     <td>File path, file name, and file extension in the format path/name.extension. The file path is relative to the root directory of the Pack and contains an overview documentation in Markdown format (file extension *.md).</td>
     <td>xs:string</td>
-    <td>required</td>
+    <td>optional</td>
   </tr>
 </table>
 
