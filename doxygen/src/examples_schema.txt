@@ -139,15 +139,15 @@ treated as a single example.
   </tr>
   <tr>
     <td>\ref element_example_board "board"</td>
-    <td>Complex type providing a reference to a board description using board name and vendor.</td>.
+    <td>Complex type providing a reference to a board description using board name and vendor.</td>
     <td>BoardReferenceType</td>
-    <td>1</td>
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref element_example_project "project"</td>
 	<td>Complex type describing the project files for different environments</td>
 	<td>ExampleProjectType</td>
-	<td>1..* </td>
+	<td>1</td>
   </tr>
   <tr>
     <td>\ref element_example_attributes "attributes"</td>
