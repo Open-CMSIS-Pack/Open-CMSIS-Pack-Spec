@@ -346,7 +346,8 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <hr  />
 <h1><a class="anchor" id="element_algorithm"></a>
 /package/devices/family/.../algorithm</h1>
-<p >Specify Flash programming algorithms with the address range and its size. An algorithm with &lt;default&gt; set to <span class="XML-Token">true</span> gets configured automatically to the download options of the project. Algorithms can be defined on various levels. Multiple &lt;algorithm&gt; elements are possible. If the memory range and style are identical, the one on the lower level takes precedence.</p>
+<p >Specify Flash programming algorithms with the address range and its size. An algorithm with &lt;default&gt; set to <span class="XML-Token">true</span> gets configured automatically to the download options of the project. Algorithms can be defined on various levels. If the memory range and style are identical, the one on the lower level takes precedence.<br  />
+ Multiple &lt;algorithm&gt; elements are possible. But as they are uniquely identified by their names, all algorithms must have a different name.</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;STM32F4&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;!-- use <span class="keywordflow">for</span> all devices of the family  --&gt;</div>
