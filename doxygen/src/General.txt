@@ -84,6 +84,26 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.35</td>
+    <td>
+     - made board element optional in example element
+     - added attribute overview to package description element
+     - fixed 'BOYAMICRO' vendor value in \ref DeviceVendorEnum "DeviceVendorEnum"
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.34</td>
+    <td>
+     - added 'Watech:183' to \ref DeviceVendorEnum "DeviceVendorEnum"
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.33</td>
+    <td>
+     - added 'BOYAMICRO:182' to \ref DeviceVendorEnum "DeviceVendorEnum"
+    </td>
+  </tr>
+  <tr>
     <td>1.7.32</td>
     <td>
      - FileScopeAttributeType 'private' and 'public' also used for header files.

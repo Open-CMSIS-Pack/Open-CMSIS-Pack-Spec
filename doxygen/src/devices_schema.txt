@@ -2091,6 +2091,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.autochips.com/index_en.aspx</td>
   </tr>
   <tr>
+    <td class="XML-Token">BOYAMICRO:182</td>
+    <td>BOYAMICRO</td>
+    <td>https://www.boyamicro.com</td>
+  </tr>
+  <tr>
     <td class="XML-Token">BrainChip:168</td>
     <td>BrainChip Inc</td>
     <td>https://brainchipinc.com</td>
@@ -2409,6 +2414,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td class="XML-Token">Vorago:137</td>
     <td>Vorago Technologies</td>
     <td>http://www.voragotech.com</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Watech:183</td>
+    <td>Suzhou Watech Electronics Co., Ltd.</td>
+    <td>https://www.watechelectronics.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">Weltrend:148</td>
