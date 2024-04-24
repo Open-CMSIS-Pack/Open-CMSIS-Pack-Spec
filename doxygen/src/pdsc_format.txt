@@ -9,7 +9,7 @@ Software components are distributed through <b>Software Packs</b>.
 A \ref cp_SWComponents "Software Pack" is a zip file containing a single <b>Pack Description</b> file that describes
 dependencies to devices, processors, tool chains, or other software components.
 
-A descriptive text of the \ref cp_SWComponents "Software Pack"along the text information for devices, components, and examples is part of each
+A descriptive text of the \ref cp_SWComponents "Software Pack" along the text information for devices, components, and examples is part of each
 a <b>Pack Description</b> (*.pdsc) file. In addition, information is provided which facilitates downloading, updating, and versioning of
 of a \ref cp_SWComponents "Software Pack". The *.pdsc file contains also the complete version history of the \ref cp_SWComponents "Software Pack"
 with a brief list of the most significant changes.
@@ -79,9 +79,9 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage pdsc_conditions_pg "<conditions>": defines dependencies to devices, processors, components, and tools that are used within the \ref cp_SWComponents "Software Pack".
    It allows making components and files conditional.
  - \subpage pdsc_components_pg "<components>": lists the software components contained in the \ref cp_SWComponents "Software Pack".
- - \subpage pdsc_clayers_pg "<clayers>": lists partially specified project named layers described in the clayer YAML format contained in the pack.
  - \subpage pdsc_examples_pg "<examples>": specifies example projects contained in the pack.
-
+ - \subpage pdsc_csolution_pg "<csolution>": lists pack content that relates to *csolution projects* that are managed using the <a href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox" target="_blank">CMSIS-Toolbox</a>.
+ 
 \section PDSC_Example Example of a *.pdsc File
 
 This example of a *.pdsc File explains the sections, particularly how dependencies are used to identify individual files of \ref cp_Components.
@@ -358,7 +358,7 @@ assists searching for packages.
     <td>0..1 </td>
   </tr>
   <tr>
-    <td>\ref element_clayers "clayers"</td>
+    <td>\ref element_csolution "csolution"</td>
     <td>Lists the clayer description files that are included in the Pack.</td>
     <td>group</td>
     <td>0..1 </td>
@@ -693,7 +693,7 @@ It contains the full release history of the Pack.
 \section element_release /package/releases/release
 
 Contains brief information of the main changes in each release version of a Pack. The content is a string written between the opening and closing \em release tags.
-The latest release version is always listed on top.
+The list should be ordered using `version`, with the highest release `version` on top.
 
 \b Example:
 \code
@@ -759,7 +759,7 @@ The latest release version is always listed on top.
   </tr>
   <tr>
     <td>date</td>
-    <td>Release date (specified as YYYY-MM-DD, for example 2014-12-14 (14th December 2014).</td>
+    <td>Release date (specified as YYYY-MM-DD, for example 2014-12-14 (14th December 2014). Note: release date is only user information. The version number identifies the latest pack.</td>
     <td>xs:date</td>
     <td>optional</td>
   </tr>
@@ -806,7 +806,7 @@ The latest release version is always listed on top.
 \page element_requirements_pg /package/requirements
 \anchor element_requirements
 
-There are three different requirement types:
+There are the following requirement types:
  - The \c \<packages\> section lists CMSIS Packs that have been used to configure the project. This includes the specification
    of a \c version range to ensure compatibility. If no version is provided, the latest installed version is used. If not yet
    installed, the latest available version will be installed before resolving the configuration.
@@ -814,6 +814,8 @@ There are three different requirement types:
    specified using the \c version element. If no compiler is specified, it is assumed that any toolchain will work.
  - The \c \<languages\> section allows to specify requirements regarding the programming language, for example C99 standard.
    If no language requirements are set, ANSI C is assumed.
+ - The \c \<targets\> section allows to specify requirements regarding the device or device series.
+   If no target requirements are set, the pack is listed as generic that works with any device, board, or processor.
 
 \b Example requirements section:
 \code
@@ -1034,6 +1036,85 @@ There are three different requirement types:
     <td>Version of the language standard (i.e. 90, 99, etc.). The setting will be reflected in the compiler commandline.</td>
     <td>xs:string</td>
     <td>required</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<hr>
+
+\section element_targets /package/requirements/targets
+
+The \ref element_packages "targets" section marks a pack device specific. Multiple targets can be listed to allow usage for several devices or device series.
+The indented usage is for installers and web pages to show packs only for specific devices.
+
+It allows also to specify boards and processor cores, as overtime this element may simplify \ref element_conditions "conditions". However, currently it has no impact on the
+selection of pack content such as \ref element_components "components". Therefore these attributes are experimental.
+
+\b Example targets section:
+\code
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+  ...
+  <requirements>
+    <targets>
+      <target Dvendor="STMicroelectronics:13" Dname="STM32H7*"/>    <!-- supports STM32H7 device series -->
+      <target Dvendor="STMicroelectronics:13" Dname="STM32U585"/>   <!-- and supports STM32U585 device -->
+    </targets>
+  </requirements>
+  ...
+</package>
+\endcode
+
+\b /target
+<table class="cmtable" summary="Element: targets">
+  <tr>
+    <th>Parents</th>
+    <th colspan="3">Element Chain</th>
+  </tr>
+  <tr>
+    <td>\ref element_packages "targets"</td>
+    <td colspan="3">\ref element_targets</td>
+  </tr>
+  <tr>
+    <th>Attributes</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>Dvendor</td>
+    <td>Specifies the silicon vendor of the device</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Dname</td>
+    <td>Specifies the name of the device (wildcards possible)</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Dcore</td>
+    <td>Specifies a processor core (experimental)</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Bvendor</td>
+    <td>Specifies the board vendor (experimental)</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Bname</td>
+    <td>Specifies the board name (experimental)</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>Brevision</td>
+    <td>Specifies the board revision (experimental)</td>
+    <td>xs:string</td>
+    <td>optional</td>
   </tr>
 </table>
 

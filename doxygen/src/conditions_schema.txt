@@ -420,7 +420,7 @@ The tokens can be used in the elements:
   <tr>
     <td class="XML-Token">GCC</td>
     <td>GNU Tools for Arm Embedded Processors. 
-    Refer to <a href="https://launchpad.net/gcc-arm-embedded/4.7" target="_blank">Arm GCC</a>.</td>
+    Refer to <a href="https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain" target="_blank">Arm GCC</a>.</td>
   </tr>
   <tr>
     <td class="XML-Token">G++</td>
