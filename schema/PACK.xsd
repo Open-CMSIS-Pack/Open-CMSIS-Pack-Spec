@@ -18,14 +18,14 @@
   limitations under the License.
 
 
-  $Date:        23. April 2024
+  $Date:        24. April 2024
   $Revision:    1.7.36
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.36
 
-  23. Apr 2024: v1.7.36
+  24. Apr 2024: v1.7.36
    - added csolution section specifying 'template' and 'clayer' elements
    - added targets to requirements section
   18. Apr 2024: v1.7.35
@@ -227,7 +227,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.35">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.36">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
