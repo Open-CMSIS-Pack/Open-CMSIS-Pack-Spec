@@ -25,7 +25,8 @@ var packFormat =
     [ "/package/requirements", "element_requirements_pg.html", [
       [ "/package/requirements/packages", "element_requirements_pg.html#element_packages", null ],
       [ "/package/requirements/compilers", "element_requirements_pg.html#element_compilers", null ],
-      [ "/package/requirements/languages", "element_requirements_pg.html#element_languages", null ]
+      [ "/package/requirements/languages", "element_requirements_pg.html#element_languages", null ],
+      [ "/package/requirements/targets", "element_requirements_pg.html#element_targets", null ]
     ] ],
     [ "/package/taxonomy element", "element_taxonomy.html", [
       [ "/package/taxonomy/description", "element_taxonomy.html#element_taxonomyDescription", null ]
@@ -98,10 +99,6 @@ var packFormat =
       [ "/package/.../environments", "pdsc_components_pg.html#element_component_environments", null ],
       [ "/package/.../environments/environment", "pdsc_components_pg.html#element_component_environment", null ]
     ] ],
-    [ "/package/clayers element", "pdsc_clayers_pg.html", [
-      [ "/package/clayers", "pdsc_clayers_pg.html#element_clayers", null ],
-      [ "/package/clayers/clayer", "pdsc_clayers_pg.html#element_clayer", null ]
-    ] ],
     [ "/package/examples element", "pdsc_examples_pg.html", [
       [ "/package/examples", "pdsc_examples_pg.html#element_examples", null ],
       [ "/package/examples/example", "pdsc_examples_pg.html#element_example", null ],
@@ -110,5 +107,10 @@ var packFormat =
       [ "/package/examples/example/project/environment", "pdsc_examples_pg.html#element_example_project_env", null ],
       [ "/package/examples/example/attributes", "pdsc_examples_pg.html#element_example_attributes", null ],
       [ "/package/examples/example/attributes/component", "pdsc_examples_pg.html#element_example_attribute_component", null ]
+    ] ],
+    [ "/package/csolution element", "pdsc_csolution_pg.html", [
+      [ "/package/csolution", "pdsc_csolution_pg.html#element_csolution", null ],
+      [ "/package/csolution/clayer", "pdsc_csolution_pg.html#element_clayer", null ],
+      [ "/package/csolution/template", "pdsc_csolution_pg.html#element_cs_template", null ]
     ] ]
 ];

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.35</span>
+   &#160;<span id="projectnumber">Version 1.7.36</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -104,10 +104,11 @@ $(document).ready(function(){initNavTree('element_requirements_pg.html',''); ini
   <div class="headertitle"><div class="title">/package/requirements </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="element_requirements"></a> There are three different requirement types:</p><ul>
+<div class="textblock"><p ><a class="anchor" id="element_requirements"></a> There are the following requirement types:</p><ul>
 <li>The <code>&lt;packages&gt;</code> section lists CMSIS Packs that have been used to configure the project. This includes the specification of a <code>version</code> range to ensure compatibility. If no version is provided, the latest installed version is used. If not yet installed, the latest available version will be installed before resolving the configuration.</li>
 <li>The <code>&lt;compilers&gt;</code> section specifies the toolchains that are supported by this example. The required compiler version is specified using the <code>version</code> element. If no compiler is specified, it is assumed that any toolchain will work.</li>
 <li>The <code>&lt;languages&gt;</code> section allows to specify requirements regarding the programming language, for example C99 standard. If no language requirements are set, ANSI C is assumed.</li>
+<li>The <code>&lt;targets&gt;</code> section allows to specify requirements regarding the device or device series. If no target requirements are set, the pack is listed as generic that works with any device, board, or processor.</li>
 </ul>
 <p ><b>Example</b> requirements section: </p><div class="fragment"><div class="line">&lt;<span class="keyword">package </span>xmlns:xsi=&quot;http:<span class="comment">//www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;PACK.xsd&quot;/&gt;</span></div>
 <div class="line">  ...</div>
@@ -226,6 +227,42 @@ $(document).ready(function(){initNavTree('element_requirements_pg.html',''); ini
 <td>name </td><td>Name of the programming language (i.e. "C", "C++") </td><td>xs:string </td><td>required  </td></tr>
 <tr>
 <td>version </td><td>Version of the language standard (i.e. 90, 99, etc.). The setting will be reflected in the compiler commandline. </td><td>xs:string </td><td>required  </td></tr>
+</table>
+<p >&#160;</p>
+<hr  />
+<h1><a class="anchor" id="element_targets"></a>
+/package/requirements/targets</h1>
+<p >The <a class="el" href="element_requirements_pg.html#element_packages">targets</a> section marks a pack device specific. Multiple targets can be listed to allow usage for several devices or device series. The indented usage is for installers and web pages to show packs only for specific devices.</p>
+<p >It allows also to specify boards and processor cores, as overtime this element may simplify <a class="el" href="pdsc_conditions_pg.html#element_conditions">conditions</a>. However, currently it has no impact on the selection of pack content such as <a class="el" href="pdsc_components_pg.html#element_components">components</a>. Therefore these attributes are experimental.</p>
+<p ><b>Example</b> targets section: </p><div class="fragment"><div class="line">&lt;<span class="keyword">package </span>xmlns:xsi=&quot;http:<span class="comment">//www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;PACK.xsd&quot;/&gt;</span></div>
+<div class="line">  ...</div>
+<div class="line">  &lt;requirements&gt;</div>
+<div class="line">    &lt;targets&gt;</div>
+<div class="line">      &lt;target Dvendor=&quot;STMicroelectronics:13&quot; Dname=&quot;STM32H7*&quot;/&gt;    &lt;!-- supports STM32H7 device series --&gt;</div>
+<div class="line">      &lt;target Dvendor=&quot;STMicroelectronics:13&quot; Dname=&quot;STM32U585&quot;/&gt;   &lt;!-- and supports STM32U585 device --&gt;</div>
+<div class="line">    &lt;/targets&gt;</div>
+<div class="line">  &lt;/requirements&gt;</div>
+<div class="line">  ...</div>
+<div class="line">&lt;/package&gt;</div>
+</div><!-- fragment --><p ><b>/target</b> </p><table class="cmtable" summary="Element: targets">
+<tr>
+<th>Parents </th><th colspan="3">Element Chain  </th></tr>
+<tr>
+<td><a class="el" href="element_requirements_pg.html#element_packages">targets</a> </td><td colspan="3"><a class="el" href="element_requirements_pg.html#element_targets">/package/requirements/targets</a>  </td></tr>
+<tr>
+<th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
+<tr>
+<td>Dvendor </td><td>Specifies the silicon vendor of the device </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Dname </td><td>Specifies the name of the device (wildcards possible) </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Dcore </td><td>Specifies a processor core (experimental) </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Bvendor </td><td>Specifies the board vendor (experimental) </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Bname </td><td>Specifies the board name (experimental) </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Brevision </td><td>Specifies the board revision (experimental) </td><td>xs:string </td><td>optional  </td></tr>
 </table>
 <p >&#160;</p>
 <hr  />

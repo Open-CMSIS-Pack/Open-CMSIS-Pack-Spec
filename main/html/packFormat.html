@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.35</span>
+   &#160;<span id="projectnumber">Version 1.7.36</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('packFormat.html',''); initResizable();
 </ul>
 </div>
 <div class="textblock"><p >The <b>Pack Description (*.pdsc) Format</b> uses standard XML annotations and is defined in the schema file <b>PACK.xsd</b>. Software components are distributed through <b>Software Packs</b>. A <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a> is a zip file containing a single <b>Pack Description</b> file that describes dependencies to devices, processors, tool chains, or other software components.</p>
-<p >A descriptive text of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>along the text information for devices, components, and examples is part of each a <b>Pack Description</b> (*.pdsc) file. In addition, information is provided which facilitates downloading, updating, and versioning of of a <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. The *.pdsc file contains also the complete version history of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a> with a brief list of the most significant changes.</p>
+<p >A descriptive text of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a> along the text information for devices, components, and examples is part of each a <b>Pack Description</b> (*.pdsc) file. In addition, information is provided which facilitates downloading, updating, and versioning of of a <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. The *.pdsc file contains also the complete version history of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a> with a brief list of the most significant changes.</p>
 <h1><a class="anchor" id="Filenames"></a>
 Filename Conventions</h1>
 <p >A <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a> must have a unique filename which uses the following format: <b>&lt;vendor&gt;.&lt;name&gt;.&lt;version&gt;.pack</b>.</p>
@@ -162,8 +162,8 @@ Pack Schema</h1>
 <li><a class="el" href="pdsc_parts_pg.html">&lt;parts&gt;</a>: lists the parts (devices other than the MCUs) supported by the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>.</li>
 <li><a class="el" href="pdsc_conditions_pg.html">&lt;conditions&gt;</a>: defines dependencies to devices, processors, components, and tools that are used within the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. It allows making components and files conditional.</li>
 <li><a class="el" href="pdsc_components_pg.html">&lt;components&gt;</a>: lists the software components contained in the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>.</li>
-<li><a class="el" href="pdsc_clayers_pg.html">&lt;clayers&gt;</a>: lists partially specified project named layers described in the clayer YAML format contained in the pack.</li>
 <li><a class="el" href="pdsc_examples_pg.html">&lt;examples&gt;</a>: specifies example projects contained in the pack.</li>
+<li><a class="el" href="pdsc_csolution_pg.html">&lt;csolution&gt;</a>: lists pack content that relates to <em>csolution projects</em> that are managed using the <a href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox" target="_blank">CMSIS-Toolbox</a>.</li>
 </ul>
 <h1><a class="anchor" id="PDSC_Example"></a>
 Example of a *.pdsc File</h1>

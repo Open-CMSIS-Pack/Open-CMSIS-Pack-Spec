@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.35</span>
+   &#160;<span id="projectnumber">Version 1.7.36</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -107,6 +107,13 @@ $(document).ready(function(){initNavTree('pack_revisionHistory.html',''); initRe
 <div class="textblock"><table class="cmtable" summary="Revision History">
 <tr>
 <th>Version </th><th>Description  </th></tr>
+<tr>
+<td>1.7.36 </td><td><ul>
+<li>added <a class="el" href="pdsc_csolution_pg.html">/package/csolution element</a> for <a class="el" href="pdsc_csolution_pg.html#element_clayer">clayer.yml files</a> and <a class="el" href="pdsc_csolution_pg.html#element_cs_template">project templates</a>.</li>
+<li>added <a class="el" href="element_requirements_pg.html#element_targets">/package/requirements/targets</a> to specify that a pack applies to specific devices only.</li>
+<li>added to <a class="el" href="configWizard.html">Configuration Wizard Annotations</a> the item <code>&lt;y&gt;</code> to support symbol or value entries.   </li>
+</ul>
+</td></tr>
 <tr>
 <td>1.7.35 </td><td><ul>
 <li>made board element optional in example element</li>
@@ -194,7 +201,7 @@ $(document).ready(function(){initNavTree('pack_revisionHistory.html',''); initRe
 </td></tr>
 <tr>
 <td>1.7.20 </td><td><ul>
-<li>added &lt;clayers&gt; section for distributing layers in software packs   </li>
+<li>added &lt;clayers&gt; section for distributing layers in software packs. This is renamed to &lt;csolution&gt; in 1.7.36 as it was not used before.   </li>
 </ul>
 </td></tr>
 <tr>

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.35</span>
+   &#160;<span id="projectnumber">Version 1.7.36</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -127,7 +127,7 @@ $(document).ready(function(){initNavTree('element_releases.html',''); initResiza
 <hr  />
 <h1><a class="anchor" id="element_release"></a>
 /package/releases/release</h1>
-<p >Contains brief information of the main changes in each release version of a Pack. The content is a string written between the opening and closing <em>release</em> tags. The latest release version is always listed on top.</p>
+<p >Contains brief information of the main changes in each release version of a Pack. The content is a string written between the opening and closing <em>release</em> tags. The list should be ordered using <code>version</code>, with the highest release <code>version</code> on top.</p>
 <p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;releases&gt;</div>
 <div class="line">  &lt;release version=<span class="stringliteral">&quot;1.1.1&quot;</span> date=<span class="stringliteral">&quot;2020-05-12&quot;</span>&gt;Fixed a problem with the feature xyz.</div>
 <div class="line">  &lt;/release&gt;</div>
@@ -166,7 +166,7 @@ $(document).ready(function(){initNavTree('element_releases.html',''); initResiza
 <tr>
 <td>version </td><td>Version number of the release. The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. </td><td>VersionType </td><td>required  </td></tr>
 <tr>
-<td>date </td><td>Release date (specified as YYYY-MM-DD, for example 2014-12-14 (14th December 2014). </td><td>xs:date </td><td>optional  </td></tr>
+<td>date </td><td>Release date (specified as YYYY-MM-DD, for example 2014-12-14 (14th December 2014). Note: release date is only user information. The version number identifies the latest pack. </td><td>xs:date </td><td>optional  </td></tr>
 <tr>
 <td>tag </td><td>In case the repository element is specified, the tag attribute is used to specify the repository tag that corresponds to this release of the pack. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>

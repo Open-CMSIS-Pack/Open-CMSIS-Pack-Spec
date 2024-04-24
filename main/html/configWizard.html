@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.35</span>
+   &#160;<span id="projectnumber">Version 1.7.36</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -220,6 +220,15 @@ Annotation Rules</h1>
 <div class="line"><span class="preprocessor">#define USBD0_STR_DESC_LANGID           0x0409</span></div>
 </div><!-- fragment --> This example creates an expandable header with the text <span class="XML-Token">String Settings</span> and an option <span class="XML-Token">Language ID</span>. The range of values is set to <span class="XML-Token">&lt;0x0000-0xFCFF&gt;</span>. Users can enter a value from within that range. The option changes the bits <span class="XML-Token">0..15</span>.   </td></tr>
 <tr>
+<td>&lt;y&gt;<sup>+</sup> </td><td>yes </td><td>Enter a symbol or number. <div class="fragment"><div class="line"><span class="comment">//   &lt;y&gt;Value or Define Symbol that specifies number of open files &lt;1-16&gt;</span></div>
+<div class="line"><span class="comment">//   &lt;i&gt;Define number of files that can be opened at the same time.</span></div>
+<div class="line"><span class="preprocessor">#define FAT_MAX_OPEN_FILES      maxFiles</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">//   &lt;y FAT_MAX_OPEN_FILES&gt;Value or Define Symbol that specifies number of open files &lt;1-16&gt;</span></div>
+<div class="line"><span class="preprocessor">#define OTHER_SYMBOL            &quot;This is a text&quot;</span></div>
+<div class="line">#define FAT_MAX_OPEN_FILES      8</div>
+</div><!-- fragment --> The example creates an option with the text <span class="XML-Token">Value or Define Symbol that specifies number of open files</span> and a field to enter a symbol or values that can range between [1..16]. The second example is identical, except that it locates the symbol <span class="XML-Token">FAT_MAX_OPEN_FILES</span> to locate the input value.   </td></tr>
+<tr>
 <td>&lt;s&gt;<sup>*+</sup> </td><td>yes </td><td>Option with ASCII string entry. <div class="fragment"><div class="line"><span class="comment">//  &lt;s&gt;Manufacturer String</span></div>
 <div class="line"><span class="comment">//  &lt;i&gt;String Descriptor describing Manufacturer.</span></div>
 <div class="line"><span class="preprocessor">#define USBD0_STR_DESC_MAN              L&quot;Keil Software&quot;</span></div>
@@ -251,6 +260,7 @@ Annotation Rules</h1>
  &lt;e <em>identifier&gt;</em> <br  />
  &lt;o <em>identifier&gt;</em> <br  />
  &lt;s <em>identifier&gt;</em> <br  />
+ &lt;y <em>identifier&gt;</em> <br  />
  &lt;e.<em>i</em> <em>identifier&gt;</em> <br  />
  &lt;o.<em>i</em> <em>identifier&gt;</em> <br  />
  &lt;s.<em>i</em> <em>identifier&gt;</em>  </td><td>n/a </td><td>Modify the item given by the identifier. Can be applied to all annotation items marked with a <code>+</code> in this table. <div class="fragment"><div class="line"><span class="comment">// &lt;o MODIFY_THIS&gt;Modify the item after &quot;MODIFY_THIS&quot; &lt;1-9&gt;</span></div>

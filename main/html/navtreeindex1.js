@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"pdsc_family_pg.html#element_trace":[6,16,1,28],
+"pdsc_family_pg.html#element_trace_serialwire":[6,16,1,29],
 "pdsc_family_pg.html#element_trace_tracebuffer":[6,16,1,31],
 "pdsc_family_pg.html#element_trace_traceport":[6,16,1,30],
 "pdsc_family_pg.html#element_variant":[6,16,1,32],
