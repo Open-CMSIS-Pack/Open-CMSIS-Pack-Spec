@@ -18,14 +18,17 @@
   limitations under the License.
 
 
-  $Date:        22. April 2024
-  $Revision:    1.7.35
+  $Date:        24. April 2024
+  $Revision:    1.7.36
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.35
+  SchemaVersion=1.7.36
 
-  22. Apr 2024: v1.7.35
+  24. Apr 2024: v1.7.36
+   - added csolution section specifying 'template' and 'clayer' elements
+   - added targets to requirements section
+  18. Apr 2024: v1.7.35
    - made board element optional in example element
    - add attribute overview to package description element
    - fix 'BOYAMICRO' vendor value in 'DeviceVendorEnum'
@@ -64,7 +67,7 @@
    - added 'Himax:178' to DeviceVendorEnum
    - added 'Renesas' to CompilerEnumType
   07. Mar 2023: v1.7.20
-   - added \<clayers> section for distributing layers in software packs
+   - added \<clayers> section for distributing layers in software packs, replaced with \<csolution> in v1.7.36
   06. Feb 2023: v1.7.19
    - added generator specific component file types: 'genSource', 'genHeader', 'genParams', 'genAsset' to 'FileCategoryType' of the files element
   31. Jan 2023: v1.7.18
@@ -224,7 +227,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.35">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.36">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1701,27 +1704,50 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- element describing a clayer YAML file contained in the package -->
+  <!-- element describing a clayer CMSIS Solution file and referenced files located in the package (extended) -->
   <xs:complexType name="ClayerType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <!-- layer category defined by the framework -->
+        <xs:attribute name="type"      type="xs:string" use="required" />
+        <!-- relative path and filename of clayer.yml file stored in the package -->
+        <xs:attribute name="file"      type="xs:string" use="required" />
+        <!-- relative path of the directory containing all referenced files -->
+        <xs:attribute name="path"      type="xs:string" use="required" />
+        <!-- redefinition of path for the destination directory relative to the csolution file -->
+        <xs:attribute name="copy-to"   type="xs:string" use="optional" />
+        <!-- condition ID used for filtering clayers -->
+        <xs:attribute name="condition" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- element describing a csolution project copied into solution workspace -->
+  <xs:complexType name="CsolutionTemplateType">
     <xs:sequence>
-      <!-- brief clayer description -->
+      <!-- brief template description -->
       <xs:element name="description" type="BriefDescType" />
     </xs:sequence>
-    <!-- display name of the clayer -->
-    <xs:attribute name="name" type="xs:string" use="required" />
-    <!-- display type of the clayer -->
-    <xs:attribute name="type" type="xs:string" use="required" />
-    <!-- relative path and filename of clayer.yml file stored in the package -->
-    <xs:attribute name="file" type="xs:string" use="required" />
-    <!-- condition ID used for filtering clayers -->
+    <!-- name of the template -->
+    <xs:attribute name="name"      type="xs:string" use="required" />
+    <!-- name of the csolution YAML file -->
+    <xs:attribute name="file"      type="xs:string" use="required" />
+    <!-- path to the directory that contains the solution and all referenced files -->
+    <xs:attribute name="path"      type="xs:string" use="required" />
+    <!-- redefine "path" used as destination directory in csolution project -->
+    <xs:attribute name="copy-to"   type="xs:string" use="optional" />  
+    <!-- ID of a condition. The template is only available if filter condition is true -->
     <xs:attribute name="condition" type="xs:string" use="optional" />
   </xs:complexType>
 
-  <!-- section listing all clayers contained in the package -->
-  <xs:complexType name="ClayersType">
-    <xs:sequence>
-      <xs:element name="clayer" type="ClayerType" maxOccurs="unbounded" />
-    </xs:sequence>
+  <!-- section list all items contributing to CMSIS solutions -->
+  <xs:complexType name="CsolutionType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <!-- clayers -->
+      <xs:element name="clayer"   type="ClayerType" maxOccurs="unbounded" />
+      <!-- solution templates -->
+      <xs:element name="template" type="CsolutionTemplateType" maxOccurs="unbounded" />
+    </xs:choice>
   </xs:complexType>
 
   <xs:complexType name="KeywordsType">
@@ -1882,6 +1908,27 @@
       <xs:element name="compiler" type="CompilerType" />
     </xs:sequence>
   </xs:complexType>
+  
+  <!-- Target filters used for the entire pack -->
+  <xs:complexType name="TargetType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="Dvendor"   type="xs:string" use="optional" />
+        <xs:attribute name="Dname"     type="xs:string" use="optional" />
+        <xs:attribute name="Dcore"     type="xs:string" use="optional" />
+        <xs:attribute name="Bvendor"   type="xs:string" use="optional" />
+        <xs:attribute name="Bname"     type="xs:string" use="optional" />
+        <xs:attribute name="Brevision" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <!-- Targets section type -->
+  <xs:complexType name="TargetsType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="target" type="TargetType" />
+    </xs:sequence>
+  </xs:complexType>
 
   <!-- Requirements Section: (added in 1.4.4) -->
   <xs:complexType name="RequirementsType">
@@ -1889,6 +1936,7 @@
       <xs:element name="packages" type="PackagesType" minOccurs="0" />
       <xs:element name="languages" type="LanguagesType" minOccurs="0" />
       <xs:element name="compilers" type="CompilersType" minOccurs="0" />
+      <xs:element name="targets"   type="TargetsType" minOccurs="0" />
     </xs:all>
   </xs:complexType>
 
@@ -2200,8 +2248,8 @@
         <xs:element name="conditions" type="ConditionsType" minOccurs="0" />
         <!-- examples section defining examples available within a package -->
         <xs:element name="examples" type="ExamplesType" minOccurs="0" />
-        <!-- layers section defining clayer YAML file and referenced files available within a package -->
-        <xs:element name="clayers" type="ClayersType" minOccurs="0" />
+        <!-- section defining csolution items e.g. clayers and csolution templates -->
+        <xs:element name="csolution" type="CsolutionType" minOccurs="0" />
         <!-- software component definition -->
         <xs:element name="components" minOccurs="0">
           <xs:complexType>

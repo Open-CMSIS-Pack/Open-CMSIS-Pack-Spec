@@ -223,6 +223,23 @@ The following table lists the Configuration Wizard Annotations:
       </td>
     </tr>
     <tr>
+      <td>\<y><sup>+</sup></td>
+      <td>yes</td>
+      <td>Enter a symbol or number.
+      \code
+      //   <y>Value or Define Symbol that specifies number of open files <1-16>
+      //   <i>Define number of files that can be opened at the same time.
+      #define FAT_MAX_OPEN_FILES      maxFiles
+      
+      //   <y FAT_MAX_OPEN_FILES>Value or Define Symbol that specifies number of open files <1-16>
+      #define OTHER_SYMBOL            "This is a text"
+      #define FAT_MAX_OPEN_FILES      8
+      \endcode
+      The example creates an option with the text \token{Value or Define Symbol that specifies number of open files} and a field to enter a symbol or values that can range between [1..16].
+      The second example is identical, except that it locates the symbol \token{FAT_MAX_OPEN_FILES} to locate the input value.
+      </td>
+    </tr>
+    <tr>
       <td>\<s><sup>*+</sup></td>
       <td>yes</td>
       <td>Option with ASCII string entry.
@@ -285,6 +302,7 @@ The following table lists the Configuration Wizard Annotations:
       <br> \<e \em identifier> 
       <br> \<o \em identifier> 
       <br> \<s \em identifier> 
+      <br> \<y \em identifier> 
       <br> \<e.\em i \em identifier> 
       <br> \<o.\em i \em identifier> 
       <br> \<s.\em i \em identifier> 

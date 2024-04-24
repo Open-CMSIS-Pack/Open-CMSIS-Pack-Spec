@@ -84,6 +84,14 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.36</td>
+    <td>
+      - added \ref pdsc_csolution_pg for \ref element_clayer "clayer.yml files" and \ref element_cs_template "project templates".
+      - added \ref element_targets to specify that a pack applies to specific devices only.
+      - added to \ref configWizard the item `<y>` to support symbol or value entries.
+    </td>
+  </tr>
+  <tr>
     <td>1.7.35</td>
     <td>
      - made board element optional in example element
@@ -184,7 +192,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   <tr>
     <td>1.7.20</td>
     <td>
-     - added \<clayers> section for distributing layers in software packs
+     - added \<clayers> section for distributing layers in software packs. This is renamed to \<csolution> in 1.7.36 as it was not used before.
     </td>
   </tr>
   <tr>
