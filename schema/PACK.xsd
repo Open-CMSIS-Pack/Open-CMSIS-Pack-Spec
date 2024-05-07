@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        24. April 2024
-  $Revision:    1.7.36
+  $Date:        07. May 2024
+  $Revision:    1.7.37
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.36
+  SchemaVersion=1.7.37
 
+  07. May 2024: v1.7.37
+   - Add Cortex A35 and Cortex A55
   24. Apr 2024: v1.7.36
    - added csolution section specifying 'template' and 'clayer' elements
    - added targets to requirements section
@@ -227,7 +229,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.36">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.37">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -932,7 +934,9 @@
       <xs:enumeration value="Cortex-A9" />
       <xs:enumeration value="Cortex-A15" />
       <xs:enumeration value="Cortex-A17" />
+      <xs:enumeration value="Cortex-A35" />
       <xs:enumeration value="Cortex-A53" />
+      <xs:enumeration value="Cortex-A55" />
       <xs:enumeration value="Cortex-A57" />
       <xs:enumeration value="Cortex-A72" />
       <xs:enumeration value="Cortex-A73" />

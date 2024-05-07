@@ -84,6 +84,10 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.37</td>
+    <td>
+      - added Cortex A35 and Cortex A55 support in PACK.xsd
+    </td>
     <td>1.7.36</td>
     <td>
       - added \ref pdsc_csolution_pg for \ref element_clayer "clayer.yml files" and \ref element_cs_template "project templates".
