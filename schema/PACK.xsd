@@ -28,6 +28,7 @@
   13. May 2024: v1.7.37
    - added Nationstech vendor
    - added NSING vendor
+   - Add Cortex A35 and Cortex A55
   24. Apr 2024: v1.7.36
    - added csolution section specifying 'template' and 'clayer' elements
    - added targets to requirements section
@@ -937,7 +938,9 @@
       <xs:enumeration value="Cortex-A9" />
       <xs:enumeration value="Cortex-A15" />
       <xs:enumeration value="Cortex-A17" />
+      <xs:enumeration value="Cortex-A35" />
       <xs:enumeration value="Cortex-A53" />
+      <xs:enumeration value="Cortex-A55" />
       <xs:enumeration value="Cortex-A57" />
       <xs:enumeration value="Cortex-A72" />
       <xs:enumeration value="Cortex-A73" />

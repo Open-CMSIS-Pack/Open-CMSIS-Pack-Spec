@@ -88,6 +88,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <td>
       - added 'Nationstech:184' to \ref DeviceVendorEnum "DeviceVendorEnum"
       - added 'NSING:185' to \ref DeviceVendorEnum "DeviceVendorEnum"
+      - added Cortex A35 and Cortex A55 support in PACK.xsd
     </td>
   </tr>
   <tr>
