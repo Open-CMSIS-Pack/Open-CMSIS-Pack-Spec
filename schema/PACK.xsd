@@ -18,14 +18,16 @@
   limitations under the License.
 
 
-  $Date:        07. May 2024
+  $Date:        13. May 2024
   $Revision:    1.7.37
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.37
 
-  07. May 2024: v1.7.37
+  13. May 2024: v1.7.37
+   - added Nationstech vendor
+   - added NSING vendor
    - Add Cortex A35 and Cortex A55
   24. Apr 2024: v1.7.36
    - added csolution section specifying 'template' and 'clayer' elements
@@ -307,8 +309,10 @@
       <xs:enumeration value="Milandr:99" />
       <xs:enumeration value="MindMotion:132" />
       <xs:enumeration value="MinebeaMitsumi:181" />
+      <xs:enumeration value="Nationstech:184" />
       <xs:enumeration value="NetSilicon:67" />
       <xs:enumeration value="Nordic Semiconductor:54" />
+      <xs:enumeration value="NSING:185" />
       <xs:enumeration value="Nuvoton:18" />
       <xs:enumeration value="NXP:11" />
       <xs:enumeration value="OKI SEMICONDUCTOR CO.,LTD.:108" />
