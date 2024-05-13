@@ -84,6 +84,13 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.37</td>
+    <td>
+      - added 'Nationstech:184' to \ref DeviceVendorEnum "DeviceVendorEnum"
+      - added 'NSING:185' to \ref DeviceVendorEnum "DeviceVendorEnum"
+    </td>
+  </tr>
+  <tr>
     <td>1.7.36</td>
     <td>
       - added \ref pdsc_csolution_pg for \ref element_clayer "clayer.yml files" and \ref element_cs_template "project templates".

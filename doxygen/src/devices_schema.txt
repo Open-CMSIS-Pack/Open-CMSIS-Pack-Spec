@@ -2271,9 +2271,19 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.minebeamitsumi.com</td>
   </tr>
   <tr>
+    <td class="XML-Token">Nationstech:184</td>
+    <td>Nations Technologies Inc.</td>
+    <td>https://www.nationstech.com</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Nordic Semiconductor:54</td>
     <td>Nordic Semiconductor</td>
     <td>http://www.nordicsemi.com</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">NSING:185</td>
+    <td>NSING Technologies Pte. Ltd.</td>
+    <td>https://www.nsing.com.sg</td>
   </tr>
   <tr>
     <td class="XML-Token">Nuvoton:18</td>
