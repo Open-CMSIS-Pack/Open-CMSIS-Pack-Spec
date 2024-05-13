@@ -122,7 +122,7 @@ $(document).ready(function(){initNavTree('pdsc_csolution_pg.html',''); initResiz
 </table>
 <p ><b>Example:</b> </p>
 <div class="fragment"><div class="line">&lt;csolution&gt; </div>
-<div class="line">  &lt;<span class="keyword">template</span> name=<span class="stringliteral">&quot;Basic csolution project&quot;</span> path=<span class="stringliteral">&quot;templates/blank&quot;</span> file=<span class="stringliteral">&quot;Blank.csolution.yml&quot;</span> copyto=<span class="stringliteral">&quot;Blank&quot;</span> condition=<span class="stringliteral">&quot;STM32H7S-Series&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keyword">template</span> name=<span class="stringliteral">&quot;Basic csolution project&quot;</span> path=<span class="stringliteral">&quot;templates/blank&quot;</span> file=<span class="stringliteral">&quot;Blank.csolution.yml&quot;</span> copy-to=<span class="stringliteral">&quot;Blank&quot;</span> condition=<span class="stringliteral">&quot;STM32H7S-Series&quot;</span>&gt;</div>
 <div class="line">    &lt;description&gt;Create a basic project with empty main <span class="keyword">function</span>&lt;/description&gt;</div>
 <div class="line">  &lt;/<span class="keyword">template</span>&gt;</div>
 <div class="line">  &lt;clayer path=<span class="stringliteral">&quot;layers/board/FRDM-MCXA153-MW&quot;</span> file=<span class="stringliteral">&quot;Board.clayer.yml&quot;</span> copy-to=<span class="stringliteral">&quot;board/FRDM-MCXA153&quot;</span> condition=<span class="stringliteral">&quot;FRDM-MCXA153-Board&quot;</span> /&gt;</div>
@@ -151,8 +151,8 @@ $(document).ready(function(){initNavTree('pdsc_csolution_pg.html',''); initResiz
 <td>condition </td><td>Enter the <b>id</b> of a <a class="el" href="pdsc_conditions_pg.html#element_conditions">condition</a>. The clayer is available and will be listed only when the filter condition is true (no component dependencies are evaluated). </td><td>xs:string </td><td>optional  </td></tr>
 </table>
 <p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;csolution&gt; </div>
-<div class="line">  &lt;clayer path=<span class="stringliteral">&quot;layers/board/FRDM-MCXA153-MW&quot;</span> file=<span class="stringliteral">&quot;Board.clayer.yml&quot;</span> copy-to=<span class="stringliteral">&quot;board/FRDM-MCXA153&quot;</span> condition=<span class="stringliteral">&quot;FRDM-MCXA153-Board&quot;</span> /&gt;</div>
-<div class="line">  &lt;clayer path=<span class="stringliteral">&quot;board/FRDM-MCXA153&quot;</span> file=<span class="stringliteral">&quot;Board.clayer.yml&quot;</span> condition=<span class="stringliteral">&quot;FRDM-MCXA153-Board&quot;</span>/&gt;</div>
+<div class="line">  &lt;clayer type=<span class="stringliteral">&quot;Board&quot;</span> path=<span class="stringliteral">&quot;layers/board/FRDM-MCXA153-MW&quot;</span> file=<span class="stringliteral">&quot;Board.clayer.yml&quot;</span> copy-to=<span class="stringliteral">&quot;board/FRDM-MCXA153&quot;</span> condition=<span class="stringliteral">&quot;FRDM-MCXA153-Board&quot;</span> /&gt;</div>
+<div class="line">  &lt;clayer type=<span class="stringliteral">&quot;Board&quot;</span> path=<span class="stringliteral">&quot;board/FRDM-MCXA153&quot;</span> file=<span class="stringliteral">&quot;Board.clayer.yml&quot;</span> condition=<span class="stringliteral">&quot;FRDM-MCXA153-Board&quot;</span>/&gt;</div>
 <div class="line">&lt;/csolution&gt;</div>
 </div><!-- fragment --><p >&#160;</p>
 <hr  />
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('pdsc_csolution_pg.html',''); initResiz
 <td>description </td><td>Briefly documents the purpose and scope of the template (maximum 256 characters, recommended 128 characters). </td><td>BriefDescType </td><td>1  </td></tr>
 </table>
 <p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;csolution&gt; </div>
-<div class="line">  &lt;<span class="keyword">template</span> name=<span class="stringliteral">&quot;Basic csolution project&quot;</span> path=<span class="stringliteral">&quot;templates/blank&quot;</span> file=<span class="stringliteral">&quot;Blank.csolution.yml&quot;</span> copyto=<span class="stringliteral">&quot;Blank&quot;</span> condition=<span class="stringliteral">&quot;STM32H7S-Series&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keyword">template</span> name=<span class="stringliteral">&quot;Basic csolution project&quot;</span> path=<span class="stringliteral">&quot;templates/blank&quot;</span> file=<span class="stringliteral">&quot;Blank.csolution.yml&quot;</span> copy-to=<span class="stringliteral">&quot;Blank&quot;</span> condition=<span class="stringliteral">&quot;STM32H7S-Series&quot;</span>&gt;</div>
 <div class="line">    &lt;description&gt;Create a basic project with empty main <span class="keyword">function</span>&lt;/description&gt;</div>
 <div class="line">  &lt;/<span class="keyword">template</span>&gt;</div>
 <div class="line">  &lt;<span class="keyword">template</span> name=<span class="stringliteral">&quot;TrustZone csolution project&quot;</span> path=<span class="stringliteral">&quot;templates/trustzone&quot;</span> file=<span class="stringliteral">&quot;TrustZone.csolution.yml&quot;</span> condition=<span class="stringliteral">&quot;STM32H7S-Series&quot;</span>&gt;</div>
