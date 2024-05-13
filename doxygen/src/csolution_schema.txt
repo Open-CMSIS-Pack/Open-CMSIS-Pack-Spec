@@ -41,7 +41,7 @@ Grouping element for csolution. No more than one such group can exist in a packa
 
 \code
 <csolution> 
-  <template name="Basic csolution project" path="templates/blank" file="Blank.csolution.yml" copyto="Blank" condition="STM32H7S-Series">
+  <template name="Basic csolution project" path="templates/blank" file="Blank.csolution.yml" copy-to="Blank" condition="STM32H7S-Series">
     <description>Create a basic project with empty main function</description>
   </template>
   <clayer path="layers/board/FRDM-MCXA153-MW" file="Board.clayer.yml" copy-to="board/FRDM-MCXA153" condition="FRDM-MCXA153-Board" />
@@ -106,8 +106,8 @@ A clayer section provides the information for accessing a software layer that is
 \b Example:
 \code
 <csolution> 
-  <clayer path="layers/board/FRDM-MCXA153-MW" file="Board.clayer.yml" copy-to="board/FRDM-MCXA153" condition="FRDM-MCXA153-Board" />
-  <clayer path="board/FRDM-MCXA153" file="Board.clayer.yml" condition="FRDM-MCXA153-Board"/>
+  <clayer type="Board" path="layers/board/FRDM-MCXA153-MW" file="Board.clayer.yml" copy-to="board/FRDM-MCXA153" condition="FRDM-MCXA153-Board" />
+  <clayer type="Board" path="board/FRDM-MCXA153" file="Board.clayer.yml" condition="FRDM-MCXA153-Board"/>
 </csolution>
 \endcode
 
@@ -181,7 +181,7 @@ A template section provide one or more project templates for starting a new *cso
 \b Example:
 \code
 <csolution> 
-  <template name="Basic csolution project" path="templates/blank" file="Blank.csolution.yml" copyto="Blank" condition="STM32H7S-Series">
+  <template name="Basic csolution project" path="templates/blank" file="Blank.csolution.yml" copy-to="Blank" condition="STM32H7S-Series">
     <description>Create a basic project with empty main function</description>
   </template>
   <template name="TrustZone csolution project" path="templates/trustzone" file="TrustZone.csolution.yml" condition="STM32H7S-Series">

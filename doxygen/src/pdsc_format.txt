@@ -454,7 +454,7 @@ This Markdown file is indented for web pages that offer software packs in form o
 \code
 <package>
   ...
-  <description overview=".\Documentation\README.md>Keil MDK Middleware: File System, Network IPv4/IPv6, USB Device/Host</description>
+  <description overview="./Documentation/README.md">Keil MDK Middleware: File System, Network IPv4/IPv6, USB Device/Host</description>
   ...
 </package>
 \endcode
@@ -874,6 +874,12 @@ There are the following requirement types:
     <td>\ref element_languages "languages"</td>
     <td>List of language standards required for the project to build. Assuming ANSI C if not set.</td>
     <td>\ref element_languages "LanguagesType"</td>
+    <td><0..1></td>
+  </tr>
+  <tr>
+    <td>\ref element_targets "targets"</td>
+    <td>Restrict a software pack to a list of devices, boards, or processor cores that are supported.</td>
+    <td>\ref element_targets "TargetsType"</td>
     <td><0..1></td>
   </tr>
 </table>
