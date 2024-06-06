@@ -250,7 +250,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html',''); initResi
 <tr>
 <td>arguments </td><td><span class="XML-Token">Deprecated; use argument tags under exe, web and/or eclipse</span>. </td><td>GeneratorCommandArgumentsType </td><td>0..1  </td></tr>
 <tr>
-<td>gpdsc </td><td>Path and name of the GPDSC that the generator creates and updates. The path is either absolute or relative to the working directory. If no explicit gpdsc file is provided, then a gpdsc file named after the project with extension gpdsc in the working directory is assumed (<code>&lt;project&gt;</code>.gpdsc).  </td><td>xs:string </td><td>0..1  </td></tr>
+<td><a class="el" href="pdsc_generators_pg.html#element_gen_gpdsc">gpdsc</a> </td><td>Path and name of the GPDSC that the generator creates and updates. The path is either absolute or relative to the working directory. If no explicit gpdsc file is provided, then a gpdsc file named after the project with extension gpdsc in the working directory is assumed (<code>&lt;project&gt;</code>.gpdsc).  </td><td>GpdscFileType </td><td>0..1  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_generators_pg.html#element_gen_exe">exe</a> </td><td>Section to specify a binary/executable to generate the GPDSC file.  </td><td>xs:string </td><td>0..1  </td></tr>
 <tr>
@@ -268,7 +268,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html',''); initResi
 <hr  />
 <h1><a class="anchor" id="element_gen_select"></a>
 /package/generators/generator/select</h1>
-<p >This element contains information about the vendor and device the GPDSC file has been generated for. Only one such element can exist in <code>&lt;generators&gt;</code>.</p>
+<p >This element contains information about the vendor and device the GPDSC file has been generated for. Only one such element can exist in <a class="el" href="pdsc_generators_pg.html#element_generator">&lt;generator&gt;</a>.</p>
 <p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;generators&gt;</div>
 <div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;STM32CubeMX&quot;</span> Gvendor=<span class="stringliteral">&quot;STMicroelectronics&quot;</span> Gtool=<span class="stringliteral">&quot;STM32CubeMX&quot;</span> Gversion=<span class="stringliteral">&quot;4.10.0&quot;</span>&gt;</div>
 <div class="line">    &lt;select Dname=<span class="stringliteral">&quot;STM32F746NGHx&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>/&gt;</div>
@@ -290,6 +290,27 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html',''); initResi
 <td>Dvariant </td><td>Name of the targeted device variant. If a variant is specified, the device name will be ignored and the variant rules. If no Dname is specified, this tag is required. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>Pname </td><td>Name of the targeted processor of a device with multiple processors. For devices with multiple processors this tag is required. </td><td>xs:string </td><td>optional  </td></tr>
+</table>
+<p >&#160;</p>
+<hr  />
+<h1><a class="anchor" id="element_gen_gpdsc"></a>
+/package/generators/generator/gpdsc</h1>
+<p >Path and name of the GPDSC that the generator creates and updates. The path is either absolute or relative to the working directory. If no explicit gpdsc file is provided, then a gpdsc file named after the project with extension gpdsc in the working directory is assumed (&lt;project&gt;.gpdsc). Only one such element can exist in <a class="el" href="pdsc_generators_pg.html#element_generator">&lt;generator&gt;</a>.</p>
+<p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;generators&gt;</div>
+<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;MyGen&quot;</span>&gt;</div>
+<div class="line">    &lt;gpdsc name=<span class="stringliteral">&quot;$P/RTE/MyGen/myGen.gpdsc&quot;</span>/&gt;</div>
+<div class="line">  &lt;/generator&gt;</div>
+<div class="line">&lt;/generators&gt;</div>
+</div><!-- fragment --> <p >&#160;</p>
+<table class="cmtable" summary="Element: Generator Gpdsc">
+<tr>
+<th>Parent </th><th colspan="3">Chain  </th></tr>
+<tr>
+<td><a class="el" href="pdsc_generators_pg.html#element_generator">generator</a> </td><td colspan="3"><a class="el" href="pdsc_generators_pg.html#element_generator">/package/generators/generator</a>  </td></tr>
+<tr>
+<th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
+<tr>
+<td>name </td><td>Path and name of the GPDSC that the generator creates and updates.  </td><td>xs:string </td><td>required  </td></tr>
 </table>
 <p >&#160;</p>
 <hr  />

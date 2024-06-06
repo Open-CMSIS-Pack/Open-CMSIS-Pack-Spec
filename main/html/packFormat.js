@@ -42,6 +42,7 @@ var packFormat =
       [ "/package/generators", "pdsc_generators_pg.html#element_generators", null ],
       [ "/package/generators/generator", "pdsc_generators_pg.html#element_generator", null ],
       [ "/package/generators/generator/select", "pdsc_generators_pg.html#element_gen_select", null ],
+      [ "/package/generators/generator/gpdsc", "pdsc_generators_pg.html#element_gen_gpdsc", null ],
       [ "/package/generators/generator/exe", "pdsc_generators_pg.html#element_gen_exe", null ],
       [ "/package/generators/generator/eclipse", "pdsc_generators_pg.html#element_gen_eclipse", null ],
       [ "/package/generators/generator/web", "pdsc_generators_pg.html#element_gen_web", null ],
