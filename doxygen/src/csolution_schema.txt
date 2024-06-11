@@ -44,7 +44,7 @@ Grouping element for csolution. No more than one such group can exist in a packa
   <template name="Basic csolution project" path="templates/blank" file="Blank.csolution.yml" copy-to="Blank" condition="STM32H7S-Series">
     <description>Create a basic project with empty main function</description>
   </template>
-  <clayer path="layers/board/FRDM-MCXA153-MW" file="Board.clayer.yml" copy-to="board/FRDM-MCXA153" condition="FRDM-MCXA153-Board" />
+  <clayer type="Board" path="layers/board/FRDM-MCXA153-MW" file="Board.clayer.yml" copy-to="board/FRDM-MCXA153" condition="FRDM-MCXA153-Board" />
 </csolution>
 \endcode
 
