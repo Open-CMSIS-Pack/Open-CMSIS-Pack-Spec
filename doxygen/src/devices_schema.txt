@@ -1,7 +1,7 @@
 /** 
 \page pdsc_devices_pg /package/devices element
 
-The level \elem{devices} contains all devices for which support is provided by the \ref cp_SWComponents "Software Pack". 
+The level \elem{devices} contains all devices for which support is provided by the software pack. 
 
 Devices can be organized in hierarchy groups to limit redundancy. The hierarchy levels are:
 - \ref element_family "family": the attributes of a device family which includes also the processor.
@@ -761,7 +761,7 @@ algorithms must have a different name.
   </tr>
   <tr>
     <td>name</td>
-    <td>Flash Programming Algorithm file including the path, which is relative to the root folder of the \ref cp_SWComponents "Software Pack".</td>
+    <td>Flash Programming Algorithm file including the path, which is relative to the root folder of the software pack.</td>
     <td>xs:string</td>
     <td>required</td>
   </tr>

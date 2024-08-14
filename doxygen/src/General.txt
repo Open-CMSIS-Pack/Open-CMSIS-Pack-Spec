@@ -1,10 +1,10 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\mainpage
+\mainpage Overview
 
-<b>CMSIS-Pack</b> describes a delivery mechanism for software components, device parameters, and evaluation board
-support. The XML-based package description (PDSC) file describes the content of a \ref cp_SWComponents "Software Pack"
-(file collection) that includes:
+<b>Open-CMSIS-Pack</b> describes a delivery mechanism for software components, device parameters, and evaluation board
+support. The XML-based package description (PDSC) file describes the content of a software pack (file collection) that
+includes:
  -  Source code, header files, and software libraries
  -  Documentation and source code templates
  -  Device parameters along with startup code and programming algorithms
@@ -12,7 +12,7 @@ support. The XML-based package description (PDSC) file describes the content of 
 
 The complete file collection along with the PDSC file is shipped in ZIP-format (renamed to *.pack). The PDSC file is designed
 for software development environments and describes the user and device relevant context for the files supplied within such
-a pack file.
+a pack file. This information can also be used for display on web sites (refer to \ref createPackPublish).
 
 The CMSIS-Pack system solves several problems:
 
@@ -24,64 +24,60 @@ The CMSIS-Pack system solves several problems:
 - The meta-data of a software component can include dependency information for toolchains, devices, and processors which
   simplifies the integration into application programs.
 
-After installing a \ref cp_SWComponents "Software Pack", all included software components are available to the development
-tools. \ref cp_Components "Software components" are a collection of source modules, header and configuration files as well as
-libraries. Packs containing software components can also include \ref cp_Examples and \ref cp_CodeTemplates.
+After installing a software pack, all included software components are available to the development
+tools. Software components are a collection of source modules, header and configuration files as well as
+libraries. Packs containing software components can also include \ref pdsc_examples_pg "examples" and user code templates.
 
 The \subpage pack_revisionHistory lists the main changes between versions.
 
 
-\section SWPackVariants Software Pack Use Cases
+\section SWPackVariants Software pack use cases
 
-A pack can be used to deliver:
+A software pack can be used to deliver:
 
 - \b Device \b support: a so called <i>Device Family Pack (DFP)</i> contains CMSIS system/startup files, drivers, and flash
   algorithms for a microcontroller device family.
 - \b Board \b support: a <i>Board Support Pack (BSP)</i> contains documentation, schematics, and drivers for a certain
   development board.
-- \b Middleware: distribute software components belonging to a middleware stack (such as source code or libraries) in
-  CMSIS-Pack format.
-- \b In-house \b software: distribute software components within a company or engineering group.
+- \b Software \b components: a pure <i>software pack</i> can contain source code, libraries, and documentation for:
+  - \b middleware \b stacks for public availability.
+  - \b in-house \b software for distribution within a company and/or engineering group.
 
-\note
-- A Software Pack can address multiple use cases at the same time!
-- CMSIS itself is distributed as a software pack (containing the generic CMSIS components (CORE, DSP Library, and RTOS
-  implementation)) and is supplied by Arm.
+As shown in the image below, a software pack can address multiple use cases at the same time! The
+\ref packFormat "XML elements" in the PDSC file determine the use case(s).
+<a class="el" href="https://arm-software.github.io/CMSIS_6/latest/General/index.html#cmsis_components" target="_blank">CMSIS</a>
+itself is distributed in various software packs (CORE, DSP library, RTOS implementation, etc.) and is supplied by Arm.
+
+\image html pack_trinity.png "Major use cases of software packs"
 
 The following sections provide more information:
 
  - In the \ref cp_Packs, learn the basics and the required steps for creating a pack.
- - \ref cp_PackTutorial are available that show how to start a \ref cp_SWComponents "software pack" from scratch, how to
-   enable device support in a \ref createPack_DFP "Device Support Pack (DFP)", and how to describe development boards in a
-   \ref createPackBoard "Board Support Pack (BSP)".
- - Learn how to \ref createPackPublish.
- - \ref createPackUtil are available that are useful during the creation of a pack.
+ - \ref cp_PackTutorial are available that show how to start a software pack from scratch, how to
+   enable device support in a device support pack (DFP), and how to describe development boards in a
+   board support pack (BSP).
  - \ref packFormat describes all XML elements that can be used in a package description file.
  - \ref configWizard can be used to create GUI-like elements in development tools for configuration files.
  - \ref flashAlgorithm algorithms are used to erase or download applications to Flash devices.
  - \ref coresight_setup allows to create tool-agnostic debug and trace configurations.
- - \ref packIndexFile are used to generate a catalog of available packs.
-
-<hr>
-
-CMSIS-Pack in ARM::CMSIS Pack
------------------------------
-Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS directories:
-Folder          |Content                                       |
-----------------|----------------------------------------------|
-Utilities       | \ref createPackUtil                          |
-Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
-
+ - \ref sdf_pg describes all XML elements that can be used in a system description file for debugging.
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page pack_revisionHistory Revision History of CMSIS-Pack
+\page pack_revisionHistory Revision history
 
 <table class="cmtable" summary="Revision History">
   <tr>
     <th>Version</th>
     <th>Description</th>
+  </tr>
+  <tr>
+    <td>1.7.38</td>
+    <td>
+      - The \ref createPackPublish "pack publishing process" has been rewritten completely
+      - removed the old tutorials that have been superseded by the online versions on GitHub
+    </td>
   </tr>
   <tr>
     <td>1.7.37</td>
@@ -371,7 +367,7 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   <tr>
     <td>1.6.1</td>
     <td>Modifications compared to Version 1.6.0
-- added \ref bash_script to support pack generation on Linux or Windows.
+- added a Bash script to support pack generation on Linux or Windows.
 - added \b custom attribute to \ref element_component "component element".
 - added \b TrustZone-disabled value to \ref DsecureEnum "software model selection".
 - added \ref dbg_setup_tutorial in CMSIS-Pack documentation.
@@ -548,6 +544,3 @@ Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
   </tr>
 </table>
 */
-
-
-

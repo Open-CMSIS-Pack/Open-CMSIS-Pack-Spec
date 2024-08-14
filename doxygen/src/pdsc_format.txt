@@ -6,48 +6,48 @@
 
 The <b>Pack Description (*.pdsc) Format</b>  uses standard XML annotations and is defined in the schema file <b>PACK.xsd</b>.
 Software components are distributed through <b>Software Packs</b>.
-A \ref cp_SWComponents "Software Pack" is a zip file containing a single <b>Pack Description</b> file that describes
+A software pack is a zip file containing a single <b>Pack Description</b> file that describes
 dependencies to devices, processors, tool chains, or other software components.
 
-A descriptive text of the \ref cp_SWComponents "Software Pack" along the text information for devices, components, and examples is part of each
+A descriptive text of the software pack along the text information for devices, components, and examples is part of each
 a <b>Pack Description</b> (*.pdsc) file. In addition, information is provided which facilitates downloading, updating, and versioning of
-of a \ref cp_SWComponents "Software Pack". The *.pdsc file contains also the complete version history of the \ref cp_SWComponents "Software Pack"
+of a software pack. The *.pdsc file contains also the complete version history of the software pack
 with a brief list of the most significant changes.
 
 \section Filenames Filename Conventions
 
-A \ref cp_SWComponents "Software Pack" must have a unique filename which uses the following format:
+A software pack must have a unique filename which uses the following format:
 <b>\<vendor\>.\<name\>.\<version\>.pack</b>.
 
 \b Where:
- - <b>\<vendor\></b>: name of the supplier or vendor of the \ref cp_SWComponents "Software Pack".
- - <b>\<name\></b>: name of the \ref cp_SWComponents "Software Pack". It is the vendor's responsibility to ensure unique
+ - <b>\<vendor\></b>: name of the supplier or vendor of the software pack.
+ - <b>\<name\></b>: name of the software pack. It is the vendor's responsibility to ensure unique
    package names.
- - <b>\<release version="X.Y.Z"\></b>: \ref VersionType "version number" of the \ref cp_SWComponents "Software Pack".
- - <b>.pack</b>: file extension identifying a \ref cp_SWComponents "Software Pack".
+ - <b>\<release version="X.Y.Z"\></b>: \ref VersionType "version number" of the software pack.
+ - <b>.pack</b>: file extension identifying a software pack.
 
 \note \<vendor\> and \<name\> \em must \em not contain spaces.
 
 \n
-The <b>Pack Description</b> (*.pdsc) file belonging to such a \ref cp_SWComponents "Software Pack" file (\<vendor\>.\<name\>.\<version\>.pack)
+The <b>Pack Description</b> (*.pdsc) file belonging to such a software pack file (\<vendor\>.\<name\>.\<version\>.pack)
 is version independent and has the format:
 <b>\<vendor\>.\<name\>.pdsc</b>.
 
 \b Where:
- - <b>\<vendor\></b>: name of the supplier or vendor of the \ref cp_SWComponents "Software Pack".
- - <b>\<name\></b>: name of the \ref cp_SWComponents "Software Pack" that is described by this *.pdsc file.
- - <b>.pack</b>: file extension identifying a \ref cp_SWComponents "Software Pack".
+ - <b>\<vendor\></b>: name of the supplier or vendor of the software pack.
+ - <b>\<name\></b>: name of the software pack that is described by this *.pdsc file.
+ - <b>.pack</b>: file extension identifying a software pack.
 
 \note \<vendor\> and \<name\> \em must \em not contain spaces.
 
 Example filenames for software packs:
 
 Software Pack for CMSIS Version 4.0 released by Arm.
- - <b>ARM.CMSIS.4.0.0.pack</b>: filename of the \ref cp_SWComponents "Software Pack".
+ - <b>ARM.CMSIS.4.0.0.pack</b>: filename of the software pack.
  - <b>ARM.CMSIS.pdsc</b>: filename of the <b>Pack Description</b> (*.pdsc) file.
 
 Device Family Pack for STM32F4 Version 1.0.0 released by ST Microelectronics.
- - <b>ST.STM32F4xx_DFP.1.0.0.pack</b>: filename of the \ref cp_SWComponents "Software Pack".
+ - <b>ST.STM32F4xx_DFP.1.0.0.pack</b>: filename of the software pack.
  - <b>ST.STM32F4xx.pdsc</b>: filename of the <b>Pack Description</b> (*.pdsc) file.
 
 \note All elements are case sensitive and must be consistently spelled in all places, i.e. the definition in the PDSC
@@ -70,15 +70,15 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage element_requirements_pg "<requirements>": lists required packs, compiler, programming language standards and their version or version range.
  - \subpage element_taxonomy "<taxonomy>": lists description elements that define component classes and component group names.
  - \subpage element_part-taxonomy "<part-taxonomy>": lists description elements that define part classes and part group names.
- - \subpage pdsc_apis_pg "<apis>": describes Application Programming Interfaces (API) Specifications contained in the \ref cp_SWComponents "Software Pack".
+ - \subpage pdsc_apis_pg "<apis>": describes Application Programming Interfaces (API) Specifications contained in the software pack.
  - \subpage pdsc_generators_pg "<generators>": specifies the tools that have been used to generate the PDSC file.
- - \subpage pdsc_devices_pg "<devices>": lists the devices supported by this \ref cp_SWComponents "Software Pack". It specifies the device attributes and
+ - \subpage pdsc_devices_pg "<devices>": lists the devices supported by this software pack. It specifies the device attributes and
    files like flash programming algorithms, CMSIS device header files, CMSIS System View Descriptions, etc.
- - \subpage pdsc_boards_pg "<boards>": lists the development boards supported by the \ref cp_SWComponents "Software Pack".
- - \subpage pdsc_parts_pg "<parts>": lists the parts (devices other than the MCUs) supported by the \ref cp_SWComponents "Software Pack".
- - \subpage pdsc_conditions_pg "<conditions>": defines dependencies to devices, processors, components, and tools that are used within the \ref cp_SWComponents "Software Pack".
+ - \subpage pdsc_boards_pg "<boards>": lists the development boards supported by the software pack.
+ - \subpage pdsc_parts_pg "<parts>": lists the parts (devices other than the MCUs) supported by the software pack.
+ - \subpage pdsc_conditions_pg "<conditions>": defines dependencies to devices, processors, components, and tools that are used within the software pack.
    It allows making components and files conditional.
- - \subpage pdsc_components_pg "<components>": lists the software components contained in the \ref cp_SWComponents "Software Pack".
+ - \subpage pdsc_components_pg "<components>": lists the software components contained in the software pack.
  - \subpage pdsc_examples_pg "<examples>": specifies example projects contained in the pack.
  - \subpage pdsc_csolution_pg "<csolution>": lists pack content that relates to *csolution projects* that are managed using the <a href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox" target="_blank">CMSIS-Toolbox</a>.
  
@@ -155,7 +155,7 @@ assists searching for packages.
   </tr>
   <tr>
     <td>schemaVersion</td>
-    <td>CMSIS-PDSC schema version used for describing the \ref cp_SWComponents "Software Pack" (for example, \token{"1.2"}). The version format is described in \ref VersionType "Version Type".</td>
+    <td>CMSIS-PDSC schema version used for describing the software pack (for example, \token{"1.2"}). The version format is described in \ref VersionType "Version Type".</td>
     <td>VersionType</td>
     <td>required</td>
   </tr>
@@ -204,21 +204,21 @@ assists searching for packages.
   \anchor package_name
   <tr>
     <td>name</td>
-    <td>Name of the \ref cp_SWComponents "Software Pack". Could be displayed by an installer.</td>
+    <td>Name of the software pack. Could be displayed by an installer.</td>
     <td>xs:string </td>
     <td>1..1 </td>
   </tr>
   \anchor package_vendor
   <tr>
     <td>vendor</td>
-    <td>Name of the supplier or vendor of the \ref cp_SWComponents "Software Pack".</td>
+    <td>Name of the supplier or vendor of the software pack.</td>
     <td>xs:string </td>
     <td>1..1 </td>
   </tr>
   \anchor package_description
   <tr>
     <td>\ref element_package_description "description"</td>
-    <td>Brief description of the \ref cp_SWComponents "Software Pack" (maximum 256 characters, recommended 128 characters).</td>
+    <td>Brief description of the software pack (maximum 256 characters, recommended 128 characters).</td>
     <td>BriefDescType</td>
     <td>1..1 </td>
   </tr>
@@ -227,7 +227,7 @@ assists searching for packages.
     <td>url</td>
     <td><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator" target="_blank">HTTP URL</a>
         or <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI</a> location
-        of the \ref cp_SWComponents "Software Pack". The URL can be used by installers for downloading,
+        of the software pack. The URL can be used by installers for downloading,
         updating, or checking versions. If left empty, the Pack cannot be updated automatically from a server location.</td>
     <td>xs:anyURI </td>
     <td>1..1 </td>
@@ -282,7 +282,7 @@ assists searching for packages.
 
   <tr>
     <td>\ref element_releases "releases"</td>
-    <td>Version release history with brief information about a \ref cp_SWComponents "Software Pack".</td>
+    <td>Version release history with brief information about a software pack.</td>
     <td>ReleasesGroup</td>
     <td>1..1 </td>
   </tr>
@@ -295,13 +295,13 @@ assists searching for packages.
   </tr>
   <tr>
     <td>\ref element_keywords "keywords"</td>
-    <td>Defines keywords that might be used to find a \ref cp_SWComponents "Software Pack". Keywords may be also exported to web page to provide information for search engines, such as Google.</td>
+    <td>Defines keywords that might be used to find a software pack. Keywords may be also exported to web page to provide information for search engines, such as Google.</td>
     <td>group</td>
     <td>0..1 </td>
   </tr>
   <tr>
     <td>\ref element_generators "generators"</td>
-    <td>Specifies generator tools that have been used to create the \ref cp_SWComponents "Software Pack".</td>
+    <td>Specifies generator tools that have been used to create the software pack.</td>
     <td>GeneratorsType</td>
     <td>0..1 </td>
   </tr>
@@ -339,7 +339,7 @@ assists searching for packages.
   </tr>
   <tr>
     <td>\ref element_apis "apis"</td>
-    <td>Defines the API (Application Programming Interfaces) specifications contained in the \ref cp_SWComponents "Software Pack".</td>
+    <td>Defines the API (Application Programming Interfaces) specifications contained in the software pack.</td>
     <td>ApisType</td>
     <td>0..1 </td>
   </tr>
@@ -447,7 +447,7 @@ this example applies to \ref element_release.
 /**
 \page element_package_description /package/description element
 
-Contains a brief description of the \ref cp_SWComponents "Software Pack". Optionally with link to an file with overview documentation in Markdown format.
+Contains a brief description of the software pack. Optionally with link to an file with overview documentation in Markdown format.
 This Markdown file is indented for web pages that offer software packs in form of a marketplace.
 
 \b Example:

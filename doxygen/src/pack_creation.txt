@@ -1,44 +1,44 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page cp_Packs Overview
+\page cp_Packs Technical background
 
 The <b>CMSIS-Pack</b> format is used to deliver a software package and is aimed to be scalable for future requirements.
 It provides a management process and supports a tool independent distribution for:
 
- - \ref createPack_DFP "Device Support" for tool chains and software applications to target a specific device:
-  - Information about the processor and it's features.
-  - C and assembly files for the device startup and access to the memory mapped peripheral registers.
-  - Parameters, technical information, and data sheets about the device family and the specific devices.
-  - Device description and available peripherals.
-  - Memory layout of internal and external RAM and ROM address ranges.
-  - \ref flashAlgorithm "Flash algorithms" for programming the device.
-  - Debug and trace configurations as well as System View Description files for device specific display of the memory mapped
-    peripheral registers.
+ - Device support for tool chains and software applications to target a specific device:
+   - Information about the processor and it's features.
+   - C and assembly files for the device startup and access to the memory mapped peripheral registers.
+   - Parameters, technical information, and data sheets about the device family and the specific devices.
+   - Device description and available peripherals.
+   - Memory layout of internal and external RAM and ROM address ranges.
+   - \ref flashAlgorithm "Flash algorithms" for programming the device.
+   - Debug and trace configurations as well as System View Description files for device specific display of the memory mapped
+     peripheral registers.
 
- - \ref createPackBoard "Board Support" for rapid development in the prototyping stage:
-  - Information about the development board and it's features.
-  - Parameters, technical information, and data sheets about the board, the mounted microcontroller and peripheral devices.
-  - Drivers for on-board peripheral devices
+ - Board support for rapid development in the prototyping stage:
+   - Information about the development board and it's features.
+   - Parameters, technical information, and data sheets about the board, the mounted microcontroller and peripheral devices.
+   - Drivers for on-board peripheral devices
 
- - \ref cp_SWComponents "Software Components" simplify the re-use of software and the management of 3rd party software. They contain:
-  - A collection of source modules, header and \ref configWizard "configuration files" as well as libraries.
-  - Documentation of the software, including features and APIs.
+ - Software components simplify the re-use of software and the management of third-party software. They contain:
+   - A collection of source modules, header and \ref configWizard "configuration files" as well as libraries.
+   - Documentation of the software, including features and APIs.
   
- - \ref cp_API "Application Programming Interfaces" specify one or more APIs for \ref cp_Components "software components" that are
-   part of another \ref cp_SWComponents "Software Pack".
+ - \ref pdsc_apis_pg "Application Programming Interfaces" specify one or more APIs for \ref pdsc_components_pg "software components"
+   that are part of another software pack.
 
- - \ref cp_Examples can be used as a reference and starting point for similar applications. They contain:
+ - \ref pdsc_examples_pg can be used as a reference and starting point for similar applications. They contain:
   - Fully defined application projects that work out of the box in the specified build and debug environments.
   - Documentation about the purpose of the example, how to build, configure and execute the application.
   
- - \ref cp_CodeTemplates help to understand the basic concepts of a software component better and to give the user a
+ - Code templates help to understand the basic concepts of a software component better and to give the user a
    good starting point for implementing his application. 
 
 
 \section cp_Components Software Components
 
 A software component encapsulates a set of related functions. Software components can contain C/C++ source files, object code,
-assembler files, header files, or libraries. The interfaces of software components should be defined with \ref cp_API 
+assembler files, header files, or libraries. The interfaces of software components should be defined with \ref pdsc_apis_pg "APIs"
 to make them substitutable by other compatible components at design time. In addition, CMSIS software components
 should contain documentation for the software component. They may provide user code templates that give a starting point for
 the application developer, and can have optional debug view descriptions for debuggers. 
@@ -54,7 +54,7 @@ programmer.
 \image html software_component.png
 
 
-\subsection cp_CompDetails Technical Details
+\subsection cp_CompDetails Component classification
 
 A component lists the files that belong to it and that are relevant for a project. The component itself or each individual
 file may refer to a \ref element_condition "condition" that must resolve to true; if it is false, the component or file is
@@ -86,7 +86,7 @@ other software components using the \ref element_taxonomy.
 For a list of established Cclasses, refer to \ref pack_Cclass.
 
 In case multiple interdependent components (belonging to the same \c Cclass) form part of a solution, these can be grouped
-in a so called \ref cp_Bundles "bundle". 
+in a so called \b bundle. 
 
 Use the following syntax to reference to software components and APIs:\n
 <b>\<Vendor\>::\<Cclass\>:\<Cgroup\>:\<Csub\></b>
@@ -145,7 +145,7 @@ your toolchain is not able to resolve correctly and users might end up with unco
 change the variant while developing the application.
 
 
-\section cp_Cond References to other software components
+\section cp_Cond References
 
 Software components can reference other software components (either within the same pack or in other packs) using conditions:
 
@@ -206,7 +206,7 @@ An example is the \b CMSIS-Driver pack that contains various hardware interface 
 CMSIS-Driver APIs (that are published in the CMSIS Pack).
 
 
-\section cp_RTECompH Inventory header file: RTE_Components.h
+\section cp_RTECompH Inventory header file
 
 Frequently, the behavior or features of a software component depend on the presence of other software components in the
 application. For example, a network stack can interface to Ethernet or serial PPP (UART). Depending on the presence of
@@ -216,7 +216,7 @@ To simplify application configuration, the file \b RTE_Components.h is generated
 the inventory of all selected components. For each selected software component, it contains \#define statements that are
 specified by the component meta data. The following example shows an RTE_Components.h file:
 
-\code
+\code{.c}
 /* 
    Auto generated Run-Time-Environment Component Configuration File 
         *** Do not modify ! *** 
@@ -250,7 +250,7 @@ example:
 \endcode
 
 
-\section cp_Combine Combining software components
+\section cp_Combine Combining components
 
 When using software components, you can use the conditions to automatically resolve dependencies on other components. Use
 this to combine components for a project in a certain way, while combining them differently for another project. In the
@@ -271,32 +271,32 @@ software components, but can concentrate on the implementation of his own applic
 
 \section PackFilenames Pack Conventions
 
-A \ref cp_SWComponents "Software Pack" is a collection of files located in directories that are archived in a file with the extension *.pack using the standard
+A software pack is a collection of files located in directories that are archived in a file with the extension *.pack using the standard
 <a href="http://en.wikipedia.org/wiki/Zip_%28file_format%29" target="_blank">ZIP file format</a>.
 The Pack Description file (PDSC) with the file extension *.pdsc contains the \ref packFormat "meta information", describing the content of a pack based on 
 <a href="https://en.wikipedia.org/wiki/XML" target="_blank">XML</a>. The PDSC file must be:
-- included in the \ref cp_SWComponents "Software Pack"
+- included in the software pack
 - located in the base folder of the archive
-- compliant with the \ref cp_SWComponents "Software Pack" file \ref pack_filename "naming convention"
+- compliant with the software pack file \ref pack_filename "naming convention"
 
 \note
 - The <em>base folder</em> is defined to be the root folder './' of a zip archive and it is imperative that the whole
-  \ref cp_SWComponents "Software Pack" only contains a single PDSC file.
+  software pack only contains a single PDSC file.
 - Future tools shall support this case: if the PDSC file is located in an immediate subdirectory, then the subdirectory
-  becomes the base folder. The \ref cp_SWComponents "Software Pack" is installed as if the subdirectory does not exist. All
+  becomes the base folder. The software pack is installed as if the subdirectory does not exist. All
   files and directories located in the root folder are ignored and do not get installed.
 
 \subsection pack_filename Pack File Name
 
-A \ref cp_SWComponents "Software Pack" must have a unique filename. Therefore it is constructed from vendor, packname and version and the file extension *.pack.
+A software pack must have a unique filename. Therefore it is constructed from vendor, packname and version and the file extension *.pack.
 
 <b>\<vendor\>.\<name\>.\<version\>.pack</b>.
 
 Where:
- - <b>\<vendor\></b> is the name of the supplier or vendor of the \ref cp_SWComponents "Software Pack".
- - <b>\<name\></b> is the name of the \ref cp_SWComponents "Software Pack". All packs that are published by a vendor must have a unique pack name.
- - <b>\<release version="X.Y.Z"\></b>specifies the \ref VersionType "version number" of the release for the \ref cp_SWComponents "Software Pack".
- - <b>.pack</b> is the file extension identifying a \ref cp_SWComponents "Software Pack".
+ - <b>\<vendor\></b> is the name of the supplier or vendor of the software pack.
+ - <b>\<name\></b> is the name of the software pack. All packs that are published by a vendor must have a unique pack name.
+ - <b>\<release version="X.Y.Z"\></b>specifies the \ref VersionType "version number" of the release for the software pack.
+ - <b>.pack</b> is the file extension identifying a software pack.
 
 \note
 - The XML elements \elem{vendor}, \elem{name}, and the version attribute of the \elem{release} are specified in the \ref Filenames "PDSC" file. 

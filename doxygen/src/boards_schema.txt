@@ -98,7 +98,7 @@ Grouping element for boards. No more than one such group can exist in a Pack. No
 
 \section element_board /package/boards/board
 
-This element provides information to specify the \ref createPackBoard "Board Support Package (BSP)". At least one board must be defined.
+This element provides information to specify the board support. At least one board must be defined.
 
 <table class="cmtable" summary="Element: Board">
   <tr>
@@ -129,7 +129,7 @@ This element provides information to specify the \ref createPackBoard "Board Sup
   </tr>
   <tr>
     <td>revision</td>
-    <td>Revision of the board that is suited to be used with the \ref createPackBoard "BSP".</td>
+    <td>Revision of the board that is suited to be used with the BSP.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
@@ -946,7 +946,7 @@ Specify Flash programming algorithms with the address range and its size for boa
   </tr>
   <tr>
     <td>name</td>
-    <td>Flash Programming Algorithm file including the path, which is relative to the root folder of the \ref cp_SWComponents "Software Pack".</td>
+    <td>Flash Programming Algorithm file including the path, which is relative to the root folder of the software pack.</td>
     <td>xs:string</td>
     <td>required</td>
   </tr>

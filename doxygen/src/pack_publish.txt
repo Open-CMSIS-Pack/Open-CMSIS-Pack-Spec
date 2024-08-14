@@ -1,75 +1,225 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page createPackPublish Publish a Pack
-There are multiple ways to distribute a software pack:
+\page createPackPublish Publish a CMSIS-Pack
 
-\section cp_prerequisites Prerequisites
+Before you start distributing a software pack, make sure that it does not contain errors. Use the tools described in the
+\ref createPackUtil section for verification. Once you have validated that the PDSC file and the pack contain no errors,
+you have basically two options for distributing a software pack:
+- \ref cp_LocalInstallation
+- \ref cp_WebDownload
 
-Before you start to distribute a software pack, you need to make sure that it does not contain errors. A good start is an
-error and warning free run of \ref bash_script "gen_pack.sh" that does not show any
-<a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> errors and
-\ref cp_Editors_xmllint "validates the XML" of the PDSC file.
+The following sections assume that you are familiar with the
+<a class="el" href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs" target="_blank">CMSIS-Toolbox</a> and
+especially with
+<a class="el" href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-tools.md#cpackget-invocation" target="_blank">cpackget</a>.
 
-\note XML validation is important when the pack should published using a \ref cp_KeilComPack "pack index service". The pack
-  importer will ignore all \elem{vendor}.\elem{name}.pdsc files that do fail when checking against the current PACK.xsd
-  schema file and thus your pack will cannot be downloaded.
+\section createPackUtil Checking CMSIS-Packs
 
+Software packs are ZIP files that contain a \ref packFormat "PDSC" file and other content. The ZIP file needs to be consistent
+and the PDSC file within has to be validated against the XML schema file (PACK.xsd). An open-source checking tool is available
+that helps you with both tasks: a
+<a class="el" href="https://github.com/Open-CMSIS-Pack/gen-pack" target="_blank">Bash library for gen-pack scripts</a>.
+Make sure that you have used it to validate your PDSC file and the pack contents before submitting it to any
+\ref cp_KeilComPack "pack indexing service". The library can be used on all major host operating systems and can also be run
+in GitHub actions.
 
-\section cp_LocalInstallation Local Installation
+\section cp_LocalInstallation Local installation
+
 The easiest way to distribute a software pack is attaching it to an email or using other means of electronic distribution
-(for example using a company internal file server). The installation of a software pack is usually triggered by
-double-clicking the Pack file. The pack management tool is invoked and the Pack is installed on the local machine. After
-installation, the Pack will be shown in the list of installed packs (tool dependent). If the PDSC file does not contain a
-valid \c \<url\> element, a manual installation is required to update a software pack. Otherwise, pack management tools can
-check for updates on the server or the local machine that is specified by \c \<url\>.
+(for example using a file server). Install the software pack on a PC using
+<a class="el" href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-tools.md#cpackget-details" target="_blank">cpackget</a>,
+the pack management tool that comes with the CMSIS-Toolbox:
+\code
+cpackget add vendor.packname.version.pack
+\endcode
+If the PDSC file does not contain a valid \c \elem{url} element, a
+manual installation is required to update a software pack. Otherwise, \c cpackget can check for updates on the server or the
+local machine that is specified by \c \elem{url}.
 
-\image html LocalInstallation.png "Local installation and update from URL"
-
-\note For automatic updates on a local machine, specify the \c \<url\> using the
+\note For automatic updates on a local machine, specify the \c \elem{url} using the
 <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI scheme</a>.
 
+\section cp_WebDownload Web download
 
-\section cp_WebDownload Web Download
+If you want to make your packs widely available, you need to host them on the web. For publishing packs, these
+options are available:
+- \ref cp_HowWebDownloadWorks
+- \ref cp_GitHubHosting
 
-Any web server can be used to host a software pack (specified by the \c \<url\> element in the PDSC file). At this location,
+The following diagram shows how you can publish your packs when using a \ref cp_KeilComPack "pack indexing service":
+
+\image html IndexingService.png "Pack hosting and indexing service"
+
+When you run the command \c cpackget \c update-index, the tool queries the \ref pidxFile "package index file (index.pidx)"
+from the pack index server. This file is generated using the \ref cp_vidx2pidx "vidx2pidx tool" from the
+\ref vidxFile "vendor index file (index.vidx)" which points to all known \elem{vendor}.pidx and stand-alone PDSC files.
+
+The PIDX file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the
+PIDX file will be processed and validated. Only error-free packs will become available via web pages and development tools.
+
+\note Refer to the \ref cp_KeilComPack section for more information how to get listed on such an indexing server.
+
+\subsection cp_HowWebDownloadWorks Self-hosted packs
+
+Any web server can be used to host a software pack (specified by the \c \elem{url} element in the PDSC file). At this location,
 the following files should be present:
 -# \elem{vendor}.\elem{name}.pdsc [required]: pack description file.
 -# \elem{vendor}.\elem{name}.\elem{version}.pack [required]: pack file where \elem{version} refers to the latest version
    specified in the PDSC file.
 -# \elem{vendor}.pidx [optional]: list with all packs hosted and maintained by the vendor (refer to \ref pidxFile)
 
-All previous versions listed in the \elem{releases} section of the PDSC file should be present at the \c \<url\> as well. This
+All previous versions listed in the \elem{releases} section of the PDSC file should be present at the \c \elem{url} as well. This
 allows users to revert updates or to download a previous version of a software pack (for maintenance purposes).
 
-The \elem{vendor}.pidx allows you to publish multiple packs to a \ref cp_KeilComPack "Pack Index Service".
+The \elem{vendor}.pidx allows you to publish multiple packs to a \ref cp_KeilComPack "Pack Index Service" at once.
 
-\section cp_KeilComPack Publish with Pack Index Service
+\note
+- The \elem{url} element in \elem{vendor}.\elem{name}.pdsc is the location where these services check for new packs. At this
+  \elem{url} location, an (unversioned) \elem{vendor}.\elem{name}.pdsc file and a (versioned)
+  \elem{vendor}.\elem{name}.\elem{version}.pack must be available.
+- The \elem{url} is the page where the pack is downloaded. This means, if the URL or the PDSC/pack files become unavailable, users are unable to download the pack.
+- When a new PDSC/pack file is available, it is important to update the version number, otherwise the \ref cp_KeilComPack "Pack Index Service" will not recognize that the pack has changed.
+- Previous versions of a (versioned) \elem{vendor}.\elem{name}.\elem{version}.pack should remain available.
 
-Several companies maintain a Pack Index Server to make packs available within tools or web pages. Once you are ready to deploy packs via such services, you
-may send the URL of the \elem{vendor}.\elem{name}.pdsc or \elem{vendor}.pidx file to the following email addresses:
+\subsection cp_GitHubHosting GitHub-hosted packs
 
-- for Arm and Keil tools and web pages email to <a href="mailto:CMSIS@arm.com">CMSIS@arm.com</a>
-- for IAR tools email to <a href="mailto:CMSIS@arm.com">CMSIS@iar.com</a>
+If you develop your packs publicly on GitHub, you can use the infrastructure to host your packs. The recommended way to do
+this is as follows (note that in this example, \elem{orgname} is equal to \elem{vendor} in the other examples. We use
+\elem{orgname} here as this is the nomenclature on GitHub):
+- Create a repository for the PIDX file, for example \c github.com/orgname/indexrepo. The PIDX file should be named \elem{orgname}.pidx.
+- Create seperate repositories for each pack, for example:
+  - \c github.com/orgname/name1
+  - \c github.com/orgname/name2
+- At the top-level of each repository's \c main branch, you need have a \elem{orgname}.\elem{nameX}.pdsc file.
+- Once you publish a pack, attach the \elem{orgname}.\elem{nameX}.\elem{version}.pack file to the release assets - this will be
+  used as the download location of the pack.
 
-The *.pidx file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the
-*.pidx file will be processed and validated. <b>Only packs that pass the
-<a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk">packchk</a> and schema check</b> will become
-available via web pages and development tools.
+This diagram shows an exemplary set up on GitHub with pack versions 1.0.0 and 1.3.0:
 
-For example, Arm uses the pack information to generate a list of available software packs. The following content will be processed in order to generate
-the web site
-(<a href="https://developer.arm.com/embedded/cmsis/cmsis-packs" target="_blank">https://developer.arm.com/embedded/cmsis/cmsis-packs</a>):
+\image html GHhosting.png "Hosting packs on GitHub"
+
+\subsubsection gh_pidx PIDX file on GitHub
+
+The vendor (orgname) PIDX file would look like the following:
+
+\code{.xml}
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+  <vendor>orgname</vendor>
+  <url>https://github.com/orgname/indexrepo/raw/main/</url>
+  <timestamp>2024-08-22 10:08:36</timestamp>
+  <pindex>
+    <pdsc url="https://github.com/orgname/name1/raw/main/" vendor=”orgname" name=”name1" version="1.0.0"/>
+    <pdsc url="https://github.com/orgname/name2/raw/main/" vendor=”orgname" name=”name2" version="1.0.0"/>
+  </pindex>
+</index>
+\endcode
+
+\note When updating one of the packs, you only need to change the version number. All other entries remain the same.
+
+\subsubsection gh_pdsc PDSC file on GitHub
+
+A PDSC file for one of the repositories would look like this:
+
+\code{.xml}
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.7.7" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>orgname</vendor>
+  <name>name1</name>
+  <license>LICENSE</license>
+  <description>Whatever Pack</description>
+  <url>https://github.com/orgname/name1/releases/download/v1.0.0/</url>
+  <supportContact>info@orgname.com</supportContact>
+  <repository type="git">https://github.com/orgname/name1.git</repository>
+  <releases>
+    <release version="1.0.0" tag="v1.0.0" date="2024-08-22" url="https://github.com/orgname/name1/releases/download/v1.0.0/orgname.name1.1.0.0.pack">Initial release</release>
+  </releases>
+…	
+\endcode
+
+When updating a pack, you need to:
+- Change the \elem{url} to the location of the latest pack file in the PDSC.
+- Add a new \elem{release} version with the correct entries in the PDSC.
+- Attach the pack file to the release assets.
+- Update the PIDX file with the latest version information.
+
+\note
+While the repository's \c main branch can be used to host the PDSC file, additional confidence against unwanted changes can
+be made if you use a dedicated branch for hosting the PDSC file. This avoids breaking unintentionally the pack location when
+accepting a pull request (PR).
+
+\section cp_KeilComPack Using a pack index service
+
+Tool, software, or silicon vendors may provide a web infra-structure that lists packs that are available from multiple
+vendors. Companies like Arm or IAR provide such a service for making CMSIS-Packs available to a
+wider audience of developers. The packs are then found by pack management tools and their contents are listed on web sites,
+such as <a class="el" href="https://www.keil.arm.com/packs/" target="_blank">Arm's list of CMSIS-Packs</a>.
+
+Once you are ready to publish your packs, please send the URL of the \elem{vendor}.\elem{name}.pdsc or \elem{vendor}.pidx
+file to the following email addresses:
+
+- for Arm tools, email to <a href="mailto:CMSIS@arm.com">CMSIS@arm.com</a>.
+- for IAR tools, email to <a href="mailto:CMSIS@arm.com">CMSIS@iar.com</a>.
+
+Arm uses the pack information to generate a list of available software packs. The following content will be processed in
+order to generate the web site (<a href="https://www.keil.arm.com/packs/" target="_blank">https://www.keil.arm.com/packs/</a>):
 - Version
-- Release Notes
+- Release notes
 - Devices
 - Boards
 - Examples
-- Software Components
+- Software components
+
+Furthermore, the data is used to create lists of <a class="el" href="https://www.keil.arm.com/boards/" target="_blank">boards</a>
+and <a class="el" href="https://www.keil.arm.com/devices/" target="_blank">devices</a>.
 
 Please allow up to seven working days for the process. If the files contain any errors, you will be notified. Otherwise, the
-information is added to the index server.
+information is added to the index server. We strongly recommend using a \ref pidxFile for better maintainability.
 
-\section cp_PackRehosting Rehost pack to different URL
+\subsection cp_vidx2pidx The vidx2pidx conversion tool
+
+If you want to check the content of you \ref pidxFile, you can use the vidx2pidx utility to create your own \c index.pidx
+file. Once created, you can use it with \c cpackget to install the packs listed in the PIDX file.
+
+Follow these steps to run the conversion and installatin:
+- Download <a class="el" href="https://github.com/Open-CMSIS-Pack/vidx2pidx/releases" target="_blank">vidx2pidx</a>.
+- Create you \elem{vendor}.vidx file just listing the \elem{vendor.pidx} file.
+  <b>Code example</b>
+  
+  \code{.xml}
+  <index schemaVersion="1.0" xmlns:xs=http://www.w3.org/2001/XMLSchema-instance xs:noNamespaceSchemaLocation="PackIndex.xsd">
+    <vendor>vendor</vendor>
+    <url></url>
+    <timestamp>2024-08-08T06:30:00</timestamp>
+    <vindex>
+      <pidx vendor="vendor" url="https://github.com/vendor/packrepo/raw/main/"/>
+    </vindex>
+  </index>
+  \endcode
+- Run
+  \code
+  vidx2pidx vendor.vidx
+  \endcode
+  to create the \c index.pidx.
+- Run
+  \code
+  cpackget init -R packroot index.pidx
+  \endcode
+  to create a new pack root directory with only the packs from the \c index.pidx.
+- Run
+  \code
+  cpackget list -p -R packroot
+  \endcode
+  to show all packs and check if the process was successful.
+- Install all listed packs using
+  \code
+  cpackget add <packID> -R packroot
+  \endcode
+  to check if all packs can be downloaded and installed.
+
+\subsection cp_PackRehosting Rehosting a pack
 
 Sometimes, it is necessary to rehost a pack (moving a pack from one URL to another). Rehosting implies changing the \elem{url}
 element in the PDSC file. To ensure that the pack is found by a \ref cp_KeilComPack "Pack Index Service", follow this procedure:
@@ -89,48 +239,116 @@ element in the PDSC file. To ensure that the pack is found by a \ref cp_KeilComP
 - Arm recommends to keep the url_A alive for at least six months so that users have time to pick up the change. Be aware
   that users who have not noticed the change might be unable to find pack updates once url_A have become unavailable.
 
-
-\section cp_PackRenaming Rename a pack
+\subsection cp_PackRenaming Renaming a pack
 
 Sometimes, it is necessary to rename a pack (because the pack vendor and/or its name have changed for example). To ensure
 that the pack is found by a \ref cp_KeilComPack "Pack Index Service" and the tools, follow this procedure:
-- Create:
-  - a new PDSC file with the updated \elem{name} and/or \elem{vendor}, for example NewVendor.NewName.pdsc. The
+- Create a new:
+  - PDSC file with the updated \elem{name} and/or \elem{vendor}, for example NewVendor.NewName.pdsc. The
     \elem{version} should start at 1.0.0.
-  - a new pack containing the new PDSC file with the corresponding \elem{name} and/or \elem{vendor}, for example
+  - pack containing the new PDSC file with the corresponding \elem{name} and/or \elem{vendor}, for example
     NewVendor.NewName.1.0.0.pack.
-- Create:
-  - a new version of the old PDSC file (Vendor.Name.pdsc) with a new \elem{release} tag (with an updated version),
+- Create a new:
+  - version of the old PDSC file (Vendor.Name.pdsc) with a new \elem{release} tag (with an updated version),
     containing the \elem{deprecated} and \elem{replacement} element. The latter pointing to the "NewVendor.NewName".
-  - a new version of the old \elem{vendor}.\elem{name}.\elem{version}.pack file with the PDSC you have created above.
+  - version of the old \elem{vendor}.\elem{name}.\elem{version}.pack file with the PDSC you have created above.
 - Copy:
-  - All four files (new PDSC and pack, updated old PDSC and pack) to the URL location.
+  - all four files (new PDSC and pack, updated old PDSC and pack) to the \elem{url} location.
 
 \note
 - Using this approach, you can only do a one-to-one pack replacement.
 - If you want to create more than one replacement pack for a given source pack, you need to work with
   \ref element_requirements_pg "requirements".
 
+\section packIndexFile Pack index files
 
-\section cp_HowWebDownloadWorks Web Infra-structure
+CMSIS-Pack is designed as a web-based distribution network. Each provider of a CMSIS-Pack (also referred to as \a vendor) is
+responsible for hosting, maintaining and publishing unique versions of a CMSIS-Pack.
 
-Tool, software, or silicon vendors may provide a web infra-structure that lists packs that are available from multiple vendors.
-Companies like Arm or IAR provide a \ref cp_KeilComPack "Pack Index Service" that uses either a \elem{vendor}.\elem{name}.pdsc or a
-\elem{vendor}.pidx file to obtain the latest pack versions.  This information is used to make the packs available in the development tools (via a <b><a href="https://www.keil.com/mdk5/packinstaller/">Pack Installer</a></b>) and/or to publish information on certain web pages, for example a <b><a href="https://developer.arm.com/embedded/cmsis/cmsis-packs/devices" target="_blank">device list</a></b>.
+A CMSIS-Pack is uniquely identified by \<vendor\>.\<pack name\>.\<version\>.pack. All published versions of a pack and the
+PDSC file need to be available in the same web folder specified by \elem{url}. Multiple different packs may be located in the
+same web folder.
 
-The following diagram explains how these services are working behind the scene.
+\subsection pidxFile Package index file (PIDX)
 
-\image html WebInstallation.png "Web infra-structure for pack hosting services"
+The package index file lists all CMSIS-Packs hosted and maintained by a vendor. The file is hosted by the vendor and has the
+name \<vendor\>.pidx. The \<vendor\> tag needs to match the file name. The file also contains the \elem{url} to it's origin, as
+well as a \<timestamp\> of it's last update.
 
-\note
-- The \<url\> element in \elem{vendor}.\elem{name}.pdsc is the location where these services check for new packs. At this \<url\> location, an (unversioned) \elem{vendor}.\elem{name}.pdsc file
-  and a (versioned) \elem{vendor}.\elem{name}.\elem{version}.pack must be available.
-- The \<url\> is the page where the pack is downloaded. This means, if the URL or the PDSC/Pack files become unavailable, users are unable to download the pack.
-- When a new PDSC/Pack file is available, it is important to update the version number, otherwise the \ref cp_KeilComPack "Pack Index Service" will not recognize that the pack has changed.
-- Previous versions of a (versioned) \elem{vendor}.\elem{name}.\elem{version}.pack should remain available.
+It is the vendor's obligation to update this file whenever:
+- a new pack is added.
+- a new version of a pack is added.
+- a pack is deprecated.
+- a replacement for a pack becomes available.
 
-Depending on the implementation, the web infra-structure may provide index files with additional information:
- - \elem{vendor}.vidx file (\ref vidxFile) lists pack index locations known by the service. Arm scans these locations every 24 hours to import new packs. If your location is not listed
- - https://www.keil.com/pack/index.pidx is a list of all packs that are correctly imported. If a pack does not appear, the pack did not pass the \ref cp_prerequisites "validation process".
+\b MyVendor.pidx example
 
+\code{.xml}
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+  <vendor>MyVendor</vendor>
+  <url>https://www.MyVendor.com/pack/</url>
+  <timestamp>2024-01-25T15:00:10.7300074+00:00</timestamp>
+  <pindex>
+    <pdsc url="https://www.MyVendor.com/pack/mypack/" vendor="MyVendor" name="MyPack" version="1.1.0"/>
+    ...
+  </pindex>
+</index>
+\endcode
+
+Each individual pack is referenced by the attributes:
+- \elem{url} = web folder where the PDSC and packs reside.
+- \elem{vendor} = vendor of the pack.
+- \elem{name} = the name of the pack.
+- \elem{version} = the version number of the latest available release for the pack.
+
+The package index file for the CMSIS-Pack compliant packs, hosted on www.keil.com can be found here:
+<a href="https://www.keil.com/pack/Keil.pidx">https://www.keil.com/pack/Keil.pidx</a>.
+
+The benefit of a single package index file is, that this file only needs to be exchanged once and can be polled for updates
+and additions of packs by a vendor. To add a vendor's packs to the public list maintained on www.keil.com, send an email to
+<a href="mailto:CMSIS@arm.com">CMSIS@arm.com</a> attaching a version of the \<vendor\>.pidx file.
+
+\subsection vidxFile Vendor index file (VIDX)
+
+A vendor index file lists package index files from different vendors. This information can be used to compile a list of known
+packs.
+
+\b MyVendor.vidx example
+
+\code{.xml}
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<index schemaVersion="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PackIndex.xsd">
+  <vendor>MyVendor</vendor>
+  <url>www.MyVendor.com/pack</url>
+  <timestamp>2024-01-08T10:30:00</timestamp>
+  <vindex>
+    <pidx url="http://www.othervendor.com/MyPacks/" vendor="OtherVendor" />
+    ...
+  </vindex>
+  <!-- the section below is only intended for the transition until all vendors use the <vendor>.pidx file
+  <pindex>
+    <pdsc url="http://www.othervendor2.com/packs/" vendor="OtherVendor2" name="MyPack" version="2.3.0"/>
+    ...
+    </pindex>
+</index>
+\endcode
+
+The latest index file of CMSIS-Packs belonging to vendor="ARM" and vendor="Keil" that are hosted and maintained here:
+<a href="https://www.keil.com/pack/Keil.pidx">https://www.keil.com/pack/Keil.pidx</a>
+
+Arm also maintains a flat list of all CMSIS-Pack compliant packs reported to Arm here:
+<a href="https://www.keil.com/pack/index.pidx">https://www.keil.com/pack/index.pidx</a>
+
+The vendor index file containing references to the package index files (or optionally PDSC files) used for compiling this
+summary index file are listed in the Keil.vidx file and can be downloaded from here:
+<a href="https://www.keil.com/pack/Keil.vidx">https://www.keil.com/pack/Keil.vidx</a>
+
+Based on these publicly available index files, everyone is equally positioned to create an index of available packs and their
+latest versions.
+
+\subsection packIndexSchema Index schema file
+\verbinclude "PackIndex.xsd"
 */

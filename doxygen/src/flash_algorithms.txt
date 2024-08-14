@@ -2,9 +2,10 @@
 /**
 \page flashAlgorithm  Flash Programming
 
-<b>Flash Programming Algorithms</b> are a piece of software to erase or download applications to Flash devices. A \ref createPack_DFP
-usually contains predefined Flash algorithms for programming the devices that are supported by the DFP. A template for
-creating new algorithms are available in the <b>ARM:CMSIS</b> Pack. The following section describes the process in more detail.
+<b>Flash Programming Algorithms</b> are a piece of software to erase or download applications to Flash devices. A device
+family pack (DFP) usually contains predefined Flash algorithms for programming the devices that are supported within. A
+template for creating new algorithms are available in the <b>ARM:CMSIS</b> Pack. The following section describes the process
+in more detail.
 
 
 \section CreateFPA Creating a new Algorithm
@@ -79,7 +80,7 @@ An optimal block size for fast programming is 1024 bytes, however the system its
  
 
 \section AddFPA Adding an Algorithm to a Pack
-The generated <b>*.FLM</b> file needs to be added to the \ref createPack_DFP, so that it is available to the tool user for programming
+The generated <b>*.FLM</b> file needs to be added to the DFP, so that it is available to the tool user for programming
 his device. Usually, a directory \b Flash is created and the algorithm is saved in this directory.
 
 The algorithm is specified within the the \ref element_family level:

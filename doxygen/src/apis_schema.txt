@@ -54,7 +54,7 @@ It is also possible to expose a combination of API definitions.  An example for 
 
 \section element_apis /package/apis
 
-This element is a grouping element for all application programming interfaces included in the \ref cp_SWComponents "Software Pack".
+This element is a grouping element for all application programming interfaces included in the software pack.
 The element itself is optional. Only one such section can exist in a package.
 
 \b Example:
