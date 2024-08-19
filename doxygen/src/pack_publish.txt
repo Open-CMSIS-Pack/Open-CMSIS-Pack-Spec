@@ -108,7 +108,7 @@ The vendor (orgname) PIDX file would look like the following:
 <index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <vendor>orgname</vendor>
   <url>https://github.com/orgname/indexrepo/raw/main/</url>
-  <timestamp>2024-08-22 10:08:36</timestamp>
+  <timestamp>2024-08-22T15:00:10.7300074+00:00</timestamp>
   <pindex>
     <pdsc url="https://github.com/orgname/name1/raw/main/" vendor=”orgname" name=”name1" version="1.0.0"/>
     <pdsc url="https://github.com/orgname/name2/raw/main/" vendor=”orgname" name=”name2" version="1.0.0"/>
