@@ -43,6 +43,12 @@ A software pack can be used to deliver:
   - \b middleware \b stacks for public availability.
   - \b in-house \b software for distribution within a company and/or engineering group.
 
+All these pack types can contain in addition:
+
+- example projects,
+- code templates,
+- reference applications.
+
 As shown in the image below, a software pack can address multiple use cases at the same time! The
 \ref packFormat "XML elements" in the PDSC file determine the use case(s).
 <a class="el" href="https://arm-software.github.io/CMSIS_6/latest/General/index.html#cmsis_components" target="_blank">CMSIS</a>
