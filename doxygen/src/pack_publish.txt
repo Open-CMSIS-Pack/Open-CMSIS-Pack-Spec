@@ -117,7 +117,8 @@ The vendor (orgname) PIDX file would look like the following:
 \endcode
 
 \note When updating one of the packs, you only need to change the version number and update the timestamp. All other entries
-remain the same.
+remain the same. Please make sure that only release quality packs are made available using this mechanism. You can build local
+releases of a pack anytime for testing purposes.
 
 \subsubsection gh_pdsc PDSC file on GitHub
 
@@ -131,7 +132,7 @@ A PDSC file for one of the repositories would look like this:
   <name>name1</name>
   <license>LICENSE</license>
   <description>Whatever Pack</description>
-  <url>https://github.com/orgname/name1/releases/download/v1.0.0/</url>
+  <url>https://github.com/orgname/name1/raw/main/</url>
   <supportContact>info@orgname.com</supportContact>
   <repository type="git">https://github.com/orgname/name1.git</repository>
   <releases>
@@ -172,6 +173,8 @@ order to generate the web site (<a href="https://www.keil.arm.com/packs/" target
 - Boards
 - Examples
 - Software components
+- Description
+- An Overview.md file if present
 
 Furthermore, the data is used to create lists of <a class="el" href="https://www.keil.arm.com/boards/" target="_blank">boards</a>
 and <a class="el" href="https://www.keil.arm.com/devices/" target="_blank">devices</a>.
