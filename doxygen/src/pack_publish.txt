@@ -116,7 +116,8 @@ The vendor (orgname) PIDX file would look like the following:
 </index>
 \endcode
 
-\note When updating one of the packs, you only need to change the version number. All other entries remain the same.
+\note When updating one of the packs, you only need to change the version number and update the timestamp. All other entries
+remain the same.
 
 \subsubsection gh_pdsc PDSC file on GitHub
 
