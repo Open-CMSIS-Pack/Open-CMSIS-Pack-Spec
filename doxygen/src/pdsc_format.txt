@@ -301,7 +301,7 @@ assists searching for packages.
   </tr>
   <tr>
     <td>\ref element_generators "generators"</td>
-    <td>Specifies generator tools that have been used to create the software pack.</td>
+    <td>Specifies generator tools that have been used to create components.</td>
     <td>GeneratorsType</td>
     <td>0..1 </td>
   </tr>
@@ -447,7 +447,7 @@ this example applies to \ref element_release.
 /**
 \page element_package_description /package/description element
 
-Contains a brief description of the software pack. Optionally with link to an file with overview documentation in Markdown format.
+Contains a brief description of the software pack. Optionally with link to a file with overview documentation in Markdown format.
 This Markdown file is indented for web pages that offer software packs in form of a marketplace.
 
 \b Example:

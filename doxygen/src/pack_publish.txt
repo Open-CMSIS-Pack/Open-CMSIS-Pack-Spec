@@ -41,7 +41,7 @@ local machine that is specified by \c \elem{url}.
 
 \section cp_WebDownload Web download
 
-If you want to make your packs widely available, you need to host them on the web. For publishing packs, these
+If you want to make your packs publicly available, you need to host them on the web. For publishing packs, these
 options are available:
 - \ref cp_HowWebDownloadWorks
 - \ref cp_GitHubHosting
