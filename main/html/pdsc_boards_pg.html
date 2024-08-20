@@ -176,7 +176,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
  </p><hr  />
 <h1><a class="anchor" id="element_board"></a>
 /package/boards/board</h1>
-<p >This element provides information to specify the <a class="el" href="cp_PackTutorial.html#createPackBoard">Board Support Package (BSP)</a>. At least one board must be defined.</p>
+<p >This element provides information to specify the board support. At least one board must be defined.</p>
 <table class="cmtable" summary="Element: Board">
 <tr>
 <th>Parent </th><th colspan="3">Chain  </th></tr>
@@ -189,7 +189,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>name </td><td>name of the development board </td><td>xs:string </td><td>required  </td></tr>
 <tr>
-<td>revision </td><td>Revision of the board that is suited to be used with the <a class="el" href="cp_PackTutorial.html#createPackBoard">BSP</a>. </td><td>xs:string </td><td>optional  </td></tr>
+<td>revision </td><td>Revision of the board that is suited to be used with the BSP. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>uuid </td><td>Specifies a <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">128-bit UUID</a> that is embedded it in the debugger firmware of the board tag. Format: 8-4-4-4-12 for a total of 36 characters. Example: 123e4567-e89b-12d3-a456-426614174000 </td><td><a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">128-bit UUID</a> </td><td>optional  </td></tr>
 <tr>
@@ -657,7 +657,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>Pname </td><td>Processor identifier. This attribute <b>is for boards that use devices with multiple processors</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
-<td>name </td><td>Flash Programming Algorithm file including the path, which is relative to the root folder of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. </td><td>xs:string </td><td>required  </td></tr>
+<td>name </td><td>Flash Programming Algorithm file including the path, which is relative to the root folder of the software pack. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
 <td>start </td><td>Base address for the Flash programming algorithm. </td><td>NonNegativeInteger </td><td>required  </td></tr>
 <tr>

@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Publish a Pack</title>
-<title>Open-CMSIS-Pack: Publish a Pack</title>
+<title>Publish a CMSIS-Pack</title>
+<title>Open-CMSIS-Pack: Publish a CMSIS-Pack</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -101,50 +101,154 @@ $(document).ready(function(){initNavTree('createPackPublish.html',''); initResiz
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Publish a Pack </div></div>
+  <div class="headertitle"><div class="title">Publish a CMSIS-Pack </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >There are multiple ways to distribute a software pack:</p>
-<h1><a class="anchor" id="cp_prerequisites"></a>
-Prerequisites</h1>
-<p >Before you start to distribute a software pack, you need to make sure that it does not contain errors. A good start is an error and warning free run of <a class="el" href="bash_script.html">gen_pack.sh</a> that does not show any <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk"><b>packchk</b></a> errors and <a class="el" href="cp_Editors.html#cp_Editors_xmllint">validates the XML</a> of the PDSC file.</p>
-<dl class="section note"><dt>Note</dt><dd>XML validation is important when the pack should published using a <a class="el" href="createPackPublish.html#cp_KeilComPack">pack index service</a>. The pack importer will ignore all <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc files that do fail when checking against the current PACK.xsd schema file and thus your pack will cannot be downloaded.</dd></dl>
+<div class="textblock"><p >Before you start distributing a software pack, make sure that it does not contain errors. Use the tools described in the <a class="el" href="createPackPublish.html#createPackUtil">Checking CMSIS-Packs</a> section for verification. Once you have validated that the PDSC file and the pack contain no errors, you have basically two options for distributing a software pack:</p><ul>
+<li><a class="el" href="createPackPublish.html#cp_LocalInstallation">Local installation</a></li>
+<li><a class="el" href="createPackPublish.html#cp_WebDownload">Web download</a></li>
+</ul>
+<p >The following sections assume that you are familiar with the <a href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs" class="el" target="_blank">CMSIS-Toolbox</a> and especially with <a href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-tools.md#cpackget-invocation" class="el" target="_blank">cpackget</a>.</p>
+<h1><a class="anchor" id="createPackUtil"></a>
+Checking CMSIS-Packs</h1>
+<p >Software packs are ZIP files that contain a <a class="el" href="packFormat.html">PDSC</a> file and other content. The ZIP file needs to be consistent and the PDSC file within has to be validated against the XML schema file (PACK.xsd). An open-source checking tool is available that helps you with both tasks: a <a href="https://github.com/Open-CMSIS-Pack/gen-pack" class="el" target="_blank">Bash library for gen-pack scripts</a>. Make sure that you have used it to validate your PDSC file and the pack contents before submitting it to any <a class="el" href="createPackPublish.html#cp_KeilComPack">pack indexing service</a>. The library can be used on all major host operating systems and can also be run in GitHub actions.</p>
 <h1><a class="anchor" id="cp_LocalInstallation"></a>
-Local Installation</h1>
-<p >The easiest way to distribute a software pack is attaching it to an email or using other means of electronic distribution (for example using a company internal file server). The installation of a software pack is usually triggered by double-clicking the Pack file. The pack management tool is invoked and the Pack is installed on the local machine. After installation, the Pack will be shown in the list of installed packs (tool dependent). If the PDSC file does not contain a valid <code>&lt;url&gt;</code> element, a manual installation is required to update a software pack. Otherwise, pack management tools can check for updates on the server or the local machine that is specified by <code>&lt;url&gt;</code>.</p>
-<div class="image">
-<img src="LocalInstallation.png" alt=""/>
-<div class="caption">
-Local installation and update from URL</div></div>
-<dl class="section note"><dt>Note</dt><dd>For automatic updates on a local machine, specify the <code>&lt;url&gt;</code> using the <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI scheme</a>.</dd></dl>
+Local installation</h1>
+<p >The easiest way to distribute a software pack is attaching it to an email or using other means of electronic distribution (for example using a file server). Install the software pack on a PC using <a href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-tools.md#cpackget-details" class="el" target="_blank">cpackget</a>, the pack management tool that comes with the CMSIS-Toolbox: </p><div class="fragment"><div class="line">cpackget add vendor.packname.version.pack</div>
+</div><!-- fragment --><p> If the PDSC file does not contain a valid <code><b>&lt;url&gt;</b> element</code>, a manual installation is required to update a software pack. Otherwise, <code>cpackget</code> can check for updates on the server or the local machine that is specified by <code><b>&lt;url&gt;</b>.</code> </p>
+<dl class="section note"><dt>Note</dt><dd>For automatic updates on a local machine, specify the <code><b>&lt;url&gt;</b> using</code> the <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI scheme</a>.</dd></dl>
 <h1><a class="anchor" id="cp_WebDownload"></a>
-Web Download</h1>
-<p >Any web server can be used to host a software pack (specified by the <code>&lt;url&gt;</code> element in the PDSC file). At this location, the following files should be present:</p><ol type="1">
+Web download</h1>
+<p >If you want to make your packs publicly available, you need to host them on the web. For publishing packs, these options are available:</p><ul>
+<li><a class="el" href="createPackPublish.html#cp_HowWebDownloadWorks">Self-hosted packs</a></li>
+<li><a class="el" href="createPackPublish.html#cp_GitHubHosting">GitHub-hosted packs</a></li>
+</ul>
+<p >The following diagram shows how you can publish your packs when using a <a class="el" href="createPackPublish.html#cp_KeilComPack">pack indexing service</a>:</p>
+<div class="image">
+<img src="IndexingService.png" alt=""/>
+<div class="caption">
+Pack hosting and indexing service</div></div>
+<p >When you run the command <code>cpackget</code> <code>update-index</code>, the tool queries the <a class="el" href="createPackPublish.html#pidxFile">package index file (index.pidx)</a> from the pack index server. This file is generated using the <a class="el" href="createPackPublish.html#cp_vidx2pidx">vidx2pidx tool</a> from the <a class="el" href="createPackPublish.html#vidxFile">vendor index file (index.vidx)</a> which points to all known <b>&lt;vendor&gt;</b>.pidx and stand-alone PDSC files.</p>
+<p >The PIDX file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the PIDX file will be processed and validated. Only error-free packs will become available via web pages and development tools.</p>
+<dl class="section note"><dt>Note</dt><dd>Refer to the <a class="el" href="createPackPublish.html#cp_KeilComPack">Using a pack index service</a> section for more information how to get listed on such an indexing server.</dd></dl>
+<h2><a class="anchor" id="cp_HowWebDownloadWorks"></a>
+Self-hosted packs</h2>
+<p >Any web server can be used to host a software pack (specified by the <code><b>&lt;url&gt;</b> element</code> in the PDSC file). At this location, the following files should be present:</p><ol type="1">
 <li><b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc [required]: pack description file.</li>
 <li><b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack [required]: pack file where <b>&lt;version&gt;</b> refers to the latest version specified in the PDSC file.</li>
-<li><b>&lt;vendor&gt;</b>.pidx [optional]: list with all packs hosted and maintained by the vendor (refer to <a class="el" href="packIndexFile.html#pidxFile">Package Index File (pidx)</a>)</li>
+<li><b>&lt;vendor&gt;</b>.pidx [optional]: list with all packs hosted and maintained by the vendor (refer to <a class="el" href="createPackPublish.html#pidxFile">Package index file (PIDX)</a>)</li>
 </ol>
-<p >All previous versions listed in the <b>&lt;releases&gt;</b> section of the PDSC file should be present at the <code>&lt;url&gt;</code> as well. This allows users to revert updates or to download a previous version of a software pack (for maintenance purposes).</p>
-<p >The <b>&lt;vendor&gt;</b>.pidx allows you to publish multiple packs to a <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a>.</p>
-<h1><a class="anchor" id="cp_KeilComPack"></a>
-Publish with Pack Index Service</h1>
-<p >Several companies maintain a Pack Index Server to make packs available within tools or web pages. Once you are ready to deploy packs via such services, you may send the URL of the <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc or <b>&lt;vendor&gt;</b>.pidx file to the following email addresses:</p>
-<ul>
-<li>for Arm and Keil tools and web pages email to <a href="#" onclick="location.href='mai'+'lto:'+'CMS'+'IS'+'@ar'+'m.'+'com'; return false;">CMSIS@arm.com</a></li>
-<li>for IAR tools email to <a href="#" onclick="location.href='mai'+'lto:'+'CMS'+'IS'+'@ar'+'m.'+'com'; return false;">CMSIS@iar.com</a></li>
+<p >All previous versions listed in the <b>&lt;releases&gt;</b> section of the PDSC file should be present at the <code><b>&lt;url&gt;</b> as</code> well. This allows users to revert updates or to download a previous version of a software pack (for maintenance purposes).</p>
+<p >The <b>&lt;vendor&gt;</b>.pidx allows you to publish multiple packs to a <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a> at once.</p>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>The <b>&lt;url&gt;</b> element in <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc is the location where these services check for new packs. At this <b>&lt;url&gt;</b> location, an (unversioned) <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc file and a (versioned) <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack must be available.</li>
+<li>The <b>&lt;url&gt;</b> is the page where the pack is downloaded. This means, if the URL or the PDSC/pack files become unavailable, users are unable to download the pack.</li>
+<li>When a new PDSC/pack file is available, it is important to update the version number, otherwise the <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a> will not recognize that the pack has changed.</li>
+<li>Previous versions of a (versioned) <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack should remain available.</li>
 </ul>
-<p >The *.pidx file allows you to change pack versions and add packs to your distribution list. All packs that are referenced in the .pidx file will be processed and validated. <b>Only packs that pass the <a href="https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools/packchk">packchk</a> and schema check</b> will become available via web pages and development tools.</p>
-<p >For example, Arm uses the pack information to generate a list of available software packs. The following content will be processed in order to generate the web site (<a href="https://developer.arm.com/embedded/cmsis/cmsis-packs" target="_blank">https://developer.arm.com/embedded/cmsis/cmsis-packs</a>):</p><ul>
+</dd></dl>
+<h2><a class="anchor" id="cp_GitHubHosting"></a>
+GitHub-hosted packs</h2>
+<p >If you develop your packs publicly on GitHub, you can use the infrastructure to host your packs. The recommended way to do this is as follows (note that in this example, <b>&lt;orgname&gt;</b> is equal to <b>&lt;vendor&gt;</b> in the other examples. We use <b>&lt;orgname&gt;</b> here as this is the nomenclature on GitHub):</p><ul>
+<li>Create a repository for the PIDX file, for example <code>github.com/orgname/indexrepo</code>. The PIDX file should be named <b>&lt;orgname&gt;</b>.pidx.</li>
+<li>Create seperate repositories for each pack, for example:<ul>
+<li><code>github.com/orgname/name1</code> </li>
+<li><code>github.com/orgname/name2</code> </li>
+</ul>
+</li>
+<li>At the top-level of each repository's <code>main</code> branch, you need have a <b>&lt;orgname&gt;</b>.<b>&lt;nameX&gt;</b>.pdsc file.</li>
+<li>Once you publish a pack, attach the <b>&lt;orgname&gt;</b>.<b>&lt;nameX&gt;</b>.<b>&lt;version&gt;</b>.pack file to the release assets - this will be used as the download location of the pack.</li>
+</ul>
+<p >This diagram shows an exemplary set up on GitHub with pack versions 1.0.0 and 1.3.0:</p>
+<div class="image">
+<img src="GHhosting.png" alt=""/>
+<div class="caption">
+Hosting packs on GitHub</div></div>
+<h3><a class="anchor" id="gh_pidx"></a>
+PIDX file on GitHub</h3>
+<p >The vendor (orgname) PIDX file would look like the following:</p>
+<div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div>
+<div class="line"> </div>
+<div class="line">&lt;<span class="keywordtype">index</span> <span class="keyword">schemaVersion</span>=<span class="stringliteral">&quot;1.0.0&quot;</span> <span class="keyword">xs:noNamespaceSchemaLocation</span>=<span class="stringliteral">&quot;PackIndex.xsd&quot;</span> <span class="keyword">xmlns:xs</span>=<span class="stringliteral">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">vendor</span>&gt;<span class="keyword">orgname</span>&lt;/<span class="keywordtype">vendor</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">url</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">orgname</span>/<span class="keyword">indexrepo</span>/<span class="keyword">raw</span>/<span class="keyword">main</span>/&lt;/<span class="keywordtype">url</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">timestamp</span>&gt;2024-08-22<span class="keyword">T15:00:10.7300074</span>+00:00&lt;/<span class="keywordtype">timestamp</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">pindex</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">pdsc</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;https://github.com/orgname/name1/raw/main/&quot;</span> <span class="keyword">vendor</span>=<span class="keyword">”orgname</span><span class="stringliteral">&quot; name=”name1&quot;</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0.0&quot;</span>/&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">pdsc</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;https://github.com/orgname/name2/raw/main/&quot;</span> <span class="keyword">vendor</span>=<span class="keyword">”orgname</span><span class="stringliteral">&quot; name=”name2&quot;</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0.0&quot;</span>/&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">pindex</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">index</span>&gt;</div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>When updating one of the packs, you only need to change the version number and update the timestamp. All other entries remain the same. Please make sure that only release quality packs are made available using this mechanism. You can build local releases of a pack anytime for testing purposes.</dd></dl>
+<h3><a class="anchor" id="gh_pdsc"></a>
+PDSC file on GitHub</h3>
+<p >A PDSC file for one of the repositories would look like this:</p>
+<div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;utf-8&quot;</span>?&gt;</div>
+<div class="line"> </div>
+<div class="line">&lt;<span class="keywordtype">package</span> <span class="keyword">schemaVersion</span>=<span class="stringliteral">&quot;1.7.7&quot;</span> <span class="keyword">xmlns:xs</span>=<span class="stringliteral">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="keyword">xs:noNamespaceSchemaLocation</span>=<span class="stringliteral">&quot;PACK.xsd&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">vendor</span>&gt;<span class="keyword">orgname</span>&lt;/<span class="keywordtype">vendor</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">name</span>&gt;<span class="keyword">name1</span>&lt;/<span class="keywordtype">name</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">license</span>&gt;<span class="keyword">LICENSE</span>&lt;/<span class="keywordtype">license</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">description</span>&gt;<span class="keyword">Whatever</span> <span class="keyword">Pack</span>&lt;/<span class="keywordtype">description</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">url</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">orgname</span>/<span class="keyword">name1</span>/<span class="keyword">raw</span>/<span class="keyword">main</span>/&lt;/<span class="keywordtype">url</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">supportContact</span>&gt;<span class="keyword">info</span>@<span class="keyword">orgname.com</span>&lt;/<span class="keywordtype">supportContact</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">repository</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;git&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">orgname</span>/<span class="keyword">name1.git</span>&lt;/<span class="keywordtype">repository</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">releases</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">release</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0.0&quot;</span> <span class="keyword">tag</span>=<span class="stringliteral">&quot;v1.0.0&quot;</span> <span class="keyword">date</span>=<span class="stringliteral">&quot;2024-08-22&quot;</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;https://github.com/orgname/name1/releases/download/v1.0.0/orgname.name1.1.0.0.pack&quot;</span>&gt;<span class="keyword">Initial</span> <span class="keyword">release</span>&lt;/<span class="keywordtype">release</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">releases</span>&gt;</div>
+<div class="line"><span class="keyword">…</span>       </div>
+</div><!-- fragment --><p >When updating a pack, you need to:</p><ul>
+<li>Change the <b>&lt;url&gt;</b> to the location of the latest pack file in the PDSC.</li>
+<li>Add a new <b>&lt;release&gt;</b> version with the correct entries in the PDSC.</li>
+<li>Attach the pack file to the release assets.</li>
+<li>Update the PIDX file with the latest version information.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>While the repository's <code>main</code> branch can be used to host the PDSC file, additional confidence against unwanted changes can be made if you use a dedicated branch for hosting the PDSC file. This avoids breaking unintentionally the pack location when accepting a pull request (PR).</dd></dl>
+<h1><a class="anchor" id="cp_KeilComPack"></a>
+Using a pack index service</h1>
+<p >Tool, software, or silicon vendors may provide a web infra-structure that lists packs that are available from multiple vendors. Companies like Arm or IAR provide such a service for making CMSIS-Packs available to a wider audience of developers. The packs are then found by pack management tools and their contents are listed on web sites, such as <a href="https://www.keil.arm.com/packs/" class="el" target="_blank">Arm's list of CMSIS-Packs</a>.</p>
+<p >Once you are ready to publish your packs, please send the URL of the <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc or <b>&lt;vendor&gt;</b>.pidx file to the following email addresses:</p>
+<ul>
+<li>for Arm tools, email to <a href="#" onclick="location.href='mai'+'lto:'+'CMS'+'IS'+'@ar'+'m.'+'com'; return false;">CMSIS@arm.com</a>.</li>
+<li>for IAR tools, email to <a href="#" onclick="location.href='mai'+'lto:'+'CMS'+'IS'+'@ar'+'m.'+'com'; return false;">CMSIS@iar.com</a>.</li>
+</ul>
+<p >Arm uses the pack information to generate a list of available software packs. The following content will be processed in order to generate the web site (<a href="https://www.keil.arm.com/packs/" target="_blank">https://www.keil.arm.com/packs/</a>):</p><ul>
 <li>Version</li>
-<li>Release Notes</li>
+<li>Release notes</li>
 <li>Devices</li>
 <li>Boards</li>
 <li>Examples</li>
-<li>Software Components</li>
+<li>Software components</li>
+<li>Description</li>
+<li>An Overview.md file if present</li>
 </ul>
-<p >Please allow up to seven working days for the process. If the files contain any errors, you will be notified. Otherwise, the information is added to the index server.</p>
-<h1><a class="anchor" id="cp_PackRehosting"></a>
-Rehost pack to different URL</h1>
+<p >Furthermore, the data is used to create lists of <a href="https://www.keil.arm.com/boards/" class="el" target="_blank">boards</a> and <a href="https://www.keil.arm.com/devices/" class="el" target="_blank">devices</a>.</p>
+<p >Please allow up to seven working days for the process. If the files contain any errors, you will be notified. Otherwise, the information is added to the index server. We strongly recommend using a <a class="el" href="createPackPublish.html#pidxFile">Package index file (PIDX)</a> for better maintainability.</p>
+<h2><a class="anchor" id="cp_vidx2pidx"></a>
+The vidx2pidx conversion tool</h2>
+<p >If you want to check the content of you <a class="el" href="createPackPublish.html#pidxFile">Package index file (PIDX)</a>, you can use the vidx2pidx utility to create your own <code>index.pidx</code> file. Once created, you can use it with <code>cpackget</code> to install the packs listed in the PIDX file.</p>
+<p >Follow these steps to run the conversion and installatin:</p><ul>
+<li>Download <a href="https://github.com/Open-CMSIS-Pack/vidx2pidx/releases" class="el" target="_blank">vidx2pidx</a>.</li>
+<li><p class="startli">Create you <b>&lt;vendor&gt;</b>.vidx file just listing the <b>&lt;vendor.pidx&gt;</b> file. <b>Code example</b></p>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">index</span> <span class="keyword">schemaVersion</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">xmlns:xs</span>=<span class="keyword">http:</span>//<span class="keyword">www.w3.org</span>/2001/<span class="keyword">XMLSchema-instance</span> <span class="keyword">xs:noNamespaceSchemaLocation</span>=<span class="stringliteral">&quot;PackIndex.xsd&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">vendor</span>&gt;<span class="keyword">vendor</span>&lt;/<span class="keywordtype">vendor</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">url</span>&gt;&lt;/<span class="keywordtype">url</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">timestamp</span>&gt;2024-08-08<span class="keyword">T06:30:00</span>&lt;/<span class="keywordtype">timestamp</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">vindex</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">pidx</span> <span class="keyword">vendor</span>=<span class="stringliteral">&quot;vendor&quot;</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;https://github.com/vendor/packrepo/raw/main/&quot;</span>/&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">vindex</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">index</span>&gt;</div>
+</div><!-- fragment --></li>
+<li>Run <div class="fragment"><div class="line">vidx2pidx vendor.vidx</div>
+</div><!-- fragment --> to create the <code>index.pidx</code>.</li>
+<li>Run <div class="fragment"><div class="line">cpackget init -R packroot index.pidx</div>
+</div><!-- fragment --> to create a new pack root directory with only the packs from the <code>index.pidx</code>.</li>
+<li>Run <div class="fragment"><div class="line">cpackget list -p -R packroot</div>
+</div><!-- fragment --> to show all packs and check if the process was successful.</li>
+<li>Install all listed packs using <div class="fragment"><div class="line">cpackget add &lt;packID&gt; -R packroot</div>
+</div><!-- fragment --> to check if all packs can be downloaded and installed.</li>
+</ul>
+<h2><a class="anchor" id="cp_PackRehosting"></a>
+Rehosting a pack</h2>
 <p >Sometimes, it is necessary to rehost a pack (moving a pack from one URL to another). Rehosting implies changing the <b>&lt;url&gt;</b> element in the PDSC file. To ensure that the pack is found by a <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a>, follow this procedure:</p><ul>
 <li>Create a new version of the pack: update the <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc file with the new <b>&lt;url&gt;</b> ("url_B") and a new <a class="el" href="element_releases.html#element_release">&lt;release&gt;</a> tag with an incremented version.</li>
 <li>Place a copy of this latest <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc file at url_B and url_A (the original URL).</li>
@@ -162,21 +266,21 @@ Rehost pack to different URL</h1>
 <li>Arm recommends to keep the url_A alive for at least six months so that users have time to pick up the change. Be aware that users who have not noticed the change might be unable to find pack updates once url_A have become unavailable.</li>
 </ul>
 </dd></dl>
-<h1><a class="anchor" id="cp_PackRenaming"></a>
-Rename a pack</h1>
+<h2><a class="anchor" id="cp_PackRenaming"></a>
+Renaming a pack</h2>
 <p >Sometimes, it is necessary to rename a pack (because the pack vendor and/or its name have changed for example). To ensure that the pack is found by a <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a> and the tools, follow this procedure:</p><ul>
-<li>Create:<ul>
-<li>a new PDSC file with the updated <b>&lt;name&gt;</b> and/or <b>&lt;vendor&gt;</b>, for example NewVendor.NewName.pdsc. The <b>&lt;version&gt;</b> should start at 1.0.0.</li>
-<li>a new pack containing the new PDSC file with the corresponding <b>&lt;name&gt;</b> and/or <b>&lt;vendor&gt;</b>, for example NewVendor.NewName.1.0.0.pack.</li>
+<li>Create a new:<ul>
+<li>PDSC file with the updated <b>&lt;name&gt;</b> and/or <b>&lt;vendor&gt;</b>, for example NewVendor.NewName.pdsc. The <b>&lt;version&gt;</b> should start at 1.0.0.</li>
+<li>pack containing the new PDSC file with the corresponding <b>&lt;name&gt;</b> and/or <b>&lt;vendor&gt;</b>, for example NewVendor.NewName.1.0.0.pack.</li>
 </ul>
 </li>
-<li>Create:<ul>
-<li>a new version of the old PDSC file (Vendor.Name.pdsc) with a new <b>&lt;release&gt;</b> tag (with an updated version), containing the <b>&lt;deprecated&gt;</b> and <b>&lt;replacement&gt;</b> element. The latter pointing to the "NewVendor.NewName".</li>
-<li>a new version of the old <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack file with the PDSC you have created above.</li>
+<li>Create a new:<ul>
+<li>version of the old PDSC file (Vendor.Name.pdsc) with a new <b>&lt;release&gt;</b> tag (with an updated version), containing the <b>&lt;deprecated&gt;</b> and <b>&lt;replacement&gt;</b> element. The latter pointing to the "NewVendor.NewName".</li>
+<li>version of the old <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack file with the PDSC you have created above.</li>
 </ul>
 </li>
 <li>Copy:<ul>
-<li>All four files (new PDSC and pack, updated old PDSC and pack) to the URL location.</li>
+<li>all four files (new PDSC and pack, updated old PDSC and pack) to the <b>&lt;url&gt;</b> location.</li>
 </ul>
 </li>
 </ul>
@@ -185,26 +289,164 @@ Rename a pack</h1>
 <li>If you want to create more than one replacement pack for a given source pack, you need to work with <a class="el" href="element_requirements_pg.html">requirements</a>.</li>
 </ul>
 </dd></dl>
-<h1><a class="anchor" id="cp_HowWebDownloadWorks"></a>
-Web Infra-structure</h1>
-<p >Tool, software, or silicon vendors may provide a web infra-structure that lists packs that are available from multiple vendors. Companies like Arm or IAR provide a <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a> that uses either a <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc or a <b>&lt;vendor&gt;</b>.pidx file to obtain the latest pack versions. This information is used to make the packs available in the development tools (via a <b><a href="https://www.keil.com/mdk5/packinstaller/">Pack Installer</a></b>) and/or to publish information on certain web pages, for example a <b><a href="https://developer.arm.com/embedded/cmsis/cmsis-packs/devices" target="_blank">device list</a></b>.</p>
-<p >The following diagram explains how these services are working behind the scene.</p>
-<div class="image">
-<img src="WebInstallation.png" alt=""/>
-<div class="caption">
-Web infra-structure for pack hosting services</div></div>
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>The &lt;url&gt; element in <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc is the location where these services check for new packs. At this &lt;url&gt; location, an (unversioned) <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.pdsc file and a (versioned) <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack must be available.</li>
-<li>The &lt;url&gt; is the page where the pack is downloaded. This means, if the URL or the PDSC/Pack files become unavailable, users are unable to download the pack.</li>
-<li>When a new PDSC/Pack file is available, it is important to update the version number, otherwise the <a class="el" href="createPackPublish.html#cp_KeilComPack">Pack Index Service</a> will not recognize that the pack has changed.</li>
-<li>Previous versions of a (versioned) <b>&lt;vendor&gt;</b>.<b>&lt;name&gt;</b>.<b>&lt;version&gt;</b>.pack should remain available.</li>
+<h1><a class="anchor" id="packIndexFile"></a>
+Pack index files</h1>
+<p >CMSIS-Pack is designed as a web-based distribution network. Each provider of a CMSIS-Pack (also referred to as <em>vendor</em>) is responsible for hosting, maintaining and publishing unique versions of a CMSIS-Pack.</p>
+<p >A CMSIS-Pack is uniquely identified by &lt;vendor&gt;.&lt;pack name&gt;.&lt;version&gt;.pack. All published versions of a pack and the PDSC file need to be available in the same web folder specified by <b>&lt;url&gt;</b>. Multiple different packs may be located in the same web folder.</p>
+<h2><a class="anchor" id="pidxFile"></a>
+Package index file (PIDX)</h2>
+<p >The package index file lists all CMSIS-Packs hosted and maintained by a vendor. The file is hosted by the vendor and has the name &lt;vendor&gt;.pidx. The &lt;vendor&gt; tag needs to match the file name. The file also contains the <b>&lt;url&gt;</b> to it's origin, as well as a &lt;timestamp&gt; of it's last update.</p>
+<p >It is the vendor's obligation to update this file whenever:</p><ul>
+<li>a new pack is added.</li>
+<li>a new version of a pack is added.</li>
+<li>a pack is deprecated.</li>
+<li>a replacement for a pack becomes available.</li>
 </ul>
-</dd></dl>
-<p>Depending on the implementation, the web infra-structure may provide index files with additional information:</p><ul>
-<li><b>&lt;vendor&gt;</b>.vidx file (<a class="el" href="packIndexFile.html#vidxFile">Vendor Index File (vidx)</a>) lists pack index locations known by the service. Arm scans these locations every 24 hours to import new packs. If your location is not listed</li>
-<li><a href="https://www.keil.com/pack/index.pidx">https://www.keil.com/pack/index.pidx</a> is a list of all packs that are correctly imported. If a pack does not appear, the pack did not pass the <a class="el" href="createPackPublish.html#cp_prerequisites">validation process</a>. </li>
+<p ><b>MyVendor.pidx</b> example</p>
+<div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div>
+<div class="line"> </div>
+<div class="line">&lt;<span class="keywordtype">index</span> <span class="keyword">schemaVersion</span>=<span class="stringliteral">&quot;1.0.0&quot;</span> <span class="keyword">xs:noNamespaceSchemaLocation</span>=<span class="stringliteral">&quot;PackIndex.xsd&quot;</span> <span class="keyword">xmlns:xs</span>=<span class="stringliteral">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">vendor</span>&gt;<span class="keyword">MyVendor</span>&lt;/<span class="keywordtype">vendor</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">url</span>&gt;<span class="keyword">https:</span>//<span class="keyword">www.MyVendor.com</span>/<span class="keyword">pack</span>/&lt;/<span class="keywordtype">url</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">timestamp</span>&gt;2024-01-25<span class="keyword">T15:00:10.7300074</span>+00:00&lt;/<span class="keywordtype">timestamp</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">pindex</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">pdsc</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;https://www.MyVendor.com/pack/mypack/&quot;</span> <span class="keyword">vendor</span>=<span class="stringliteral">&quot;MyVendor&quot;</span> <span class="keyword">name</span>=<span class="stringliteral">&quot;MyPack&quot;</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.1.0&quot;</span>/&gt;</div>
+<div class="line">    ...</div>
+<div class="line">  &lt;/<span class="keywordtype">pindex</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">index</span>&gt;</div>
+</div><!-- fragment --><p >Each individual pack is referenced by the attributes:</p><ul>
+<li><b>&lt;url&gt;</b> = web folder where the PDSC and packs reside.</li>
+<li><b>&lt;vendor&gt;</b> = vendor of the pack.</li>
+<li><b>&lt;name&gt;</b> = the name of the pack.</li>
+<li><b>&lt;version&gt;</b> = the version number of the latest available release for the pack.</li>
 </ul>
-</div></div><!-- contents -->
+<p >The package index file for the CMSIS-Pack compliant packs, hosted on www.keil.com can be found here: <a href="https://www.keil.com/pack/Keil.pidx">https://www.keil.com/pack/Keil.pidx</a>.</p>
+<p >The benefit of a single package index file is, that this file only needs to be exchanged once and can be polled for updates and additions of packs by a vendor. To add a vendor's packs to the public list maintained on www.keil.com, send an email to <a href="#" onclick="location.href='mai'+'lto:'+'CMS'+'IS'+'@ar'+'m.'+'com'; return false;">CMSIS@arm.com</a> attaching a version of the &lt;vendor&gt;.pidx file.</p>
+<h2><a class="anchor" id="vidxFile"></a>
+Vendor index file (VIDX)</h2>
+<p >A vendor index file lists package index files from different vendors. This information can be used to compile a list of known packs.</p>
+<p ><b>MyVendor.vidx</b> example</p>
+<div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div>
+<div class="line"> </div>
+<div class="line">&lt;<span class="keywordtype">index</span> <span class="keyword">schemaVersion</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">xmlns:xs</span>=<span class="stringliteral">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="keyword">xs:noNamespaceSchemaLocation</span>=<span class="stringliteral">&quot;PackIndex.xsd&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">vendor</span>&gt;<span class="keyword">MyVendor</span>&lt;/<span class="keywordtype">vendor</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">url</span>&gt;<span class="keyword">www.MyVendor.com</span>/<span class="keyword">pack</span>&lt;/<span class="keywordtype">url</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">timestamp</span>&gt;2024-01-08<span class="keyword">T10:30:00</span>&lt;/<span class="keywordtype">timestamp</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">vindex</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">pidx</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;http://www.othervendor.com/MyPacks/&quot;</span> <span class="keyword">vendor</span>=<span class="stringliteral">&quot;OtherVendor&quot;</span> /&gt;</div>
+<div class="line">    ...</div>
+<div class="line">  &lt;/<span class="keywordtype">vindex</span>&gt;</div>
+<div class="line">  &lt;!-- <span class="keyword">the</span> <span class="keyword">section</span> <span class="keyword">below</span> <span class="keyword">is</span> <span class="keyword">only</span> <span class="keyword">intended</span> <span class="keyword">for</span> <span class="keyword">the</span> <span class="keyword">transition</span> <span class="keyword">until</span> <span class="keyword">all</span> <span class="keyword">vendors</span> <span class="keyword">use</span> <span class="keyword">the</span> &lt;<span class="keywordtype">vendor</span>&gt;.<span class="keyword">pidx</span> <span class="keyword">file</span></div>
+<div class="line">  &lt;<span class="keywordtype">pindex</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">pdsc</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;http://www.othervendor2.com/packs/&quot;</span> <span class="keyword">vendor</span>=<span class="stringliteral">&quot;OtherVendor2&quot;</span> <span class="keyword">name</span>=<span class="stringliteral">&quot;MyPack&quot;</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;2.3.0&quot;</span>/&gt;</div>
+<div class="line">    ...</div>
+<div class="line">    &lt;/<span class="keywordtype">pindex</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">index</span>&gt;</div>
+</div><!-- fragment --><p >The latest index file of CMSIS-Packs belonging to vendor="ARM" and vendor="Keil" that are hosted and maintained here: <a href="https://www.keil.com/pack/Keil.pidx">https://www.keil.com/pack/Keil.pidx</a></p>
+<p >Arm also maintains a flat list of all CMSIS-Pack compliant packs reported to Arm here: <a href="https://www.keil.com/pack/index.pidx">https://www.keil.com/pack/index.pidx</a></p>
+<p >The vendor index file containing references to the package index files (or optionally PDSC files) used for compiling this summary index file are listed in the Keil.vidx file and can be downloaded from here: <a href="https://www.keil.com/pack/Keil.vidx">https://www.keil.com/pack/Keil.vidx</a></p>
+<p >Based on these publicly available index files, everyone is equally positioned to create an index of available packs and their latest versions.</p>
+<h2><a class="anchor" id="packIndexSchema"></a>
+Index schema file</h2>
+<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!--
+
+  Copyright (c) 2013-2023 ARM Limited. All rights reserved.
+
+  SPDX-License-Identifier: Apache-2.0
+
+  Licensed under the Apache License, Version 2.0 (the License); you may
+  not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  $Date:        28. March 2023
+  $Revision:    1.1.1
+
+  $Project: Schema File for Package Index File Format Specification
+
+  Package Index file naming convention &lt;vendor&gt;.pidx
+  Vendor  Index file naming convention &lt;vendor&gt;.vidx
+  SchemaVersion=1.1.1
+--&gt;
+
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.1.1"&gt;
+
+  &lt;!-- semantic versioning (semver.org) &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;-&lt;quality&gt; --&gt;
+  &lt;xs:simpleType name="SemanticVersionType"&gt;
+    &lt;xs:restriction  base="xs:string"&gt;
+      &lt;!--                major . minor . patch [[-]quality] [+build] --&gt;
+      &lt;xs:pattern value="[0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?" /&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;!-- some strings are used to construct filenames (e.g. package name). Such names can contain only subset of characters and must not contain neither spaces nor dots. --&gt;
+  &lt;xs:simpleType name="RestrictedString"&gt;
+    &lt;xs:restriction base="xs:string"&gt;
+      &lt;xs:pattern value="[\-_A-Za-z0-9]+"/&gt;
+      &lt;xs:pattern value="\S(.*\S)?"&gt;&lt;/xs:pattern&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;!-- Vendor index file Description Type --&gt;
+  &lt;xs:complexType name="VidxType"&gt;
+    &lt;xs:attribute name="url"             type="xs:anyURI"           use="required"/&gt;
+    &lt;xs:attribute name="vendor"          type="RestrictedString"    use="required"/&gt;
+    &lt;xs:attribute name="date"            type="xs:date"             use="optional"/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Package Description Type --&gt;
+  &lt;xs:complexType name="PdscType"&gt;
+    &lt;xs:attribute name="url"             type="xs:anyURI"           use="required"/&gt;
+    &lt;xs:attribute name="vendor"          type="RestrictedString"    use="required"/&gt;
+    &lt;xs:attribute name="name"            type="RestrictedString"    use="required"/&gt;
+    &lt;xs:attribute name="version"         type="SemanticVersionType" use="required"/&gt;
+    &lt;xs:attribute name="date"            type="xs:date"             use="optional"/&gt;
+    &lt;xs:attribute name="deprecated"      type="xs:date"             use="optional"/&gt;
+    &lt;xs:attribute name="replacement"     type="RestrictedString"    use="optional"/&gt;
+    &lt;xs:attribute name="size"            type="xs:unsignedInt"      use="optional"/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Package Description file Type --&gt;
+  &lt;xs:complexType name="PindexType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="pdsc"            type="PdscType"            maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Vendor vendor's package index file tag --&gt;
+  &lt;xs:complexType name="VindexType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="pidx"            type="VidxType"            maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Index description root point (Vendor Index file, Package Index file --&gt;
+  &lt;xs:element name="index" nillable="true"&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name="vendor"        type="RestrictedString"/&gt;
+        &lt;xs:element name="url"           type="xs:anyURI"/&gt;
+        &lt;xs:element name="timestamp"     type="xs:dateTime"         minOccurs="0"/&gt;
+        &lt;xs:choice minOccurs="1" maxOccurs="2"&gt;
+          &lt;!-- index/list of packs --&gt;
+          &lt;xs:element name="pindex"      type="PindexType"/&gt;
+          &lt;!-- index/list of vendor index files --&gt;
+          &lt;xs:element name="vindex"      type="VindexType"/&gt;
+        &lt;/xs:choice&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name="schemaVersion" type="SemanticVersionType" use="required"/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+&lt;/xs:schema&gt;
+</pre> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

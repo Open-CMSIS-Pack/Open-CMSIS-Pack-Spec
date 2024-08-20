@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
   <div class="headertitle"><div class="title">/package/conditions element </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >The grouping element <a class="el" href="pdsc_conditions_pg.html#element_conditions">/package/conditions</a> contains all conditions defined for the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>.</p>
+<div class="textblock"><p >The grouping element <a class="el" href="pdsc_conditions_pg.html#element_conditions">/package/conditions</a> contains all conditions defined for the software pack.</p>
 <p >A condition describes dependencies on device, processor, and tool attributes as well as the presence of other components. The <b>conditions</b> are used to define AND and OR rules used to make components conditional and therefore only available under certain circumstances, e.g. for specific devices or processors. The conditions are also used to express dependencies between components.</p>
 <p >Each condition has an <b>id</b> that is unique within the scope of a the description. An <b>id</b> can be referenced in the condition attribute of components, apis, examples, files and other conditions to become conditional. If a condition resolves to false during the processing of the description, the respective element will be ignored.</p>
 <p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;conditions&gt;</div>
@@ -153,7 +153,7 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <hr  />
 <h1><a class="anchor" id="element_conditions"></a>
 /package/conditions</h1>
-<p >This element groups all conditions used in the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>.</p>
+<p >This element groups all conditions used in the software pack.</p>
 <table class="cmtable" summary="Element: Conditions">
 <tr>
 <th>Parent </th><th colspan="3">Chain  </th></tr>
@@ -177,7 +177,7 @@ $(document).ready(function(){initNavTree('pdsc_conditions_pg.html',''); initResi
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>id </td><td>Condition identifier which is unique within a <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. The condition identifier is referenced by other elements with the attribute <b>condition</b>. </td><td>xs:string </td><td>required  </td></tr>
+<td>id </td><td>Condition identifier which is unique within a software pack. The condition identifier is referenced by other elements with the attribute <b>condition</b>. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
 <th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>

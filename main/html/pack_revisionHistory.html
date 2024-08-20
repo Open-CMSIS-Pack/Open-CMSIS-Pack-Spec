@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Revision History of CMSIS-Pack</title>
-<title>Open-CMSIS-Pack: Revision History of CMSIS-Pack</title>
+<title>Revision history</title>
+<title>Open-CMSIS-Pack: Revision history</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -101,12 +101,18 @@ $(document).ready(function(){initNavTree('pack_revisionHistory.html',''); initRe
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Revision History of CMSIS-Pack </div></div>
+  <div class="headertitle"><div class="title">Revision history </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><table class="cmtable" summary="Revision History">
 <tr>
 <th>Version </th><th>Description  </th></tr>
+<tr>
+<td>1.7.38 </td><td><ul>
+<li>The <a class="el" href="createPackPublish.html">pack publishing process</a> has been rewritten completely</li>
+<li>removed the old tutorials that have been superseded by the online versions on GitHub   </li>
+</ul>
+</td></tr>
 <tr>
 <td>1.7.37 </td><td><ul>
 <li>added 'Nationstech:184' to <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">DeviceVendorEnum</a></li>
@@ -352,7 +358,7 @@ $(document).ready(function(){initNavTree('pack_revisionHistory.html',''); initRe
 </td></tr>
 <tr>
 <td>1.6.1 </td><td>Modifications compared to Version 1.6.0<ul>
-<li>added <a class="el" href="bash_script.html">gen_pack.sh</a> to support pack generation on Linux or Windows.</li>
+<li>added a Bash script to support pack generation on Linux or Windows.</li>
 <li>added <b>custom</b> attribute to <a class="el" href="pdsc_components_pg.html#element_component">component element</a>.</li>
 <li>added <b>TrustZone-disabled</b> value to <a class="el" href="pdsc_family_pg.html#DsecureEnum">software model selection</a>.</li>
 <li>added <a class="el" href="dbg_setup_tutorial.html">Debug Setup Tutorial</a> in CMSIS-Pack documentation.   </li>
@@ -494,7 +500,7 @@ $(document).ready(function(){initNavTree('pack_revisionHistory.html',''); initRe
 <li><em>Removed</em> external RAMn and ROMn memory IDs in memory tag</li>
 <li><em>Added</em> FileCategoryTypes in &lt;file&gt; element for C, C++, Assembler, Linker</li>
 <li><em>Extended</em> specification of &lt;require&gt;, &lt;accept&gt; and &lt;deny&gt; with Cversion and Capiversion ranges</li>
-<li><em>Added</em> <a class="el" href="createPackUtil.html">Utilities for Creating Packs</a> and packchk for Pack validation</li>
+<li><em>Added</em> <a class="el" href="createPackPublish.html#createPackUtil">Checking CMSIS-Packs</a> and packchk for Pack validation</li>
 <li><em>Added</em> documentation for the Example Pack based on LPC1800 Device Family</li>
 <li><em>Refined</em> &lt;debug&gt; element description</li>
 <li>Many clarifications in the documentation along with examples   </li>
@@ -523,7 +529,7 @@ $(document).ready(function(){initNavTree('pack_revisionHistory.html',''); initRe
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">Open-CMSIS-Pack</a></li>
+    <li class="navelem"><a class="el" href="index.html">Overview</a></li>
     <li class="footer">
       <script type="text/javascript">
         <!--

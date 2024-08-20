@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gen_5fpack_2esh_0',['gen_pack.sh',['../bash_script.html',1,'createPackUtil']]]
+  ['implement_20debug_20sequences_0',['Implement debug sequences',['../dbg_debug_sqns.html',1,'dbg_setup_tutorial']]]
 ];

@@ -25,73 +25,44 @@
 var NAVTREE =
 [
   [ "Open-CMSIS-Pack", "index.html", [
-    [ "Software Pack Use Cases", "index.html#SWPackVariants", [
-      [ "CMSIS-Pack in ARM::CMSIS Pack", "index.html#autotoc_md0", null ]
-    ] ],
-    [ "Revision History of CMSIS-Pack", "pack_revisionHistory.html", null ],
-    [ "Overview", "cp_Packs.html", [
+    [ "Overview", "index.html", "index" ],
+    [ "Technical background", "cp_Packs.html", [
       [ "Software Components", "cp_Packs.html#cp_Components", [
-        [ "Technical Details", "cp_Packs.html#cp_CompDetails", null ],
+        [ "Component classification", "cp_Packs.html#cp_CompDetails", null ],
         [ "Software Component Files", "cp_Packs.html#cp_CompFiles", null ],
         [ "File naming", "cp_Packs.html#cp_CompFileNaming", null ]
       ] ],
-      [ "References to other software components", "cp_Packs.html#cp_Cond", null ],
+      [ "References", "cp_Packs.html#cp_Cond", null ],
       [ "Requirements", "cp_Packs.html#cp_Requirements", null ],
       [ "Central API definition", "cp_Packs.html#cp_APIDef", null ],
-      [ "Inventory header file: RTE_Components.h", "cp_Packs.html#cp_RTECompH", null ],
-      [ "Combining software components", "cp_Packs.html#cp_Combine", null ],
+      [ "Inventory header file", "cp_Packs.html#cp_RTECompH", null ],
+      [ "Combining components", "cp_Packs.html#cp_Combine", null ],
       [ "Pack Conventions", "cp_Packs.html#PackFilenames", [
         [ "Pack File Name", "cp_Packs.html#pack_filename", null ],
         [ "Software Component Cclasses", "cp_Packs.html#pack_Cclass", null ]
       ] ]
     ] ],
-    [ "Pack Tutorials", "cp_PackTutorial.html", [
-      [ "Steps to Create a Pack", "cp_PackTutorial.html#cp_PackSteps", null ],
-      [ "Pack with Software Components", "cp_PackTutorial.html#cp_SWComponents", [
-        [ "Create PDSC File", "cp_PackTutorial.html#cp_CreatePDSC", null ],
-        [ "Generate a Pack", "cp_PackTutorial.html#cp_GeneratePack", null ],
-        [ "Software Components", "cp_PackTutorial.html#cp_TutorialComponents", null ],
-        [ "Software Component Files", "cp_PackTutorial.html#autotoc_md1", null ],
-        [ "Conditions", "cp_PackTutorial.html#cp_Conditions", null ],
-        [ "Variants", "cp_PackTutorial.html#cp_Variants", null ],
-        [ "RTE_Components.h", "cp_PackTutorial.html#cp_RTEComponents_h", null ],
-        [ "Bundles", "cp_PackTutorial.html#cp_Bundles", null ],
-        [ "Instances", "cp_PackTutorial.html#cp_Instances", null ],
-        [ "API Interface", "cp_PackTutorial.html#cp_API", null ],
-        [ "User Code Templates", "cp_PackTutorial.html#cp_CodeTemplates", null ],
-        [ "Example Projects", "cp_PackTutorial.html#cp_Examples", null ]
-      ] ],
-      [ "Pack with Device Support", "cp_PackTutorial.html#createPack_DFP", [
-        [ "DFP Use Cases", "cp_PackTutorial.html#autotoc_md2", null ],
-        [ "Steps to Create a DFP", "cp_PackTutorial.html#autotoc_md3", null ],
-        [ "Basic Device Family Pack", "cp_PackTutorial.html#cp_BasicDFP", null ],
-        [ "System and Startup Files", "cp_PackTutorial.html#cp_System_Startup", null ],
-        [ "System View Description File", "cp_PackTutorial.html#cp_SVD", null ],
-        [ "Flash Programming Algorithms", "cp_PackTutorial.html#cp_FlashProgrammingAlgorithm", null ],
-        [ "Debug Descriptions", "cp_PackTutorial.html#cp_debugdescription", null ],
-        [ "Device Properties", "cp_PackTutorial.html#cp_DeviceProperties", null ],
-        [ "Device Specific Software Components", "cp_PackTutorial.html#cp_DeviceSWComp", null ]
-      ] ],
-      [ "Pack with Board Support", "cp_PackTutorial.html#createPackBoard", [
-        [ "BSP Use Cases", "cp_PackTutorial.html#autotoc_md4", null ],
-        [ "Specify a Development Board", "cp_PackTutorial.html#cp_SpecDevBoard", null ],
-        [ "Create a BSP Bundle", "cp_PackTutorial.html#cp_BundleExample", null ],
-        [ "Add CMSIS-Drivers VIO", "cp_PackTutorial.html#cp_BSPVIO", null ],
-        [ "Add Example Projects", "cp_PackTutorial.html#cp_BSPExamples", [
-          [ "Platform example", "cp_PackTutorial.html#cp_BSPExPlatform", null ],
-          [ "Blinky example", "cp_PackTutorial.html#cp_BSPExBlinky", null ]
+    [ "Pack tutorials", "cp_PackTutorial.html", null ],
+    [ "Publish a CMSIS-Pack", "createPackPublish.html", [
+      [ "Checking CMSIS-Packs", "createPackPublish.html#createPackUtil", null ],
+      [ "Local installation", "createPackPublish.html#cp_LocalInstallation", null ],
+      [ "Web download", "createPackPublish.html#cp_WebDownload", [
+        [ "Self-hosted packs", "createPackPublish.html#cp_HowWebDownloadWorks", null ],
+        [ "GitHub-hosted packs", "createPackPublish.html#cp_GitHubHosting", [
+          [ "PIDX file on GitHub", "createPackPublish.html#gh_pidx", null ],
+          [ "PDSC file on GitHub", "createPackPublish.html#gh_pdsc", null ]
         ] ]
+      ] ],
+      [ "Using a pack index service", "createPackPublish.html#cp_KeilComPack", [
+        [ "The vidx2pidx conversion tool", "createPackPublish.html#cp_vidx2pidx", null ],
+        [ "Rehosting a pack", "createPackPublish.html#cp_PackRehosting", null ],
+        [ "Renaming a pack", "createPackPublish.html#cp_PackRenaming", null ]
+      ] ],
+      [ "Pack index files", "createPackPublish.html#packIndexFile", [
+        [ "Package index file (PIDX)", "createPackPublish.html#pidxFile", null ],
+        [ "Vendor index file (VIDX)", "createPackPublish.html#vidxFile", null ],
+        [ "Index schema file", "createPackPublish.html#packIndexSchema", null ]
       ] ]
-    ] ],
-    [ "Utilities for Creating Packs", "createPackUtil.html", "createPackUtil" ],
-    [ "Publish a Pack", "createPackPublish.html", [
-      [ "Prerequisites", "createPackPublish.html#cp_prerequisites", null ],
-      [ "Local Installation", "createPackPublish.html#cp_LocalInstallation", null ],
-      [ "Web Download", "createPackPublish.html#cp_WebDownload", null ],
-      [ "Publish with Pack Index Service", "createPackPublish.html#cp_KeilComPack", null ],
-      [ "Rehost pack to different URL", "createPackPublish.html#cp_PackRehosting", null ],
-      [ "Rename a pack", "createPackPublish.html#cp_PackRenaming", null ],
-      [ "Web Infra-structure", "createPackPublish.html#cp_HowWebDownloadWorks", null ]
     ] ],
     [ "Pack Description (*.pdsc) Format", "packFormat.html", "packFormat" ],
     [ "Configuration Wizard Annotations", "configWizard.html", [
@@ -107,9 +78,9 @@ var NAVTREE =
       [ "/system_description/debug_and_trace_config", "sdf_pg.html#sdf_element_debug_and_trace_config", null ],
       [ "/system_description/debug_and_trace_config/debug", "sdf_pg.html#sdf_element_debug", null ],
       [ "/system_description/.../config_item", "sdf_pg.html#sdf_element_config_item", [
-        [ "Debug element", "sdf_pg.html#autotoc_md8", null ],
-        [ "Device element", "sdf_pg.html#autotoc_md9", null ],
-        [ "Trace element", "sdf_pg.html#autotoc_md10", null ]
+        [ "Debug element", "sdf_pg.html#autotoc_md3", null ],
+        [ "Device element", "sdf_pg.html#autotoc_md4", null ],
+        [ "Trace element", "sdf_pg.html#autotoc_md5", null ]
       ] ],
       [ "/system_description/debug_and_trace_config/trace", "sdf_pg.html#sdf_element_trace", null ],
       [ "/system_description/debug_and_trace_config/trace/trace_capture", "sdf_pg.html#sdf_element_trace_capture", null ],
@@ -124,11 +95,6 @@ var NAVTREE =
       [ "/system_description/platform/topology/topology_link", "sdf_pg.html#sdf_element_topology_link", null ],
       [ "/system_description/platform/clusters", "sdf_pg.html#sdf_element_clusters", null ],
       [ "/system_description/platform/clusters/cluster", "sdf_pg.html#sdf_element_cluster", null ]
-    ] ],
-    [ "Pack Index Files", "packIndexFile.html", [
-      [ "Package Index File (pidx)", "packIndexFile.html#pidxFile", null ],
-      [ "Vendor Index File (vidx)", "packIndexFile.html#vidxFile", null ],
-      [ "CMSIS-Pack Index Schema File", "packIndexFile.html#packIndexSchema", null ]
     ] ]
   ] ]
 ];
@@ -136,7 +102,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithmFunc.html",
-"pdsc_family_pg.html#element_trace"
+"sdf_pg.html#sdf_element_clusters"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

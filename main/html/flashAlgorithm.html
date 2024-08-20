@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('flashAlgorithm.html',''); initResizabl
   <div class="headertitle"><div class="title">Flash Programming </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><b>Flash Programming Algorithms</b> are a piece of software to erase or download applications to Flash devices. A <a class="el" href="cp_PackTutorial.html#createPack_DFP">Pack with Device Support</a> usually contains predefined Flash algorithms for programming the devices that are supported by the DFP. A template for creating new algorithms are available in the <b>ARM:CMSIS</b> Pack. The following section describes the process in more detail.</p>
+<div class="textblock"><p ><b>Flash Programming Algorithms</b> are a piece of software to erase or download applications to Flash devices. A device family pack (DFP) usually contains predefined Flash algorithms for programming the devices that are supported within. A template for creating new algorithms are available in the <b>ARM:CMSIS</b> Pack. The following section describes the process in more detail.</p>
 <h1><a class="anchor" id="CreateFPA"></a>
 Creating a new Algorithm</h1>
 <p >Flash programming algorithms are defined with functions to erase and program the Flash device. Special compiler and linker settings are required. Follow these steps to create and configure a new Flash programming algorithm:</p><ol type="1">
@@ -124,11 +124,11 @@ Creating a new Algorithm</h1>
 </ul>
 </dd></dl>
 <p><a class="anchor" id="FlashPrg"></a></p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md0"></a>
 FlashPrg.c</h2>
 <p >The file <b>FlashPrg.c</b> contains the mandatory Flash programming functions <a class="el" href="algorithmFunc.html#Init">Init</a>, <a class="el" href="algorithmFunc.html#UnInit">UnInit</a>, <a class="el" href="algorithmFunc.html#EraseSector">EraseSector</a>, and <a class="el" href="algorithmFunc.html#ProgramPage">ProgramPage</a>. Optionally, depending on the device features (or to speed-up execution), the functions <a class="el" href="algorithmFunc.html#EraseChip">EraseChip</a>, <a class="el" href="algorithmFunc.html#BlankCheck">BlankCheck</a>, and <a class="el" href="algorithmFunc.html#Verify">Verify</a> can be implemented.</p>
 <p ><a class="anchor" id="FlashDev"></a></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md1"></a>
 FlashDev.c</h2>
 <p >The file <b>FlashDev.c</b> contains parameter definitions for:</p><ol type="1">
 <li>the Flash programming functions.</li>
@@ -157,7 +157,7 @@ FlashDev.c</h2>
 The <b>Programming Page Size</b> specifies the block size for programming using the function <a class="el" href="algorithmFunc.html#ProgramPage">ProgramPage</a>. For devices with small block sizes it might be better to specify a multiple of the physical block size as this reduces the communication overhead to the target. An optimal block size for fast programming is 1024 bytes, however the system itself does not restrict this size value.</dd></dl>
 <h1><a class="anchor" id="AddFPA"></a>
 Adding an Algorithm to a Pack</h1>
-<p >The generated <b>*.FLM</b> file needs to be added to the <a class="el" href="cp_PackTutorial.html#createPack_DFP">Pack with Device Support</a>, so that it is available to the tool user for programming his device. Usually, a directory <b>Flash</b> is created and the algorithm is saved in this directory.</p>
+<p >The generated <b>*.FLM</b> file needs to be added to the DFP, so that it is available to the tool user for programming his device. Usually, a directory <b>Flash</b> is created and the algorithm is saved in this directory.</p>
 <p >The algorithm is specified within the the <a class="el" href="pdsc_family_pg.html#element_family">/package/devices/family</a> level: </p><div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;STM32F4&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;algorithm name=<span class="stringliteral">&quot;Flash/STM32F2xx_512.flm&quot;</span> start=0x08000000 size=0x10000 <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;         &lt;!-- valid <span class="keywordflow">for</span> all devices of the family  --&gt;</div>

@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>schemaVersion </td><td>CMSIS-PDSC schema version used for describing the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a> (for example, <span class="XML-Token">"1.2"</span>). The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. </td><td>VersionType </td><td>required  </td></tr>
+<td>schemaVersion </td><td>CMSIS-PDSC schema version used for describing the software pack (for example, <span class="XML-Token">"1.2"</span>). The version format is described in <a class="el" href="pdsc_package_pg.html#VersionType">Version Type</a>. </td><td>VersionType </td><td>required  </td></tr>
 <tr>
 <td>xmlns:xs </td><td>Is set to: <span class="XML-Token">"http://www.w3.org/2001/XMLSchema-instance"</span> to indicate compliance to the XML format. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
@@ -163,13 +163,13 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 <tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  <a class="anchor" id="package_name"></a> </th></tr>
 <tr>
-<td>name </td><td>Name of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. Could be displayed by an installer. </td><td>xs:string  </td><td>1..1   <a class="anchor" id="package_vendor"></a> </td></tr>
+<td>name </td><td>Name of the software pack. Could be displayed by an installer. </td><td>xs:string  </td><td>1..1   <a class="anchor" id="package_vendor"></a> </td></tr>
 <tr>
-<td>vendor </td><td>Name of the supplier or vendor of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. </td><td>xs:string  </td><td>1..1   <a class="anchor" id="package_description"></a> </td></tr>
+<td>vendor </td><td>Name of the supplier or vendor of the software pack. </td><td>xs:string  </td><td>1..1   <a class="anchor" id="package_description"></a> </td></tr>
 <tr>
-<td><a class="el" href="element_package_description.html">description</a> </td><td>Brief description of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a> (maximum 256 characters, recommended 128 characters). </td><td>BriefDescType </td><td>1..1   <a class="anchor" id="package_url"></a> </td></tr>
+<td><a class="el" href="element_package_description.html">description</a> </td><td>Brief description of the software pack (maximum 256 characters, recommended 128 characters). </td><td>BriefDescType </td><td>1..1   <a class="anchor" id="package_url"></a> </td></tr>
 <tr>
-<td>url </td><td><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator" target="_blank">HTTP URL</a> or <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI</a> location of the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. The URL can be used by installers for downloading, updating, or checking versions. If left empty, the Pack cannot be updated automatically from a server location. </td><td>xs:anyURI  </td><td>1..1   <a class="anchor" id="package_supportContact"></a> </td></tr>
+<td>url </td><td><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator" target="_blank">HTTP URL</a> or <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI</a> location of the software pack. The URL can be used by installers for downloading, updating, or checking versions. If left empty, the Pack cannot be updated automatically from a server location. </td><td>xs:anyURI  </td><td>1..1   <a class="anchor" id="package_supportContact"></a> </td></tr>
 <tr>
 <td>supportContact </td><td>HTTP URL or e-mail address for users to get support for the content of the Pack </td><td>xs:string </td><td>0..1   <a class="anchor" id="package_license"></a> </td></tr>
 <tr>
@@ -187,13 +187,13 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="el" href="element_releases.html">releases</a> </td><td>Version release history with brief information about a <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. </td><td>ReleasesGroup </td><td>1..1   <a class="anchor" id="package_changelogs"></a> </td></tr>
+<td><a class="el" href="element_releases.html">releases</a> </td><td>Version release history with brief information about a software pack. </td><td>ReleasesGroup </td><td>1..1   <a class="anchor" id="package_changelogs"></a> </td></tr>
 <tr>
 <td>changelogs </td><td>Section describing one or more changelog files which can be associated with one, multiple or all components and apis in the pack (default="true") </td><td><a class="el" href="pdsc_changelogs_pg.html#element_changelogs">ChangelogsType</a> </td><td>0..1   </td></tr>
 <tr>
-<td><a class="el" href="element_keywords.html">keywords</a> </td><td>Defines keywords that might be used to find a <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. Keywords may be also exported to web page to provide information for search engines, such as Google. </td><td>group </td><td>0..1   </td></tr>
+<td><a class="el" href="element_keywords.html">keywords</a> </td><td>Defines keywords that might be used to find a software pack. Keywords may be also exported to web page to provide information for search engines, such as Google. </td><td>group </td><td>0..1   </td></tr>
 <tr>
-<td><a class="el" href="pdsc_generators_pg.html#element_generators">generators</a> </td><td>Specifies generator tools that have been used to create the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. </td><td>GeneratorsType </td><td>0..1   </td></tr>
+<td><a class="el" href="pdsc_generators_pg.html#element_generators">generators</a> </td><td>Specifies generator tools that have been used to create components. </td><td>GeneratorsType </td><td>0..1   </td></tr>
 <tr>
 <td><a class="el" href="pdsc_devices_pg.html#element_devices">devices</a> </td><td>Defines the device family, the devices, and optionally variants (such as boards). </td><td>group </td><td>0..1   </td></tr>
 <tr>
@@ -205,7 +205,7 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 <tr>
 <td><a class="el" href="element_part-taxonomy.html">part-taxonomy</a>  </td><td>Contains the description for a part class or for the combination between a part class and part group.  </td><td>PartTaxonomyType </td><td>0..1   </td></tr>
 <tr>
-<td><a class="el" href="pdsc_apis_pg.html#element_apis">apis</a> </td><td>Defines the API (Application Programming Interfaces) specifications contained in the <a class="el" href="cp_PackTutorial.html#cp_SWComponents">Software Pack</a>. </td><td>ApisType </td><td>0..1   </td></tr>
+<td><a class="el" href="pdsc_apis_pg.html#element_apis">apis</a> </td><td>Defines the API (Application Programming Interfaces) specifications contained in the software pack. </td><td>ApisType </td><td>0..1   </td></tr>
 <tr>
 <td><a class="el" href="pdsc_conditions_pg.html#element_conditions">conditions</a> </td><td>Is a group that contains dependency definitions used within the Pack. These rules can describe dependencies on various levels: device attributes, components, or tools. Conditions are referenced by components and files. </td><td>ConditionsType </td><td>0..1   </td></tr>
 <tr>
