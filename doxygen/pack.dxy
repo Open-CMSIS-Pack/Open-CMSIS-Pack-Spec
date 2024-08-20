@@ -860,7 +860,6 @@ WARN_LOGFILE           =
 INPUT           =   src/General.txt \
                     src/pack_creation.txt \
                     src/pack_tutorial.txt \
-                    src/pack_utilities.txt \
                     src/pack_publish.txt \
                     src/pdsc_format.txt \
                     src/config_wizard.txt \
@@ -878,7 +877,6 @@ INPUT           =   src/General.txt \
                     src/generators_schema.txt \
                     src/debug_description.txt \
                     src/sdf_schema.txt \
-                    src/pack_index.txt \
                     src/pack_dbg_setup_tutorial.txt
 
 
