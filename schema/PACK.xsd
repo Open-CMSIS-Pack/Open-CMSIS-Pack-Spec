@@ -1187,7 +1187,7 @@
       <xs:enumeration value="Secure" />
       <!-- TZ disabled -->
       <xs:enumeration value="TZ-disabled" />
-      <!-- TZ disabled -->
+      <!-- Secure only -->
       <xs:enumeration value="Secure-only" />
       <!-- deprecated -->
       <xs:enumeration value="0" /> <!-- Non-secure -->
