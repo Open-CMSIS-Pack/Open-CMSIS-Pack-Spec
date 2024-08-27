@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        13. May 2024
-  $Revision:    1.7.37
+  $Date:        27. August 2024
+  $Revision:    1.7.38
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.37
+  SchemaVersion=1.7.38
 
+  27. Aug 2024: v1.7.38
+   - added 'Secure-only' to DsecureEnum type to specify a secure software model without provisions for a non-secure partition
   13. May 2024: v1.7.37
    - added Nationstech vendor
    - added NSING vendor
@@ -37,7 +39,7 @@
    - add attribute overview to package description element
    - fix 'BOYAMICRO' vendor value in 'DeviceVendorEnum'
   12. Apr 2024: v1.7.34
--  - added 'Watech:183' to 'DeviceVendorEnum'
+   - added 'Watech:183' to 'DeviceVendorEnum'
   26. Mar 2024: v1.7.33
    - added 'BOYAMICRO:182' to 'DeviceVendorEnum'
   05. Mar 2024: v1.7.32
@@ -231,7 +233,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.37">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.38">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1185,6 +1187,8 @@
       <xs:enumeration value="Secure" />
       <!-- TZ disabled -->
       <xs:enumeration value="TZ-disabled" />
+      <!-- TZ disabled -->
+      <xs:enumeration value="Secure-only" />
       <!-- deprecated -->
       <xs:enumeration value="0" /> <!-- Non-secure -->
       <xs:enumeration value="1" /> <!-- Secure -->

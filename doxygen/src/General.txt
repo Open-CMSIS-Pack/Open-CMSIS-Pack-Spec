@@ -83,6 +83,7 @@ The following sections provide more information:
     <td>
       - The \ref createPackPublish "pack publishing process" has been rewritten completely
       - removed the old tutorials that have been superseded by the online versions on GitHub
+      - added 'Secure-only' to \ref DsecureEnum "DsecureEnum" to specify a secure software model without provisions for a non-secure partition
     </td>
   </tr>
   <tr>
