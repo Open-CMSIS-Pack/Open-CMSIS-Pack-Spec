@@ -25,7 +25,7 @@
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.39
 
-  29. Aug 2024: v1.7.39
+  30. Aug 2024: v1.7.39
    - modified default 'DebugPortStart' debug sequence to clear DP sticky error bits (specification docs only)
   13. May 2024: v1.7.37
    - added Nationstech vendor
