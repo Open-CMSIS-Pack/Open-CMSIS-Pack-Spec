@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.37</span>
+   &#160;<span id="projectnumber">Version 1.7.39</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -422,18 +422,49 @@ DebugPortStart</h2>
 <div class="fragment"><div class="line">&lt;sequence name=<span class="stringliteral">&quot;DebugPortStart&quot;</span>&gt;</div>
 <div class="line">  </div>
 <div class="line">  &lt;block&gt;</div>
-<div class="line">    __var SW_DP_ABORT  = 0x0;</div>
-<div class="line">    __var DP_CTRL_STAT = 0x4;</div>
-<div class="line">    __var DP_SELECT    = 0x8;</div>
-<div class="line">    __var powered_down = 0;</div>
+<div class="line">    __var SW_DP_ABORT    = 0x0;</div>
+<div class="line">    __var DP_CTRL_STAT   = 0x4;</div>
+<div class="line">    __var DP_SELECT      = 0x8;</div>
+<div class="line">    __var DP_STICKY_BITS = 0x000000B2;          <span class="comment">// DP CTRL/STAT: STICKYORUN | STICKYCMP | STICKYERR | WDATAERR</span></div>
+<div class="line">    __var JTAG_DP_STICKY_BITS_CLR = 0x00000032; <span class="comment">// DP CTRL/STAT: STICKYORUN | STICKYCMP | STICKYERR</span></div>
+<div class="line">    __var SWD_DP_STICKY_BITS_CLR  = 0x0000001E; <span class="comment">// DP ABORT: ORUNERRCLR | WDERRCLR | STKERRCLR | STKCMPCLR</span></div>
+<div class="line">    __var powered_down   = 0;</div>
+<div class="line">    __var ctrl_stat_val  = 0;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Switch to DP Register Bank 0</span></div>
 <div class="line">    WriteDP(DP_SELECT, 0x00000000);</div>
 <div class="line">  </div>
 <div class="line">    <span class="comment">// Read DP CTRL/STAT Register and check if CSYSPWRUPACK and CDBGPWRUPACK bits are set</span></div>
-<div class="line">    powered_down = ((ReadDP(DP_CTRL_STAT) &amp;amp; 0xA0000000) != 0xA0000000);</div>
+<div class="line">    ctrl_stat_val = ReadDP(DP_CTRL_STAT);</div>
+<div class="line">    powered_down = ((ctrl_stat_val &amp;amp; 0xA0000000) != 0xA0000000);</div>
 <div class="line">  &lt;/block&gt;</div>
 <div class="line">  </div>
+<div class="line">  &lt;!-- Check and clear sticky error bits --&gt;</div>
+<div class="line">  &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;ctrl_stat_val &amp;amp; DP_STICKY_BITS&quot;</span>&gt;</div>
+<div class="line"> </div>
+<div class="line">    &lt;!-- JTAG specific part --&gt;</div>
+<div class="line">    &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;(__protocol &amp;amp; 0xFFFF) == 1&quot;</span>&gt;</div>
+<div class="line"> </div>
+<div class="line">      &lt;block&gt;</div>
+<div class="line">        <span class="comment">// Clear JTAG-DP sticky error bits by writing &#39;1&#39;, preserve other values</span></div>
+<div class="line">        WriteDP(DP_CTRL_STAT, ctrl_stat_val | JTAG_DP_STICKY_BITS_CLR);</div>
+<div class="line">      &lt;/block&gt;</div>
+<div class="line"> </div>
+<div class="line">    &lt;/control&gt;</div>
+<div class="line"> </div>
+<div class="line">    &lt;!-- SWD specific part --&gt;</div>
+<div class="line">    &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;(__protocol &amp;amp; 0xFFFF) == 2&quot;</span>&gt;</div>
+<div class="line"> </div>
+<div class="line">      &lt;block&gt;</div>
+<div class="line">        <span class="comment">// Clear SWD-DP sticky error bits by writing to DP ABORT</span></div>
+<div class="line">        WriteDP(SW_DP_ABORT, SWD_DP_STICKY_BITS_CLR);</div>
+<div class="line">      &lt;/block&gt;</div>
+<div class="line"> </div>
+<div class="line">    &lt;/control&gt;</div>
+<div class="line"> </div>
+<div class="line">  &lt;/control&gt;</div>
+<div class="line"> </div>
+<div class="line">  &lt;!-- Check <span class="keywordflow">if</span> DP is powered down and power it up <span class="keywordflow">if</span> so --&gt;</div>
 <div class="line">  &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;powered_down&quot;</span>&gt;</div>
 <div class="line">  </div>
 <div class="line">    &lt;block&gt;</div>
@@ -444,18 +475,18 @@ DebugPortStart</h2>
 <div class="line">    &lt;!-- Wait <span class="keywordflow">for</span> Power-Up Request to be acknowledged --&gt;</div>
 <div class="line">    &lt;control <span class="keywordflow">while</span>=<span class="stringliteral">&quot;(ReadDP(DP_CTRL_STAT) &amp;amp; 0xA0000000) != 0xA0000000&quot;</span> timeout=<span class="stringliteral">&quot;1000000&quot;</span>/&gt;</div>
 <div class="line">    </div>
-<div class="line">    &lt;!-- JTAG Specific Part of sequence --&gt;</div>
+<div class="line">    &lt;!-- JTAG specific part --&gt;</div>
 <div class="line">    &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;(__protocol &amp;amp; 0xFFFF) == 1&quot;</span>&gt;</div>
 <div class="line">    </div>
 <div class="line">      &lt;block&gt;</div>
 <div class="line">        <span class="comment">// Init AP Transfer Mode, Transaction Counter, and Lane Mask (Normal Transfer Mode, Include all Byte Lanes)</span></div>
 <div class="line">        <span class="comment">// Additionally clear STICKYORUN, STICKYCMP, and STICKYERR bits by writing &#39;1&#39;</span></div>
-<div class="line">        WriteDP(DP_CTRL_STAT, 0x50000F32);</div>
+<div class="line">        WriteDP(DP_CTRL_STAT, 0x50000F00 | JTAG_DP_STICKY_BITS_CLR);</div>
 <div class="line">      &lt;/block&gt;</div>
 <div class="line">      </div>
 <div class="line">    &lt;/control&gt;</div>
 <div class="line">    </div>
-<div class="line">    &lt;!-- SWD Specific Part of sequence --&gt;</div>
+<div class="line">    &lt;!-- SWD specific part --&gt;</div>
 <div class="line">    &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;(__protocol &amp;amp; 0xFFFF) == 2&quot;</span>&gt;</div>
 <div class="line">    </div>
 <div class="line">      &lt;block&gt;</div>
@@ -463,7 +494,7 @@ DebugPortStart</h2>
 <div class="line">        WriteDP(DP_CTRL_STAT, 0x50000F00);</div>
 <div class="line">        </div>
 <div class="line">        <span class="comment">// Clear WDATAERR, STICKYORUN, STICKYCMP, and STICKYERR bits of CTRL/STAT Register by write to ABORT register</span></div>
-<div class="line">        WriteDP(SW_DP_ABORT, 0x0000001E);</div>
+<div class="line">        WriteDP(SW_DP_ABORT, SWD_DP_STICKY_BITS_CLR);</div>
 <div class="line">      &lt;/block&gt;</div>
 <div class="line"> </div>
 <div class="line">    &lt;/control&gt;</div>
