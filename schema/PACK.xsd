@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        13. May 2024
-  $Revision:    1.7.37
+  $Date:        30. Aug 2024
+  $Revision:    1.7.39
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.37
+  SchemaVersion=1.7.39
 
+  30. Aug 2024: v1.7.39
+   - modified default 'DebugPortStart' debug sequence to clear DP sticky error bits (specification docs only)
   13. May 2024: v1.7.37
    - added Nationstech vendor
    - added NSING vendor
@@ -231,7 +233,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.37">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.39">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">

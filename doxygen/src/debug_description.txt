@@ -463,18 +463,49 @@ Connect to the target debug port and power it up.
   <sequence name="DebugPortStart">
     
     <block>
-      __var SW_DP_ABORT  = 0x0;
-      __var DP_CTRL_STAT = 0x4;
-      __var DP_SELECT    = 0x8;
-      __var powered_down = 0;
+      __var SW_DP_ABORT    = 0x0;
+      __var DP_CTRL_STAT   = 0x4;
+      __var DP_SELECT      = 0x8;
+      __var DP_STICKY_BITS = 0x000000B2;          // DP CTRL/STAT: STICKYORUN | STICKYCMP | STICKYERR | WDATAERR
+      __var JTAG_DP_STICKY_BITS_CLR = 0x00000032; // DP CTRL/STAT: STICKYORUN | STICKYCMP | STICKYERR
+      __var SWD_DP_STICKY_BITS_CLR  = 0x0000001E; // DP ABORT: ORUNERRCLR | WDERRCLR | STKERRCLR | STKCMPCLR
+      __var powered_down   = 0;
+      __var ctrl_stat_val  = 0;
 
       // Switch to DP Register Bank 0
       WriteDP(DP_SELECT, 0x00000000);
     
       // Read DP CTRL/STAT Register and check if CSYSPWRUPACK and CDBGPWRUPACK bits are set
-      powered_down = ((ReadDP(DP_CTRL_STAT) &amp; 0xA0000000) != 0xA0000000);
+      ctrl_stat_val = ReadDP(DP_CTRL_STAT);
+      powered_down = ((ctrl_stat_val &amp; 0xA0000000) != 0xA0000000);
     </block>
     
+    <!-- Check and clear sticky error bits -->
+    <control if="ctrl_stat_val &amp; DP_STICKY_BITS">
+
+      <!-- JTAG specific part -->
+      <control if="(__protocol &amp; 0xFFFF) == 1">
+
+        <block>
+          // Clear JTAG-DP sticky error bits by writing '1', preserve other values
+          WriteDP(DP_CTRL_STAT, ctrl_stat_val | JTAG_DP_STICKY_BITS_CLR);
+        </block>
+
+      </control>
+
+      <!-- SWD specific part -->
+      <control if="(__protocol &amp; 0xFFFF) == 2">
+
+        <block>
+          // Clear SWD-DP sticky error bits by writing to DP ABORT
+          WriteDP(SW_DP_ABORT, SWD_DP_STICKY_BITS_CLR);
+        </block>
+
+      </control>
+
+    </control>
+
+    <!-- Check if DP is powered down and power it up if so -->
     <control if="powered_down">
     
       <block>
@@ -485,18 +516,18 @@ Connect to the target debug port and power it up.
       <!-- Wait for Power-Up Request to be acknowledged -->
       <control while="(ReadDP(DP_CTRL_STAT) &amp; 0xA0000000) != 0xA0000000" timeout="1000000"/>
       
-      <!-- JTAG Specific Part of sequence -->
+      <!-- JTAG specific part -->
       <control if="(__protocol &amp; 0xFFFF) == 1">
       
         <block>
           // Init AP Transfer Mode, Transaction Counter, and Lane Mask (Normal Transfer Mode, Include all Byte Lanes)
           // Additionally clear STICKYORUN, STICKYCMP, and STICKYERR bits by writing '1'
-          WriteDP(DP_CTRL_STAT, 0x50000F32);
+          WriteDP(DP_CTRL_STAT, 0x50000F00 | JTAG_DP_STICKY_BITS_CLR);
         </block>
         
       </control>
       
-      <!-- SWD Specific Part of sequence -->
+      <!-- SWD specific part -->
       <control if="(__protocol &amp; 0xFFFF) == 2">
       
         <block>
@@ -504,7 +535,7 @@ Connect to the target debug port and power it up.
           WriteDP(DP_CTRL_STAT, 0x50000F00);
           
           // Clear WDATAERR, STICKYORUN, STICKYCMP, and STICKYERR bits of CTRL/STAT Register by write to ABORT register
-          WriteDP(SW_DP_ABORT, 0x0000001E);
+          WriteDP(SW_DP_ABORT, SWD_DP_STICKY_BITS_CLR);
         </block>
 
       </control>
