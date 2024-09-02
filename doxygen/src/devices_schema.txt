@@ -2762,6 +2762,10 @@ The values can be used in the elements:
     <td class="XML-Token">TZ-disabled</td>
     <td>Application is built with TrustZone security disabled.</td>
   </tr>
+  <tr>
+    <td class="XML-Token">Secure-only</td>
+    <td>Application is built to run in secure mode without any provisions to switch to non-secure code nor for non-secure callable entry points.</td>
+  </tr>
 </table>
 
 <p>&nbsp;</p>		
