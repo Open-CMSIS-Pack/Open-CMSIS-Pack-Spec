@@ -79,6 +79,16 @@ The following sections provide more information:
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.40</td>
+      - added 'Secure-only' to \ref DsecureEnum "DsecureEnum" to specify a secure software model without provisions for a non-secure partition
+    </td>
+  <tr>
+    <td>1.7.39</td>
+    <td>
+      - modified default 'DebugPortStart' debug sequence to clear DP sticky error bits
+    </td>
+  </tr>
+  <tr>
     <td>1.7.38</td>
     <td>
       - The \ref createPackPublish "pack publishing process" has been rewritten completely
