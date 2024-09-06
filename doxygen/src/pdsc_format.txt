@@ -693,7 +693,7 @@ It contains the full release history of the Pack.
 \section element_release /package/releases/release
 
 Contains brief information of the main changes in each release version of a Pack. The content is a string written between the opening and closing \em release tags.
-The list should be ordered using `version`, with the highest release `version` on top.
+This list must be strictly ordered by `version`, with the highest release `version` at the top.
 
 \b Example:
 \code
