@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        02. Sep 2024
-  $Revision:    1.7.40
+  $Date:        23. Sep 2024
+  $Revision:    1.7.41
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.40
 
+  23. Sep 2024: v1.7.41
+   - changed all 'public' elements to default 'true'.
   02. Sep 2024: v1.7.40
    - added 'Secure-only' to \ref DsecureEnum "DsecureEnum" to specify a secure software model without provisions for a non-secure partition
   30. Aug 2024: v1.7.39
@@ -235,7 +237,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.40">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.41">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1386,7 +1388,7 @@
         <xs:attribute name="condition" type="xs:string"  use="optional" />
         <!-- if true, the vendor gives permission for the doc file above being extracted from the pack and displayed on a web-page -->
         <!-- links to web pages are assumed public -->
-        <xs:attribute name="public" type="xs:boolean"    use="optional" default="false" />
+        <xs:attribute name="public" type="xs:boolean"    use="optional" default="true" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -1413,7 +1415,7 @@
         <xs:attribute name="condition" type="xs:string"  use="optional" />
         <!-- if true, the vendor gives permission for the doc file above being extracted from the pack and displayed on a web-page -->
         <!-- links to web pages are assumed public -->
-        <xs:attribute name="public" type="xs:boolean"    use="optional" default="false" />
+        <xs:attribute name="public" type="xs:boolean"    use="optional" default="true" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -1545,7 +1547,7 @@
     <xs:attribute name="title" type="xs:string" />
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
     <!-- links to web pages are assumed public -->
-    <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
   </xs:complexType>
 
   <!-- connectors for debug probes -->
@@ -1708,7 +1710,7 @@
     <xs:attribute name="version" type="xs:string" use="optional" />
     <!-- if true, the vendor gives permission for the doc file being extracted from the pack and displayed on a web-page -->
     <!-- links to web pages are assumed public -->
-    <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
   </xs:complexType>
 
   <!-- section listing all examples contained in the package -->
@@ -1802,7 +1804,7 @@
     <xs:attribute name="src" type="xs:string" use="optional" />
     <!-- if true, the vendor gives permission for this file being extracted from the pack and displayed on a web-page -->
     <!-- links to web pages are assumed public -->
-    <xs:attribute name="public" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="public" type="xs:boolean" use="optional" default="true" />
     <!-- project path:  View location path for a file of component inside IDE project explorer view. -->
     <!-- if not provided, all files of the component will be flat placed inside the IDE project explorer view under Cclass of component-->
     <xs:attribute name="projectpath" type="xs:string" use="optional" />
