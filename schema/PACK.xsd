@@ -23,7 +23,7 @@
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.40
+  SchemaVersion=1.7.41
 
   23. Sep 2024: v1.7.41
    - changed all 'public' elements to default 'true'.
