@@ -26,7 +26,7 @@
   SchemaVersion=1.7.41
 
   23. Sep 2024: v1.7.41
-   - changed all 'public' elements to default 'true'.
+   - changed all 'public' attributes to have default value 'true'.
   02. Sep 2024: v1.7.40
    - added 'Secure-only' to \ref DsecureEnum "DsecureEnum" to specify a secure software model without provisions for a non-secure partition
   30. Aug 2024: v1.7.39
