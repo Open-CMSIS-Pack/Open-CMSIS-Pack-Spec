@@ -89,6 +89,7 @@ The following sections provide more information:
     <td>
       - added 'Secure-only' to \ref DsecureEnum "DsecureEnum" to specify a secure software model without provisions for a non-secure partition
     </td>
+  </tr>
   <tr>
     <td>1.7.39</td>
     <td>
