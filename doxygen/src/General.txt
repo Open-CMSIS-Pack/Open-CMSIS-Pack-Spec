@@ -79,9 +79,17 @@ The following sections provide more information:
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.41</td>
+    <td>
+      - changed remaining 'public' attributes to all have default value 'true' if not specified.
+    </td>   
+  </tr>
+  <tr>
     <td>1.7.40</td>
+    <td>
       - added 'Secure-only' to \ref DsecureEnum "DsecureEnum" to specify a secure software model without provisions for a non-secure partition
     </td>
+  </tr>
   <tr>
     <td>1.7.39</td>
     <td>
