@@ -25,7 +25,7 @@
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.42
 
-  08. Oct 2024: v1.7.42
+  10. Oct 2024: v1.7.42
    - added 'mode' attribute ExeGeneratorArgumentType
   23. Sep 2024: v1.7.41
    - changed all 'public' attributes to have default value 'true'.
