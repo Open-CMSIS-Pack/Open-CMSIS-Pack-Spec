@@ -79,10 +79,16 @@ The following sections provide more information:
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.42</td>
+    <td>
+      - added 'mode' attribute ExeGeneratorArgumentType
+    </td>
+  </tr>
+  <tr>
     <td>1.7.41</td>
     <td>
       - changed remaining 'public' attributes to all have default value 'true' if not specified.
-    </td>   
+    </td>
   </tr>
   <tr>
     <td>1.7.40</td>
