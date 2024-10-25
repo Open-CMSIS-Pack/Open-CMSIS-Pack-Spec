@@ -1097,8 +1097,8 @@ The table lists the predefined values for the scope attribute.
   <tr>
     <td class="XML-Token">private</td>
     <td>Applies only to file elements of category \token{include} and category \token{header}; ignored otherwise. A \token{private} include path
-        is added to the command line for building any module of the component for the specified language.  A \token{hidden} header file
-    is indicating an internal header file which must not be explicitly included by modules outside of the scope of the component.</td>
+        is added to the command line for building any module of the component for the specified language.  A \token{private} header file
+        is indicating an internal header file which must not be explicitly included by modules outside of the scope of the component.</td>
   </tr>
 </table>
 
