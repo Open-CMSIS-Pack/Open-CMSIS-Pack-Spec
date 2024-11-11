@@ -18,14 +18,14 @@
   limitations under the License.
 
 
-  $Date:        12. Oct 2024
+  $Date:        12. Nov 2024
   $Revision:    1.7.43
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.43
 
-  12. Oct 2024: v1.7.43
+  12. Nov 2024: v1.7.43
    - added 'ECCN' section for EU und US export control classification number
   10. Oct 2024: v1.7.42
    - added 'mode' attribute ExeGeneratorArgumentType
