@@ -226,7 +226,7 @@ assists searching for packages.
   \anchor package_ECCN
   <tr>
     <td>\ref element_ECCN "<ECCN>"</td>
-    <td> </td>
+    <td>Section listing Export Control Code Numbers (ECCN) for EU and US.</td>
     <td>ECCNType</td>
     <td>0..1 </td>
   </tr>
