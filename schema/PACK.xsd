@@ -22,7 +22,8 @@
   $Revision:    1.7.43
   $Project: Schema File for Package Description File Format Specification
 
-  Package file name convention <vendor>.<name>.<version>.pack SchemaVersion=1.7.43
+  Package file name convention <vendor>.<name>.<version>.pack
+  SchemaVersion=1.7.43
 
   12. Nov 2024: v1.7.43
    - added optional 'ECCN' section for EU and US export control classification numbers
