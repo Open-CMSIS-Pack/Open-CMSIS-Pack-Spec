@@ -81,7 +81,7 @@ The following sections provide more information:
   <tr>
     <td>1.7.43</td>
     <td>
-      - added 'ECCN' section for EU und US export control codes
+      - added optional 'ECCN' section for EU and US export control classification numbers
     </td>
   </tr>
   <tr>

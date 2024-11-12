@@ -61,7 +61,7 @@ found in the ARM.CMSIS pack in the directory .\\CMSIS\\Utilities.
 The \ref packFormat is structured using grouping elements and contains the following top level elements:
  - \subpage pdsc_package_pg "<package>": describes package related information like vendor, package name, description, version. Is the root element.
  - \subpage element_package_description "<description>": brief description of the software pack with optional link to Markdown overview documentation.
- - \subpage element_ECCN "<ECCN>": section listing Export Control Code Numbers (ECCN) for EU and US.
+ - \subpage element_ECCN "<ECCN>": section listing Export Control Classification Numbers (ECCN) for EU and US.
  - \subpage element_keywords "<keywords>": lists keywords to search for packages. Can be used for search engines.
  - \subpage element_repository "<repository>": specifies the URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
@@ -226,7 +226,7 @@ assists searching for packages.
   \anchor package_ECCN
   <tr>
     <td>\ref element_ECCN "<ECCN>"</td>
-    <td>Section listing Export Control Code Numbers (ECCN) for EU and US.</td>
+    <td>Section listing Export Control Classification Numbers (ECCN) for EU and US.</td>
     <td>ECCNType</td>
     <td>0..1 </td>
   </tr>
@@ -500,7 +500,12 @@ This Markdown file is indented for web pages that offer software packs in form o
 /**
 \page element_ECCN /package/ECCN element
 
-Describes the <a href="https://www.bis.doc.gov/index.php/licensing/commerce-control-list-classification/export-control-classification-number-eccn" target="_blank">Export Control Classification Number (ECCN)</a> for the content of the software pack for both the US and the EU.
+A pack may be bound to export control: if so, the pack should provide the related Export Control Classification Numbers (ECCN)
+for both the United States and the European Union.
+
+This section describes the <a href="https://www.bis.doc.gov/index.php/licensing/commerce-control-list-classification/export-control-classification-number-eccn" target="_blank">Export Control Classification Numbers (ECCN)</a>
+for the content of the pack for both the US and the EU.
+(For more information, please refer to the <a href="https://www.bis.gov/ccl-index" target="_blank">Commerce Control List (CCL) index</a>)
 
 \b Example:
 \code
@@ -533,17 +538,17 @@ Describes the <a href="https://www.bis.doc.gov/index.php/licensing/commerce-cont
   </tr>
   <tr>
     <td>ECCN-EU</td>
-    <td><a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_balnk">Export Control Classification Numbers</a> for the European Union</td>
+    <td>Defines the <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_blank">Export Control Classification Number</a> for the European Union (EU)</td>
     <td>ECCNEUCodeEnum</td>
     <td>1..1</td>
   </tr>
   <tr>
     <td>ECCN-US</td>
-    <td><a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_balnk">Export Control Classification Numbers</a> for the United States</td>
+    <td>Defines the <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_blank">Export Control Classification Number</a> for the United States (US)</td>
     <td>ECCNUSCodeEnum</td>
     <td>1..1</td>
   </tr>
-</table>
+ </table>
 
 <p>&nbsp;</p>
 <hr>

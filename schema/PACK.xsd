@@ -22,11 +22,10 @@
   $Revision:    1.7.43
   $Project: Schema File for Package Description File Format Specification
 
-  Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.43
+  Package file name convention <vendor>.<name>.<version>.pack SchemaVersion=1.7.43
 
   12. Nov 2024: v1.7.43
-   - added 'ECCN' section for EU und US export control classification number
+   - added optional 'ECCN' section for EU and US export control classification numbers
   10. Oct 2024: v1.7.42
    - added 'mode' attribute ExeGeneratorArgumentType
   23. Sep 2024: v1.7.41
@@ -451,7 +450,7 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- a pack can optionally specify its export control classification number for US and EU  -->
+  <!-- a pack can optionally specify its export control classification numbers for US and EU -->
   <!-- Export Control Classification Numbers for EU -->
   <xs:simpleType name="ECCNEUCodeEnum">
     <xs:restriction base="xs:token">
@@ -476,7 +475,7 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Export Control Code Numbers for US -->
+  <!-- Export Control Classification Numbers for US -->
   <xs:simpleType name="ECCNUSCodeEnum">
     <xs:restriction base="xs:token">
       <xs:enumeration value="3A001.a.2.c" />
@@ -2287,7 +2286,7 @@
         <!-- optional: one or more sets of license files associated with one or more components -->
         <xs:element name="licenseSets" type="LicenseSetsType" minOccurs="0" />
         <!-- optional: export control classification for the whole pack -->
-        <xs:element name="export-control-classification" type="ECCNType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="ECCN" type="ECCNType" minOccurs="0" maxOccurs="1"/>
         <!-- optional: section listing requirements (1.4.2) -->
         <xs:element name="requirements" type="RequirementsType" minOccurs="0" />
         <!-- Version numbers and release history -->
