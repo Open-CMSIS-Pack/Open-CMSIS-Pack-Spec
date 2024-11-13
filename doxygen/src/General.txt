@@ -79,6 +79,12 @@ The following sections provide more information:
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.43</td>
+    <td>
+      - added optional 'ECCN' section for EU and US export control classification numbers
+    </td>
+  </tr>
+  <tr>
     <td>1.7.42</td>
     <td>
       - added 'mode' attribute ExeGeneratorArgumentType

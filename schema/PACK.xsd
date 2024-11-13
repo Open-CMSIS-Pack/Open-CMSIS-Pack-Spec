@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        10. Oct 2024
-  $Revision:    1.7.42
+  $Date:        12. Nov 2024
+  $Revision:    1.7.43
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.42
+  SchemaVersion=1.7.43
 
+  12. Nov 2024: v1.7.43
+   - added optional 'ECCN' section for EU and US export control classification numbers
   10. Oct 2024: v1.7.42
    - added 'mode' attribute ExeGeneratorArgumentType
   23. Sep 2024: v1.7.41
@@ -239,7 +241,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.42">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.43">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -448,6 +450,83 @@
       <xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
     </xs:restriction>
   </xs:simpleType>
+
+  <!-- a pack can optionally specify its export control classification numbers for US and EU -->
+  <!-- Export Control Classification Numbers for EU -->
+  <xs:simpleType name="ECCNEUCodeEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="3A001.a.2.c" />
+      <xs:enumeration value="3A001.a.7.a" />
+      <xs:enumeration value="3D001" />
+      <xs:enumeration value="3E001" />
+      <xs:enumeration value="3E002.a" />
+      <xs:enumeration value="3E002.b" />
+      <xs:enumeration value="3E002.c" />
+      <xs:enumeration value="5A002.a.1" />
+      <xs:enumeration value="5A002.a.1.a" />
+      <xs:enumeration value="5A002.a.2" />
+      <xs:enumeration value="5A002.a.4" />
+      <xs:enumeration value="5D002" />
+      <xs:enumeration value="5D002.a" />
+      <xs:enumeration value="5D002.a.1" />
+      <xs:enumeration value="5D002.c.1" />
+      <xs:enumeration value="5E002.a" />
+      <xs:enumeration value="5E002.b" />
+      <xs:enumeration value="NEC" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Export Control Classification Numbers for US -->
+  <xs:simpleType name="ECCNUSCodeEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="3A001.a.2.c" />
+      <xs:enumeration value="3A001.a.7.a" />
+      <xs:enumeration value="3A991.a.2" />
+      <xs:enumeration value="3A991.a.3" />
+      <xs:enumeration value="3A991.b.1.a" />
+      <xs:enumeration value="3A991.b.1.b" />
+      <xs:enumeration value="3D001" />
+      <xs:enumeration value="3D991" />
+      <xs:enumeration value="3D992" />
+      <xs:enumeration value="3E001" />
+      <xs:enumeration value="3E002.a" />
+      <xs:enumeration value="3E002.b" />
+      <xs:enumeration value="3E002.c" />
+      <xs:enumeration value="3E991" />
+      <xs:enumeration value="5A002.a" />
+      <xs:enumeration value="5A002.a.1" />
+      <xs:enumeration value="5A002.a.2" />
+      <xs:enumeration value="5A002.a.4" />
+      <xs:enumeration value="5A991.b.1" />
+      <xs:enumeration value="5A991.b.4.a" />
+      <xs:enumeration value="5A991.b.6.b" />
+      <xs:enumeration value="5A991.g" />
+      <xs:enumeration value="5A992" />
+      <xs:enumeration value="5A992.b" />
+      <xs:enumeration value="5A992.c" />
+      <xs:enumeration value="5D002" />
+      <xs:enumeration value="5D002.a.1" />
+      <xs:enumeration value="5D002.c.1" />
+      <xs:enumeration value="5D992.c" />
+      <xs:enumeration value="5E002.a" />
+      <xs:enumeration value="5E002.b" />
+      <xs:enumeration value="5E992.a" />
+      <xs:enumeration value="5E992.b" />
+      <xs:enumeration value="7A994" />
+      <xs:enumeration value="7D994" />
+      <xs:enumeration value="9E515.f" />
+      <xs:enumeration value="EAR99" />
+      <xs:enumeration value="Not subject to EAR" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- Export Control Classification types -->
+  <xs:complexType name="ECCNType">
+    <xs:sequence>
+      <xs:element name="ECCN-EU" minOccurs="1" maxOccurs="1" type="ECCNEUCodeEnum"/>
+      <xs:element name="ECCN-US" minOccurs="1" maxOccurs="1" type="ECCNUSCodeEnum"/>
+    </xs:sequence>
+  </xs:complexType>
 
   <!-- Processor Type -->
   <xs:complexType name="ProcessorType">
@@ -2207,6 +2286,8 @@
         <xs:element name="license" type="xs:string" minOccurs="0" />
         <!-- optional: one or more sets of license files associated with one or more components -->
         <xs:element name="licenseSets" type="LicenseSetsType" minOccurs="0" />
+        <!-- optional: export control classification for the whole pack -->
+        <xs:element name="ECCN" type="ECCNType" minOccurs="0" maxOccurs="1"/>
         <!-- optional: section listing requirements (1.4.2) -->
         <xs:element name="requirements" type="RequirementsType" minOccurs="0" />
         <!-- Version numbers and release history -->
