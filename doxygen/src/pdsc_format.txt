@@ -63,6 +63,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage element_package_description "<description>": brief description of the software pack with optional link to Markdown overview documentation.
  - \subpage element_ECCN "<ECCN>": section listing Export Control Classification Numbers (ECCN) for EU and US.
  - \subpage element_keywords "<keywords>": lists keywords to search for packages. Can be used for search engines.
+ - \ref element_component_environments "environments": Grouping element for environments information. Each inner \ref element_component_environment "environment" element may be used to provide tool-specific information pertaining to the package as a whole.
  - \subpage element_repository "<repository>": specifies the URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
  - \subpage element_releases "<releases>": lists release versions with descriptions.
@@ -99,7 +100,7 @@ This example of a *.pdsc File explains the sections, particularly how dependenci
 The basic package information captures the package vendor, the package name, a brief description of the package, and the schema version.
 Additional elements support the logistics of handling packages. The url specifies the origin of the description. It may be left empty if
 the pack will not be uploaded onto a web server. A license file might point to license agreements. A list of keywords
-assists searching for packages.
+assists searching for packages. An optional environments element can be used to list environment-specific information.
 
 \b Example:
 \code
@@ -126,6 +127,15 @@ assists searching for packages.
     <keyword>STM32F2</keyword>
     <keyword>STM32F2xx</keyword>
   </keywords>
+
+  <environments>
+    <environment name="tool-x">                                               <!-- tool-x specific information for the whole package -->
+      ...
+    </environment>
+    <environment name="tool-y">                                               <!-- tool-y specific information for the whole package -->
+      ...
+    </environment>
+  </environments>
 
   <taxonomy>                                                                  <!-- class and group descriptions -->
     <description Cclass="Board Support">
@@ -306,6 +316,12 @@ assists searching for packages.
     <td>Defines keywords that might be used to find a software pack. Keywords may be also exported to web page to provide information for search engines, such as Google.</td>
     <td>group</td>
     <td>0..1 </td>
+  </tr>
+  <tr>
+    <td>\ref element_component_environments "environments"</td>
+    <td>Grouping element for environments information. Each inner \ref element_component_environment "environment" element may be used to provide tool-specific information pertaining to the package as a whole.</td>
+    <td>group</td>
+    <td>0..1</td>
   </tr>
   <tr>
     <td>\ref element_generators "generators"</td>

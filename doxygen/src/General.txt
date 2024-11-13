@@ -79,6 +79,12 @@ The following sections provide more information:
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.44</td>
+    <td>
+      - added optional 'environments' section below package element to hold environment-specific information pertaining to the package as a whole
+    </td>
+  </tr>
+  <tr>
     <td>1.7.43</td>
     <td>
       - added optional 'ECCN' section for EU and US export control classification numbers
