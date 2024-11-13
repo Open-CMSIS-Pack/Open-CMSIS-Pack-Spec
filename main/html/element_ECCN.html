@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>/package/keywords element</title>
-<title>Open-CMSIS-Pack: /package/keywords element</title>
+<title>/package/ECCN element</title>
+<title>Open-CMSIS-Pack: /package/ECCN element</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('element_keywords.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('element_ECCN.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -101,21 +101,21 @@ $(document).ready(function(){initNavTree('element_keywords.html',''); initResiza
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">/package/keywords element </div></div>
+  <div class="headertitle"><div class="title">/package/ECCN element </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >Is the group element for wrapping keywords, which can be used to find a Pack. Keywords can be exported to web pages to provide information for search engines, such as Google.</p>
+<div class="textblock"><p >A pack may be bound to export control: if so, the pack should provide the related Export Control Classification Numbers (ECCN) for both the United States and the European Union.</p>
+<p >This section describes the <a href="https://www.bis.doc.gov/index.php/licensing/commerce-control-list-classification/export-control-classification-number-eccn" target="_blank">Export Control Classification Numbers (ECCN)</a> for the content of the pack for both the US and the EU. (For more information, please refer to the <a href="https://www.bis.gov/ccl-index" target="_blank">Commerce Control List (CCL) index</a>)</p>
 <p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  ...</div>
-<div class="line">  &lt;keywords&gt;</div>
-<div class="line">    &lt;keyword&gt;ARM&lt;/keyword&gt;</div>
-<div class="line">    &lt;keyword&gt;Cortex-M&lt;/keyword&gt;</div>
-<div class="line">    &lt;keyword&gt;TCP/IP Stack&lt;/keyword&gt;</div>
-<div class="line">  &lt;/keywords&gt;</div>
+<div class="line">  &lt;ECCN&gt;</div>
+<div class="line">    &lt;ECCN-EU&gt;NEC&lt;/ECCN-EU&gt;</div>
+<div class="line">    &lt;ECCN-US&gt;5D992.c&lt;/ECCN-US&gt;</div>
+<div class="line">  &lt;/ECCN&gt;</div>
 <div class="line">  ...</div>
 <div class="line">&lt;/package&gt;</div>
 </div><!-- fragment --><p >&#160;</p>
-<table class="cmtable" summary="Element: dominate">
+<table class="cmtable" summary="Element: ECCN">
 <tr>
 <th>Parent Element </th><th colspan="3">Element Chain  </th></tr>
 <tr>
@@ -123,7 +123,9 @@ $(document).ready(function(){initNavTree('element_keywords.html',''); initResiza
 <tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
-<td>keyword </td><td>Element that encloses one keyword. Enter a keyword between the opening and closing tag of this element. </td><td>xs:string </td><td>1..1  </td></tr>
+<td>ECCN-EU </td><td>Defines the <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_blank">Export Control Classification Number</a> for the European Union (EU) </td><td>ECCNEUCodeEnum </td><td>1..1  </td></tr>
+<tr>
+<td>ECCN-US </td><td>Defines the <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_blank">Export Control Classification Number</a> for the United States (US) </td><td>ECCNUSCodeEnum </td><td>1..1  </td></tr>
 </table>
 <p >&#160;</p>
 <hr  />

@@ -102,7 +102,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithmFunc.html",
-"sdf_pg.html#sdf_element_clusters"
+"sdf_pg.html#sdf_element_cluster"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
