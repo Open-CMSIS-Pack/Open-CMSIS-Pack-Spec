@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.43</span>
+   &#160;<span id="projectnumber">Version 1.7.44</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -724,8 +724,8 @@ The attribute <span class="XML-Token">copy</span> is deprecated and should no lo
 <hr  />
 <h1><a class="anchor" id="element_component_environments"></a>
 /package/.../environments</h1>
-<p >The group <b>environments</b> can appear in <a class="el" href="pdsc_components_pg.html#element_component">component</a> element. This group is the frame for defining individual <a class="el" href="pdsc_components_pg.html#element_component_environment">environment</a>.</p>
-<p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;package&gt;</div>
+<p >The group <b>environments</b> can appear in <a class="el" href="pdsc_components_pg.html#element_component">component</a> element and in <a class="el" href="pdsc_package_pg.html#element_package">package</a> element. This group is the frame for defining individual <a class="el" href="pdsc_components_pg.html#element_component_environment">environment</a>.</p>
+<p ><b>Example</b> #1: </p><div class="fragment"><div class="line">&lt;package&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;components&gt;</div>
 <div class="line">    &lt;component Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;Startup&quot;</span> Cversion=<span class="stringliteral">&quot;3.1.1&quot;</span> &gt;</div>
@@ -736,6 +736,17 @@ The attribute <span class="XML-Token">copy</span> is deprecated and should no lo
 <div class="line">  &lt;/components&gt;</div>
 <div class="line">  ...</div>
 <div class="line">&lt;/package&gt;</div>
+</div><!-- fragment --><p ><b>Example</b> #2: describing "tool-x" and "tool-y" custom information applicable to the whole pack: </p><div class="fragment"><div class="line">&lt;package&gt;</div>
+<div class="line">  &lt;environments&gt;</div>
+<div class="line">    &lt;environment name=<span class="stringliteral">&quot;tool-x&quot;</span>&gt;</div>
+<div class="line">      ...</div>
+<div class="line">    &lt;/environment&gt;</div>
+<div class="line">    &lt;environment name=<span class="stringliteral">&quot;tool-y&quot;</span>&gt;</div>
+<div class="line">      ...</div>
+<div class="line">    &lt;/environment&gt;</div>
+<div class="line">  &lt;/environments&gt;</div>
+<div class="line">  ...</div>
+<div class="line">&lt;/package&gt;</div>
 </div><!-- fragment --><p >&#160;</p>
 <table class="cmtable" summary="Element: Environments">
 <tr>
@@ -744,6 +755,8 @@ The attribute <span class="XML-Token">copy</span> is deprecated and should no lo
 <td><a class="el" href="pdsc_components_pg.html#element_component">component</a> </td><td colspan="3"><a class="el" href="pdsc_components_pg.html#element_component">/package/components/component</a>  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_components_pg.html#element_component">component</a> </td><td colspan="3"><a class="el" href="pdsc_components_pg.html#element_component">/package/components/bundle/component</a>  </td></tr>
+<tr>
+<td><a class="el" href="pdsc_package_pg.html#element_package">package</a> </td><td colspan="3"><a class="el" href="pdsc_package_pg.html#element_package">/package</a>  </td></tr>
 <tr>
 <th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>

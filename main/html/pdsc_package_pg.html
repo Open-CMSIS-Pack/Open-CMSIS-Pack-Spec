@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.43</span>
+   &#160;<span id="projectnumber">Version 1.7.44</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
   <div class="headertitle"><div class="title">/package element </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >The basic package information captures the package vendor, the package name, a brief description of the package, and the schema version. Additional elements support the logistics of handling packages. The url specifies the origin of the description. It may be left empty if the pack will not be uploaded onto a web server. A license file might point to license agreements. A list of keywords assists searching for packages.</p>
+<div class="textblock"><p >The basic package information captures the package vendor, the package name, a brief description of the package, and the schema version. Additional elements support the logistics of handling packages. The url specifies the origin of the description. It may be left empty if the pack will not be uploaded onto a web server. A license file might point to license agreements. A list of keywords assists searching for packages. An optional environments element can be used to list environment-specific information.</p>
 <p ><b>Example:</b> </p><div class="fragment"><div class="line">&lt;<span class="keyword">package </span>schemaVersion=&quot;1.4&quot; xmlns:xs=&quot;http:<span class="comment">//www.w3.org/2001/XMLSchema-instance&quot; xs:noNamespaceSchemaLocation=&quot;PACK.xsd&quot;&gt;</span></div>
 <div class="line">  &lt;vendor&gt;ExampleVendor&lt;/vendor&gt;</div>
 <div class="line">  &lt;name&gt;STM32F2xx_DFP&lt;/name&gt;                                                       &lt;!-- name of package --&gt;</div>
@@ -128,6 +128,15 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 <div class="line">    &lt;keyword&gt;STM32F2&lt;/keyword&gt;</div>
 <div class="line">    &lt;keyword&gt;STM32F2xx&lt;/keyword&gt;</div>
 <div class="line">  &lt;/keywords&gt;</div>
+<div class="line"> </div>
+<div class="line">  &lt;environments&gt;</div>
+<div class="line">    &lt;environment name=&quot;tool-x&quot;&gt;                                               &lt;!-- tool-x specific information for the whole package --&gt;</div>
+<div class="line">      ...</div>
+<div class="line">    &lt;/environment&gt;</div>
+<div class="line">    &lt;environment name=&quot;tool-y&quot;&gt;                                               &lt;!-- tool-y specific information for the whole package --&gt;</div>
+<div class="line">      ...</div>
+<div class="line">    &lt;/environment&gt;</div>
+<div class="line">  &lt;/environments&gt;</div>
 <div class="line"> </div>
 <div class="line">  &lt;taxonomy&gt;                                                                  &lt;!-- class and group descriptions --&gt;</div>
 <div class="line">    &lt;description Cclass=&quot;Board Support&quot;&gt;</div>
@@ -194,6 +203,8 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 <td>changelogs </td><td>Section describing one or more changelog files which can be associated with one, multiple or all components and apis in the pack (default="true") </td><td><a class="el" href="pdsc_changelogs_pg.html#element_changelogs">ChangelogsType</a> </td><td>0..1   </td></tr>
 <tr>
 <td><a class="el" href="element_keywords.html">keywords</a> </td><td>Defines keywords that might be used to find a software pack. Keywords may be also exported to web page to provide information for search engines, such as Google. </td><td>group </td><td>0..1   </td></tr>
+<tr>
+<td><a class="el" href="pdsc_components_pg.html#element_component_environments">environments</a> </td><td>Grouping element for environments information. Each inner <a class="el" href="pdsc_components_pg.html#element_component_environment">environment</a> element may be used to provide tool-specific information pertaining to the package as a whole. </td><td>group </td><td>0..1  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_generators_pg.html#element_generators">generators</a> </td><td>Specifies generator tools that have been used to create components. </td><td>GeneratorsType </td><td>0..1   </td></tr>
 <tr>
