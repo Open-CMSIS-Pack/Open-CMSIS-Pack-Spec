@@ -135,7 +135,6 @@
    - added 'Star' to DcoreEnum
   1. December 2020: v1.7.2
    - added 'XC' to CompilerEnumType to enable use of Microchip XC32 compiler
-
   13. November 2020: v1.7.1
   - undo removing deprecated attributes as they are still used in latest pdsc file versions:
     DeviceVendorEnum: Lapis Semiconductor, DeviceVendorEnum: Pname, BoardReferenceType: Dvendor, Dname
