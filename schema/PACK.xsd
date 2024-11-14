@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        12. Nov 2024
-  $Revision:    1.7.43
+  $Date:        14. Nov 2024
+  $Revision:    1.7.44
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.43
+  SchemaVersion=1.7.44
 
+  14. Nov 2024: v1.7.44
+   - added optional 'environments' section below package element to hold environment-specific information pertaining to the package as a whole
   12. Nov 2024: v1.7.43
    - added optional 'ECCN' section for EU and US export control classification numbers
   10. Oct 2024: v1.7.42
@@ -133,7 +135,6 @@
    - added 'Star' to DcoreEnum
   1. December 2020: v1.7.2
    - added 'XC' to CompilerEnumType to enable use of Microchip XC32 compiler
-
   13. November 2020: v1.7.1
   - undo removing deprecated attributes as they are still used in latest pdsc file versions:
     DeviceVendorEnum: Lapis Semiconductor, DeviceVendorEnum: Pname, BoardReferenceType: Dvendor, Dname
@@ -241,7 +242,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.43">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.44">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -2296,6 +2297,15 @@
         <xs:element name="changelogs" type="ChangelogsType" minOccurs="0" />
         <!-- keyword for Search Engine Indexing (e.g. Google) -->
         <xs:element name="keywords" type="KeywordsType" minOccurs="0" />
+        <!-- extension point to add information pertaining to the package as a whole -->
+        <!-- list of environments (elements containing information that is specific for a development tool) -->
+        <xs:element name="environments" minOccurs="0" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="environment" type="EnvironmentType" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
         <!-- generators are tools and utilities that are used to generate software components -->
         <xs:element name="generators" type="GeneratorsType" minOccurs="0" />
         <!-- definition of devices including references to device support files contained in package -->

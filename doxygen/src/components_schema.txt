@@ -1218,9 +1218,9 @@ The possible values are not imposed by this specification.
 
 \section element_component_environments /package/.../environments
 
-The group <b>environments</b> can appear in \ref element_component "component" element. This group is the frame for defining individual \ref element_component_environment "environment".
+The group <b>environments</b> can appear in \ref element_component "component" element and in \ref element_package "package" element. This group is the frame for defining individual \ref element_component_environment "environment".
 
-\b Example:
+\b Example #1:
 \code
 <package>
   ...
@@ -1231,6 +1231,21 @@ The group <b>environments</b> can appear in \ref element_component "component" e
       </environments>
     </component>
   </components>
+  ...
+</package>
+\endcode
+
+\b Example #2: describing "tool-x" and "tool-y" custom information applicable to the whole pack:
+\code
+<package>
+  <environments>
+    <environment name="tool-x">
+      ...
+    </environment>
+    <environment name="tool-y">
+      ...
+    </environment>
+  </environments>
   ...
 </package>
 \endcode
@@ -1249,6 +1264,10 @@ The group <b>environments</b> can appear in \ref element_component "component" e
   <tr>
     <td>\ref element_component "component"</td>
     <td colspan="3">\ref element_component "/package/components/bundle/component"</td>
+  </tr>
+  <tr>
+    <td>\ref element_package "package"</td>
+    <td colspan="3">\ref element_package "/package"</td>
   </tr>
   <tr>
     <th>Child&nbsp;Elements</th>
