@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        14. Nov 2024
-  $Revision:    1.7.44
+  $Date:        18. Dec 2024
+  $Revision:    1.7.45
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.44
+  SchemaVersion=1.7.45
 
+  18. Dec 2024: v1.7.45
+   - added 'CLANG_TI' to 'CompilerEnumType'
   14. Nov 2024: v1.7.44
    - added optional 'environments' section below package element to hold environment-specific information pertaining to the package as a whole
   12. Nov 2024: v1.7.43
@@ -242,7 +244,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.44">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.45">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1387,6 +1389,7 @@
       <xs:enumeration value="XC"/> <!-- Microchip MPLAB XC32 -->
       <xs:enumeration value="CLANG"/>
       <xs:enumeration value="Renesas"/>
+      <xs:enumeration value="CLANG_TI"/>
       <xs:enumeration value="*" />
     </xs:restriction>
   </xs:simpleType>
