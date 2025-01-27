@@ -211,6 +211,8 @@ or <a href="https://arm-software.github.io/CMSIS_5/develop/Core_A/html/device_h_
 #endif
 \endcode
 
+\note __MPU_PRESENT must not be used for non-Arm MPUs!
+
 Another typical usage of the <b>RTE_Components.h</b> file is in header files to control for example the inclusion of files
 that are related to other components for the same Software Pack.
 
@@ -221,7 +223,6 @@ that are related to other components for the same Software Pack.
 #include "Net_Config_ETH_0.h"          // add the related configuration file for these component
 #endif
 \endcode
-
 
 <p>&nbsp;</p>
 <hr>

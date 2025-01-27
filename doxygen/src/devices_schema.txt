@@ -1940,7 +1940,7 @@ the attribute \elem{Pname}. If the information is relevant to all processors, no
   </tr>
   <tr>
     <td>Dmpu</td>
-    <td>Specifies whether a Memory Protection Unit is present in the processor. Use predefined values as listed in the table \ref DmpuEnum "Device MPU".</td>
+    <td>Specifies whether an Arm-based Memory Protection Unit is present in the processor. Do not use this in case of custom MPUs. Use predefined values as listed in the table \ref DmpuEnum "Device MPU".</td>
     <td>\ref DmpuEnum</td>
     <td>required</td>
   </tr>
@@ -2687,7 +2687,7 @@ The tokens can be used in the elements:
 
 \anchor DmpuEnum <b>Table: Device MPU</b>
 
-The table shows predefined values that identify whether a CPU has an Memory Protection Unit (MPU).
+The table shows predefined values that identify whether a CPU has an Arm-based Memory Protection Unit (MPU).
 The values can be used in the elements:
 - \ref element_accept  
 - \ref element_require 
@@ -2708,6 +2708,8 @@ The values can be used in the elements:
     <td>Memory Protection Unit is present</td>
   </tr>
 </table>
+
+\note Do not use Dmpu in case of a custom (non-Arm) MPU.
 
 <p>&nbsp;</p>
 
