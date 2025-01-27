@@ -260,7 +260,8 @@ RTE_Components.h</h1>
 <div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"><span class="preprocessor">  #error &quot;Software Component requires a device with MPU&quot;</span></div>
 <div class="line">#endif</div>
-</div><!-- fragment --><p >Another typical usage of the <b>RTE_Components.h</b> file is in header files to control for example the inclusion of files that are related to other components for the same Software Pack.</p>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>__MPU_PRESENT must not be used for non-Arm MPUs!</dd></dl>
+<p>Another typical usage of the <b>RTE_Components.h</b> file is in header files to control for example the inclusion of files that are related to other components for the same Software Pack.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;RTE_Components.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#ifdef  RTE_Network_Interface_ETH_0    </span><span class="comment">// generated when software component Network Interface ETH 0 is included</span></div>
