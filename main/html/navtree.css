@@ -1,3 +1,7 @@
+#nav-tree .children_ul {
+  margin:0;
+  padding:4px;
+}
 
 #nav-tree ul {
   list-style:none outside none;
@@ -9,7 +13,6 @@
   white-space:nowrap;
   margin:0px;
   padding:0px;
-  vertical-align: middle;
 }
 
 #nav-tree .plus {
@@ -19,38 +22,42 @@
 #nav-tree .selected {
   background-image: url('tab_a.png');
   background-repeat:repeat-x;
-  color: #fff;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 1.0);
+  color: var(--nav-text-active-color);
+  text-shadow: var(--nav-text-active-shadow);
+}
+
+#nav-tree .selected .arrow {
+  color: var(--nav-arrow-selected-color);
+  text-shadow: none;
 }
 
 #nav-tree img {
   margin:0px;
   padding:0px;
   border:0px;
+  vertical-align: middle;
 }
 
 #nav-tree a {
   text-decoration:none;
   padding:0px;
-  margin-top:0px;
+  margin:0px;
   outline:none;
 }
 
 #nav-tree .label {
   margin:0px;
   padding:0px;
-  font: 12px 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif;
-
+  font: 12px var(--font-family-nav);
 }
 
 #nav-tree .label a {
   padding:2px;
-
 }
 
 #nav-tree .selected a {
   text-decoration:none;
-  color:#fff;
+  color:var(--nav-text-active-color);
 }
 
 #nav-tree .children_ul {
@@ -65,8 +72,6 @@
 
 #nav-tree {
   padding: 0px 0px;
-  padding-left: 10px;  /*correction to add space before the first arrow in nav-tree */
-  background-color: #FAFAFF; 
   font-size:14px;
   overflow:auto;
 }
@@ -85,7 +90,8 @@
   display:block;
   position: absolute;
   left: 0px;
-  width: 300px;
+  width: $width;
+  overflow : hidden;
 }
 
 .ui-resizable .ui-resizable-handle {
@@ -93,9 +99,11 @@
 }
 
 .ui-resizable-e {
-  background:url("splitbar.png") repeat scroll right center transparent;
-
-  cursor:e-resize;
+  background-image:var(--nav-splitbar-image);
+  background-size:100%;
+  background-repeat:repeat-y;
+  background-attachment: scroll;
+  cursor:ew-resize;
   height:100%;
   right:0;
   top:0;
@@ -114,10 +122,11 @@
 }
 
 #nav-tree {
-  background-image:url('nav_h.png');
   background-repeat:repeat-x;
-  background-color: #F9FAFC;
+  background-color: var(--nav-background-color);
+  -webkit-overflow-scrolling : touch; /* iOS 5+ */
 }
+
 #nav-sync {
   position:absolute;
   top:5px;
@@ -126,14 +135,16 @@
 }
 
 #nav-sync img {
-  opacity:0.0;
+  opacity:0.3;
 }
 
 #nav-sync img:hover {
-  opacity:0.0;
+  opacity:0.9;
 }
+
 @media print
 {
   #nav-tree { display: none; }
   div.ui-resizable-handle { display: none; position: relative; }
 }
+
