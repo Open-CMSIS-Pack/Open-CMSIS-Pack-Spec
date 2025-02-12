@@ -59,14 +59,16 @@ itself is distributed in various software packs (CORE, DSP library, RTOS impleme
 The following sections provide more information:
 
  - In the \ref cp_Packs, learn the basics and the required steps for creating a pack.
- - \ref cp_PackTutorial are available that show how to start a software pack from scratch, how to
-   enable device support in a device support pack (DFP), and how to describe development boards in a
-   board support pack (BSP).
  - \ref packFormat describes all XML elements that can be used in a package description file.
  - \ref configWizard can be used to create GUI-like elements in development tools for configuration files.
  - \ref flashAlgorithm algorithms are used to erase or download applications to Flash devices.
  - \ref coresight_setup allows to create tool-agnostic debug and trace configurations.
  - \ref sdf_pg describes all XML elements that can be used in a system description file for debugging.
+
+\note
+The <a href="https://open-cmsis-pack.github.io/cmsis-toolbox/pack-tools/">CMSIS-Toolbox documentation</a> provides in-depth
+documentation about how to create a CMSIS-Pack. It contains links to pack tutorial repos (for DFP, BSP, and generic software
+packs) and provides useful tips when creating a pack.
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
@@ -77,6 +79,12 @@ The following sections provide more information:
   <tr>
     <th>Version</th>
     <th>Description</th>
+  </tr>
+  <tr>
+    <td>1.7.46</td>
+    <td>
+      - removed "Pack Tutorials" section and added link to CMSIS-Toolbox documentation
+    </td>
   </tr>
   <tr>
     <td>1.7.45</td>

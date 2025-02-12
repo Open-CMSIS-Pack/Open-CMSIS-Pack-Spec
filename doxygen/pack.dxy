@@ -38,7 +38,7 @@ PROJECT_NAME           = "Open-CMSIS-Pack"
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = "Version 1.7.45"
+PROJECT_NUMBER         = "Version 1.7.46"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -859,7 +859,6 @@ WARN_LOGFILE           =
 
 INPUT           =   src/General.txt \
                     src/pack_creation.txt \
-                    src/pack_tutorial.txt \
                     src/pack_publish.txt \
                     src/pdsc_format.txt \
                     src/config_wizard.txt \
