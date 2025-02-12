@@ -19,18 +19,18 @@ on:
 jobs:
   docs:
     name: Build main documentation
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - name: Install packages
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y graphviz plantuml libclang1-9 libclang-cpp1-9
-      - name: Install doxygen 1.9.2
+          sudo apt-get install --no-install-recommends -y graphviz plantuml
+      - name: Install doxygen 1.9.6
         run: |
-          wget -O doxygen.tgz https://sourceforge.net/projects/doxygen/files/rel-1.9.2/doxygen-1.9.2.linux.bin.tar.gz/download
+          wget -O doxygen.tgz https://sourceforge.net/projects/doxygen/files/rel-1.9.6/doxygen-1.9.6.linux.bin.tar.gz/download
           sudo tar -C /opt -xf doxygen.tgz
-          sudo ln -s /opt/doxygen-1.9.2/bin/doxygen /usr/local/bin/
+          sudo ln -s /opt/doxygen-1.9.6/bin/doxygen /usr/local/bin/
           which doxygen
           doxygen --version
       - name: Install linkchecker
