@@ -42,7 +42,6 @@ var NAVTREE =
         [ "Software Component Cclasses", "cp_Packs.html#pack_Cclass", null ]
       ] ]
     ] ],
-    [ "Pack tutorials", "cp_PackTutorial.html", null ],
     [ "Publish a CMSIS-Pack", "createPackPublish.html", [
       [ "Checking CMSIS-Packs", "createPackPublish.html#createPackUtil", null ],
       [ "Local installation", "createPackPublish.html#cp_LocalInstallation", null ],
@@ -102,7 +101,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithmFunc.html",
-"sdf_pg.html#sdf_element_cluster"
+"sdf_pg.html#sdf_element_clusters"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
