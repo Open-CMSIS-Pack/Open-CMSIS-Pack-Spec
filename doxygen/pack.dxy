@@ -859,7 +859,6 @@ WARN_LOGFILE           =
 
 INPUT           =   src/General.txt \
                     src/pack_creation.txt \
-                    src/pack_tutorial.txt \
                     src/pack_publish.txt \
                     src/pdsc_format.txt \
                     src/config_wizard.txt \
