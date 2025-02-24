@@ -174,7 +174,7 @@ $(document).ready(function(){initNavTree('element_releases.html',''); initResiza
 <tr>
 <td>tag </td><td>In case the repository element is specified, the tag attribute is used to specify the repository tag that corresponds to this release of the pack. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>url </td><td>URL specifying the location of the pack of the specified version. This can be used to override the default location being <code>&lt;url&gt;/&lt;vendor&gt;</code>.&lt;name&gt;.&lt;version&gt;.pack </td><td>xs:anyURI </td><td>optional  </td></tr>
+<td>url </td><td>HTTPS URL specifying the location of the pack of the specified version. This can be used to override the default location being <code>&lt;url&gt;/&lt;vendor&gt;</code>.&lt;name&gt;.&lt;version&gt;.pack </td><td>xs:anyURI </td><td>optional  </td></tr>
 <tr>
 <td>deprecated </td><td>Pack is no longer officially supported after the set date. It will be excluded from checks for update. Deprecated packs may remain available for download from the server. Tools will continue to work but may provide indicators highlighting end of support for the pack and its content. Not recommended for use with new projects. Note this attribute is only relevant when set for the latest release located on top of the releases section.  </td><td>xs:date </td><td>optional  </td></tr>
 <tr>
