@@ -64,7 +64,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage element_ECCN "<ECCN>": section listing Export Control Classification Numbers (ECCN) for EU and US.
  - \subpage element_keywords "<keywords>": lists keywords to search for packages. Can be used for search engines.
  - \ref element_component_environments "environments": Grouping element for environments information. Each inner \ref element_component_environment "environment" element may be used to provide tool-specific information pertaining to the package as a whole.
- - \subpage element_repository "<repository>": specifies the URL and repository type of a public repository where the pack originates from.
+ - \subpage element_repository "<repository>": specifies the HTTPS URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
  - \subpage element_releases "<releases>": lists release versions with descriptions.
  - \subpage pdsc_changelogs_pg "<changeLogs>": lists changelog files associated with components and apis within the pack.
@@ -98,8 +98,8 @@ This example of a *.pdsc File explains the sections, particularly how dependenci
 /**
 \page pdsc_package_pg /package element
 The basic package information captures the package vendor, the package name, a brief description of the package, and the schema version.
-Additional elements support the logistics of handling packages. The url specifies the origin of the description. It may be left empty if
-the pack will not be uploaded onto a web server. A license file might point to license agreements. A list of keywords
+Additional elements support the logistics of handling packages. The url (https required) specifies the origin of the description. It may
+be left empty if the pack will not be uploaded onto a web server. A license file might point to license agreements. A list of keywords
 assists searching for packages. An optional environments element can be used to list environment-specific information.
 
 \b Example:
@@ -243,7 +243,8 @@ assists searching for packages. An optional environments element can be used to 
   \anchor package_url
   <tr>
     <td>url</td>
-    <td><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator" target="_blank">HTTP URL</a>
+    <td><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator" target="_blank">URL</a>
+        (only <a href="https://en.wikipedia.org/wiki/HTTPS" target="_blank">HTTPS</a> allowed)
         or <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI</a> location
         of the software pack. The URL can be used by installers for downloading,
         updating, or checking versions. If left empty, the Pack cannot be updated automatically from a server location.</td>
@@ -253,7 +254,7 @@ assists searching for packages. An optional environments element can be used to 
   \anchor package_supportContact
   <tr>
     <td>supportContact</td>
-    <td>HTTP URL or e-mail address for users to get support for the content of the Pack</td>
+    <td>HTTPS URL or e-mail address for users to get support for the content of the Pack</td>
     <td>xs:string</td>
     <td>0..1 </td>
   </tr>
@@ -293,7 +294,7 @@ assists searching for packages. An optional environments element can be used to 
   </tr>
   <tr>
     <td>\ref element_repository "repository"</td>
-    <td>URL of a public repository the pack originates from.</td>
+    <td>HTTPS URL of a public repository the pack originates from.</td>
     <td>xs:anyURI</td>
     <td>0..1 </td>
   </tr>
@@ -622,8 +623,8 @@ Keywords can be exported to web pages to provide information for search engines,
 /**************************************************************************************************/
 /**
 \page element_repository /package/repository element
-The element specifies the URL of the public repository the pack originates from. The attribute 'type' specifies the repository technology
-and therefore the tools required to be used with this repository.
+The element specifies the URL (HTTPS required) of the public repository the pack originates from. The attribute 'type'
+specifies the repository technology and therefore the tools required to be used with this repository.
 
 
 \b Example:
@@ -853,7 +854,7 @@ This list must be strictly ordered by `version`, with the highest release `versi
   </tr>
   <tr>
     <td>url</td>
-    <td>URL specifying the location of the pack of the specified version. This can be used to override the default location being \c \<url>/\<vendor>.\<name>.\<version>.pack</td>
+    <td>HTTPS URL specifying the location of the pack of the specified version. This can be used to override the default location being \c \<url>/\<vendor>.\<name>.\<version>.pack</td>
     <td>xs:anyURI</td>
     <td>optional</td>
   </tr>
