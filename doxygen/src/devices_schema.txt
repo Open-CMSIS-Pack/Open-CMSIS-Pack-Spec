@@ -2451,6 +2451,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.xmcwh.com/</td>
   </tr>
   <tr>
+    <td class="XML-Token">XYD:186</td>
+    <td>Xiamen XYDFAB Integrated Circuit Co., Ltd</td>
+    <td>http://www.xfabsemi.com/</td>
+  </tr>
+  <tr>
     <td class="XML-Token">YTMicro:180</td>
     <td>YTMicro</td>
     <td>http://www.ytmicro.com/</td>

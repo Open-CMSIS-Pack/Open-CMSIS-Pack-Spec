@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-  Copyright (c) 2013-2024 ARM Limited. All rights reserved.
+  Copyright (c) 2013-2025 ARM Limited. All rights reserved.
 
   SPDX-License-Identifier: Apache-2.0
 
@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        18. Dec 2024
-  $Revision:    1.7.45
+  $Date:        31. Mar 2025
+  $Revision:    1.7.46
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.45
+  SchemaVersion=1.7.46
 
+  31. Mar 2025: v1.7.46
+   - added XYD vendor
   18. Dec 2024: v1.7.45
    - added 'CLANG_TI' to 'CompilerEnumType'
   14. Nov 2024: v1.7.44
@@ -244,7 +246,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.45">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.46">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -363,6 +365,7 @@
       <xs:enumeration value="WIZnet:122" />
       <xs:enumeration value="Xiamen PengPai Microelectronics Co. Ltd:166" />
       <xs:enumeration value="XMC:158" />
+      <xs:enumeration value="XYD:186" />
       <xs:enumeration value="YTMicro:180" />
       <xs:enumeration value="Zilog:89" />
       <!-- deprecated: do not use -->

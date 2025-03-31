@@ -81,6 +81,11 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.46</td>
+    <td>
+      - added XYD vendor
+    </td>
+  </tr>
     <td>1.7.45</td>
     <td>
       - added 'CLANG_TI' to 'CompilerEnumType'
