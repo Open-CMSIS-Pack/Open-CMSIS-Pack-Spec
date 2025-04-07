@@ -3464,7 +3464,7 @@ An <b>accessportV2</b> must be later selected via <b>__apid</b>. It is not possi
   <tr>
     <td>SPROT</td>
     <td>
-      Value for SPROT (Secure Protection Control) bits.
+      Value for SPROT (Secure Protection Control) bit.
     </td>
     <td>NonNegativeInteger</td>
     <td>optional</td>
