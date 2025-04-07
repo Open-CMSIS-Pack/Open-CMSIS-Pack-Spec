@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        31. Mar 2025
-  $Revision:    1.7.46
+  $Date:        01. Apr 2025
+  $Revision:    1.7.47
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.46
+  SchemaVersion=1.7.47
 
+  01. Apr 2025: v1.7.47
+   - deprecate 'Pname' attribute in 'debug-vars' element type
   31. Mar 2025: v1.7.46
    - added XYD vendor
   18. Dec 2024: v1.7.45
@@ -246,7 +248,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.46">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.47">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -582,7 +584,6 @@
       <xs:extension base="xs:string">
         <xs:attribute name="configfile" type="xs:string" use="optional" />
         <xs:attribute name="version" type="ComponentVersionType" use="optional" />
-        <xs:attribute name="Pname" type="xs:string" use="optional" />
         <xs:anyAttribute processContents="lax" />
       </xs:extension>
     </xs:simpleContent>

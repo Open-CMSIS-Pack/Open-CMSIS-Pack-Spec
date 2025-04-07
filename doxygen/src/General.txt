@@ -81,6 +81,12 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.47</td>
+	<td>
+	  - removed optional 'Pname' attribute from 'debugvars' element
+	</td>
+  </tr>
+  <tr>
     <td>1.7.46</td>
     <td>
       - added XYD vendor
