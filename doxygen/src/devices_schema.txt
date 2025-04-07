@@ -3139,18 +3139,6 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
     <td>\ref VersionType</td>
     <td>optional</td>
   </tr>
-  <tr>
-    <td>Pname</td>
-    <td>
-      Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set
-      for this <b>debugvars</b> element, the debug access variables and <b>configfile</b> of this element
-      are only valid for a debug connection to the referenced processor. Otherwise, they are valid for all processors.
-      <b>This attribute must be set if defining multiple \em debugvars sections for a device.</b>
-      Only alphabetical characters, decimal digits, '-' and '_' are allowed.
-    </td>
-    <td>RestrictedString</td>
-    <td>optional</td>
-  </tr>
 </table>
 
 <p>&nbsp;</p>
