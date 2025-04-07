@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.46</span>
+   &#160;<span id="projectnumber">Version 1.7.47</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -1731,8 +1731,6 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <td>configfile <a class="anchor" id="debugvars_configfile"></a> </td><td>Configuration file with path relative to the package base folder (extension *.DBGCONF). This file contains assignments of a default value to global debug access variables. This file gets copied to the project folder and is editable by the end-user. This file is read by the debugger after processing the global debug access variables. By editing the values of the debug access variables, the end-user effectively controls the behavior of sequences. The file can only assign new values but must not specify any new debug access variables. <a class="el" href="configWizard.html">Configuration Wizard Annotations</a> shall be used within the file to provide a graphical user interface for editing configuration options.  </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_package_pg.html#VersionType">version</a> </td><td>Version refers to the file version of the configfile attribute. If a configfile is specified the version attribute becomes mandatory. The version shall be incremented if any changes have been made to the global debug access variable names or default values. Based on the version information the tool environment will load a configfile with the version required by the debug description. The end-user may be required to update the settings after updating to a new version.  </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>optional  </td></tr>
-<tr>
-<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set for this <b>debugvars</b> element, the debug access variables and <b>configfile</b> of this element are only valid for a debug connection to the referenced processor. Otherwise, they are valid for all processors. <b>This attribute must be set if defining multiple <em>debugvars</em> sections for a device.</b> Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 </table>
 <p>&#160;</p>
 <p><b>Example:</b> Configuration File </p><div class="fragment"><div class="line"><span class="comment">// File: EFM32WGxxx.dbgconf </span></div>
