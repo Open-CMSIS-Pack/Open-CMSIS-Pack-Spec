@@ -639,6 +639,8 @@
     <xs:attribute name="__apid" type="xs:unsignedInt" use="required" />
     <xs:attribute name="__dp" type="xs:unsignedInt" use="optional" />
     <xs:attribute name="index" type="xs:unsignedInt" use="required" />
+    <xs:attribute name="HPROT" type="xs:unsignedInt" use="optional" />
+    <xs:attribute name="SPROT" type="xs:unsignedInt" use="optional" />
     <xs:anyAttribute processContents="lax" />
   </xs:complexType>
 
@@ -648,6 +650,8 @@
     <xs:attribute name="__dp" type="xs:unsignedInt" use="optional" />
     <xs:attribute name="address" type="NonNegativeInteger" use="required" />
     <xs:attribute name="parent" type="xs:unsignedInt" use="optional" />
+    <xs:attribute name="HPROT" type="xs:unsignedInt" use="optional" />
+    <xs:attribute name="SPROT" type="xs:unsignedInt" use="optional" />
     <xs:anyAttribute processContents="lax" />
   </xs:complexType>
 
