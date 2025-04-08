@@ -81,10 +81,16 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.48</td>
+    <td>
+      - add 'HPROT' and 'SPROT' attributes to 'accessportV1' and 'accessportV2' element
+    <td>
+  </tr>
+  <tr>
     <td>1.7.47</td>
-	<td>
-	  - removed optional 'Pname' attribute from 'debugvars' element
-	</td>
+    <td>
+      - removed optional 'Pname' attribute from 'debugvars' element
+    </td>
   </tr>
   <tr>
     <td>1.7.46</td>

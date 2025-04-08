@@ -3454,6 +3454,22 @@ An <b>accessportV2</b> must be later selected via <b>__apid</b>. It is not possi
     <td>required</td>
   </tr>
   <tr>
+    <td>HPROT</td>
+    <td>
+      Value for HPROT (AHB Protection Control) bits.
+    </td>
+    <td>NonNegativeInteger</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>SPROT</td>
+    <td>
+      Value for SPROT (Secure Protection Control) bit.
+    </td>
+    <td>NonNegativeInteger</td>
+    <td>optional</td>
+  </tr>
+  <tr>
     <td>parent</td>
     <td>
       Reference to the <b>__apid</b> of the parent access port if the system contains nested APv2 access ports.<br>
