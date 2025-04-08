@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        01. Apr 2025
-  $Revision:    1.7.47
+  $Date:        08. Apr 2025
+  $Revision:    1.7.48
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.47
+  SchemaVersion=1.7.48
 
+  08. Apr 2025: v1.7.48
+   - add 'HPROT' and 'SPROT' attributes to 'accessportV1' and 'accessportV2' element
   01. Apr 2025: v1.7.47
    - deprecate 'Pname' attribute in 'debug-vars' element type
   31. Mar 2025: v1.7.46
@@ -248,7 +250,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.47">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.48">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
