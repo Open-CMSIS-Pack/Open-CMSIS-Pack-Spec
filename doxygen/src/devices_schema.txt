@@ -4483,7 +4483,7 @@ The table lists the allowed values for data patch access types.
   </tr>
   <tr>
     <td class="XML-Token">ACCESS_AP</td>
-    <td><b>Removed from specificationstarting version 1.7.49</b>: Top-level Access Port access for a CoreSight ADIv6 DAP. </td>
+    <td><b>Removed from specification starting version 1.7.49</b>: Top-level Access Port access for a CoreSight ADIv6 DAP. </td>
   </tr>
 </table>
 
