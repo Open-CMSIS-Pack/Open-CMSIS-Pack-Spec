@@ -3014,7 +3014,7 @@ Default debugger configuration for a target connection.
 The table lists the values for debug protocol types. The values can be used in 
  - \ref element_debugconfig
 
-<table class="cmtable" summary="Enumeration: DataPatchAccessTypeEnum">
+<table class="cmtable" summary="Enumeration: DebugLinkEnum">
   <tr>
     <th>type=</th>
     <th>Description</th>
@@ -4467,23 +4467,23 @@ The table lists the allowed values for data patch access types.
     <th>Description</th>
   </tr>
   <tr>
-    <td class="XML-Token">DP</td>
-    <td>CoreSight Debug Port register access.<br>
-    <b>Note:</b> This type refers to accesses via the <b>DPACC</b> instruction for <b>CoreSight JTAG-DPs</b>. Please refer to the
-    corresponding documentation for differences in the register interface between JTAG and Serial Wire debug ports.
-    </td>
-  </tr>
-  <tr>
-    <td class="XML-Token">ACCESS_AP</td>
-    <td>Top-level Access Port access for a CoreSight ADIv6 DAP.</td>
-  </tr>
-  <tr>
     <td class="XML-Token">AP</td>
     <td>CoreSight Access Port register access. </td>
   </tr>
   <tr>
     <td class="XML-Token">Mem</td>
     <td>Memory access. </td>
+  </tr>
+  <tr>
+    <td class="XML-Token">DP</td>
+    <td><b>Removed from specificationstarting version 1.7.49</b>: CoreSight Debug Port register access.<br>
+    <b>Note:</b> This type refers to accesses via the <b>DPACC</b> instruction for <b>CoreSight JTAG-DPs</b>. Please refer to the
+    corresponding documentation for differences in the register interface between JTAG and Serial Wire debug ports.
+    </td>
+  </tr>
+  <tr>
+    <td class="XML-Token">ACCESS_AP</td>
+    <td><b>Removed from specificationstarting version 1.7.49</b>: Top-level Access Port access for a CoreSight ADIv6 DAP. </td>
   </tr>
 </table>
 
