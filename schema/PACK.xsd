@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        08. Apr 2025
+  $Date:        15. Apr 2025
   $Revision:    1.7.49
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.49
 
+  15. Apr 2025: v1.7.49
+    - deprecate values 'DP' and 'ACCESS_AP' from 'type' attribute in element 'datapatch'
   08. Apr 2025: v1.7.48
    - add 'HPROT' and 'SPROT' attributes to 'accessportV1' and 'accessportV2' element
   01. Apr 2025: v1.7.47
@@ -661,10 +663,9 @@
   <!-- DataPatchAccessTypeEnum enumeration type -->
   <xs:simpleType name="DataPatchAccessTypeEnum">
     <xs:restriction base="xs:token">
-<!-- deprecated in v1.7.49     <xs:enumeration value="DP" /> -->
       <xs:enumeration value="AP" />
- <!-- deprecated in v1.7.49          <xs:enumeration value="ACCESS_AP" /> -->
       <xs:enumeration value="Mem" />
+      <!-- removed in v1.7.49: "ACCESS_AP" and "DP" -->
     </xs:restriction>
   </xs:simpleType>
 
