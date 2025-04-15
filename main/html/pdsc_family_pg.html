@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.48</span>
+   &#160;<span id="projectnumber">Version 1.7.49</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -1666,7 +1666,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <p>The table lists the values for debug protocol types. The values can be used in</p><ul>
 <li><a class="el" href="pdsc_family_pg.html#element_debugconfig">/package/devices/family/.../debugconfig</a></li>
 </ul>
-<table class="cmtable" summary="Enumeration: DataPatchAccessTypeEnum">
+<table class="cmtable" summary="Enumeration: DebugLinkEnum">
 <tr>
 <th>type= </th><th>Description  </th></tr>
 <tr>
@@ -2461,14 +2461,14 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <th>type= </th><th>Description  </th></tr>
 <tr>
-<td class="XML-Token">DP </td><td>CoreSight Debug Port register access.<br  />
- <b>Note:</b> This type refers to accesses via the <b>DPACC</b> instruction for <b>CoreSight JTAG-DPs</b>. Please refer to the corresponding documentation for differences in the register interface between JTAG and Serial Wire debug ports.   </td></tr>
-<tr>
-<td class="XML-Token">ACCESS_AP </td><td>Top-level Access Port access for a CoreSight ADIv6 DAP.  </td></tr>
-<tr>
 <td class="XML-Token">AP </td><td>CoreSight Access Port register access.   </td></tr>
 <tr>
 <td class="XML-Token">Mem </td><td>Memory access.   </td></tr>
+<tr>
+<td class="XML-Token">DP </td><td><b>Removed from specification starting version 1.7.49</b>: CoreSight Debug Port register access.<br  />
+ <b>Note:</b> This type refers to accesses via the <b>DPACC</b> instruction for <b>CoreSight JTAG-DPs</b>. Please refer to the corresponding documentation for differences in the register interface between JTAG and Serial Wire debug ports.   </td></tr>
+<tr>
+<td class="XML-Token">ACCESS_AP </td><td><b>Removed from specification starting version 1.7.49</b>: Top-level Access Port access for a CoreSight ADIv6 DAP.   </td></tr>
 </table>
 <p>&#160;</p>
 <hr  />
