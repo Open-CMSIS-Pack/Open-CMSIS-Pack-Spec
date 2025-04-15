@@ -149,7 +149,6 @@
   - undo removing deprecated attributes as they are still used in latest pdsc file versions:
     DeviceVendorEnum: Lapis Semiconductor, DeviceVendorEnum: Pname, BoardReferenceType: Dvendor, Dname
   - added condition attribute to TaxonomyDescriptionType supporting context specific taxonomies (e.g. vendor or device specific)
-
   14. September 2020: v1.7.0
   - added processor attribute Dcdecp for implemented Custom Datapath Extension Coprocessors (Cortex-M33)
   - extended BoardType added DebugProbeType and FlashAlgorithm.
