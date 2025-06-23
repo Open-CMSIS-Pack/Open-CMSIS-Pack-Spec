@@ -674,7 +674,7 @@ This element specifies an optional on-board debug probe.
   <tr>
     <td>name</td>
     <td>Type of on-board debug probe.</td>
-    <td>\token{CMSIS-DAP}, \token{DAP-Link}, or \token{ST-Link}</td>
+    <td>\token{CMSIS-DAP}, \token{DAP-Link}, \token{ST-Link}, \token{J-Link} or \token{JLink Server}.</td>
     <td>required</td>
   </tr>
   <tr>
