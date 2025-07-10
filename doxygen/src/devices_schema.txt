@@ -2196,6 +2196,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.holtek.com.tw</td>
   </tr>
   <tr>
+    <td class="XML-Token">HrdWyr:188</td>
+    <td>HrdWyr</td>
+    <td>https://www.hrdwyr.com</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Infineon:7</td>
     <td>Infineon Technologies</td>
     <td>http://www.infineon.com</td>
