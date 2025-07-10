@@ -81,6 +81,13 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.51</td>
+    <td>
+      - add 'HrdWyr' device vendor
+    </td>
+  </tr>
+  </tr>
+  <tr>
     <td>1.7.50</td>
     <td>
       - add 'J-Link' and 'JLink Server' to enumeration 'DebugProbeNameEnumType'
