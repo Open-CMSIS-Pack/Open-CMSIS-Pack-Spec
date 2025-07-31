@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        10. Jul 2025
-  $Revision:    1.7.51
+  $Date:        31. Jul 2025
+  $Revision:    1.7.52
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.51
+  SchemaVersion=1.7.52
 
+  31. Jul 2025: v1.7.52
+   - updated ExampleProjectType to allow the "environment" element to have custom children and custom attributes 
   10. Jul 2025: v1.7.51
    - added HrdWyr vendor
   24. Jun 2025: v1.7.50
@@ -1590,13 +1592,23 @@
     <xs:sequence>
       <xs:element name="environment" maxOccurs="unbounded">
         <xs:complexType>
+        
+          <!-- allow any child element -->
+          <xs:sequence>
+            <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+
           <xs:attribute name="name"   type="xs:string" use="required" />
           <xs:attribute name="load"   type="xs:string" use="required" />
           <xs:attribute name="folder" type="xs:string" use="optional" />
+
+          <!-- allow any additional attribute -->
+          <xs:anyAttribute></xs:anyAttribute>
+
         </xs:complexType>
       </xs:element>
     </xs:sequence>
-  </xs:complexType>
+  </xs:complexType>  
 
   <xs:complexType name="BoardReferenceType">
     <xs:attribute name="name"     type="xs:string" use="required" /> <!-- refers to Board Description by name   -->

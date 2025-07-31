@@ -278,7 +278,18 @@ The environment element describes the name of the environment and the project fi
 <project>
   <environment name="uv" folder="./ARM" load="ARM/Blinky.uvproj"/>
   <environment name="iar" folder="./IAR" load="IAR/Blinky.ewarm" />
-  <environment name="csolution" folder="./CMSIS/ load="CMSIS/Blinky.csolution.yml" />
+  <environment name="csolution" folder="./CMSIS/" load="CMSIS/Blinky.csolution.yml" />
+</project>
+\endcode
+
+\code
+<project>
+  <environment name="STCube" folder="./ST" load="base_example.ioc" custom="test">
+    <!-- **** ST vendor tools specific elements ***** -->
+  </environment>
+  <environment name="csolution" folder="./OpenCMSIS" load="base_example.csolution.yml">
+    <!-- **** vendor tools specific elements ***** -->
+  </environment>
 </project>
 \endcode
 
@@ -322,6 +333,24 @@ The environment element describes the name of the environment and the project fi
 	</td>
     <td>xs:string</td>
     <td>optional</td>
+  </tr>
+  <tr>
+    <td>any</td>
+    <td>Any attribute that is available for the specified development tool.<br>
+    <td>xs:anyAttribute</td>
+    <td>0..*</td>
+  </tr>
+  <tr>
+    <th>Child Elements</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Occurrence</th>
+  </tr>
+  <tr>
+    <td>any</td>
+    <td>Any element that is available for the specified development tool.<br>
+    <td>xs:anyAttribute</td>
+    <td>0..*</td>
   </tr>
 </table>
 
