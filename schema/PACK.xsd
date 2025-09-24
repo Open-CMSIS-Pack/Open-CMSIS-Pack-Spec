@@ -553,7 +553,7 @@
     <!-- Punits specifies the number of processing units in a symmetric multi-processor core -->
     <xs:attribute name="Punits" type="InstancesType" />
     <!-- Dcore specifies the processor from a list of supported processors -->
-    <xs:attribute name="Dcore" type="DcoreEnum" />
+    <xs:attribute name="Dcore" type="DcoreType" />
     <!-- Dfpu specifies the hardware floating point unit -->
     <xs:attribute name="Dfpu" type="DfpuEnum" />
     <!-- Dmpu specifies the memory protection unit -->
@@ -1013,6 +1013,10 @@
     <xs:attribute name="Dname" type="RestrictedStringDname" use="required" />
     <!-- <xs:attributeGroup ref="DefaultDeviceAttributesGroup"/> -->
   </xs:complexType>
+  
+  <xs:simpleType name="DcoreType">
+    <xs:union memberTypes="DcoreEnum xs:token"/>
+  </xs:simpleType>
 
   <!-- Dcore enumeration type -->
   <xs:simpleType name="DcoreEnum">
@@ -1444,7 +1448,7 @@
     <xs:attribute name="Dvariant" type="xs:string" />
     <xs:attribute name="Dvendor" type="DeviceVendorEnum" />
     <xs:attribute name="Dname" type="xs:string" /> <!-- can contain wildcards ?* in condition -->
-    <xs:attribute name="Dcore" type="DcoreEnum" />
+    <xs:attribute name="Dcore" type="DcoreType" />
     <xs:attribute name="Dfpu" type="DfpuEnum" />
     <xs:attribute name="Dmpu" type="DmpuEnum" />
     <xs:attribute name="Dtz" type="DtzEnum" />
@@ -2555,7 +2559,7 @@
       <!-- optional package level filter attributes -->
       <xs:attribute name="Dvendor"       type="DeviceVendorEnum"  use="optional" />
       <xs:attribute name="Dname"         type="xs:string"         use="optional" />
-      <xs:attribute name="Dcore"         type="DcoreEnum"         use="optional" />
+      <xs:attribute name="Dcore"         type="DcoreType"         use="optional" />
       <xs:attribute name="Tcompiler"     type="CompilerEnumType"  use="optional" />
     </xs:complexType>
   </xs:element>
