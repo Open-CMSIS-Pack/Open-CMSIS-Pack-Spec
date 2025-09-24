@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        11. Aug 2025
-  $Revision:    1.7.52
+  $Date:        24. Sep 2025
+  $Revision:    1.7.53
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.52
-
+  SchemaVersion=1.7.53
+  
+  24. Sep 2025: v1.7.53
+   - Changed the type of 'Dcore' from 'DcoreEnum' to 'DcoreType' which is a union type between 'DcoreEnum' and 'xs:token'. This enables any string to validate as per the doxygen documentation.
   11. Aug 2025: v1.7.52
    - updated ExampleProjectType to allow the "environment" element to have custom children and custom attributes 
   10. Jul 2025: v1.7.51
@@ -257,7 +259,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.52">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.53">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
