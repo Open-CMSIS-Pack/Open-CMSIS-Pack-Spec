@@ -780,7 +780,9 @@ algorithms must have a different name.
    <tr>
     <td>RAMstart</td>
     <td>Base address for the RAM where the Flash programming algorithm will be executed from. If
-    specified, the \ref element_memory "memory" element does not require a \c default attribute.</td>
+    specified, the \ref element_memory "memory" element does not require a \c default attribute.
+    If not specified, a \ref element_memory "memory" element must be defined with the "rwx" access
+    permission and default="1". </td>
     <td>NonNegativeInteger</td>
     <td>optional</td>
   </tr>
@@ -788,7 +790,8 @@ algorithms must have a different name.
     <td>RAMsize</td>
     <td>Maximum size of RAM available for the execution of the Flash programming algorithm. 
     End address = start + size - 1 is used for the Stack. If specified, the \ref element_memory 
-    "memory" element does not require a \c default attribute.</td>
+    "memory" element does not require a \c default attribute. If not specified, a \ref element_memory "memory"
+    element must be defined with the "rwx" access permission and default="1". </td>
     <td>NonNegativeInteger</td>
     <td>optional</td>
   </tr>
