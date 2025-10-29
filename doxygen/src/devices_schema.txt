@@ -2572,6 +2572,10 @@ These values can be used in the elements:
     <td><a href="https://www.armchina.com/mountain?infoId=160" target="_blank">ArmChina STAR-MC1</a> processor based device</td>
   </tr>
   <tr>
+    <td class="XML-Token">Star-MC3</td>
+    <td><a href="https://www.armchina.com/mountain?infoId=240" target="_blank">ArmChina STAR-MC3</a> processor based device</td>
+  </tr>
+  <tr>
     <td class="XML-Token">SC000</td>
     <td>SecurCore <a href="https://developer.arm.com/processors/securcore%20sc000" target="_blank">SC000</a> based on technology of Cortex-M0.</td>
   </tr>
