@@ -83,7 +83,7 @@ packs) and provides useful tips when creating a pack.
   <tr>
     <td>1.7.53</td>
     <td>
-      - added new M-profile processor Star-mc3
+      - added Arm China 'Star-MC3' processor to DcoreEnum
     </td>
   </tr>
   <tr>
