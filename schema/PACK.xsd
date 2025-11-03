@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-  Copyright (c) 2013-2025 ARM Limited. Copyright (c) 2025 Arm China. All rights reserved.
+  Copyright (c) 2013-2025 ARM Limited, 2025 Arm China. All rights reserved.
 
   SPDX-License-Identifier: Apache-2.0
 
@@ -18,15 +18,15 @@
   limitations under the License.
 
 
-  $Date:        29. Oct 2025
+  $Date:        03. Nov 2025
   $Revision:    1.7.53
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.53
 
-  29. Oct 2025: v1.7.53
-   - added new M-profile processor Star-MC3
+  03. Nov 2025: v1.7.53
+   - added Arm China 'Star-MC3' processor to DcoreEnum
   11. Aug 2025: v1.7.52
    - updated ExampleProjectType to allow the "environment" element to have custom children and custom attributes 
   10. Jul 2025: v1.7.51
