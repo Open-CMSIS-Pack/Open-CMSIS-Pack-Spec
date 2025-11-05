@@ -19,12 +19,15 @@
 
 
   $Date:        03. Nov 2025
-  $Revision:    1.7.53
+  $Revision:    1.7.54
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.53
+  SchemaVersion=1.7.54
 
+  05. Nov 2025: v1.7.54
+   - align documentation with XSD schema by adding 'Hrevision' description to the "part" element
+   - add 'Hrevision' as an optional attribute of the "mountedPart" element
   03. Nov 2025: v1.7.53
    - added Arm China 'Star-MC3' processor to DcoreEnum
   11. Aug 2025: v1.7.52
@@ -1634,6 +1637,7 @@
     <xs:attribute name="Hvendor"     type="xs:string"        use="required" />
     <xs:attribute name="Hname"       type="xs:string"        use="required" />
     <xs:attribute name="Hvariant"    type="xs:string"        use="optional" />
+    <xs:attribute name="Hrevision"   type="xs:string"        use="optional" />
   </xs:complexType>
 
   <xs:complexType name="BoardsDeviceType">

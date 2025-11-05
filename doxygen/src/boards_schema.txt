@@ -525,6 +525,12 @@ The element specifies the parts (any device other than the MCU) mounted on the b
     <td>xs:string</td>
     <td>optional</td>
   </tr>
+  <tr>
+    <td>Hrevision</td>
+    <td>Revision of the part that is suited to be used.</td>
+    <td>xs:string</td>
+    <td>optional</td>
+  </tr>
 </table>
 
 <p>&nbsp;</p>
