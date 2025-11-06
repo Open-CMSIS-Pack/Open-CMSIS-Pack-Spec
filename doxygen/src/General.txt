@@ -81,6 +81,13 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.54</td>
+    <td>
+      - align documentation with XSD schema by adding 'Hrevision' description to the \ref element_part "part" element
+      - add 'Hrevision' as an optional attribute of the \ref element_board_mountedPart "mountedPart" element
+    </td>
+  </tr>
+  <tr>
     <td>1.7.53</td>
     <td>
       - added Arm China 'Star-MC3' processor to DcoreEnum
@@ -98,7 +105,6 @@ packs) and provides useful tips when creating a pack.
       - add 'HrdWyr' device vendor
     </td>
   </tr>
-  </tr>
   <tr>
     <td>1.7.50</td>
     <td>
@@ -115,7 +121,7 @@ packs) and provides useful tips when creating a pack.
     <td>1.7.48</td>
     <td>
       - add 'HPROT' and 'SPROT' attributes to 'accessportV1' and 'accessportV2' element
-    <td>
+    </td>
   </tr>
   <tr>
     <td>1.7.47</td>
@@ -129,6 +135,7 @@ packs) and provides useful tips when creating a pack.
       - added XYD vendor
     </td>
   </tr>
+  <tr>
     <td>1.7.45</td>
     <td>
       - added 'CLANG_TI' to 'CompilerEnumType'
