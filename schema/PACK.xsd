@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        05. Nov 2025
-  $Revision:    1.7.54
+  $Date:        07. Nov 2025
+  $Revision:    1.7.55
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.54
+  SchemaVersion=1.7.55
 
+  07. Nov 2025: v1.7.55
+   - add 'description' child to "part" element
   05. Nov 2025: v1.7.54
    - align documentation with XSD schema by adding 'Hrevision' description to the "part" element
    - add 'Hrevision' as an optional attribute of the "mountedPart" element
@@ -262,7 +264,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.54">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.55">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1770,6 +1772,7 @@
   
   <xs:complexType name="PartType">
     <xs:sequence>
+      <xs:element name="description" type="BriefDescType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="feature" type="DeviceFeatureType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="book" type="BookType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="image" minOccurs="0" maxOccurs="1">
