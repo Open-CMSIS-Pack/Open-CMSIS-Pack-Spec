@@ -11,7 +11,7 @@ Optionally, a part may have a group (Hgroup=) and a sub-group (Hsub=) to add fur
 different cuts of the same part exists, and a variant (Hvariant=). 
  
 A part is therefore identified by a name and a class together with the vendor specified by the pack. 
-A part vendor must ensure that the combination of name, revision, class, variant, group and sub-group is unique and not used by multiple parts.
+A part vendor must ensure that the combination of name, revision, variant, class, group and sub-group is unique and not used by multiple parts.
 
 \b Example
 \code
@@ -21,7 +21,8 @@ A part vendor must ensure that the combination of name, revision, class, variant
   <parts>
 
     <part Hvendor="STMicroelectronics" Hname="STSAFE-A110" Hvariant="STSAFA110DFSPL02" Hclass="Secure MCUs" Hgroup="Authentication">
-      <feature type="Crypto" n="128.256" name="Authentication and security for peripherals and IoT devices from STMicroelectronics"/>
+      <description>Authentication, state-of-the-art security for peripherals and IoT devices</description>
+      <feature type="Crypto" n="128.256" name="Authentication and security"/>
       <book name="Images/STSAFA110DFSPL02_UM.pdf" title="User Manual" public="true"/>
       <book name="Images/STSAFA110DFSPL02_DS.pdf" title="Datasheet" public="true"/>
       <image top="Images/STSAFA110DFSPL02_image.jpg" public="true">
@@ -31,7 +32,8 @@ A part vendor must ensure that the combination of name, revision, class, variant
     </part>
 
     <part Hvendor="STMicroelectronics" Hname="STSAFE-A110" Hvariant="STSAFA110S8SPL02" Hclass="Secure MCUs" Hgroup="Authentication">
-      <feature type="Crypto" n="128.256" name="Authentication and security for peripherals and IoT devices from STMicroelectronics"/>
+      <description>Authentication, state-of-the-art security for peripherals and IoT devices</description>
+      <feature type="Crypto" n="128.256" name="Authentication and security"/>
       <book name="Images/STSAFA110S8SPL02_UM.pdf" title="User Manual" public="true"/>
       <book name="Images/STSAFA110S8SPL02_DS.pdf" title="Datasheet" public="true"/>
       <image top="Images/STSAFA110S8SPL02_image.jpg" public="true">
@@ -149,22 +151,28 @@ This element specifies a part. At least one part element must be specified per p
     <th>Occurrence</th>
   </tr>
   <tr>
+    <td>description</td>
+    <td>Brief summary of the part (maximum 256 characters, recommended 128 characters).</td>
+    <td>BriefDescType</td>
+    <td>0..1</td>
+  </tr>
+  <tr>
     <td>\ref element_part_feature "feature"</td>
 	<td>Describes the features of the part.</td>
 	<td>DeviceFeatureType</td>
-	<td>0..* </td>
+	<td>0..*</td>
   </tr>
   <tr>
     <td>\ref element_part_book "book"</td>
 	<td>Specifies documents that are relevant for the part.</td>
 	<td>BookType</td>
-	<td>0..* </td>
+	<td>0..*</td>
   </tr>
   <tr>
     <td>\ref element_part_image "image"</td>
 	<td>Specifies the part pictures.</td>
 	<td>ComplexType</td>
-	<td>0..1 </td>
+	<td>0..1</td>
   </tr>
   <tr>
     <td>\ref element_part_environment "environment"</td>

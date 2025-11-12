@@ -81,6 +81,12 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.55</td>
+    <td>
+      - add 'description' child to \ref element_part "part" element
+    </td>
+  </tr>
+  <tr>
     <td>1.7.54</td>
     <td>
       - align documentation with XSD schema by adding 'Hrevision' description to the \ref element_part "part" element
