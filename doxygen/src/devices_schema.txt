@@ -2036,62 +2036,62 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">ABOV Semiconductor:126</td>
     <td>ABOV Semiconductor</td>
-    <td>http://www.abov.co.kr/en/</td>
+    <td>https://www.abov.co.kr/en/</td>
   </tr>
   <tr>
     <td class="XML-Token">Active-Semi:140</td>
     <td>Active-Semi</td>
-    <td>http://www.active-semi.com</td>
+    <td>https://www.active-semi.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Alif Semiconductor:165</td>
     <td>Alif Semiconductor</td>
-    <td>http://www.alifsemi.com</td>
+    <td>https://www.alifsemi.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Ambiq Micro:120</td>
     <td>Ambiq Micro</td>
-    <td>http://www.ambiqmicro.com</td>
+    <td>https://www.ambiqmicro.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Amiccom:147</td>
     <td>Amiccom</td>
-    <td>http://www.amiccom.com.tw</td>
+    <td>https://www.amiccom.com.tw</td>
   </tr>
   <tr>
     <td class="XML-Token">Analog Devices:1</td>
     <td>Analog Devices</td>
-    <td>http://www.analog.com</td>
+    <td>https://www.analog.com</td>
   </tr>
   <tr>
     <td class="XML-Token">APEXMIC:153</td>
     <td>Apex Microeletronics Co., Ltd.</td>
-    <td>http://www.apexmic.com</td>
+    <td>https://www.apexmic.com</td>
   </tr>
   <tr>
     <td class="XML-Token">ARM:82</td>
     <td>ARM Ltd.</td>
-    <td>http://www.arm.com</td>
+    <td>https://www.arm.com</td>
   </tr>
   <tr>
     <td class="XML-Token">ArmChina:160</td>
     <td>Arm China</td>
-    <td>http://www.armchina.com</td>
+    <td>https://www.armchina.com</td>
   </tr>
   <tr>
     <td class="XML-Token">ArteryTek:143</td>
     <td>ArteryTek</td>
-    <td>http://www.arterytek.com</td>
+    <td>https://www.arterytek.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Atmel:3</td>
     <td>Atmel Corporation (now Microchip)</td>
-    <td>http://www.microchip.com</td>
+    <td>https://www.microchip.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Autochips:150</td>
     <td>Autochips Inc.</td>
-    <td>http://www.autochips.com/index_en.aspx</td>
+    <td>https://www.autochips.com/index_en.aspx</td>
   </tr>
   <tr>
     <td class="XML-Token">BOYAMICRO:182</td>
@@ -2106,32 +2106,32 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Cmsemicon:161</td>
     <td>Cmsemicon</td>
-    <td>http://www.mcu.com.cn</td>
+    <td>https://www.mcu.com.cn</td>
   </tr>
   <tr>
     <td class="XML-Token">CSR:118</td>
     <td>CSR</td>
-    <td>http://www.csr.com</td>
+    <td>https://www.csr.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Cypress:19</td>
     <td>Cypress Semiconductor</td>
-    <td>http://www.cypress.com</td>
+    <td>https://www.cypress.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Dialog Semiconductor:113</td>
     <td>Dialog Semiconductor</td>
-    <td>http://www.dialog-semiconductor.com</td>
+    <td>https://www.dialog-semiconductor.com</td>
   </tr>
   <tr>
     <td class="XML-Token">ELAN:162</td>
     <td>ELAN</td>
-    <td>http://www.emc.com.tw</td>
+    <td>https://www.emc.com.tw</td>
   </tr>
   <tr>
     <td class="XML-Token">Elmos Semiconductor AG:138</td>
     <td>Elmos Semiconductor AG</td>
-    <td>http://www.elmos.com</td>
+    <td>https://www.elmos.com</td>
   </tr>
   <tr>
     <td class="XML-Token">e-peas:167</td>
@@ -2151,7 +2151,7 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">FMSH:159</td>
     <td>Shanghai Fudan Microelectronics Group Co., Ltd</td>
-    <td>http://www.fmsh.com</td>
+    <td>https://www.fmsh.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Geehy:163</td>
@@ -2166,12 +2166,12 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Generalplus:151</td>
     <td>Generalplus Technology Inc.</td>
-    <td>http://www.generalplus.com</td>
+    <td>https://www.generalplus.com</td>
   </tr>
   <tr>
     <td class="XML-Token">GigaDevice:123</td>
     <td>GigaDevice</td>
-    <td>http://www.gigadevice.com</td>
+    <td>https://www.gigadevice.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Goodix:155</td>
@@ -2181,12 +2181,12 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">HDSC:145</td>
     <td>HUADA Semiconductor</td>
-    <td>http://www.hdsc.com.cn</td>
+    <td>https://www.hdsc.com.cn</td>
   </tr>
   <tr>
     <td class="XML-Token">Hilscher:88</td>
     <td>Hilscher Gesellschaft für Systemautomation mbH</td>
-    <td>http://www.hilscher.com</td>
+    <td>https://www.hilscher.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Himax:178</td>
@@ -2196,7 +2196,7 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Holtek:106</td>
     <td>Holtek Microelectronics</td>
-    <td>http://www.holtek.com.tw</td>
+    <td>https://www.holtek.com.tw</td>
   </tr>
   <tr>
     <td class="XML-Token">HrdWyr:188</td>
@@ -2206,22 +2206,22 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Infineon:7</td>
     <td>Infineon Technologies</td>
-    <td>http://www.infineon.com</td>
+    <td>https://www.infineon.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Jonzic:174</td>
     <td>Shanghai Jonzic Electronic Co., Ltd</td>
-    <td>http://www.jonzic.cn</td>
+    <td>https://www.jonzic.cn</td>
   </tr>
   <tr>
     <td class="XML-Token">LAPIS Technology:10</td>
     <td>LAPIS Technology</td>
-    <td>http://www.lapis-tech.com</td>
+    <td>https://www.lapis-tech.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Linear Technolgy:136</td>
     <td>Linear Technolgy</td>
-    <td>http://www.linear.com/</td>
+    <td>https://www.linear.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">Linkedsemi:175</td>
@@ -2231,27 +2231,27 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Maxim:23</td>
     <td>Maxim Integrated</td>
-    <td>http://www.maximintegrated.com</td>
+    <td>https://www.maximintegrated.com</td>
   </tr>
   <tr>
     <td class="XML-Token">MediaTek:129</td>
     <td>MediaTek</td>
-    <td>http://www.mediatek.com</td>
+    <td>https://www.mediatek.com</td>
   </tr>
   <tr>
     <td class="XML-Token">MegaChips:128</td>
     <td>MegaChips</td>
-    <td>http://www.megachips.com</td>
+    <td>https://www.megachips.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Megawin:70</td>
     <td>Megawin</td>
-    <td>http://www.megawin.com.tw</td>
+    <td>https://www.megawin.com.tw</td>
   </tr>
   <tr>
     <td class="XML-Token">Microchip:3</td>
     <td>Microchip (previously Atmel)</td>
-    <td>http://www.microchip.com</td>
+    <td>https://www.microchip.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Micronas:30</td>
@@ -2261,22 +2261,22 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">MicroSemi:112</td>
     <td>Microsemi</td>
-    <td>http://www.microsemi.com</td>
+    <td>https://www.microsemi.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Milandr:99</td>
     <td>Milandr</td>
-    <td>http://www.milandr.ru</td>
+    <td>https://www.milandr.ru</td>
   </tr>
   <tr>
     <td class="XML-Token">MindMotion:132</td>
     <td>MindMotion</td>
-    <td>http://www.mindmotion.com.cn</td>
+    <td>https://www.mindmotion.com.cn</td>
   </tr>
   <tr>
     <td class="XML-Token">MinebeaMitsumi:181</td>
     <td>MinebeaMitsumi</td>
-    <td>http://www.minebeamitsumi.com</td>
+    <td>https://www.minebeamitsumi.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Nationstech:184</td>
@@ -2286,7 +2286,7 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Nordic Semiconductor:54</td>
     <td>Nordic Semiconductor</td>
-    <td>http://www.nordicsemi.com</td>
+    <td>https://www.nordicsemi.com</td>
   </tr>
   <tr>
     <td class="XML-Token">NSING:185</td>
@@ -2296,12 +2296,12 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Nuvoton:18</td>
     <td>Nuvoton Technolgy Corp.</td>
-    <td>http://www.nuvoton.com</td>
+    <td>https://www.nuvoton.com</td>
   </tr>
   <tr>
     <td class="XML-Token">NXP:11</td>
     <td>NXP</td>
-    <td>http://www.nxp.com</td>
+    <td>https://www.nxp.com</td>
   </tr>
   <tr>
     <td class="XML-Token">ONSemiconductor:141</td>
@@ -2311,7 +2311,7 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Panasonic:131</td>
     <td>Panasonic</td>
-    <td>http://www.panasonic.com/industrial</td>
+    <td>https://www.panasonic.com/industrial</td>
   </tr>
   <tr>
     <td class="XML-Token">Puya:176</td>
@@ -2321,27 +2321,27 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Realtek Semiconductor:124</td>
     <td>Realtek Semiconductor</td>
-    <td>http://www.realtek.com</td>
+    <td>https://www.realtek.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Redpine Signals:125</td>
     <td>Repine Signals</td>
-    <td>http://www.redpinesignals.com</td>
+    <td>https://www.redpinesignals.com</td>
   </tr>
   <tr>
     <td class="XML-Token">RelChip:146</td>
     <td>RelChip </td>
-    <td>http://www.relchip.com/</td>
+    <td>https://www.relchip.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">Renesas:117</td>
     <td>Renesas</td>
-    <td>http://www.renesas.com</td>
+    <td>https://www.renesas.com</td>
   </tr>
   <tr>
     <td class="XML-Token">ROHM:103</td>
     <td>ROHM</td>
-    <td>http://www.rohm.com</td>
+    <td>https://www.rohm.com</td>
   </tr>
   <tr>
     <td class="XML-Token">RPi:170</td>
@@ -2351,22 +2351,22 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Samsung:47</td>
     <td>Samsung Semiconductor</td>
-    <td>http://www.samsung.com</td>
+    <td>https://www.samsung.com</td>
   </tr>
   <tr>
     <td class="XML-Token">SILAN:164</td>
     <td>Hangzhou Silan Microelectronics Co., Ltd.</td>
-    <td>http://www.silan.com.cn/</td>
+    <td>https://www.silan.com.cn/</td>
   </tr>
   <tr>
     <td class="XML-Token">Silergy Corp:139</td>
     <td>Silergy Corporation</td>
-    <td>http://silergy.com/</td>
+    <td>https://silergy.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">Silicon Labs:21</td>
     <td>Silicon Labs</td>
-    <td>http://www.silabs.com</td>
+    <td>https://www.silabs.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Sinemicro:179</td>
@@ -2376,7 +2376,7 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Sinowealth:149</td>
     <td>Sino Wealth Electronic Ltd.</td>
-    <td>http://www.sinowealth.com</td>
+    <td>https://www.sinowealth.com</td>
   </tr>
   <tr>
     <td class="XML-Token">SmartChip:156</td>
@@ -2391,47 +2391,47 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Spansion:100</td>
     <td>Spansion (previously Fujitsu)</td>
-    <td>http://www.spansion.com</td>
+    <td>https://www.spansion.com</td>
   </tr>
   <tr>
     <td class="XML-Token">STMicroelectronics:13</td>
     <td>STMicroelectronics</td>
-    <td>http://www.st.com</td>
+    <td>https://www.st.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Synwit:144</td>
     <td>Synwit Technology Co.,LTD.</td>
-    <td>http://www.synwit.cn</td>
+    <td>https://www.synwit.cn</td>
   </tr>
   <tr>
     <td class="XML-Token">Texas Instruments:16</td>
     <td>Texas Instruments</td>
-    <td>http://www.ti.com</td>
+    <td>https://www.ti.com</td>
   </tr>
   <tr>
     <td class="XML-Token">ThinkTech:172</td>
     <td>ThinkTech</td>
-    <td>http://www.ThinkTech.net.cn</td>
+    <td>https://www.ThinkTech.net.cn</td>
   </tr>
   <tr>
     <td class="XML-Token">Toshiba:92</td>
     <td>Toshiba Semiconductor</td>
-    <td>http://toshiba.semicon-storage.com</td>
+    <td>https://toshiba.semicon-storage.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Triad Semiconductor:104</td>
     <td>Triad Semiconductor</td>
-    <td>http://www.triadsemi.com</td>
+    <td>https://www.triadsemi.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Unisoc:152</td>
     <td>Unisoc Communications, Inc.</td>
-    <td>http://www.unisoc.com</td>
+    <td>https://www.unisoc.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Vorago:137</td>
     <td>Vorago Technologies</td>
-    <td>http://www.voragotech.com</td>
+    <td>https://www.voragotech.com</td>
   </tr>
   <tr>
     <td class="XML-Token">Watech:183</td>
@@ -2441,12 +2441,12 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">Weltrend:148</td>
     <td>Weltrend</td>
-    <td>http://www.weltrend.com.tw</td>
+    <td>https://www.weltrend.com.tw</td>
   </tr>
   <tr>
     <td class="XML-Token">WIZnet:122</td>
     <td>WIZnet</td>
-    <td>http://www.wiznet.co.kr</td>
+    <td>https://www.wiznet.co.kr</td>
   </tr>
   <tr>
     <td class="XML-Token">Xiamen PengPai Microelectronics Co. Ltd:166</td>
@@ -2456,22 +2456,22 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
   <tr>
     <td class="XML-Token">XMC:158</td>
     <td>Wuhan Xinxin Semiconductor Manufacturing Co., Ltd.</td>
-    <td>http://www.xmcwh.com/</td>
+    <td>https://www.xmcwh.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">XYD:186</td>
     <td>Xiamen XYDFAB Integrated Circuit Co., Ltd</td>
-    <td>http://www.xfabsemi.com/</td>
+    <td>https://www.xfabsemi.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">YTMicro:180</td>
     <td>YTMicro</td>
-    <td>http://www.ytmicro.com/</td>
+    <td>https://www.ytmicro.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">Zilog:89</td>
     <td>Zilog</td>
-    <td>http://zilog.com/</td>
+    <td>https://zilog.com/</td>
   </tr>
 </table>
 
@@ -2585,15 +2585,15 @@ These values can be used in the elements:
   </tr>
   <tr>
     <td class="XML-Token">ARMV8MBL</td>
-    <td>Processor <a href="http://developer.arm.com/products/architecture/m-profile" target="_blank">ArmV8MBL</a> compliant with the Armv8-M Baseline Architecture.</td>
+    <td>Processor <a href="https://developer.arm.com/products/architecture/m-profile" target="_blank">ArmV8MBL</a> compliant with the Armv8-M Baseline Architecture.</td>
   </tr>
   <tr>
     <td class="XML-Token">ARMV8MML</td>
-    <td>Processor <a href="http://developer.arm.com/products/architecture/m-profile" target="_blank">ArmV8MML</a> compliant with the Armv8-M Mainline Architecture.</td>
+    <td>Processor <a href="https://developer.arm.com/products/architecture/m-profile" target="_blank">ArmV8MML</a> compliant with the Armv8-M Mainline Architecture.</td>
   </tr>
   <tr>
     <td class="XML-Token">ARMV81MML</td>
-    <td>Processor <a href="http://developer.arm.com/products/architecture/m-profile" target="_blank">ArmV81MML</a> compliant with the Armv8.1-M Mainline Architecture.</td>
+    <td>Processor <a href="https://developer.arm.com/products/architecture/m-profile" target="_blank">ArmV81MML</a> compliant with the Armv8.1-M Mainline Architecture.</td>
   </tr>
   <tr>
     <td class="XML-Token">Cortex-R4</td>
