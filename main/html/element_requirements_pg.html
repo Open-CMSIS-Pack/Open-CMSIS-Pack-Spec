@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('element_requirements_pg.html',''); ini
 <div class="line">      &lt;package name=&quot;STM32F4xx_DFP&quot; vendor=&quot;Keil&quot; version=&quot;2.8.0:2.8.0&quot;/&gt;</div>
 <div class="line">    &lt;/packages&gt;</div>
 <div class="line">    &lt;compilers&gt;</div>
-<div class="line">      &lt;compiler name=&quot;ARMCC&quot; version=&quot;5.0.0:5.99.0&quot;/&gt;</div>
+<div class="line">      &lt;compiler name=&quot;ARMCC&quot; version=&quot;5.0.0:6.0.0-0&quot;/&gt;</div>
 <div class="line">    &lt;/compilers&gt;</div>
 <div class="line">    &lt;languages&gt;</div>
 <div class="line">      &lt;language name=&quot;C&quot; version=&quot;99&quot;/&gt;</div>
@@ -156,6 +156,7 @@ $(document).ready(function(){initNavTree('element_requirements_pg.html',''); ini
 <div class="line">  &lt;requirements&gt;</div>
 <div class="line">    &lt;packages&gt;</div>
 <div class="line">      &lt;package name=&quot;STM32F4xx_DFP&quot; vendor=&quot;Keil&quot; version=&quot;2.8.0:2.8.0&quot;/&gt;</div>
+<div class="line">      &lt;package name=&quot;CMSIS&quot; vendor=&quot;ARM&quot; version=&quot;6.1.0:7.0.0-0&quot;/&gt; &lt;!-- restrict to major version 6 --&gt;</div>
 <div class="line">    &lt;/packages&gt;</div>
 <div class="line">  &lt;/requirements&gt;</div>
 <div class="line">  ...</div>
@@ -174,8 +175,9 @@ $(document).ready(function(){initNavTree('element_requirements_pg.html',''); ini
 <tr>
 <td>version </td><td><a class="el" href="pdsc_package_pg.html#VersionType">Version</a> of the required software pack which can be:<ul>
 <li>Minimum version (higher versions are accepted).</li>
-<li>Version range specified with <em>min_version</em><b>:</b><em>max_version</em>. <em>min_version</em> must be lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal, the version must match.</li>
-<li>If no version is specified, the latest available version is assumed.  </li>
+<li>Version range specified with <em>min_version</em><b>:</b><em>max_version</em>. <em>min_version</em> must be lower or equal than <em>max_version</em>. For a version range that retains the major version, the <em>max_version</em> is set to the next major version with minor, patch and release qualifier set to "0".</li>
+<li>Fixed version is specified if <em>min_version</em> and <em>max_version</em> are equal.</li>
+<li>If no version is specified, the latest available installed version is accepted and used.  </li>
 </ul>
 </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>optional  </td></tr>
 </table>
@@ -187,7 +189,7 @@ $(document).ready(function(){initNavTree('element_requirements_pg.html',''); ini
 <div class="line">  ...</div>
 <div class="line">  &lt;requirements&gt;</div>
 <div class="line">    &lt;compilers&gt;</div>
-<div class="line">      &lt;compiler name=&quot;ARMCC&quot; version=&quot;5.0.0:5.99.0&quot;/&gt;</div>
+<div class="line">      &lt;compiler name=&quot;ARMCC&quot; version=&quot;5.0.0:6.0.0-0&quot;/&gt;</div>
 <div class="line">    &lt;/compilers&gt;</div>
 <div class="line">  &lt;/requirements&gt;</div>
 <div class="line">  ...</div>
@@ -204,8 +206,8 @@ $(document).ready(function(){initNavTree('element_requirements_pg.html',''); ini
 <tr>
 <td>version </td><td><a class="el" href="pdsc_package_pg.html#VersionType">Version</a> of the required compiler which can be:<ul>
 <li>Minimum version (higher versions are accepted).</li>
-<li>Version range specified with <em>min_version</em><b>:</b><em>max_version</em>. <em>min_version</em> must be lower or equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal, the version must match. <br  />
-  </li>
+<li>Version range specified with <em>min_version</em><b>:</b><em>max_version</em>. <em>min_version</em> must be lower or equal than <em>max_version</em>. For a version range that retains the major version, the <em>max_version</em> is set to the next major version with minor, patch and release qualifier set to "0".</li>
+<li>Fixed version is specified if <em>min_version</em> and <em>max_version</em> are equal.  </li>
 </ul>
 </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>required  </td></tr>
 </table>
