@@ -105,7 +105,7 @@ The vendor (orgname) PIDX file would look like the following:
 \code{.xml}
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="https://www.w3.org/2001/XMLSchema-instance">
   <vendor>orgname</vendor>
   <url>https://github.com/orgname/indexrepo/raw/main/</url>
   <timestamp>2024-08-22T15:00:10.7300074+00:00</timestamp>
@@ -127,7 +127,7 @@ A PDSC file for one of the repositories would look like this:
 \code{.xml}
 <?xml version="1.0" encoding="utf-8"?>
 
-<package schemaVersion="1.7.7" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.7.7" xmlns:xs="https://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>orgname</vendor>
   <name>name1</name>
   <license>LICENSE</license>
@@ -193,7 +193,7 @@ Follow these steps to run the conversion and installatin:
   <b>Code example</b>
   
   \code{.xml}
-  <index schemaVersion="1.0" xmlns:xs=http://www.w3.org/2001/XMLSchema-instance xs:noNamespaceSchemaLocation="PackIndex.xsd">
+  <index schemaVersion="1.0" xmlns:xs=https://www.w3.org/2001/XMLSchema-instance xs:noNamespaceSchemaLocation="PackIndex.xsd">
     <vendor>vendor</vendor>
     <url></url>
     <timestamp>2024-08-08T06:30:00</timestamp>
@@ -290,7 +290,7 @@ It is the vendor's obligation to update this file whenever:
 \code{.xml}
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="https://www.w3.org/2001/XMLSchema-instance">
   <vendor>MyVendor</vendor>
   <url>https://www.MyVendor.com/pack/</url>
   <timestamp>2024-01-25T15:00:10.7300074+00:00</timestamp>
@@ -324,17 +324,17 @@ packs.
 \code{.xml}
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<index schemaVersion="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PackIndex.xsd">
+<index schemaVersion="1.0" xmlns:xs="https://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PackIndex.xsd">
   <vendor>MyVendor</vendor>
   <url>www.MyVendor.com/pack</url>
   <timestamp>2024-01-08T10:30:00</timestamp>
   <vindex>
-    <pidx url="http://www.othervendor.com/MyPacks/" vendor="OtherVendor" />
+    <pidx url="https://www.othervendor.com/MyPacks/" vendor="OtherVendor" />
     ...
   </vindex>
   <!-- the section below is only intended for the transition until all vendors use the <vendor>.pidx file
   <pindex>
-    <pdsc url="http://www.othervendor2.com/packs/" vendor="OtherVendor2" name="MyPack" version="2.3.0"/>
+    <pdsc url="https://www.othervendor2.com/packs/" vendor="OtherVendor2" name="MyPack" version="2.3.0"/>
     ...
     </pindex>
 </index>
