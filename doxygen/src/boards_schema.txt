@@ -26,13 +26,13 @@ A development board is described by the following properties:
 \b Example
 \code
   <boards>
-    <board vendor="STMicroelectronics" name="32F429IDISCOVERY" revision="Rev.1" salesContact="http://www.st.com/stonline/contactus/contacts/index.php" orderForm="https://my.st.com/esample/app?page=basket&amp;pn=STM32F429I-DISCO">
+    <board vendor="STMicroelectronics" name="32F429IDISCOVERY" revision="Rev.1" salesContact="https://www.st.com/stonline/contactus/contacts/index.php" orderForm="https://my.st.com/esample/app?page=basket&amp;pn=STM32F429I-DISCO">
 	 
       <description>STMicroelectronics STM32F429I Discovery Board Support and Examples</description>
 	   
       <image small="Images/stm32f429i-disco_small.png" large="Images/stm32f429i-disco.png"/>
 	   
-      <book category="overview"  name="http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF259090" title="32F429IDISCOVERY Web Page"/>
+      <book category="overview"  name="https://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF259090" title="32F429IDISCOVERY Web Page"/>
       <book category="setup"     name="Documents/UM1662.pdf" title="Getting Started"/>
       <book category="schematic" name="Documents/UM1670.pdf" title="Schematics"/>
       <book category="manual"    name="Documents/UM1670.pdf" title="User Manual"/>
@@ -718,7 +718,7 @@ The element provides information about documentation parts related to a developm
 
 \b Example
 \code
-<book category="overview" name="http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF259090" title="32F429IDISCOVERY Web Page"/>
+<book category="overview" name="https://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF259090" title="32F429IDISCOVERY Web Page"/>
 <book category="setup" name="Documents/UM1662.pdf" title="Getting Started"/>
 \endcode
 <p>&nbsp;</p>		
