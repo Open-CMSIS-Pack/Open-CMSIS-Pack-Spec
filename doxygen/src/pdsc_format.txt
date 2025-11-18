@@ -104,12 +104,12 @@ assists searching for packages. An optional environments element can be used to 
 
 \b Example:
 \code
-<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.4" xmlns:xs="https://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>ExampleVendor</vendor>
   <name>STM32F2xx_DFP</name>                                                       <!-- name of package -->
   <description>Device Family Package for STMicroelectronics STM32F2 Family of Arm Cortex-M3 based Microcontroller</description>
   <url></url>
-  <supportContact>http://www.arm.com/support</supportContact>
+  <supportContact>https://www.arm.com/support</supportContact>
   <license>./END_USER_LICENCE_AGREEMENT.rtf</license>
   <releases>
     <release version="1.0.0" date="2014-12-14">
@@ -172,7 +172,7 @@ assists searching for packages. An optional environments element can be used to 
   </tr>
   <tr>
     <td>xmlns:xs</td>
-    <td>Is set to: \token{"http://www.w3.org/2001/XMLSchema-instance"} to indicate compliance to the XML format.</td>
+    <td>Is set to: \token{"https://www.w3.org/2001/XMLSchema-instance"} to indicate compliance to the XML format.</td>
     <td>xs:string</td>
     <td>required</td>
   </tr>
@@ -405,7 +405,7 @@ assists searching for packages. An optional environments element can be used to 
 
 \anchor VersionType <b>Version Type</b>
 
-CMSIS-Pack version specification is inspired by the <a href="http://semver.org" target="_blank">Semantic Versioning 2.0.0</a>.
+CMSIS-Pack version specification is inspired by the <a href="https://semver.org" target="_blank">Semantic Versioning 2.0.0</a>.
 Under this scheme, version numbers and the way they are incremented convey a meaning about the underlying content quality and the significance
 of changes from one version to the next. A version consists of 3 mandatory and 2 optional sections:
 
@@ -902,7 +902,7 @@ There are the following requirement types:
 
 \b Example requirements section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
   ...
   <requirements>
     <packages>
@@ -974,7 +974,7 @@ There are the following requirement types:
 
 \b Example packages section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
   ...
   <requirements>
     <packages>
@@ -1036,7 +1036,7 @@ There are the following requirement types:
 
 \b Example compilers section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
   ...
   <requirements>
     <compilers>
@@ -1091,7 +1091,7 @@ There are the following requirement types:
 
 \b Example languages section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
   ...
   <requirements>
     <languages>
@@ -1145,7 +1145,7 @@ selection of pack content such as \ref element_components "components". Therefor
 
 \b Example targets section:
 \code
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
+<package xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PACK.xsd"/>
   ...
   <requirements>
     <targets>
@@ -1292,7 +1292,7 @@ and group \token{Startup} is defined for the device-specific CMSIS-Core (Cortex-
 \endcode
 
 \note You \b must \b not use Windows or Linux
-<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
+<a href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
 \em Cclass, \em Cgroup, and \em Csub names! Some development tools use these names to create a directory structure for the
 software components in projects. Reserved characters are:
 \verbatim
@@ -1599,7 +1599,7 @@ It is recommended to use an already agreed part-taxonomy for interchangeable par
 \endcode
 
 \note You \b must \b not use Windows or Linux
-<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
+<a href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
 \em Hclass, \em Hgroup, and \em Hsub names! Reserved characters are:
 \verbatim
 < (less than)
