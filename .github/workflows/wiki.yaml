@@ -13,10 +13,10 @@ jobs:
     name: Sync content to wiki
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           path: origin
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           repository: Open-CMSIS-Pack/Open-CMSIS-Pack.wiki
           path: wiki
