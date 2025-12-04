@@ -909,7 +909,7 @@ There are the following requirement types:
       <package name="STM32F4xx_DFP" vendor="Keil" version="2.8.0:2.8.0"/>
     </packages>
     <compilers>
-      <compiler name="ARMCC" version="5.0.0:5.99.0"/>
+      <compiler name="ARMCC" version="5.0.0:6.0.0-0"/>
     </compilers>
     <languages>
       <language name="C" version="99"/>
@@ -979,6 +979,7 @@ There are the following requirement types:
   <requirements>
     <packages>
       <package name="STM32F4xx_DFP" vendor="Keil" version="2.8.0:2.8.0"/>
+      <package name="CMSIS" vendor="ARM" version="6.1.0:7.0.0-0"/> <!-- restrict to major version 6 -->
     </packages>
   </requirements>
   ...
@@ -1018,10 +1019,12 @@ There are the following requirement types:
     <td>\ref VersionType "Version" of the required software pack which can be:
        - Minimum version (higher versions are accepted).
        - Version range specified with <em>min_version</em><b>:</b><em>max_version</em>. <em>min_version</em> must be lower or
-         equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal, the version must match.
-       - If no version is specified, the latest available version is assumed.
+         equal than <em>max_version</em>. For a version range that retains the major version, the <em>max_version</em> is set
+         to the next major version with minor, patch and release qualifier set to "0".
+       - Fixed version is specified if <em>min_version</em> and <em>max_version</em> are equal.
+       - If no version is specified, the latest available installed version is accepted and used.
     </td>
-   <td>\ref VersionType</td>
+    <td>\ref VersionType</td>
     <td>optional</td>
   </tr>
 </table>
@@ -1037,7 +1040,7 @@ There are the following requirement types:
   ...
   <requirements>
     <compilers>
-      <compiler name="ARMCC" version="5.0.0:5.99.0"/>
+      <compiler name="ARMCC" version="5.0.0:6.0.0-0"/>
     </compilers>
   </requirements>
   ...
@@ -1071,8 +1074,9 @@ There are the following requirement types:
     <td>\ref VersionType "Version" of the required compiler which can be:
        - Minimum version (higher versions are accepted).
        - Version range specified with <em>min_version</em><b>:</b><em>max_version</em>. <em>min_version</em> must be lower or
-         equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal, the version must match.
-         <br>
+         equal than <em>max_version</em>. For a version range that retains the major version, the <em>max_version</em> is set
+         to the next major version with minor, patch and release qualifier set to "0".
+       - Fixed version is specified if <em>min_version</em> and <em>max_version</em> are equal.
     </td>
     <td>\ref VersionType</td>
     <td>required</td>
