@@ -1,3 +1,8 @@
+[![License](https://img.shields.io/github/license/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec?label=License)](https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/blob/main/LICENSE)
+[![Publish Documentation ](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/gh-pages.yaml?logo=arm&logoColor=0091bd&label=Publish%20Documentation)](https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/tree/main/.github/workflows/gh-pages.yaml)
+[![Validate schemas ](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/schema.yaml?logo=arm&logoColor=0091bd&label=Validate%20schemas)](https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/tree/main/.github/workflows/schema.yaml)
+[![Sync wiki content ](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/wiki.yaml?logo=arm&logoColor=0091bd&label=Sync%20wiki%20content)](https://github.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/tree/main/.github/workflows/wiki.yaml)
+
 # Open-CMSIS-Pack Specification
 
 The Open-CMSIS-Pack project delivers the infrastructure to integrate and manage software components and improve code reuse across embedded and IoT projects. The project is currently hosted and managed as an incubation project by Linaro in partnership with Arm, NXP and ST.
