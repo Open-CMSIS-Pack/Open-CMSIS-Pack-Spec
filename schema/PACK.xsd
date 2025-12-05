@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        04. Dec 2025
-  $Revision:    1.7.55
+  $Date:        05. Dec 2025
+  $Revision:    1.7.56
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.55
+  SchemaVersion=1.7.56
 
+  05. Dec 2025: v1.7.56
+   - added "Qorvo:189" Dvendor ID
   04. Dec 2025: v1.7.55
    - updated type of 'Dcore' to 'DcoreType' which is a union of 'DcoreEnum' and 'xs:token' to accept any token as valid 'Dcore'.
    - add 'description' child to "part" element
@@ -265,7 +267,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.55">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.56">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -354,6 +356,7 @@
       <xs:enumeration value="onsemi:141" />
       <xs:enumeration value="Panasonic:131" />
       <xs:enumeration value="Puya:176" />
+      <xs:enumeration value="Qorvo:189" />
       <xs:enumeration value="Realtek Semiconductor:124" />
       <xs:enumeration value="Redpine Signals:125" />
       <xs:enumeration value="RelChip:146" />

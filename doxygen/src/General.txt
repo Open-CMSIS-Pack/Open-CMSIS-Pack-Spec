@@ -81,6 +81,12 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.56</td>
+    <td>
+      - added "Qorvo:189" Dvendor ID
+    </td>
+  </tr>
+  <tr>
     <td>1.7.55</td>
     <td>
       - add 'description' child to \ref element_part "part" element
