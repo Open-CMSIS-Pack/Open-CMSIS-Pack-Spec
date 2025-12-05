@@ -2319,6 +2319,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>https://www.puyasemi.com/</td>
   </tr>
   <tr>
+    <td class="XML-Token">Qorvo:189</td>
+    <td>Qorvo</td>
+    <td>https://www.qorvo.com/</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Realtek Semiconductor:124</td>
     <td>Realtek Semiconductor</td>
     <td>http://www.realtek.com</td>
