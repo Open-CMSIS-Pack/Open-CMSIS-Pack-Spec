@@ -28,7 +28,7 @@ jobs:
       - name: Fetch Keil index
         run: wget https://www.keil.com/pack/index.pidx
       - name: Cache Keil index pdsc files
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: cache
         with:
           path: .Web
