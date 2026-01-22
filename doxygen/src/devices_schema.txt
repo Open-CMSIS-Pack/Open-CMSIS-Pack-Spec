@@ -1549,10 +1549,12 @@ The list of the pre-defined features for Devices (\ref DeviceFeatureTypeEnum "De
 
 \n
 
-\anchor DeviceFeatureTypeEnum <b>Table: Device Feature Types</b> 
+\anchor DeviceFeatureTypeEnum <b>Table: Device Feature Types</b>
 
 The table lists predefined device features (peripherals).
-\note The attribute \a name of the element \ref element_feature is a descriptive text for a feature. If \a name is omitted, then the <b>Default Name</b> is used.
+\note
+- The attribute \a name of the element \ref element_feature is a descriptive text for a feature. If \a name is omitted, then the <b>Default Name</b> is used.
+- All numbers are a decimal value. Hexadecimal numbers are not supported.
 
 type=|n=|m=|Default Name|Example|Example shown as |
 -----|--|--|------------|-------|---------------- |
