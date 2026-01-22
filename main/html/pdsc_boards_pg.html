@@ -253,13 +253,12 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <td>name </td><td>Descriptive name of the feature. If omitted, a <b>Default Name</b> is used (refer to table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Feature Types</a>). <b>Do not repeat</b> the <span class="XML-Token">n</span> or <span class="XML-Token">m</span> values in the name. This will lead to duplicate entries on web sites (they show <span class="XML-Token">n</span> x <span class="XML-Token">name</span>). </td><td>xs:string </td><td>optional  </td></tr>
 </table>
 <p>&#160;</p>
-<p><br  />
-</p>
 <p><a class="anchor" id="BoardFeatureTypeEnum"></a><b>Table: Board Features</b></p>
 <p>The table below lists predefined board features.</p>
 <dl class="section note"><dt>Note</dt><dd><ul>
 <li>The attribute <em>name</em> of the element <a class="el" href="pdsc_boards_pg.html#element_board_feature">/package/boards/board/feature</a> is a descriptive text for a feature. If <em>name</em> is omitted, the <b>Default Name</b> (listed below) is used.</li>
 <li><b>Do not repeat</b> the <em>n</em> or <em>m</em> values in the <em>name</em>. Display on websites follows the rule to show <em>n</em> x <em>name</em>.</li>
+<li>All numbers are a decimal value. Hexadecimal numbers are not supported.</li>
 </ul>
 </dd></dl>
 <table class="markdownTable">
