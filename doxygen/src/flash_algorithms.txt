@@ -13,7 +13,7 @@ in more detail.
 Flash programming algorithms are defined with functions to erase and program the Flash device. Special compiler and linker
 settings are required. Follow these steps to create and configure a new Flash programming algorithm:
 -# Copy the content from the <b>ARM:CMSIS</b> Pack folder (usually
-   C:\\Keil\\ARM\\Pack\\ARM\\CMSIS\\<i>version</i>\\Device\\\_Template_Flash) to a new folder.
+   ${CMSIS_PACK_ROOT}/Arm/packs/ARM/Cortex_DFP/<i>version</i>/Device/Template/Flash) to a new folder.
 -# Rename the project file \b NewDevice.uvprojx to represent the new Flash ROM device name, for example \b MyDevice.uvprojx.
 -# Open the project with uVision. From the toolbar, use the drop-down <b>Select Target</b> to define the processor
    architecture. \b Cortex-M fits for all Cortex-M0/M0+, M3, and M4 devices. The configuration assumes a little-endian
