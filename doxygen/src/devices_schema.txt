@@ -3319,12 +3319,12 @@ Pairs of <b>__dp</b> and <b>__ap</b> values must not be used to reference an acc
   </debugport>
 
   <!-- ADIv5 DAP -->
-  <accessportV1 __apid="0" _dp="0" index="0"/>
-  <accessportV1 __apid="1" _dp="0" index="1"/>
+  <accessportV1 __apid="0" __dp="0" index="0"/>
+  <accessportV1 __apid="1" __dp="0" index="1"/>
     
   <!-- ADIv6 DAP -->
-  <accessportV2 __apid="2" _dp="1" address="0x00002000"/>
-  <accessportV2 __apid="3" _dp="1" address="0x00004000"/>
+  <accessportV2 __apid="2" __dp="1" address="0x00002000"/>
+  <accessportV2 __apid="3" __dp="1" address="0x00004000"/>
    
   ...
 </family>

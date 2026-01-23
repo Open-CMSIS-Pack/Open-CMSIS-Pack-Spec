@@ -1706,7 +1706,7 @@ debug access variables which are evaluated for the function call.
         - size: Size of a single item to get. Must be in the range of 1 - 8.
 
         <b>Return Value:</b><br>
-        Date value of specified size at buffer offset.
+        Data value of specified size at buffer offset.
     </td>
   </tr>
   <tr>
