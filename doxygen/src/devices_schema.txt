@@ -902,7 +902,7 @@ identical, the one on the lower level takes precedence. Overlap of Flash informa
   <tr>
     <td>filler</td>
     <td>Value that a debugger uses to fill the remainder of a programming page (64-bit value).
-    The access size used in \ref DebugFunctions "FlashBufferWrite" defines the number of least significant bytes of this value to write.
+    The access size used in \ref DebugFunctions "FlashWriteBuffer" defines the number of least significant bytes of this value to write.
     Defaults to \token{0xFFFFFFFFFFFFFFFF} if not specified.</td>
     <td>NonNegativeInteger</td>
     <td>optional</td>
