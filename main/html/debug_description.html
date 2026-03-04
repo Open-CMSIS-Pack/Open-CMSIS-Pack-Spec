@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.56</span>
+   &#160;<span id="projectnumber">Version 1.7.57</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -1241,7 +1241,7 @@ Debug access functions</h2>
  Refer to <a class="el" href="debug_description.html#debugPortStart">DebugPortStart</a>   </p>
 </td></tr>
 <tr>
-<td style="white-space: nowrap"><pre>FlashBufferWrite(addr, offs, len, mode)</pre> </td><td><p class="starttd">Write flash buffer contents into target memory. A debugger fills the flash buffer before it executes a flash programming sequence.<br  />
+<td style="white-space: nowrap"><pre>FlashWriteBuffer(addr, offs, len, mode)</pre> </td><td><p class="starttd">Write flash buffer contents into target memory. A debugger fills the flash buffer before it executes a flash programming sequence.<br  />
  <br  />
  <b>Parameters:</b><br  />
 </p><ul>
@@ -1266,8 +1266,9 @@ Debug access functions</h2>
 </p><ul>
 <li>__apid: The ID of the access port element to use for this memory access.</li>
 </ul>
-<p class="endtd"><b>Return Value:</b><br  />
- Always returns <span class="XML-Token">0</span>.   </p>
+<p class="intertd"><b>Return Value:</b><br  />
+ Always returns <span class="XML-Token">0</span>.</p>
+<dl class="section note"><dt>Note</dt><dd>Previous versions of the specification falsely named this function <span class="XML-Token">FlashBufferWrite</span>. All known implementations of this specification correctly use <span class="XML-Token">FlashWriteBuffer</span> already.   </dd></dl>
 </td></tr>
 <tr>
 <td style="white-space: nowrap"><pre>DAP_Delay(delay)</pre> </td><td><p class="starttd">Debug probe command to wait for a specific delay.<br  />

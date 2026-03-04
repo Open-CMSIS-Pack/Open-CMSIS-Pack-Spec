@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.56</span>
+   &#160;<span id="projectnumber">Version 1.7.57</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -443,7 +443,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <tr>
 <td>blankval </td><td>Expected memory value for unprogrammed address ranges (64-bit value). The access size used to read back programmed memory defines the number of least significant bytes of this value that are compared. Defaults to <span class="XML-Token">0xFFFFFFFFFFFFFFFF</span> if not specified. </td><td>NonNegativeInteger </td><td>optional  </td></tr>
 <tr>
-<td>filler </td><td>Value that a debugger uses to fill the remainder of a programming page (64-bit value). The access size used in <a class="el" href="debug_description.html#DebugFunctions">FlashBufferWrite</a> defines the number of least significant bytes of this value to write. Defaults to <span class="XML-Token">0xFFFFFFFFFFFFFFFF</span> if not specified. </td><td>NonNegativeInteger </td><td>optional  </td></tr>
+<td>filler </td><td>Value that a debugger uses to fill the remainder of a programming page (64-bit value). The access size used in <a class="el" href="debug_description.html#DebugFunctions">FlashWriteBuffer</a> defines the number of least significant bytes of this value to write. Defaults to <span class="XML-Token">0xFFFFFFFFFFFFFFFF</span> if not specified. </td><td>NonNegativeInteger </td><td>optional  </td></tr>
 <tr>
 <td>ptime </td><td>Timeout in milliseconds for programming a page. Defaults to <span class="XML-Token">100</span> if not specified. </td><td>xs:unsignedInt </td><td>optional  </td></tr>
 <tr>
