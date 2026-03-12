@@ -81,6 +81,12 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.57</td>
+    <td>
+      - corrected name from 'FlashBufferWrite' to 'FlashWriteBuffer' in debug access function documentation
+    </td>
+  </tr>
+  <tr>
     <td>1.7.56</td>
     <td>
       - added "Qorvo:189" Dvendor ID
