@@ -902,7 +902,7 @@ identical, the one on the lower level takes precedence. Overlap of Flash informa
   <tr>
     <td>filler</td>
     <td>Value that a debugger uses to fill the remainder of a programming page (64-bit value).
-    The access size used in \ref DebugFunctions "FlashBufferWrite" defines the number of least significant bytes of this value to write.
+    The access size used in \ref DebugFunctions "FlashWriteBuffer" defines the number of least significant bytes of this value to write.
     Defaults to \token{0xFFFFFFFFFFFFFFFF} if not specified.</td>
     <td>NonNegativeInteger</td>
     <td>optional</td>
@@ -1549,10 +1549,12 @@ The list of the pre-defined features for Devices (\ref DeviceFeatureTypeEnum "De
 
 \n
 
-\anchor DeviceFeatureTypeEnum <b>Table: Device Feature Types</b> 
+\anchor DeviceFeatureTypeEnum <b>Table: Device Feature Types</b>
 
 The table lists predefined device features (peripherals).
-\note The attribute \a name of the element \ref element_feature is a descriptive text for a feature. If \a name is omitted, then the <b>Default Name</b> is used.
+\note
+- The attribute \a name of the element \ref element_feature is a descriptive text for a feature. If \a name is omitted, then the <b>Default Name</b> is used.
+- All numbers are a decimal value. Hexadecimal numbers are not supported.
 
 type=|n=|m=|Default Name|Example|Example shown as |
 -----|--|--|------------|-------|---------------- |
@@ -2317,6 +2319,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td class="XML-Token">Puya:176</td>
     <td>Puya</td>
     <td>https://www.puyasemi.com/</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Qorvo:189</td>
+    <td>Qorvo</td>
+    <td>https://www.qorvo.com/</td>
   </tr>
   <tr>
     <td class="XML-Token">Realtek Semiconductor:124</td>
@@ -3312,12 +3319,12 @@ Pairs of <b>__dp</b> and <b>__ap</b> values must not be used to reference an acc
   </debugport>
 
   <!-- ADIv5 DAP -->
-  <accessportV1 __apid="0" _dp="0" index="0"/>
-  <accessportV1 __apid="1" _dp="0" index="1"/>
+  <accessportV1 __apid="0" __dp="0" index="0"/>
+  <accessportV1 __apid="1" __dp="0" index="1"/>
     
   <!-- ADIv6 DAP -->
-  <accessportV2 __apid="2" _dp="1" address="0x00002000"/>
-  <accessportV2 __apid="3" _dp="1" address="0x00004000"/>
+  <accessportV2 __apid="2" __dp="1" address="0x00002000"/>
+  <accessportV2 __apid="3" __dp="1" address="0x00004000"/>
    
   ...
 </family>

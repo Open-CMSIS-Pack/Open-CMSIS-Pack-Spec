@@ -288,7 +288,7 @@ A list of pre-defined features exists.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor BoardFeatureTypeEnum <b>Table: Board Features</b>
 
@@ -297,6 +297,8 @@ The table below lists predefined board features.
 \note
 - The attribute \a name of the element \ref element_board_feature is a descriptive text for a feature. If \a name is omitted, the <b>Default Name</b> (listed below) is used.
 - <b>Do not repeat</b> the \a n or \a m values in the \a name. Display on websites follows the rule to show \a n x \a name.
+- All numbers are a decimal value. Hexadecimal numbers are not supported.
+
 
 |type=|n=|m=|Default Name|Example|Example shown as|
 |-----|--|--|------------|-------|----------------|

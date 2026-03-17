@@ -1413,7 +1413,7 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
-    <td style="white-space: nowrap"><pre>FlashBufferWrite(addr, offs, len, mode)</pre></td>
+    <td style="white-space: nowrap"><pre>FlashWriteBuffer(addr, offs, len, mode)</pre></td>
     <td>
       Write flash buffer contents into target memory.
       A debugger fills the flash buffer before it executes a flash programming sequence.<br>
@@ -1445,6 +1445,9 @@ debug access variables which are evaluated for the function call.
 
       <b>Return Value:</b><br>
       Always returns \token{0}.
+
+      \note Previous versions of the specification falsely named this function \token{FlashBufferWrite}. All known
+            implementations of this specification correctly use \token{FlashWriteBuffer} already.
     </td>
   </tr>
   <tr>
@@ -1706,7 +1709,7 @@ debug access variables which are evaluated for the function call.
         - size: Size of a single item to get. Must be in the range of 1 - 8.
 
         <b>Return Value:</b><br>
-        Date value of specified size at buffer offset.
+        Data value of specified size at buffer offset.
     </td>
   </tr>
   <tr>
