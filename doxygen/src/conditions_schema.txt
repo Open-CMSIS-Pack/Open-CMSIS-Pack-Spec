@@ -271,6 +271,18 @@ A \ref element_condition "condition" becomes \token{true} when:
     <td>required for ARMv8.1-M based devices with PAC/BTI support</td>
   </tr>
   <tr>
+    <td>Dnpu</td>
+    <td>Specifies a neural processing unit (NPU).  Use predefined values as listed in the table \ref DnpuEnum "Device NPUs".</td>
+    <td>\ref DnpuEnum</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>DnpuMacs</td>
+    <td>Specifies the available MAC units of the selected neural processing unit (NPU). Specified in multiples of 2 and returns true for exact match with the processor attribute specified.</td>
+    <td>\ref DnpuEnum</td>
+    <td>optional</td>
+  </tr>
+  <tr>
     <td>Dendian</td>
     <td>Specifies the endianess of a device. Use predefined values as listed in the table \ref DendianEnum "Endianess".</td>
     <td>\ref DendianEnum</td>
