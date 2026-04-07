@@ -272,7 +272,7 @@ A \ref element_condition "condition" becomes \token{true} when:
   </tr>
   <tr>
     <td>Dnpu</td>
-    <td>Specifies a neural processing unit (NPU).  Use predefined values as listed in the table \ref DnpuEnum "Device NPUs".</td>
+    <td>Specifies a neural processing unit (NPU).  Some predefined tokens are listed in the table \ref DnpuEnum "Device NPUs", but any other tokens are allowed, too.</td>
     <td>\ref DnpuEnum</td>
     <td>optional</td>
   </tr>
