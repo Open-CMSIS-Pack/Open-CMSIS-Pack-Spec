@@ -25,7 +25,7 @@
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.58
 
-  02. April 2026: v1.7.58
+  07. April 2026: v1.7.58
    - add processor feature attributes for NPU: 'Dnpu' and 'Dnpu_num_macs'
   04. Mar 2026: v1.7.57
    - corrected name from 'FlashBufferWrite' to 'FlashWriteBuffer' in debug access function documentation
