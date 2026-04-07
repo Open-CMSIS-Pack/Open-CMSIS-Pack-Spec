@@ -85,6 +85,7 @@ packs) and provides useful tips when creating a pack.
     <td>
       - adds rules to reserve `__` prefix for debug access variable names provided by spec
       - added '__' prefix to variable names in default debug sequence implementations
+      - corrected '__FlashOp' value mapping in debug access variables documentation
     </td>
   </tr>
   <tr>
