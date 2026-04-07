@@ -1999,7 +1999,7 @@ the attribute \elem{Pname}. If the information is relevant to all processors, no
   </tr>
   <tr>
     <td>Dnpu</td>
-    <td>Specifies the NPU type implemented if it exists. Use predefined values as listed in the table \ref DnpuEnum "Device NPUs".</td>
+    <td>Specifies the NPU type implemented if it exists. Some predefined tokens are listed in the table \ref DnpuEnum "Device NPUs", but any other tokens are allowed, too.</td>
     <td>\ref DnpuEnum</td>
     <td>optional</td>
   </tr>
@@ -2689,7 +2689,7 @@ These values can be used in the elements:
 
 \anchor DnpuEnum <b>Table: Device NPU</b>
 
-The table lists available Neural Processing Units (NPU). The list is extended from time to time to reflect new NPUs.
+The table lists a set of defined Neural Processing Units (NPU), but any other token is supported, too. The list is extended with other NPUs upon request.
 These values can be used in the elements:
 - \ref element_accept
 - \ref element_require
