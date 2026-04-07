@@ -1997,6 +1997,19 @@ the attribute \elem{Pname}. If the information is relevant to all processors, no
     <td>xs:string</td>
     <td>required</td>
   </tr>
+  <tr>
+    <td>Dnpu</td>
+    <td>Specifies the NPU type implemented if it exists. Some predefined tokens are listed in the table \ref DnpuEnum "Device NPUs", but any other tokens are allowed, too.</td>
+    <td>\ref DnpuEnum</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>DnpuMacs</td>
+    <td>If an NPU is present, this attribute specifies the number of available MACs.</td>
+    <td>xs:unsignedInt</td>
+    <td>optional</td>
+  </tr>
+
 </table>
 
 \note While the different attributes can be spreaded over the family levels, they add-up and at the leaf (device level), a
@@ -2674,6 +2687,35 @@ These values can be used in the elements:
 
 <p>&nbsp;</p>
 
+\anchor DnpuEnum <b>Table: Device NPU</b>
+
+The table lists a set of defined Neural Processing Units (NPU), but any other token is supported, too. The list is extended with other NPUs upon request.
+These values can be used in the elements:
+- \ref element_accept
+- \ref element_require
+- \ref element_deny
+- \ref element_processor
+	
+<table class="cmtable" summary="Enumeration: Dnpu">
+  <tr>
+    <th>Dnpu=</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td class="XML-Token">Ethos-U55</td>
+    <td>Device featuring an <a href="https://www.arm.com/products/silicon-ip-cpu/ethos/ethos-u55" target="_blank">Arm Ethos-U55</a> NPU.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Ethos-U65</td>
+    <td>Device featuring an <a href="https://www.arm.com/products/silicon-ip-cpu/ethos/ethos-u65" target="_blank">Arm Ethos-U65</a> NPU.</td>
+  </tr>
+  <tr>
+    <td class="XML-Token">Ethos-U85</td>
+    <td><a href="Device featuring an <a href="https://www.arm.com/products/silicon-ip-cpu/ethos/ethos-u85" target="_blank">Arm Ethos-U85</a> NPU.</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
 
 \anchor DfpuEnum <b>Table: Device FPU</b>
 
