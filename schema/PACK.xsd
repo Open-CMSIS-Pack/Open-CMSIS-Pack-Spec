@@ -570,7 +570,7 @@
     <!-- Dcore specifies the processor from a list of supported processors -->
     <xs:attribute name="Dcore" type="DcoreType" />
     <!-- Dnpu specifies the NPU from a list of supported Arm NPUs -->
-    <xs:attribute name="Dnpu" type="DnpuTypeEnum" />
+    <xs:attribute name="Dnpu" type="DnpuType" />
     <!-- DnpuMacs specifies the number of implemented MAC units -->
     <xs:attribute name="DnpuMacs" type="xs:unsignedInt" />
     <!-- Dfpu specifies the hardware floating point unit -->
@@ -1078,8 +1078,12 @@
       <xs:enumeration value="other" />
     </xs:restriction>
   </xs:simpleType>
-  
-  <xs:simpleType name="DnpuTypeEnum">
+
+  <xs:simpleType name="DnpuType">
+    <xs:union memberTypes="DnpuEnum xs:token"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="DnpuEnum">
     <xs:restriction base="xs:token">
 	  <xs:enumeration value="Ethos-U55" />
 	  <xs:enumeration value="Ethos-U65" />
@@ -1477,7 +1481,7 @@
     <xs:attribute name="Dvendor" type="DeviceVendorEnum" />
     <xs:attribute name="Dname" type="xs:string" /> <!-- can contain wildcards ?* in condition -->
     <xs:attribute name="Dcore" type="DcoreType" />
-	<xs:attribute name="Dnpu"  type="DnpuTypeEnum" />
+	<xs:attribute name="Dnpu"  type="DnpuType" />
     <xs:attribute name="Dfpu" type="DfpuEnum" />
     <xs:attribute name="Dmpu" type="DmpuEnum" />
     <xs:attribute name="Dtz" type="DtzEnum" />
