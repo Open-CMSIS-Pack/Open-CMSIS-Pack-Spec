@@ -2077,9 +2077,9 @@ A debugger needs to support a set of pre-defined debug access variables. These a
     <td>
       The following values apply:<br>
       - 0: No flash operation
-      - 1: Erase full chip
-      - 2: Erase flash sector
-      - 3: Program flash
+      - 1: Erase
+      - 2: Program
+      - 3: Verify
       - Other - reserved.
     </td>
   </tr>
