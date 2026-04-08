@@ -18,15 +18,13 @@
   limitations under the License.
 
 
-  $Date:        07. April 2026
-  $Revision:    1.7.58
+  $Date:        04. Mar 2026
+  $Revision:    1.7.57
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.58
+  SchemaVersion=1.7.57
 
-  07. April 2026: v1.7.58
-   - add processor feature attributes for NPU: 'Dnpu' and 'Dnpu_num_macs'
   04. Mar 2026: v1.7.57
    - corrected name from 'FlashBufferWrite' to 'FlashWriteBuffer' in debug access function documentation
   05. Dec 2025: v1.7.56
@@ -271,7 +269,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.58">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.57">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -569,10 +567,6 @@
     <xs:attribute name="Punits" type="InstancesType" />
     <!-- Dcore specifies the processor from a list of supported processors -->
     <xs:attribute name="Dcore" type="DcoreType" />
-    <!-- Dnpu specifies the NPU from a list of supported Arm NPUs -->
-    <xs:attribute name="Dnpu" type="DnpuType" />
-    <!-- DnpuMacs specifies the number of implemented MAC units -->
-    <xs:attribute name="DnpuMacs" type="xs:unsignedInt" />
     <!-- Dfpu specifies the hardware floating point unit -->
     <xs:attribute name="Dfpu" type="DfpuEnum" />
     <!-- Dmpu specifies the memory protection unit -->
@@ -1079,18 +1073,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="DnpuType">
-    <xs:union memberTypes="DnpuEnum xs:token"/>
-  </xs:simpleType>
-
-  <xs:simpleType name="DnpuEnum">
-    <xs:restriction base="xs:token">
-	  <xs:enumeration value="Ethos-U55" />
-	  <xs:enumeration value="Ethos-U65" />
-	  <xs:enumeration value="Ethos-U85" />
-	</xs:restriction>
-  </xs:simpleType>
-
   <!-- DeviceFeatureTypeEnum -->
   <xs:simpleType name="DeviceFeatureTypeEnum">
     <xs:restriction base="xs:token">
@@ -1481,7 +1463,6 @@
     <xs:attribute name="Dvendor" type="DeviceVendorEnum" />
     <xs:attribute name="Dname" type="xs:string" /> <!-- can contain wildcards ?* in condition -->
     <xs:attribute name="Dcore" type="DcoreType" />
-	<xs:attribute name="Dnpu"  type="DnpuType" />
     <xs:attribute name="Dfpu" type="DfpuEnum" />
     <xs:attribute name="Dmpu" type="DmpuEnum" />
     <xs:attribute name="Dtz" type="DtzEnum" />
