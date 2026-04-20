@@ -1817,7 +1817,7 @@ debug access variables which are evaluated for the function call.
 			Others - Reserved<br>
           - Bit 4..7: Communication options for data source:<br>
 		    Reserved
-        - timeout: Timeout in microseconds. If \token{0}, then synchronously wait for the operation to finish.
+        - timeout: Timeout of file operation in microseconds. If \token{0}, then synchronously wait for the operation to finish.
         
         <b>Return Value:</b><br>
         Number of bytes streamed into buffer. Can be less than \b length if the data source signals its end.
@@ -1845,7 +1845,9 @@ debug access variables which are evaluated for the function call.
 		    \token{0} - Overwrite<br>
 			\token{1} - Append<br>
 			Others - Reserved<br>
-        - timeout: Timeout in microseconds. If \token{0}, then synchronously wait for the operation to finish.
+        - timeout: Timeout in microseconds. If \token{0}, then synchronously wait for the operation to finish.<br>
+          - This does not include file-system delays, e.g. between creation and visibility in a file browser. Use \b FilePathExists
+            debug access function to wait for a new file to become accessible.
         
         <b>Return Value:</b><br>
         Number of bytes streamed to data sink.
