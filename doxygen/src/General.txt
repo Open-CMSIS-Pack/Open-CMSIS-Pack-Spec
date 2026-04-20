@@ -86,6 +86,8 @@ packs) and provides useful tips when creating a pack.
       - adds rules to reserve `__` prefix for debug access variable names provided by spec
       - added '__' prefix to variable names in default debug sequence implementations
       - corrected '__FlashOp' value mapping in debug access variables documentation
+      - clarified usage of 'timeout' in 'BufferStreamIn', 'BufferStreamOut', and 'FilePathExists' debug access functions
+      - changed return values of 'BufferWrite' and 'FlashBufferWrite' from always '0' to number of actually written bytes
     </td>
   </tr>
   <tr>
