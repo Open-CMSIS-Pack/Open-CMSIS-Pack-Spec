@@ -1444,10 +1444,15 @@ debug access variables which are evaluated for the function call.
       - __apid: The ID of the access port element to use for this memory access.
 
       <b>Return Value:</b><br>
-      Always returns \token{0}.
+      Number of bytes written from flash buffer to target.
 
       \note Previous versions of the specification falsely named this function \token{FlashBufferWrite}. All known
             implementations of this specification correctly use \token{FlashWriteBuffer} already.
+
+      \note
+      Previous versions specified to always return \token{0} in case of success. This
+      was changed for consistency with other debug access functions handling buffers.
+
     </td>
   </tr>
   <tr>
@@ -1792,7 +1797,11 @@ debug access variables which are evaluated for the function call.
         - __apid: The ID of the access port element to use for this memory access.
 
         <b>Return Value:</b><br>
-        Always \token{0}. Function causes fatal error if not successful.
+        Number of bytes written from buffer to target. Function causes fatal error if not successful.
+
+        \note
+        Previous versions specified to always return \token{0} in case of success. This
+        was changed for consistency with other debug access functions handling buffers.
 
         <b>Code Example:</b><br>
         Refer to \ref exttoolexample "Calculating a hash sum"
