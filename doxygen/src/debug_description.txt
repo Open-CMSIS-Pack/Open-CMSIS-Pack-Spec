@@ -45,8 +45,8 @@ A complete debug description for a device consists of the following elements:
  - \refelem{debug} with the child element \refelem{dbg_datapatch} contains settings for the debug connection and for
    fixing silicon issues in software.
  - \refelem{debugconfig} provides the default debugger configuration for a target connection.
- - \refelem{debugvars} specifies global debug access variables. They can be used in addition to predefined variables in
-   order to query settings from a debug access sequences.
+ - \refelem{debugvars} specifies global debug access variables. They can be used in addition to predefined variables to pass
+ user settings to debug access sequences.
  - \refelem{debugport} with the child elements \refelem{dp_jtag}, \refelem{dp_swd}, and \refelem{dp_cjtag} describes the
    debug port in detail.
  - \refelem{accessportV1} describes an access port (APv1) in detail.
@@ -1920,6 +1920,10 @@ and states. They are <b>read-only</b> within a sequence except from a limited se
 \ref PredefinedDebugVars "pre-defined debug access variables". Use the <b>debugvars</b> element to specify additional
 user-defined debug access variables.
 
+User-defined debug access variable names must not be reused for local sequence variables, including those in default
+sequence implementations. To avoid name clashes, the \token{__} prefix is reserved for variables provided by the
+specification (for example, in default sequence implementations). User-defined debug access variables should avoid
+using the \token{__} prefix.
 
 \anchor PredefinedDebugVars <b>Table: Pre-defined Debug Access Variables</b><br>
 A debugger needs to support a set of pre-defined debug access variables. These are described in the following table.
