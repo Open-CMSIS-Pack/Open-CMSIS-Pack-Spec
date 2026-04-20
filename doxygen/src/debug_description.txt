@@ -1897,9 +1897,9 @@ debug access variables which are evaluated for the function call.
         - path: Constant string with the path to check. Refer to \ref charactersequence "character sequences" for path/file
 		  name place holders.
         - timeout: Timeout in microseconds:<br>
-          If \token{0}, then the path is checked and the function immediately returns.<br>
-		  If other than \token{0}, check the path until it is valid or until the function times out. If \b timeout is hit
-		  while executing a check and that check ends successfully, then the function returns success.<br>
+          If \token{0}, then the path is checked once before the function returns.<br>
+		  If other than \token{0}, the function checks the path until it is valid or until the function times out. If \b timeout is hit
+		  while executing a check, then the function completes the check and returns its result.<br>
         
         <b>Return Value:</b><br>
         \token{0} - Path exists<br>
