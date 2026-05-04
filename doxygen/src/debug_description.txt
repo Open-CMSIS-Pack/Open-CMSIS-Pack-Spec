@@ -265,7 +265,6 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
 	\anchor TraceCapture
     <td>Prepare target trace for next capture run, e.g. by enabling the trace formatter or initializing embedded trace buffer data read/write pointers.<br>
     Typically executed before a debugger runs/steps the target processor. Or when manually starting a trace capture.<br>
-	TODO: Add an example.
     </td>
   </tr>
   <tr>
@@ -273,7 +272,6 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
 	\anchor TraceFlush
     <td>Flush out remaining trace bytes. This ensures all pending data is streamed off-chip, or drained into an on-chip trace buffer before the debugger reads it.<br>
     Typically executed after the target processor pauses after a run/step. Or when manually stopping a trace capture.<br>
-	TODO: Add an example.
     </td>
   </tr>
   <tr>
@@ -2075,7 +2073,7 @@ A debugger needs to support a set of pre-defined debug access variables. These a
 	<pre>__traceclockin</pre></td>
     <td>Read-Only</td>
     <td>
-      The frequency of the clock that drives the trace output component.<br/>
+      The frequency of the clock that drives the trace output component.<br>
       Can for example be used in combination with \ref __traceclockout to calculate
       prescaler values for the output component.
     </td>
