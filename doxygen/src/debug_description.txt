@@ -2080,7 +2080,7 @@ A debugger needs to support a set of pre-defined debug access variables. These a
       prescaler values for the output component.
     </td>
     <td>
-      Clock frequency in Hz. A value of \token{0} means that the frequency is not set by the debugger.
+      Clock frequency in Hz. A value of \token{0} means that no frequency is provided by the debugger, e.g. because trace is disabled.
     </td>
   </tr>
   <tr>
@@ -2094,8 +2094,8 @@ A debugger needs to support a set of pre-defined debug access variables. These a
       values for the output component.
     </td>
     <td>
-      Clock frequency in Hz. A value of \token{0} means that the frequency is not set by the debugger.
-      In this case <b>__traceclockout</b> must be assumed to equal \ref __traceclockin .
+      Clock frequency in Hz. A value of \token{0} means that no frequency is provided by the debugger, e.g. because trace is disabled or because the user did not specify it.
+      In the latter case <b>__traceclockout</b> must be assumed to equal \ref __traceclockin which effectively means a prescaler value of \token{1}.
     </td>
   </tr>
   <tr>
