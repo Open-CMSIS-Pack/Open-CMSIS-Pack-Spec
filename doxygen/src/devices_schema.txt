@@ -3709,7 +3709,7 @@ Container for debug access sequences for this device.
 \code
 <family Dfamily="LPC4300 Series" Dvendor="NXP:11">
   ...
-  <sequences>
+  <sequences fullTraceSetup="false">
     ...
     <sequence name="DebugCoreStart" Pname="Cortex-M0">
       ...
@@ -3745,6 +3745,30 @@ Container for debug access sequences for this device.
   <tr>
     <td>\ref element_device "device"</td>
     <td colspan="3">\ref element_device</td>
+  </tr>
+  <tr>
+    <th>Attributes</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>fullTraceSetup</td>
+    <td>
+      If <b>true</b>, all trace sink and trace data path setup is done by debug access sequences.
+      In this case, a debugger is not expected to configure trace sinks or the CoreSight trace
+      data path using a priori knowledge of standard CoreSight components.<br>
+      <br>
+      If <b>false</b>, a debugger is expected to have knowledge of standard CoreSight trace
+      components. In this case, the <b>TraceStart</b> and <b>TraceStop</b> sequences are intended
+      only for device-specific trace setup and teardown steps.<br>
+      <br>
+      Default value is \token{false}. However, the expectation is that future DFPs set it to \token{true}
+      and provide the full trace setup in sequences. The default value will change with the next
+      major version update of this specification.
+    </td>
+    <td>xs:boolean</td>
+    <td>optional</td>
   </tr>
   <tr>
     <th>Child&nbsp;Elements</th>

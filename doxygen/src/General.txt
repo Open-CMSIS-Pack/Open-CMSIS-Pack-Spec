@@ -81,12 +81,13 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
-    <td>next</td>
+    <td>1.7.59</td>
     <td>
       - clarified sequence abortion in case of errors
       - added missing ResetCatchClear to debug connect flow diagram
       - added pre-defined 'TraceCapture' and 'TraceFlush' debug access sequences
       - added pre-defined '__traceclockin' and '__traceclockout' debug access variables
+      - adds 'fullTraceSetup' attribute to 'sequences' element
     </td>
   </tr>
   <tr>
