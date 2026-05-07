@@ -3076,8 +3076,11 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
 - Initialization values must be constant unsigned numbers. No expressions are allowed.
 - User-defined debug access variables are <b>read-only</b> in a debug access sequence.
 - Pre-defined debug access variables cannot be set in this element.
-- The \token{__} prefix is reserved for variables provided by the specification and should
-  not be used for user-defined debug access variables.
+- The \token{__} prefix is used for pre-defined debug access variables and for local
+  variables in debugger-provided default sequence implementations. It should not be used
+  for user-defined debug access variables or for local variables in DFP-provided sequences.
+  If a debugger implementation copies a default sequence shown in this specification, it
+  should add the \token{__} prefix to the local variable names.
 
 \b Example
 \code
