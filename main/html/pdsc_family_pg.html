@@ -1691,29 +1691,30 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
  </p><hr  />
 <h1><a class="anchor" id="element_debugvars"></a>
 /package/devices/family/.../debugvars</h1>
-<p>Specify <a class="el" href="debug_description.html#DebugVars">global debug access variables</a>. Use these in addition to the <a class="el" href="debug_description.html#PredefinedDebugVars">pre-defined variables</a> in order to query settings from a debug access sequences.<br  />
+<p>Specify <a class="el" href="debug_description.html#DebugVars">global debug access variables</a>. Use these in addition to the <a class="el" href="debug_description.html#PredefinedDebugVars">pre-defined variables</a> to pass user settings to debug access sequences.<br  />
  <br  />
  Define debug access variables with statements of the following form. </p><div class="fragment"><div class="line">__var uservar = value;  <span class="comment">// Comment: Define &quot;uservar&quot; and initialize to &quot;value&quot;</span></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd><ul>
 <li>Initialization values must be constant unsigned numbers. No expressions are allowed.</li>
 <li>User-defined debug access variables are <b>read-only</b> in a debug access sequence.</li>
 <li>Pre-defined debug access variables cannot be set in this element.</li>
+<li>The <span class="XML-Token">__</span> prefix is used for pre-defined debug access variables and for local variables in debugger-provided default sequence implementations. It should not be used for user-defined debug access variables or for local variables in DFP-provided sequences. If a debugger implementation copies a default sequence shown in this specification, it should add the <span class="XML-Token">__</span> prefix to the local variable names.</li>
 </ul>
 </dd></dl>
 <p><b>Example</b> </p><div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;EFM32WG Series&quot;</span> Dvendor=<span class="stringliteral">&quot;Energy Micro:97&quot;</span>&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;debugvars configfile=<span class="stringliteral">&quot;Debug/EFM32WGxxx.dbgconf&quot;</span> version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div>
 <div class="line">  </div>
-<div class="line">    __var __TPIU_pinlocation = 0;  <span class="comment">// Select one of four possible TPIU pin locations</span></div>
+<div class="line">    __var TPIU_pinlocation = 0;  <span class="comment">// Select one of four possible TPIU pin locations</span></div>
 <div class="line">    </div>
-<div class="line">    __var __SWO_pinlocation  = 0;  <span class="comment">// Select one of four possible SWO pin locations</span></div>
+<div class="line">    __var SWO_pinlocation  = 0;  <span class="comment">// Select one of four possible SWO pin locations</span></div>
 <div class="line">    </div>
 <div class="line">  &lt;/debugvars&gt;</div>
 <div class="line">  ...</div>
 <div class="line">  &lt;sequences&gt;</div>
 <div class="line">    &lt;sequence name=<span class="stringliteral">&quot;TraceStart&quot;</span>&gt;</div>
 <div class="line">      ...</div>
-<div class="line">      &lt;block <span class="keywordflow">if</span>=<span class="stringliteral">&quot;__TPIU_pinlocation == 2&quot;</span>&gt;</div>
+<div class="line">      &lt;block <span class="keywordflow">if</span>=<span class="stringliteral">&quot;TPIU_pinlocation == 2&quot;</span>&gt;</div>
 <div class="line">        ...</div>
 <div class="line">        &lt;!-- Configure device to use pins as defined <span class="keywordflow">for</span> TPIU pin location 2 --&gt;</div>
 <div class="line">        ...</div>
@@ -1758,7 +1759,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <div class="line"><span class="comment">// &lt;i&gt; - Pin Location 2 (TRACECLK: PC6, TRACEDATA0: PC7, TRACEDATA1: PD3,  TRACEDATA2: PD4,  TRACEDATA3: PD5)</span></div>
 <div class="line"><span class="comment">// &lt;i&gt; - Pin Location 3 (TRACECLK: PA6, TRACEDATA0: PA2, TRACEDATA1: PA3,  TRACEDATA2: PA4,  TRACEDATA3: PA5)</span></div>
 <div class="line"><span class="comment">// &lt;i&gt; Default: Pin Location 0</span></div>
-<div class="line">__TPIU_pinlocation = 0;</div>
+<div class="line">TPIU_pinlocation = 0;</div>
 <div class="line">  </div>
 <div class="line"><span class="comment">// &lt;o&gt; SWO Pin Location</span></div>
 <div class="line"><span class="comment">//   &lt;0=&gt; Pin Location 0</span></div>
@@ -1771,7 +1772,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <div class="line"><span class="comment">// &lt;i&gt; - Pin Location 2 (SWO: PD1)</span></div>
 <div class="line"><span class="comment">// &lt;i&gt; - Pin Location 3 (SWO: PD2)</span></div>
 <div class="line"><span class="comment">// &lt;i&gt; Default: Pin Location 0</span></div>
-<div class="line">__SWO_pinlocation = 0;</div>
+<div class="line">SWO_pinlocation = 0;</div>
 <div class="line">  </div>
 <div class="line"><span class="comment">// &lt;/h&gt;</span></div>
 <div class="line"><span class="comment">// &lt;&lt;&lt; end of configuration section &gt;&gt;&gt;</span></div>

@@ -126,7 +126,7 @@ Debug description elements</h1>
 <p>A complete debug description for a device consists of the following elements:</p><ul>
 <li><a class="el" href="pdsc_family_pg.html#element_debug">debug</a> with the child element <a class="el" href="pdsc_family_pg.html#element_dbg_datapatch">dbg_datapatch</a> contains settings for the debug connection and for fixing silicon issues in software.</li>
 <li><a class="el" href="pdsc_family_pg.html#element_debugconfig">debugconfig</a> provides the default debugger configuration for a target connection.</li>
-<li><a class="el" href="pdsc_family_pg.html#element_debugvars">debugvars</a> specifies global debug access variables. They can be used in addition to predefined variables in order to query settings from a debug access sequences.</li>
+<li><a class="el" href="pdsc_family_pg.html#element_debugvars">debugvars</a> specifies global debug access variables. They can be used in addition to predefined variables to pass user settings to debug access sequences.</li>
 <li><a class="el" href="pdsc_family_pg.html#element_debugport">debugport</a> with the child elements <a class="el" href="pdsc_family_pg.html#element_dp_jtag">dp_jtag</a>, <a class="el" href="pdsc_family_pg.html#element_dp_swd">dp_swd</a>, and <a class="el" href="pdsc_family_pg.html#element_dp_cjtag">dp_cjtag</a> describes the debug port in detail.</li>
 <li><a class="el" href="pdsc_family_pg.html#element_accessportV1">accessportV1</a> describes an access port (APv1) in detail.</li>
 <li><a class="el" href="pdsc_family_pg.html#element_accessportV2">accessportV2</a> describes an access port (APv2) in detail.</li>
@@ -1662,6 +1662,7 @@ Debug access functions</h2>
 <h2><a class="anchor" id="DebugVars"></a>
 Debug access variables</h2>
 <p>Debug access variables hold 64-bit unsigned integer values and are used in debug access sequences to query debugger settings and states. They are <b>read-only</b> within a sequence except from a limited set of the <a class="el" href="debug_description.html#PredefinedDebugVars">pre-defined debug access variables</a>. Use the <b>debugvars</b> element to specify additional user-defined debug access variables.</p>
+<p>User-defined debug access variable names must not be reused for local sequence variables. To avoid name clashes, pre-defined debug access variables and local variables used by debugger-provided default sequence implementations should use the <span class="XML-Token">__</span> prefix. Local variables in DFP-provided sequences should not use the <span class="XML-Token">__</span> prefix, including when a DFP copies and adapts a default sequence shown in this specification. If a debugger implementation copies a default sequence from this specification, it should add the <span class="XML-Token">__</span> prefix to local variable names.</p>
 <p><a class="anchor" id="PredefinedDebugVars"></a><b>Table: Pre-defined Debug Access Variables</b><br  />
  A debugger needs to support a set of pre-defined debug access variables. These are described in the following table.</p>
 <table class="cmtable" summary="ExpressionType: Pre-defined Debug Access Variables">
