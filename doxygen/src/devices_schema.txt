@@ -3064,8 +3064,8 @@ The table lists the values for debug protocol types. The values can be used in
 \section element_debugvars /package/devices/family/.../debugvars
 
 Specify \ref DebugVars "global debug access variables". Use these in addition 
-to the \ref PredefinedDebugVars "pre-defined variables" in order to
-query settings from a debug access sequences.<br>
+to the \ref PredefinedDebugVars "pre-defined variables" to pass user settings
+to debug access sequences.<br>
 <br>
 Define debug access variables with statements of the following form.
 \code
@@ -3076,6 +3076,11 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
 - Initialization values must be constant unsigned numbers. No expressions are allowed.
 - User-defined debug access variables are <b>read-only</b> in a debug access sequence.
 - Pre-defined debug access variables cannot be set in this element.
+- The \token{__} prefix is used for pre-defined debug access variables and for local
+  variables in debugger-provided default sequence implementations. It should not be used
+  for user-defined debug access variables or for local variables in DFP-provided sequences.
+  If a debugger implementation copies a default sequence shown in this specification, it
+  should add the \token{__} prefix to the local variable names.
 
 \b Example
 \code
@@ -3084,16 +3089,16 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
   ...
   <debugvars configfile="Debug/EFM32WGxxx.dbgconf" version="1.0">
   
-    __var __TPIU_pinlocation = 0;  // Select one of four possible TPIU pin locations
+    __var TPIU_pinlocation = 0;  // Select one of four possible TPIU pin locations
     
-    __var __SWO_pinlocation  = 0;  // Select one of four possible SWO pin locations
+    __var SWO_pinlocation  = 0;  // Select one of four possible SWO pin locations
     
   </debugvars>
   ...
   <sequences>
     <sequence name="TraceStart">
       ...
-      <block if="__TPIU_pinlocation == 2">
+      <block if="TPIU_pinlocation == 2">
         ...
         <!-- Configure device to use pins as defined for TPIU pin location 2 -->
         ...
@@ -3179,7 +3184,7 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
 // <i> - Pin Location 2 (TRACECLK: PC6, TRACEDATA0: PC7, TRACEDATA1: PD3,  TRACEDATA2: PD4,  TRACEDATA3: PD5)
 // <i> - Pin Location 3 (TRACECLK: PA6, TRACEDATA0: PA2, TRACEDATA1: PA3,  TRACEDATA2: PA4,  TRACEDATA3: PA5)
 // <i> Default: Pin Location 0
-__TPIU_pinlocation = 0;
+TPIU_pinlocation = 0;
   
 // <o> SWO Pin Location
 //   <0=> Pin Location 0
@@ -3192,7 +3197,7 @@ __TPIU_pinlocation = 0;
 // <i> - Pin Location 2 (SWO: PD1)
 // <i> - Pin Location 3 (SWO: PD2)
 // <i> Default: Pin Location 0
-__SWO_pinlocation = 0;
+SWO_pinlocation = 0;
   
 // </h>
 // <<< end of configuration section >>>
