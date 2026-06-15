@@ -2136,6 +2136,11 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
     <td>http://www.elmos.com</td>
   </tr>
   <tr>
+    <td class="XML-Token">ESMT:190</td>
+    <td>Elite Semiconductor Microelectronics Technology Inc.</td>
+    <td>https://www.esmt.com.tw/en</td>
+  </tr>
+  <tr>
     <td class="XML-Token">e-peas:167</td>
 	<td>e-peas semicondcutors</td>
 	<td>https://e-peas.com</td>
