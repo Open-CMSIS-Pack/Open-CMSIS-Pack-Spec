@@ -83,19 +83,19 @@ The following diagrams show how the Debug Access Sequences are executed by a dev
 
 <b>Connect Debugger to Device</b> is executed when debugging or flash programming with the target starts.
 
-\image html DebugConnect.png 
+\image html DebugConnect.svg
 
 <b>Reset Device</b> is executed to reset the target.
 
-\image html Reset.png 
+\image html Reset.svg
 
 <b>Verify Code</b> is executed to verify the content after flash programming.
 
-\image html CodeVerify.png 
+\image html CodeVerify.svg
 
 <b>Disconnect Debugger</b> is executed when debugging or flash programming with the target stops.
 
-\image html DebugDisconnect.png 
+\image html DebugDisconnect.svg
 
 
 \section default_sequences Predefined debug access sequences

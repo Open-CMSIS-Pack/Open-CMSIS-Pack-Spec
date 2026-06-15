@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 870" role="img" aria-labelledby="title desc">
+  <title id="title">Flash Verify sequence</title>
+  <desc id="desc">Flow for verifying programmed flash using the FLM Verify function when available or a checksum comparison otherwise, then restoring debug state.</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #000000; }
+      .box, .band { fill: #fff; stroke: #1f1f1f; stroke-width: 1.2; }
+      .default { fill: #c9d9ec; }
+      .empty { fill: #e8bcb8; }
+      .label { text-anchor: middle; dominant-baseline: middle; }
+      .seq { font-style: italic; fill: #000; }
+      .small { font-size: 14px; }
+      .thin { stroke: #1f1f1f; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <g>
+    <rect class="box" x="20" y="20" width="470" height="42"/>
+    <text class="label" x="255" y="41">For all AXF Content</text>
+
+    <rect class="band" x="20" y="62" width="470" height="60"/>
+    <line class="thin" x1="20" y1="62" x2="200" y2="122"/>
+    <line class="thin" x1="490" y1="62" x2="200" y2="122"/>
+    <text class="label" x="255" y="86">Flash Algorithm in FLM</text>
+    <text x="28" y="108">False</text>
+    <text x="442" y="108">True</text>
+
+    <rect class="box" x="20" y="122" width="180" height="398"/>
+    <rect class="box" x="200" y="122" width="290" height="46"/>
+    <text class="label" x="345" y="145">Load Algorithm in RAM</text>
+    <rect class="box" x="200" y="168" width="290" height="46"/>
+    <text class="label" x="345" y="191">Execute "Init"</text>
+
+    <rect class="band" x="200" y="214" width="290" height="92"/>
+    <line class="thin" x1="200" y1="214" x2="345" y2="306"/>
+    <line class="thin" x1="490" y1="214" x2="345" y2="306"/>
+    <text class="label" x="345" y="245">
+      <tspan x="345" dy="0">"Verify"</tspan>
+      <tspan x="345" dy="19">Algorithm</tspan>
+      <tspan x="345" dy="19">available</tspan>
+    </text>
+    <text x="210" y="293">True</text>
+    <text x="435" y="293">False</text>
+
+    <rect class="box" x="200" y="306" width="145" height="94"/>
+    <text class="label" x="272.5" y="333">
+      <tspan x="272.5" dy="0">Load</tspan>
+      <tspan x="272.5" dy="19">Application</tspan>
+      <tspan x="272.5" dy="19">in RAM</tspan>
+    </text>
+    <rect class="box" x="345" y="306" width="145" height="94"/>
+    <text class="label" x="417.5" y="334">
+      <tspan x="417.5" dy="0">Execute</tspan>
+      <tspan x="417.5" dy="19">"CalculateCRC"</tspan>
+    </text>
+
+    <rect class="box" x="200" y="400" width="145" height="120"/>
+    <text class="label" x="272.5" y="453">
+      <tspan x="272.5" dy="0">Execute</tspan>
+      <tspan x="272.5" dy="19">"Verify"</tspan>
+    </text>
+    <rect class="box" x="345" y="400" width="145" height="120"/>
+    <text class="label" x="417.5" y="432">
+      <tspan x="417.5" dy="0">Read and</tspan>
+      <tspan x="417.5" dy="19">compare</tspan>
+      <tspan x="417.5" dy="19">results from</tspan>
+      <tspan x="417.5" dy="19">RAM</tspan>
+    </text>
+
+    <rect class="box" x="20" y="520" width="470" height="42"/>
+    <text class="label" x="255" y="541">Execute "Uninit"</text>
+    <rect class="box" x="20" y="562" width="470" height="60"/>
+    <text class="label" x="255" y="582">
+      <tspan x="255" dy="0">Replace BKPT instruction @ Flash Algorithm</tspan>
+      <tspan x="255" dy="19">"Breakpoint" with Deadloops ("B.")</tspan>
+    </text>
+    <rect class="box empty" x="20" y="622" width="470" height="46"/>
+    <text class="label seq" x="255" y="645">RecoverySupportStop</text>
+    <rect class="box empty" x="20" y="668" width="470" height="46"/>
+    <text class="label seq" x="255" y="691">DebugCoreStop</text>
+
+    <rect class="band" x="20" y="714" width="470" height="42"/>
+    <line class="thin" x1="20" y1="714" x2="240" y2="756"/>
+    <line class="thin" x1="490" y1="714" x2="240" y2="756"/>
+    <text class="label" x="255" y="731">Run Application</text>
+    <text x="28" y="747">False</text>
+    <text x="442" y="747">True</text>
+
+    <rect class="box" x="20" y="756" width="235" height="46"/>
+    <rect class="box" x="255" y="756" width="235" height="46"/>
+    <text class="label seq" x="372.5" y="779">ResetHardware</text>
+
+    <rect class="box default" x="20" y="802" width="470" height="46"/>
+    <text class="label seq" x="255" y="825">DebugPortStop</text>
+  </g>
+
+  <g transform="translate(0 -6)">
+    <rect class="box default" x="535" y="26" width="165" height="48"/>
+    <text class="label seq small" x="617.5" y="41">
+      <tspan x="617.5" dy="0">Sequence Name with</tspan>
+      <tspan x="617.5" dy="17">defined default</tspan>
+    </text>
+    <rect class="box empty" x="535" y="88" width="165" height="48"/>
+    <text class="label seq small" x="617.5" y="103">
+      <tspan x="617.5" dy="0">Sequence Name with</tspan>
+      <tspan x="617.5" dy="17">empty default</tspan>
+    </text>
+  </g>
+</svg>
