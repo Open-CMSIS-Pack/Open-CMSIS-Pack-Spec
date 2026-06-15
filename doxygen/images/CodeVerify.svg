@@ -3,7 +3,7 @@
   <desc id="desc">The Verify Code flow compares the application image with code memory contents after optional DebugCodeMemRemap handling.</desc>
   <defs>
     <style>
-      text { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #003f7f; }
+      text { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #000000; }
       .box { fill: #fff; stroke: #1f1f1f; stroke-width: 1.2; }
       .missing { fill: #e8bcb8; }
       .label { text-anchor: middle; dominant-baseline: middle; }
