@@ -1267,8 +1267,10 @@ Debug access functions</h2>
 <li>__apid: The ID of the access port element to use for this memory access.</li>
 </ul>
 <p class="intertd"><b>Return Value:</b><br  />
- Always returns <span class="XML-Token">0</span>.</p>
-<dl class="section note"><dt>Note</dt><dd>Previous versions of the specification falsely named this function <span class="XML-Token">FlashBufferWrite</span>. All known implementations of this specification correctly use <span class="XML-Token">FlashWriteBuffer</span> already.   </dd></dl>
+ Number of bytes written from flash buffer to target.</p>
+<dl class="section note"><dt>Note</dt><dd>Previous versions of the specification falsely named this function <span class="XML-Token">FlashBufferWrite</span>. All known implementations of this specification correctly use <span class="XML-Token">FlashWriteBuffer</span> already.</dd>
+<dd>
+Previous versions specified to always return <span class="XML-Token">0</span> in case of success. This was changed for consistency with other debug access functions handling buffers.</dd></dl>
 </td></tr>
 <tr>
 <td style="white-space: nowrap"><pre>DAP_Delay(delay)</pre> </td><td><p class="starttd">Debug probe command to wait for a specific delay.<br  />
@@ -1558,8 +1560,9 @@ Debug access functions</h2>
 <li>__apid: The ID of the access port element to use for this memory access.</li>
 </ul>
 <p class="intertd"><b>Return Value:</b><br  />
- Always <span class="XML-Token">0</span>. Function causes fatal error if not successful.</p>
-<p class="endtd"><b>Code Example:</b><br  />
+ Number of bytes written from buffer to target. Function causes fatal error if not successful.</p>
+<dl class="section note"><dt>Note</dt><dd>Previous versions specified to always return <span class="XML-Token">0</span> in case of success. This was changed for consistency with other debug access functions handling buffers.</dd></dl>
+<p><b>Code Example:</b><br  />
  Refer to <a class="el" href="debug_description.html#exttoolexample">Calculating a hash sum</a>   </p>
 </td></tr>
 <tr>
@@ -1580,7 +1583,7 @@ Debug access functions</h2>
  Reserved</li>
 </ul>
 </li>
-<li>timeout: Timeout in microseconds. If <span class="XML-Token">0</span>, then synchronously wait for the operation to finish.</li>
+<li>timeout: Timeout of file operation in microseconds. If <span class="XML-Token">0</span>, then synchronously wait for the operation to finish.</li>
 </ul>
 <p class="intertd"><b>Return Value:</b><br  />
  Number of bytes streamed into buffer. Can be less than <b>length</b> if the data source signals its end.</p>
@@ -1608,7 +1611,11 @@ Debug access functions</h2>
 </li>
 </ul>
 </li>
-<li>timeout: Timeout in microseconds. If <span class="XML-Token">0</span>, then synchronously wait for the operation to finish.</li>
+<li>timeout: Timeout in microseconds. If <span class="XML-Token">0</span>, then synchronously wait for the operation to finish.<br  />
+<ul>
+<li>This does not include file-system delays, e.g. between creation and visibility in a file browser. Use <b>FilePathExists</b> debug access function to wait for a new file to become accessible.</li>
+</ul>
+</li>
 </ul>
 <p class="intertd"><b>Return Value:</b><br  />
  Number of bytes streamed to data sink.</p>
@@ -1637,8 +1644,8 @@ Debug access functions</h2>
 </p><ul>
 <li>path: Constant string with the path to check. Refer to <a class="el" href="debug_description.html#charactersequence">character sequences</a> for path/file name place holders.</li>
 <li>timeout: Timeout in microseconds:<br  />
- If <span class="XML-Token">0</span>, then the path is checked and the function immediately returns.<br  />
- If other than <span class="XML-Token">0</span>, check the path until it is valid or until the function times out. If <b>timeout</b> is hit while executing a check and that check ends successfully, then the function returns success.<br  />
+ If <span class="XML-Token">0</span>, then the path is checked once before the function returns.<br  />
+ If other than <span class="XML-Token">0</span>, the function checks the path until it is valid or until the function times out. If <b>timeout</b> is hit while executing a check, then the function completes the check and returns its result.<br  />
 </li>
 </ul>
 <p class="intertd"><b>Return Value:</b><br  />
@@ -1751,9 +1758,9 @@ Debug access variables</h2>
 <td style="white-space: nowrap"><pre>__FlashOp</pre> </td><td>Read-Only </td><td>Type of the currently executed Flash operation. A debugger sets this value to <span class="XML-Token">0</span> if the executed sequence is not part of a Flash operation.  </td><td>The following values apply:<br  />
 <ul>
 <li>0: No flash operation</li>
-<li>1: Erase full chip</li>
-<li>2: Erase flash sector</li>
-<li>3: Program flash</li>
+<li>1: Erase</li>
+<li>2: Program</li>
+<li>3: Verify</li>
 <li>Other - reserved.   </li>
 </ul>
 </td></tr>
