@@ -128,15 +128,15 @@ The following diagrams show how the functions of the <b>Flash Programming Algori
 
 The <b>Flash Erase</b> sequence is executed to erase the Flash content.
 
-\image html FlashErase.svg "Flash Erase"
+\image html FlashErase.png "Flash Erase"
 
 The <b>Flash Program</b> sequence is executed to program the Flash memory.
 
-\image html FlashProgram.svg "Flash Program"
+\image html FlashProgram.png "Flash Program"
 
 The <b>Flash Verify</b> sequence is executed to verify the content after flash programming.
 
-\image html FlashVerify.svg "Flash Verify"
+\image html FlashVerify.png "Flash Verify"
 
 <p>&nbsp;</p>
 <hr>

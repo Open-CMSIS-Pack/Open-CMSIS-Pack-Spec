@@ -303,7 +303,7 @@ Sometimes it is needed to connect to a running target ("hot debug") without any 
 
 The figure below shows an example reset flow in a debugger (copied from \ref usage_of_sequences):
 
-\image html Reset.svg
+\image html Reset.png
 
 <b>CPU halt and ResetCatchSet</b>
 
