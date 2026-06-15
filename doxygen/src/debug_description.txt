@@ -45,8 +45,8 @@ A complete debug description for a device consists of the following elements:
  - \refelem{debug} with the child element \refelem{dbg_datapatch} contains settings for the debug connection and for
    fixing silicon issues in software.
  - \refelem{debugconfig} provides the default debugger configuration for a target connection.
- - \refelem{debugvars} specifies global debug access variables. They can be used in addition to predefined variables in
-   order to query settings from a debug access sequences.
+ - \refelem{debugvars} specifies global debug access variables. They can be used in addition to predefined variables to pass
+ user settings to debug access sequences.
  - \refelem{debugport} with the child elements \refelem{dp_jtag}, \refelem{dp_swd}, and \refelem{dp_cjtag} describes the
    debug port in detail.
  - \refelem{accessportV1} describes an access port (APv1) in detail.
@@ -1413,7 +1413,7 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
-    <td style="white-space: nowrap"><pre>FlashBufferWrite(addr, offs, len, mode)</pre></td>
+    <td style="white-space: nowrap"><pre>FlashWriteBuffer(addr, offs, len, mode)</pre></td>
     <td>
       Write flash buffer contents into target memory.
       A debugger fills the flash buffer before it executes a flash programming sequence.<br>
@@ -1444,7 +1444,15 @@ debug access variables which are evaluated for the function call.
       - __apid: The ID of the access port element to use for this memory access.
 
       <b>Return Value:</b><br>
-      Always returns \token{0}.
+      Number of bytes written from flash buffer to target.
+
+      \note Previous versions of the specification falsely named this function \token{FlashBufferWrite}. All known
+            implementations of this specification correctly use \token{FlashWriteBuffer} already.
+
+      \note
+      Previous versions specified to always return \token{0} in case of success. This
+      was changed for consistency with other debug access functions handling buffers.
+
     </td>
   </tr>
   <tr>
@@ -1789,7 +1797,11 @@ debug access variables which are evaluated for the function call.
         - __apid: The ID of the access port element to use for this memory access.
 
         <b>Return Value:</b><br>
-        Always \token{0}. Function causes fatal error if not successful.
+        Number of bytes written from buffer to target. Function causes fatal error if not successful.
+
+        \note
+        Previous versions specified to always return \token{0} in case of success. This
+        was changed for consistency with other debug access functions handling buffers.
 
         <b>Code Example:</b><br>
         Refer to \ref exttoolexample "Calculating a hash sum"
@@ -1814,7 +1826,7 @@ debug access variables which are evaluated for the function call.
 			Others - Reserved<br>
           - Bit 4..7: Communication options for data source:<br>
 		    Reserved
-        - timeout: Timeout in microseconds. If \token{0}, then synchronously wait for the operation to finish.
+        - timeout: Timeout of file operation in microseconds. If \token{0}, then synchronously wait for the operation to finish.
         
         <b>Return Value:</b><br>
         Number of bytes streamed into buffer. Can be less than \b length if the data source signals its end.
@@ -1842,7 +1854,9 @@ debug access variables which are evaluated for the function call.
 		    \token{0} - Overwrite<br>
 			\token{1} - Append<br>
 			Others - Reserved<br>
-        - timeout: Timeout in microseconds. If \token{0}, then synchronously wait for the operation to finish.
+        - timeout: Timeout in microseconds. If \token{0}, then synchronously wait for the operation to finish.<br>
+          - This does not include file-system delays, e.g. between creation and visibility in a file browser. Use \b FilePathExists
+            debug access function to wait for a new file to become accessible.
         
         <b>Return Value:</b><br>
         Number of bytes streamed to data sink.
@@ -1883,9 +1897,9 @@ debug access variables which are evaluated for the function call.
         - path: Constant string with the path to check. Refer to \ref charactersequence "character sequences" for path/file
 		  name place holders.
         - timeout: Timeout in microseconds:<br>
-          If \token{0}, then the path is checked and the function immediately returns.<br>
-		  If other than \token{0}, check the path until it is valid or until the function times out. If \b timeout is hit
-		  while executing a check and that check ends successfully, then the function returns success.<br>
+          If \token{0}, then the path is checked once before the function returns.<br>
+		  If other than \token{0}, the function checks the path until it is valid or until the function times out. If \b timeout is hit
+		  while executing a check, then the function completes the check and returns its result.<br>
         
         <b>Return Value:</b><br>
         \token{0} - Path exists<br>
@@ -1917,6 +1931,12 @@ and states. They are <b>read-only</b> within a sequence except from a limited se
 \ref PredefinedDebugVars "pre-defined debug access variables". Use the <b>debugvars</b> element to specify additional
 user-defined debug access variables.
 
+User-defined debug access variable names must not be reused for local sequence variables. To avoid name clashes,
+pre-defined debug access variables and local variables used by debugger-provided default sequence implementations
+should use the \token{__} prefix. Local variables in DFP-provided sequences should not use the \token{__} prefix,
+including when a DFP copies and adapts a default sequence shown in this specification. If a debugger
+implementation copies a default sequence from this specification, it should add the \token{__} prefix to
+local variable names.
 
 \anchor PredefinedDebugVars <b>Table: Pre-defined Debug Access Variables</b><br>
 A debugger needs to support a set of pre-defined debug access variables. These are described in the following table.
@@ -2074,9 +2094,9 @@ A debugger needs to support a set of pre-defined debug access variables. These a
     <td>
       The following values apply:<br>
       - 0: No flash operation
-      - 1: Erase full chip
-      - 2: Erase flash sector
-      - 3: Program flash
+      - 1: Erase
+      - 2: Program
+      - 3: Verify
       - Other - reserved.
     </td>
   </tr>
