@@ -1622,7 +1622,7 @@ debug access variables which are evaluated for the function call.
       - type: Message type. Can be one of:
         - \token{0} : <b>Info</b>, outputs an informative message.
         - \token{1} : <b>Warning</b>, outputs a warning.
-        - \token{2} : <b>Error</b>, outputs an error. Sequence execution aborts.
+        - \token{2} : <b>Error</b>, outputs an error and aborts the execution of the current sequence and its callers.
       - format: A constant string with the message format. It must not be an expression and it must be
                  enclosed by quotes. The string has the following format:<br>
                  \code
@@ -1923,6 +1923,7 @@ debug access variables which are evaluated for the function call.
 - If the debug description describes \ref element_accessportV1 "access port elements" then <b>__ap</b> must not be used. Use <b>__apid</b> instead.
 - A call to <b>WriteDP()</b> to change the DP SELECT register does not implicitly change the value of the debug access variables
   <b>__ap</b> or <b>__apid</b>. Those need to be explicitly updated to select a different AP for subsequent AP register and memory accesses.
+- If a debug access function fails with an error, and if this error is not ignored by configuration of the <b>__errorcontrol</b> debug access variable, then the current sequence and its callers abort.
   
 \subsection DebugVars Debug access variables
 
