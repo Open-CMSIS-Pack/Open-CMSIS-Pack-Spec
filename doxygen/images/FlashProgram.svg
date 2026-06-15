@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 452" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="574" height="360.34" viewBox="0 0 720 452" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
   <title id="title">Flash Program sequence</title>
   <desc id="desc">Flow for programming flash content by loading an FLM algorithm, initializing it, programming a page, and uninitializing it for each AXF content block.</desc>
   <defs>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 630" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="810" height="579.89" viewBox="0 0 880 630" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
   <title id="title">Reset Device debug sequence</title>
   <desc id="desc">Flow for reset handling, including optional halt after reset, reset type selection, optional ResetCatchClear handling, and optional trace start.</desc>
   <defs>
