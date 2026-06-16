@@ -81,6 +81,12 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>next</td>
+    <td>
+      - clarified sequence abortion in case of errors
+    </td>
+  </tr>
+  <tr>
     <td>1.7.58</td>
     <td>
       - adds rules to reserve `__` prefix for debug access variable names provided by spec
