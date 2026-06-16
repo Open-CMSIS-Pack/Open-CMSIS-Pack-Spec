@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="663" height="130.86" viewBox="0 0 760 150" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">Verify Code debug sequence</title>
+  <desc id="desc">The Verify Code flow compares the application image with code memory contents after optional DebugCodeMemRemap handling.</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #000000; }
+      .box { fill: #fff; stroke: #1f1f1f; stroke-width: 1.2; }
+      .missing { fill: #e8bcb8; }
+      .label { text-anchor: middle; dominant-baseline: middle; }
+      .seq { font-style: italic; fill: #000; }
+      .small { font-size: 14px; }
+    </style>
+  </defs>
+
+  <g>
+    <rect class="box missing" x="90" y="20" width="430" height="60"/>
+    <text class="label seq" x="305" y="50">DebugCodeMemRemap</text>
+    <rect class="box" x="90" y="80" width="430" height="50"/>
+    <text class="label" x="305" y="99">
+      <tspan x="305" dy="0">Compare Application Image with Code Memory</tspan>
+      <tspan x="305" dy="19">Contents</tspan>
+    </text>
+  </g>
+
+  <g>
+    <rect class="box missing" x="565" y="20" width="165" height="70"/>
+    <text class="label seq small" x="647.5" y="39">
+      <tspan x="647.5" dy="0">Predefined debug</tspan>
+      <tspan x="647.5" dy="18">sequence without</tspan>
+      <tspan x="647.5" dy="18">default implementation</tspan>
+    </text>
+  </g>
+</svg>

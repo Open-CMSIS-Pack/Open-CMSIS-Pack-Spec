@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="664" height="1135.79" viewBox="0 0 760 1300" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">Connect Debugger to Device debug sequence</title>
+  <desc id="desc">Flow for debugger connection, optional pre-reset and under-reset handling, debug port setup, processor core setup, timeout handling, and trace start.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#1f1f1f"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #000000; }
+      .box, .band { fill: #fff; stroke: #1f1f1f; stroke-width: 1.2; }
+      .default { fill: #c9d9ec; }
+      .missing { fill: #e8bcb8; }
+      .label { text-anchor: middle; dominant-baseline: middle; }
+      .seq { font-style: italic; fill: #000; }
+      .small { font-size: 14px; }
+      .edge { fill: none; stroke: #1f1f1f; stroke-width: 2.2; marker-end: url(#arrow); }
+      .thin { stroke: #1f1f1f; stroke-width: 1.2; }
+      .note { font-size: 13px; font-style: italic; fill: #000000; }
+    </style>
+  </defs>
+
+  <g>
+    <path class="edge" d="M90 1272 H18 V62 H90"/>
+    <text class="label" x="28" y="640" transform="rotate(-90 28 640)">Repeat for each Processor Core</text>
+  </g>
+
+  <g>
+    <rect class="box" x="90" y="20" width="450" height="42"/>
+    <text class="label" x="315" y="41">Initialize and configure Debugger</text>
+
+    <rect class="band" x="90" y="62" width="450" height="60"/>
+    <line class="thin" x1="90" y1="62" x2="315" y2="122"/>
+    <line class="thin" x1="540" y1="62" x2="315" y2="122"/>
+    <text class="label" x="315" y="85">Connect with pre-Reset?</text>
+    <text x="96" y="108">False</text>
+    <text x="492" y="108">True</text>
+
+    <rect class="box" x="90" y="122" width="225" height="56"/>
+    <rect class="box default" x="315" y="122" width="225" height="56"/>
+    <text class="label seq" x="427.5" y="150">ResetHardware</text>
+
+    <rect class="band" x="90" y="178" width="450" height="60"/>
+    <line class="thin" x1="90" y1="178" x2="315" y2="238"/>
+    <line class="thin" x1="540" y1="178" x2="315" y2="238"/>
+    <text class="label" x="315" y="201">Connect under Reset?</text>
+    <text x="96" y="224">False</text>
+    <text x="492" y="224">True</text>
+
+    <rect class="box" x="90" y="238" width="225" height="56"/>
+    <rect class="box default" x="315" y="238" width="225" height="56"/>
+    <text class="label seq" x="427.5" y="266">ResetHardwareAssert</text>
+
+    <rect class="box default" x="90" y="294" width="450" height="50"/>
+    <text class="label seq" x="315" y="319">DebugPortSetup</text>
+
+    <rect class="band" x="90" y="344" width="450" height="60"/>
+    <line class="thin" x1="90" y1="344" x2="315" y2="404"/>
+    <line class="thin" x1="540" y1="344" x2="315" y2="404"/>
+    <text class="label" x="315" y="367">Debug Protocol is</text>
+    <text x="96" y="390">SWD</text>
+    <text x="492" y="390">JTAG</text>
+
+    <rect class="box" x="90" y="404" width="225" height="64"/>
+    <text class="label" x="202.5" y="436">Read SW-DP IDCODE</text>
+    <rect class="box missing" x="315" y="404" width="225" height="64"/>
+    <text class="label" x="427.5" y="425">
+      <tspan x="427.5" dy="0">Scan JTAG Chain</tspan>
+      <tspan class="seq" x="427.5" dy="19">(DebugPortSetup)*</tspan>
+    </text>
+
+    <rect class="box default" x="90" y="468" width="450" height="48"/>
+    <text class="label seq" x="315" y="492">DebugPortStart</text>
+
+    <rect class="box" x="90" y="516" width="450" height="48"/>
+    <text class="label" x="315" y="540">Read Dap Features (DP, AP)</text>
+
+    <rect class="box missing" x="90" y="564" width="450" height="48"/>
+    <text class="label seq" x="315" y="588">DebugDeviceUnlock</text>
+
+    <rect class="box" x="90" y="612" width="450" height="64"/>
+    <text class="label" x="315" y="635">
+      <tspan x="315" dy="0">Read Target Features</tspan>
+      <tspan x="315" dy="19">(ROM table, CPUID, Processor Features)</tspan>
+    </text>
+
+    <rect class="box default" x="90" y="676" width="450" height="48"/>
+    <text class="label seq" x="315" y="700">DebugCoreStart</text>
+
+    <rect class="box missing" x="90" y="724" width="450" height="48"/>
+    <text class="label seq" x="315" y="748">RecoverySupportStart</text>
+
+    <rect class="band" x="90" y="772" width="450" height="60"/>
+    <line class="thin" x1="90" y1="772" x2="315" y2="832"/>
+    <line class="thin" x1="540" y1="772" x2="315" y2="832"/>
+    <text class="label" x="315" y="795">Connect under Reset?</text>
+    <text x="96" y="818">False</text>
+    <text x="492" y="818">True</text>
+
+    <rect class="box" x="90" y="832" width="225" height="100"/>
+    <text class="label" x="202.5" y="882">Stop Processor</text>
+    <rect class="box default" x="315" y="832" width="225" height="50"/>
+    <text class="label seq" x="427.5" y="857">ResetCatchSet</text>
+    <rect class="box default" x="315" y="882" width="225" height="50"/>
+    <text class="label seq" x="427.5" y="907">ResetHardwareDeassert</text>
+
+    <rect class="box" x="90" y="932" width="450" height="48"/>
+    <text class="label" x="315" y="956">Wait for Processor to Stop (with timeout)</text>
+
+    <rect class="band" x="90" y="980" width="450" height="72"/>
+    <line class="thin" x1="90" y1="980" x2="220" y2="1052"/>
+    <line class="thin" x1="540" y1="980" x2="220" y2="1052"/>
+    <text class="label" x="235" y="1004">Timeout triggered?</text>
+    <text x="96" y="1038">True</text>
+    <text x="492" y="1038">False</text>
+
+    <rect class="box" x="90" y="1052" width="170" height="220"/>
+    <text class="label" x="175" y="1138">
+      <tspan x="175" dy="0">Abort</tspan>
+      <tspan x="175" dy="20">Connection</tspan>
+    </text>
+
+    <rect class="box" x="260" y="1052" width="280" height="70"/>
+    <text class="label" x="400" y="1074">
+      <tspan x="400" dy="0">Initialize Debug Components</tspan>
+      <tspan x="400" dy="19">(debugger specific)</tspan>
+    </text>
+
+    <rect class="band" x="260" y="1122" width="280" height="60"/>
+    <line class="thin" x1="260" y1="1122" x2="400" y2="1182"/>
+    <line class="thin" x1="540" y1="1122" x2="400" y2="1182"/>
+    <text class="label" x="400" y="1145">Trace enabled?</text>
+    <text x="266" y="1168">False</text>
+    <text x="492" y="1168">True</text>
+
+    <rect class="box" x="260" y="1182" width="140" height="90"/>
+    <rect class="box" x="400" y="1182" width="140" height="45"/>
+    <text class="label" x="470" y="1196">
+      <tspan x="470" dy="0">Trace setup as</tspan>
+      <tspan x="470" dy="17">selected in GUI</tspan>
+    </text>
+    <rect class="box missing" x="400" y="1227" width="140" height="45"/>
+    <text class="label seq" x="470" y="1249">TraceStart</text>
+  </g>
+
+  <g>
+    <rect class="box default" x="575" y="20" width="165" height="70"/>
+    <text class="label seq small" x="657.5" y="39">
+      <tspan x="657.5" dy="0">Predefined debug</tspan>
+      <tspan x="657.5" dy="18">sequence with</tspan>
+      <tspan x="657.5" dy="18">default implementation</tspan>
+    </text>
+    <rect class="box missing" x="575" y="105" width="165" height="70"/>
+    <text class="label seq small" x="657.5" y="124">
+      <tspan x="657.5" dy="0">Predefined debug</tspan>
+      <tspan x="657.5" dy="18">sequence without</tspan>
+      <tspan x="657.5" dy="18">default implementation</tspan>
+    </text>
+  </g>
+
+  <text class="note" x="92" y="1288">* DebugPortSetup is called after each JTAG reset during a chain scan.</text>
+</svg>
