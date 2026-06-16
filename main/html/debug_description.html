@@ -1407,7 +1407,7 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 <li>type: Message type. Can be one of:<ul>
 <li><span class="XML-Token">0</span> : <b>Info</b>, outputs an informative message.</li>
 <li><span class="XML-Token">1</span> : <b>Warning</b>, outputs a warning.</li>
-<li><span class="XML-Token">2</span> : <b>Error</b>, outputs an error. Sequence execution aborts.</li>
+<li><span class="XML-Token">2</span> : <b>Error</b>, outputs an error and aborts the execution of the current sequence and its callers.</li>
 </ul>
 </li>
 <li>format: A constant string with the message format. It must not be an expression and it must be enclosed by quotes. The string has the following format:<br  />
@@ -1664,6 +1664,7 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 <li>If the debug description describes <a class="el" href="pdsc_family_pg.html#element_accessportV1">access port elements</a> then use of <b>__dp</b> is limited to the <b>ReadDP()</b>, <b>WriteDP()</b>, and <b>DAP_WriteABORT()</b> debug access functions. All other debug access functions determine the used debug port from the <a class="el" href="pdsc_family_pg.html#element_accessportV1">access port element</a> referenced by <b>__apid</b>.</li>
 <li>If the debug description describes <a class="el" href="pdsc_family_pg.html#element_accessportV1">access port elements</a> then <b>__ap</b> must not be used. Use <b>__apid</b> instead.</li>
 <li>A call to <b>WriteDP()</b> to change the DP SELECT register does not implicitly change the value of the debug access variables <b>__ap</b> or <b>__apid</b>. Those need to be explicitly updated to select a different AP for subsequent AP register and memory accesses.</li>
+<li>If a debug access function fails with an error, and if this error is not ignored by configuration of the <b>__errorcontrol</b> debug access variable, then the current sequence and its callers abort.</li>
 </ul>
 </dd></dl>
 <h2><a class="anchor" id="DebugVars"></a>
