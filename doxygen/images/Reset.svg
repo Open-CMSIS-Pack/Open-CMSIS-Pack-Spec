@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="810" height="579.89" viewBox="0 0 880 630" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">Reset Device debug sequence</title>
+  <desc id="desc">Flow for reset handling, including optional halt after reset, reset type selection, optional ResetCatchClear handling, and optional trace start.</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #000000; }
+      .box, .band { fill: #fff; stroke: #1f1f1f; stroke-width: 1.2; }
+      .default { fill: #c9d9ec; }
+      .missing { fill: #e8bcb8; }
+      .label { text-anchor: middle; dominant-baseline: middle; }
+      .seq { font-style: italic; fill: #000; }
+      .small { font-size: 14px; }
+      .thin { stroke: #1f1f1f; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <g>
+    <rect class="band" x="80" y="20" width="570" height="70"/>
+    <line class="thin" x1="80" y1="20" x2="365" y2="90"/>
+    <line class="thin" x1="650" y1="20" x2="365" y2="90"/>
+    <text class="label" x="365" y="46">Halt CPU after Reset?</text>
+    <text x="88" y="77">False</text>
+    <text x="610" y="77">True</text>
+
+    <rect class="box" x="80" y="90" width="285" height="50"/>
+    <rect class="box default" x="365" y="90" width="285" height="50"/>
+    <text class="label seq" x="507.5" y="115">ResetCatchSet</text>
+
+    <rect class="band" x="80" y="140" width="570" height="52"/>
+    <line class="thin" x1="80" y1="140" x2="220" y2="192"/>
+    <line class="thin" x1="650" y1="140" x2="520" y2="192"/>
+    <text class="label" x="365" y="166">Reset Type is</text>
+
+    <rect class="box" x="80" y="192" width="142.5" height="62"/>
+    <text class="label" x="151.25" y="216">
+      <tspan x="151.25" dy="0">Hardware</tspan>
+      <tspan x="151.25" dy="19">Reset</tspan>
+    </text>
+    <rect class="box" x="222.5" y="192" width="142.5" height="62"/>
+    <text class="label" x="293.75" y="216">
+      <tspan x="293.75" dy="0">System</tspan>
+      <tspan x="293.75" dy="19">Reset</tspan>
+    </text>
+    <rect class="box" x="365" y="192" width="142.5" height="62"/>
+    <text class="label" x="436.25" y="213">
+      <tspan x="436.25" dy="0">Processor</tspan>
+      <tspan x="436.25" dy="19">(Vector) Reset</tspan>
+    </text>
+    <rect class="box" x="507.5" y="192" width="142.5" height="62"/>
+    <text class="label" x="578.75" y="216">
+      <tspan x="578.75" dy="0">Custom</tspan>
+      <tspan x="578.75" dy="19">Reset</tspan>
+    </text>
+
+    <rect class="box default" x="80" y="254" width="142.5" height="58"/>
+    <text class="label seq" x="151.25" y="283">ResetHardware</text>
+    <rect class="box default" x="222.5" y="254" width="142.5" height="58"/>
+    <text class="label seq" x="293.75" y="283">ResetSystem</text>
+    <rect class="box default" x="365" y="254" width="142.5" height="58"/>
+    <text class="label seq" x="436.25" y="283">ResetProcessor</text>
+    <rect class="box" x="507.5" y="254" width="142.5" height="58"/>
+    <text class="label seq" x="578.75" y="283">CustomResetName</text>
+
+    <rect class="band" x="80" y="312" width="570" height="60"/>
+    <line class="thin" x1="80" y1="312" x2="365" y2="372"/>
+    <line class="thin" x1="650" y1="312" x2="365" y2="372"/>
+    <text class="label" x="365" y="335">Halt CPU after Reset?</text>
+    <text x="88" y="358">False</text>
+    <text x="610" y="358">True</text>
+
+    <rect class="box" x="80" y="372" width="285" height="52"/>
+    <rect class="box default" x="365" y="372" width="285" height="52"/>
+    <text class="label seq" x="507.5" y="398">ResetCatchClear</text>
+
+    <rect class="band" x="80" y="424" width="570" height="60"/>
+    <line class="thin" x1="80" y1="424" x2="365" y2="484"/>
+    <line class="thin" x1="650" y1="424" x2="365" y2="484"/>
+    <text class="label" x="365" y="447">Trace enabled?</text>
+    <text x="88" y="470">False</text>
+    <text x="610" y="470">True</text>
+
+    <rect class="box" x="80" y="484" width="285" height="104"/>
+    <rect class="box" x="365" y="484" width="285" height="54"/>
+    <text class="label" x="507.5" y="502">
+      <tspan x="507.5" dy="0">Configure trace as specified in the GUI</tspan>
+      <tspan x="507.5" dy="19">debugger</tspan>
+    </text>
+    <rect class="box missing" x="365" y="538" width="285" height="50"/>
+    <text class="label seq" x="507.5" y="563">TraceStart</text>
+  </g>
+
+  <g>
+    <rect class="box default" x="680" y="20" width="165" height="70"/>
+    <text class="label seq small" x="762.5" y="39">
+      <tspan x="762.5" dy="0">Predefined debug</tspan>
+      <tspan x="762.5" dy="18">sequence with</tspan>
+      <tspan x="762.5" dy="18">default implementation</tspan>
+    </text>
+    <rect class="box missing" x="680" y="105" width="165" height="70"/>
+    <text class="label seq small" x="762.5" y="124">
+      <tspan x="762.5" dy="0">Predefined debug</tspan>
+      <tspan x="762.5" dy="18">sequence without</tspan>
+      <tspan x="762.5" dy="18">default implementation</tspan>
+    </text>
+  </g>
+</svg>
