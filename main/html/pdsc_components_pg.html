@@ -538,11 +538,13 @@ Pre_Include_Local_Component_h</h1>
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>name </td><td>File path, file name, and file extension in the format <b>path/name.extension</b>. The file path is relative to the root directory of the Pack. </td><td>xs:string </td><td>required  </td></tr>
+<td>name </td><td>File path, file name, and file extension in the format <b>path/name.extension</b>. The file path is relative to the root directory of the Pack. <br  />
+ <span class="XML-Token">For <b>category="doc"</b> then the name can be either a file relative to the root or a URL to an online documentation resource.</span> </td><td>xs:string </td><td>required  </td></tr>
 <tr>
 <td>path </td><td>for <b>category="header"</b> the path attribute explicitly can be used to specify the include path to be added to the commandline of the build tools, specifying an incomplete path. This way the include file requires the specification of the subdirectory (e.g. #include "sub_dir/includeFile.h") which can act as acting as namespace for header files which otherwise have the same name. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>category </td><td>Defines the purpose of the file. Select the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileCategoryEnum">File Categories</a>. </td><td><a class="el" href="pdsc_components_pg.html#FileCategoryEnum">FileCategoryEnum</a> </td><td>required  </td></tr>
+<td>category </td><td>Defines the purpose of the file. Select the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileCategoryEnum">File Categories</a>. <br  />
+ <span class="XML-Token">Only one <b>category="doc"</b> should be included per component.</span> </td><td><a class="el" href="pdsc_components_pg.html#FileCategoryEnum">FileCategoryEnum</a> </td><td>required  </td></tr>
 <tr>
 <td>language </td><td>Defines the language of the file category <span class="XML-Token">source</span>, <span class="XML-Token">header</span>, <span class="XML-Token">include</span>. Select one of the predefined value as listed in the table <a class="el" href="pdsc_components_pg.html#FileLanguageAttributeType">File Language Attribute</a>. If not specified, a source file is identified based on known file extensions, header files and include paths will be applied for all tools. </td><td><a class="el" href="pdsc_components_pg.html#FileLanguageAttributeType">FileLanguageAttributeType</a> </td><td>optional  </td></tr>
 <tr>
