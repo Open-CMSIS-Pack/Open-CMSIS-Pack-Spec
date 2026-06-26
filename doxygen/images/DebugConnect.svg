@@ -107,50 +107,68 @@
     <text class="label" x="315" y="956">Wait for Processor to Stop (with timeout)</text>
 
     <rect class="band" x="90" y="980" width="450" height="72"/>
-    <line class="thin" x1="90" y1="980" x2="260" y2="1052"/>
-    <line class="thin" x1="540" y1="980" x2="260" y2="1052"/>
-    <text class="label" x="260" y="1004">Timeout triggered?</text>
+    <line class="thin" x1="90" y1="980" x2="315" y2="1052"/>
+    <line class="thin" x1="540" y1="980" x2="315" y2="1052"/>
+    <text class="label" x="315" y="1004">Timeout triggered?</text>
     <text x="96" y="1038">True</text>
     <text x="492" y="1038">False</text>
 
-    <rect class="box" x="90" y="1052" width="170" height="380"/>
-    <text class="label" x="175" y="1138">
-      <tspan x="175" dy="0">Abort</tspan>
-      <tspan x="175" dy="20">Connection</tspan>
+    <rect class="band" x="90" y="1052" width="225" height="68"/>
+    <line class="thin" x1="90" y1="1052" x2="202.5" y2="1120"/>
+    <line class="thin" x1="315" y1="1052" x2="202.5" y2="1120"/>
+    <text class="label" x="202.5" y="1073">
+      <tspan x="202.5" dy="0">Connect under</tspan>
+      <tspan x="202.5" dy="18">Reset?</tspan>
+    </text>
+    <text x="96" y="1106">False</text>
+    <text x="267" y="1106">True</text>
+
+    <rect class="box" x="90" y="1120" width="112.5" height="57"/>
+    <rect class="box default" x="202.5" y="1120" width="112.5" height="57"/>
+    <text class="label seq small" x="258.75" y="1148.5">ResetCatchClear</text>
+
+    <rect class="box" x="90" y="1177" width="225" height="255"/>
+    <text class="label" x="202.5" y="1294">
+      <tspan x="202.5" dy="0">Abort</tspan>
+      <tspan x="202.5" dy="20">Connection</tspan>
     </text>
 
-    <rect class="band" x="260" y="1052" width="280" height="68"/>
-    <line class="thin" x1="260" y1="1052" x2="400" y2="1120"/>
-    <line class="thin" x1="540" y1="1052" x2="400" y2="1120"/>
-    <text class="label" x="400" y="1078">Connect under Reset?</text>
-    <text x="266" y="1106">False</text>
+    <rect class="band" x="315" y="1052" width="225" height="68"/>
+    <line class="thin" x1="315" y1="1052" x2="427.5" y2="1120"/>
+    <line class="thin" x1="540" y1="1052" x2="427.5" y2="1120"/>
+    <text class="label" x="427.5" y="1073">
+      <tspan x="427.5" dy="0">Connect under</tspan>
+      <tspan x="427.5" dy="18">Reset?</tspan>
+    </text>
+    <text x="321" y="1106">False</text>
     <text x="492" y="1106">True</text>
 
-    <rect class="box" x="260" y="1120" width="140" height="57"/>
-    <rect class="box default" x="400" y="1120" width="140" height="57"/>
-    <text class="label seq" x="470" y="1148.5">ResetCatchClear</text>
+    <rect class="box" x="315" y="1120" width="112.5" height="57"/>
+    <rect class="box default" x="427.5" y="1120" width="112.5" height="57"/>
+    <text class="label seq small" x="483.75" y="1148.5">ResetCatchClear</text>
 
-    <rect class="box" x="260" y="1177" width="280" height="77"/>
-    <text class="label" x="400" y="1201">
-      <tspan x="400" dy="0">Initialize Debug Components</tspan>
-      <tspan x="400" dy="19">(debugger specific)</tspan>
+    <rect class="box" x="315" y="1177" width="225" height="77"/>
+    <text class="label" x="427.5" y="1193">
+      <tspan x="427.5" dy="0">Initialize Debug</tspan>
+      <tspan x="427.5" dy="19">Components</tspan>
+      <tspan x="427.5" dy="19">(debugger specific)</tspan>
     </text>
 
-    <rect class="band" x="260" y="1254" width="280" height="67"/>
-    <line class="thin" x1="260" y1="1254" x2="400" y2="1321"/>
-    <line class="thin" x1="540" y1="1254" x2="400" y2="1321"/>
-    <text class="label" x="400" y="1280">Trace enabled?</text>
-    <text x="266" y="1307">False</text>
+    <rect class="band" x="315" y="1254" width="225" height="67"/>
+    <line class="thin" x1="315" y1="1254" x2="427.5" y2="1321"/>
+    <line class="thin" x1="540" y1="1254" x2="427.5" y2="1321"/>
+    <text class="label" x="427.5" y="1280">Trace enabled?</text>
+    <text x="321" y="1307">False</text>
     <text x="492" y="1307">True</text>
 
-    <rect class="box" x="260" y="1321" width="140" height="111"/>
-    <rect class="box" x="400" y="1321" width="140" height="56"/>
-    <text class="label" x="470" y="1340">
-      <tspan x="470" dy="0">Trace setup as</tspan>
-      <tspan x="470" dy="17">selected in GUI</tspan>
+    <rect class="box" x="315" y="1321" width="112.5" height="111"/>
+    <rect class="box" x="427.5" y="1321" width="112.5" height="56"/>
+    <text class="label small" x="483.75" y="1340">
+      <tspan x="483.75" dy="0">Trace setup as</tspan>
+      <tspan x="483.75" dy="16">selected in GUI</tspan>
     </text>
-    <rect class="box missing" x="400" y="1377" width="140" height="55"/>
-    <text class="label seq" x="470" y="1404.5">TraceStart</text>
+    <rect class="box missing" x="427.5" y="1377" width="112.5" height="55"/>
+    <text class="label seq" x="483.75" y="1404.5">TraceStart</text>
   </g>
 
   <g>
