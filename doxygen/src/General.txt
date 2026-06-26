@@ -87,7 +87,7 @@ packs) and provides useful tips when creating a pack.
       - added missing ResetCatchClear to debug connect flow diagram
       - added pre-defined 'TraceCapture' and 'TraceFlush' debug access sequences
       - added pre-defined '__traceclockin' and '__traceclockout' debug access variables
-      - added 'fullTraceSetup' attribute to 'sequences' element
+      - added 'traceSetup' attribute to 'sequences' element
     </td>
   </tr>
   <tr>

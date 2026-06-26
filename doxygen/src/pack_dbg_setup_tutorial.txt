@@ -238,7 +238,7 @@ A common case that requires use of debug access sequences is trace configuration
 
 By default these sequences are empty and often need to be implemented in the .pdsc file to support device-specific behavior, for example to differentiate configuration for 1-pin SWO trace and 5-pin ETM trace (TPIU).
 
-If the parent \ref element_sequences "sequences" element specifies <b>fullTraceSetup=\token{true}</b>,
+If the parent \ref element_sequences "sequences" element specifies <b>traceSetup=\token{full}</b>,
 the trace-related debug access sequences are expected to perform the complete trace sink and trace data
 path setup and shutdown, rather than only device-specific additions to debugger-provided CoreSight handling.
 

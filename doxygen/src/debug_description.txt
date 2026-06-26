@@ -248,10 +248,10 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
     <td class="XML-Token">TraceStart</td>
 	\anchor TraceStart
     <td>Enable target trace capture.<br>
-    If \refelem{sequences} specifies <b>fullTraceSetup=\token{false}</b> or omits the attribute,
+    If \refelem{sequences} specifies <b>traceSetup=\token{legacy}</b> or omits the attribute,
     this sequence is executed before the debugger powers up and configures standard CoreSight trace
     components, e.g. after the initial target connection as well as after a system-wide reset.<br>
-	If \refelem{sequences} specifies <b>fullTraceSetup=\token{true}</b>, this sequence is expected
+	If \refelem{sequences} specifies <b>traceSetup=\token{full}</b>, this sequence is expected
 	to perform all trace sink and trace data path setup required by the device, and the debugger is
 	not expected to configure standard CoreSight trace components using a priori knowledge.<br>
 	See example at \ref userTraceStart.
@@ -261,10 +261,10 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
     <td class="XML-Token">TraceStop</td>
 	\anchor TraceStop
     <td>Disable target trace capture.<br>
-    If \refelem{sequences} specifies <b>fullTraceSetup=\token{false}</b> or omits the attribute,
+    If \refelem{sequences} specifies <b>traceSetup=\token{legacy}</b> or omits the attribute,
     this sequence is executed after the debugger disabled and powered down standard CoreSight trace
     components.<br>
-	If \refelem{sequences} specifies <b>fullTraceSetup=\token{true}</b>, this sequence is expected
+	If \refelem{sequences} specifies <b>traceSetup=\token{full}</b>, this sequence is expected
 	to perform all trace sink and trace data path shutdown steps required by the device.
     </td>
   </tr>
