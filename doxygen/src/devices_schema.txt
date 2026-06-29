@@ -3757,9 +3757,9 @@ Container for debug access sequences for this device.
     <td>
       If <b>full</b>, all trace sink and trace data path setup is done by debug access sequences.
       In this case, a debugger is not expected to configure trace sinks or the CoreSight trace
-      data path using a priori knowledge of standard CoreSight components.<br>
+      data path using a priori knowledge of CoreSight trace components.<br>
       <br>
-      If <b>legacy</b>, a debugger is expected to have knowledge of standard CoreSight trace
+      If <b>legacy</b>, a debugger is expected to have knowledge of CoreSight trace
       components. In this case, the <b>TraceStart</b> and <b>TraceStop</b> sequences are intended
       only for device-specific trace setup and teardown steps.<br>
       <br>
