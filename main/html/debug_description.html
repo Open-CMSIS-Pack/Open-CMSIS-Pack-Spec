@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.58</span>
+   &#160;<span id="projectnumber">Version 1.7.59</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -171,7 +171,7 @@ Predefined debug access sequences</h1>
 <p>Debug access sequences are defined using the <a class="el" href="pdsc_family_pg.html#element_sequence">sequence</a> element.</p>
 <p>The table below lists the available predefined debug access sequences. Their default implementation is done in a development tool and gets executed by default. If PDSC file contains a user implementation of a predefined debug sequence (using <a class="el" href="pdsc_family_pg.html#element_sequence">sequence</a> element) then it will override the default implementation and will be executed instead. Refer to <a class="el" href="debug_description.html#usage_of_sequences">Usage of debug access sequences</a> for more information about the execution of these sequences.</p>
 <p>For debug access sequences marked in <span class="XML-Token">ItalicRed</span>, no default implementation exists. When using them in debug descriptions corresponding user implementation shall be done as well.</p>
-<dl class="section note"><dt>Note</dt><dd>Predefined debug access sequences read the System Control Space (SCS) of the processor and assume that the SCS offset is implemented as defined in the Armv6-M/Armv7-M/Armv8-M architecture reference manual.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Predefined debug access sequences read the System Control Space (SCS) of the processor and assume that the SCS base address is implemented as defined in the Armv6-M/Armv7-M/Armv8-M architecture reference manual.</dd></dl>
 <table class="cmtable" summary="Enumeration: SequenceNameEnum">
 <tr>
 <th>name= </th><th>Description  </th></tr>
@@ -238,11 +238,21 @@ Predefined debug access sequences</h1>
 <td class="XML-Token">FlashProgramDone </td><td>Executed after all flash programming operations are finished.   </td></tr>
 <tr>
 <td class="XML-Token">TraceStart <a class="anchor" id="TraceStart"></a> </td><td>Enable target trace capture.<br  />
- Executed before the debugger powers up and configures standard CoreSight trace components, e.g. after the initial target connection as well as after a system-wide reset.<br  />
+ If <a class="el" href="pdsc_family_pg.html#element_sequences">sequences</a> specifies <b>traceSetup=<span class="XML-Token">legacy</span></b> or omits the attribute, this sequence is executed before the debugger configures CoreSight trace components, e.g. after the initial target connection as well as after a system-wide reset.<br  />
+ If <a class="el" href="pdsc_family_pg.html#element_sequences">sequences</a> specifies <b>traceSetup=<span class="XML-Token">full</span></b>, this sequence is expected to perform all trace sink and trace data path setup required by the device, and the debugger is not expected to configure CoreSight trace components using a priori knowledge.<br  />
  See example at <a class="el" href="debug_description.html#userTraceStart">User implementation of TraceStart sequence</a>.   </td></tr>
 <tr>
 <td class="XML-Token">TraceStop <a class="anchor" id="TraceStop"></a> </td><td>Disable target trace capture.<br  />
- Executed after the debugger disabled and powered down standard CoreSight trace components.   </td></tr>
+ If <a class="el" href="pdsc_family_pg.html#element_sequences">sequences</a> specifies <b>traceSetup=<span class="XML-Token">legacy</span></b> or omits the attribute, this sequence is executed after the debugger disabled and powered down CoreSight trace components.<br  />
+ If <a class="el" href="pdsc_family_pg.html#element_sequences">sequences</a> specifies <b>traceSetup=<span class="XML-Token">full</span></b>, this sequence is expected to perform all trace sink and trace data path shutdown steps required by the device.   </td></tr>
+<tr>
+<td class="XML-Token">TraceCapture <a class="anchor" id="TraceCapture"></a> </td><td>Prepare target trace for next capture run, e.g. by enabling the trace formatter or initializing embedded trace buffer data read/write pointers.<br  />
+ Typically executed before a debugger runs/steps the target processor. Or when manually starting a trace capture.<br  />
+   </td></tr>
+<tr>
+<td class="XML-Token">TraceFlush <a class="anchor" id="TraceFlush"></a> </td><td>Flush out remaining trace bytes. This ensures all pending data is streamed off-chip, or drained into an on-chip trace buffer before the debugger reads it.<br  />
+ Typically executed after the target processor pauses after a run/step. Or when manually stopping a trace capture.<br  />
+   </td></tr>
 <tr>
 <td class="XML-Token">RecoverySupportStart </td><td>Executed before step or run command to support recovery from a lost target connection, e.g. after a low power mode.   </td></tr>
 <tr>
@@ -1738,6 +1748,12 @@ Debug access variables</h2>
 <li>Bit 22..63: Reserved.   </li>
 </ul>
 </td></tr>
+<tr>
+<td style="white-space: nowrap"><a class="anchor" id="__traceclockin"></a> <pre>__traceclockin</pre> </td><td>Read-Only </td><td>The frequency of the clock that drives the trace output component.<br  />
+ Can for example be used in combination with <a class="el" href="debug_description.html#__traceclockout">__traceclockout</a> to calculate prescaler values for the output component.  </td><td>Clock frequency in Hz. A value of <span class="XML-Token">0</span> means that no frequency is provided by the debugger, e.g. because trace is disabled.   </td></tr>
+<tr>
+<td style="white-space: nowrap"><a class="anchor" id="__traceclockout"></a> <pre>__traceclockout</pre> </td><td>Read-Only </td><td>The frequency of the trace output signal.<br  />
+ Can for example be used in combination with <a class="el" href="debug_description.html#__traceclockin">__traceclockin</a> to calculate prescaler values for the output component.  </td><td>Clock frequency in Hz. A value of <span class="XML-Token">0</span> means that no frequency is provided by the debugger, e.g. because trace is disabled or because the user did not specify it. In the latter case <b>__traceclockout</b> must be assumed to equal <a class="el" href="debug_description.html#__traceclockin">__traceclockin</a> which effectively means a prescaler value of <span class="XML-Token">1</span>.   </td></tr>
 <tr>
 <td style="white-space: nowrap"><a class="anchor" id="__errorcontrol"></a> <pre>__errorcontrol</pre>  </td><td>Read/Write </td><td>Control variable for debug access error handling. All of its bit fields are intialized to <span class="XML-Token">0</span> when entering a pre-defined debug access sequence because of a debug event.  </td><td>The following bit map applies:<br  />
 <ul>

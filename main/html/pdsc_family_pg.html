@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.58</span>
+   &#160;<span id="projectnumber">Version 1.7.59</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -2035,7 +2035,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <p>Container for debug access sequences for this device.</p>
 <p><b>Example</b> </p><div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;LPC4300 Series&quot;</span> Dvendor=<span class="stringliteral">&quot;NXP:11&quot;</span>&gt;</div>
 <div class="line">  ...</div>
-<div class="line">  &lt;sequences&gt;</div>
+<div class="line">  &lt;sequences traceSetup=<span class="stringliteral">&quot;legacy&quot;</span>&gt;</div>
 <div class="line">    ...</div>
 <div class="line">    &lt;sequence name=<span class="stringliteral">&quot;DebugCoreStart&quot;</span> Pname=<span class="stringliteral">&quot;Cortex-M0&quot;</span>&gt;</div>
 <div class="line">      ...</div>
@@ -2064,6 +2064,14 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <td><a class="el" href="pdsc_family_pg.html#element_subFamily">subFamily</a> </td><td colspan="3"><a class="el" href="pdsc_family_pg.html#element_subFamily">/package/devices/family/subFamily</a>  </td></tr>
 <tr>
 <td><a class="el" href="pdsc_family_pg.html#element_device">device</a> </td><td colspan="3"><a class="el" href="pdsc_family_pg.html#element_device">/package/devices/family/../device</a>  </td></tr>
+<tr>
+<th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
+<tr>
+<td>traceSetup </td><td>If <b>full</b>, all trace sink and trace data path setup is done by debug access sequences. In this case, a debugger is not expected to configure trace sinks or the CoreSight trace data path using a priori knowledge of CoreSight trace components.<br  />
+ <br  />
+ If <b>legacy</b>, a debugger is expected to have knowledge of CoreSight trace components. In this case, the <b>TraceStart</b> and <b>TraceStop</b> sequences are intended only for device-specific trace setup and teardown steps.<br  />
+ <br  />
+ Default value is <span class="XML-Token">legacy</span>. However, the expectation is that future DFPs set it to <span class="XML-Token">full</span> and provide the full trace setup in sequences. The default value will change with the next major version update of this specification.  </td><td>xs:boolean </td><td>optional  </td></tr>
 <tr>
 <th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>

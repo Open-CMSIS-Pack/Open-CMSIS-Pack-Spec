@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.58</span>
+   &#160;<span id="projectnumber">Version 1.7.59</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -190,6 +190,7 @@ Ignore access errors</h1>
 Configure trace</h1>
 <p>A common case that requires use of debug access sequences is trace configuration. <a class="el" href="debug_description.html#default_sequences">Predefined debug access sequences</a> have two trace-related sequences: <a class="el" href="debug_description.html#TraceStart">TraceStart</a> and <a class="el" href="debug_description.html#TraceStop">TraceStop</a> that are being called when trace is enabled in the project. The <code>TraceStart</code> sequence is executed at the end of the initial debug connection to the target and after device reset while <code>TraceStop</code> is executed at the beginning of debug disconnect.</p>
 <p>By default these sequences are empty and often need to be implemented in the .pdsc file to support device-specific behavior, for example to differentiate configuration for 1-pin SWO trace and 5-pin ETM trace (TPIU).</p>
+<p>If the parent <a class="el" href="pdsc_family_pg.html#element_sequences">sequences</a> element specifies <b>traceSetup=<span class="XML-Token">full</span></b>, the trace-related debug access sequences are expected to perform the complete trace sink and trace data path setup and shutdown, rather than only device-specific additions to debugger-provided CoreSight handling.</p>
 <p>For example:</p>
 <div class="fragment"><div class="line">&lt;sequence name=<span class="stringliteral">&quot;TraceStart&quot;</span>&gt;</div>
 <div class="line">  &lt;block&gt;</div>
