@@ -249,8 +249,8 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
 	\anchor TraceStart
     <td>Enable target trace capture.<br>
     If \refelem{sequences} specifies <b>traceSetup=\token{legacy}</b> or omits the attribute,
-    this sequence is executed before the debugger powers up and configures CoreSight trace
-    components, e.g. after the initial target connection as well as after a system-wide reset.<br>
+    this sequence is executed before the debugger configures CoreSight trace components, e.g. after
+    the initial target connection as well as after a system-wide reset.<br>
 	If \refelem{sequences} specifies <b>traceSetup=\token{full}</b>, this sequence is expected
 	to perform all trace sink and trace data path setup required by the device, and the debugger is
 	not expected to configure CoreSight trace components using a priori knowledge.<br>
