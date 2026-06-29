@@ -106,7 +106,7 @@ The table below lists the available predefined debug access sequences. Their def
 
 For debug access sequences marked in \token{ItalicRed}, no default implementation  exists. When using them in debug descriptions corresponding user implementation shall be done as well. 
 
-\note Predefined debug access sequences read the System Control Space (SCS) of the processor and assume that the SCS offset is implemented as defined in the Armv6-M/Armv7-M/Armv8-M architecture reference manual.
+\note Predefined debug access sequences read the System Control Space (SCS) of the processor and assume that the SCS base address is implemented as defined in the Armv6-M/Armv7-M/Armv8-M architecture reference manual.
 
 <table class="cmtable" summary="Enumeration: SequenceNameEnum">
   <tr>
@@ -248,8 +248,12 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
     <td class="XML-Token">TraceStart</td>
 	\anchor TraceStart
     <td>Enable target trace capture.<br>
-    Executed before the debugger powers up and configures standard CoreSight trace components, e.g. after the initial target connection
-    as well as after a system-wide reset.<br>
+    If \refelem{sequences} specifies <b>traceSetup=\token{legacy}</b> or omits the attribute,
+    this sequence is executed before the debugger configures CoreSight trace components, e.g. after
+    the initial target connection as well as after a system-wide reset.<br>
+	If \refelem{sequences} specifies <b>traceSetup=\token{full}</b>, this sequence is expected
+	to perform all trace sink and trace data path setup required by the device, and the debugger is
+	not expected to configure CoreSight trace components using a priori knowledge.<br>
 	See example at \ref userTraceStart.
     </td>
   </tr>
@@ -257,7 +261,25 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
     <td class="XML-Token">TraceStop</td>
 	\anchor TraceStop
     <td>Disable target trace capture.<br>
-    Executed after the debugger disabled and powered down standard CoreSight trace components.
+    If \refelem{sequences} specifies <b>traceSetup=\token{legacy}</b> or omits the attribute,
+    this sequence is executed after the debugger disabled and powered down CoreSight trace
+    components.<br>
+	If \refelem{sequences} specifies <b>traceSetup=\token{full}</b>, this sequence is expected
+	to perform all trace sink and trace data path shutdown steps required by the device.
+    </td>
+  </tr>
+  <tr>
+    <td class="XML-Token">TraceCapture</td>
+	\anchor TraceCapture
+    <td>Prepare target trace for next capture run, e.g. by enabling the trace formatter or initializing embedded trace buffer data read/write pointers.<br>
+    Typically executed before a debugger runs/steps the target processor. Or when manually starting a trace capture.<br>
+    </td>
+  </tr>
+  <tr>
+    <td class="XML-Token">TraceFlush</td>
+	\anchor TraceFlush
+    <td>Flush out remaining trace bytes. This ensures all pending data is streamed off-chip, or drained into an on-chip trace buffer before the debugger reads it.<br>
+    Typically executed after the target processor pauses after a run/step. Or when manually stopping a trace capture.<br>
     </td>
   </tr>
   <tr>
@@ -2051,6 +2073,35 @@ A debugger needs to support a set of pre-defined debug access variables. These a
       - Bit 3..15: Reserved.
       - Bit 16..21: Selected Parallel Trace Port size.
       - Bit 22..63: Reserved.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+	\anchor __traceclockin
+	<pre>__traceclockin</pre></td>
+    <td>Read-Only</td>
+    <td>
+      The frequency of the clock that drives the trace output component.<br>
+      Can for example be used in combination with \ref __traceclockout to calculate
+      prescaler values for the output component.
+    </td>
+    <td>
+      Clock frequency in Hz. A value of \token{0} means that no frequency is provided by the debugger, e.g. because trace is disabled.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+	\anchor __traceclockout
+	<pre>__traceclockout</pre></td>
+    <td>Read-Only</td>
+    <td>
+      The frequency of the trace output signal.<br>
+      Can for example be used in combination with \ref __traceclockin to calculate prescaler
+      values for the output component.
+    </td>
+    <td>
+      Clock frequency in Hz. A value of \token{0} means that no frequency is provided by the debugger, e.g. because trace is disabled or because the user did not specify it.
+      In the latter case <b>__traceclockout</b> must be assumed to equal \ref __traceclockin which effectively means a prescaler value of \token{1}.
     </td>
   </tr>
   <tr>
