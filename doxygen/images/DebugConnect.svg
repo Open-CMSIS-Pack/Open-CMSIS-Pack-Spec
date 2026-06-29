@@ -72,7 +72,7 @@
     <text class="label seq" x="315" y="492">DebugPortStart</text>
 
     <rect class="box" x="90" y="516" width="450" height="48"/>
-    <text class="label" x="315" y="540">Read Dap Features (DP, AP)</text>
+    <text class="label" x="315" y="540">Read DAP Features (DP, AP)</text>
 
     <rect class="box missing" x="90" y="564" width="450" height="48"/>
     <text class="label seq" x="315" y="588">DebugDeviceUnlock</text>
@@ -109,43 +109,26 @@
     <rect class="band" x="90" y="980" width="450" height="72"/>
     <line class="thin" x1="90" y1="980" x2="315" y2="1052"/>
     <line class="thin" x1="540" y1="980" x2="315" y2="1052"/>
-    <text class="label" x="315" y="1004">Timeout triggered?</text>
-    <text x="96" y="1038">True</text>
-    <text x="492" y="1038">False</text>
+    <text class="label" x="315" y="1004">Connect under Reset?</text>
+    <text x="96" y="1038">False</text>
+    <text x="492" y="1038">True</text>
 
-    <rect class="band" x="90" y="1052" width="225" height="68"/>
-    <line class="thin" x1="90" y1="1052" x2="202.5" y2="1120"/>
-    <line class="thin" x1="315" y1="1052" x2="202.5" y2="1120"/>
-    <text class="label" x="202.5" y="1073">
-      <tspan x="202.5" dy="0">Connect under</tspan>
-      <tspan x="202.5" dy="18">Reset?</tspan>
-    </text>
-    <text x="96" y="1106">False</text>
-    <text x="267" y="1106">True</text>
+    <rect class="box" x="90" y="1052" width="225" height="68"/>
+    <rect class="box default" x="315" y="1052" width="225" height="68"/>
+    <text class="label seq" x="427.5" y="1086">ResetCatchClear</text>
 
-    <rect class="box" x="90" y="1120" width="112.5" height="57"/>
-    <rect class="box default" x="202.5" y="1120" width="112.5" height="57"/>
-    <text class="label seq small" x="258.75" y="1148.5">ResetCatchClear</text>
+    <rect class="band" x="90" y="1120" width="450" height="57"/>
+    <line class="thin" x1="90" y1="1120" x2="315" y2="1177"/>
+    <line class="thin" x1="540" y1="1120" x2="315" y2="1177"/>
+    <text class="label" x="315" y="1141">Timeout triggered?</text>
+    <text x="96" y="1163">True</text>
+    <text x="492" y="1163">False</text>
 
     <rect class="box" x="90" y="1177" width="225" height="255"/>
     <text class="label" x="202.5" y="1294">
       <tspan x="202.5" dy="0">Abort</tspan>
       <tspan x="202.5" dy="20">Connection</tspan>
     </text>
-
-    <rect class="band" x="315" y="1052" width="225" height="68"/>
-    <line class="thin" x1="315" y1="1052" x2="427.5" y2="1120"/>
-    <line class="thin" x1="540" y1="1052" x2="427.5" y2="1120"/>
-    <text class="label" x="427.5" y="1073">
-      <tspan x="427.5" dy="0">Connect under</tspan>
-      <tspan x="427.5" dy="18">Reset?</tspan>
-    </text>
-    <text x="321" y="1106">False</text>
-    <text x="492" y="1106">True</text>
-
-    <rect class="box" x="315" y="1120" width="112.5" height="57"/>
-    <rect class="box default" x="427.5" y="1120" width="112.5" height="57"/>
-    <text class="label seq small" x="483.75" y="1148.5">ResetCatchClear</text>
 
     <rect class="box" x="315" y="1177" width="225" height="77"/>
     <text class="label" x="427.5" y="1193">
