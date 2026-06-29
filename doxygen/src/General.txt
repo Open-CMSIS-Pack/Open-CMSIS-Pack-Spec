@@ -84,6 +84,7 @@ packs) and provides useful tips when creating a pack.
     <td>next</td>
     <td>
       - clarified sequence abortion in case of errors
+      - added missing ResetCatchClear to debug connect flow diagram
     </td>
   </tr>
   <tr>
