@@ -652,6 +652,8 @@ Default implementation for \b ResetSystem debug access sequence that executes a 
     
       // Execute SYSRESETREQ via AIRCR
       Write32(AIRCR_Addr, 0x05FA0004);
+      // Delay for 100ms
+      DAP_Delay(100000);
     </block>
 
     <!-- Reset Recovery: Wait for DHCSR.S_RESET_ST bit to clear on read -->
