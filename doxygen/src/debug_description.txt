@@ -1913,6 +1913,25 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
+    <td style="white-space: nowrap"><pre>RunPythonScript (scriptPath, arguments, workDirectory, timeout)</pre></td>
+    <td>
+        Run a Python script using a Python interpreter available on the host system.<br>
+        <br>
+        <b>Parameters:</b><br>
+        - scriptPath: Constant string representing the Python script path. Refer to \ref charactersequence "character sequences"
+          for path/file name place holders.
+        - arguments: Constant string with arguments to pass to the script command line. Same placeholder
+          \ref charactersequence "character sequences" apply as for <b>scriptPath</b>.
+        - workDirectory: A constant string with the work directory for running the script. An empty string means that the
+          work directory is the current project folder. Same placeholder \ref charactersequence "character sequences" apply
+          as for <b>scriptPath</b>.
+        - timeout: Timeout in microseconds.
+
+        <b>Return Value:</b><br>
+        Script specific exit code.
+    </td>
+  </tr>
+  <tr>
     <td style="white-space: nowrap"><pre>FilePathExists(path, timeout)</pre></td>
     <td>
         Check if a path exists. If timeout is other than \token{0} then check the path until it becomes valid or until the
@@ -2194,8 +2213,8 @@ A debugger needs to support a set of pre-defined debug access variables. These a
 Some functionality cannot be implemented by debug sequences, for example checksum/hash calculations or debug authentication.
 It is supposed to be provided or implemented by external tools or applications. To communicate with external tools, debug
 sequences currently provide input/output files. To create these files, buffers are used (see below). To run an external
-application, use the \c RunApplication function. To check the availability of an external resource (for example a file), use
-the \c FilePathExists function.
+application, use the \c RunApplication function. To run a Python script, use the \c RunPythonScript function. To check the
+availability of an external resource (for example a file), use the \c FilePathExists function.
 
 \b Buffer \b handling
 

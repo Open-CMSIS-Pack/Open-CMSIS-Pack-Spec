@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        26. June 2026
-  $Revision:    1.7.59
+  $Date:        22. July 2026
+  $Revision:    1.7.60
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.59
+  SchemaVersion=1.7.60
 
+  22. Jul 2026: v1.7.60
+   - added 'RunPythonScript' debug access function
   26. Jun 2026: v1.7.59
    - added 'traceSetup' attribute to 'sequences' element
   15. Jun 2026: v1.7.58
@@ -273,7 +275,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.59">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.60">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">

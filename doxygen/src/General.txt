@@ -81,6 +81,12 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.60</td>
+    <td>
+      - added 'RunPythonScript' debug access function
+    </td>
+  </tr>
+  <tr>
     <td>1.7.59</td>
     <td>
       - clarified sequence abortion in case of errors
