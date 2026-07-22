@@ -584,6 +584,9 @@ ResetSystem</h2>
 <div class="line">  </div>
 <div class="line">    <span class="comment">// Execute SYSRESETREQ via AIRCR</span></div>
 <div class="line">    Write32(AIRCR_Addr, 0x05FA0004);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Delay for 100ms</span></div>
+<div class="line">    DAP_Delay(100000);</div>
 <div class="line">  &lt;/block&gt;</div>
 <div class="line"> </div>
 <div class="line">  &lt;!-- Reset Recovery: Wait <span class="keywordflow">for</span> DHCSR.S_RESET_ST bit to clear on read --&gt;</div>
