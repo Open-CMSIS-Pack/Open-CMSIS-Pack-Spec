@@ -1954,6 +1954,28 @@ debug access variables which are evaluated for the function call.
         Refer to \ref exttoolexample "Calculating a hash sum"
     </td>
   </tr>
+  <tr>
+    <td style="white-space: nowrap"><pre>FlashLoadAlgorithm(algoPath, ramStart, ramSize)</pre></td>
+    <td>
+      Select an FLM flash algorithm for the current flash erase or program phase. This function is valid only in a
+      <b>FlashEraseSetup</b> or <b>FlashProgramSetup</b> sequence. The selected algorithm is loaded by the debugger when
+      the corresponding phase is performed.<br>
+      <br>
+      <b>Parameters:</b><br>
+      - algoPath: Constant string representing the path to an FLM file. Refer to \ref charactersequence "character sequences"
+        for path/file name place holders.
+      - ramStart: Start address of target RAM available to the FLM algorithm. The address must be in a defined RAM region.
+      - ramSize: Size, in bytes, of target RAM available to the FLM algorithm. If the range extends beyond the containing
+        RAM region, the debugger limits it to the available RAM.
+
+      <b>Return Value:</b><br>
+      \token{0} - Flash algorithm selected successfully.<br>
+      \token{1} - Flash algorithm could not be selected.<br>
+      <br>
+      If this function returns \token{1}, the current erase or program phase fails. It does not fall back to flash debug
+      sequences.
+    </td>
+  </tr>
 </table>
 
 \note
