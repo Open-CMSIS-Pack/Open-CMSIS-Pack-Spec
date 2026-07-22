@@ -26,6 +26,7 @@
   SchemaVersion=1.7.60
 
   22. Jul 2026: v1.7.60
+   - added 'FlashEraseSetup' and 'FlashProgramSetup' debug access sequences
    - added 'FlashLoadAlgorithm' debug access function
    - added 'RunPythonScript' debug access function
   26. Jun 2026: v1.7.59

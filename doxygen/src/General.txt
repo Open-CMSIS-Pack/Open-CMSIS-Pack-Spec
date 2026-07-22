@@ -83,6 +83,7 @@ packs) and provides useful tips when creating a pack.
   <tr>
     <td>1.7.60</td>
     <td>
+      - added 'FlashEraseSetup' and 'FlashProgramSetup' debug access sequences
       - added 'FlashLoadAlgorithm' debug access function
       - added 'RunPythonScript' debug access function
     </td>

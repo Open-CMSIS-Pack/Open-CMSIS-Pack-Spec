@@ -203,6 +203,22 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
     </td>
   </tr>
   <tr>
+    <td class="XML-Token">FlashEraseSetup</td>
+    <td>
+    Optional setup before an erase phase for a \ref element_flashinfo "flashinfo" region. The sequence can call
+    <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the erase phase. If the sequence is not implemented or
+    does not select an algorithm, the debugger uses the flash debug sequences for erase.
+    </td>
+  </tr>
+  <tr>
+    <td class="XML-Token">FlashProgramSetup</td>
+    <td>
+    Optional setup before a program phase for a \ref element_flashinfo "flashinfo" region. The sequence can call
+    <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the program phase. If the sequence is not implemented or
+    does not select an algorithm, the debugger uses the flash debug sequences for programming.
+    </td>
+  </tr>
+  <tr>
     <td class="XML-Token">FlashInit</td>
     <td>
     Executed before starting a flash operation.
@@ -982,6 +998,41 @@ This section provides examples of user-implemented predefined debug access seque
   </block>
 </control>
 ...
+\endcode
+
+
+\subsection flashAlgorithmSelection Selecting an FLM algorithm for flash operations
+
+The optional \b FlashEraseSetup and \b FlashProgramSetup sequences can select an FLM algorithm for an erase or program
+phase. The debugger provides \b __FlashAddr and \b __FlashLen to identify the requested address range. The following
+examples select an FLM only when the complete range is within the external flash region. When the condition is false, the
+corresponding operation uses the flash debug sequences.
+
+\subsubsection flashEraseSetupExample FlashEraseSetup example
+
+\code
+<sequence name="FlashEraseSetup">
+  <control if="(__FlashAddr &gt;= 0x60000000) &amp;&amp; ((__FlashAddr + __FlashLen) &lt;= 0x61000000)"
+           info="Select FLM for external flash erase">
+    <block>
+      FlashLoadAlgorithm("$S/Flash/ExternalFlash.FLM", 0x20000000, 0x00008000);
+    </block>
+  </control>
+</sequence>
+\endcode
+
+
+\subsubsection flashProgramSetupExample FlashProgramSetup example
+
+\code
+<sequence name="FlashProgramSetup">
+  <control if="(__FlashAddr &gt;= 0x60000000) &amp;&amp; ((__FlashAddr + __FlashLen) &lt;= 0x61000000)"
+           info="Select FLM for external flash programming">
+    <block>
+      FlashLoadAlgorithm("$S/Flash/ExternalFlash.FLM", 0x20000000, 0x00008000);
+    </block>
+  </control>
+</sequence>
 \endcode
 
 
