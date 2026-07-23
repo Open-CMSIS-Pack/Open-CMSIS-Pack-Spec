@@ -1003,10 +1003,11 @@ This section provides examples of user-implemented predefined debug access seque
 
 \subsection flashAlgorithmSelection Selecting an FLM algorithm for flash operations
 
-The optional \b FlashEraseSetup and \b FlashProgramSetup sequences can select an FLM algorithm for an erase or program
-phase. The debugger provides \b __FlashAddr and \b __FlashLen to identify the requested address range. The following
-examples select an FLM only when the complete range is within the external flash region. When the condition is false, the
-corresponding operation uses the flash debug sequences.
+The optional \b FlashEraseSetup and \b FlashProgramSetup sequences are evaluated only for erase and program phases associated
+with \ref element_flashinfo "flashinfo" regions. They are not used when the target defines no \b flashinfo regions. The sequences
+can select an FLM algorithm for an erase or program phase. The debugger provides \b __FlashAddr and \b __FlashLen to identify the
+requested address range. The following examples select an FLM only when the complete range is within the external flash region.
+When the condition is false, the corresponding operation uses the flash debug sequences.
 
 \subsubsection flashEraseSetupExample FlashEraseSetup example
 
