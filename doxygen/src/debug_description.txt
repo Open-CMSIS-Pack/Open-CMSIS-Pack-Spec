@@ -203,6 +203,22 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
     </td>
   </tr>
   <tr>
+    <td class="XML-Token">FlashEraseSetup</td>
+    <td>
+    Optional setup before an erase phase for a \ref element_flashinfo "flashinfo" region. The sequence can call
+    <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the erase phase. If the sequence is not implemented or
+    does not select an algorithm, the debugger uses the flash debug sequences for erase.
+    </td>
+  </tr>
+  <tr>
+    <td class="XML-Token">FlashProgramSetup</td>
+    <td>
+    Optional setup before a program phase for a \ref element_flashinfo "flashinfo" region. The sequence can call
+    <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the program phase. If the sequence is not implemented or
+    does not select an algorithm, the debugger uses the flash debug sequences for programming.
+    </td>
+  </tr>
+  <tr>
     <td class="XML-Token">FlashInit</td>
     <td>
     Executed before starting a flash operation.
@@ -982,6 +998,42 @@ This section provides examples of user-implemented predefined debug access seque
   </block>
 </control>
 ...
+\endcode
+
+
+\subsection flashAlgorithmSelection Selecting an FLM algorithm for flash operations
+
+The optional \b FlashEraseSetup and \b FlashProgramSetup sequences are evaluated only for erase and program phases associated
+with \ref element_flashinfo "flashinfo" regions. They are not used when the target defines no \b flashinfo regions. The sequences
+can select an FLM algorithm for an erase or program phase. The debugger provides \b __FlashAddr and \b __FlashLen to identify the
+requested address range. The following examples select an FLM only when the complete range is within the external flash region.
+When the condition is false, the corresponding operation uses the flash debug sequences.
+
+\subsubsection flashEraseSetupExample FlashEraseSetup example
+
+\code
+<sequence name="FlashEraseSetup">
+  <control if="(__FlashAddr &gt;= 0x60000000) &amp;&amp; ((__FlashAddr + __FlashLen) &lt;= 0x61000000)"
+           info="Select FLM for external flash erase">
+    <block>
+      FlashLoadAlgorithm("$S/Flash/ExternalFlash.FLM", 0x20000000, 0x00008000);
+    </block>
+  </control>
+</sequence>
+\endcode
+
+
+\subsubsection flashProgramSetupExample FlashProgramSetup example
+
+\code
+<sequence name="FlashProgramSetup">
+  <control if="(__FlashAddr &gt;= 0x60000000) &amp;&amp; ((__FlashAddr + __FlashLen) &lt;= 0x61000000)"
+           info="Select FLM for external flash programming">
+    <block>
+      FlashLoadAlgorithm("$S/Flash/ExternalFlash.FLM", 0x20000000, 0x00008000);
+    </block>
+  </control>
+</sequence>
 \endcode
 
 
@@ -1913,6 +1965,25 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
+    <td style="white-space: nowrap"><pre>RunPythonScript (scriptPath, arguments, workDirectory, timeout)</pre></td>
+    <td>
+        Run a Python script using a Python interpreter available on the host system.<br>
+        <br>
+        <b>Parameters:</b><br>
+        - scriptPath: Constant string representing the Python script path. Refer to \ref charactersequence "character sequences"
+          for path/file name place holders.
+        - arguments: Constant string with arguments to pass to the script command line. Same placeholder
+          \ref charactersequence "character sequences" apply as for <b>scriptPath</b>.
+        - workDirectory: A constant string with the work directory for running the script. An empty string means that the
+          work directory is the current project folder. Same placeholder \ref charactersequence "character sequences" apply
+          as for <b>scriptPath</b>.
+        - timeout: Timeout in microseconds.
+
+        <b>Return Value:</b><br>
+        Script specific exit code.
+    </td>
+  </tr>
+  <tr>
     <td style="white-space: nowrap"><pre>FilePathExists(path, timeout)</pre></td>
     <td>
         Check if a path exists. If timeout is other than \token{0} then check the path until it becomes valid or until the
@@ -1933,6 +2004,28 @@ debug access variables which are evaluated for the function call.
 
         <b>Code Example:</b><br>
         Refer to \ref exttoolexample "Calculating a hash sum"
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap"><pre>FlashLoadAlgorithm(algoPath, ramStart, ramSize)</pre></td>
+    <td>
+      Select an FLM flash algorithm for the current flash erase or program phase. This function is valid only in a
+      <b>FlashEraseSetup</b> or <b>FlashProgramSetup</b> sequence. The selected algorithm is loaded by the debugger when
+      the corresponding phase is performed.<br>
+      <br>
+      <b>Parameters:</b><br>
+      - algoPath: Constant string representing the path to an FLM file. Refer to \ref charactersequence "character sequences"
+        for path/file name place holders.
+      - ramStart: Start address of target RAM available to the FLM algorithm. The address must be in a defined RAM region.
+      - ramSize: Size, in bytes, of target RAM available to the FLM algorithm. If the range extends beyond the containing
+        RAM region, the debugger limits it to the available RAM.
+
+      <b>Return Value:</b><br>
+      \token{0} - Flash algorithm selected successfully.<br>
+      \token{1} - Flash algorithm could not be selected.<br>
+      <br>
+      If this function returns \token{1}, the current erase or program phase fails. It does not fall back to flash debug
+      sequences.
     </td>
   </tr>
 </table>
@@ -2194,8 +2287,8 @@ A debugger needs to support a set of pre-defined debug access variables. These a
 Some functionality cannot be implemented by debug sequences, for example checksum/hash calculations or debug authentication.
 It is supposed to be provided or implemented by external tools or applications. To communicate with external tools, debug
 sequences currently provide input/output files. To create these files, buffers are used (see below). To run an external
-application, use the \c RunApplication function. To check the availability of an external resource (for example a file), use
-the \c FilePathExists function.
+application, use the \c RunApplication function. To run a Python script, use the \c RunPythonScript function. To check the
+availability of an external resource (for example a file), use the \c FilePathExists function.
 
 \b Buffer \b handling
 
