@@ -24,7 +24,11 @@ var coresight_setup =
         [ "User implementation of TraceStart sequence", "debug_description.html#userTraceStart", null ],
         [ "User implementation of DebugDeviceUnlock sequence", "debug_description.html#userDebugDeviceUnlock", null ],
         [ "User implementation of hardware reset sequence", "debug_description.html#hwReset", null ],
-        [ "Calling sequences in a control block", "debug_description.html#sequenceExample", null ]
+        [ "Calling sequences in a control block", "debug_description.html#sequenceExample", null ],
+        [ "Selecting an FLM algorithm for flash operations", "debug_description.html#flashAlgorithmSelection", [
+          [ "FlashEraseSetup example", "debug_description.html#flashEraseSetupExample", null ],
+          [ "FlashProgramSetup example", "debug_description.html#flashProgramSetupExample", null ]
+        ] ]
       ] ],
       [ "Writing debug access sequences", "debug_description.html#writing_sequences", [
         [ "Debug access syntax rules", "debug_description.html#DebugSyntaxRules", null ],

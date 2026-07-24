@@ -84,6 +84,9 @@ var NAVTREEINDEX0 =
 "debug_description.html#debugPortStop":[6,0,4,3],
 "debug_description.html#default_sequences":[6,0,4],
 "debug_description.html#externalTools":[6,0,6,4],
+"debug_description.html#flashAlgorithmSelection":[6,0,5,4],
+"debug_description.html#flashEraseSetupExample":[6,0,5,4,0],
+"debug_description.html#flashProgramSetupExample":[6,0,5,4,1],
 "debug_description.html#hwReset":[6,0,5,2],
 "debug_description.html#nonstdExamples":[6,0,5],
 "debug_description.html#pdsc_SequenceNameEnum_pg":[6,0,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "pdsc_parts_pg.html#element_part_image":[3,19,4],
 "pdsc_parts_pg.html#element_parts":[3,19,0],
 "sdf_pg.html":[7],
-"sdf_pg.html#autotoc_md3":[7,4,0],
-"sdf_pg.html#autotoc_md4":[7,4,1],
-"sdf_pg.html#autotoc_md5":[7,4,2],
-"sdf_pg.html#sdf_element_cluster":[7,17]
+"sdf_pg.html#autotoc_md3":[7,4,0]
 };

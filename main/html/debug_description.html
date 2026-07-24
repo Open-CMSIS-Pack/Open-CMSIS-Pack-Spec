@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.59</span>
+   &#160;<span id="projectnumber">Version 1.7.60</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -222,6 +222,10 @@ Predefined debug access sequences</h1>
  The implementation of <b>ResetCatchSet</b> requires an implementation of <b>ResetCatchClear</b> to free any hardware resources used for stopping the core.   </td></tr>
 <tr>
 <td class="XML-Token"><a class="el" href="debug_description.html#resetCatchClear">ResetCatchClear</a> </td><td>Executed after a target reset to free hardware resources allocated by <b>ResetCatchSet</b>.   </td></tr>
+<tr>
+<td class="XML-Token">FlashEraseSetup </td><td>Optional setup before an erase phase for a <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region. The sequence can call <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the erase phase. If the sequence is not implemented or does not select an algorithm, the debugger uses the flash debug sequences for erase.   </td></tr>
+<tr>
+<td class="XML-Token">FlashProgramSetup </td><td>Optional setup before a program phase for a <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region. The sequence can call <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the program phase. If the sequence is not implemented or does not select an algorithm, the debugger uses the flash debug sequences for programming.   </td></tr>
 <tr>
 <td class="XML-Token">FlashInit </td><td>Executed before starting a flash operation.   </td></tr>
 <tr>
@@ -864,6 +868,29 @@ Calling sequences in a control block</h2>
 <div class="line">  &lt;/block&gt;</div>
 <div class="line">&lt;/control&gt;</div>
 <div class="line">...</div>
+</div><!-- fragment --><h2><a class="anchor" id="flashAlgorithmSelection"></a>
+Selecting an FLM algorithm for flash operations</h2>
+<p>The optional <b>FlashEraseSetup</b> and <b>FlashProgramSetup</b> sequences are evaluated only for erase and program phases associated with <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> regions. They are not used when the target defines no <b>flashinfo</b> regions. The sequences can select an FLM algorithm for an erase or program phase. The debugger provides <b>__FlashAddr</b> and <b>__FlashLen</b> to identify the requested address range. The following examples select an FLM only when the complete range is within the external flash region. When the condition is false, the corresponding operation uses the flash debug sequences.</p>
+<h3><a class="anchor" id="flashEraseSetupExample"></a>
+FlashEraseSetup example</h3>
+<div class="fragment"><div class="line">&lt;sequence name=<span class="stringliteral">&quot;FlashEraseSetup&quot;</span>&gt;</div>
+<div class="line">  &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;(__FlashAddr &amp;gt;= 0x60000000) &amp;amp;&amp;amp; ((__FlashAddr + __FlashLen) &amp;lt;= 0x61000000)&quot;</span></div>
+<div class="line">           info=<span class="stringliteral">&quot;Select FLM for external flash erase&quot;</span>&gt;</div>
+<div class="line">    &lt;block&gt;</div>
+<div class="line">      FlashLoadAlgorithm(<span class="stringliteral">&quot;$S/Flash/ExternalFlash.FLM&quot;</span>, 0x20000000, 0x00008000);</div>
+<div class="line">    &lt;/block&gt;</div>
+<div class="line">  &lt;/control&gt;</div>
+<div class="line">&lt;/sequence&gt;</div>
+</div><!-- fragment --><h3><a class="anchor" id="flashProgramSetupExample"></a>
+FlashProgramSetup example</h3>
+<div class="fragment"><div class="line">&lt;sequence name=<span class="stringliteral">&quot;FlashProgramSetup&quot;</span>&gt;</div>
+<div class="line">  &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;(__FlashAddr &amp;gt;= 0x60000000) &amp;amp;&amp;amp; ((__FlashAddr + __FlashLen) &amp;lt;= 0x61000000)&quot;</span></div>
+<div class="line">           info=<span class="stringliteral">&quot;Select FLM for external flash programming&quot;</span>&gt;</div>
+<div class="line">    &lt;block&gt;</div>
+<div class="line">      FlashLoadAlgorithm(<span class="stringliteral">&quot;$S/Flash/ExternalFlash.FLM&quot;</span>, 0x20000000, 0x00008000);</div>
+<div class="line">    &lt;/block&gt;</div>
+<div class="line">  &lt;/control&gt;</div>
+<div class="line">&lt;/sequence&gt;</div>
 </div><!-- fragment --><h1><a class="anchor" id="writing_sequences"></a>
 Writing debug access sequences</h1>
 <p>To override a predefined sequence or to create a custom (user-defined) sequence, you need to write <a class="el" href="pdsc_family_pg.html#element_sequence">sequence</a> elements. The following sections show how to use the built-in debug access syntax, expressions, and debug access functions to create custom sequences.</p>
@@ -1651,6 +1678,19 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
  Refer to <a class="el" href="debug_description.html#exttoolexample">Calculating a hash sum</a>   </p>
 </td></tr>
 <tr>
+<td style="white-space: nowrap"><pre>RunPythonScript (scriptPath, arguments, workDirectory, timeout)</pre> </td><td><p class="starttd">Run a Python script using a Python interpreter available on the host system.<br  />
+ <br  />
+ <b>Parameters:</b><br  />
+</p><ul>
+<li>scriptPath: Constant string representing the Python script path. Refer to <a class="el" href="debug_description.html#charactersequence">character sequences</a> for path/file name place holders.</li>
+<li>arguments: Constant string with arguments to pass to the script command line. Same placeholder <a class="el" href="debug_description.html#charactersequence">character sequences</a> apply as for <b>scriptPath</b>.</li>
+<li>workDirectory: A constant string with the work directory for running the script. An empty string means that the work directory is the current project folder. Same placeholder <a class="el" href="debug_description.html#charactersequence">character sequences</a> apply as for <b>scriptPath</b>.</li>
+<li>timeout: Timeout in microseconds.</li>
+</ul>
+<p class="endtd"><b>Return Value:</b><br  />
+ Script specific exit code.   </p>
+</td></tr>
+<tr>
 <td style="white-space: nowrap"><pre>FilePathExists(path, timeout)</pre> </td><td><p class="starttd">Check if a path exists. If timeout is other than <span class="XML-Token">0</span> then check the path until it becomes valid or until the timeout has elapsed.<br  />
  <br  />
  <b>Parameters:</b><br  />
@@ -1668,6 +1708,21 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 </p>
 <p class="endtd"><b>Code Example:</b><br  />
  Refer to <a class="el" href="debug_description.html#exttoolexample">Calculating a hash sum</a>   </p>
+</td></tr>
+<tr>
+<td style="white-space: nowrap"><pre>FlashLoadAlgorithm(algoPath, ramStart, ramSize)</pre> </td><td><p class="starttd">Select an FLM flash algorithm for the current flash erase or program phase. This function is valid only in a <b>FlashEraseSetup</b> or <b>FlashProgramSetup</b> sequence. The selected algorithm is loaded by the debugger when the corresponding phase is performed.<br  />
+ <br  />
+ <b>Parameters:</b><br  />
+</p><ul>
+<li>algoPath: Constant string representing the path to an FLM file. Refer to <a class="el" href="debug_description.html#charactersequence">character sequences</a> for path/file name place holders.</li>
+<li>ramStart: Start address of target RAM available to the FLM algorithm. The address must be in a defined RAM region.</li>
+<li>ramSize: Size, in bytes, of target RAM available to the FLM algorithm. If the range extends beyond the containing RAM region, the debugger limits it to the available RAM.</li>
+</ul>
+<p class="endtd"><b>Return Value:</b><br  />
+ <span class="XML-Token">0</span> - Flash algorithm selected successfully.<br  />
+ <span class="XML-Token">1</span> - Flash algorithm could not be selected.<br  />
+ <br  />
+ If this function returns <span class="XML-Token">1</span>, the current erase or program phase fails. It does not fall back to flash debug sequences.   </p>
 </td></tr>
 </table>
 <dl class="section note"><dt>Note</dt><dd><ul>
@@ -1793,7 +1848,7 @@ Debug access variables</h2>
 </table>
 <h2><a class="anchor" id="externalTools"></a>
 Using external tools</h2>
-<p>Some functionality cannot be implemented by debug sequences, for example checksum/hash calculations or debug authentication. It is supposed to be provided or implemented by external tools or applications. To communicate with external tools, debug sequences currently provide input/output files. To create these files, buffers are used (see below). To run an external application, use the <code>RunApplication</code> function. To check the availability of an external resource (for example a file), use the <code>FilePathExists</code> function.</p>
+<p>Some functionality cannot be implemented by debug sequences, for example checksum/hash calculations or debug authentication. It is supposed to be provided or implemented by external tools or applications. To communicate with external tools, debug sequences currently provide input/output files. To create these files, buffers are used (see below). To run an external application, use the <code>RunApplication</code> function. To run a Python script, use the <code>RunPythonScript</code> function. To check the availability of an external resource (for example a file), use the <code>FilePathExists</code> function.</p>
 <p><b>Buffer</b> <b>handling</b> </p>
 <p>Buffers are hidden inside the sequence engine. They can be accessed only via the following functions:</p><ul>
 <li>For direct buffer access (for example for initialization or "memset" operations): <code>BufferSet</code>, <code>BufferGet</code>, and <code>BufferSize</code>.</li>
