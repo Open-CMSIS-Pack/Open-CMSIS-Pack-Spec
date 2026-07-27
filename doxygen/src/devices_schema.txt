@@ -825,6 +825,11 @@ algorithms must have a different name.
 
 Specify Flash information that the debugger can use to erase and program Flash memories without the use
 of target RAM based Flash download algorithms.<br>
+The \b FlashInit, \b FlashUninit, \b FlashEraseSector, \b FlashEraseChip, and \b FlashProgramPage
+\ref default_sequences "debug sequences" require one or more corresponding \b flashinfo regions, which supply the memory layout
+and programming parameters. Defining one or more \b flashinfo regions does not require any flash debug sequences to be
+implemented. If no flash debug sequences are implemented, the debugger ignores all such regions.<br>
+
 The child elements \<block> and \<gap> describe the memory and programming layout of a flash device:
 - The first child element has the base address \token{start}.
 - The base address of the second child element is \token{start} incremented by the size of the first child element.

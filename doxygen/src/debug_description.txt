@@ -108,6 +108,14 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
 
 \note Predefined debug access sequences read the System Control Space (SCS) of the processor and assume that the SCS base address is implemented as defined in the Armv6-M/Armv7-M/Armv8-M architecture reference manual.
 
+\note The \b FlashInit, \b FlashUninit, \b FlashEraseSector, \b FlashEraseChip, and \b FlashProgramPage sequences are the
+sequence-based counterparts of the corresponding FLM functions. They require a corresponding
+\ref element_flashinfo "flashinfo" region, which supplies the memory layout and programming parameters. \b FlashEraseSetup and
+\b FlashProgramSetup can select an FLM algorithm instead of these sequences for an erase or program phase. A target may define
+one or more \b flashinfo regions without implementing any flash debug sequences; in that case all such regions are ignored.
+\b FlashEraseDone and \b FlashProgramDone are completion callbacks and are also executed when an FLM flash algorithm performs
+the erase or program operation.
+
 <table class="cmtable" summary="Enumeration: SequenceNameEnum">
   <tr>
     <th>name=</th>
@@ -206,58 +214,64 @@ For debug access sequences marked in \token{ItalicRed}, no default implementatio
     <td class="XML-Token">FlashEraseSetup</td>
     <td>
     Optional setup before an erase phase for a \ref element_flashinfo "flashinfo" region. The sequence can call
-    <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the erase phase. If the sequence is not implemented or
-    does not select an algorithm, the debugger uses the flash debug sequences for erase.
+    <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the erase phase. The debugger then uses the FLM functions
+    instead of the corresponding flash debug sequences. If no algorithm is selected, the debugger uses the flash debug sequences.
     </td>
   </tr>
   <tr>
     <td class="XML-Token">FlashProgramSetup</td>
     <td>
     Optional setup before a program phase for a \ref element_flashinfo "flashinfo" region. The sequence can call
-    <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the program phase. If the sequence is not implemented or
-    does not select an algorithm, the debugger uses the flash debug sequences for programming.
+    <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the program phase. The debugger then uses the FLM functions
+    instead of the corresponding flash debug sequences. If no algorithm is selected, the debugger uses the flash debug sequences.
     </td>
   </tr>
   <tr>
     <td class="XML-Token">FlashInit</td>
     <td>
-    Executed before starting a flash operation.
+    Sequence-based counterpart of the FLM <b>Init</b> function. Executed before starting a flash operation.
     </td>
   </tr>
   <tr>
     <td class="XML-Token">FlashUninit</td>
     <td>
-    Executed after a flash operation finished.
+    Sequence-based counterpart of the FLM <b>UnInit</b> function. Executed after a flash operation finished.
     </td>
   </tr>
   <tr>
     <td class="XML-Token">FlashEraseSector</td>
     <td>
-    Executed to erase a flash memory sector.
+    Sequence-based counterpart of the FLM <b>EraseSector</b> function. Executed to erase a flash memory sector
+    described by a \ref element_flashinfo "flashinfo" region.
     </td>
   </tr>
   <tr>
     <td class="XML-Token">FlashEraseChip</td>
     <td>
-    Executed to erase all on-chip flash memory with target device specific erase technology. If this sequence is not implemented then a debugger can use <b>FlashEraseSector</b> to erase all flash memory.
+    Sequence-based counterpart of the FLM <b>EraseChip</b> function. Executed to erase all on-chip flash memory with
+    target device specific erase technology. If this sequence is not implemented then a debugger can use
+    <b>FlashEraseSector</b> to erase all flash memory.
     </td>
   </tr>
   <tr>
     <td class="XML-Token">FlashEraseDone</td>
     <td>
-    Executed after all flash memory erase operations are finished.
+    Executed after all flash memory erase operations are finished, regardless of whether flash debug sequences or an FLM flash
+    algorithm performed the operations.
     </td>
   </tr>
   <tr>
     <td class="XML-Token">FlashProgramPage</td>
     <td>
-    Executed to program a single flash page.
+    Sequence-based counterpart of the FLM <b>ProgramPage</b> function. Executed to program a single page described by
+    a \ref element_flashinfo "flashinfo" region.
     </td>
   </tr>
   <tr>
     <td class="XML-Token">FlashProgramDone</td>
     <td>
-    Executed after all flash programming operations are finished.
+    Executed after all flash programming operations are finished, regardless of whether flash debug sequences or an FLM flash
+    algorithm performed the operations.
     </td>
   </tr>
   <tr>
