@@ -113,22 +113,22 @@ $(document).ready(function(){initNavTree('pdsc_apis_pg.html',''); initResizable(
 <p>An API consists of a name, a brief description as well as one or more header files, and a document containing a detailed specification of the API.</p>
 <p>The API typically defines one or more header files and optionally an include directory. It should have also related documentation that describes the API.</p>
 <p><b>Example:</b> </p>
-<div class="fragment"><div class="line">&lt;api Cclass=<span class="stringliteral">&quot;ACloud IF&quot;</span> Cgroup=<span class="stringliteral">&quot;TRNG&quot;</span> Capiversion=<span class="stringliteral">&quot;1.2.0&quot;</span>&gt; </div>
-<div class="line">  &lt;files&gt; </div>
-<div class="line">    &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;include/trng.h&quot;</span>/&gt; </div>
-<div class="line">    &lt;file category=<span class="stringliteral">&quot;include&quot;</span> name=<span class="stringliteral">&quot;include/somestuff&quot;</span>/&gt; </div>
-<div class="line">    &lt;file category=<span class="stringliteral">&quot;doc&quot;</span> name=<span class="stringliteral">&quot;html/trng.html&quot;</span>/&gt; </div>
-<div class="line">  &lt;/files&gt; </div>
-<div class="line">&lt;/api&gt; </div>
+<div class="fragment"><div class="line">&lt;api Cclass=<span class="stringliteral">&quot;ACloud IF&quot;</span> Cgroup=<span class="stringliteral">&quot;TRNG&quot;</span> Capiversion=<span class="stringliteral">&quot;1.2.0&quot;</span>&gt;</div>
+<div class="line">  &lt;files&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;include/trng.h&quot;</span>/&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;include&quot;</span> name=<span class="stringliteral">&quot;include/somestuff&quot;</span>/&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;doc&quot;</span> name=<span class="stringliteral">&quot;html/trng.html&quot;</span>/&gt;</div>
+<div class="line">  &lt;/files&gt;</div>
+<div class="line">&lt;/api&gt;</div>
 </div><!-- fragment --><p>The API can be used either in the same software pack or other software packs. Having the API definition in one central software pack provides the benefit that implementations are consistent.</p>
 <p>The include file and directory are <b>included in the application project</b> when a <b>component</b> is selected that specifics the same <b>Cclass</b> and <b>Cgroup</b>. The selection of a software component adds therefore both to a project: the files specified by the <a class="el" href="pdsc_components_pg.html#element_component">component element</a> and the files specified by the <a class="el" href="pdsc_apis_pg.html#element_api">api element</a>. Therefore, the component that is based on the API should not contain the header file that defines the API.</p>
 <p><b>Example:</b> this component adds also the api header file above</p>
-<div class="fragment"><div class="line">&lt;component Cclass=<span class="stringliteral">&quot;ACloud IF&quot;</span> Cgroup=<span class="stringliteral">&quot;TRNG&quot;</span> Csub=<span class="stringliteral">&quot;Emulation&quot;</span> Capiversion=<span class="stringliteral">&quot;1.1.0&quot;</span>&gt; </div>
-<div class="line">  &lt;description&gt;Software simulation of random number generator&lt;/description&gt; </div>
-<div class="line">  &lt;files&gt; </div>
-<div class="line">    &lt;file category=<span class="stringliteral">&quot;sourceC&quot;</span> name=<span class="stringliteral">&quot;source/trng_emulation.c&quot;</span>/&gt; </div>
-<div class="line">  &lt;/files&gt; </div>
-<div class="line">&lt;/component&gt; </div>
+<div class="fragment"><div class="line">&lt;component Cclass=<span class="stringliteral">&quot;ACloud IF&quot;</span> Cgroup=<span class="stringliteral">&quot;TRNG&quot;</span> Csub=<span class="stringliteral">&quot;Emulation&quot;</span> Capiversion=<span class="stringliteral">&quot;1.1.0&quot;</span>&gt;</div>
+<div class="line">  &lt;description&gt;Software simulation of random number generator&lt;/description&gt;</div>
+<div class="line">  &lt;files&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;sourceC&quot;</span> name=<span class="stringliteral">&quot;source/trng_emulation.c&quot;</span>/&gt;</div>
+<div class="line">  &lt;/files&gt;</div>
+<div class="line">&lt;/component&gt;</div>
 </div><!-- fragment --><p> Optionally, it is possible to request a minimum API version using the <b>Capiversion</b> attribute.</p>
 <p>It is also possible to expose a combination of API definitions. An example for that is the CMSIS-Driver for Ethernet that is defined as:</p><ul>
 <li><b>Ethernet MAC</b> interface</li>
@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('pdsc_apis_pg.html',''); initResizable(
 <div class="line">  &lt;apis&gt;</div>
 <div class="line">    ...</div>
 <div class="line">  &lt;/apis&gt;</div>
-<div class="line">&lt;/package&gt;  </div>
+<div class="line">&lt;/package&gt;</div>
 </div><!-- fragment --><p>&#160;</p>
 <table class="cmtable" summary="Element: APIs">
 <tr>
@@ -187,8 +187,7 @@ $(document).ready(function(){initNavTree('pdsc_apis_pg.html',''); initResizable(
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Cclass </td><td>Defines the component class to which this component belongs. This is a mandatory part of the component ID. <br  />
- Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CclassType">Component Classes</a>. </td><td>CclassType </td><td>required  </td></tr>
+<td>Cclass </td><td>Defines the component class to which this component belongs. This is a mandatory part of the component ID. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CclassType">Component Classes</a>. </td><td>CclassType </td><td>required  </td></tr>
 <tr>
 <td>Cgroup </td><td>Defines the component group to which this component belongs. This is a mandatory part of the component ID. Predefined values can be used as listed in the table <a class="el" href="element_taxonomy.html#CgroupType">Component Groups</a>. </td><td>CgroupType </td><td>required  </td></tr>
 <tr>
@@ -208,7 +207,7 @@ $(document).ready(function(){initNavTree('pdsc_apis_pg.html',''); initResizable(
 <tr>
 <td>description </td><td>Brief summary about the purpose and scope of an API (maximum 256 characters, recommended 128 characters). </td><td>BriefDescType </td><td>0..1  </td></tr>
 <tr>
-<td><a class="el" href="pdsc_components_pg.html#element_files">files</a> </td><td>Grouping element for all file descriptions that are part of this component.. </td><td>group </td><td>0..1  </td></tr>
+<td><a class="el" href="pdsc_components_pg.html#element_files">files</a> </td><td>Grouping element for all file descriptions that are part of this API. At least one <a class="el" href="pdsc_components_pg.html#element_file">file</a> child element is required. </td><td>group </td><td>1  </td></tr>
 </table>
 <p>&#160;</p>
 </div></div><!-- contents -->

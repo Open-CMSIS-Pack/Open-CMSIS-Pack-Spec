@@ -125,7 +125,15 @@ $(document).ready(function(){initNavTree('element_repository.html',''); initResi
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>type </td><td>Repository management technology used by the specified public repository (e.g. git, svn). </td><td>xs:string </td><td>required  </td></tr>
+<td>type </td><td>Repository management technology used by the specified public repository (e.g. git, svn). </td><td><ul>
+<li>
+git </li>
+<li>
+svn </li>
+<li>
+other </li>
+</ul>
+</td><td>optional  </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <p>Contributing to a software pack hosted on GitHub:</p>

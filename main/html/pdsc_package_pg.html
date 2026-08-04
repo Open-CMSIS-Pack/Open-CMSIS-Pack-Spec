@@ -192,7 +192,7 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 <tr>
 <td>licenseSets </td><td>Section listing one or more collections of license files which can be associated with one, multiple or all components </td><td><a class="el" href="pdsc_licenseSets_pg.html#element_licenseSets">LicenseSetsType</a> </td><td>0..1   </td></tr>
 <tr>
-<td><a class="el" href="element_dominate.html">dominate</a> </td><td>dominate </td><td>A pack that has <a class="el" href="element_dominate.html">dominate</a> attribute overrules other packs that provide devices, APIs, or software components with the same name. </td><td><em>empty</em>   </td></tr>
+<td><a class="el" href="element_dominate.html">dominate</a> </td><td>A pack that has this element overrules other packs that provide identical <a class="el" href="pdsc_devices_pg.html#element_devices">device</a>, <a class="el" href="pdsc_apis_pg.html#element_apis">API</a>, or <a class="el" href="pdsc_components_pg.html#element_components">component</a> definitions. </td><td>DominateType </td><td>0..1  </td></tr>
 <tr>
 <td><a class="el" href="element_requirements_pg.html#element_requirements">requirements</a> </td><td>Specifies other CMSIS-Packs, programming languages and compiler as well as their respective version or version range required by the components in this pack.  </td><td>RequirementsType </td><td>0..1   </td></tr>
 <tr>
@@ -239,7 +239,7 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html',''); initResizab
 </ul>
 <p>&#160;</p>
 <p><a class="anchor" id="VersionType"></a><b>Version Type</b></p>
-<p>CMSIS-Pack version specification is inspired by the <a href="http://semver.org" target="_blank">Semantic Versioning 2.0.0</a>. Under this scheme, version numbers and the way they are incremented convey a meaning about the underlying content quality and the significance of changes from one version to the next. A version consists of 3 mandatory and 2 optional sections:</p>
+<p>CMSIS-Pack version specification is inspired by the <a href="https://semver.org" target="_blank">Semantic Versioning 2.0.0</a>. Under this scheme, version numbers and the way they are incremented convey a meaning about the underlying content quality and the significance of changes from one version to the next. A version consists of 3 mandatory and 2 optional sections:</p>
 <div class="fragment"><div class="line">MAJOR.MINOR.PATCH[-Pre Release][+Build Metadata]</div>
 </div><!-- fragment --><ol type="1">
 <li><b>MAJOR:</b> increment MAJOR for backwards incompatible changes<ul>
