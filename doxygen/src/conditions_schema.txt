@@ -260,7 +260,7 @@ A \ref element_condition "condition" becomes \token{true} when:
   </tr>
   <tr>
     <td>Dcdecp</td>
-    <td>Specifies whether <a href="https://developer.arm.com/documentation/ddi0607/ab/" target="_blank">Custom Datapath Extension</a> Coprocessors and which coprocessor interfaces must be supported by the device. Possible values are explained in \ref DcdecpEnum "Custom Datapath Extensions".</td>
+    <td>Specifies whether <a href="https://support.arm.com/documentation/ddi0607/ab" target="_blank">Custom Datapath Extension</a> Coprocessors and which coprocessor interfaces must be supported by the device. Possible values are explained in \ref DcdecpEnum "Custom Datapath Extensions".</td>
     <td>\ref DcdecpEnum</td>
     <td>optional</td>
   </tr>
