@@ -382,13 +382,13 @@ A \ref element_condition "condition" becomes \token{true} when:
         This attribute can be used to select compatible libraries for the selected compiler version or optimization mode.
         Note: can only be used in combination with \b Tcompiler.
     </td>
-    <td>\ref CompilerOptionsEnumType "CompilerOptionsEnumType"</td>
+    <td>"AC5", "AC6", "AC6LTO"</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>Toutput</td>
-    <td>Specifies the compiler output type. Use predefined values as listed in table \ref CompilerOutputType "Compiler Output Types".</td>
-    <td>\ref CompilerOutputType "CompilerOutputType"</td>
+    <td>Specifies the compiler output type. Use predefined values `exe` or `lib`.</td>
+    <td>"exe", "lib"</td>
     <td>optional</td>
   </tr>
   <tr>
