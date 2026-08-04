@@ -405,7 +405,7 @@ assists searching for packages. An optional environments element can be used to 
 
 \anchor VersionType <b>Version Type</b>
 
-CMSIS-Pack version specification is inspired by the <a href="http://semver.org" target="_blank">Semantic Versioning 2.0.0</a>.
+CMSIS-Pack version specification is inspired by the <a href="https://semver.org" target="_blank">Semantic Versioning 2.0.0</a>.
 Under this scheme, version numbers and the way they are incremented convey a meaning about the underlying content quality and the significance
 of changes from one version to the next. A version consists of 3 mandatory and 2 optional sections:
 
@@ -520,9 +520,9 @@ This Markdown file is indented for web pages that offer software packs in form o
 A pack may be bound to export control: if so, the pack should provide the related Export Control Classification Numbers (ECCN)
 for both the United States and the European Union.
 
-This section describes the <a href="https://www.bis.doc.gov/index.php/licensing/commerce-control-list-classification/export-control-classification-number-eccn" target="_blank">Export Control Classification Numbers (ECCN)</a>
+This section describes the <a href="https://www.trade.gov/how-do-i-determine-my-export-control-classification-number-eccn" target="_blank">Export Control Classification Numbers (ECCN)</a>
 for the content of the pack for both the US and the EU.
-(For more information, please refer to the <a href="https://www.bis.gov/ccl-index" target="_blank">Commerce Control List (CCL) index</a>)
+(For more information, please refer to the <a href="https://www.bis.gov/regulations/ear/interactive-commerce-control-list" target="_blank">Commerce Control List (CCL) index</a>)
 
 \b Example:
 \code
@@ -555,13 +555,13 @@ for the content of the pack for both the US and the EU.
   </tr>
   <tr>
     <td>ECCN-EU</td>
-    <td>Defines the <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_blank">Export Control Classification Number</a> for the European Union (EU)</td>
+    <td>Defines the <a href="https://www.bis.gov/licensing/classify-your-item" target="_blank">Export Control Classification Number</a> for the European Union (EU)</td>
     <td>ECCNEUCodeEnum</td>
     <td>1..1</td>
   </tr>
   <tr>
     <td>ECCN-US</td>
-    <td>Defines the <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_blank">Export Control Classification Number</a> for the United States (US)</td>
+    <td>Defines the <a href="https://www.bis.gov/regulations/ear/interactive-commerce-control-list" target="_blank">Export Control Classification Number</a> for the United States (US)</td>
     <td>ECCNUSCodeEnum</td>
     <td>1..1</td>
   </tr>
