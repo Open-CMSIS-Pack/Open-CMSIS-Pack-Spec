@@ -1298,7 +1298,7 @@ and group \token{Startup} is defined for the device-specific CMSIS-Core (Cortex-
 \endcode
 
 \note You \b must \b not use Windows or Linux
-<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
+<a href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
 \em Cclass, \em Cgroup, and \em Csub names! Some development tools use these names to create a directory structure for the
 software components in projects. Reserved characters are:
 \verbatim
@@ -1605,7 +1605,7 @@ It is recommended to use an already agreed part-taxonomy for interchangeable par
 \endcode
 
 \note You \b must \b not use Windows or Linux
-<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
+<a href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
 \em Hclass, \em Hgroup, and \em Hsub names! Reserved characters are:
 \verbatim
 < (less than)
