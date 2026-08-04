@@ -1,7 +1,7 @@
 /**
 \page pdsc_apis_pg /package/apis element
 
-Application Programming Interfaces (apis) are C/C++ interface specifications that allow software to be divided into largely independent modules. 
+Application Programming Interfaces (apis) are C/C++ interface specifications that allow software to be divided into largely independent modules.
 Such modules can then be developed, tested, and maintained independently, and reused by different projects. One example is the use of device drivers.
 If device drivers are developed for different devices implementing the same API, the application software itself can be written independent from the
 device it is build for.
@@ -16,13 +16,13 @@ The API typically defines one or more header files and optionally an include dir
 \b Example:
 
 \code
-<api Cclass="ACloud IF" Cgroup="TRNG" Capiversion="1.2.0"> 
-  <files> 
-    <file category="header" name="include/trng.h"/> 
-    <file category="include" name="include/somestuff"/> 
-    <file category="doc" name="html/trng.html"/> 
-  </files> 
-</api> 
+<api Cclass="ACloud IF" Cgroup="TRNG" Capiversion="1.2.0">
+  <files>
+    <file category="header" name="include/trng.h"/>
+    <file category="include" name="include/somestuff"/>
+    <file category="doc" name="html/trng.html"/>
+  </files>
+</api>
 \endcode
 
 The API can be used either in the same software pack or other software packs. Having the API definition in one central software pack provides the
@@ -35,12 +35,12 @@ Therefore, the component that is based on the API should not contain the header 
 \b Example: this component adds also the api header file above
 
 \code
-<component Cclass="ACloud IF" Cgroup="TRNG" Csub="Emulation" Capiversion="1.1.0"> 
-  <description>Software simulation of random number generator</description> 
-  <files> 
-    <file category="sourceC" name="source/trng_emulation.c"/> 
-  </files> 
-</component> 
+<component Cclass="ACloud IF" Cgroup="TRNG" Csub="Emulation" Capiversion="1.1.0">
+  <description>Software simulation of random number generator</description>
+  <files>
+    <file category="sourceC" name="source/trng_emulation.c"/>
+  </files>
+</component>
 \endcode
 Optionally, it is possible to request a minimum API version using the \b Capiversion attribute.
 
@@ -63,7 +63,7 @@ The element itself is optional. Only one such section can exist in a package.
   <apis>
     ...
   </apis>
-</package>  
+</package>
 \endcode
 
 <p>&nbsp;</p>
@@ -100,7 +100,7 @@ The element itself is optional. Only one such section can exist in a package.
 
 \section element_api /package/apis/api
 
-Application Programming Interfaces (apis) are C/C++ interface specifications that allow components to inter-work 
+Application Programming Interfaces (apis) are C/C++ interface specifications that allow components to inter-work
 by either implementing or using a set of functions, data types, and definitions. This element is mandatory and can exist multiple times.
 
 \b Example:
@@ -143,14 +143,14 @@ by either implementing or using a set of functions, data types, and definitions.
   </tr>
   <tr>
     <td>Cclass</td>
-    <td>Defines the component class to which this component belongs. This is a mandatory part of the component ID.  
+    <td>Defines the component class to which this component belongs. This is a mandatory part of the component ID.
       Predefined values can be used as listed in the table \ref CclassType "Component Classes".</td>
     <td>CclassType</td>
     <td>required</td>
   </tr>
   <tr>
     <td>Cgroup</td>
-    <td>Defines the component group to which this component belongs. This is a mandatory part of the component ID. 
+    <td>Defines the component group to which this component belongs. This is a mandatory part of the component ID.
       Predefined values can be used as listed in the table \ref CgroupType "Component Groups".</td>
     <td>CgroupType</td>
     <td>required</td>
@@ -164,8 +164,8 @@ by either implementing or using a set of functions, data types, and definitions.
   </tr>
   <tr>
     <td>condition</td>
-    <td>Enter the identifier (attribute \em <b>id</b>) of a \ref element_condition "condition". The element is used if the condition resolves to \token{true}. 
-      If the condition resolves to \token{false}, then the element will be ignored. 
+    <td>Enter the identifier (attribute \em <b>id</b>) of a \ref element_condition "condition". The element is used if the condition resolves to \token{true}.
+      If the condition resolves to \token{false}, then the element will be ignored.
       For example, an API might be specific for a certain toolchain or processor instruction set.</td>
     <td>xs:string</td>
     <td>optional</td>
@@ -188,7 +188,7 @@ by either implementing or using a set of functions, data types, and definitions.
     <td>changelog</td>
     <td>
       Reference to the \token{changelog} with the given identifier \token{ID} specified in the changelogs section of the package description.
-      A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the api. 
+      A changelog references a text file in the pack with a path relative to the pdsc containing changelog information for the api.
       The content of the referenced changelog file is not required to be exclusively used for a single api.</td>
     <td>xs:string</td>
     <td>optional</td>
@@ -208,9 +208,9 @@ by either implementing or using a set of functions, data types, and definitions.
   </tr>
   <tr>
     <td>\ref element_files "files"</td>
-    <td>Grouping element for all file descriptions that are part of this component.</td>.
+    <td>Grouping element for all file descriptions that are part of this API. At least one \ref element_file "file" child element is required.</td>
     <td>group</td>
-    <td>0..1</td>
+    <td>1</td>
   </tr>
 </table>
 
