@@ -67,7 +67,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage element_repository "<repository>": specifies the HTTPS URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
  - \subpage element_releases "<releases>": lists release versions with descriptions.
- - \subpage pdsc_changelogs_pg "<changeLogs>": lists changelog files associated with components and apis within the pack.
+ - \subpage pdsc_changelogs_pg "<changelogs>": lists changelog files associated with components and apis within the pack.
  - \subpage pdsc_licenseSets_pg "<licenseSets>": lists license files associated with the pack and contained components and apis.
  - \subpage element_requirements_pg "<requirements>": lists required packs, compiler, programming language standards and their version or version range.
  - \subpage element_taxonomy "<taxonomy>": lists description elements that define component classes and component group names.
@@ -83,7 +83,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage pdsc_components_pg "<components>": lists the software components contained in the software pack.
  - \subpage pdsc_examples_pg "<examples>": specifies example projects contained in the pack.
  - \subpage pdsc_csolution_pg "<csolution>": lists pack content that relates to *csolution projects* that are managed using the <a href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox" target="_blank">CMSIS-Toolbox</a>.
- 
+
 \section PDSC_Example Example of a *.pdsc File
 
 This example of a *.pdsc File explains the sections, particularly how dependencies are used to identify individual files of \ref cp_Components.
@@ -274,9 +274,9 @@ assists searching for packages. An optional environments element can be used to 
   </tr>
   <tr>
     <td>\ref element_dominate "dominate"</td>
-    <td>dominate</td>
-    <td>A pack that has \ref element_dominate "dominate" attribute overrules other packs that provide devices, APIs, or software components with the same name.</td>
-    <td>\em empty</td>
+    <td>A pack that has this element overrules other packs that provide identical \ref element_devices "device", \ref element_apis "API", or \ref element_components "component" definitions.</td>
+    <td>DominateType</td>
+    <td>0..1</td>
   </tr>
   <tr>
     <td>\ref element_requirements "requirements"</td>
@@ -658,8 +658,14 @@ specifies the repository technology and therefore the tools required to be used 
   <tr>
     <td>type</td>
     <td>Repository management technology used by the specified public repository (e.g. git, svn).</td>
-    <td>xs:string</td>
-    <td>required</td>
+    <td>
+      <ul>
+        <li>git</li>
+        <li>svn</li>
+        <li>other</li>
+      </ul>
+    </td>
+    <td>optional</td>
   </tr>
 </table>
 
@@ -720,7 +726,7 @@ This attribute is useful for framing packs that:
     <td>info</td>
     <td>Descriptive text that explains the reason for the overwrite using dominate.</td>
     <td>xs:string</td>
-    <td>optional</td>
+    <td>required</td>
   </tr>
 </table>
 
