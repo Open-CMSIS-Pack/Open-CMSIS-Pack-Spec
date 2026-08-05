@@ -405,7 +405,9 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html',''); initResizabl
 <h1><a class="anchor" id="element_flashinfo"></a>
 /package/devices/family/.../flashinfo</h1>
 <p>Specify Flash information that the debugger can use to erase and program Flash memories without the use of target RAM based Flash download algorithms.<br  />
- The child elements &lt;block&gt; and &lt;gap&gt; describe the memory and programming layout of a flash device:</p><ul>
+ The <b>FlashInit</b>, <b>FlashUninit</b>, <b>FlashEraseSector</b>, <b>FlashEraseChip</b>, and <b>FlashProgramPage</b> <a class="el" href="debug_description.html#default_sequences">debug sequences</a> require one or more corresponding <b>flashinfo</b> regions, which supply the memory layout and programming parameters. Defining one or more <b>flashinfo</b> regions does not require any flash debug sequences to be implemented. If no flash debug sequences are implemented, the debugger ignores all such regions.<br  />
+</p>
+<p>The child elements &lt;block&gt; and &lt;gap&gt; describe the memory and programming layout of a flash device:</p><ul>
 <li>The first child element has the base address <span class="XML-Token">start</span>.</li>
 <li>The base address of the second child element is <span class="XML-Token">start</span> incremented by the size of the first child element.</li>
 <li>The base address of all following child elements calculates respectively.</li>

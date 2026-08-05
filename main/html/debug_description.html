@@ -171,7 +171,9 @@ Predefined debug access sequences</h1>
 <p>Debug access sequences are defined using the <a class="el" href="pdsc_family_pg.html#element_sequence">sequence</a> element.</p>
 <p>The table below lists the available predefined debug access sequences. Their default implementation is done in a development tool and gets executed by default. If PDSC file contains a user implementation of a predefined debug sequence (using <a class="el" href="pdsc_family_pg.html#element_sequence">sequence</a> element) then it will override the default implementation and will be executed instead. Refer to <a class="el" href="debug_description.html#usage_of_sequences">Usage of debug access sequences</a> for more information about the execution of these sequences.</p>
 <p>For debug access sequences marked in <span class="XML-Token">ItalicRed</span>, no default implementation exists. When using them in debug descriptions corresponding user implementation shall be done as well.</p>
-<dl class="section note"><dt>Note</dt><dd>Predefined debug access sequences read the System Control Space (SCS) of the processor and assume that the SCS base address is implemented as defined in the Armv6-M/Armv7-M/Armv8-M architecture reference manual.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Predefined debug access sequences read the System Control Space (SCS) of the processor and assume that the SCS base address is implemented as defined in the Armv6-M/Armv7-M/Armv8-M architecture reference manual.</dd>
+<dd>
+The <b>FlashInit</b>, <b>FlashUninit</b>, <b>FlashEraseSector</b>, <b>FlashEraseChip</b>, and <b>FlashProgramPage</b> sequences are the sequence-based counterparts of the corresponding FLM functions. They require a corresponding <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region, which supplies the memory layout and programming parameters. <b>FlashEraseSetup</b> and <b>FlashProgramSetup</b> can select an FLM algorithm instead of these sequences for an erase or program phase. A target may define one or more <b>flashinfo</b> regions without implementing any flash debug sequences; in that case all such regions are ignored. <b>FlashEraseDone</b> and <b>FlashProgramDone</b> are completion callbacks and are also executed when an FLM flash algorithm performs the erase or program operation.</dd></dl>
 <table class="cmtable" summary="Enumeration: SequenceNameEnum">
 <tr>
 <th>name= </th><th>Description  </th></tr>
@@ -223,23 +225,23 @@ Predefined debug access sequences</h1>
 <tr>
 <td class="XML-Token"><a class="el" href="debug_description.html#resetCatchClear">ResetCatchClear</a> </td><td>Executed after a target reset to free hardware resources allocated by <b>ResetCatchSet</b>.   </td></tr>
 <tr>
-<td class="XML-Token">FlashEraseSetup </td><td>Optional setup before an erase phase for a <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region. The sequence can call <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the erase phase. If the sequence is not implemented or does not select an algorithm, the debugger uses the flash debug sequences for erase.   </td></tr>
+<td class="XML-Token">FlashEraseSetup </td><td>Optional setup before an erase phase for a <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region. The sequence can call <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the erase phase. The debugger then uses the FLM functions instead of the corresponding flash debug sequences. If no algorithm is selected, the debugger uses the flash debug sequences.   </td></tr>
 <tr>
-<td class="XML-Token">FlashProgramSetup </td><td>Optional setup before a program phase for a <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region. The sequence can call <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the program phase. If the sequence is not implemented or does not select an algorithm, the debugger uses the flash debug sequences for programming.   </td></tr>
+<td class="XML-Token">FlashProgramSetup </td><td>Optional setup before a program phase for a <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region. The sequence can call <b>FlashLoadAlgorithm</b> to select an FLM flash algorithm for the program phase. The debugger then uses the FLM functions instead of the corresponding flash debug sequences. If no algorithm is selected, the debugger uses the flash debug sequences.   </td></tr>
 <tr>
-<td class="XML-Token">FlashInit </td><td>Executed before starting a flash operation.   </td></tr>
+<td class="XML-Token">FlashInit </td><td>Sequence-based counterpart of the FLM <b>Init</b> function. Executed before starting a flash operation.   </td></tr>
 <tr>
-<td class="XML-Token">FlashUninit </td><td>Executed after a flash operation finished.   </td></tr>
+<td class="XML-Token">FlashUninit </td><td>Sequence-based counterpart of the FLM <b>UnInit</b> function. Executed after a flash operation finished.   </td></tr>
 <tr>
-<td class="XML-Token">FlashEraseSector </td><td>Executed to erase a flash memory sector.   </td></tr>
+<td class="XML-Token">FlashEraseSector </td><td>Sequence-based counterpart of the FLM <b>EraseSector</b> function. Executed to erase a flash memory sector described by a <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region.   </td></tr>
 <tr>
-<td class="XML-Token">FlashEraseChip </td><td>Executed to erase all on-chip flash memory with target device specific erase technology. If this sequence is not implemented then a debugger can use <b>FlashEraseSector</b> to erase all flash memory.   </td></tr>
+<td class="XML-Token">FlashEraseChip </td><td>Sequence-based counterpart of the FLM <b>EraseChip</b> function. Executed to erase all on-chip flash memory with target device specific erase technology. If this sequence is not implemented then a debugger can use <b>FlashEraseSector</b> to erase all flash memory.   </td></tr>
 <tr>
-<td class="XML-Token">FlashEraseDone </td><td>Executed after all flash memory erase operations are finished.   </td></tr>
+<td class="XML-Token">FlashEraseDone </td><td>Executed after all flash memory erase operations are finished, regardless of whether flash debug sequences or an FLM flash algorithm performed the operations.   </td></tr>
 <tr>
-<td class="XML-Token">FlashProgramPage </td><td>Executed to program a single flash page.   </td></tr>
+<td class="XML-Token">FlashProgramPage </td><td>Sequence-based counterpart of the FLM <b>ProgramPage</b> function. Executed to program a single page described by a <a class="el" href="pdsc_family_pg.html#element_flashinfo">flashinfo</a> region.   </td></tr>
 <tr>
-<td class="XML-Token">FlashProgramDone </td><td>Executed after all flash programming operations are finished.   </td></tr>
+<td class="XML-Token">FlashProgramDone </td><td>Executed after all flash programming operations are finished, regardless of whether flash debug sequences or an FLM flash algorithm performed the operations.   </td></tr>
 <tr>
 <td class="XML-Token">TraceStart <a class="anchor" id="TraceStart"></a> </td><td>Enable target trace capture.<br  />
  If <a class="el" href="pdsc_family_pg.html#element_sequences">sequences</a> specifies <b>traceSetup=<span class="XML-Token">legacy</span></b> or omits the attribute, this sequence is executed before the debugger configures CoreSight trace components, e.g. after the initial target connection as well as after a system-wide reset.<br  />
