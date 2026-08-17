@@ -85,6 +85,7 @@ packs) and provides useful tips when creating a pack.
     <td>
       - added optional 'name' attributes to trace-sink elements
       - added named trace-buffer support for 'BufferStreamOut'
+      - added 'TraceSinkEnabled' debug access function
     </td>
   </tr>
   <tr>

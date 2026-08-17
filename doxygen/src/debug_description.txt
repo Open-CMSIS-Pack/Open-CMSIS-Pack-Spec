@@ -1961,6 +1961,41 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
+    <td style="white-space: nowrap"><pre>TraceSinkEnabled(type, name)</pre></td>
+    <td>
+        Check whether a trace sink is enabled in the selected trace configuration.<br>
+        <br>
+        <b>Parameters:</b><br>
+        - type: Constant string that specifies the trace sink type. It must be one of
+          <b>"serialwire"</b>, <b>"traceport"</b>, or <b>"tracebuffer"</b>, matching the child elements of a
+          \refelem{trace} element.
+        - name: Constant string that identifies the trace sink. If the selected trace configuration contains exactly
+          one sink of the specified \b type, this parameter may be an empty string. If it contains multiple sinks of
+          that type, \b name shall identify one of them.
+        <br>
+        If the selected trace configuration contains an applicable \refelem{trace} element, the function evaluates
+        the matching child element. If no applicable <b>trace</b> element is specified, the function uses the default
+        default configuration, which has one unnamed sink of each type. In that case, an empty \b name selects the
+        sink and the result corresponds to the associated bit of \ref __traceout: bit 0 for <b>"serialwire"</b>, bit
+        1 for <b>"traceport"</b>, and bit 2 for <b>"tracebuffer"</b>. A non-empty \b name does not match a default
+        default sink.<br>
+        <br>
+        <b>Return Value:</b><br>
+        Returns \token{1} if the resolved trace sink is enabled; otherwise returns \token{0}. An empty \b name is an
+        error if the selected trace configuration contains multiple sinks of the specified type. An unsupported
+        \b type is also an error.
+
+        <b>Code Example:</b><br>
+        \code
+        <control if='TraceSinkEnabled("serialwire", "SWO")'>
+          <block>
+            // Configure the device's SWO pin routing.
+          </block>
+        </control>
+        \endcode
+    </td>
+  </tr>
+  <tr>
     <td style="white-space: nowrap"><pre>RunApplication (appPath, arguments, workDirectory, timeout)</pre></td>
     <td>
         Run an external application.<br>

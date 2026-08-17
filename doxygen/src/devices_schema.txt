@@ -4642,7 +4642,10 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
 \section element_trace_serialwire /package/devices/family/.../trace/serialwire
 
 Indicates serial wire trace output capabilities of the specified processor.
-The optional <b>name</b> attribute identifies the trace sink.
+The optional <b>name</b> attribute identifies the trace sink. If more than one
+<b>serialwire</b> element is specified for a <b>trace</b> element, every serial
+wire trace sink shall have a unique <b>name</b> attribute. A single serial wire
+trace sink may omit the attribute.
 
 \b Example
 \code
@@ -4676,7 +4679,8 @@ The optional <b>name</b> attribute identifies the trace sink.
   </tr>
   <tr>
     <td>name</td>
-    <td>Identifier of the serial wire trace sink.</td>
+    <td>Identifier of the serial wire trace sink. This attribute is required and shall be unique when the parent
+        <b>trace</b> element contains multiple <b>serialwire</b> elements.</td>
     <td>RestrictedString</td>
     <td>optional</td>
   </tr>
@@ -4689,7 +4693,10 @@ The optional <b>name</b> attribute identifies the trace sink.
 
 Indicates parallel trace port output capabilities of the specified processor.
 This element describes possible configuration settings for capturing trace. The
-optional <b>name</b> attribute identifies the trace sink.
+optional <b>name</b> attribute identifies the trace sink. If more than one
+<b>traceport</b> element is specified for a <b>trace</b> element, every parallel
+trace port sink shall have a unique <b>name</b> attribute. A single parallel
+trace port sink may omit the attribute.
 
 \b Example
 \code
@@ -4723,7 +4730,8 @@ optional <b>name</b> attribute identifies the trace sink.
   </tr>
   <tr>
     <td>name</td>
-    <td>Identifier of the parallel trace port sink.</td>
+    <td>Identifier of the parallel trace port sink. This attribute is required and shall be unique when the parent
+        <b>trace</b> element contains multiple <b>traceport</b> elements.</td>
     <td>RestrictedString</td>
     <td>optional</td>
   </tr>
