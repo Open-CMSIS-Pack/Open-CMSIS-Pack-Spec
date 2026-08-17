@@ -314,14 +314,18 @@ incrementing its address, and streams the result to the trace buffer named <b>ET
   <tracebuffer name="ETB"/>
 </trace>
 
-<sequence name="TraceFlush">
-  <block>
-    // Read 0x100 bytes from a fixed 32-bit trace-data register into buffer 0.
-    // Mode 32 selects 32-bit reads; its increment bit is clear.
-    BufferRead(0, 0, 0x50000000, 0x100, 32);
-    BufferStreamOut(0, 0, 0x100, "ETB", 1, 0);
-  </block>
-</sequence>
+<sequences>
+  <sequence name="TraceFlush">
+    <control if="TraceSinkEnabled(&quot;tracebuffer&quot;, &quot;ETB&quot;)">
+      <block>
+        // Read 0x100 bytes from a fixed 32-bit trace-data register into buffer 0.
+        // Mode 32 selects 32-bit reads; its increment bit is clear.
+        BufferRead(0, 0, 0x50000000, 0x100, 32);
+        BufferStreamOut(0, 0, 0x100, "ETB", 1, 0);
+      </block>
+    </control>
+  </sequence>
+</sequences>
 \endcode
 
 \section dbg_sqns_reset Implement reset for debug access

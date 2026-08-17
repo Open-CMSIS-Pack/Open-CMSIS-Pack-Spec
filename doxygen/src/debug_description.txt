@@ -1987,7 +1987,7 @@ debug access variables which are evaluated for the function call.
 
         <b>Code Example:</b><br>
         \code
-        <control if='TraceSinkEnabled("serialwire", "SWO")'>
+        <control if="TraceSinkEnabled(&quot;serialwire&quot;, &quot;SWO&quot;)">
           <block>
             // Configure the device's SWO pin routing.
           </block>
