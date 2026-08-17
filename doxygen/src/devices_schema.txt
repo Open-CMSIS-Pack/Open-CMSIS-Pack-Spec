@@ -4559,8 +4559,8 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
 <family Dfamily="LPC4300 Series" Dvendor="NXP:11">
   ...
   <trace Pname="Cortex-M4">
-    <serialwire/>
-    <traceport   width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
+    <serialwire name="SWO"/>
+    <traceport name="TPIU" width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
     <tracebuffer name="ETB" start="0x2000C000" size="0x4000"/>
   </trace>
   ...
@@ -4642,6 +4642,7 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
 \section element_trace_serialwire /package/devices/family/.../trace/serialwire
 
 Indicates serial wire trace output capabilities of the specified processor.
+The optional <b>name</b> attribute identifies the trace sink.
 
 \b Example
 \code
@@ -4649,7 +4650,7 @@ Indicates serial wire trace output capabilities of the specified processor.
   ...
   <trace Pname="Cortex-M4">
     ...
-    <serialwire/>
+    <serialwire name="SWO"/>
     ...
   </trace>
   ...
@@ -4667,6 +4668,18 @@ Indicates serial wire trace output capabilities of the specified processor.
     <td>\ref element_trace "trace"</td>
     <td colspan="3">\ref element_trace</td>
   </tr>
+  <tr>
+    <th>Attributes</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>Identifier of the serial wire trace sink.</td>
+    <td>RestrictedString</td>
+    <td>optional</td>
+  </tr>
 </table>
 
 <p>&nbsp;</p>		
@@ -4675,7 +4688,8 @@ Indicates serial wire trace output capabilities of the specified processor.
 \section element_trace_traceport /package/devices/family/.../trace/traceport
 
 Indicates parallel trace port output capabilities of the specified processor.
-This element describes possible configuration settings for capturing trace.
+This element describes possible configuration settings for capturing trace. The
+optional <b>name</b> attribute identifies the trace sink.
 
 \b Example
 \code
@@ -4683,7 +4697,7 @@ This element describes possible configuration settings for capturing trace.
   ...
   <trace Pname="Cortex-M4">
     ...
-    <traceport width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
+    <traceport name="TPIU" width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
     ...
   </trace>
   ...
@@ -4706,6 +4720,12 @@ This element describes possible configuration settings for capturing trace.
     <th>Description</th>
     <th>Type</th>
     <th>Use</th>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>Identifier of the parallel trace port sink.</td>
+    <td>RestrictedString</td>
+    <td>optional</td>
   </tr>
   <tr>
     <td>width</td>

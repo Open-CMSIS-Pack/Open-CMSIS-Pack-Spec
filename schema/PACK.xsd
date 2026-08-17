@@ -26,7 +26,8 @@
   SchemaVersion=1.7.61
 
   17. Aug 2026: v1.7.61
-   - added optional 'name' attribute to 'tracebuffer' element
+   - added optional 'name' attribute to trace sink elements
+   - added named trace-buffer support for 'BufferStreamOut'
   22. Jul 2026: v1.7.60
    - added 'FlashEraseSetup' and 'FlashProgramSetup' debug access sequences
    - added 'FlashLoadAlgorithm' debug access function
@@ -795,11 +796,13 @@
 
   <!-- SerialWireType -->
   <xs:complexType name="SerialWireType">
+    <xs:attribute name="name" type="RestrictedString" use="optional" />
     <xs:anyAttribute processContents="lax" />
   </xs:complexType>
 
   <!-- TracePortType -->
   <xs:complexType name="TracePortType">
+    <xs:attribute name="name" type="RestrictedString" use="optional" />
     <xs:attribute name="width" type="NonNegativeInteger" use="optional" />
     <xs:anyAttribute processContents="skip" />
   </xs:complexType>

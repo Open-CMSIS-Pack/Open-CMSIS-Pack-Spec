@@ -83,6 +83,7 @@ packs) and provides useful tips when creating a pack.
   <tr>
     <td>1.7.61</td>
     <td>
+      - added optional 'name' attributes to trace-sink elements
       - added named trace-buffer support for 'BufferStreamOut'
     </td>
   </tr>
