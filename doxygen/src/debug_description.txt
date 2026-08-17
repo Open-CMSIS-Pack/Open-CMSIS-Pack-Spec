@@ -1927,7 +1927,7 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
-    <td style="white-space: nowrap"><pre>BufferStreamOut (buffID, buffOffset, length, destPath, destMode, timeout)</pre></td>
+    <td style="white-space: nowrap"><pre>BufferStreamOut (buffID, buffOffset, length, path, mode, timeout)</pre></td>
     <td>
         Stream data from a buffer to an external data sink, e.g. a file.<br>
         <br>
@@ -1935,11 +1935,15 @@ debug access variables which are evaluated for the function call.
         - buffID: Numeric buffer ID. Must be a constant number. Function fails if buffer does not exist.
         - buffOffset: First byte in the buffer to transfer to the external data sink.
         - length: Maximum number of bytes to stream out.
-        - path: Constant string value representing the destination to which to stream data to. Refer to
-		  \ref charactersequence "character sequences" for path/file name place holders.
-        - mode: Specifies how to treat the data source in the specified mode.
-          - Bit 0..3: Format of the data source:<br>
+        - path: Constant string value representing the destination to which to stream data. For the Binary File
+          format, refer to \ref charactersequence "character sequences" for path/file name place holders. For the
+          Trace Buffer format, this shall be the <b>name</b> of a
+          \refelem{trace_tracebuffer} element of the selected trace configuration. If that configuration has a
+          single <b>tracebuffer</b> element without a <b>name</b> attribute, <b>path</b> may be an empty string.
+        - mode: Specifies how to treat the data sink in the specified mode.
+          - Bit 0..3: Format of the data sink:<br>
 		    \token{0} - Binary File<br>
+		    \token{1} - Trace Buffer<br>
 			Others - Reserved<br>
           - Bit 4..7: Communication options for data sink:<br>
 		    \token{0} - Overwrite<br>

@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        22. July 2026
-  $Revision:    1.7.60
+  $Date:        17. August 2026
+  $Revision:    1.7.61
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.60
+  SchemaVersion=1.7.61
 
+  17. Aug 2026: v1.7.61
+   - added optional 'name' attribute to 'tracebuffer' element
   22. Jul 2026: v1.7.60
    - added 'FlashEraseSetup' and 'FlashProgramSetup' debug access sequences
    - added 'FlashLoadAlgorithm' debug access function
@@ -277,7 +279,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.60">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.61">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -804,6 +806,7 @@
 
   <!-- TraceBufferType -->
   <xs:complexType name="TraceBufferType">
+    <xs:attribute name="name" type="RestrictedString" use="optional" />
     <xs:attribute name="start" type="NonNegativeInteger" use="optional" />
     <xs:attribute name="size" type="NonNegativeInteger" use="optional" />
     <xs:anyAttribute processContents="skip" />
