@@ -1961,9 +1961,9 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
-    <td style="white-space: nowrap"><pre>TraceSinkEnabled(type, name)</pre></td>
+    <td style="white-space: nowrap"><pre>TraceSinkSelected(type, name)</pre></td>
     <td>
-        Check whether a trace sink is enabled in the selected trace configuration.<br>
+        Check whether a trace sink is selected in the trace configuration.<br>
         <br>
         <b>Parameters:</b><br>
         - type: Constant string that specifies the trace sink type. It must be one of
@@ -1987,7 +1987,7 @@ debug access variables which are evaluated for the function call.
 
         <b>Code Example:</b><br>
         \code
-        <control if="TraceSinkEnabled(&quot;serialwire&quot;, &quot;SWO&quot;)">
+        <control if="TraceSinkSelected(&quot;serialwire&quot;, &quot;SWO&quot;)">
           <block>
             // Configure the device's SWO pin routing.
           </block>

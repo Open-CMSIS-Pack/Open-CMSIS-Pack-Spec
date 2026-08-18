@@ -316,7 +316,7 @@ incrementing its address, and streams the result to the trace buffer named <b>ET
 
 <sequences>
   <sequence name="TraceFlush">
-    <control if="TraceSinkEnabled(&quot;tracebuffer&quot;, &quot;ETB&quot;)">
+    <control if="TraceSinkSelected(&quot;tracebuffer&quot;, &quot;ETB&quot;)">
       <block>
         // Read 0x100 bytes from a fixed 32-bit trace-data register into buffer 0.
         // Mode 32 selects 32-bit reads; its increment bit is clear.
