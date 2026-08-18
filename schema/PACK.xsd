@@ -25,7 +25,7 @@
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.61
 
-  17. Aug 2026: v1.7.61
+  18. Aug 2026: v1.7.61
    - added optional 'name' attribute to trace sink elements
    - added named trace-buffer support for 'BufferStreamOut'
    - added 'TraceSinkSelected' debug access function
