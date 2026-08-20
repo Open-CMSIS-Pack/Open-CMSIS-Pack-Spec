@@ -67,7 +67,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage element_repository "<repository>": specifies the HTTPS URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
  - \subpage element_releases "<releases>": lists release versions with descriptions.
- - \subpage pdsc_changelogs_pg "<changeLogs>": lists changelog files associated with components and apis within the pack.
+ - \subpage pdsc_changelogs_pg "<changelogs>": lists changelog files associated with components and apis within the pack.
  - \subpage pdsc_licenseSets_pg "<licenseSets>": lists license files associated with the pack and contained components and apis.
  - \subpage element_requirements_pg "<requirements>": lists required packs, compiler, programming language standards and their version or version range.
  - \subpage element_taxonomy "<taxonomy>": lists description elements that define component classes and component group names.
@@ -83,7 +83,7 @@ The \ref packFormat is structured using grouping elements and contains the follo
  - \subpage pdsc_components_pg "<components>": lists the software components contained in the software pack.
  - \subpage pdsc_examples_pg "<examples>": specifies example projects contained in the pack.
  - \subpage pdsc_csolution_pg "<csolution>": lists pack content that relates to *csolution projects* that are managed using the <a href="https://github.com/Open-CMSIS-Pack/cmsis-toolbox" target="_blank">CMSIS-Toolbox</a>.
- 
+
 \section PDSC_Example Example of a *.pdsc File
 
 This example of a *.pdsc File explains the sections, particularly how dependencies are used to identify individual files of \ref cp_Components.
@@ -274,9 +274,9 @@ assists searching for packages. An optional environments element can be used to 
   </tr>
   <tr>
     <td>\ref element_dominate "dominate"</td>
-    <td>dominate</td>
-    <td>A pack that has \ref element_dominate "dominate" attribute overrules other packs that provide devices, APIs, or software components with the same name.</td>
-    <td>\em empty</td>
+    <td>A pack that has this element overrules other packs that provide identical \ref element_devices "device", \ref element_apis "API", or \ref element_components "component" definitions.</td>
+    <td>DominateType</td>
+    <td>0..1</td>
   </tr>
   <tr>
     <td>\ref element_requirements "requirements"</td>
@@ -405,7 +405,7 @@ assists searching for packages. An optional environments element can be used to 
 
 \anchor VersionType <b>Version Type</b>
 
-CMSIS-Pack version specification is inspired by the <a href="http://semver.org" target="_blank">Semantic Versioning 2.0.0</a>.
+CMSIS-Pack version specification is inspired by the <a href="https://semver.org" target="_blank">Semantic Versioning 2.0.0</a>.
 Under this scheme, version numbers and the way they are incremented convey a meaning about the underlying content quality and the significance
 of changes from one version to the next. A version consists of 3 mandatory and 2 optional sections:
 
@@ -520,9 +520,9 @@ This Markdown file is indented for web pages that offer software packs in form o
 A pack may be bound to export control: if so, the pack should provide the related Export Control Classification Numbers (ECCN)
 for both the United States and the European Union.
 
-This section describes the <a href="https://www.bis.doc.gov/index.php/licensing/commerce-control-list-classification/export-control-classification-number-eccn" target="_blank">Export Control Classification Numbers (ECCN)</a>
+This section describes the <a href="https://www.trade.gov/how-do-i-determine-my-export-control-classification-number-eccn" target="_blank">Export Control Classification Numbers (ECCN)</a>
 for the content of the pack for both the US and the EU.
-(For more information, please refer to the <a href="https://www.bis.gov/ccl-index" target="_blank">Commerce Control List (CCL) index</a>)
+(For more information, please refer to the <a href="https://www.bis.gov/regulations/ear/interactive-commerce-control-list" target="_blank">Commerce Control List (CCL) index</a>)
 
 \b Example:
 \code
@@ -555,13 +555,13 @@ for the content of the pack for both the US and the EU.
   </tr>
   <tr>
     <td>ECCN-EU</td>
-    <td>Defines the <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_blank">Export Control Classification Number</a> for the European Union (EU)</td>
+    <td>Defines the <a href="https://www.bis.gov/licensing/classify-your-item" target="_blank">Export Control Classification Number</a> for the European Union (EU)</td>
     <td>ECCNEUCodeEnum</td>
     <td>1..1</td>
   </tr>
   <tr>
     <td>ECCN-US</td>
-    <td>Defines the <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/13-commerce-control-list-index/file" target="_blank">Export Control Classification Number</a> for the United States (US)</td>
+    <td>Defines the <a href="https://www.bis.gov/regulations/ear/interactive-commerce-control-list" target="_blank">Export Control Classification Number</a> for the United States (US)</td>
     <td>ECCNUSCodeEnum</td>
     <td>1..1</td>
   </tr>
@@ -658,8 +658,14 @@ specifies the repository technology and therefore the tools required to be used 
   <tr>
     <td>type</td>
     <td>Repository management technology used by the specified public repository (e.g. git, svn).</td>
-    <td>xs:string</td>
-    <td>required</td>
+    <td>
+      <ul>
+        <li>git</li>
+        <li>svn</li>
+        <li>other</li>
+      </ul>
+    </td>
+    <td>optional</td>
   </tr>
 </table>
 
@@ -720,7 +726,7 @@ This attribute is useful for framing packs that:
     <td>info</td>
     <td>Descriptive text that explains the reason for the overwrite using dominate.</td>
     <td>xs:string</td>
-    <td>optional</td>
+    <td>required</td>
   </tr>
 </table>
 
@@ -1292,7 +1298,7 @@ and group \token{Startup} is defined for the device-specific CMSIS-Core (Cortex-
 \endcode
 
 \note You \b must \b not use Windows or Linux
-<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
+<a href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
 \em Cclass, \em Cgroup, and \em Csub names! Some development tools use these names to create a directory structure for the
 software components in projects. Reserved characters are:
 \verbatim
@@ -1599,7 +1605,7 @@ It is recommended to use an already agreed part-taxonomy for interchangeable par
 \endcode
 
 \note You \b must \b not use Windows or Linux
-<a href="http://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
+<a href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words" target="_blank">reserved characters</a> for
 \em Hclass, \em Hgroup, and \em Hsub names! Reserved characters are:
 \verbatim
 < (less than)

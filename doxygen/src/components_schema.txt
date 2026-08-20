@@ -611,7 +611,7 @@ A component describes a collection of files (source, header, configuration, libr
     <td>\ref element_extensions "extensions"</td>
     <td>Grouping element for all extensions concerning this component.</td>
     <td>group</td>
-    <td>1</td>
+    <td>0..1 </td>
   </tr>
   <tr>
     <td>\ref element_component_environments "environments"</td>
