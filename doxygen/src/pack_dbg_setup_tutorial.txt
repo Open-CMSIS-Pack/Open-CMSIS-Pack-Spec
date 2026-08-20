@@ -299,12 +299,16 @@ Some devices can require that trace clock is enabled already at \ref DebugDevice
 
 \section dbg_sqns_tracebuffer Stream trace data to a trace buffer
 
-An on-device trace buffer can be described with a \refelem{trace_tracebuffer} element. If the trace
-configuration provides multiple trace buffers, assign each one a unique <b>name</b>. A debug access
-sequence can collect trace data in a temporary buffer using \c BufferRead and deliver it to the
-selected trace buffer using \c BufferStreamOut with the Trace Buffer format (mode \token{1}). The
-\b path argument selects the trace buffer by name. For a configuration with one unnamed
-<b>tracebuffer</b> element, use an empty string for \b path.
+Use a \refelem{trace_tracebuffer} element to describe an on-device trace buffer. A single trace
+buffer may be unnamed. If a trace configuration provides multiple trace buffers, each one shall
+have a unique <b>name</b> attribute.
+
+Use the name with \c BufferStreamOut in the Trace Buffer format (mode \token{1}) and with
+\c TraceBufferSelected. An empty string identifies the unnamed trace buffer.
+
+A debug access sequence can collect trace data in a temporary buffer using \c BufferRead and
+forward it with \c BufferStreamOut to the selected trace buffer in the debugger for further
+processing.
 
 The following example reads 32-bit values repeatedly from a fixed trace-data register, without
 incrementing its address, and streams the result to the trace buffer named <b>ETB</b>:

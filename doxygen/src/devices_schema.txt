@@ -4710,13 +4710,6 @@ This element describes possible configuration settings for capturing trace.A
     <th>Use</th>
   </tr>
   <tr>
-    <td>name</td>
-    <td>Identifier of the parallel trace port sink. The parent <b>trace</b> element is expected to contain only one
-        <b>traceport</b> element.</td>
-    <td>RestrictedString</td>
-    <td>optional</td>
-  </tr>
-  <tr>
     <td>width</td>
     <td>
       Parallel trace port widths supported for the processor connection (see table below).
