@@ -4841,7 +4841,7 @@ The value <b>width=0x00008088</b> (as shown in the table) indicates that three p
 Indicates on-device trace buffer capabilities of the specified processor.
 This element describes possible configuration settings for capturing trace
 and reading it from the buffer. The optional <b>name</b> attribute identifies
-the trace buffer for use with the \c BufferStreamOut debug access function.
+the trace buffer for use with the \c BufferStreamOut and \c TraceBufferSelected debug access functions.
 If more than one <b>tracebuffer</b> element is specified for a <b>trace</b>
 element, every trace buffer shall have a unique <b>name</b> attribute. A single
 trace buffer may omit the attribute.
