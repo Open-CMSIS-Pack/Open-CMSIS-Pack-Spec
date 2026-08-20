@@ -1935,19 +1935,18 @@ debug access variables which are evaluated for the function call.
         - buffID: Numeric buffer ID. Must be a constant number. Function fails if buffer does not exist.
         - buffOffset: First byte in the buffer to transfer to the external data sink.
         - length: Maximum number of bytes to stream out.
-        - path: Constant string value representing the destination to which to stream data. For the Binary File
-          format, refer to \ref charactersequence "character sequences" for path/file name place holders. For the
-          Trace Buffer format, this shall be the <b>name</b> of a
-          \refelem{trace_tracebuffer} element of the selected trace configuration. If that configuration has a
-          single <b>tracebuffer</b> element without a <b>name</b> attribute, <b>path</b> may be an empty string.
+        - path: Constant string value representing the destination to which to stream data.
+          - For the Binary File format, refer to \ref charactersequence "character sequences" for path/file name place holders.
+          - For the Trace Buffer format, this is the <b>name</b> of a specified \refelem{trace_tracebuffer} element representing
+            a data pipe into the debugger. If there is only a single unnamed <b>tracebuffer</b> element then an empty string may be used.
         - mode: Specifies how to treat the data sink in the specified mode.
           - Bit 0..3: Format of the data sink:<br>
-		    \token{0} - Binary File<br>
-		    \token{1} - Trace Buffer<br>
+		    \token{0} - Binary File: The sequence writes the data to a binary file in the host filesystem.<br>
+		    \token{1} - Trace Buffer: The sequence sends the data to a debugger-internal trace buffer for further processing.<br>
 			Others - Reserved<br>
-          - Bit 4..7: Communication options for data sink:<br>
+          - Bit 4..7: File write option (only applies to Binary File format; ignored for Trace Buffer format):<br>
 		    \token{0} - Overwrite<br>
-			\token{1} - Append<br>
+			  \token{1} - Append<br>
 			Others - Reserved<br>
         - timeout: Timeout in microseconds. If \token{0}, then synchronously wait for the operation to finish.<br>
           - This does not include file-system delays, e.g. between creation and visibility in a file browser. Use \b FilePathExists
@@ -1961,35 +1960,28 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
-    <td style="white-space: nowrap"><pre>TraceSinkSelected(type, name)</pre></td>
+    <td style="white-space: nowrap"><pre>TraceBufferSelected(name)</pre></td>
     <td>
-        Check whether a trace sink is selected in the trace configuration.<br>
+        Check whether a trace buffer is selected in the trace configuration.<br>
         <br>
         <b>Parameters:</b><br>
-        - type: Constant string that specifies the trace sink type. It must be one of
-          <b>"serialwire"</b>, <b>"traceport"</b>, or <b>"tracebuffer"</b>, matching the child elements of a
-          \refelem{trace} element.
-        - name: Constant string that identifies the trace sink. If the selected trace configuration contains exactly
-          one sink of the specified \b type, this parameter may be an empty string. If it contains multiple sinks of
-          that type, \b name shall identify one of them.
+        - name: Constant string that identifies a named trace buffer. An empty string identifies the unnamed trace
+          buffer.
         <br>
-        If the selected trace configuration contains an applicable \refelem{trace} element, the function evaluates
-        the matching child element. If no applicable <b>trace</b> element is specified, the function uses the default
-        default configuration, which has one unnamed sink of each type. In that case, an empty \b name selects the
-        sink and the result corresponds to the associated bit of \ref __traceout: bit 0 for <b>"serialwire"</b>, bit
-        1 for <b>"traceport"</b>, and bit 2 for <b>"tracebuffer"</b>. A non-empty \b name does not match a default
-        default sink.<br>
+        Use the <b>name</b> attribute of the matching \refelem{trace_tracebuffer} element for a named trace buffer.
+        Use an empty string for the unnamed <b>tracebuffer</b> element. If no applicable <b>trace</b> element is
+        specified, the default configuration provides the unnamed trace buffer; its
+        selection corresponds to bit 2 of \ref __traceout.<br>
         <br>
         <b>Return Value:</b><br>
-        Returns \token{1} if the resolved trace sink is enabled; otherwise returns \token{0}. An empty \b name is an
-        error if the selected trace configuration contains multiple sinks of the specified type. An unsupported
-        \b type is also an error.
+        Returns \token{1} if the identified trace buffer is selected; otherwise returns \token{0}. An empty \b name is an
+        error if the selected trace configuration contains multiple trace buffers.
 
         <b>Code Example:</b><br>
         \code
-        <control if="TraceSinkSelected(&quot;serialwire&quot;, &quot;SWO&quot;)">
+        <control if="TraceBufferSelected(&quot;MyTraceBuffer&quot;)">
           <block>
-            // Configure the device's SWO pin routing.
+            // Read and forward trace data from the trace buffer called 'MyTraceBuffer'
           </block>
         </control>
         \endcode

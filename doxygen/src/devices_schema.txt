@@ -4559,9 +4559,9 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
 <family Dfamily="LPC4300 Series" Dvendor="NXP:11">
   ...
   <trace Pname="Cortex-M4">
-    <serialwire name="SWO"/>
-    <traceport name="TPIU" width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
-    <tracebuffer name="ETB" start="0x2000C000" size="0x4000"/>
+    <serialwire/>
+    <traceport width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
+    <tracebuffer start="0x2000C000" size="0x4000"/>
   </trace>
   ...
   <trace Pname="Cortex-M0">
@@ -4642,8 +4642,7 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
 \section element_trace_serialwire /package/devices/family/.../trace/serialwire
 
 Indicates serial wire trace output capabilities of the specified processor.
-The optional <b>name</b> attribute identifies the trace sink. A <b>trace</b>
-element is expected to contain only one <b>serialwire</b> element.
+A <b>trace</b> element is expected to contain only one <b>serialwire</b> element.
 
 \b Example
 \code
@@ -4651,7 +4650,7 @@ element is expected to contain only one <b>serialwire</b> element.
   ...
   <trace Pname="Cortex-M4">
     ...
-    <serialwire name="SWO"/>
+    <serialwire/>
     ...
   </trace>
   ...
@@ -4669,19 +4668,6 @@ element is expected to contain only one <b>serialwire</b> element.
     <td>\ref element_trace "trace"</td>
     <td colspan="3">\ref element_trace</td>
   </tr>
-  <tr>
-    <th>Attributes</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Use</th>
-  </tr>
-  <tr>
-    <td>name</td>
-    <td>Identifier of the serial wire trace sink. The parent <b>trace</b> element is expected to contain only one
-        <b>serialwire</b> element.</td>
-    <td>RestrictedString</td>
-    <td>optional</td>
-  </tr>
 </table>
 
 <p>&nbsp;</p>		
@@ -4690,9 +4676,8 @@ element is expected to contain only one <b>serialwire</b> element.
 \section element_trace_traceport /package/devices/family/.../trace/traceport
 
 Indicates parallel trace port output capabilities of the specified processor.
-This element describes possible configuration settings for capturing trace. The
-optional <b>name</b> attribute identifies the trace sink. A <b>trace</b>
-element is expected to contain only one <b>traceport</b> element.
+This element describes possible configuration settings for capturing trace.A
+<b>trace</b> element is expected to contain only one <b>traceport</b> element.
 
 \b Example
 \code
@@ -4700,7 +4685,7 @@ element is expected to contain only one <b>traceport</b> element.
   ...
   <trace Pname="Cortex-M4">
     ...
-    <traceport name="TPIU" width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
+    <traceport width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
     ...
   </trace>
   ...

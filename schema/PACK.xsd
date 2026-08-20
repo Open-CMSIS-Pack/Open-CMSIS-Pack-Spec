@@ -18,17 +18,17 @@
   limitations under the License.
 
 
-  $Date:        18. August 2026
+  $Date:        20. August 2026
   $Revision:    1.7.61
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.61
 
-  18. Aug 2026: v1.7.61
+  20. Aug 2026: v1.7.61
    - added optional 'name' attribute to trace sink elements
-   - added named trace-buffer support for 'BufferStreamOut'
-   - added 'TraceSinkSelected' debug access function
+   - added Trace Buffer format to 'BufferStreamOut'
+   - added 'TraceBufferSelected' debug access function
   22. Jul 2026: v1.7.60
    - added 'FlashEraseSetup' and 'FlashProgramSetup' debug access sequences
    - added 'FlashLoadAlgorithm' debug access function
