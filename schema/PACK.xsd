@@ -26,7 +26,7 @@
   SchemaVersion=1.7.61
 
   20. Aug 2026: v1.7.61
-   - added optional 'name' attribute to tracebuffer elements
+   - added optional 'name' attribute to 'tracebuffer' element
    - added Trace Buffer format to 'BufferStreamOut'
    - added 'TraceBufferSelected' debug access function
   22. Jul 2026: v1.7.60

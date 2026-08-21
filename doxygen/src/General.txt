@@ -83,7 +83,7 @@ packs) and provides useful tips when creating a pack.
   <tr>
     <td>1.7.61</td>
     <td>
-      - added optional 'name' attribute to tracebuffer elements
+      - added optional 'name' attribute to 'tracebuffer' element
       - added Trace Buffer format to 'BufferStreamOut'
       - added 'TraceBufferSelected' debug access function
     </td>

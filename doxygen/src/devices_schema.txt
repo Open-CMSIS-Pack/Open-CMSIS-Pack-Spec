@@ -4676,7 +4676,7 @@ A <b>trace</b> element is expected to contain only one <b>serialwire</b> element
 \section element_trace_traceport /package/devices/family/.../trace/traceport
 
 Indicates parallel trace port output capabilities of the specified processor.
-This element describes possible configuration settings for capturing trace.A
+This element describes possible configuration settings for capturing trace. A
 <b>trace</b> element is expected to contain only one <b>traceport</b> element.
 
 \b Example
