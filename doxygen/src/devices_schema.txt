@@ -4550,22 +4550,17 @@ The table lists the allowed values for data patch access types.
 
 \section element_trace /package/devices/family/.../trace
 
-Describes device capabilities and possible configuration settings for capturing trace.
-Multiple <b>trace</b> elements can be defined which are either specific to a processor identified by attribute
-<b>Pname</b>, or which apply to all connections.
+Describes device capabilities and possible configuration settings for capturing trace. A <b>trace</b>
+element applies to all processor connections.
 
 \b Example
 \code
 <family Dfamily="LPC4300 Series" Dvendor="NXP:11">
   ...
-  <trace Pname="Cortex-M4">
+  <trace>
     <serialwire/>
     <traceport width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
     <tracebuffer start="0x2000C000" size="0x4000"/>
-  </trace>
-  ...
-  <trace Pname="Cortex-M0">
-    <!-- Empty trace section for Cortex-M0, no trace capabilities -->
   </trace>
   ...
 </family>
@@ -4589,23 +4584,6 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
   <tr>
     <td>\ref element_device "device"</td>
     <td colspan="3">\ref element_device</td>
-  </tr>
-  <tr>
-    <th>Attributes</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Use</th>
-  </tr>
-  <tr>
-    <td>Pname</td>
-    <td>
-      Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set this
-      <b>trace</b> section only applies for target connections to the referenced processor. Otherwise, it applies
-      for all processors. <b>This attribute must be set if defining multiple \em trace elements within the same section.</b>
-      Only alphabetical characters, decimal digits, '-' and '_' are allowed. 
-    </td>
-    <td>RestrictedString</td>
-    <td>optional</td>
   </tr>
   <tr>
     <th>Child&nbsp;Elements</th>
@@ -4648,7 +4626,7 @@ A <b>trace</b> element is expected to contain only one <b>serialwire</b> element
 \code
 <family Dfamily="LPC4300 Series" Dvendor="NXP:11">
   ...
-  <trace Pname="Cortex-M4">
+  <trace>
     ...
     <serialwire/>
     ...
@@ -4683,7 +4661,7 @@ This element describes possible configuration settings for capturing trace. A
 \code
 <family Dfamily="LPC4300 Series" Dvendor="NXP:11">
   ...
-  <trace Pname="Cortex-M4">
+  <trace>
     ...
     <traceport width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
     ...
