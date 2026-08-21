@@ -101,7 +101,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithmFunc.html",
-"sdf_pg.html#autotoc_md4"
+"sdf_pg.html#autotoc_md3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

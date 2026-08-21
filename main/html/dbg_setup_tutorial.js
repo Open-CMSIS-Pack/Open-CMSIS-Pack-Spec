@@ -9,6 +9,7 @@ var dbg_setup_tutorial =
       [ "Enable device-specific debug configurations", "dbg_debug_sqns.html#dbg_sqns_dbgconf", null ],
       [ "Ignore access errors", "dbg_debug_sqns.html#dbg_sqns_errors", null ],
       [ "Configure trace", "dbg_debug_sqns.html#dbg_sqns_trace", null ],
+      [ "Stream trace data to a trace buffer", "dbg_debug_sqns.html#dbg_sqns_tracebuffer", null ],
       [ "Implement reset for debug access", "dbg_debug_sqns.html#dbg_sqns_reset", null ],
       [ "Support bootloader operation", "dbg_debug_sqns.html#dbg_sqns_boot", null ],
       [ "Handle debug in multi-core systems", "dbg_debug_sqns.html#dbg_sqns_multicore", [

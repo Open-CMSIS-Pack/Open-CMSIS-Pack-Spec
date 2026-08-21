@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.60</span>
+   &#160;<span id="projectnumber">Version 1.7.61</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -1633,20 +1633,25 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
  Refer to <a class="el" href="debug_description.html#exttoolexample">Calculating a hash sum</a>   </p>
 </td></tr>
 <tr>
-<td style="white-space: nowrap"><pre>BufferStreamOut (buffID, buffOffset, length, destPath, destMode, timeout)</pre> </td><td><p class="starttd">Stream data from a buffer to an external data sink, e.g. a file.<br  />
+<td style="white-space: nowrap"><pre>BufferStreamOut (buffID, buffOffset, length, path, mode, timeout)</pre> </td><td><p class="starttd">Stream data from a buffer to an external data sink, e.g. a file.<br  />
  <br  />
  <b>Parameters:</b><br  />
 </p><ul>
 <li>buffID: Numeric buffer ID. Must be a constant number. Function fails if buffer does not exist.</li>
 <li>buffOffset: First byte in the buffer to transfer to the external data sink.</li>
 <li>length: Maximum number of bytes to stream out.</li>
-<li>path: Constant string value representing the destination to which to stream data to. Refer to <a class="el" href="debug_description.html#charactersequence">character sequences</a> for path/file name place holders.</li>
-<li>mode: Specifies how to treat the data source in the specified mode.<ul>
-<li>Bit 0..3: Format of the data source:<br  />
- <span class="XML-Token">0</span> - Binary File<br  />
+<li>path: Constant string value representing the destination to which to stream data.<ul>
+<li>For the Binary File format, refer to <a class="el" href="debug_description.html#charactersequence">character sequences</a> for path/file name place holders.</li>
+<li>For the Trace Buffer format, this is the <b>name</b> of a specified <a class="el" href="pdsc_family_pg.html#element_trace_tracebuffer">trace_tracebuffer</a> element representing a data pipe into the debugger. If there is only a single unnamed <b>tracebuffer</b> element then an empty string may be used.</li>
+</ul>
+</li>
+<li>mode: Specifies how to treat the data sink in the specified mode.<ul>
+<li>Bit 0..3: Format of the data sink:<br  />
+ <span class="XML-Token">0</span> - Binary File: The sequence writes the data to a binary file in the host filesystem.<br  />
+ <span class="XML-Token">1</span> - Trace Buffer: The sequence sends the data to a debugger-internal trace buffer for further processing.<br  />
  Others - Reserved<br  />
 </li>
-<li>Bit 4..7: Communication options for data sink:<br  />
+<li>Bit 4..7: File write option (only applies to Binary File format; ignored for Trace Buffer format):<br  />
  <span class="XML-Token">0</span> - Overwrite<br  />
  <span class="XML-Token">1</span> - Append<br  />
  Others - Reserved<br  />
@@ -1664,6 +1669,24 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 <p class="endtd"><b>Code Example:</b><br  />
  Refer to <a class="el" href="debug_description.html#exttoolexample">Calculating a hash sum</a>   </p>
 </td></tr>
+<tr>
+<td style="white-space: nowrap"><pre>TraceBufferSelected(name)</pre> </td><td><p class="starttd">Check whether a trace buffer is selected in the trace configuration.<br  />
+ <br  />
+ <b>Parameters:</b><br  />
+</p><ul>
+<li>name: Constant string that identifies a named trace buffer. An empty string identifies the unnamed trace buffer. <br  />
+ Use the <b>name</b> attribute of the matching <a class="el" href="pdsc_family_pg.html#element_trace_tracebuffer">trace_tracebuffer</a> element for a named trace buffer. Use an empty string for the unnamed <b>tracebuffer</b> element. If no applicable <b>trace</b> element is specified, the default configuration provides the unnamed trace buffer; its selection corresponds to bit 2 of <a class="el" href="debug_description.html#__traceout">__traceout</a>.<br  />
+ <br  />
+ <b>Return Value:</b><br  />
+ Returns <span class="XML-Token">1</span> if the identified trace buffer is selected; otherwise returns <span class="XML-Token">0</span>. An empty <b>name</b> is an error if the selected trace configuration contains multiple trace buffers.</li>
+</ul>
+<p class="endtd"><b>Code Example:</b><br  />
+ </p><div class="fragment"><div class="line">&lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;TraceBufferSelected(&amp;quot;MyTraceBuffer&amp;quot;)&quot;</span>&gt;</div>
+<div class="line">  &lt;block&gt;</div>
+<div class="line">    <span class="comment">// Read and forward trace data from the trace buffer called &#39;MyTraceBuffer&#39;</span></div>
+<div class="line">  &lt;/block&gt;</div>
+<div class="line">&lt;/control&gt;</div>
+</div><!-- fragment -->   </td></tr>
 <tr>
 <td style="white-space: nowrap"><pre>RunApplication (appPath, arguments, workDirectory, timeout)</pre> </td><td><p class="starttd">Run an external application.<br  />
  <br  />

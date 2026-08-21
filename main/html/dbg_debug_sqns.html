@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.60</span>
+   &#160;<span id="projectnumber">Version 1.7.61</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -235,7 +235,29 @@ Configure trace</h1>
 <div class="line">  &lt;/sequence&gt;</div>
 <div class="line">  ...</div>
 </div><!-- fragment --><p>Some devices can require that trace clock is enabled already at <a class="el" href="debug_description.html#DebugDeviceUnlock">DebugDeviceUnlock</a> sequence to ensure that access to global trace components is available when reading the ROM table and processor features. In such cases corresponding functionality needs to be moved from <b>TraceStart</b> to <b>DebugDeviceUnlock</b> sequence and check if trace is enabled via the <b>__traceout</b> variable.</p>
-<h1><a class="anchor" id="dbg_sqns_reset"></a>
+<h1><a class="anchor" id="dbg_sqns_tracebuffer"></a>
+Stream trace data to a trace buffer</h1>
+<p>Use a <a class="el" href="pdsc_family_pg.html#element_trace_tracebuffer">trace_tracebuffer</a> element to describe an on-device trace buffer. A single trace buffer may be unnamed. If a trace configuration provides multiple trace buffers, each one shall have a unique <b>name</b> attribute.</p>
+<p>Use the name with <code>BufferStreamOut</code> in the Trace Buffer format (mode <span class="XML-Token">1</span>) and with <code>TraceBufferSelected</code>. An empty string identifies the unnamed trace buffer.</p>
+<p>A debug access sequence can collect trace data in a temporary buffer using <code>BufferRead</code> and forward it with <code>BufferStreamOut</code> to the selected trace buffer in the debugger for further processing.</p>
+<p>The following example reads 32-bit values repeatedly from a fixed trace-data register, without incrementing its address, and streams the result to the trace buffer named <b>ETB</b>:</p>
+<div class="fragment"><div class="line">&lt;trace Pname=<span class="stringliteral">&quot;Cortex-M4&quot;</span>&gt;</div>
+<div class="line">  &lt;tracebuffer name=<span class="stringliteral">&quot;ETB&quot;</span>/&gt;</div>
+<div class="line">&lt;/trace&gt;</div>
+<div class="line"> </div>
+<div class="line">&lt;sequences&gt;</div>
+<div class="line">  &lt;sequence name=<span class="stringliteral">&quot;TraceFlush&quot;</span>&gt;</div>
+<div class="line">    &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;TraceBufferSelected(&amp;quot;ETB&amp;quot;)&quot;</span>&gt;</div>
+<div class="line">      &lt;block&gt;</div>
+<div class="line">        <span class="comment">// Read 0x100 bytes from a fixed 32-bit trace-data register into buffer 0.</span></div>
+<div class="line">        <span class="comment">// Mode 32 selects 32-bit reads; its increment bit is clear.</span></div>
+<div class="line">        BufferRead(0, 0, 0xE0042010, 0x100, 32);</div>
+<div class="line">        BufferStreamOut(0, 0, 0x100, <span class="stringliteral">&quot;ETB&quot;</span>, 1, 0);</div>
+<div class="line">      &lt;/block&gt;</div>
+<div class="line">    &lt;/control&gt;</div>
+<div class="line">  &lt;/sequence&gt;</div>
+<div class="line">&lt;/sequences&gt;</div>
+</div><!-- fragment --><h1><a class="anchor" id="dbg_sqns_reset"></a>
 Implement reset for debug access</h1>
 <p>This section explains reset debug sequences for systems with a single CPU. Multi-core specifics are covered in <a class="el" href="dbg_debug_sqns.html#dbg_sqns_multicore">Handle debug in multi-core systems</a>.</p>
 <p>Reset is an important part of debug operation and is used to bring the device into a known state from which debug connection can be reliably established. Reset also allows users to debug their code from the very beginning. In the typical case when user initiates a debug session the debugger connects to the device, and resets the processor to ensure its fresh start, and then stops the CPU before user application is started.</p>
