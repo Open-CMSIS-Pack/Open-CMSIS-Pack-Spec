@@ -18,14 +18,14 @@
   limitations under the License.
 
 
-  $Date:        20. August 2026
+  $Date:        21. August 2026
   $Revision:    1.7.61
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
   SchemaVersion=1.7.61
 
-  20. Aug 2026: v1.7.61
+  21. Aug 2026: v1.7.61
    - added optional 'name' attribute to 'tracebuffer' element
    - added Trace Buffer format to 'BufferStreamOut'
    - added 'TraceBufferSelected' debug access function
