@@ -4560,7 +4560,7 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
   ...
   <trace Pname="Cortex-M4">
     <serialwire/>
-    <traceport   width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
+    <traceport width="0x0000000B"/> <!-- support for port widths 1, 2, and 4 -->
     <tracebuffer start="0x2000C000" size="0x4000"/>
   </trace>
   ...
@@ -4642,6 +4642,7 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
 \section element_trace_serialwire /package/devices/family/.../trace/serialwire
 
 Indicates serial wire trace output capabilities of the specified processor.
+A <b>trace</b> element is expected to contain only one <b>serialwire</b> element.
 
 \b Example
 \code
@@ -4675,7 +4676,8 @@ Indicates serial wire trace output capabilities of the specified processor.
 \section element_trace_traceport /package/devices/family/.../trace/traceport
 
 Indicates parallel trace port output capabilities of the specified processor.
-This element describes possible configuration settings for capturing trace.
+This element describes possible configuration settings for capturing trace. A
+<b>trace</b> element is expected to contain only one <b>traceport</b> element.
 
 \b Example
 \code
@@ -4838,15 +4840,20 @@ The value <b>width=0x00008088</b> (as shown in the table) indicates that three p
 
 Indicates on-device trace buffer capabilities of the specified processor.
 This element describes possible configuration settings for capturing trace
-and reading it from the buffer.
+and reading it from the buffer. The optional <b>name</b> attribute identifies
+the trace buffer for use with the \c BufferStreamOut and \c TraceBufferSelected debug access functions.
+If more than one <b>tracebuffer</b> element is specified for a <b>trace</b>
+element, every trace buffer shall have a unique <b>name</b> attribute. A single
+trace buffer may omit the attribute.
 
-\b Example
+\b Example for an LPC812 device. The MTB uses a configurable region of RAM; this example reserves its complete
+4 KB SRAM region for trace capture.
 \code
-<family Dfamily="LPC4300 Series" Dvendor="NXP:11">
+<family Dfamily="LPC800" Dvendor="NXP:11">
   ...
-  <trace Pname="CoreCM4">
+  <trace>
     ...
-    <tracebuffer start="0x2000C000" size="0x4000"/>
+    <tracebuffer name="MTB" start="0x10000000" size="0x1000"/>
     ...
   </trace>
   ...
@@ -4869,6 +4876,13 @@ and reading it from the buffer.
     <th>Description</th>
     <th>Type</th>
     <th>Use</th>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>Identifier of the trace buffer. This attribute is required and shall be unique when the parent
+        <b>trace</b> element contains multiple <b>tracebuffer</b> elements.</td>
+    <td>RestrictedString</td>
+    <td>optional</td>
   </tr>
   <tr>
     <td>start</td>
