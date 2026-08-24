@@ -19,12 +19,14 @@
 
 
   $Date:        21. August 2026
-  $Revision:    1.7.61
+  $Revision:    1.7.62
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.61
+  SchemaVersion=1.7.62
 
+  21. Aug 2026: v1.7.62
+   - deprecate 'Pname' attribute in 'trace' element type
   21. Aug 2026: v1.7.61
    - added optional 'name' attribute to 'tracebuffer' element
    - added Trace Buffer format to 'BufferStreamOut'
@@ -281,7 +283,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.61">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.62">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -821,7 +823,6 @@
       <xs:element name="traceport" type="TracePortType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="tracebuffer" type="TraceBufferType" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
-    <xs:attribute name="Pname" type="RestrictedString" use="optional" />
     <xs:anyAttribute processContents="lax" />
   </xs:complexType>
 

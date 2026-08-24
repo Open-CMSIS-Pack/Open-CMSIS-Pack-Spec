@@ -314,7 +314,7 @@ The following example reads 32-bit values repeatedly from a fixed trace-data reg
 incrementing its address, and streams the result to the trace buffer named <b>ETB</b>:
 
 \code
-<trace Pname="Cortex-M4">
+<trace>
   <tracebuffer name="ETB"/>
 </trace>
 
