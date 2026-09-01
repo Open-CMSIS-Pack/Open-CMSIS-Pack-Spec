@@ -1927,7 +1927,7 @@ debug access variables which are evaluated for the function call.
     </td>
   </tr>
   <tr>
-    <td style="white-space: nowrap"><pre>BufferStreamOut (buffID, buffOffset, length, destPath, destMode, timeout)</pre></td>
+    <td style="white-space: nowrap"><pre>BufferStreamOut (buffID, buffOffset, length, path, mode, timeout)</pre></td>
     <td>
         Stream data from a buffer to an external data sink, e.g. a file.<br>
         <br>
@@ -1935,15 +1935,18 @@ debug access variables which are evaluated for the function call.
         - buffID: Numeric buffer ID. Must be a constant number. Function fails if buffer does not exist.
         - buffOffset: First byte in the buffer to transfer to the external data sink.
         - length: Maximum number of bytes to stream out.
-        - path: Constant string value representing the destination to which to stream data to. Refer to
-		  \ref charactersequence "character sequences" for path/file name place holders.
-        - mode: Specifies how to treat the data source in the specified mode.
-          - Bit 0..3: Format of the data source:<br>
-		    \token{0} - Binary File<br>
+        - path: Constant string value representing the destination to which to stream data.
+          - For the Binary File format, refer to \ref charactersequence "character sequences" for path/file name place holders.
+          - For the Trace Buffer format, this is the <b>name</b> of a specified \refelem{trace_tracebuffer} element representing
+            a data pipe into the debugger. If there is only a single unnamed <b>tracebuffer</b> element then an empty string may be used.
+        - mode: Specifies how to treat the data sink in the specified mode.
+          - Bit 0..3: Format of the data sink:<br>
+		    \token{0} - Binary File: The sequence writes the data to a binary file in the host filesystem.<br>
+		    \token{1} - Trace Buffer: The sequence sends the data to a debugger-internal trace buffer for further processing.<br>
 			Others - Reserved<br>
-          - Bit 4..7: Communication options for data sink:<br>
+          - Bit 4..7: File write option (only applies to Binary File format; ignored for Trace Buffer format):<br>
 		    \token{0} - Overwrite<br>
-			\token{1} - Append<br>
+		    \token{1} - Append<br>
 			Others - Reserved<br>
         - timeout: Timeout in microseconds. If \token{0}, then synchronously wait for the operation to finish.<br>
           - This does not include file-system delays, e.g. between creation and visibility in a file browser. Use \b FilePathExists
@@ -1954,6 +1957,34 @@ debug access variables which are evaluated for the function call.
 
         <b>Code Example:</b><br>
         Refer to \ref exttoolexample "Calculating a hash sum"
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap"><pre>TraceBufferSelected(name)</pre></td>
+    <td>
+        Check whether a trace buffer is selected in the trace configuration.<br>
+        <br>
+        <b>Parameters:</b><br>
+        - name: Constant string that identifies a named trace buffer. An empty string identifies the unnamed trace
+          buffer.
+        <br>
+        Use the <b>name</b> attribute of the matching \refelem{trace_tracebuffer} element for a named trace buffer.
+        Use an empty string for the unnamed <b>tracebuffer</b> element. If no applicable <b>trace</b> element is
+        specified, the default configuration provides the unnamed trace buffer; its
+        selection corresponds to bit 2 of \ref __traceout.<br>
+        <br>
+        <b>Return Value:</b><br>
+        Returns \token{1} if the identified trace buffer is selected; otherwise returns \token{0}. An empty \b name is an
+        error if the selected trace configuration contains multiple trace buffers.
+
+        <b>Code Example:</b><br>
+        \code
+        <control if="TraceBufferSelected(&quot;MyTraceBuffer&quot;)">
+          <block>
+            // Read and forward trace data from the trace buffer called 'MyTraceBuffer'
+          </block>
+        </control>
+        \endcode
     </td>
   </tr>
   <tr>

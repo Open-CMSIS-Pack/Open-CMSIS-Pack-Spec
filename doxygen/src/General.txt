@@ -81,6 +81,20 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>1.7.62</td>
+    <td>
+      - removed optional 'Pname' attribute from 'trace' element
+    </td>
+  </tr>
+  <tr>
+    <td>1.7.61</td>
+    <td>
+      - added optional 'name' attribute to 'tracebuffer' element
+      - added Trace Buffer format to 'BufferStreamOut'
+      - added 'TraceBufferSelected' debug access function
+    </td>
+  </tr>
+  <tr>
     <td>1.7.60</td>
     <td>
       - added 'FlashEraseSetup' and 'FlashProgramSetup' debug access sequences

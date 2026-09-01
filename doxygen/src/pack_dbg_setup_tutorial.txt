@@ -297,6 +297,41 @@ Below is a simple example of \c EnableTraceSWO for Microchip SAMS70 family, that
 
 Some devices can require that trace clock is enabled already at \ref DebugDeviceUnlock sequence to ensure that access to global trace components is available when reading the ROM table and processor features. In such cases corresponding functionality needs to be moved from \b TraceStart to \b DebugDeviceUnlock sequence and check if trace is enabled via the \b __traceout variable.
 
+\section dbg_sqns_tracebuffer Stream trace data to a trace buffer
+
+Use a \refelem{trace_tracebuffer} element to describe an on-device trace buffer. A single trace
+buffer may be unnamed. If a trace configuration provides multiple trace buffers, each one shall
+have a unique <b>name</b> attribute.
+
+Use the name with \c BufferStreamOut in the Trace Buffer format (mode \token{1}) and with
+\c TraceBufferSelected. An empty string identifies the unnamed trace buffer.
+
+A debug access sequence can collect trace data in a temporary buffer using \c BufferRead and
+forward it with \c BufferStreamOut to the selected trace buffer in the debugger for further
+processing.
+
+The following example reads 32-bit values repeatedly from a fixed trace-data register, without
+incrementing its address, and streams the result to the trace buffer named <b>ETB</b>:
+
+\code
+<trace>
+  <tracebuffer name="ETB"/>
+</trace>
+
+<sequences>
+  <sequence name="TraceFlush">
+    <control if="TraceBufferSelected(&quot;ETB&quot;)">
+      <block>
+        // Read 0x100 bytes from a fixed 32-bit trace-data register into buffer 0.
+        // Mode 32 selects 32-bit reads; its increment bit is clear.
+        BufferRead(0, 0, 0xE0042010, 0x100, 32);
+        BufferStreamOut(0, 0, 0x100, "ETB", 1, 0);
+      </block>
+    </control>
+  </sequence>
+</sequences>
+\endcode
+
 \section dbg_sqns_reset Implement reset for debug access
 
 This section explains reset debug sequences for systems with a single CPU. Multi-core specifics are covered in \ref dbg_sqns_multicore.
