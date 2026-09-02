@@ -376,7 +376,30 @@ Support bootloader operation</h1>
 <div class="line">&lt;/sequence&gt;</div>
 </div><!-- fragment --><p><b>Example 2: ResetCatchClear</b></p>
 <p>The <b>ResetCatchClear</b> sequence from <a class="el" href="dbg_debug_sqns.html#example1_resetCatchClear">Example 1</a> can also be used with the <a class="el" href="dbg_debug_sqns.html#example2_resetCatchSet">Example 2: ResetCatchSet</a> as there's no special handling additionally required.</p>
-<p><b>Other modifications</b></p>
+<p><a class="anchor" id="example3_resetSystem"></a><b>Example 3: Use the CPU halt indicator in ResetSystem</b></p>
+<p>The following custom Cortex-M implementation uses <b>__connection</b> bit 18 to force the CPU to halt when requested by setting <b>C_HALT</b> in the Debug Halting Control and Status Register (DHCSR):</p>
+<div class="fragment"><div class="line">&lt;sequence name=<span class="stringliteral">&quot;ResetSystem&quot;</span>&gt;</div>
+<div class="line">  &lt;block&gt;</div>
+<div class="line">    __var AIRCR_Addr = 0xE000ED0C;</div>
+<div class="line">    __var DHCSR_Addr = 0xE000EDF0;</div>
+<div class="line"> </div>
+<div class="line">    Write32(AIRCR_Addr, 0x05FA0004);  <span class="comment">// Execute SYSRESETREQ via AIRCR</span></div>
+<div class="line">    DAP_Delay(100000);</div>
+<div class="line">  &lt;/block&gt;</div>
+<div class="line"> </div>
+<div class="line">  &lt;!-- Reset Recovery: Wait <span class="keywordflow">for</span> DHCSR.S_RESET_ST bit to clear on read --&gt;</div>
+<div class="line">  &lt;control <span class="keywordflow">while</span>=<span class="stringliteral">&quot;(Read32(DHCSR_Addr) &amp;amp; 0x02000000)&quot;</span> timeout=<span class="stringliteral">&quot;500000&quot;</span>/&gt;</div>
+<div class="line"> </div>
+<div class="line">  &lt;!-- Force halt only <span class="keywordflow">if</span> requested and DHCSR.S_HALT is clear --&gt;</div>
+<div class="line">  &lt;control <span class="keywordflow">if</span>=<span class="stringliteral">&quot;(__connection &amp;amp; 0x00040000) &amp;amp;&amp;amp; !(Read32(DHCSR_Addr) &amp;amp; 0x00020000)&quot;</span>&gt;</div>
+<div class="line">    &lt;block&gt;</div>
+<div class="line">      <span class="comment">// Write DBGKEY, C_DEBUGEN, and C_HALT to force debug halt</span></div>
+<div class="line">      Write32(DHCSR_Addr, 0xA05F0003);</div>
+<div class="line">    &lt;/block&gt;</div>
+<div class="line">    &lt;control <span class="keywordflow">while</span>=<span class="stringliteral">&quot;!(Read32(DHCSR_Addr) &amp;amp; 0x00020000)&quot;</span> timeout=<span class="stringliteral">&quot;500000&quot;</span>/&gt;</div>
+<div class="line">  &lt;/control&gt;</div>
+<div class="line">&lt;/sequence&gt;</div>
+</div><!-- fragment --><p><b>Other modifications</b></p>
 <p>Additionally the reset behavior can be made configurable per project via custom global debug access variables and a *.dbgconf file. See <a class="el" href="dbg_debug_sqns.html#dbg_sqns_dbgconf">Enable device-specific debug configurations</a> for additional details.</p>
 <p>In some cases also the reset sequences (<b>ResetSystem</b>, <b>ResetProcessor</b>, <b>ResetHardware</b>) need to be adjusted to ensure proper bootloader handling. For example for debug authentication or bootloader configuration purposes. The actual implementation is very device and use case specific.</p>
 <h1><a class="anchor" id="dbg_sqns_multicore"></a>

@@ -155,6 +155,8 @@ Usage of debug access sequences</h1>
 <img src="DebugConnect.png" alt=""/>
 </div>
 <p><b>Reset Device</b> is executed to reset the target.</p>
+<p>The debugger decides whether the CPU is expected to halt after reset. If a halt is expected, <b>ResetCatchSet</b> is called before and <b>ResetCatchClear</b> after the reset. Otherwise, neither sequence is called and the CPU continues to run.<br  />
+ The debugger passes the same decision to the reset sequence in <b>__connection</b> bit 18 (set for halt, clear for run). This indicator allows the reset sequence to coordinate the halt with custom reset or boot hardware, or to halt the CPU itself; it does not control the reset catch configuration.</p>
 <div class="image">
 <img src="Reset.png" alt=""/>
 </div>
@@ -1806,7 +1808,8 @@ Debug access variables</h2>
 </li>
 <li>Bit 16: Connection under Hardware Reset (debugger reset line)</li>
 <li>Bit 17: Hardware Reset is executed as a pre-connection reset (only used for debugger calls to <code>ResetHardware</code>)</li>
-<li>Bit 18..63: Reserved   </li>
+<li>Bit 18: Reset sequence is expected to finish with the CPU halted in Debug state (only used for debugger calls to reset sequences)</li>
+<li>Bit 19..63: Reserved   </li>
 </ul>
 </td></tr>
 <tr>
