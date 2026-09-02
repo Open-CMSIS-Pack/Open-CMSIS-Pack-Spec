@@ -87,6 +87,14 @@ The following diagrams show how the Debug Access Sequences are executed by a dev
 
 <b>Reset Device</b> is executed to reset the target.
 
+The debugger decides whether the CPU is expected to halt after reset. If a halt is expected,
+<b>ResetCatchSet</b> is called before and <b>ResetCatchClear</b> after the reset. Otherwise,
+neither sequence is called and the CPU continues to run.<br>
+The debugger passes the same decision to the reset sequence in <b>__connection</b> bit 18
+(set for halt, clear for run).
+This indicator allows the reset sequence to coordinate the halt with custom reset or boot hardware,
+or to halt the CPU itself; it does not control the reset catch configuration.
+
 \image html Reset.png
 
 <b>Verify Code</b> is executed to verify the content after flash programming.
@@ -2157,7 +2165,8 @@ A debugger needs to support a set of pre-defined debug access variables. These a
         - \token{3}: Processor Reset Request ("Vector Reset").
       - Bit 16: Connection under Hardware Reset (debugger reset line)
       - Bit 17: Hardware Reset is executed as a pre-connection reset (only used for debugger calls to \c ResetHardware)
-      - Bit 18..63: Reserved
+      - Bit 18: Reset sequence is expected to finish with the CPU halted in Debug state (only used for debugger calls to reset sequences)
+      - Bit 19..63: Reserved
     </td>
   </tr>
   <tr>
