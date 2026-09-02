@@ -81,6 +81,13 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>Next Version</td>
+    <td>
+      - use `mode` Bit 9 in `BufferRead`/`BufferWrite` debug access functions
+        to select APv2 (ADIv6) top-level access port address space
+    </td>
+  </tr>
+  <tr>
     <td>1.7.62</td>
     <td>
       - removed optional 'Pname' attribute from 'trace' element
