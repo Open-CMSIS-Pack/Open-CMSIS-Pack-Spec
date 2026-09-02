@@ -81,6 +81,12 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
+    <td>Next Version</td>
+    <td>
+      - added use of `__connection` Bit 18 as halt-after-reset indicator
+    </td>
+  </tr>
+  <tr>
     <td>1.7.62</td>
     <td>
       - removed optional 'Pname' attribute from 'trace' element
