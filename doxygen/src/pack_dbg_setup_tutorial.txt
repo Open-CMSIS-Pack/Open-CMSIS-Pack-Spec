@@ -361,10 +361,40 @@ The reset types are listed below with details described in the referenced docume
  - \ref resetProcessor_Descr "ResetProcessor" is a software-triggered local reset for a processor only.
  - \b CustomResetName sequence is used when a user-defined debug sequence is assigned to the \ref defaultResetSequence attribute. This can be implemented when very special reset type is needed that cannot be performed by modifying predefined reset types.
 
+<b>Resynchronize cached AP registers after reset</b>
+
+A reset might clear AP registers such as the CSW. If the host debugger caches the AP CSW to accelerate memory accesses,
+the cached value must be resynchronized before the next memory access. The following device-specific \b ResetSystem example
+performs an explicit AP CSW read after the reset delay. As described in \ref DebugRegisterCaching, \c ReadAP updates the
+debugger's internal AP CSW cache with the value read from the target:
+
+\code
+<sequence name="ResetSystem">
+  <block>
+    // System Control Space (SCS) offset as defined in Armv6-M/Armv7-M.
+    __var SCS_Addr   = 0xE000E000;
+    __var AIRCR_Addr = SCS_Addr + 0xD0C;
+    __var DHCSR_Addr = SCS_Addr + 0xDF0;
+
+    // Execute SYSRESETREQ via AIRCR.
+    Write32(AIRCR_Addr, 0x05FA0004);
+
+    // Delay for 100 ms to let the system reset complete.
+    DAP_Delay(100000);
+
+    // Read AP CSW from the target and refresh the debugger's internal cache.
+    ReadAP(0x00);
+  </block>
+
+  <!-- Reset Recovery: Wait for DHCSR.S_RESET_ST bit to clear on read. -->
+  <control while="(Read32(DHCSR_Addr) &amp; 0x02000000)" timeout="500000"/>
+</sequence>
+\endcode
+
 \anchor dbg_sqns_reset_catchClear
 <b>CPU halt and ResetCatchClear</b>
 
-After reset is performed and the processor is halted (on the breakpoint enabled in \b ResetCatchSet) the \ref resetCatchClear sequence is executed. The default implementation may need to be overwritten to support bootloader as explaine in \ref dbg_sqns_boot.
+After reset is performed and the processor is halted (on the breakpoint enabled in \b ResetCatchSet) the \ref resetCatchClear sequence is executed. The default implementation may need to be overwritten to support bootloader as explained in \ref dbg_sqns_boot.
 
 \section dbg_sqns_boot Support bootloader operation
 
