@@ -519,6 +519,36 @@ In some cases the \b ResetCatchSet sequence shall behave differently depending o
 
 The \b ResetCatchClear sequence from \ref example1_resetCatchClear "Example 1" can also be used with the \ref example2_resetCatchSet "Example 2: ResetCatchSet" as there's no special handling additionally required.
 
+\anchor example3_resetSystem
+<b>Example 3: Use the CPU halt indicator in ResetSystem</b>
+
+The following custom Cortex-M implementation uses <b>__connection</b> bit 18 to force the CPU
+to halt when requested by setting <b>C_HALT</b> in the Debug Halting Control and Status Register (DHCSR):
+
+\code
+<sequence name="ResetSystem">
+  <block>
+    __var AIRCR_Addr = 0xE000ED0C;
+    __var DHCSR_Addr = 0xE000EDF0;
+
+    Write32(AIRCR_Addr, 0x05FA0004);  // Execute SYSRESETREQ via AIRCR
+    DAP_Delay(100000);
+  </block>
+
+  <!-- Reset Recovery: Wait for DHCSR.S_RESET_ST bit to clear on read -->
+  <control while="(Read32(DHCSR_Addr) &amp; 0x02000000)" timeout="500000"/>
+
+  <!-- Force halt only if requested and DHCSR.S_HALT is clear -->
+  <control if="(__connection &amp; 0x00040000) &amp;&amp; !(Read32(DHCSR_Addr) &amp; 0x00020000)">
+    <block>
+      // Write DBGKEY, C_DEBUGEN, and C_HALT to force debug halt
+      Write32(DHCSR_Addr, 0xA05F0003);
+    </block>
+    <control while="!(Read32(DHCSR_Addr) &amp; 0x00020000)" timeout="500000"/>
+  </control>
+</sequence>
+\endcode
+
 <b>Other modifications</b>
 
 Additionally the reset behavior can be made configurable per project via custom global debug access variables and a *.dbgconf file. See \ref dbg_sqns_dbgconf for additional details.

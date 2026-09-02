@@ -83,6 +83,7 @@ packs) and provides useful tips when creating a pack.
   <tr>
     <td>Next Version</td>
     <td>
+      - added use of `__connection` Bit 18 as halt-after-reset indicator
       - added rules for AP/DP register caching
     </td>
   </tr>
