@@ -1847,16 +1847,20 @@ debug access variables which are evaluated for the function call.
 		    hardware. For example a DP register access must always be 32-Bit.
           - Bit 0: Additionally set this Bit to 1 to increment the target address after each debug read access of the
 		    specified size.
-          - Bit 9..63: Reserved
+          - Bit 9: Target address space.
+            - \token{0}: Access target memory using the access port specified by <b>__ap</b> or <b>__apid</b>.
+            - \token{1}: Access an address in the system's APv2 (ADIv6) top-level access port space.
+          - Bit 10..63: Reserved
                 
         <b>Debug Access Variables:</b><br>
   
         If <b>no</b> \ref element_accessportV1 "access port elements" exist:<br>
-        - __dp: The debug port to use for this memory access.
-        - __ap: The access port to use for this memory access.
+        - __dp: The debug port to use for this access.
+        - __ap: The access port to use if Bit 9 of <b>mode</b> is \token{0}.
   
         If \ref element_accessportV1 "access port elements" exist:<br>
-        - __apid: The ID of the access port element to use for this memory access.
+        - __apid: The ID of the access port element to use for this memory access. If Bit 9 of <b>mode</b> is \token{1},
+          only the debug port referenced by <b>__apid</b> is used.
 
         <b>Return Value:</b><br>
         Always \token{0}. Function causes fatal error if not successful.
@@ -1884,16 +1888,20 @@ debug access variables which are evaluated for the function call.
 		    hardware. For example a DP register access must always be 32-Bit.
           - Bit 0: Additionally set this Bit to \token{1} to increment the target address after each debug write access of
 		    the specified size.
-          - Bit 9..63: Reserved
+          - Bit 9: Target address space.
+            - \token{0}: Access target memory using the access port specified by <b>__ap</b> or <b>__apid</b>.
+            - \token{1}: Access an address in the system's APv2 (ADIv6) top-level access port space.
+          - Bit 10..63: Reserved
                 
         <b>Debug Access Variables:</b><br>
   
         If <b>no</b> \ref element_accessportV1 "access port elements" exist:<br>
-        - __dp: The debug port to use for this memory access.
-        - __ap: The access port to use for this memory access.
+        - __dp: The debug port to use for this access.
+        - __ap: The access port to use if Bit 9 of <b>mode</b> is \token{0}.
   
         If \ref element_accessportV1 "access port elements" exist:<br>
-        - __apid: The ID of the access port element to use for this memory access.
+        - __apid: The ID of the access port element to use for this memory access. If Bit 9 of <b>mode</b> is \token{1},
+          only the debug port referenced by <b>__apid</b> is used.
 
         <b>Return Value:</b><br>
         Number of bytes written from buffer to target. Function causes fatal error if not successful.

@@ -84,6 +84,8 @@ packs) and provides useful tips when creating a pack.
     <td>Next Version</td>
     <td>
       - added use of `__connection` Bit 18 as halt-after-reset indicator
+      - use `mode` Bit 9 in `BufferRead`/`BufferWrite` debug access functions
+        to select APv2 (ADIv6) top-level access port address space
     </td>
   </tr>
   <tr>
