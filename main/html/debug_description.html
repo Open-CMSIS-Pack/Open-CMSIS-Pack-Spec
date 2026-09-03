@@ -1556,7 +1556,12 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 <li>mode: The target access mode.<ul>
 <li>Bit 0..8: Debug access size. One of 8, 16, 32 and 64. Specified debug access size must be supported by the target hardware. For example a DP register access must always be 32-Bit.</li>
 <li>Bit 0: Additionally set this Bit to 1 to increment the target address after each debug read access of the specified size.</li>
-<li>Bit 9..63: Reserved</li>
+<li>Bit 9: Target address space.<ul>
+<li><span class="XML-Token">0</span>: Access target memory using the access port specified by <b>__ap</b> or <b>__apid</b>.</li>
+<li><span class="XML-Token">1</span>: Access an address in the system's APv2 (ADIv6) top-level access port space.</li>
+</ul>
+</li>
+<li>Bit 10..63: Reserved</li>
 </ul>
 </li>
 </ul>
@@ -1564,12 +1569,12 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 </p>
 <p class="intertd">If <b>no</b> <a class="el" href="pdsc_family_pg.html#element_accessportV1">access port elements</a> exist:<br  />
 </p><ul>
-<li>__dp: The debug port to use for this memory access.</li>
-<li>__ap: The access port to use for this memory access.</li>
+<li>__dp: The debug port to use for this access.</li>
+<li>__ap: The access port to use if Bit 9 of <b>mode</b> is <span class="XML-Token">0</span>.</li>
 </ul>
 <p class="intertd">If <a class="el" href="pdsc_family_pg.html#element_accessportV1">access port elements</a> exist:<br  />
 </p><ul>
-<li>__apid: The ID of the access port element to use for this memory access.</li>
+<li>__apid: The ID of the access port element to use for this memory access. If Bit 9 of <b>mode</b> is <span class="XML-Token">1</span>, only the debug port referenced by <b>__apid</b> is used.</li>
 </ul>
 <p class="intertd"><b>Return Value:</b><br  />
  Always <span class="XML-Token">0</span>. Function causes fatal error if not successful.</p>
@@ -1588,7 +1593,12 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 <li>mode: The target access mode.<ul>
 <li>Bit 0..8: Debug access size. One of 8, 16, 32 and 64. Specified debug access size must be supported by the target hardware. For example a DP register access must always be 32-Bit.</li>
 <li>Bit 0: Additionally set this Bit to <span class="XML-Token">1</span> to increment the target address after each debug write access of the specified size.</li>
-<li>Bit 9..63: Reserved</li>
+<li>Bit 9: Target address space.<ul>
+<li><span class="XML-Token">0</span>: Access target memory using the access port specified by <b>__ap</b> or <b>__apid</b>.</li>
+<li><span class="XML-Token">1</span>: Access an address in the system's APv2 (ADIv6) top-level access port space.</li>
+</ul>
+</li>
+<li>Bit 10..63: Reserved</li>
 </ul>
 </li>
 </ul>
@@ -1596,12 +1606,12 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 </p>
 <p class="intertd">If <b>no</b> <a class="el" href="pdsc_family_pg.html#element_accessportV1">access port elements</a> exist:<br  />
 </p><ul>
-<li>__dp: The debug port to use for this memory access.</li>
-<li>__ap: The access port to use for this memory access.</li>
+<li>__dp: The debug port to use for this access.</li>
+<li>__ap: The access port to use if Bit 9 of <b>mode</b> is <span class="XML-Token">0</span>.</li>
 </ul>
 <p class="intertd">If <a class="el" href="pdsc_family_pg.html#element_accessportV1">access port elements</a> exist:<br  />
 </p><ul>
-<li>__apid: The ID of the access port element to use for this memory access.</li>
+<li>__apid: The ID of the access port element to use for this memory access. If Bit 9 of <b>mode</b> is <span class="XML-Token">1</span>, only the debug port referenced by <b>__apid</b> is used.</li>
 </ul>
 <p class="intertd"><b>Return Value:</b><br  />
  Number of bytes written from buffer to target. Function causes fatal error if not successful.</p>
