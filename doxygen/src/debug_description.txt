@@ -2344,6 +2344,19 @@ A debugger needs to support a set of pre-defined debug access variables. These a
   </tr>
 </table>
 
+\subsection DebugRegisterCaching Caching of DP and AP registers
+
+The \ref DebugFunctions "debug access functions" access target memory or directly access DP and AP registers using
+\c ReadAP, \c WriteAP, \c ReadAccessAP, \c WriteAccessAP, \c ReadDP, \c WriteDP, and \c DAP_WriteABORT.
+
+To accelerate target memory accesses, a host debugger may cache DP and AP registers such as the AP CSW and DP SELECT.
+If a debugger implements such caching, the direct register access functions listed above must behave as follows:
+
+- A direct register read must always access the target register rather than return a cached value. The debugger must update
+  the corresponding register cache with the latest value read from the target.
+- A direct register write must always access the target register and update the corresponding register cache with the written
+  value. This is particularly important for write-only registers such as DP SELECT.
+
 \subsection externalTools Using external tools
 
 Some functionality cannot be implemented by debug sequences, for example checksum/hash calculations or debug authentication.
