@@ -35,6 +35,7 @@ var coresight_setup =
         [ "Expression rules", "debug_description.html#ExpressionType", null ],
         [ "Debug access functions", "debug_description.html#DebugFunctions", null ],
         [ "Debug access variables", "debug_description.html#DebugVars", null ],
+        [ "Caching of DP and AP registers", "debug_description.html#DebugRegisterCaching", null ],
         [ "Using external tools", "debug_description.html#externalTools", null ]
       ] ]
     ] ],

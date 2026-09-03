@@ -72,6 +72,7 @@ var NAVTREEINDEX0 =
 "dbg_sqns_uvision.html#dbg_uVision_sqns_logging":[6,1,2,0,3],
 "debug_description.html":[6,0],
 "debug_description.html#DebugFunctions":[6,0,6,2],
+"debug_description.html#DebugRegisterCaching":[6,0,6,4],
 "debug_description.html#DebugSyntaxRules":[6,0,6,0],
 "debug_description.html#DebugVars":[6,0,6,3],
 "debug_description.html#ExpressionType":[6,0,6,1],
@@ -84,7 +85,7 @@ var NAVTREEINDEX0 =
 "debug_description.html#debugPortStart":[6,0,4,2],
 "debug_description.html#debugPortStop":[6,0,4,3],
 "debug_description.html#default_sequences":[6,0,4],
-"debug_description.html#externalTools":[6,0,6,4],
+"debug_description.html#externalTools":[6,0,6,5],
 "debug_description.html#flashAlgorithmSelection":[6,0,5,4],
 "debug_description.html#flashEraseSetupExample":[6,0,5,4,0],
 "debug_description.html#flashProgramSetupExample":[6,0,5,4,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "pdsc_parts_pg.html#element_part_environment":[3,19,5],
 "pdsc_parts_pg.html#element_part_feature":[3,19,2],
 "pdsc_parts_pg.html#element_part_image":[3,19,4],
-"pdsc_parts_pg.html#element_parts":[3,19,0],
-"sdf_pg.html":[7]
+"pdsc_parts_pg.html#element_parts":[3,19,0]
 };

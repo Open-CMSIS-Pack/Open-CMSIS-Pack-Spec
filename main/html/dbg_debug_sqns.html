@@ -278,8 +278,30 @@ Implement reset for debug access</h1>
 <li><a class="el" href="debug_description.html#resetProcessor_Descr">ResetProcessor</a> is a software-triggered local reset for a processor only.</li>
 <li><b>CustomResetName</b> sequence is used when a user-defined debug sequence is assigned to the <a class="el" href="pdsc_family_pg.html#defaultResetSequence">defaultResetSequence</a> attribute. This can be implemented when very special reset type is needed that cannot be performed by modifying predefined reset types.</li>
 </ul>
-<p><a class="anchor" id="dbg_sqns_reset_catchClear"></a><b>CPU halt and ResetCatchClear</b></p>
-<p>After reset is performed and the processor is halted (on the breakpoint enabled in <b>ResetCatchSet</b>) the <a class="el" href="debug_description.html#resetCatchClear">ResetCatchClear</a> sequence is executed. The default implementation may need to be overwritten to support bootloader as explaine in <a class="el" href="dbg_debug_sqns.html#dbg_sqns_boot">Support bootloader operation</a>.</p>
+<p><b>Resynchronize cached AP registers after reset</b></p>
+<p>A reset might clear AP registers such as the CSW. If the host debugger caches the AP CSW to accelerate memory accesses, the cached value must be resynchronized before the next memory access. The following device-specific <b>ResetSystem</b> example performs an explicit AP CSW read after the reset delay. As described in <a class="el" href="debug_description.html#DebugRegisterCaching">Caching of DP and AP registers</a>, <code>ReadAP</code> updates the debugger's internal AP CSW cache with the value read from the target:</p>
+<div class="fragment"><div class="line">&lt;sequence name=<span class="stringliteral">&quot;ResetSystem&quot;</span>&gt;</div>
+<div class="line">  &lt;block&gt;</div>
+<div class="line">    <span class="comment">// System Control Space (SCS) offset as defined in Armv6-M/Armv7-M.</span></div>
+<div class="line">    __var SCS_Addr   = 0xE000E000;</div>
+<div class="line">    __var AIRCR_Addr = SCS_Addr + 0xD0C;</div>
+<div class="line">    __var DHCSR_Addr = SCS_Addr + 0xDF0;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Execute SYSRESETREQ via AIRCR.</span></div>
+<div class="line">    Write32(AIRCR_Addr, 0x05FA0004);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Delay for 100 ms to let the system reset complete.</span></div>
+<div class="line">    DAP_Delay(100000);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Read AP CSW from the target and refresh the debugger&#39;s internal cache.</span></div>
+<div class="line">    ReadAP(0x00);</div>
+<div class="line">  &lt;/block&gt;</div>
+<div class="line"> </div>
+<div class="line">  &lt;!-- Reset Recovery: Wait <span class="keywordflow">for</span> DHCSR.S_RESET_ST bit to clear on read. --&gt;</div>
+<div class="line">  &lt;control <span class="keywordflow">while</span>=<span class="stringliteral">&quot;(Read32(DHCSR_Addr) &amp;amp; 0x02000000)&quot;</span> timeout=<span class="stringliteral">&quot;500000&quot;</span>/&gt;</div>
+<div class="line">&lt;/sequence&gt;</div>
+</div><!-- fragment --><p><a class="anchor" id="dbg_sqns_reset_catchClear"></a><b>CPU halt and ResetCatchClear</b></p>
+<p>After reset is performed and the processor is halted (on the breakpoint enabled in <b>ResetCatchSet</b>) the <a class="el" href="debug_description.html#resetCatchClear">ResetCatchClear</a> sequence is executed. The default implementation may need to be overwritten to support bootloader as explained in <a class="el" href="dbg_debug_sqns.html#dbg_sqns_boot">Support bootloader operation</a>.</p>
 <h1><a class="anchor" id="dbg_sqns_boot"></a>
 Support bootloader operation</h1>
 <p>Systems with built-in ROM bootloader often require special handling to ensure that debug is correctly started from the user application.</p>
