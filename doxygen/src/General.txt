@@ -85,7 +85,7 @@ packs) and provides useful tips when creating a pack.
     <td>
       - added use of `__connection` Bit 18 as halt-after-reset indicator
       - use `mode` Bit 9 in `BufferRead`/`BufferWrite` debug access functions
-        to select APv2 (ADIv6) top-level access port address space
+        to select APv2 (ADIv6) top-level access port address space (32-bit access only)
       - added rules for AP/DP register caching
     </td>
   </tr>
