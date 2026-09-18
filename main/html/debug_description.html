@@ -1558,7 +1558,8 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 <li>Bit 0: Additionally set this Bit to 1 to increment the target address after each debug read access of the specified size.</li>
 <li>Bit 9: Target address space.<ul>
 <li><span class="XML-Token">0</span>: Access target memory using the access port specified by <b>__ap</b> or <b>__apid</b>.</li>
-<li><span class="XML-Token">1</span>: Access an address in the system's APv2 (ADIv6) top-level access port space.</li>
+<li><span class="XML-Token">1</span>: Access an address in the system's APv2 (ADIv6) top-level access port space.<br  />
+ This address space only supports 32-bit accesses. The debugger must generate an error if a different debug access size is specified.</li>
 </ul>
 </li>
 <li>Bit 10..63: Reserved</li>
@@ -1595,7 +1596,8 @@ Previous versions specified to always return <span class="XML-Token">0</span> in
 <li>Bit 0: Additionally set this Bit to <span class="XML-Token">1</span> to increment the target address after each debug write access of the specified size.</li>
 <li>Bit 9: Target address space.<ul>
 <li><span class="XML-Token">0</span>: Access target memory using the access port specified by <b>__ap</b> or <b>__apid</b>.</li>
-<li><span class="XML-Token">1</span>: Access an address in the system's APv2 (ADIv6) top-level access port space.</li>
+<li><span class="XML-Token">1</span>: Access an address in the system's APv2 (ADIv6) top-level access port space.<br  />
+ This address space only supports 32-bit accesses. The debugger must generate an error if a different debug access size is specified.</li>
 </ul>
 </li>
 <li>Bit 10..63: Reserved</li>
