@@ -1849,7 +1849,8 @@ debug access variables which are evaluated for the function call.
 		    specified size.
           - Bit 9: Target address space.
             - \token{0}: Access target memory using the access port specified by <b>__ap</b> or <b>__apid</b>.
-            - \token{1}: Access an address in the system's APv2 (ADIv6) top-level access port space.
+            - \token{1}: Access an address in the system's APv2 (ADIv6) top-level access port space.<br>
+              This address space only supports 32-bit accesses. The debugger must generate an error if a different debug access size is specified.
           - Bit 10..63: Reserved
                 
         <b>Debug Access Variables:</b><br>
@@ -1890,7 +1891,8 @@ debug access variables which are evaluated for the function call.
 		    the specified size.
           - Bit 9: Target address space.
             - \token{0}: Access target memory using the access port specified by <b>__ap</b> or <b>__apid</b>.
-            - \token{1}: Access an address in the system's APv2 (ADIv6) top-level access port space.
+            - \token{1}: Access an address in the system's APv2 (ADIv6) top-level access port space.<br>
+              This address space only supports 32-bit accesses. The debugger must generate an error if a different debug access size is specified.
           - Bit 10..63: Reserved
                 
         <b>Debug Access Variables:</b><br>
