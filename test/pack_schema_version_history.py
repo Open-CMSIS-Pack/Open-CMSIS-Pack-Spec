@@ -134,8 +134,8 @@ def main():
 
 
 if __name__ == "__main__":
-    if 'schema/PACK.xsd' in sys.argv \
-            or 'test/pack_schema_version_history.py' in sys.argv:
+    if 'schema/PACK.xsd' in sys.argv[1:] \
+            or 'test/pack_schema_version_history.py' in sys.argv[1:]:
         main()
 
     sys.exit(rc)
