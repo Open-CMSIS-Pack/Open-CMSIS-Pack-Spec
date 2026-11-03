@@ -55,6 +55,9 @@ jobs:
           done
           exit $rc
       - name: Check schema version history
+        if: >-
+          contains(format(' {0} ', steps.files.outputs.all_changed_files), ' schema/PACK.xsd ') ||
+          contains(format(' {0} ', steps.files.outputs.all_changed_files), ' test/pack_schema_version_history.py ')
         run: |
           echo "${{ github.event.pull_request.base.sha }}" > .git/ORIG_HEAD
           python test/pack_schema_version_history.py ${{ steps.files.outputs.all_changed_files }}
@@ -64,10 +67,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
-      - name: Setup Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.12'
       - name: Install packages
         run: |
           sudo apt-get update
