@@ -20,11 +20,15 @@ jobs:
           fetch-depth: 0
       - id: files
         uses: tj-actions/changed-files@v47
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
       - name: Install packages
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y libxml2-utils
-          sudo pip install progress python-dateutil
+          python -m pip install progress python-dateutil
       - name: Fetch Keil index
         run: wget https://www.keil.com/pack/index.pidx
       - name: Cache Keil index pdsc files
@@ -60,6 +64,10 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
       - name: Install packages
         run: |
           sudo apt-get update
