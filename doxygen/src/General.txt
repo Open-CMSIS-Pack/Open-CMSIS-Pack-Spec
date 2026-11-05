@@ -81,7 +81,7 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
-    <td>1.7.63 (unreleased)</td>
+    <td>1.7.63</td>
     <td>
       - added Cortex-M42 processor to DcoreEnum
       - added use of `__connection` Bit 18 as halt-after-reset indicator
