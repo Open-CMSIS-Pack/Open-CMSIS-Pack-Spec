@@ -2573,6 +2573,10 @@ These values can be used in the elements:
     <td><a href="https://developer.arm.com/processors/cortex-m35p" target="_blank">Arm Cortex-M35P</a> processor based device</td>
   </tr>
   <tr>
+    <td class="XML-Token">Cortex-M42</td>
+    <td><a href="https://developer.arm.com/processors/cortex-m42" target="_blank">Arm Cortex-M42</a> processor based device</td>
+  </tr>
+  <tr>
     <td class="XML-Token">Cortex-M52</td>
     <td><a href="https://developer.arm.com/processors/cortex-m52" target="_blank">Arm Cortex-M52</a> processor based device</td>
   </tr>

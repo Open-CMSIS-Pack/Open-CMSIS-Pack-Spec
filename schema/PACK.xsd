@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-  Copyright (c) 2013-2026 ARM Limited, 2025 Arm China. All rights reserved.
+  Copyright (c) 2013-2026 Arm Limited, 2025 Arm China. All rights reserved.
 
   SPDX-License-Identifier: Apache-2.0
 
@@ -18,13 +18,15 @@
   limitations under the License.
 
 
-  $Date:        21. August 2026
-  $Revision:    1.7.62
+  $Date:        05. November 2026
+  $Revision:    1.7.63
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>.<name>.<version>.pack
-  SchemaVersion=1.7.62
+  SchemaVersion=1.7.63
 
+  05. Nov 2026: v1.7.63
+   - added Cortex-M42 processor to DcoreEnum
   21. Aug 2026: v1.7.62
    - deprecate 'Pname' attribute in 'trace' element type
   21. Aug 2026: v1.7.61
@@ -283,7 +285,7 @@
 
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.62">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.7.63">
 
   <!-- NonNegativeInteger specifies the format in which numbers are represented in hexadecimal or decimal format -->
   <xs:simpleType name="NonNegativeInteger">
@@ -1069,6 +1071,7 @@
       <xs:enumeration value="Cortex-M3" />
       <xs:enumeration value="Cortex-M33" />
       <xs:enumeration value="Cortex-M35P"/>
+      <xs:enumeration value="Cortex-M42"/>
       <xs:enumeration value="Cortex-M52"/>
       <xs:enumeration value="Cortex-M55"/>
       <xs:enumeration value="Cortex-M85"/>

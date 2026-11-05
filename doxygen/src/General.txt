@@ -81,8 +81,9 @@ packs) and provides useful tips when creating a pack.
     <th>Description</th>
   </tr>
   <tr>
-    <td>Next Version</td>
+    <td>1.7.63 (unreleased)</td>
     <td>
+      - added Cortex-M42 processor to DcoreEnum
       - added use of `__connection` Bit 18 as halt-after-reset indicator
       - use `mode` Bit 9 in `BufferRead`/`BufferWrite` debug access functions
         to select APv2 (ADIv6) top-level access port address space (32-bit access only)
