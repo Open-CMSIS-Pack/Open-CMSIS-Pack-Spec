@@ -9,6 +9,8 @@ on:
       - '.github/download-pack-index.py'
       - 'schema/**'
       - 'test/pack_schema_version_history.py'
+      - 'test/target_index_schema.py'
+      - 'doxygen/src/pack_publish.txt'
 jobs:
   pack:
     name: Validate pack schema
@@ -76,6 +78,9 @@ jobs:
         run: |
           wget https://www.w3.org/2012/04/XMLSchema.xsd
           xmllint --noout --schema XMLSchema.xsd schema/PackIndex.xsd
+          xmllint --noout --schema XMLSchema.xsd schema/TargetIndex.xsd
+      - name: Validate target index examples and constraints
+        run: python3 test/target_index_schema.py
       - name: Run xmllint against keil.pidx
         run: |
           wget https://www.keil.com/pack/keil.pidx

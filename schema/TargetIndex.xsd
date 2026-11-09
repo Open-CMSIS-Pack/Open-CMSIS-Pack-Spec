@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Schema File for Target Index File Format Specification
+
+  Target Index file naming convention index.tidx
+  SchemaVersion=1.0.0
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.0">
+
+  <!-- semantic versioning (semver.org) <major>.<minor>.<patch>-<quality> -->
+  <xs:simpleType name="SemanticVersionType">
+    <xs:restriction  base="xs:string">
+      <!--                major . minor . patch [[-]quality] [+build] -->
+      <xs:pattern value="[0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- some strings are used to construct filenames (e.g. package name). Such names can contain only subset of characters and must not contain neither spaces nor dots. -->
+  <xs:simpleType name="RestrictedString">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\-_A-Za-z0-9]+"/>
+      <xs:pattern value="\S(.*\S)?"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Target identities may contain spaces and punctuation. -->
+  <xs:simpleType name="NonEmptyString">
+    <xs:restriction base="xs:token">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Package Description Type -->
+  <xs:complexType name="PdscType">
+    <xs:attribute name="url"             type="xs:anyURI"           use="required"/>
+    <xs:attribute name="vendor"          type="RestrictedString"    use="required"/>
+    <xs:attribute name="name"            type="RestrictedString"    use="required"/>
+    <xs:attribute name="version"         type="SemanticVersionType" use="required"/>
+    <xs:attribute name="date"            type="xs:date"             use="optional"/>
+    <xs:attribute name="deprecated"      type="xs:date"             use="optional"/>
+    <xs:attribute name="replacement"     type="RestrictedString"    use="optional"/>
+    <xs:attribute name="size"            type="xs:unsignedInt"       use="optional"/>
+  </xs:complexType>
+
+  <!-- Concrete device and its package provider. -->
+  <xs:complexType name="DeviceType">
+    <xs:sequence>
+      <xs:element name="pdsc"            type="PdscType"/>
+    </xs:sequence>
+    <xs:attribute name="vendor"          type="NonEmptyString"       use="required"/>
+    <xs:attribute name="name"            type="NonEmptyString"       use="required"/>
+  </xs:complexType>
+
+  <!-- Device mounted on a board, optionally identified by its device index. -->
+  <xs:complexType name="MountedDeviceType">
+    <xs:attribute name="vendor"          type="NonEmptyString"       use="required"/>
+    <xs:attribute name="name"            type="NonEmptyString"       use="required"/>
+    <xs:attribute name="index"           type="xs:nonNegativeInteger" use="optional"/>
+  </xs:complexType>
+
+  <!-- Board revision, its package provider and mounted devices. -->
+  <xs:complexType name="BoardType">
+    <xs:sequence>
+      <xs:element name="pdsc"            type="PdscType"/>
+      <xs:element name="mountedDevice"   type="MountedDeviceType"    minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="vendor"          type="NonEmptyString"       use="required"/>
+    <xs:attribute name="name"            type="NonEmptyString"       use="required"/>
+    <xs:attribute name="revision"        type="NonEmptyString"       use="optional"/>
+  </xs:complexType>
+
+  <!-- Device list; an empty repository has no device entries. -->
+  <xs:complexType name="DevicesType">
+    <xs:sequence>
+      <xs:element name="device"          type="DeviceType"           minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Board list; an empty repository has no board entries. -->
+  <xs:complexType name="BoardsType">
+    <xs:sequence>
+      <xs:element name="board"           type="BoardType"            minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Target index root. -->
+  <xs:element name="index" nillable="true">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="vendor"        type="RestrictedString"/>
+        <xs:element name="url"           type="xs:anyURI"/>
+        <xs:element name="timestamp"     type="xs:dateTime"         minOccurs="0"/>
+        <xs:element name="devices"       type="DevicesType"/>
+        <xs:element name="boards"        type="BoardsType"/>
+      </xs:sequence>
+      <xs:attribute name="schemaVersion" type="SemanticVersionType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

@@ -353,6 +353,82 @@ summary index file are listed in the Keil.vidx file and can be downloaded from h
 Based on these publicly available index files, everyone is equally positioned to create an index of available packs and their
 latest versions.
 
-\subsection packIndexSchema Index schema file
+\subsection tidxFile Target index file (TIDX)
+
+The target index file, named \c index.tidx, lists concrete devices and board revisions together with the CMSIS-Pack
+that provides each target. It enables target discovery without downloading every PDSC file. Unlike a
+\ref pidxFile "package index", which lists packs, a target index lists the targets supplied by those packs.
+The format is defined by \ref targetIndexSchema "TargetIndex.xsd", independently of the PIDX and PDSC schema versions.
+
+The root \elem{index} has a required \elem{schemaVersion} attribute, currently \c 1.0.0. Its child elements must appear
+in this order:
+- \elem{vendor}: required identifier of the index publisher.
+- \elem{url}: required URI of the index origin.
+- \elem{timestamp}: optional last-update time in XML Schema \c dateTime format.
+- \elem{devices}: required list containing zero or more \elem{device} elements.
+- \elem{boards}: required list containing zero or more \elem{board} elements.
+
+Both lists must be present even when empty. A device-only repository uses an empty \elem{boards} element; a board-only
+repository uses an empty \elem{devices} element. As with the PIDX schema, the root also permits \c xsi:nil="true";
+a nil root has no child content but still requires \elem{schemaVersion}.
+
+Each \elem{device} has required \elem{vendor} and \elem{name} attributes and exactly one \elem{pdsc} child identifying
+the providing pack. Each \elem{board} has required \elem{vendor} and \elem{name} attributes, an optional \elem{revision}
+attribute, and exactly one \elem{pdsc} child followed by zero or more \elem{mountedDevice} elements.
+Each mounted device has required \elem{vendor} and \elem{name} attributes and an optional \elem{index} attribute.
+The index is a non-negative integer identifying the device on the board, not a position in the target index's device list.
+The schema does not require a mounted device to have a corresponding entry in \elem{devices}.
+
+Target vendor, name and revision values can contain spaces and punctuation. XML whitespace is collapsed and these values
+must not be empty or whitespace-only. The index publisher and the \elem{pdsc} vendor, name and replacement identifiers
+use the same \c RestrictedString definition as PIDX: they must be nonempty and have no leading or trailing whitespace,
+but the schema permits internal spaces and punctuation. This differs from the stricter \c RestrictedString in PACK.xsd.
+For pack vendor and name values, producers must also respect the constraints of the referenced PDSC file.
+
+Each \elem{pdsc} uses the package-provider attributes also found in PIDX:
+- \elem{url}: required URI of the provider location, such as a web folder or a local installed-pack directory.
+- \elem{vendor}: required pack vendor, which may differ from the target vendor.
+- \elem{name}: required pack name.
+- \elem{version}: required pack release version in \c major.minor.patch form, optionally with prerelease and build metadata.
+- \elem{date}: optional release date in XML Schema \c date format.
+- \elem{deprecated}: optional deprecation date in XML Schema \c date format.
+- \elem{replacement}: optional replacement pack identifier.
+- \elem{size}: optional pack size in bytes, from 0 through 4294967295.
+
+The index publisher should update the file when targets, board revisions, mounted devices or provider metadata change.
+The schema validates structure and value types, but does not enforce unique targets or mounted-device indices, nor verify
+that the referenced pack actually supplies the target. Producers and consumers must handle these consistency checks.
+
+\b index.tidx example
+
+The following excerpt represents a local target index for an installed Alif Semiconductor pack, using
+\c C:/CMSIS/Packs/ as the example pack root. The optional timestamp is omitted.
+
+\code{.xml}
+<?xml version="1.0" encoding="UTF-8"?>
+<index schemaVersion="1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="TargetIndex.xsd">
+  <vendor>target_index</vendor>
+  <url>file://localhost/C:/CMSIS/Packs/.Targets/index.tidx</url>
+  <devices>
+    <device vendor="Alif Semiconductor" name="AE722F80F55D5LS">
+      <pdsc url="file://localhost/C:/CMSIS/Packs/AlifSemiconductor/Ensemble/2.2.1/"
+            vendor="AlifSemiconductor" name="Ensemble" version="2.2.1"/>
+    </device>
+  </devices>
+  <boards>
+    <board vendor="Alif Semiconductor" name="AppKit-E7-AIML" revision="D1">
+      <pdsc url="file://localhost/C:/CMSIS/Packs/AlifSemiconductor/Ensemble/2.2.1/"
+            vendor="AlifSemiconductor" name="Ensemble" version="2.2.1"/>
+      <mountedDevice vendor="Alif Semiconductor" name="AE722F80F55D5LS" index="0"/>
+    </board>
+  </boards>
+</index>
+\endcode
+
+\subsection packIndexSchema Package and vendor index schema file
 \verbinclude "PackIndex.xsd"
+
+\subsection targetIndexSchema Target index schema file
+\verbinclude "TargetIndex.xsd"
 */
