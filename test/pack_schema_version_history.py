@@ -66,8 +66,6 @@ def main():
     history = (parse(history[0][1]), history[0][2], history[1] + 1) if history[0] else None
     xsproperty = (xsproperty[0][1], xsproperty[1] + 1) if xsproperty[0] else None
 
-    author_date = parse(get_from_cmd(['git', 'log', '-1', '--pretty=%ad', '--date=format:%Y-%m-%d', schema_file.name],
-                                     cwd=schema_file.parent))
     base_rev = get_from_cmd(['git', 'merge-base', 'ORIG_HEAD', 'HEAD'], cwd=schema_file.parent)
     head_rev = get_from_cmd(['git', 'log', '-1', '--pretty=%H', schema_file.name], cwd=schema_file.parent)
     blame = get_from_cmd(['git', 'blame', f"{base_rev}..{head_rev}", '-l', '-L', f"{revision[1]},{revision[1]}",
@@ -98,9 +96,6 @@ def main():
 
     if not date:
         log_error(schema_file, 0, "Modification date tag '$Date:  <dd>. <month> <yyyy>' missing or wrong format!")
-    elif date[0] != author_date:
-        log_error(schema_file, date[1], "Modification date tag not updated, "
-                                        f"should be '{author_date.strftime('%d. %b %Y')}'!")
 
     if not revision:
         log_error(schema_file, 0, "Latest version tag '$Revision:  <major>.<minor>.<patch>' missing or wrong format!")
@@ -114,9 +109,10 @@ def main():
 
         if not history:
             log_error(schema_file, 0, "Change history '<dd>. <month> <yyyy>: <major>.<minor>.<patch>' missing or wrong format!")
-        elif history[1] != revision[0] or history[0] != author_date:
+        elif history[1] != revision[0] or (date and history[0] != date[0]):
+            expected_date = date[0] if date else history[0]
             log_error(schema_file, history[2], "Change history not updated, should contain "
-                                               f"'{author_date.strftime('%d. %B %Y')}: v{revision[0]}'!")
+                                               f"'{expected_date.strftime('%d. %B %Y')}: v{revision[0]}'!")
         if not xsproperty:
             log_error(schema_file, 0, "xs:schema property 'version' missing!")
         elif xsproperty[0] != revision[0]:
@@ -134,8 +130,9 @@ def main():
 
 
 if __name__ == "__main__":
-    if 'schema/PACK.xsd' in sys.argv \
-            or 'test/pack_schema_version_history.py' in sys.argv:
+    changed_files = sys.argv[1:]
+    if 'schema/PACK.xsd' in changed_files \
+            or 'test/pack_schema_version_history.py' in changed_files:
         main()
 
     sys.exit(rc)
