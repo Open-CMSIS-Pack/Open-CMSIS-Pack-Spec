@@ -39,8 +39,10 @@ var NAVTREEINDEX0 =
 "createPackPublish.html#gh_pdsc":[2,2,1,1],
 "createPackPublish.html#gh_pidx":[2,2,1,0],
 "createPackPublish.html#packIndexFile":[2,4],
-"createPackPublish.html#packIndexSchema":[2,4,2],
+"createPackPublish.html#packIndexSchema":[2,4,3],
 "createPackPublish.html#pidxFile":[2,4,0],
+"createPackPublish.html#targetIndexSchema":[2,4,4],
+"createPackPublish.html#tidxFile":[2,4,2],
 "createPackPublish.html#vidxFile":[2,4,1],
 "dbg_debug_sqns.html":[6,1,1],
 "dbg_debug_sqns.html#dbg_sqns_boot":[6,1,1,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "pdsc_parts_pg.html#element_part":[3,19,1],
 "pdsc_parts_pg.html#element_part_book":[3,19,3],
 "pdsc_parts_pg.html#element_part_environment":[3,19,5],
-"pdsc_parts_pg.html#element_part_feature":[3,19,2],
-"pdsc_parts_pg.html#element_part_image":[3,19,4],
-"pdsc_parts_pg.html#element_parts":[3,19,0]
+"pdsc_parts_pg.html#element_part_feature":[3,19,2]
 };

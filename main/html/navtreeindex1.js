@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"pdsc_parts_pg.html#element_part_image":[3,19,4],
+"pdsc_parts_pg.html#element_parts":[3,19,0],
 "sdf_pg.html":[7],
 "sdf_pg.html#autotoc_md3":[7,4,0],
 "sdf_pg.html#autotoc_md4":[7,4,1],

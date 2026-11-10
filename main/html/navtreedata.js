@@ -60,7 +60,9 @@ var NAVTREE =
       [ "Pack index files", "createPackPublish.html#packIndexFile", [
         [ "Package index file (PIDX)", "createPackPublish.html#pidxFile", null ],
         [ "Vendor index file (VIDX)", "createPackPublish.html#vidxFile", null ],
-        [ "Index schema file", "createPackPublish.html#packIndexSchema", null ]
+        [ "Target index file (TIDX)", "createPackPublish.html#tidxFile", null ],
+        [ "Package and vendor index schema file", "createPackPublish.html#packIndexSchema", null ],
+        [ "Target index schema file", "createPackPublish.html#targetIndexSchema", null ]
       ] ]
     ] ],
     [ "Pack Description (*.pdsc) Format", "packFormat.html", "packFormat" ],
@@ -101,7 +103,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithmFunc.html",
-"sdf_pg.html"
+"pdsc_parts_pg.html#element_part_image"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

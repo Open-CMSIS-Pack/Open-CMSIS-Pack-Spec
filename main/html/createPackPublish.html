@@ -350,8 +350,53 @@ Vendor index file (VIDX)</h2>
 <p>Arm also maintains a flat list of all CMSIS-Pack compliant packs reported to Arm here: <a href="https://www.keil.com/pack/index.pidx">https://www.keil.com/pack/index.pidx</a></p>
 <p>The vendor index file containing references to the package index files (or optionally PDSC files) used for compiling this summary index file are listed in the Keil.vidx file and can be downloaded from here: <a href="https://www.keil.com/pack/Keil.vidx">https://www.keil.com/pack/Keil.vidx</a></p>
 <p>Based on these publicly available index files, everyone is equally positioned to create an index of available packs and their latest versions.</p>
-<h2><a class="anchor" id="packIndexSchema"></a>
-Index schema file</h2>
+<h2><a class="anchor" id="tidxFile"></a>
+Target index file (TIDX)</h2>
+<p>The target index file, named <code>index.tidx</code>, lists concrete devices and board revisions together with the CMSIS-Pack that provides each target. It enables target discovery without downloading every PDSC file. Unlike a <a class="el" href="createPackPublish.html#pidxFile">package index</a>, which lists packs, a target index lists the targets supplied by those packs. The format is defined by <a class="el" href="createPackPublish.html#targetIndexSchema">TargetIndex.xsd</a>, independently of the PIDX and PDSC schema versions.</p>
+<p>The root <b>&lt;index&gt;</b> has a required <b>&lt;schemaVersion&gt;</b> attribute, currently <code>1.0.0</code>. Its child elements must appear in this order:</p><ul>
+<li><b>&lt;vendor&gt;</b>: required identifier of the index publisher.</li>
+<li><b>&lt;url&gt;</b>: required URI of the index origin.</li>
+<li><b>&lt;timestamp&gt;</b>: optional last-update time in XML Schema <code>dateTime</code> format.</li>
+<li><b>&lt;devices&gt;</b>: required list containing zero or more <b>&lt;device&gt;</b> elements.</li>
+<li><b>&lt;boards&gt;</b>: required list containing zero or more <b>&lt;board&gt;</b> elements.</li>
+</ul>
+<p>Both lists must be present even when empty. A device-only repository uses an empty <b>&lt;boards&gt;</b> element; a board-only repository uses an empty <b>&lt;devices&gt;</b> element. As with the PIDX schema, the root also permits <code>xsi:nil="true"</code>; a nil root has no child content but still requires <b>&lt;schemaVersion&gt;</b>.</p>
+<p>Each <b>&lt;device&gt;</b> has required <b>&lt;vendor&gt;</b> and <b>&lt;name&gt;</b> attributes and exactly one <b>&lt;pdsc&gt;</b> child identifying the providing pack. Each <b>&lt;board&gt;</b> has required <b>&lt;vendor&gt;</b> and <b>&lt;name&gt;</b> attributes, an optional <b>&lt;revision&gt;</b> attribute, and exactly one <b>&lt;pdsc&gt;</b> child followed by zero or more <b>&lt;mountedDevice&gt;</b> elements. Each mounted device has required <b>&lt;vendor&gt;</b> and <b>&lt;name&gt;</b> attributes and an optional <b>&lt;index&gt;</b> attribute. The index is a non-negative integer identifying the device on the board, not a position in the target index's device list. The schema does not require a mounted device to have a corresponding entry in <b>&lt;devices&gt;</b>.</p>
+<p>Target vendor, name and revision values can contain spaces and punctuation. XML whitespace is collapsed and these values must not be empty or whitespace-only. The index publisher and the <b>&lt;pdsc&gt;</b> vendor, name and replacement identifiers use the same <code>RestrictedString</code> definition as PIDX: they must be nonempty and have no leading or trailing whitespace, but the schema permits internal spaces and punctuation. This differs from the stricter <code>RestrictedString</code> in PACK.xsd. For pack vendor and name values, producers must also respect the constraints of the referenced PDSC file.</p>
+<p>Each <b>&lt;pdsc&gt;</b> uses the package-provider attributes also found in PIDX:</p><ul>
+<li><b>&lt;url&gt;</b>: required URI of the provider location, such as a web folder or a local installed-pack directory.</li>
+<li><b>&lt;vendor&gt;</b>: required pack vendor, which may differ from the target vendor.</li>
+<li><b>&lt;name&gt;</b>: required pack name.</li>
+<li><b>&lt;version&gt;</b>: required pack release version in <code>major.minor.patch</code> form, optionally with prerelease and build metadata.</li>
+<li><b>&lt;date&gt;</b>: optional release date in XML Schema <code>date</code> format.</li>
+<li><b>&lt;deprecated&gt;</b>: optional deprecation date in XML Schema <code>date</code> format.</li>
+<li><b>&lt;replacement&gt;</b>: optional replacement pack identifier.</li>
+<li><b>&lt;size&gt;</b>: optional pack size in bytes, from 0 through 4294967295.</li>
+</ul>
+<p>The index publisher should update the file when targets, board revisions, mounted devices or provider metadata change. The schema validates structure and value types, but does not enforce unique targets or mounted-device indices, nor verify that the referenced pack actually supplies the target. Producers and consumers must handle these consistency checks.</p>
+<p><b>index.tidx</b> example</p>
+<p>The following excerpt represents a local target index for an installed Alif Semiconductor pack, using <code>C:/CMSIS/Packs/</code> as the example pack root. The optional timestamp is omitted.</p>
+<div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;UTF-8&quot;</span>?&gt;</div>
+<div class="line">&lt;<span class="keywordtype">index</span> <span class="keyword">schemaVersion</span>=<span class="stringliteral">&quot;1.0.0&quot;</span> <span class="keyword">xmlns:xsi</span>=<span class="stringliteral">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></div>
+<div class="line">       <span class="keyword">xsi:noNamespaceSchemaLocation</span>=<span class="stringliteral">&quot;TargetIndex.xsd&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">vendor</span>&gt;<span class="keyword">target_index</span>&lt;/<span class="keywordtype">vendor</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">url</span>&gt;<span class="keyword">file:</span>//<span class="keyword">localhost</span>/<span class="keyword">C:</span>/<span class="keyword">CMSIS</span>/<span class="keyword">Packs</span>/.<span class="keyword">Targets</span>/<span class="keyword">index.tidx</span>&lt;/<span class="keywordtype">url</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">devices</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">device</span> <span class="keyword">vendor</span>=<span class="stringliteral">&quot;Alif Semiconductor&quot;</span> <span class="keyword">name</span>=<span class="stringliteral">&quot;AE722F80F55D5LS&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">pdsc</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;file://localhost/C:/CMSIS/Packs/AlifSemiconductor/Ensemble/2.2.1/&quot;</span></div>
+<div class="line">            <span class="keyword">vendor</span>=<span class="stringliteral">&quot;AlifSemiconductor&quot;</span> <span class="keyword">name</span>=<span class="stringliteral">&quot;Ensemble&quot;</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;2.2.1&quot;</span>/&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">device</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">devices</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">boards</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">board</span> <span class="keyword">vendor</span>=<span class="stringliteral">&quot;Alif Semiconductor&quot;</span> <span class="keyword">name</span>=<span class="stringliteral">&quot;AppKit-E7-AIML&quot;</span> <span class="keyword">revision</span>=<span class="stringliteral">&quot;D1&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">pdsc</span> <span class="keyword">url</span>=<span class="stringliteral">&quot;file://localhost/C:/CMSIS/Packs/AlifSemiconductor/Ensemble/2.2.1/&quot;</span></div>
+<div class="line">            <span class="keyword">vendor</span>=<span class="stringliteral">&quot;AlifSemiconductor&quot;</span> <span class="keyword">name</span>=<span class="stringliteral">&quot;Ensemble&quot;</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;2.2.1&quot;</span>/&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">mountedDevice</span> <span class="keyword">vendor</span>=<span class="stringliteral">&quot;Alif Semiconductor&quot;</span> <span class="keyword">name</span>=<span class="stringliteral">&quot;AE722F80F55D5LS&quot;</span> <span class="keyword">index</span>=<span class="stringliteral">&quot;0&quot;</span>/&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">board</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">boards</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">index</span>&gt;</div>
+</div><!-- fragment --><h2><a class="anchor" id="packIndexSchema"></a>
+Package and vendor index schema file</h2>
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!--
 
@@ -449,6 +494,109 @@ Index schema file</h2>
       &lt;xs:attribute name="schemaVersion" type="SemanticVersionType" use="required"/&gt;
     &lt;/xs:complexType&gt;
   &lt;/xs:element&gt;
+&lt;/xs:schema&gt;
+</pre><h2><a class="anchor" id="targetIndexSchema"></a>
+Target index schema file</h2>
+<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!--
+  Schema File for Target Index File Format Specification
+
+  Target Index file naming convention index.tidx
+  SchemaVersion=1.0.0
+--&gt;
+
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.0"&gt;
+
+  &lt;!-- semantic versioning (semver.org) &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;-&lt;quality&gt; --&gt;
+  &lt;xs:simpleType name="SemanticVersionType"&gt;
+    &lt;xs:restriction  base="xs:string"&gt;
+      &lt;!--                major . minor . patch [[-]quality] [+build] --&gt;
+      &lt;xs:pattern value="[0-9]+\.[0-9]+\.[0-9]+(\-((0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?" /&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;!-- some strings are used to construct filenames (e.g. package name). Such names can contain only subset of characters and must not contain neither spaces nor dots. --&gt;
+  &lt;xs:simpleType name="RestrictedString"&gt;
+    &lt;xs:restriction base="xs:string"&gt;
+      &lt;xs:pattern value="[\-_A-Za-z0-9]+"/&gt;
+      &lt;xs:pattern value="\S(.*\S)?"&gt;&lt;/xs:pattern&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;!-- Target identities may contain spaces and punctuation. --&gt;
+  &lt;xs:simpleType name="NonEmptyString"&gt;
+    &lt;xs:restriction base="xs:token"&gt;
+      &lt;xs:minLength value="1"/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;!-- Package Description Type --&gt;
+  &lt;xs:complexType name="PdscType"&gt;
+    &lt;xs:attribute name="url"             type="xs:anyURI"           use="required"/&gt;
+    &lt;xs:attribute name="vendor"          type="RestrictedString"    use="required"/&gt;
+    &lt;xs:attribute name="name"            type="RestrictedString"    use="required"/&gt;
+    &lt;xs:attribute name="version"         type="SemanticVersionType" use="required"/&gt;
+    &lt;xs:attribute name="date"            type="xs:date"             use="optional"/&gt;
+    &lt;xs:attribute name="deprecated"      type="xs:date"             use="optional"/&gt;
+    &lt;xs:attribute name="replacement"     type="RestrictedString"    use="optional"/&gt;
+    &lt;xs:attribute name="size"            type="xs:unsignedInt"       use="optional"/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Concrete device and its package provider. --&gt;
+  &lt;xs:complexType name="DeviceType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="pdsc"            type="PdscType"/&gt;
+    &lt;/xs:sequence&gt;
+    &lt;xs:attribute name="vendor"          type="NonEmptyString"       use="required"/&gt;
+    &lt;xs:attribute name="name"            type="NonEmptyString"       use="required"/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Device mounted on a board, optionally identified by its device index. --&gt;
+  &lt;xs:complexType name="MountedDeviceType"&gt;
+    &lt;xs:attribute name="vendor"          type="NonEmptyString"       use="required"/&gt;
+    &lt;xs:attribute name="name"            type="NonEmptyString"       use="required"/&gt;
+    &lt;xs:attribute name="index"           type="xs:nonNegativeInteger" use="optional"/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Board revision, its package provider and mounted devices. --&gt;
+  &lt;xs:complexType name="BoardType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="pdsc"            type="PdscType"/&gt;
+      &lt;xs:element name="mountedDevice"   type="MountedDeviceType"    minOccurs="0" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+    &lt;xs:attribute name="vendor"          type="NonEmptyString"       use="required"/&gt;
+    &lt;xs:attribute name="name"            type="NonEmptyString"       use="required"/&gt;
+    &lt;xs:attribute name="revision"        type="NonEmptyString"       use="optional"/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Device list; an empty repository has no device entries. --&gt;
+  &lt;xs:complexType name="DevicesType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="device"          type="DeviceType"           minOccurs="0" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Board list; an empty repository has no board entries. --&gt;
+  &lt;xs:complexType name="BoardsType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="board"           type="BoardType"            minOccurs="0" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;!-- Target index root. --&gt;
+  &lt;xs:element name="index" nillable="true"&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name="vendor"        type="RestrictedString"/&gt;
+        &lt;xs:element name="url"           type="xs:anyURI"/&gt;
+        &lt;xs:element name="timestamp"     type="xs:dateTime"         minOccurs="0"/&gt;
+        &lt;xs:element name="devices"       type="DevicesType"/&gt;
+        &lt;xs:element name="boards"        type="BoardsType"/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name="schemaVersion" type="SemanticVersionType" use="required"/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
 &lt;/xs:schema&gt;
 </pre> </div></div><!-- contents -->
 </div><!-- PageDoc -->
